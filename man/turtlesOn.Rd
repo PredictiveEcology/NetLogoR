@@ -3,8 +3,8 @@
 \docType{methods}
 \name{turtlesOn}
 \alias{turtlesOn}
-\alias{turtlesOn,worldNLR,agentMatrix,matrix,character-method}
 \alias{turtlesOn,worldNLR,agentMatrix,matrix,missing-method}
+\alias{turtlesOn,worldNLR,agentMatrix,matrix,character-method}
 \title{Turtles on}
 \usage{
 turtlesOn(world, turtles, agents, breed, simplify = TRUE)
@@ -64,9 +64,6 @@ t2 <- turtlesOn(world = w1, turtles = t1, agents = patch(w1, 2, 2))
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -75,4 +72,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtles-on}
 }
-
+\author{
+Sarah Bauduin
+}

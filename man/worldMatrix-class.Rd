@@ -2,8 +2,8 @@
 % Please edit documentation in R/NetLogoR-classes.R
 \docType{class}
 \name{worldMatrix-class}
-\alias{worldMatrix}
 \alias{worldMatrix-class}
+\alias{worldMatrix}
 \title{The worldMatrix class}
 \description{
 This is an s4 class extension of \code{matrix} with 7 additional slots.
@@ -35,12 +35,11 @@ the patches in the given order of the patches coordinates provided.
 When no patches coordinates are provided, the values retrieved or assigned
 is done in the order of the cell numbers as defined in in \code{Raster*} objects (i.e., by rows).
 }
-\author{
-Sarah Bauduin, Eliot McIntire, and Alex Chubaty
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
             Northwestern University. Evanston, IL.
 }
-
+\author{
+Sarah Bauduin, Eliot McIntire, and Alex Chubaty
+}

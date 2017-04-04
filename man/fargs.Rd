@@ -86,4 +86,3 @@ as well as any variable created using \code{turtlesOwn()}.}
 Function arguments
 }
 \keyword{integral}
-

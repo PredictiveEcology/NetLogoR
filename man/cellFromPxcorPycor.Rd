@@ -35,4 +35,3 @@ cellFromPxcorPycor(world = w1, pxcor = c(0, 1, 2), pycor = 0)
 \author{
 Sarah Bauduin
 }
-

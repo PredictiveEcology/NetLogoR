@@ -366,13 +366,12 @@ setMethod(
 #' The \code{worldNLR} class is the union of the \code{worldMatrix} and \code{worldArray}
 #' classes. Mostly used for building function purposes.
 #'
-#' @slot members  worldMatrix, worldArray
-#'
 #' @aliases worldNLR
-#' @name worldNLR-class
-#' @rdname worldNLR-class
 #' @author Sarah Bauduin, and Eliot McIntire
 #' @exportClass worldNLR
+#' @name worldNLR-class
+#' @rdname worldNLR-class
+#'
 setClassUnion(name = "worldNLR",
               members = c("worldMatrix", "worldArray")
 )

@@ -3,8 +3,8 @@
 \docType{methods}
 \name{diffuse}
 \alias{diffuse}
-\alias{diffuse,worldArray,character,numeric,numeric-method}
 \alias{diffuse,worldMatrix,missing,numeric,numeric-method}
+\alias{diffuse,worldArray,character,numeric,numeric-method}
 \title{Diffuse values in a world}
 \usage{
 diffuse(world, pVar, share, nNeighbors, torus = FALSE)
@@ -59,9 +59,6 @@ plot(w2)
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -72,4 +69,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 
          \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse4}
 }
-
+\author{
+Sarah Bauduin
+}

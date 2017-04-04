@@ -3,8 +3,8 @@
 \docType{methods}
 \name{plot.agentMatrix}
 \alias{plot.agentMatrix}
-\alias{plot.worldArray}
 \alias{plot.worldMatrix}
+\alias{plot.worldArray}
 \alias{points.agentMatrix}
 \title{Basic plot methods for agentMatrix, worldMatrix, worldArray}
 \usage{
@@ -55,4 +55,3 @@ plot(w3)
    nums = 5:7)
  points(newAgent)
 }
-

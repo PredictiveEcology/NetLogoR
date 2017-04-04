@@ -35,4 +35,3 @@ PxcorPycorFromCell(world = w1, cellNum = cellNum)
 \author{
 Sarah Bauduin
 }
-

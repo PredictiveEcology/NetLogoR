@@ -46,4 +46,3 @@ plot(w1)
 \author{
 Sarah Bauduin
 }
-

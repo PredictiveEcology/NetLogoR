@@ -3,10 +3,10 @@
 \docType{methods}
 \name{NLwith}
 \alias{NLwith}
-\alias{NLwith,agentMatrix,missing,character-method}
-\alias{NLwith,matrix,worldArray,character-method}
-\alias{NLwith,matrix,worldMatrix,missing-method}
 \alias{with}
+\alias{NLwith,matrix,worldMatrix,missing-method}
+\alias{NLwith,matrix,worldArray,character-method}
+\alias{NLwith,agentMatrix,missing,character-method}
 \title{Agents with}
 \usage{
 NLwith(agents, world, var, val)
@@ -71,9 +71,6 @@ t3 <- NLwith(agents = t1, var = "breed", val = c("sheep", "wolf"))
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -82,4 +79,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with}
 }
-
+\author{
+Sarah Bauduin
+}

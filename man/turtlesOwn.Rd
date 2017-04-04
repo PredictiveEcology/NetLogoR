@@ -3,8 +3,8 @@
 \docType{methods}
 \name{turtlesOwn}
 \alias{turtlesOwn}
-\alias{turtlesOwn,agentMatrix,character,ANY-method}
 \alias{turtlesOwn,agentMatrix,character,missing-method}
+\alias{turtlesOwn,agentMatrix,character,ANY-method}
 \title{New turtles variable}
 \usage{
 turtlesOwn(turtles, tVar, tVal)
@@ -35,9 +35,6 @@ t1 <- turtlesOwn(turtles = t1, tVar = "sex", tVal = c("F", "F", "F", "M", "M"))
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -46,4 +43,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtles-own}
 }
-
+\author{
+Sarah Bauduin
+}

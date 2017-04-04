@@ -12,4 +12,3 @@ slots) stacked together. It is used to keep more than one value per patch.
 \author{
 Sarah Bauduin, Eliot McIntire, and Alex Chubaty
 }
-

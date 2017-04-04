@@ -12,4 +12,3 @@
 \description{
 This is a drop in replacement for .bboxCoords in raster package.
 }
-

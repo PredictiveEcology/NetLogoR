@@ -7,6 +7,7 @@
 sudo: required
 
 language: r
+cran: https://cran.rstudio.com/
 
 env:
   global:
@@ -15,19 +16,17 @@ env:
 matrix:
   include:
 
-  - os: linux
-    dist: trusty
-    r: oldrel
-    cran: https://cran.rstudio.com/
-    before_install:
-    - tlmgr install xcolor
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
-    - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" >> ~/.Rprofile
+#  - os: linux
+#    dist: trusty
+#    r: oldrel
+#    before_install:
+#    - tlmgr install xcolor
+#    - export DISPLAY=:99.0
+#    - sh -e /etc/init.d/xvfb start
+#    - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" >> ~/.Rprofile
 
   - os: linux
     dist: trusty
-    cran: https://cran.rstudio.com/
     before_install:
     - tlmgr install xcolor
     - export DISPLAY=:99.0
@@ -40,7 +39,6 @@ matrix:
   - os: linux
     dist: trusty
     r: devel
-    cran: https://cran.rstudio.com/
     before_install:
     - tlmgr install xcolor
     - export DISPLAY=:99.0

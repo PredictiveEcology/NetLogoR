@@ -3,9 +3,9 @@
 \docType{methods}
 \name{withMin}
 \alias{withMin}
-\alias{withMin,agentMatrix,missing,character-method}
-\alias{withMin,matrix,worldArray,character-method}
 \alias{withMin,matrix,worldMatrix,missing-method}
+\alias{withMin,matrix,worldArray,character-method}
+\alias{withMin,agentMatrix,missing,character-method}
 \title{Agents with minimum}
 \usage{
 withMin(agents, world, var)
@@ -65,9 +65,6 @@ t2 <- withMin(agents = t1, var = "heading")
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -76,4 +73,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-min}
 }
-
+\author{
+Sarah Bauduin
+}

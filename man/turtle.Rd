@@ -3,8 +3,8 @@
 \docType{methods}
 \name{turtle}
 \alias{turtle}
-\alias{turtle,agentMatrix,numeric,character-method}
 \alias{turtle,agentMatrix,numeric,missing-method}
+\alias{turtle,agentMatrix,numeric,character-method}
 \title{Select turtles}
 \usage{
 turtle(turtles, who, breed)
@@ -45,9 +45,6 @@ t2 <- turtle(t1, who = 2)
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -56,4 +53,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtle}
 }
-
+\author{
+Sarah Bauduin
+}

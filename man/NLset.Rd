@@ -3,10 +3,10 @@
 \docType{methods}
 \name{NLset}
 \alias{NLset}
-\alias{NLset,missing,agentMatrix,agentMatrix,character-method}
-\alias{NLset,worldArray,missing,matrix,character-method}
-\alias{NLset,worldMatrix,missing,matrix,missing-method}
 \alias{set}
+\alias{NLset,missing,agentMatrix,agentMatrix,character-method}
+\alias{NLset,worldMatrix,missing,matrix,missing-method}
+\alias{NLset,worldArray,missing,matrix,character-method}
 \title{Set an agents variable}
 \usage{
 NLset(world, turtles, agents, var, val)
@@ -75,9 +75,6 @@ of(agents = t2, var = "heading") # c(180, 0, 0)
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -86,4 +83,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#set}
 }
-
+\author{
+Sarah Bauduin
+}

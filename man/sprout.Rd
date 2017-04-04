@@ -61,9 +61,6 @@ t2 <- sprout(patches = cbind(pxcor = 3, pycor = 3), n = 3, turtles = t1)
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -72,4 +69,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#sprout}
 }
-
+\author{
+Sarah Bauduin
+}

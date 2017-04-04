@@ -3,9 +3,9 @@
 \docType{methods}
 \name{sortOn}
 \alias{sortOn}
-\alias{sortOn,agentMatrix,missing,character-method}
-\alias{sortOn,matrix,worldArray,character-method}
 \alias{sortOn,matrix,worldMatrix,missing-method}
+\alias{sortOn,matrix,worldArray,character-method}
+\alias{sortOn,agentMatrix,missing,character-method}
 \title{Sort agents}
 \usage{
 sortOn(agents, world, var)
@@ -65,9 +65,6 @@ sortHeadingT1 <- sortOn(agents = t1, var = "heading")
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -76,4 +73,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#sort-on}
 }
-
+\author{
+Sarah Bauduin
+}

@@ -3,9 +3,9 @@
 \docType{methods}
 \name{maxNof}
 \alias{maxNof}
-\alias{maxNof,agentMatrix,numeric,missing,character-method}
-\alias{maxNof,matrix,numeric,worldArray,character-method}
 \alias{maxNof,matrix,numeric,worldMatrix,missing-method}
+\alias{maxNof,matrix,numeric,worldArray,character-method}
+\alias{maxNof,agentMatrix,numeric,missing,character-method}
 \title{N agents with maximum}
 \usage{
 maxNof(agents, n, world, var)
@@ -71,9 +71,6 @@ t2 <- maxNof(agents = t1, n = 5, var = "heading")
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -82,4 +79,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-n-of}
 }
-
+\author{
+Sarah Bauduin
+}

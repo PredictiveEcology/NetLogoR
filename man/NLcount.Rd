@@ -3,8 +3,8 @@
 \docType{methods}
 \name{NLcount}
 \alias{NLcount}
-\alias{NLcount,matrix-method}
 \alias{count}
+\alias{NLcount,matrix-method}
 \title{Count agents}
 \usage{
 NLcount(agents)
@@ -35,9 +35,6 @@ NLcount(t1) # 10 turtles
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -46,4 +43,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#count}
 }
-
+\author{
+Sarah Bauduin
+}
