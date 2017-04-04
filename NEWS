@@ -1,7 +1,10 @@
 Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 
+version 0.2.0
+=============
+* minimum R version increased from `3.2.5` to `3.3.0` as required by dependency `RandomFieldsUtils`.
+
 version 0.1.0
 =============
-* first CRAN release
 * all key NetLogo functions rewritten in R, except visualizations and "links" agents
 * adapted plot methods
