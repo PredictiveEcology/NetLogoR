@@ -15,19 +15,17 @@ wolfSheepSim <- simInit(
   times = list(start = 0, end = 500),
   params = list(WolfSheepPredation = wolfSheepParams),
   modules = list("WolfSheepPredation"),
-  paths = list(modulePath = paste(getwd(), "/inst/examples/Wolf-Sheep-Predation/", sep = ""))
+  paths = list(modulePath = system.file("examples/Wolf-Sheep-Predation", package = "NetLogoR"))
 )
 # Run the model
-# spades(wolfSheepSim, debug = TRUE) # helpful for debuging
+# spades(wolfSheepSim, debug = TRUE) # helpful for debugging
 wolfSheepRun <- spades(wolfSheepSim)
-
 
 # Plot outputs
 clearPlot()
 timeStep <- 1:length(wolfSheepRun$numSheep)
 
-if(wolfSheepParams$grassOn == TRUE){
-
+if (wolfSheepParams$grassOn == TRUE) {
   plot(timeStep, wolfSheepRun$numSheep, type = "l", col = "blue", lwd = 2, ylab = "Population size", xlab = "Time step",
        ylim = c(min = 0, max = max(c(max(wolfSheepRun$numSheep), max(wolfSheepRun$numWolves), max(wolfSheepRun$numGreen / 4)))))
   lines(timeStep, wolfSheepRun$numWolves, col = "red", lwd = 2)
@@ -35,13 +33,10 @@ if(wolfSheepParams$grassOn == TRUE){
 
   legend("topleft", legend = c("Sheep", "Wolves", "Grass / 4"), lwd = c(2, 2, 2), col = c("blue", "red", "green"),
          bg = "white")
-
 } else {
-
   plot(timeStep, wolfSheepRun$numSheep, type = "l", col = "blue", lwd = 2, ylab = "Population size", xlab = "Time step",
        ylim = c(min = 0, max = max(c(max(wolfSheepRun$numSheep), max(wolfSheepRun$numWolves)))))
   lines(timeStep, wolfSheepRun$numWolves, col = "red", lwd = 2)
 
   legend("topleft", legend = c("Sheep", "Wolves"), lwd = c(2, 2), col = c("blue", "red"), bg = "white")
 }
-
