@@ -3,8 +3,8 @@ library(NetLogoR)
 library(SpaDES)
 
 # Parameters values
-wolfSheepParams <- list(#.plotInitialTime = 0, .plotInterval = 10, # plotting at each time step is too fast to see the changes (and slow)
-                        .plotInitialTime = NA, .plotInterval = NA, # plotting slows the model a lot
+wolfSheepParams <- list(.plotInitialTime = 0, .plotInterval = 10, # plotting at each time step is too fast to see the changes (and slow)
+                        #.plotInitialTime = NA, .plotInterval = NA, # plotting slows the model a lot
                         .saveInitialTime = 0, .saveInterval = 1,
                         grassOn = TRUE, grassTGrowth = 30,
                         nSheep = 100, gainFoodSheep = 4, reproSheep = 4,
@@ -22,6 +22,7 @@ wolfSheepSim <- simInit(
 wolfSheepRun <- spades(wolfSheepSim)
 
 # Plot outputs
+dev(6)
 clearPlot()
 timeStep <- 1:length(wolfSheepRun$numSheep)
 
