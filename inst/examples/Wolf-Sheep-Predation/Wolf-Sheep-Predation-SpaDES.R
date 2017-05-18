@@ -18,7 +18,7 @@ wolfSheepSim <- simInit(
   paths = list(modulePath = system.file("examples/Wolf-Sheep-Predation", package = "NetLogoR"))
 )
 # Run the model
-# spades(wolfSheepSim, debug = TRUE) # helpful for debugging
+#spades(wolfSheepSim, debug = TRUE) # helpful for debugging
 wolfSheepRun <- spades(wolfSheepSim)
 
 # Plot outputs

@@ -40,9 +40,9 @@ grass <- createWorld(minPxcor = -25, maxPxcor = 25, minPycor = -25, maxPycor = 2
 # If grassOn is TRUE, assign grass and countdown values to patches
 # Because there are multiple patches variables, a NLworldStack is needed
 # If grassOn is TRUE, the grass grows and the sheep eat it, if FALSE, the sheep don't need to eat
-if(grassOn == TRUE){
+if (grassOn == TRUE) {
   # Initialize patch values (grass and countdown) at random
-  grassVal <- sample(c(0,1), size = NLcount(patches(grass)), replace = TRUE) # 0 or 1 (i.e., green or brown in the NetLogo model)
+  grassVal <- sample(c(0, 1), size = NLcount(patches(grass)), replace = TRUE) # 0 or 1 (i.e., green or brown in the NetLogo model)
   grass <- NLset(world = grass, agents = patches(grass), val = grassVal)
   countdown <- grass # countdown is a new NLworld with the same extent as grass
   countdownVal <- runif(n = NLcount(patches(grass)), min = 0, max = grassTGrowth) # grass grow clock
@@ -57,17 +57,23 @@ if(grassOn == TRUE){
 # When field is updated, the values on the individual NLworld grass and countdown are not updated, only the layers in field are
 
 # Create the sheep
-sheep <- createTurtles(n = nSheep, coords = randomXYcor(world = grass, n = nSheep), breed = "aSheep", color = rep("red", nSheep))
+sheep <- createTurtles(n = nSheep, coords = randomXYcor(world = grass, n = nSheep),
+                       breed = "aSheep", color = rep("red", nSheep))
+
 # Add the energy variable
-sheep <- turtlesOwn(turtles = sheep, tVar = "energy", tVal = runif(n = nSheep, min = 0, max = 2 * gainFoodSheep))
+sheep <- turtlesOwn(turtles = sheep, tVar = "energy",
+                    tVal = runif(n = nSheep, min = 0, max = 2 * gainFoodSheep))
 
 # Create the wolves
-wolves <- createTurtles(n = nWolf, coords = randomXYcor(world = grass, n = nWolf), breed = "wolf", color = rep("black", nWolf))
+wolves <- createTurtles(n = nWolf, coords = randomXYcor(world = grass, n = nWolf),
+                        breed = "wolf", color = rep("black", nWolf))
+
 # Add the energy variable
-wolves <- turtlesOwn(turtles = wolves, tVar = "energy", tVal = runif(n = nWolf, min = 0, max = 2 * gainFoodWolf))
+wolves <- turtlesOwn(turtles = wolves, tVar = "energy",
+                     tVal = runif(n = nWolf, min = 0, max = 2 * gainFoodWolf))
 
 # Initialize the count of grass
-if(grassOn == TRUE){
+if (grassOn == TRUE) {
   pGreen <- NLwith(world = field, var = "grass", agents = patches(field), val = 1) # patches equal to 1 (green)
   numGreen <- NLcount(pGreen)
 }
@@ -91,7 +97,7 @@ if(grassOn == TRUE){
 # When a function can be used by both sheep and wolves, the argument "turtles" must be used when building the function
 # and be replaced by either sheep or wolves when calling the function
 
-move <- function(turtles){ # sheep and wolves
+move <- function(turtles) { # sheep and wolves
   # turtles <- right(turtles, angle = runif(n = NLcount(turtles), min = 0, max = 50))
   # turtles <- left(turtles, angle = runif(n = NLcount(turtles), min = 0, max = 50))
   # The two above functions can be replaced by this next one, as a negative value to turn right will turn left
@@ -108,12 +114,11 @@ move <- function(turtles){ # sheep and wolves
 # }
 # #
 
-eatGrass <- function(){ # only sheep
-
+eatGrass <- function() { # only sheep
   pGreen <- NLwith(world = field, var = "grass", agents = patches(field), val = 1) # patches with grass equal to 1 (green)
   sheepOnGreen <- turtlesOn(world = field, turtles = sheep, agents = pGreen) # sheep on green patches
 
-  if(NLcount(sheepOnGreen) != 0){
+  if (NLcount(sheepOnGreen) != 0) {
     # These sheep gain energy by eating
     energySheep <- of(agents = sheepOnGreen, var = "energy") # energy before eating
     sheep <- NLset(turtles = sheep, agents = sheepOnGreen, var = "energy", val = energySheep + gainFoodSheep) # update energy
@@ -141,12 +146,12 @@ eatGrass <- function(){ # only sheep
 # of(agents = sheepEat, var = "energy")[6:10] == (6:10 + gainFoodSheep)
 # #
 
-death <- function(turtles){ # sheep and wolves
+death <- function(turtles) { # sheep and wolves
   # When energy dips below 0, die
   whoEnergy <- of(agents = turtles, var = c("who", "energy"))
   who0 <- whoEnergy[which(whoEnergy[,"energy"] < 0), "who"] # "who" numbers of the turtles with their energy value below 0
 
-  if(length(who0) != 0){
+  if (length(who0) != 0) {
     turtles <- die(turtles = turtles, who = who0)
   }
 
@@ -169,14 +174,14 @@ death <- function(turtles){ # sheep and wolves
 # points(1:length(count2), count2, pch = 16, col = "red")
 # #
 
-reproduce <- function(turtles, reproTurtles){ # sheep and wolves
+reproduce <- function(turtles, reproTurtles) { # sheep and wolves
   # Throw dice to see if the turtles will reproduce
   repro <- runif(n = NLcount(turtles), min = 0, max = 100) < reproTurtles
   whoTurtles <- of(agents = turtles, var = "who") # "who" of the turtles before they reproduce
   reproWho <- whoTurtles[repro] # "who" of turtles which reproduce
   reproInd <- turtle(turtles, who = reproWho) # turtles which reproduce
 
-  if(NLcount(reproInd) != 0){ # if there is at least one turtle reproducing
+  if (NLcount(reproInd) != 0) { # if there is at least one turtle reproducing
     energyTurtles <- of(agents = reproInd, var = "energy")
     # Divide the energy between the parent and offspring
     turtles <- NLset(turtles = turtles, agents = reproInd, var = "energy", val = energyTurtles / 2)
@@ -210,10 +215,10 @@ reproduce <- function(turtles, reproTurtles){ # sheep and wolves
 # points(1:length(count2), count2, pch = 16, col = "red")
 # #
 
-catchSheep <- function(){ # only wolves
+catchSheep <- function() { # only wolves
   # "who" numbers of sheep that are on the same patches as the wolves
   sheepWolves <- turtlesOn(world = grass, turtles = sheep, agents = wolves, simplify = FALSE)
-  if(nrow(sheepWolves) != 0){
+  if (nrow(sheepWolves) != 0) {
     # sheepWolves[,"whoTurtles"] are the "who" numbers of sheep
     # sheepWolves[,"id"] represent the rank/order of the individual wolf in the wolves (! not the "who" numbers of the wolves)
     sheepGrabbed <- oneOf(agents = sheepWolves) # grab one random sheep
@@ -246,13 +251,13 @@ catchSheep <- function(){ # only wolves
 # of(agents = wolvesCatch, var = "energy") == (1:5 + gainFoodWolf)
 # #
 
-growGrass <- function(){ # only patches
+growGrass <- function() { # only patches
   # Identify patches with grass equal to 0 (brown) and countdown less or equal to 0
   pBrown <- NLwith(world = field, var = "grass", agents = patches(field), val = 0)
   pBrownCountdown <- of(world = field, var = "countdown", agents = pBrown) # countdown values for the patches equal to 0 (brown)
 
   pBrownCountdown0 <- which(pBrownCountdown <= 0) # patches with a countdown <= 0
-  if(length(pBrownCountdown0) != 0){
+  if (length(pBrownCountdown0) != 0) {
     pGrow <- pBrown[pBrownCountdown0, , drop = FALSE] # patches with grass equal to 0 (brown) and countdown <= 0
     # Grow some grass on these patches and reset the countdown
     field <- NLset(world = field, var = c("grass", "countdown"), agents = pGrow,
@@ -260,7 +265,7 @@ growGrass <- function(){ # only patches
   }
 
   pBrownCountdown1 <- which(!pBrownCountdown <= 0) # patches with a countdown > 0
-  if(length(pBrownCountdown1) != 0){
+  if (length(pBrownCountdown1) != 0) {
     pWait <- pBrown[pBrownCountdown1, , drop = FALSE] # patches with grass equal to 0 (brown) and countdown > 0
     # Decrease the countdown for the patches which wait
     field <- NLset(world = field, var = "countdown", agents = pWait, val = pBrownCountdown[pBrownCountdown1] - 1)
@@ -284,12 +289,13 @@ growGrass <- function(){ # only patches
 ## Go
 time <- 0
 maxTime <- 500
-while((NLany(sheep) | NLany(wolves)) & time < maxTime ){ # as long as there are sheep or wolves in the world (time steps maximum at 500)
+while ((NLany(sheep) | NLany(wolves)) & time < maxTime ) {
+  ## as long as there are sheep or wolves in the world (time steps maximum at 500)
 
   # Ask sheep
-  if(NLcount(sheep) != 0){
+  if (NLcount(sheep) != 0) {
     sheep <- move(sheep)
-    if(grassOn == TRUE){
+    if (grassOn == TRUE) {
       energySheep <- of(agents = sheep, var = "energy")
       sheep <- NLset(turtles = sheep, agents = sheep, var = "energy", val = energySheep - 1)
       eatGrassResults <- eatGrass() # in the results are stored both "field" and "sheep"
@@ -297,13 +303,13 @@ while((NLany(sheep) | NLany(wolves)) & time < maxTime ){ # as long as there are 
       sheep <- eatGrassResults[[2]]
     }
     sheep <- death(sheep)
-    if(NLcount(sheep) != 0){
+    if (NLcount(sheep) != 0) {
       sheep <- reproduce(sheep, reproSheep)
     }
   }
 
   # Ask wolves
-  if(NLcount(wolves) != 0){
+  if (NLcount(wolves) != 0) {
     wolves <- move(wolves)
     energyWolves <- of(agents = wolves, var = "energy")
     wolves <- NLset(turtles = wolves, agents = wolves, var = "energy", val = energyWolves - 1)
@@ -311,13 +317,13 @@ while((NLany(sheep) | NLany(wolves)) & time < maxTime ){ # as long as there are 
     sheep <- catchSheepResults[[1]] # reassign the object with their updated values
     wolves <- catchSheepResults[[2]]
     wolves <- death(wolves)
-    if(NLcount(wolves) != 0){
+    if (NLcount(wolves) != 0) {
       wolves <- reproduce(wolves, reproWolf)
     }
   }
 
   # Ask grass
-  if(grassOn == TRUE){
+  if (grassOn == TRUE) {
     field <- growGrass()
     pGreen <- NLwith(world = field, var = "grass", agents = patches(field), val = 1) # patches equal to 1 (green)
     npGreen <- NLcount(pGreen)
@@ -336,18 +342,15 @@ while((NLany(sheep) | NLany(wolves)) & time < maxTime ){ # as long as there are 
 dev()
 timeStep <- 1:length(numSheep)
 
-if(grassOn == TRUE){
-
+if (grassOn == TRUE) {
   plot(timeStep, numSheep, type = "l", col = "blue", lwd = 2, ylab = "Population size", xlab = "Time step",
        ylim = c(min = 0, max = max(c(max(numSheep), max(numWolves), max(numGreen / 4)))))
   lines(timeStep, numWolves, col = "red", lwd = 2)
   lines(timeStep, numGreen / 4, col = "green", lwd = 2)
 
-  legend("topleft", legend = c("Sheep", "Wolves", "Grass / 4"), lwd = c(2, 2, 2), col = c("blue", "red", "green"),
-         bg = "white")
-
+  legend("topleft", legend = c("Sheep", "Wolves", "Grass / 4"), lwd = c(2, 2, 2),
+         col = c("blue", "red", "green"), bg = "white")
 } else {
-
   plot(timeStep, numSheep, type = "l", col = "blue", lwd = 2, ylab = "Population size", xlab = "Time step",
        ylim = c(min = 0, max = max(c(max(numSheep), max(numWolves)))))
   lines(timeStep, numWolves, col = "red", lwd = 2)
