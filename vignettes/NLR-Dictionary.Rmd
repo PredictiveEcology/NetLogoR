@@ -2,8 +2,18 @@
 title: "NetLogoR Dictionary"
 author: "Sarah Bauduin"
 date: "June, 17th 2016"
-output: html_document
+output: 
+  rmarkdown::html_vignette:
+    self_contained: yes
+    toc: yes
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Programming Guide `NetLogoR`}
+  %\VignetteKeyword{discrete event simulation, spatial simulation models}
+  %\usepackage[utf8]{inputenc}
+  
 ---
+
 
 This document is based on the [NetLogo Dictionary](https://ccl.northwestern.edu/netlogo/docs/dictionary.html). It lists all the entries in the NetLogo Dictionary (i.e., NetLogo primitives) and informs the best replacements to use in R. Are suggested as replacements, functions from the NetLogoR package, as well as functions from the R software and of other packages (indicated as "nameFunction from namePackage"). To find how to use these functions, please refers to their documentation by using `help("nameFunction")`.
 
