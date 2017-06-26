@@ -3,8 +3,8 @@
 \docType{methods}
 \name{clearPatches}
 \alias{clearPatches}
-\alias{clearPatches,worldArray-method}
 \alias{clearPatches,worldMatrix-method}
+\alias{clearPatches,worldArray-method}
 \title{Clear world's patches}
 \usage{
 clearPatches(world)
@@ -34,9 +34,6 @@ summary(w1Val)
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -45,4 +42,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-patches}
 }
-
+\author{
+Sarah Bauduin
+}

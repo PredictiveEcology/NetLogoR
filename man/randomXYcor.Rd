@@ -34,4 +34,3 @@ points(t1, col = of(agents = t1, var = "color"), pch = 16)
 \author{
 Sarah Bauduin
 }
-

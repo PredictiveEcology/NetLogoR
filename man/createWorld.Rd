@@ -3,8 +3,8 @@
 \docType{methods}
 \name{createWorld}
 \alias{createWorld}
-\alias{createWorld,missing,missing,missing,missing,missing-method}
 \alias{createWorld,numeric,numeric,numeric,numeric,ANY-method}
+\alias{createWorld,missing,missing,missing,missing,missing-method}
 \title{Create a world}
 \usage{
 createWorld(minPxcor, maxPxcor, minPycor, maxPycor, data = NA)
@@ -51,12 +51,11 @@ plot(w1)
 
 
 }
-\author{
-Sarah Bauduin, Eliot McIntire, and Alex Chubaty
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
             Northwestern University. Evanston, IL.
 }
-
+\author{
+Sarah Bauduin, Eliot McIntire, and Alex Chubaty
+}

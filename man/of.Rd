@@ -4,8 +4,8 @@
 \name{of}
 \alias{of}
 \alias{of,missing,agentMatrix,character-method}
-\alias{of,worldArray,matrix,character-method}
 \alias{of,worldMatrix,matrix,missing-method}
+\alias{of,worldArray,matrix,character-method}
 \title{Values of an agents variable}
 \usage{
 of(world, agents, var)
@@ -63,9 +63,6 @@ of(agents = t1, var = "heading")
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -74,4 +71,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#of}
 }
-
+\author{
+Sarah Bauduin
+}

@@ -18,4 +18,3 @@
 \description{
 Binary operators which allow the comparison of values in an agentMatrix.
 }
-

@@ -62,9 +62,6 @@ points(t1, col = of(agents = t1, var = "color"), pch = 16)
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -73,4 +70,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#create-turtles}
 }
-
+\author{
+Sarah Bauduin
+}

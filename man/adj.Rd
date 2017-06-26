@@ -89,10 +89,9 @@ adj.new <- adj(numCol = numCol, numCell = numCell, cells = sam, directions = 8,
   include = TRUE)
 
 }
-\author{
-Eliot McIntire
-}
 \seealso{
 \code{\link[raster]{adjacent}}
 }
-
+\author{
+Eliot McIntire
+}

@@ -10,7 +10,7 @@ defineModule(sim, list(
   version = numeric_version("1.1.2.9002"),
   spatialExtent = raster::extent(rep(NA_real_, 4)),
   timeframe = as.POSIXlt(c(NA, NA)),
-  timeunit = NA_character_, # e.g., "year",
+  timeunit = "day", # e.g., "year",
   citation = list("citation.bib"),
   documentation = list("README.txt", "WolfSheepPredation.Rmd"),
   reqdPkgs = list("NetLogoR"),
@@ -174,17 +174,18 @@ WolfSheepPredationPosition <- function(sim) { # Plot the positions
     grassRas <- raster(sim$field@.Data[,,"grass"])
     extent(grassRas) <- extent(sim$field)
     Plot(grassRas, na.color = "white")
-    if(NLcount(sim$sheep)>0)
-      sheep <- SpatialPoints(coordinates(sim$sheep))
-      Plot(sheep, addTo = "grassRas", cols = "red")
-    if(NLcount(sim$wolves)>0)
-      wolves <- SpatialPoints(coordinates(sim$wolves))
-      Plot(wolves, addTo = "grassRas", cols = "black")
   } else {
-    Plot(sim$grass)
-    Plot(sim$sheep, addTo = "sim$grass")
-    Plot(sim$wolves, addTo = "sim$grass")
+    grassRas <- raster(sim$grass@.Data)
+    extent(grassRas) <- extent(sim$grass)
+    Plot(grassRas, col = "green")
   }
+  
+  if(NLcount(sim$sheep)>0)
+    sheep <- SpatialPoints(coordinates(sim$sheep))
+    Plot(sheep, addTo = "grassRas", cols = "blue")
+  if(NLcount(sim$wolves)>0)
+    wolves <- SpatialPoints(coordinates(sim$wolves))
+    Plot(wolves, addTo = "grassRas", cols = "red")
 
   return(invisible(sim))
 }
@@ -193,17 +194,19 @@ WolfSheepPredationPopSize <- function(sim) {  # Plot the population sizes
 
   if(time(sim) == params(sim)$WolfSheepPredation$.plotInitialTime) {
     clearPlot()
-    plot(time(sim), length(sim$wolves), xlim = c(start(sim),end(sim)),
-         col = "blue", pch=19, cex = 0.5, ylim = c(0, params(sim)$WolfSheepPredation$nSheep*6))
-    points(time(sim), length(sim$sheep),
-           col = "red", pch=19, cex = 0.5)
-  } else {
-    points(time(sim), length(sim$wolves),
+    plot(time(sim), NLcount(sim$wolves), xlim = c(start(sim),end(sim)),
+         col = "red", pch=19, cex = 0.5, ylim = c(0, params(sim)$WolfSheepPredation$nSheep*6))
+    points(time(sim), NLcount(sim$sheep),
            col = "blue", pch=19, cex = 0.5)
-    points(time(sim), length(sim$sheep),
+  } else {
+    points(time(sim), NLcount(sim$wolves),
            col = "red", pch=19, cex = 0.5)
-    points(time(sim), sim$numGreen[time(sim)]/4,
-           col = "green", pch=19, cex = 0.5)
+    points(time(sim), NLcount(sim$sheep),
+           col = "blue", pch=19, cex = 0.5)
+    if(params(sim)$WolfSheepPredation$grassOn == TRUE){
+      points(time(sim), sim$numGreen[time(sim)]/4,
+             col = "green", pch=19, cex = 0.5)
+    }
   }
 
   return(invisible(sim))

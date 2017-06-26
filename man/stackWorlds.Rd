@@ -32,4 +32,3 @@ plot(w3)
 \author{
 Sarah Bauduin
 }
-

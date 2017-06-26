@@ -2,11 +2,11 @@
 % Please edit documentation in R/Classes.R
 \docType{methods}
 \name{show,agentMatrix-method}
-\alias{head}
-\alias{head.agentMatrix}
+\alias{show,agentMatrix-method}
 \alias{length,agentMatrix-method}
 \alias{nrow,agentMatrix-method}
-\alias{show,agentMatrix-method}
+\alias{head}
+\alias{head.agentMatrix}
 \alias{tail}
 \alias{tail.agentMatrix}
 \title{Show an object or get information about the object}
@@ -33,4 +33,3 @@
 \description{
 description needed
 }
-

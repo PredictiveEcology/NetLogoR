@@ -3,9 +3,9 @@
 \docType{methods}
 \name{minNof}
 \alias{minNof}
-\alias{minNof,agentMatrix,numeric,missing,character-method}
-\alias{minNof,matrix,numeric,worldArray,character-method}
 \alias{minNof,matrix,numeric,worldMatrix,missing-method}
+\alias{minNof,matrix,numeric,worldArray,character-method}
+\alias{minNof,agentMatrix,numeric,missing,character-method}
 \title{N agents with minimum}
 \usage{
 minNof(agents, n, world, var)
@@ -71,9 +71,6 @@ t2 <- minNof(agents = t1, n = 5, var = "heading")
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -82,4 +79,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-n-of}
 }
-
+\author{
+Sarah Bauduin
+}

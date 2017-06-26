@@ -79,11 +79,11 @@ setClass("agentMatrix", contains = "matrix",
 #' Both these types can be used by NetLogoR to describe turtle agents.
 #'
 #' @aliases agentClasses
+#' @author Eliot McIntire
+#' @exportClass agentClasses
+#' @importClassesFrom sp SpatialPixelsDataFrame SpatialPointsDataFrame
 #' @name agentClasses-class
 #' @rdname agentClasses-class
-#' @author Eliot McIntire
-#' @importClassesFrom sp SpatialPixelsDataFrame SpatialPointsDataFrame
-#' @exportClass agentClasses
 setClassUnion(name = "agentClasses",
               members = c("agentMatrix", "SpatialPointsDataFrame", "SpatialPixelsDataFrame")
 )
@@ -100,7 +100,7 @@ setMethod(
     dotCols <- list(...)
 
     if (is.null(coords)) {
-      if(length(dotCols)==0) {
+      if (length(dotCols) == 0) {
         coords <- cbind(xcor = integer(), ycor = integer())
       } else {
         coords <- matrix(c(NA, NA), ncol = 2)
@@ -117,11 +117,11 @@ setMethod(
       if (all(sapply(dotCols, is.numeric))) {
         isMatrix <- sapply(dotCols, is.matrix)
 
-        singleMatrix <- if(length(isMatrix)>0) sum(isMatrix)==1 else FALSE
+        singleMatrix <- if (length(isMatrix) > 0) sum(isMatrix) == 1 else FALSE
         if (singleMatrix) {
-          otherCols <- do.call(cbind, list(xcor = coords[,1],ycor = coords[,2], dotCols[[1]]))
+          otherCols <- do.call(cbind, list(xcor = coords[, 1], ycor = coords[, 2], dotCols[[1]]))
         } else {
-          otherCols <- append(list(xcor = coords[,1],ycor = coords[,2]), dotCols)
+          otherCols <- append(list(xcor = coords[, 1], ycor = coords[, 2]), dotCols)
           otherCols <- do.call(cbind, otherCols)
         }
         if (length(otherCols) > 0) {
@@ -140,29 +140,29 @@ setMethod(
           dotCols$stringsAsFactors <- NULL
         if (any(isDF)) {
           dotCols <- unlist(lapply(dotCols, as.list), recursive = FALSE)
-        } else { #if (all(sapply(dotCols, is.matrix))) {
-          # can't just do "do.call(cbind, dotCols)" because some may be numerics, others not... would coerce to all character
+        } else {
+          # can't just do "do.call(cbind, dotCols)" because some may be numerics,
+          # others not... would coerce to all character
           dotCols <- unlist(lapply(seq_len(length(dotCols)), function(x) {
             isMat <- is.matrix(dotCols[[x]])
-            if(isMat)  {
-              innerMats <- lapply(seq_len(ncol(dotCols[[x]])), function(y) dotCols[[x]][,y])
+            if (isMat)  {
+              innerMats <- lapply(seq_len(ncol(dotCols[[x]])), function(y) dotCols[[x]][, y])
               names(innerMats) <- colnames(dotCols[[x]])
             } else {
               innerMats <- dotCols[x]
             }
             return(innerMats)
           }), recursive = FALSE)
-
         }
-        otherCols <- append(list(xcor = coords[,1],ycor = coords[,2]), dotCols)
+        otherCols <- append(list(xcor = coords[, 1], ycor = coords[, 2]), dotCols)
         charCols <- sapply(otherCols, is.character)
         #charCols <- names(charCols)[charCols]
         numCols <- sapply(otherCols, is.numeric)
         facCols <- sapply(otherCols, is.factor)
         charCols <- facCols | charCols
         otherCols[charCols] <- lapply(otherCols[charCols], function(x) {
-            factor(x, levels = sort(unique(x)))
-          })
+          factor(x, levels = sort(unique(x)))
+        })
 
         if (length(otherCols[[1]]) == 1) names(otherCols[[1]]) <- 1
         if (length(otherCols) > 0) {
@@ -249,7 +249,7 @@ setMethod(
   signature = c(coords = "missing"),
   definition = function(...) {
     dots <- list(...)
-    if (all(unlist(lapply(dots, is, "SpatialPointsDataFrame"))) & length(dots)==1)  {
+    if (all(unlist(lapply(dots, is, "SpatialPointsDataFrame"))) & length(dots) == 1)  {
       dots <- list(...)
       new("agentMatrix", coords = sp::coordinates(dots[[1]]), dots[[1]]@data)
     } else {

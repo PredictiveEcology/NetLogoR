@@ -36,4 +36,3 @@ t1 <- spdf2turtles(spdf = sp1)
 \author{
 Sarah Bauduin
 }
-

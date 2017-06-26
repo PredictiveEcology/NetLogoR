@@ -3,9 +3,9 @@
 \docType{methods}
 \name{withMax}
 \alias{withMax}
-\alias{withMax,agentMatrix,missing,character-method}
-\alias{withMax,matrix,worldArray,character-method}
 \alias{withMax,matrix,worldMatrix,missing-method}
+\alias{withMax,matrix,worldArray,character-method}
+\alias{withMax,agentMatrix,missing,character-method}
 \title{Agents with maximum}
 \usage{
 withMax(agents, world, var)
@@ -65,9 +65,6 @@ t2 <- withMax(agents = t1, var = "heading")
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -76,4 +73,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-max}
 }
-
+\author{
+Sarah Bauduin
+}

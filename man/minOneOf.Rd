@@ -3,9 +3,9 @@
 \docType{methods}
 \name{minOneOf}
 \alias{minOneOf}
-\alias{minOneOf,agentMatrix,missing,character-method}
-\alias{minOneOf,matrix,worldArray,character-method}
 \alias{minOneOf,matrix,worldMatrix,missing-method}
+\alias{minOneOf,matrix,worldArray,character-method}
+\alias{minOneOf,agentMatrix,missing,character-method}
 \title{One agent with minimum}
 \usage{
 minOneOf(agents, world, var)
@@ -73,9 +73,6 @@ t2 <- minOneOf(agents = t1, var = "heading")
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -84,4 +81,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-one-of}
 }
-
+\author{
+Sarah Bauduin
+}

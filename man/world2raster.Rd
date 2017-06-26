@@ -3,8 +3,8 @@
 \docType{methods}
 \name{world2raster}
 \alias{world2raster}
-\alias{world2raster,worldArray-method}
 \alias{world2raster,worldMatrix-method}
+\alias{world2raster,worldArray-method}
 \title{Convert a worldMatrix or worldArray object into a Raster* object}
 \usage{
 world2raster(world)
@@ -40,4 +40,3 @@ plot(r1)
 \author{
 Sarah Bauduin
 }
-

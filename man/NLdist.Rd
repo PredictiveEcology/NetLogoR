@@ -3,8 +3,8 @@
 \docType{methods}
 \name{NLdist}
 \alias{NLdist}
-\alias{NLdist,matrix,matrix-method}
 \alias{dist}
+\alias{NLdist,matrix,matrix-method}
 \title{Distances between agents}
 \usage{
 NLdist(agents, agents2, world, torus = FALSE, allPairs = FALSE)
@@ -72,9 +72,6 @@ NLdist(agents = t1, agents2 = patch(w1, c(1,9), c(1,9)), allPairs = TRUE)
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -85,4 +82,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 
          \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distancexy}
 }
-
+\author{
+Sarah Bauduin
+}

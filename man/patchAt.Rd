@@ -57,9 +57,6 @@ patchCorner <- patchAt(world = w1, agents = t1, dx = 1, dy = 1)
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -70,4 +67,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#at-points}
 }
-
+\author{
+Sarah Bauduin
+}

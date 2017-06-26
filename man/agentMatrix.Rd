@@ -40,10 +40,9 @@ t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 
 
 }
-\author{
-Eliot McIntire
-}
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-turtles}
 }
-
+\author{
+Eliot McIntire
+}

@@ -3,10 +3,10 @@
 \docType{methods}
 \name{subHeadings}
 \alias{subHeadings}
-\alias{subHeadings,agentMatrix,agentMatrix-method}
+\alias{subHeadings,numeric,numeric-method}
 \alias{subHeadings,agentMatrix,numeric-method}
 \alias{subHeadings,numeric,agentMatrix-method}
-\alias{subHeadings,numeric,numeric-method}
+\alias{subHeadings,agentMatrix,agentMatrix-method}
 \title{Substract headings}
 \usage{
 subHeadings(angle1, angle2, range360 = FALSE)
@@ -60,9 +60,6 @@ subHeadings(angle1 = t1, angle2 = 0)
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -71,4 +68,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#subtract-headings}
 }
-
+\author{
+Sarah Bauduin
+}

@@ -3,9 +3,9 @@
 \docType{methods}
 \name{maxOneOf}
 \alias{maxOneOf}
-\alias{maxOneOf,agentMatrix,missing,character-method}
-\alias{maxOneOf,matrix,worldArray,character-method}
 \alias{maxOneOf,matrix,worldMatrix,missing-method}
+\alias{maxOneOf,matrix,worldArray,character-method}
+\alias{maxOneOf,agentMatrix,missing,character-method}
 \title{One agent with maximum}
 \usage{
 maxOneOf(agents, world, var)
@@ -73,9 +73,6 @@ t2 <- maxOneOf(agents = t1, var = "heading")
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -84,4 +81,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-one-of}
 }
-
+\author{
+Sarah Bauduin
+}

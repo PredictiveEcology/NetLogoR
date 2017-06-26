@@ -3,10 +3,10 @@
 \docType{methods}
 \name{NLall}
 \alias{NLall}
-\alias{NLall,agentMatrix,missing,character-method}
-\alias{NLall,matrix,worldArray,character-method}
-\alias{NLall,matrix,worldMatrix,missing-method}
 \alias{all}
+\alias{NLall,matrix,worldMatrix,missing-method}
+\alias{NLall,matrix,worldArray,character-method}
+\alias{NLall,agentMatrix,missing,character-method}
 \title{All agents?}
 \usage{
 NLall(agents, world, var, val)
@@ -63,9 +63,6 @@ NLall(agents = t1, var = "heading", val = 2)
 
 
 }
-\author{
-Sarah Bauduin
-}
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
@@ -74,4 +71,6 @@ Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#all}
 }
-
+\author{
+Sarah Bauduin
+}

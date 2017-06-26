@@ -44,4 +44,3 @@ if(require(microbenchmark)) {
 \author{
 Eliot McIntire
 }
-

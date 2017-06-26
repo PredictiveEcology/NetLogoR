@@ -10,6 +10,9 @@ init:
 install:
   ps: Bootstrap
 
+cache:
+  - C:\RLibrary
+
 # Adapt as necessary starting from here
 
 version: 1.0.{build}-{branch}
@@ -25,8 +28,8 @@ environment:
 
   - R_VERSION: release
 
-  - R_VERSION: oldrel
-    RTOOLS_VERSION: 32
+#  - R_VERSION: oldrel
+#    RTOOLS_VERSION: 32
 
 branches:
   only:

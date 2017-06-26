@@ -12,3 +12,13 @@ Easily create agent-based models in R following the NetLogo framework ([Wilensky
 ## Getting Started
 A programming guide derived from the [NetLogo Programming Guide](https://ccl.northwestern.edu/netlogo/docs/programming.html) and a dictionary of [NetLogo primitives](https://ccl.northwestern.edu/netlogo/docs/dictionary.html) equivalences are available.
 As examples, three NetLogo models ([Ants](http://ccl.northwestern.edu/netlogo/models/Ants), Butterfly (Railsback and Grimm, 2012) and [Wolf-Sheep-Predation](http://ccl.northwestern.edu/netlogo/models/WolfSheepPredation)) were translated in R language using `NetLogoR`.
+
+## Installing the R package
+
+To do this, you will require the devtools package.
+
+```{r, eval=FALSE}
+library(devtools)
+install_github("PredictiveEcology/NetLogoR")
+
+```
