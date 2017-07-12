@@ -7,6 +7,7 @@
 sudo: required
 
 language: r
+
 cran: https://cran.rstudio.com/
 
 env:
@@ -16,23 +17,24 @@ env:
 matrix:
   include:
 
-#  - os: linux
-#    dist: trusty
-#    r: oldrel
-#    before_install:
-#    - export DISPLAY=:99.0
-#    - sh -e /etc/init.d/xvfb start
-#    - echo "options(repos = c(CRAN='https://cran.rstudio.com'))" >> ~/.Rprofile
+  - os: linux
+    dist: trusty
+    r: oldrel
+    before_install:
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
 
   - os: linux
     dist: trusty
     before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
-    - echo "options(repos = c(CRAN='https://cran.rstudio.com'))" >> ~/.Rprofile
     - chmod 755 ./_push_vignettes.sh
+    r_binary_packages:
+    - covr
     after_success:
     - ./_push_vignettes.sh
+    - Rscript -e 'covr::coveralls(coverage = print(covr::package_coverage(quiet = FALSE)))'
 
   - os: linux
     dist: trusty
@@ -40,33 +42,18 @@ matrix:
     before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
-    - echo "options(repos = c(CRAN='https://cran.rstudio.com'))" >> ~/.Rprofile
 
   - os: osx
-    osx_image: xcode8
-    cran: https://cran.rstudio.com/
+    osx_image: xcode8.2
     latex: false
     r_build_args: '--no-build-vignettes'
     r_check_args: '--as-cran --ignore-vignettes --no-examples'
-    before_install:
-    - echo "options(repos = c(CRAN='https://cran.rstudio.com'))" >> ~/.Rprofile
 
 r_build_args: " "
 
 r_check_args: "--as-cran"
 
 warnings_are_errors: true
-
-r_binary_packages:
-  - car
-  - CircStats
-  - data.table
-  - Hmisc
-  - matrixStats
-  - plyr
-  - raster
-  - rgeos
-  - sp
 
 notifications:
   email:
@@ -76,7 +63,4 @@ notifications:
 branches:
   only:
     - master
-
-after_success:
-  - Rscript -e 'covr::coveralls(coverage = print(covr::package_coverage(quiet = FALSE)))'
-
+    - development
