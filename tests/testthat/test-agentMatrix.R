@@ -145,27 +145,40 @@ test_that("agentMatrix benchmarking", {
    expect_gt(mb$median[1]/mb$median[3], 3) # expect it is 3 times faster
 
    # check just numerics
-   if (require(microbenchmark)) {
-     mb <- summary(microbenchmark(
-       times = 50,
-       spdf = {
-         SpatialPointsDataFrame(coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-                                data = data.frame(
-                                  nums2 = c(4.5, 2.6, 2343),
-                                  nums = 5:7))
-       },
-       agentMat = {
-         agentMatrix(coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-                     nums2 = c(4.5, 2.6, 2343), nums = 5:7)
-       },
-       agentMatDirect = {
-         new("agentMatrix", coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-             nums2 = c(4.5, 2.6, 2343), nums = 5:7)
-       }
-     ))
+   if(require(sf)) {
+     if (require(microbenchmark)) {
+       mb <- summary(microbenchmark(
+         times = 50,
+         spdf = {
+           SpatialPointsDataFrame(coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
+                                  data = data.frame(
+                                    nums2 = c(4.5, 2.6, 2343),
+                                    nums = 5:7))
+         },
+         sf = {
+           a1 = st_point(cbind(1, 3))
+           a2 = st_point(cbind(2, 4))
+           a3 = st_point(cbind(5, 6))
+           d =  data = data.frame(
+             nums2 = c(4.5, 2.6, 2343),
+             nums = 5:7)
+           d$geom = st_sfc(a1, a2, a3)
+           df = st_as_sf(d)
+
+         },
+         agentMat = {
+           agentMatrix(coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
+                       nums2 = c(4.5, 2.6, 2343), nums = 5:7)
+         },
+         agentMatDirect = {
+           new("agentMatrix", coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
+               nums2 = c(4.5, 2.6, 2343), nums = 5:7)
+         }
+       ))
+     }
+     expect_gt(mb$median[1]/mb$median[3], 4) # expect it is 8 times faster, but use 4 for safety cushion in tests
+     if (interactive()) expect_gt(mb$median[2]/mb$median[3], 4) # expect it is 8 times faster, but use 4 for safety cushion in tests
    }
-   expect_gt(mb$median[1]/mb$median[3], 4) # expect it is 8 times faster, but use 4 for safety cushion in tests
-   if (interactive()) expect_gt(mb$median[1]/mb$median[3], 8) # expect it is 8 times faster, but use 4 for safety cushion in tests
 })
 
 test_that("agentMatrix coersion", {
