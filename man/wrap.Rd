@@ -77,12 +77,12 @@ if (interactive()) {
   clearPlot()
   Plot(hab, zero.color = "white", axes = "L")
 }
-if(requireNamespace("SpaDES")) {
-  for(i in 1:10) {
+if (requireNamespace("SpaDES.tools")) {
+  for (i in 1:10) {
 
-    agent <- SpaDES::crw(agent = agent,
-                         extent = extent(hab), stepLength = ln,
-                         stddev = sd, lonlat = FALSE, torus = TRUE)
+    agent <- SpaDES.tools::crw(agent = agent,
+                               extent = extent(hab), stepLength = ln,
+                               stddev = sd, lonlat = FALSE, torus = TRUE)
    if (interactive()) Plot(agent, addTo = "hab", axes = TRUE)
  }
 }
