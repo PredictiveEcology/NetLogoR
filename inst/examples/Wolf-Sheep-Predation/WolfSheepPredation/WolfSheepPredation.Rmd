@@ -7,13 +7,14 @@ output: html_document
 
 # Overview
 
-This module is a reimplementation in R using the SpaDES and NetLogoR packages of the "Wolf sheep predation" NetLogo model by [Wilensky (1997, NetLogo Wolf Sheep Predation model)](http://ccl.northwestern.edu/netlogo/models/WolfSheepPredation). Please refer to the NetLogo documentation for information on the model.
+This module is a reimplementation in R using the SpaDES and NetLogoR packages of the "Wolf sheep predation" NetLogo model by [Wilensky (1997, NetLogo Wolf Sheep Predation model)](http://ccl.northwestern.edu/netlogo/models/WolfSheepPredation).
+Please refer to the NetLogo documentation for information on the model.
 
 # Usage
 
 ```{r, eval=FALSE}
-
-library(SpaDES)
+library(SpaDES.core)
+library(SpaDES.tools)
 library(NetLogoR)
 
 # Define the parameters

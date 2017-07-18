@@ -4,24 +4,30 @@
 #' Generally for model development purposes.
 #'
 #' If \code{withHeading} used, then X must be a \code{SpatialPointsDataFrame}
-#' that contains two columns, x1 and y1, with the immediately previous agent
-#' locations.
+#' that contains two columns, \code{x1} and \code{y1}, with the immediately previous
+#' agent locations.
 #'
-#' @param X A SpatialPoints* object, or matrix of coordinates
+#' @param X A \code{SpatialPoints*} object, or matrix of coordinates.
 #'
-#' @param bounds Either a Raster*, Extent, or bbox object defining bounds to wrap around
+#' @param bounds Either a \code{Raster*}, \code{Extent}, or \code{bbox} object
+#'               defining bounds to wrap around.
 #'
-#' @param withHeading logical. If TRUE, then the previous points must be wrapped also
-#' so that the subsequent heading calculation will work. Default FALSE. See details.
+#' @param withHeading Logical. If \code{TRUE}, then the previous points must be
+#' wrapped also so that the subsequent heading calculation will work.
+#' Default \code{FALSE}. See details.
 #'
-#' @return Same class as X, but with coordinates updated to reflect the wrapping
-#'
-#' @export
-#' @rdname wrap
+#' @return Same class as \code{X}, but with coordinates updated to reflect the wrapping.
 #'
 #' @author Eliot McIntire
+#' @docType methods
+#' @export
+#' @importFrom sp coordinates
+#' @rdname wrap
+#'
 #' @examples
+#' library(quickPlot)
 #' library(raster)
+#'
 #' xrange <- yrange <- c(-50, 50)
 #' hab <- raster(extent(c(xrange, yrange)))
 #' hab[] <- 0
@@ -75,7 +81,7 @@ setMethod(
       stop("When X is a matrix, it must have 2 columns, x and y,",
            "as from say, coordinates(SpatialPointsObj)")
     }
-  })
+})
 
 #' @export
 #' @rdname wrap
@@ -85,7 +91,7 @@ setMethod(
   definition = function(X, bounds) {
     X@coords <- wrap(X@coords, bounds = bounds)
     return(X)
-  })
+})
 
 #' @export
 #' @rdname wrap
@@ -105,7 +111,7 @@ setMethod(
   definition = function(X, bounds) {
     X <- wrap(X, bounds = extent(bounds))
     return(X)
-  })
+})
 
 #' @export
 #' @rdname wrap
@@ -120,7 +126,7 @@ setMethod(
     } else {
       stop("Must use either a bbox, Raster*, or Extent for 'bounds'")
     }
-  })
+})
 
 #' @export
 #' @rdname wrap
@@ -145,7 +151,7 @@ setMethod(
         (bounds@ymin - bounds@ymax) + bounds@ymin
     }
     return(wrap(X, bounds = bounds))
-  })
+})
 
 #' @export
 #' @rdname wrap
@@ -155,7 +161,7 @@ setMethod(
   definition = function(X, bounds, withHeading) {
     X <- wrap(X, bounds = extent(bounds), withHeading = withHeading)
     return(X)
-  })
+})
 
 #' @export
 #' @rdname wrap
@@ -170,37 +176,45 @@ setMethod(
     } else {
       stop("Must use either a bbox, Raster*, or Extent for 'bounds'")
     }
-  })
+})
 
-
-##############################################################
-#' Fast `adjacent` function, and Just In Time compiled version
+################################################################################
+#' Fast \code{adjacent} function, and Just In Time compiled version
 #'
-#' Faster function for determining the cells of the 4, 8 or bishop
-#'  neighbours of the \code{cells}. This is a hybrid function that uses
-#'  matrix for small numbers of loci (<1e4) and data.table for larger numbers of loci
+#' Faster function for determining the cells of the 4, 8 or bishop neighbours of
+#' the \code{cells}. This is a hybrid function that uses matrix for small numbers
+#' of loci (<1e4) and \code{data.table} for larger numbers of loci.
 #'
 #' Between 4x (large number loci) to 200x (small number loci) speed gains over
-#' \code{adjacent} in raster package. There is some extra speed gain if
-#' \code{NumCol} and \code{NumCells} are passed rather than a raster.
+#' \code{raster::adjacent}. There is some extra speed gain if \code{NumCol} and
+#' \code{NumCells} are passed rather than a raster.
+#'
 #' Efficiency gains come from:
-#'  1. use \code{data.table} internally
-#'     - no need to remove NAs because wrapped or outside points are
-#'       just removed directly with data.table
-#'     - use data.table to sort and fast select (though not fastest possible)
-#'  2. don't make intermediate objects; just put calculation into return statement
+#' \enumerate{
+#'   \item use \code{data.table} internally
+#'     \itemize{
+#'       \item no need to remove \code{NA}s because wrapped or outside points are
+#'       just removed directly with \code{data.table}.
+#'       \item use data.table to sort and fast select (though not fastest possible)
+#'     }
+#'    \item don't make intermediate objects; just put calculation into return statement.
+#' }
 #'
 #' The steps used in the algorithm are:
-#' 1. Calculate indices of neighbouring cells
-#' 2. Remove "to" cells that are
-#'    - <1 or >numCells (i.e., they are above or below raster), using a single modulo
-#'      calculation
-#'    - where the modulo of "to" cells is equal to 1 if "from" cells are 0 (wrapped right
-#'      to left)
-#'    - or where the modulo of the "to" cells is equal to 0 if "from" cells are 1 (wrapped
-#'      left to right)
+#' \enumerate{
+#'   \item Calculate indices of neighbouring cells
+#'   \item Remove \code{to} cells that are
+#'     \itemize{
+#'       \item \code{<1} or \code{>numCells} (i.e., they are above or below raster),
+#'       using a single modulo calculation
+#'       \item where the modulo of \code{to} cells is equal to 1 if \code{from}
+#'       cells are 0 (wrapped right to left)
+#'       \item or where the modulo of the \code{to} cells is equal to 0 if
+#'       \code{from} cells are 1 (wrapped left to right)
+#'    }
+#' }
 #'
-#' @param x Raster* object for which adjacency will be calculated.
+#' @param x \code{Raster*} object for which adjacency will be calculated.
 #'
 #' @param cells vector of cell numbers for which adjacent cells should be found. Cell
 #'              numbers start with 1 in the upper-left corner and increase from left
@@ -265,8 +279,9 @@ adj <- function(x = NULL, cells, directions = 8, sort = FALSE, pairs = TRUE,
                     include = FALSE, target = NULL, numCol = NULL, numCell = NULL,
                     match.adjacent = FALSE, cutoff.for.data.table = 1e4,
                     torus = FALSE, id = NULL) {
-  to = NULL
-  J = NULL
+  J <- NULL
+  to <- NULL
+
   cells <- as.integer(cells)
 
   if (is.null(numCol) | is.null(numCell)) {
@@ -342,13 +357,11 @@ adj <- function(x = NULL, cells, directions = 8, sort = FALSE, pairs = TRUE,
     if (!is.null(id)) adj <- cbind(adj, id = rep.int(id, times = numToCells))
   } else {
     adj <- data.table(from = fromCells, to = toCells)
-    if (!is.null(id)) set(adj, , "id", rep.int(id, times = numToCells)) #adj[,id:=rep.int(id, times = 4)]
+    if (!is.null(id)) set(adj, , "id", rep.int(id, times = numToCells))
   }
 
   if (useMatrix) {
-
-    ################################################
-    # Remove all cells that are not target cells, if target is a vector of cells
+    ## Remove all cells that are not target cells, if target is a vector of cells
     if (!is.null(target)) {
       adj <- adj[na.omit(adj[, "to"] %in% target), , drop = FALSE]
     }
@@ -401,8 +414,7 @@ adj <- function(x = NULL, cells, directions = 8, sort = FALSE, pairs = TRUE,
       }
     }
   } else {
-    #################################################
-    # Remove all cells that are not target cells, if target is a vector of cells
+    ## Remove all cells that are not target cells, if target is a vector of cells
     if (!is.null(target)) {
       set(adj, , "ord", seq_len(NROW(adj)))
       setkeyv(adj, "to")
@@ -424,7 +436,7 @@ adj <- function(x = NULL, cells, directions = 8, sort = FALSE, pairs = TRUE,
       }
     }
 
-    # Remove the "from" column if pairs is FALSE
+    ## Remove the "from" column if pairs is FALSE
     if (!pairs) {
       from <- as.integer(adj$from)
       set(adj, , "from", NULL)
@@ -474,28 +486,25 @@ adj <- function(x = NULL, cells, directions = 8, sort = FALSE, pairs = TRUE,
   }
 }
 
-
 ################################################################################
 #' Update elements of a named list with elements of a second named list
 #'
-#' Merge two named list based on their named entries. Where
-#' any element matches in both lists, the value from the
-#' second list is used in the updated list.
-#' Subelements are not examined and are simply replaced. If one list is empty, then
-#' it returns the other one, unchanged.
+#' Merge two named list based on their named entries.
+#' Where any element matches in both lists, the value from the second list is
+#' used in the updated list.
+#' Subelements are not examined and are simply replaced. If one list is empty,
+#' then it returns the other one, unchanged.
 #'
-#' @param x   a named list
-#' @param y   a named list
+#' @param x,y   a named list
 #'
 #' @return A named list, with elements sorted by name.
 #'          The values of matching elements in list \code{y}
 #'          replace the values in list \code{x}.
 #'
-#' @export
-#' @docType methods
-#' @rdname updateList
-#'
 #' @author Alex Chubaty
+#' @docType methods
+#' @export
+#' @rdname updateList
 #'
 #' @examples
 #' L1 <- list(a = "hst", b = NA_character_, c = 43)
@@ -511,45 +520,49 @@ setGeneric("updateList", function(x, y) {
 })
 
 #' @rdname updateList
-setMethod("updateList",
-          signature = c("list", "list"),
-          definition = function(x, y) {
-            if (any(is.null(names(x)), is.null(names(y)))) {
-              # If one of the lists is empty, then just return the other, unchanged
-              if (length(y)==0) return(x)
-              if (length(x)==0) return(y)
-              stop("All elements in lists x,y must be named.")
-            } else {
-              x[names(y)] <- y
-              return(x[order(names(x))])
-            }
-          })
+setMethod(
+  "updateList",
+  signature = c("list", "list"),
+  definition = function(x, y) {
+    if (any(is.null(names(x)), is.null(names(y)))) {
+      # If one of the lists is empty, then just return the other, unchanged
+      if (length(y) == 0) return(x)
+      if (length(x) == 0) return(y)
+      stop("All elements in lists x,y must be named.")
+    } else {
+      x[names(y)] <- y
+      return(x[order(names(x))])
+    }
+})
 
 #' @rdname updateList
-setMethod("updateList",
-          signature = c("NULL", "list"),
-          definition = function(x, y) {
-            if (is.null(names(y))) {
-              if (length(y) == 0) return(x)
-              stop("All elements in list y must be named.")
-            }
-            return(y[order(names(y))])
-          })
+setMethod(
+  "updateList",
+  signature = c("NULL", "list"),
+  definition = function(x, y) {
+    if (is.null(names(y))) {
+      if (length(y) == 0) return(x)
+      stop("All elements in list y must be named.")
+    }
+    return(y[order(names(y))])
+})
 
 #' @rdname updateList
-setMethod("updateList",
-          signature = c("list", "NULL"),
-          definition = function(x, y) {
-            if (is.null(names(x))) {
-              if (length(x) == 0) return(x)
-              stop("All elements in list x must be named.")
-            }
-            return(x[order(names(x))])
-          })
+setMethod(
+  "updateList",
+  signature = c("list", "NULL"),
+  definition = function(x, y) {
+    if (is.null(names(x))) {
+      if (length(x) == 0) return(x)
+      stop("All elements in list x must be named.")
+    }
+    return(x[order(names(x))])
+})
 
 #' @rdname updateList
-setMethod("updateList",
-          signature = c("NULL", "NULL"),
-          definition = function(x, y) {
-            return(list())
-          })
+setMethod(
+  "updateList",
+  signature = c("NULL", "NULL"),
+  definition = function(x, y) {
+    return(list())
+})

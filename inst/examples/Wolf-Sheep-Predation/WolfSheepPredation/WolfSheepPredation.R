@@ -6,7 +6,7 @@ defineModule(sim, list(
   keywords = c("NetLogo", "NetLogoR", "SpaDES", "wolf", "predator", "sheep", "prey", "predation"),
   authors = c(person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr", role = c("aut", "cre"))),
   childModules = character(),
-  version = numeric_version("1.1.2.9002"),
+  version = numeric_version("1.2.0"),
   spatialExtent = raster::extent(rep(NA_real_, 4)),
   timeframe = as.POSIXlt(c(NA, NA)),
   timeunit = "day", # e.g., "year",

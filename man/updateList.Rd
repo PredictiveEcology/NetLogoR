@@ -20,9 +20,7 @@ updateList(x, y)
 \S4method{updateList}{`NULL`,`NULL`}(x, y)
 }
 \arguments{
-\item{x}{a named list}
-
-\item{y}{a named list}
+\item{x, y}{a named list}
 }
 \value{
 A named list, with elements sorted by name.
@@ -30,11 +28,11 @@ A named list, with elements sorted by name.
          replace the values in list \code{x}.
 }
 \description{
-Merge two named list based on their named entries. Where
-any element matches in both lists, the value from the
-second list is used in the updated list.
-Subelements are not examined and are simply replaced. If one list is empty, then
-it returns the other one, unchanged.
+Merge two named list based on their named entries.
+Where any element matches in both lists, the value from the second list is
+used in the updated list.
+Subelements are not examined and are simply replaced. If one list is empty,
+then it returns the other one, unchanged.
 }
 \examples{
 L1 <- list(a = "hst", b = NA_character_, c = 43)

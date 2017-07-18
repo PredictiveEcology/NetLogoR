@@ -1,7 +1,7 @@
 ---
-title: "NetLogoR Dictionary"
+title: "`NetLogoR` Dictionary"
 author: "Sarah Bauduin"
-date: "June, 17th 2016"
+date: "17 juin 2016"
 output: 
   rmarkdown::html_vignette:
     self_contained: yes
@@ -11,16 +11,17 @@ vignette: >
   %\VignetteIndexEntry{Programming Guide `NetLogoR`}
   %\VignetteKeyword{discrete event simulation, spatial simulation models}
   %\usepackage[utf8]{inputenc}
-  
 ---
 
+This document is based on the [NetLogo Dictionary](https://ccl.northwestern.edu/netlogo/docs/dictionary.html).
+It lists all the entries in the NetLogo Dictionary (*i.e.*, NetLogo primitives) and informs the best replacements to use in R.
+Are suggested as replacements, functions from the `NetLogoR` package, as well as functions from the R software and of other packages (indicated below).
+To find how to use these functions, please refers to their documentation by using `help("nameFunction")`.
 
-This document is based on the [NetLogo Dictionary](https://ccl.northwestern.edu/netlogo/docs/dictionary.html). It lists all the entries in the NetLogo Dictionary (i.e., NetLogo primitives) and informs the best replacements to use in R. Are suggested as replacements, functions from the NetLogoR package, as well as functions from the R software and of other packages (indicated as "nameFunction from namePackage"). To find how to use these functions, please refers to their documentation by using `help("nameFunction")`.
+When no `NetLogoR` function was built to translate a NetLogo primitive and that, to our knowledge, no R function (or from other packages) could easily recreate the primitive, we indicated "not implemented".
+The NetLogo primitives not implemented should not prevent the users from building individual-based models involving patches and turtles.
 
-When no NeLogoR function was built to translate a NetLogo primitive and that, to our knowledge, no R function (or from other packages) could easily recreate the primitive, we indicated "not implemented". The NetLogo primitives not implemented should not prevent the users from building individual-based models involving patches and turtles.
-
-For the inverse dictionary (i.e., to find the NetLogo equivalents of the NetLogoR functions) please look at the NetLogoR documentation as the links to NetLogo Dictionnary entries for the equivalent primitives are provided in the "See Also" section of each NetLogoR function.
-
+For the inverse dictionary (*i.e.*, to find the NetLogo equivalents of the `NetLogoR` functions) please look at the NetLogoR documentation as the links to NetLogo Dictionnary entries for the equivalent primitives are provided in the "See Also" section of each NetLogoR function.
 
 ## NetLogo constants
 
@@ -48,7 +49,6 @@ For the inverse dictionary (i.e., to find the NetLogo equivalents of the NetLogo
 * pink: `"pink"`.
 
 See http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf for more colors.
-
 
 ## NetLogo primitives
 
@@ -83,6 +83,7 @@ See http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf for more colors.
 * autoplot?: not implemented.
 
 * auto-plot-off: not implemented.
+
 * auto-plot-on: not implemented.
 
 
@@ -128,7 +129,7 @@ See http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf for more colors.
 
 * clear-patches (cp): `clearPatches()` from NetLogoR.
 
-* clear-plot: `dev.off()` closes the external plot window opened or clears the plot window of RStudio, depending on which one was active. `clearPlot()` from SpaDES acts differently on the external plot window as it clears it but does not close it.
+* clear-plot: `dev.off()` closes the external plot window opened or clears the plot window of RStudio, depending on which one was active. `clearPlot()` from `quickPlot` acts differently on the external plot window as it clears it but does not close it.
 
 * clear-ticks: tick counter not implemented. If a global variable is used to store the time (e.g., `time <- 0`; `time <- time + 1`), see NetLogoR dictionnary entry for clear-globals.
 
@@ -150,17 +151,21 @@ See http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf for more colors.
 * create-\<breed>-with: links not implemented.
 * create-\<breeds>-with: links not implemented.
 * create-link-to: links not implemented.
+
 * create-links-to: links not implemented.
+
 * create-link-from: links not implemented.
+
 * create-links-from: links not implemented.
+
 * create-link-with: links not implemented.
+
 * create-links-with: links not implemented.
 
 * create-turtles (crt): `createTurtles()` from NetLogoR. The created turtles must be assigned to an object before they can run some functions.
 * create-\<breeds>: `createTurtles()` from NetLogoR. The created turtles must be assigned to an object before they can run some functions.
 
 * create-temporary-plot-pen: not implemented.
-
 
 ### D
 
@@ -615,7 +620,7 @@ See http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf for more colors.
 
 * plabel-color: `text()` to add labels on plot.
 
-* plot: `plot()` or `Plot()` from SpaDES.
+* plot: `plot()` or `Plot()` from `quickPlot`
 
 * plot-name: `dev.cur()` returns the name and number of the active device/window where to plot. `plot(..., main = x)` gives a title to the plot.
 
@@ -730,7 +735,7 @@ See http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf for more colors.
 
 * set-patch-size: not implemented.
 
-* set-plot-pen-color: `plot(..., col = x)` or `Plot(..., cols = x)` from SpaDES.
+* set-plot-pen-color: `plot(..., col = x)` or `Plot(..., cols = x)` from `quickPlot`.
 
 * set-plot-pen-interval: not implemented.
 
@@ -770,7 +775,7 @@ See http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf for more colors.
 
 * sqrt: `sqrt()`.
 
-* stamp: `points()` or `Plot(..., addTo = x)` from SpaDES.
+* stamp: `points()` or `Plot(..., addTo = x)` from `quickPlot`.
 
 * stamp-erase: not implemented.
 

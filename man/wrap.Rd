@@ -32,26 +32,30 @@ wrap(X, bounds, withHeading)
 \S4method{wrap}{SpatialPointsDataFrame,matrix,logical}(X, bounds, withHeading)
 }
 \arguments{
-\item{X}{A SpatialPoints* object, or matrix of coordinates}
+\item{X}{A \code{SpatialPoints*} object, or matrix of coordinates.}
 
-\item{bounds}{Either a Raster*, Extent, or bbox object defining bounds to wrap around}
+\item{bounds}{Either a \code{Raster*}, \code{Extent}, or \code{bbox} object
+defining bounds to wrap around.}
 
-\item{withHeading}{logical. If TRUE, then the previous points must be wrapped also
-so that the subsequent heading calculation will work. Default FALSE. See details.}
+\item{withHeading}{Logical. If \code{TRUE}, then the previous points must be
+wrapped also so that the subsequent heading calculation will work.
+Default \code{FALSE}. See details.}
 }
 \value{
-Same class as X, but with coordinates updated to reflect the wrapping
+Same class as \code{X}, but with coordinates updated to reflect the wrapping.
 }
 \description{
 Generally for model development purposes.
 }
 \details{
 If \code{withHeading} used, then X must be a \code{SpatialPointsDataFrame}
-that contains two columns, x1 and y1, with the immediately previous agent
-locations.
+that contains two columns, \code{x1} and \code{y1}, with the immediately previous
+agent locations.
 }
 \examples{
+library(quickPlot)
 library(raster)
+
 xrange <- yrange <- c(-50, 50)
 hab <- raster(extent(c(xrange, yrange)))
 hab[] <- 0

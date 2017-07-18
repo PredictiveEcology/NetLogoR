@@ -1,5 +1,9 @@
 Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 
+version 0.3.0
+=============
+* update dependencies on `SpaDES`-related packages to only include the ones actually used.
+
 version 0.2.0
 =============
 * minimum R version increased from `3.2.5` to `3.3.0` as required by dependency `RandomFieldsUtils`.
