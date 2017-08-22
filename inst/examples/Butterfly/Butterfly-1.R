@@ -23,7 +23,7 @@ pElevation <- ifelse(elev1 > elev2, elev1, elev2)
 elevation <- NLset(world = elevation, agents = patches(elevation), val = pElevation)
 
 # Visualize the world
-plot(world2raster(elevation))
+plot(elevation)
 
 # Create turtles (one butterfly in this model)
 t1 <- createTurtles(n = 1, coords = cbind(xcor = 85, ycor = 95)) # the butterfly's initial location is [85, 95]
