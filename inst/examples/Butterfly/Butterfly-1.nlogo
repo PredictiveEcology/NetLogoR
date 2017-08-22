@@ -5,18 +5,18 @@ turtles-own []
 
 to setup
   clear-all
-  ;;assign an elevation to patches and color them 
+  ;;assign an elevation to patches and color them
   ask patches [
     ;;elevation decreases linearly with distance from the center of the hill
     ;;hills are at (30,30) and (120,100)
     ;;the 1st hill is 100 units high, the 2nd hill is 50 units high
     let elev1 100 - distancexy 30 30
     let elev2 50 - distancexy 120 100
-    
+
     ifelse elev1 > elev2
       [set elevation elev1]
       [set elevation elev2]
-    
+
     set pcolor scale-color green elevation 0 100
   ] ;;end of "ask patches"
   ;;create just 1 butterfly for now
@@ -27,7 +27,7 @@ to setup
     pen-down
   ]
   ;;intialize the "q" parameter
-  set q 0.2
+  set q 0.4
   reset-ticks
 end ;;end of setup procedure
 
@@ -49,11 +49,11 @@ end
 GRAPHICS-WINDOW
 262
 31
-872
-662
+720
+490
 -1
 -1
-4.0
+3.0
 1
 10
 1
@@ -451,9 +451,8 @@ false
 0
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
-
 @#$#@#$#@
-NetLogo 5.0.2
+NetLogo 6.0.1
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -461,15 +460,14 @@ NetLogo 5.0.2
 @#$#@#$#@
 default
 0.0
--0.2 0 1.0 0.0
+-0.2 0 0.0 1.0
 0.0 1 1.0 0.0
-0.2 0 1.0 0.0
+0.2 0 0.0 1.0
 link direction
 true
 0
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
-
 @#$#@#$#@
 0
 @#$#@#$#@
