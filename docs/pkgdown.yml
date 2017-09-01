@@ -1,0 +1,7 @@
+urls:
+  reference: http://netlogor.predictiveecology.org/reference
+  article: http://netlogor.predictiveecology.org/articles
+articles:
+  NLR-Dictionary: NLR-Dictionary.html
+  ProgrammingGuide: ProgrammingGuide.html
+

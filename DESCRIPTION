@@ -20,14 +20,14 @@ Description: Easily create agent-based models in R following the 'NetLogo'
     simulator, such as 'SpaDES' (<https://cran.r-project.org/package=SpaDES>).
 URL: http://NetLogoR.PredictiveEcology.org, https://github.com/PredictiveEcology/NetLogoR
 Version: 0.3.0
-Date: 2017-07-18
+Date: 2017-09-01
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
     role = c("aut")),
     person("Eliot J B", "McIntire", email = "eliot.mcintire@canada.ca",
-    role = c("aut", "cre")),
-    person("Alex M", "Chubaty", email = "alexander.chubaty@canada.ca",
     role = c("aut")),
+    person("Alex M", "Chubaty", email = "alexander.chubaty@canada.ca",
+    role = c("aut", "cre")),
     person("Her Majesty the Queen in Right of Canada, as represented by the Minister of Natural Resources Canada",
     role = "cph")
     )
@@ -57,9 +57,7 @@ Suggests:
     SpaDES.tools,
     testthat
 Remotes:
-    PredictiveEcology/quickPlot,
     PredictiveEcology/SpaDES.core,
-    PredictiveEcology/SpaDES.tools
 License: GPL-3
 VignetteBuilder: knitr, rmarkdown
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
