@@ -1286,7 +1286,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom data.table rbindlist
 #' @importFrom car some
 #' @docType methods
 #' @rdname downhill
@@ -2535,7 +2534,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom data.table rbindlist
 #' @docType methods
 #' @rdname turtleSet
 #'
@@ -2548,7 +2546,6 @@ setGeneric(
   })
 
 #' @export
-#' @importFrom data.table rbindlist
 #' @rdname turtleSet
 setMethod(
   "turtleSet",

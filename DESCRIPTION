@@ -45,6 +45,7 @@ Imports:
     methods,
     plyr,
     sp,
+    SpaDES.tools,
     stats,
     rgeos
 Suggests:
@@ -54,10 +55,7 @@ Suggests:
     quickPlot,
     rmarkdown,
     SpaDES.core,
-    SpaDES.tools,
     testthat
-Remotes:
-    PredictiveEcology/SpaDES.core,
 License: GPL-3
 VignetteBuilder: knitr, rmarkdown
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues

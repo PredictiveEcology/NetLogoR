@@ -45,6 +45,7 @@ if (getRversion() >= "3.1.0") {
 #' @export
 #' @importFrom data.table data.table ':='
 #' @importFrom data.table setkey
+#' @importFrom SpaDES.tools adj
 #' @importFrom plyr count
 #' @docType methods
 #' @rdname diffuse
@@ -326,6 +327,7 @@ setMethod(
 #'
 #' @export
 #' @importFrom data.table data.table setkey
+#' @importFrom SpaDES.tools adj
 #' @docType methods
 #' @rdname neighbors
 #'
