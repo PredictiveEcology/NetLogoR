@@ -56,14 +56,7 @@
   <a href="news/index.html">News</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/PredictiveEcology/NetLogoR">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -86,14 +79,18 @@
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting Started</h2>
-<p>A programming guide derived from the <a href="https://ccl.northwestern.edu/netlogo/docs/programming.html">NetLogo Programming Guide</a> and a dictionary of <a href="https://ccl.northwestern.edu/netlogo/docs/dictionary.html">NetLogo primitives</a> equivalences are available. As examples, three NetLogo models (<a href="http://ccl.northwestern.edu/netlogo/models/Ants">Ants</a>, Butterfly (Railsback and Grimm, 2012) and <a href="http://ccl.northwestern.edu/netlogo/models/WolfSheepPredation">Wolf-Sheep-Predation</a>) were translated in R language using <code>NetLogoR</code>.</p>
+<p>A programming guide derived from the <a href="https://ccl.northwestern.edu/netlogo/docs/programming.html">NetLogo Programming Guide</a> and a dictionary of <a href="https://ccl.northwestern.edu/netlogo/docs/dictionary.html">NetLogo primitives</a> equivalences are available. As examples, three NetLogo models (<a href="http://ccl.northwestern.edu/netlogo/models/Ants">Ants</a>, Butterfly (Railsback and Grimm, 2012) and <a href="http://ccl.northwestern.edu/netlogo/models/WolfSheepPredation">Wolf-Sheep-Predation</a>) were translated to R using <code>NetLogoR</code>.</p>
 </div>
-<div id="installing-the-r-package" class="section level2">
+<div id="installing-netlogor" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installing-the-r-package" class="anchor"></a>Installing the R package</h2>
-<p>To do this, you will require the devtools package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)
-<span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"PredictiveEcology/NetLogoR"</span>)</code></pre></div>
+<a href="#installing-netlogor" class="anchor"></a>Installing <code>NetLogoR</code>
+</h2>
+<div id="from-github" class="section level3">
+<h3 class="hasAnchor">
+<a href="#from-github" class="anchor"></a>From GitHub</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages("devtools")</span>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"PredictiveEcology/NetLogoR"</span>)</code></pre></div>
+</div>
 </div>
 </div>
   </div>
@@ -101,8 +98,6 @@
   <div class="col-md-3" id="sidebar">
     <h2>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/PredictiveEcology/NetLogoR">https://​github.com/​PredictiveEcology/​NetLogoR</a>
-</li>
 <li>Report a bug at <br><a href="https://github.com/PredictiveEcology/NetLogoR/issues">https://​github.com/​PredictiveEcology/​NetLogoR/​issues</a>
 </li>
 </ul>

@@ -9,17 +9,16 @@
 Easily create agent-based models in R following the NetLogo framework ([Wilensky, 1999](http://ccl.northwestern.edu/netlogo/)).
 `NetLogoR` provides classes to represent "patches" (raster cells) and "turtles" (individuals), the necessary [NetLogo primitives](https://ccl.northwestern.edu/netlogo/docs/dictionary.html), and complementary functions to easily build agent-based models or translate NetLogo models in R.
 
-
 ## Getting Started
 
 A programming guide derived from the [NetLogo Programming Guide](https://ccl.northwestern.edu/netlogo/docs/programming.html) and a dictionary of [NetLogo primitives](https://ccl.northwestern.edu/netlogo/docs/dictionary.html) equivalences are available.
-As examples, three NetLogo models ([Ants](http://ccl.northwestern.edu/netlogo/models/Ants), Butterfly (Railsback and Grimm, 2012) and [Wolf-Sheep-Predation](http://ccl.northwestern.edu/netlogo/models/WolfSheepPredation)) were translated in R language using `NetLogoR`.
+As examples, three NetLogo models ([Ants](http://ccl.northwestern.edu/netlogo/models/Ants), Butterfly (Railsback and Grimm, 2012) and [Wolf-Sheep-Predation](http://ccl.northwestern.edu/netlogo/models/WolfSheepPredation)) were translated to R using `NetLogoR`.
 
-## Installing the R package
+## Installing `NetLogoR`
 
-To do this, you will require the devtools package.
+### From GitHub
 
 ```r
-library(devtools)
-install_github("PredictiveEcology/NetLogoR")
+#install.packages("devtools")
+devtools::install_github("PredictiveEcology/NetLogoR")
 ```
