@@ -20,10 +20,10 @@ This is a new package submission.
 
 ### Development R version
 * Debian:testing  (rocker/drd), R 3.5.0 (2017-09-13 r73255)
-* Ubuntu 14.04     (travis-ci), R 3.5.0 (2017-09-26 r73351)
+* Ubuntu 14.04     (travis-ci), R 3.5.0 (2017-09-27 r73360)
 * Ubuntu 16.04         (local), R 3.5.0 (2017-09-26 r73351)
-* Windows           (appveyor), R 3.5.0 (2017-09-25-rXXXXX)
-* Windows        (win-builder), R 3.5.0 (2017-09-25-rXXXXX)
+* Windows           (appveyor), R 3.5.0 (2017-09-26 r73350)
+* Windows        (win-builder), R 3.5.0 (2017-09-26 r73350)
 
 ## R CMD check results
 
@@ -42,8 +42,10 @@ There was 1 NOTE:
     b. Some words were flagged as possibly mispelled, but they are not. 
      
             Possibly mis-spelled words in DESCRIPTION: 
-              Modularity (3:53)
-              modularity (5:29)
+              NetLogo (2:18)
+              Predation (20:16)
+              Railsback (19:16)
+              Wilensky (5:6)
 
 ## Downstream dependencies
 
