@@ -4,11 +4,12 @@
 .*\.zip$
 .*\.toc$
 \.travis\.yml
-appveyor.yml
-CONTRIBUTING\.md
-cran-comments\.md
+^appveyor\.yml$
+^appveyor_cache.txt$
+^CONTRIBUTING\.md$
+^cran-comments\.md$
 ^docs$
-LICENSE
+^LICENSE$
 ^_ignore$
 ^_pkgdown\.yml$
 ^travis_wait_.*\.log$
