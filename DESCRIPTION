@@ -18,9 +18,9 @@ Description: Easily create agent-based models in R following the 'NetLogo'
     translated in R language using 'NetLogoR'. NOTE: To increment 'time', these
     functions can use a for loop or can be integrated with a discrete event
     simulator, such as 'SpaDES' (<https://cran.r-project.org/package=SpaDES>).
-URL: http://NetLogoR.PredictiveEcology.org,
+URL: http://netlogor.predictiveecology.org
 Version: 0.3.0
-Date: 2017-09-26
+Date: 2017-09-27
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
     role = c("aut")),

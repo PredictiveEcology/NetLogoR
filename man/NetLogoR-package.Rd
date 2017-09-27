@@ -11,7 +11,7 @@ The \code{NetLogoR} package
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://NetLogoR.PredictiveEcology.org,}
+  \item \url{http://netlogor.predictiveecology.org}
   \item Report bugs at \url{https://github.com/PredictiveEcology/NetLogoR/issues}
 }
 

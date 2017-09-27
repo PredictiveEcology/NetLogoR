@@ -22,8 +22,8 @@ This is a new package submission.
 * Debian:testing  (rocker/drd), R 3.5.0 (2017-09-13 r73255)
 * Ubuntu 14.04     (travis-ci), R 3.5.0 (2017-09-27 r73360)
 * Ubuntu 16.04         (local), R 3.5.0 (2017-09-26 r73351)
-* Windows           (appveyor), R 3.5.0 (2017-09-26 r73350)
-* Windows        (win-builder), R 3.5.0 (2017-09-26 r73350)
+* Windows           (appveyor), R 3.5.0 (2017-09-26 r73351)
+* Windows        (win-builder), R 3.5.0 (2017-09-12 r73242)
 
 ## R CMD check results
 
@@ -42,10 +42,9 @@ There was 1 NOTE:
     b. Some words were flagged as possibly mispelled, but they are not. 
      
             Possibly mis-spelled words in DESCRIPTION: 
-              NetLogo (2:18)
-              Predation (20:16)
-              Railsback (19:16)
-              Wilensky (5:6)
+              Predation (16:29)
+              Railsback (15:67)
+              Wilensky (4:16)
 
 ## Downstream dependencies
 
