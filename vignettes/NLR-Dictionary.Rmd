@@ -21,7 +21,7 @@ To find how to use these functions, please refers to their documentation by usin
 When no `NetLogoR` function was built to translate a NetLogo primitive and that, to our knowledge, no R function (or from other packages) could easily recreate the primitive, we indicated "not implemented".
 The NetLogo primitives not implemented should not prevent the users from building individual-based models involving patches and turtles.
 
-For the inverse dictionary (*i.e.*, to find the NetLogo equivalents of the `NetLogoR` functions) please look at the NetLogoR documentation as the links to NetLogo Dictionnary entries for the equivalent primitives are provided in the "See Also" section of each NetLogoR function.
+For the inverse dictionary (*i.e.*, to find the NetLogo equivalents of the `NetLogoR` functions) please look at the `NetLogoR` documentation as the links to NetLogo Dictionary entries for the equivalent primitives are provided in the "See Also" section of each NetLogoR function.
 
 ## NetLogo constants
 
