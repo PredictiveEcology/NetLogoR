@@ -188,7 +188,7 @@ The modified R object can later be written out as a file, either by overwritting
 
 There is no interface built-in as part of `NetLogoR`. 
 
-However, you can still plot the agent positions in the world (*i.e.*, "view" in NetLogo) as well as any other plots (*e.g.*, the number of turtles through time) on the R plot interface.
+However, you can still plot the world with `plot(nameWorld)` and the agent positions in the world with `points(nameTurtles)` (*i.e.*, "view" in NetLogo), as well as any other plots (*e.g.*, the number of turtles through time) using R plot functions on the R plot interface.
 You can also generate outputs on the screen using different functions.
 To do so, you need to specifically code for these procedures in the model using R functions and of different packages.
 Please refer to their manuals for any related questions.
