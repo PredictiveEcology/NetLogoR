@@ -329,7 +329,7 @@ growGrass <- function() {
 ## Go
 time <- 0
 maxTime <- 500
-while ((NLany(sheep) | NLany(wolves)) & time < maxTime ) {
+while ((NLany(sheep) | NLany(wolves)) & time < maxTime) {
   ## as long as there are sheep or wolves in the world (time steps maximum at 500)
 
   # Ask sheep
