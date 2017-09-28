@@ -21,8 +21,8 @@ rEvap <- 10 # varies from 0 to 99 in the NetLogo model
 
 ## Model setup
 # World
-# One NLworldMatrix for each patch variable, then stack them
-# As all the NLworldMatrix must have the same extent, you can copy past the object to a new name
+# One worldMatrix for each patch variable, then stack them
+# As all the worldMatrix must have the same extent, you can copy past the object to a new name
 # Patch values must be assigned to each world before stacking them
 
 # Chemical
@@ -59,8 +59,10 @@ world <- stackWorlds(chemical, nest, nestScent, foodSource, food)
 ants <- createTurtles(n = nAnts, coords = cbind(xcor = 0, ycor = 0), color = "red") # red = not carrying food
 
 # # Visualize the world
-# plot(world2raster(world)$layer.5) # food
-# points(turtles2spdf(ants), pch = 16)
+# plot(world) # all the layers
+# plot(ants) # the ants only
+# plot(world2raster(world)$layer.5) # only the food layer
+# points(turtles2spdf(ants), pch = 16) # add the ants on the food layer
 
 # Initialize the output objects
 f_fS_world <- of(world = world, var = c("food", "foodSource"), agents = patches(world))
