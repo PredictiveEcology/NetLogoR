@@ -26,7 +26,7 @@ rEvap <- 10 # varies from 0 to 99 in the NetLogo model
 # Patch values must be assigned to each world before stacking them
 
 # Chemical
-chemical <- createWorld(minPxcor = -35, maxPxcor = 35, minPycor = -35, maxPycor = 35, 
+chemical <- createWorld(minPxcor = -35, maxPxcor = 35, minPycor = -35, maxPycor = 35,
                         data = 0) # amount of chemical on the patches
 
 # Nest
@@ -35,45 +35,47 @@ nestScent <- chemical # higher closer to the nest
 distNest <- NLdist(agents = patches(nest), agents2 = cbind(x = 0, y = 0))
 patchNest <- which(distNest < 5) # patches at distance less than 5 from [x = 0, y = 0]
 nest <- NLset(world = nest, agents = patches(nest), val = 0) # 0 to all the patches
-nest <- NLset(world = nest, agents = PxcorPycorFromCell(world = nest, cellNum = patchNest), 
+nest <- NLset(world = nest, agents = PxcorPycorFromCell(world = nest, cellNum = patchNest),
               val = 1) # and reassign 1 to the patches in the nest
 # Spread nestScent over the whole world, stronger near the nest
-nestScent <- NLset(world = nestScent, agents = patches(nestScent), val = 200 - distNest) 
+nestScent <- NLset(world = nestScent, agents = patches(nestScent), val = 200 - distNest)
 
 # Food
 foodSource <- chemical # number (1, 2, or 3) to identify the food sources
 food <- chemical # amount of food on the patches (0, 1, or 2)
 # Setup food source 1 (on the right)
-distFood1 <- NLdist(agents = patches(foodSource), 
-                    agents2 = cbind(x = 0.6 * maxPxcor(foodSource), y = 0)) 
+distFood1 <- NLdist(agents = patches(foodSource),
+                    agents2 = cbind(x = 0.6 * maxPxcor(foodSource), y = 0))
 patchFood1 <- which(distFood1 < 5)
 foodSource <- NLset(world = foodSource, agents = patches(foodSource), val = 0) # 0 to all patches
-foodSource <- NLset(world = foodSource, 
-                    agents = PxcorPycorFromCell(world = foodSource, cellNum = patchFood1), 
+foodSource <- NLset(world = foodSource,
+                    agents = PxcorPycorFromCell(world = foodSource, cellNum = patchFood1),
                     val = 1) # and reassign 1 to the patches in the foodSource 1
 # Setup food source 2 (on the lower-left)
-distFood2 <- NLdist(agents = patches(foodSource), 
-                    agents2 = cbind(x = -0.6 * maxPxcor(foodSource), y = -0.6 * maxPycor(foodSource))) 
+distFood2 <- NLdist(agents = patches(foodSource),
+                    agents2 = cbind(x = -0.6 * maxPxcor(foodSource),
+                                    y = -0.6 * maxPycor(foodSource)))
 patchFood2 <- which(distFood2 < 5)
-foodSource <- NLset(world = foodSource, 
-                    agents = PxcorPycorFromCell(world = foodSource, cellNum = patchFood2), 
+foodSource <- NLset(world = foodSource,
+                    agents = PxcorPycorFromCell(world = foodSource, cellNum = patchFood2),
                     val = 2) # and reassign 2 to the patches in the foodSource 2
 # Setup food source 3 on the upper-left
-distFood3 <- NLdist(agents = patches(foodSource), 
-                    agents2 = cbind(x = -0.8 * maxPxcor(foodSource), y = 0.8 * maxPycor(foodSource))) 
+distFood3 <- NLdist(agents = patches(foodSource),
+                    agents2 = cbind(x = -0.8 * maxPxcor(foodSource),
+                                    y = 0.8 * maxPycor(foodSource)))
 patchFood3 <- which(distFood3 < 5)
-foodSource <- NLset(world = foodSource, 
-                    agents = PxcorPycorFromCell(world = foodSource, cellNum = patchFood3), 
+foodSource <- NLset(world = foodSource,
+                    agents = PxcorPycorFromCell(world = foodSource, cellNum = patchFood3),
                     val = 3) # and reassign 3 to the patches in the foodSource 3
 food <- NLset(world = food, agents = patches(food), val = 0)
 patchFood123 <- PxcorPycorFromCell(world = food, cellNum = c(patchFood1, patchFood2, patchFood3))
 # Set "food" at sources to either 1 or 2, randomly
-food <- NLset(world = food, agents = patchFood123, 
-              val = sample(c(1, 2), size = NLcount(patchFood123), replace = TRUE)) 
+food <- NLset(world = food, agents = patchFood123,
+              val = sample(c(1, 2), size = NLcount(patchFood123), replace = TRUE))
 world <- stackWorlds(chemical, nest, nestScent, foodSource, food)
 
 # Ants
-ants <- createTurtles(n = nAnts, coords = cbind(xcor = 0, ycor = 0), 
+ants <- createTurtles(n = nAnts, coords = cbind(xcor = 0, ycor = 0),
                       color = "red") # red = not carrying food
 
 ## Visualize the world
@@ -85,11 +87,11 @@ points(ants, pch = 16) # add the ants on the food layer
 # Initialize the output objects
 f_fS_world <- of(world = world, var = c("food", "foodSource"), agents = patches(world))
 # Sum of food values for the patches with foodSource equals to 1
-food1 <- sum(f_fS_world[f_fS_world[, "foodSource"] == 1, "food"]) 
+food1 <- sum(f_fS_world[f_fS_world[, "foodSource"] == 1, "food"])
 # Sum of food values for the patches with foodSource equals to 2
-food2 <- sum(f_fS_world[f_fS_world[, "foodSource"] == 2, "food"]) 
+food2 <- sum(f_fS_world[f_fS_world[, "foodSource"] == 2, "food"])
 # Sum of food values for the patches with foodSource equals to 3
-food3 <- sum(f_fS_world[f_fS_world[, "foodSource"] == 3, "food"]) 
+food3 <- sum(f_fS_world[f_fS_world[, "foodSource"] == 3, "food"])
 
 
 ## Functions used in the go procedure
@@ -98,7 +100,7 @@ toNest <- function(turtles){
 
   pHere <- patchHere(world = world, turtles = turtles)
   # Nest values (1 or 0) and chemical in the order of the turtles
-  nestChem_pHere <- of(world = world, agents = pHere, var = c("nest", "chemical")) 
+  nestChem_pHere <- of(world = world, agents = pHere, var = c("nest", "chemical"))
   whoTurtles <- of(agents = turtles, var = "who")
 
   # Inside the nest
@@ -111,22 +113,22 @@ toNest <- function(turtles){
 
   # Outside of the nest
   # whoTurtles for which their nest value equals 0
-  turtlesOut <- turtle(turtles, who = whoTurtles[nestChem_pHere[, "nest"] == 0]) 
+  turtlesOut <- turtle(turtles, who = whoTurtles[nestChem_pHere[, "nest"] == 0])
   if(NLcount(turtlesOut) != 0){
     # pHere for which their nest value equals 0
-    pHereOut <- pHere[nestChem_pHere[, "nest"] == 0, , 
+    pHereOut <- pHere[nestChem_pHere[, "nest"] == 0, ,
                       drop = FALSE] # drop = FALSE keeps a format matrix when 1 row
     # Drop some chemical
-    world <- NLset(world = world, agents = pHereOut, var = "chemical", 
-                   val = nestChem_pHere[nestChem_pHere[, "nest"] == 0, "chemical"] + 60) 
+    world <- NLset(world = world, agents = pHereOut, var = "chemical",
+                   val = nestChem_pHere[nestChem_pHere[, "nest"] == 0, "chemical"] + 60)
     # Head toward the greatest value of nestScent
-    turtlesOut <- upPatch(turtles = turtlesOut, varPatch = "nestScent") 
+    turtlesOut <- upPatch(turtles = turtlesOut, varPatch = "nestScent")
   }
 
-  # Because turtles have been modified separately as turtlesIn and turtlesOut, 
+  # Because turtles have been modified separately as turtlesIn and turtlesOut,
   # we need to put them back together to execute the following procedure
-  turtles <- turtleSet(turtlesIn, turtlesOut) 
-  # there should not be any problem (e.g., duplicates) 
+  turtles <- turtleSet(turtlesIn, turtlesOut)
+  # there should not be any problem (e.g., duplicates)
   # turtles are always either in or out, but never both or neither
   #print(paste("toNest", NLcount(turtles)))
   return(list(turtles, world))
@@ -136,7 +138,7 @@ lookFood <- function(turtles){
   #print(paste("lookFood", NLcount(turtles)))
 
   pHere <- patchHere(world = world, turtles = turtles)
-  foodChem_pHere <- of(world = world, agents = pHere, 
+  foodChem_pHere <- of(world = world, agents = pHere,
                        var = c("food", "chemical")) # faster to extract both values at once
   whoTurtles <- of(agents = turtles, var = "who")
 
@@ -144,21 +146,24 @@ lookFood <- function(turtles){
   turtlesFood <- turtle(turtles, who = whoTurtles[foodChem_pHere[, "food"] > 0])
   if(NLcount(turtlesFood) != 0){
     # Pick up food
-    turtlesFood <- NLset(turtles = turtlesFood, agents = turtlesFood, var = "color", val = "orange") 
+    turtlesFood <- NLset(turtles = turtlesFood, agents = turtlesFood, var = "color",
+                         val = "orange")
     turtlesFood <- right(turtles = turtlesFood, angle = 180) # and turn around
     # Reconstruct the turtles with turtlesFood modified and the others
-    turtles <- turtleSet(turtlesFood, other(agents = turtles, except = turtlesFood)) 
+    turtles <- turtleSet(turtlesFood, other(agents = turtles, except = turtlesFood))
     # And reduce the food source
-    world <- NLset(world = world, agents = pHere[foodChem_pHere[, "food"] > 0, , drop = FALSE], 
+    world <- NLset(world = world, agents = pHere[foodChem_pHere[, "food"] > 0, , drop = FALSE],
                    var = "food", val = foodChem_pHere[foodChem_pHere[, "food"] > 0, "food"] - 1) 
   }
 
   # Go in the direction where the chemical smell is strongest
-  turtlesChem <- turtle(turtles, who = whoTurtles[foodChem_pHere[, "chemical"] >= 0.05 & foodChem_pHere[, "chemical"] < 2])
+  turtlesChem <- turtle(turtles,
+                        who = whoTurtles[foodChem_pHere[, "chemical"] >= 0.05 &
+                                           foodChem_pHere[, "chemical"] < 2])
   if(NLcount(turtlesChem) != 0){
     turtlesChem <- upPatch(turtles = turtlesChem, varPatch = "chemical")
     # Reconstruct the turtles with turtlesChem modified and the others
-    turtles <- turtleSet(turtlesChem, other(agents = turtles, except = turtlesChem)) 
+    turtles <- turtleSet(turtlesChem, other(agents = turtles, except = turtlesChem))
   }
 
   #print(paste("lookFood", NLcount(turtles)))
@@ -192,7 +197,7 @@ wiggle <- function(turtles){
   #print(paste("wiggle", NLcount(turtles)))
 
   # Give a random angle between - 40 (40 to left) and 40 (40 to right)
-  turtles <- right(turtles, angle = runif(n = NLcount(turtles), min = -40, max = 40)) 
+  turtles <- right(turtles, angle = runif(n = NLcount(turtles), min = -40, max = 40))
   turtlesMove <- canMove(world = world, turtles = turtles, dist = 1)
   whoTurtles <- of(agents = turtles, var = "who")
   turtlesCannot <- turtle(turtles, whoTurtles[turtlesMove == FALSE])
@@ -211,7 +216,7 @@ wiggle <- function(turtles){
 #time <- 0
 while(sum(f_fS_world[, "food"]) != 0){ # as long as there is food in the world
 #for(i in 1:200){ # to test function speed
-  
+
   # Ants not carrying food
   aRed <- NLwith(agents = ants, var = "color", val = "red")
   if(NLcount(aRed) != 0){
@@ -238,8 +243,8 @@ while(sum(f_fS_world[, "food"]) != 0){ # as long as there is food in the world
   pWorld <- patches(world)
   pChem <- of(world = world, var = "chemical", agents = pWorld)
   # Slowly evaporate chemical
-  world <- NLset(world = world, agents = pWorld, var = "chemical", 
-                 val = pChem * (100 - rEvap) / 100) 
+  world <- NLset(world = world, agents = pWorld, var = "chemical",
+                 val = pChem * (100 - rEvap) / 100)
 
   # Output update
   f_fS_world <- of(world = world, var = c("food", "foodSource"), agents = patches(world))
@@ -265,5 +270,5 @@ plot(timeStep, food1, type = "l", col = "coral", lwd = 2, ylab = "Food", xlab = 
 lines(timeStep, food2, col = "yellow", lwd = 2)
 lines(timeStep, food3, col = "green", lwd = 2)
 
-legend("topright", legend = c("food1", "food2", "food3"), lwd = c(2, 2, 2), 
+legend("topright", legend = c("food1", "food2", "food3"), lwd = c(2, 2, 2),
        col = c("coral", "yellow", "green"), bg = "white")
