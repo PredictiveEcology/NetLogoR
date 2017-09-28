@@ -81,13 +81,13 @@ if (grassOn == TRUE) {
 # # Visualize the world
 # if(grassOn == TRUE){
 #   plot(world2raster(field)[[1]])
-#   points(turtles2spdf(sheep), pch = 16, col = "red")
-#   points(turtles2spdf(wolves), pch = 16, col = "black")
+#   points(sheep, pch = 16, col = "red")
+#   points(wolves, pch = 16, col = "black")
 # } else {
 #   grass <- NLset(world = grass, agents = patches(grass), val = 0) # cannot plot an empty world
 #   plot(grass)
-#   points(turtles2spdf(sheep), pch = 16, col = "red")
-#   points(turtles2spdf(wolves), pch = 16, col = "black")
+#   points(sheep, pch = 16, col = "red")
+#   points(wolves, pch = 16, col = "black")
 # }
 
 

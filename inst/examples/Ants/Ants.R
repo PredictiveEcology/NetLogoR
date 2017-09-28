@@ -62,7 +62,7 @@ ants <- createTurtles(n = nAnts, coords = cbind(xcor = 0, ycor = 0), color = "re
 # plot(world) # all the layers
 # plot(ants) # the ants only
 # plot(world2raster(world)$layer.5) # only the food layer
-# points(turtles2spdf(ants), pch = 16) # add the ants on the food layer
+# points(ants, pch = 16) # add the ants on the food layer
 
 # Initialize the output objects
 f_fS_world <- of(world = world, var = c("food", "foodSource"), agents = patches(world))
@@ -211,7 +211,7 @@ while(sum(f_fS_world[, "food"]) != 0){ # as long as there is food in the world
   #
   # # Plots
   # plot(world2raster(world)$layer.5) # food
-  # points(turtles2spdf(ants), pch = 16)
+  # points(ants, pch = 16)
   #
   # expect_equivalent(NLcount(ants), nAnts)
 }
