@@ -27,7 +27,7 @@ plot(elevation)
 
 # Create turtles (one butterfly in this model)
 # The butterfly's initial location is [85, 95]
-t1 <- createTurtles(n = 1,  coords = cbind(xcor = 85, ycor = 95)) 
+t1 <- createTurtles(n = 1,  coords = cbind(xcor = 85, ycor = 95))
 # t1 <- createTurtles(n = 100, coords = cbind(xcor = 85, ycor = 95)) # can try with 100 butterflies
 # Visualize the turtle
 points(t1, pch = 16)
@@ -38,7 +38,7 @@ q <- 0.4 # q is the probability to move directly to the highest surrounding patc
 # Create a go procedure with a for loop
 for(time in 1:1000){ # what is inside this loop will be iterated 1000 times
 
-  # The "move" function can be written directly here 
+  # The "move" function can be written directly here
   # or before in the script as a separate function and then called here
   # The output of the NetLogoR functions is the turtle t1 and it needs to be reassigned to t1
   # so that the updated turtle t1 is used at each time step
@@ -51,7 +51,7 @@ for(time in 1:1000){ # what is inside this loop will be iterated 1000 times
   } else {
 
     # Or move the turtle t1 to one of its neighbor patches at random in the elevation world
-    # Creating local variables 
+    # Creating local variables
     # instead of putting everything in the same one line code helps to understand
     # It is also useful for debugging
     allNeighbors <- neighbors(world = elevation, agents = t1, nNeighbors = 8)
