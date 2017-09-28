@@ -38,7 +38,7 @@ numWolves <- nWolf # keep track of how many wolves there is
 grass <- createWorld(minPxcor = -25, maxPxcor = 25, minPycor = -25, maxPycor = 25)
 
 # If grassOn is TRUE, assign grass and countdown values to patches
-# Because there are multiple patches variables, a NLworldStack is needed
+# Because there are multiple patches variables, a worldArray is needed
 # If grassOn is TRUE, the grass grows and the sheep eat it, if FALSE, the sheep don't need to eat
 if (grassOn == TRUE) {
   # Initialize patch values (grass and countdown) at random
@@ -54,7 +54,7 @@ if (grassOn == TRUE) {
 # because they all have the same extent and number of patches
 # When patches values are used (e.g., when the sheep eat the grass), use only field as the world argument for the functions
 # which update and retrieve the patches values
-# When field is updated, the values on the individual NLworld grass and countdown are not updated, only the layers in field are
+# When field is updated, the values on the individual worldMatrix grass and countdown are not updated, only the layers in field are
 
 # Create the sheep
 sheep <- createTurtles(n = nSheep, coords = randomXYcor(world = grass, n = nSheep),
@@ -85,7 +85,7 @@ if (grassOn == TRUE) {
 #   points(turtles2spdf(wolves), pch = 16, col = "black")
 # } else {
 #   grass <- NLset(world = grass, agents = patches(grass), val = 0) # cannot plot an empty world
-#   plot(world2raster(grass))
+#   plot(grass)
 #   points(turtles2spdf(sheep), pch = 16, col = "red")
 #   points(turtles2spdf(wolves), pch = 16, col = "black")
 # }
