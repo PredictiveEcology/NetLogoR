@@ -61,10 +61,12 @@ test_that("test Event1 and Event2.", {
     simOutput <- mySim$WolfSheepPredationEvent1(mySim)
   }
 
-  expectedOutputEvent1Test1 <- " this is test for event 1. " # please define your expection of your output
+  # please define your expection of your output
+  expectedOutputEvent1Test1 <- " this is test for event 1. "
   expect_is(class(simOutput$event1Test1), "character")
-  expect_equal(simOutput$event1Test1, expectedOutputEvent1Test1) # or other expect function in testthat package.
-  expect_equal(simOutput$event1Test2, as.numeric(999)) # or other expect function in testthat package.
+  # or other expect function in testthat package
+  expect_equal(simOutput$event1Test1, expectedOutputEvent1Test1)
+  expect_equal(simOutput$event1Test2, as.numeric(999))
 
   if (exists("WolfSheepPredationEvent2", envir = .GlobalEnv)) {
     simOutput <- WolfSheepPredationEvent2(mySim)
@@ -72,8 +74,10 @@ test_that("test Event1 and Event2.", {
     simOutput <- mySim$WolfSheepPredationEvent2(mySim)
   }
 
-  expectedOutputEvent2Test1 <- " this is test for event 2. " # please define your expection of your output
+  # please define your expection of your output
+  expectedOutputEvent2Test1 <- " this is test for event 2. "
   expect_is(class(simOutput$event2Test1), "character")
-  expect_equal(simOutput$event2Test1, expectedOutputEvent2Test1) # or other expect function in testthat package.
-  expect_equal(simOutput$event2Test2, as.numeric(777)) # or other expect function in testthat package.
+  # or other expect function in testthat package
+  expect_equal(simOutput$event2Test1, expectedOutputEvent2Test1)
+  expect_equal(simOutput$event2Test2, as.numeric(777))
 })
