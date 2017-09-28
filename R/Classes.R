@@ -308,7 +308,7 @@ setAs("agentMatrix", "data.frame",
 #' \code{[]} will extract all values, and result in a data.frame with the correct character and
 #' numeric columns.
 #'
-#' @param x     A \code{NLworld} object from which to extract element(s) or
+#' @param x     A \code{agentMatrix} object from which to extract element(s) or
 #'                in which to replace element(s).
 #' @param i     Indices specifying elements to extract or replace.
 #' @param j     see \code{i}.
