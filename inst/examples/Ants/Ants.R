@@ -153,7 +153,7 @@ lookFood <- function(turtles){
     turtles <- turtleSet(turtlesFood, other(agents = turtles, except = turtlesFood))
     # And reduce the food source
     world <- NLset(world = world, agents = pHere[foodChem_pHere[, "food"] > 0, , drop = FALSE],
-                   var = "food", val = foodChem_pHere[foodChem_pHere[, "food"] > 0, "food"] - 1) 
+                   var = "food", val = foodChem_pHere[foodChem_pHere[, "food"] > 0, "food"] - 1)
   }
 
   # Go in the direction where the chemical smell is strongest
