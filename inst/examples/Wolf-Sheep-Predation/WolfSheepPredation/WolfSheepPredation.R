@@ -342,7 +342,7 @@ death <- function(turtles) {
   # When energy dips below 0, die
   whoEnergy <- of(agents = turtles, var = c("who", "energy"))
   # "who" numbers of the turtles with their energy value below 0
-  who0 <- whoEnergy[which(whoEnergy[,"energy"] < 0), "who"]
+  who0 <- whoEnergy[which(whoEnergy[, "energy"] < 0), "who"]
 
   if (length(who0) != 0) {
     turtles <- die(turtles = turtles, who = who0)
@@ -419,7 +419,7 @@ catchSheep <- function(sim) {
 
     sim$sheep <- die(turtles = sim$sheep, who = sheepGrabbed) # kill the grabbed sheep
     whoWolves <- of(agents = sim$wolves, var = "who")
-    whoGrabbingWolves <- whoWolves[unique(sheepWolves[,"id"])]
+    whoGrabbingWolves <- whoWolves[unique(sheepWolves[, "id"])]
     grabbingWolves <- turtle(turtles = sim$wolves, who = whoGrabbingWolves)
     energyGrabbingWolves <- of(agents = grabbingWolves, var = "energy")
     # Get energy from eating for the wolves who grabbed sheep
