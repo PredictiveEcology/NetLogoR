@@ -2,8 +2,8 @@
 # are put into the simList. To use objects and functions, use sim$xxx.
 defineModule(sim, list(
   name = "WolfSheepPredation",
-  description = "Translation into R using the NetLogoR and SpaDES packages
-                 of the Wolf-Sheep-Predation NetLogo model created by Wilensky (1997)",
+  description = paste("Translation into R using the NetLogoR and SpaDES packages",
+                      "of the Wolf-Sheep-Predation NetLogo model created by Wilensky (1997)"),
   keywords = c("NetLogo", "NetLogoR", "SpaDES", "wolf", "predator", "sheep", "prey", "predation"),
   authors = c(person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
                      role = c("aut", "cre"))),
@@ -219,8 +219,8 @@ WolfSheepPredationPosition <- function(sim) { # Plot the positions
   return(invisible(sim))
 }
 
-WolfSheepPredationPopSize <- function(sim) {  # Plot the population sizes
-
+# Plot the population sizes
+WolfSheepPredationPopSize <- function(sim) {
   if (time(sim) == params(sim)$WolfSheepPredation$.plotInitialTime) {
     clearPlot()
     plot(time(sim), NLcount(sim$wolves), xlim = c(start(sim), end(sim)),
@@ -328,7 +328,7 @@ reproduceWolves <- function(sim) {
 
 #### Sheep and Wolves procedures
 
-move <- function(turtles){ # sheep and wolves
+move <- function(turtles) {
   # turtles <- right(turtles, angle = runif(n = NLcount(turtles), min = 0, max = 50))
   # turtles <- left(turtles, angle = runif(n = NLcount(turtles), min = 0, max = 50))
   # The two above functions can be replaced by this next one,
@@ -338,7 +338,7 @@ move <- function(turtles){ # sheep and wolves
   return(turtles)
 }
 
-death <- function(turtles){ # sheep and wolves
+death <- function(turtles) {
   # When energy dips below 0, die
   whoEnergy <- of(agents = turtles, var = c("who", "energy"))
   # "who" numbers of the turtles with their energy value below 0
@@ -347,11 +347,10 @@ death <- function(turtles){ # sheep and wolves
   if (length(who0) != 0) {
     turtles <- die(turtles = turtles, who = who0)
   }
-
   return(turtles)
 }
 
-reproduce <- function(turtles, reproTurtles){ # sheep and wolves
+reproduce <- function(turtles, reproTurtles) {
   # Throw dice to see if the turtles will reproduce
   repro <- runif(n = NLcount(turtles), min = 0, max = 100) < reproTurtles
   whoTurtles <- of(agents = turtles, var = "who") # "who" of the turtles before they reproduce
@@ -410,7 +409,7 @@ eatGrass <- function(sim) {
 ### template for catchSheep
 catchSheep <- function(sim) {
   # "who" numbers of sheep that are on the same patches as the wolves
-  sheepWolves <- turtlesOn(world = sim$grass, turtles = sim$sheep, 
+  sheepWolves <- turtlesOn(world = sim$grass, turtles = sim$sheep,
                            agents = sim$wolves, simplify = FALSE)
   if (nrow(sheepWolves) != 0) {
     # sheepWolves[,"whoTurtles"] are the "who" numbers of sheep
@@ -433,7 +432,6 @@ catchSheep <- function(sim) {
 
 ### template for growGrass
 growGrass <- function(sim) {
-
   # Identify patches with grass equal to 0 (brown) and countdown less or equal to 0
   pBrown <- NLwith(world = sim$field, var = "grass", agents = patches(sim$field), val = 0)
   # Countdown values for the patches equal to 0 (brown)

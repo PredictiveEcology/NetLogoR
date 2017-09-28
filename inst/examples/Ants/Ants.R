@@ -215,7 +215,9 @@ wiggle <- function(turtles){
 
 ## Go
 #time <- 0
-while (sum(f_fS_world[, "food"]) != 0) { # as long as there is food in the world
+
+# as long as there is food in the world...
+while (sum(f_fS_world[, "food"]) != 0) {
 #for(i in 1:200){ # to test function speed
 
   # Ants not carrying food

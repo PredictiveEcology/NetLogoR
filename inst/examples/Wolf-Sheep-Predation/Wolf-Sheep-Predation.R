@@ -400,4 +400,3 @@ if (grassOn == TRUE) {
   legend("topleft", legend = c("Sheep", "Wolves"), lwd = c(2, 2), col = c("blue", "red"),
          bg = "white")
 }
-
