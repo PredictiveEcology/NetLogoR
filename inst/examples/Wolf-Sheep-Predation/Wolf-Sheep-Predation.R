@@ -289,7 +289,7 @@ growGrass <- function() { # only patches
     pGrow <- pBrown[pBrownCountdown0, , drop = FALSE]
     # Grow some grass on these patches and reset the countdown
     field <- NLset(world = field, var = c("grass", "countdown"), agents = pGrow,
-                 val = cbind(grass = rep(1, NLcount(pGrow)), 
+                 val = cbind(grass = rep(1, NLcount(pGrow)),
                              countdown = rep(grassTGrowth, NLcount(pGrow))))
   }
 
@@ -309,7 +309,8 @@ growGrass <- function() { # only patches
 # grass <- createWorld(1, 5, 1, 5)
 # grass <- NLset(world = grass, agents = patches(grass), val = c(rep(1, 10), rep(0, 15)))
 # countdown <- grass
-# countdown <- NLset(world = countdown, agents = patches(countdown), val = c(rep(-1, 15), rep(1, 10)))
+# countdown <- NLset(world = countdown, agents = patches(countdown),
+#                    val = c(rep(-1, 15), rep(1, 10)))
 # field <- stackWorlds(grass, countdown)
 # fieldGrow <- growGrass()
 # of(world = fieldGrow, agents = patches(fieldGrow), var = "grass") == c(rep(1, 15), rep(0, 10))
@@ -321,7 +322,7 @@ growGrass <- function() { # only patches
 ## Go
 time <- 0
 maxTime <- 500
-while ((NLany(sheep) | NLany(wolves)) & time < maxTime ) {
+while ((NLany(sheep) | NLany(wolves)) & time < maxTime) {
   ## as long as there are sheep or wolves in the world (time steps maximum at 500)
 
   # Ask sheep
