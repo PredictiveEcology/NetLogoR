@@ -36,20 +36,17 @@ points(t1, pch = 16)
 q <- 0.4 # q is the probability to move directly to the highest surrounding patch
 
 # Create a go procedure with a for loop
-for(time in 1:1000){ # what is inside this loop will be iterated 1000 times
-
+# what is inside this loop will be iterated 1000 times
+for (time in 1:1000) {
   # The "move" function can be written directly here
   # or before in the script as a separate function and then called here
   # The output of the NetLogoR functions is the turtle t1 and it needs to be reassigned to t1
   # so that the updated turtle t1 is used at each time step
 
-  if(runif(n = 1, min = 0, max = 1) < q){ # conditional statement
-
+  if (runif(n = 1, min = 0, max = 1) < q) {
     # Move the turtle t1 uphill considering 8 neighbor patches in the elevation world
     t1 <- uphill(world = elevation, turtles = t1, nNeighbors = 8)
-
   } else {
-
     # Or move the turtle t1 to one of its neighbor patches at random in the elevation world
     # Creating local variables
     # instead of putting everything in the same one line code helps to understand
@@ -57,7 +54,6 @@ for(time in 1:1000){ # what is inside this loop will be iterated 1000 times
     allNeighbors <- neighbors(world = elevation, agents = t1, nNeighbors = 8)
     oneNeighbor <- oneOf(allNeighbors)
     t1 <- moveTo(turtles = t1, agents = oneNeighbor)
-
   }
 
   # Visualize each new position for t1

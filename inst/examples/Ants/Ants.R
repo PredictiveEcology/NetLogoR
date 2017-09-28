@@ -16,7 +16,7 @@ library(NetLogoR)
 nAnts <- 125 # varies from 0 to 200 in the NetLogo model
 rDiff <- 50 # varies from 0 to 99 in the NetLogo model
 rEvap <- 10 # varies from 0 to 99 in the NetLogo model
-# Torus = FALSE
+#torus <- FALSE
 
 
 ## Model setup
@@ -106,7 +106,7 @@ toNest <- function(turtles){
   # Inside the nest
   # whoTurtles for which their nest value equals 1
   turtlesIn <- turtle(turtles, who = whoTurtles[nestChem_pHere[, "nest"] == 1])
-  if(NLcount(turtlesIn) != 0){
+  if (NLcount(turtlesIn) != 0) {
     turtlesIn <- NLset(turtles = turtlesIn, agents = turtlesIn, var = "color", val = "red")
     turtlesIn <- right(turtles = turtlesIn, angle = 180) # drop food and head out again
   }
@@ -114,7 +114,7 @@ toNest <- function(turtles){
   # Outside of the nest
   # whoTurtles for which their nest value equals 0
   turtlesOut <- turtle(turtles, who = whoTurtles[nestChem_pHere[, "nest"] == 0])
-  if(NLcount(turtlesOut) != 0){
+  if (NLcount(turtlesOut) != 0) {
     # pHere for which their nest value equals 0
     pHereOut <- pHere[nestChem_pHere[, "nest"] == 0, ,
                       drop = FALSE] # drop = FALSE keeps a format matrix when 1 row
@@ -134,17 +134,18 @@ toNest <- function(turtles){
   return(list(turtles, world))
 }
 
-lookFood <- function(turtles){
+lookFood <- function(turtles) {
   #print(paste("lookFood", NLcount(turtles)))
 
   pHere <- patchHere(world = world, turtles = turtles)
-  foodChem_pHere <- of(world = world, agents = pHere,
-                       var = c("food", "chemical")) # faster to extract both values at once
+
+  # faster to extract both values at once
+  foodChem_pHere <- of(world = world, agents = pHere, var = c("food", "chemical"))
   whoTurtles <- of(agents = turtles, var = "who")
 
   # Where there is food
   turtlesFood <- turtle(turtles, who = whoTurtles[foodChem_pHere[, "food"] > 0])
-  if(NLcount(turtlesFood) != 0){
+  if (NLcount(turtlesFood) != 0) {
     # Pick up food
     turtlesFood <- NLset(turtles = turtlesFood, agents = turtlesFood, var = "color",
                          val = "orange")
@@ -160,7 +161,7 @@ lookFood <- function(turtles){
   turtlesChem <- turtle(turtles,
                         who = whoTurtles[foodChem_pHere[, "chemical"] >= 0.05 &
                                            foodChem_pHere[, "chemical"] < 2])
-  if(NLcount(turtlesChem) != 0){
+  if (NLcount(turtlesChem) != 0) {
     turtlesChem <- upPatch(turtles = turtlesChem, varPatch = "chemical")
     # Reconstruct the turtles with turtlesChem modified and the others
     turtles <- turtleSet(turtlesChem, other(agents = turtles, except = turtlesChem))
@@ -214,12 +215,12 @@ wiggle <- function(turtles){
 
 ## Go
 #time <- 0
-while(sum(f_fS_world[, "food"]) != 0){ # as long as there is food in the world
+while (sum(f_fS_world[, "food"]) != 0) { # as long as there is food in the world
 #for(i in 1:200){ # to test function speed
 
   # Ants not carrying food
   aRed <- NLwith(agents = ants, var = "color", val = "red")
-  if(NLcount(aRed) != 0){
+  if (NLcount(aRed) != 0) {
     resLookFood <- lookFood(aRed) # look for it
     aRed <- resLookFood[[1]]
     world <- resLookFood[[2]]
@@ -227,7 +228,7 @@ while(sum(f_fS_world[, "food"]) != 0){ # as long as there is food in the world
 
   # Ants carrying food
   aOrange <- NLwith(agents = ants, var = "color", val = "orange")
-  if(NLcount(aOrange) != 0){
+  if (NLcount(aOrange) != 0) {
     resToNest <- toNest(aOrange) # take it back to nest
     aOrange <- resToNest[[1]]
     world <- resToNest[[2]]

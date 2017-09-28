@@ -100,7 +100,7 @@
 \S4method{$}{agentMatrix}(x, name)
 }
 \arguments{
-\item{x}{A \code{NLworld} object from which to extract element(s) or
+\item{x}{A \code{agentMatrix} object from which to extract element(s) or
 in which to replace element(s).}
 
 \item{i}{Indices specifying elements to extract or replace.}
