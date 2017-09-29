@@ -342,7 +342,7 @@ setMethod(
 #'          extent will be bigger by 1 on the width and on the height.
 #'
 #' @examples
-#' r1 <- raster(extent(c(0,10,0,10)), nrows = 10, ncols = 10)
+#' r1 <- raster(extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)
 #' r1[]<-runif(100)
 #' w1 <- raster2world(r1, method = "ngb")
 #' plot(r1)

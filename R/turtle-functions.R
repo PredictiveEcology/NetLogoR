@@ -282,7 +282,7 @@ setMethod(
       }
       coords <- c(fdXcor, fdYcor)
       dim(coords) <- c(length(fdXcor), 2L)
-      colnames(coords) <- c("x","y")
+      colnames(coords) <- c("x", "y")
       tCoords <- wrap(coords, extent(world))
       fdXcor <- tCoords[, 1]
       fdYcor <- tCoords[, 2]
@@ -450,14 +450,14 @@ setMethod(
     if (home == "home0") {
       if (world@extent@xmin <= 0 & world@extent@xmax >= 0 & world@extent@ymin <= 0
           & world@extent@ymax >= 0) {
-        newTurtles<- setXY(turtles = turtles, xcor = 0, ycor = 0, world = world, torus = FALSE)
+        newTurtles <- setXY(turtles = turtles, xcor = 0, ycor = 0, world = world, torus = FALSE)
       } else {
         stop("The world provided does not contain the location [x = 0, y = 0]")
       }
     }
 
     if (home == "center") {
-      newTurtles<- setXY(turtles = turtles,
+      newTurtles <- setXY(turtles = turtles,
                          xcor = (((world@extent@xmax - world@extent@xmin) / 2) +
                                    world@extent@xmin),
                          ycor = (((world@extent@ymax - world@extent@ymin) / 2) +
@@ -466,12 +466,12 @@ setMethod(
     }
 
     if (home == "pCorner") {
-      newTurtles<- setXY(turtles = turtles, xcor = world@minPxcor, ycor = world@minPycor,
+      newTurtles <- setXY(turtles = turtles, xcor = world@minPxcor, ycor = world@minPycor,
                          world = world, torus = FALSE)
     }
 
     if (home == "corner") {
-      newTurtles<- setXY(turtles = turtles, xcor = world@extent@xmin, ycor = world@extent@ymin,
+      newTurtles <- setXY(turtles = turtles, xcor = world@extent@xmin, ycor = world@extent@ymin,
                          world = world, torus = FALSE)
     }
 
@@ -735,7 +735,7 @@ setMethod(
     }
 
     newData <- newData[rep(seq_len(nrow(newData)), n), , drop = FALSE]
-    newData[, "who"] <- (max(turtles@.Data[,"who"]) + 1):(max(turtles@.Data[,"who"]) + sum(n))
+    newData[, "who"] <- (max(turtles@.Data[, "who"]) + 1):(max(turtles@.Data[, "who"]) + sum(n))
 
     if (!missing(breed)) {
       if (!breed %in% turtles@levels$breed) {
@@ -1937,7 +1937,7 @@ setMethod(
       return(newTurtles)
     } else {
 
-      turtles <- hatch(turtles = turtles, who = max(turtles@.Data[,"who"]),
+      turtles <- hatch(turtles = turtles, who = max(turtles@.Data[, "who"]),
                        n = NLcount(newTurtles))
       # Replace the locations and headings of newTurtles inside turtles
       turtles@.Data[(nrow(turtles@.Data) - NLcount(newTurtles) + 1):
@@ -1958,8 +1958,8 @@ setMethod(
                          val = valToReplace)
       }
 
-      # newTurtles@.Data[,"who"] <- (max(turtles@.Data[,"who"]) + 1):(NLcount(newTurtles) +
-      #                                                               max(turtles@.Data[,"who"]))
+      # newTurtles@.Data[, "who"] <- (max(turtles@.Data[, "who"]) + 1):(NLcount(newTurtles) +
+      #                                                               max(turtles@.Data[, "who"]))
       # # unique who number
       # newTurtlesBreed <- of(agents = newTurtles, var = "breed")
       # newTurtlesColor <- of(agents = newTurtles, var = "color")
@@ -2348,7 +2348,7 @@ setMethod(
       agents = patchHere(world = world, turtles = agents)
     }
 
-    pTurtles <- round(turtles@.Data[, c("xcor", "ycor","who"), drop = FALSE])
+    pTurtles <- round(turtles@.Data[, c("xcor", "ycor", "who"), drop = FALSE])
     colnames(pTurtles)[1:2] <- c("pxcor", "pycor") # awkward column name change
 
     if (simplify == TRUE) {
@@ -2387,7 +2387,7 @@ setMethod(
       length(pOn) <- length(pOn) + dims[1]
       dim(pOn) <- dims+c(0, 1)
       colnames(pOn) <- c(colNames, "id")
-      pOn[,"id"] <- na.omit(b[pTurtles[, 1:2, drop = FALSE] -
+      pOn[, "id"] <- na.omit(b[pTurtles[, 1:2, drop = FALSE] -
                                 (c(attr(world, "minPxcor"), attr(world, "minPycor")) - 1)])
 
       pOn <- pOn[order(pOn[, "id"]), , drop = FALSE]
