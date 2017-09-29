@@ -1107,7 +1107,7 @@ setMethod(
                FUN = oneOf, keepmatrix = TRUE)
       } else {
         # whoNUmbers of turtles with id
-        whoTurtles <- tapply(X = agents[,"whoTurtles"], INDEX = as.factor(agents[, "id"]),
+        whoTurtles <- tapply(X = agents[, "whoTurtles"], INDEX = as.factor(agents[, "id"]),
                              FUN = function(x) ifelse(length(x) == 1, x, sample(x, size = 1)))
         return(as.numeric(whoTurtles))
       }
@@ -1186,7 +1186,7 @@ setMethod(
 
       val <- of(world = world, agents = agents)
       agentsVal <- cbind(val, agents)
-      agentsVal <- agentsVal[order(-agentsVal[, "val"]),] # decreasing order
+      agentsVal <- agentsVal[order(-agentsVal[, "val"]), ] # decreasing order
 
       minVal <- min(agentsVal[1:n, "val"], na.rm = TRUE)
       maxAgents <- agentsVal[agentsVal[, "val"] >= minVal, , drop = FALSE]
@@ -1194,8 +1194,8 @@ setMethod(
       # To break ties randomly
       if (NROW(maxAgents) != n) {
         nToRemove <- NROW(maxAgents) - n # how many ties to remove
-        toKeep <- sample(1:NROW(maxAgents[maxAgents[,"val"] == minVal,]),
-                         size = NROW(maxAgents[maxAgents[,"val"] == minVal,]) - nToRemove)
+        toKeep <- sample(1:NROW(maxAgents[maxAgents[, "val"] == minVal, ]),
+                         size = NROW(maxAgents[maxAgents[, "val"] == minVal, ]) - nToRemove)
         maxAgents <- rbind(maxAgents[maxAgents[, "val"] > minVal, ],
                            maxAgents[maxAgents[, "val"] == minVal, ][toKeep, ])
       }
@@ -1354,13 +1354,13 @@ setMethod(
       # To break ties randomly
       if (NROW(minAgents) != n) {
         nToRemove <- NROW(minAgents) - n # how many ties to remove
-        toKeep <- sample(1:NROW(minAgents[minAgents[, "val"] == maxVal,]),
-                         size = NROW(minAgents[minAgents[,"val"] == maxVal,]) - nToRemove)
-        minAgents <- rbind(minAgents[minAgents[,"val"] < maxVal,],
-                           minAgents[minAgents[,"val"] == maxVal,][toKeep,])
+        toKeep <- sample(1:NROW(minAgents[minAgents[, "val"] == maxVal, ]),
+                         size = NROW(minAgents[minAgents[, "val"] == maxVal, ]) - nToRemove)
+        minAgents <- rbind(minAgents[minAgents[, "val"] < maxVal, ],
+                           minAgents[minAgents[, "val"] == maxVal, ][toKeep, ])
       }
 
-      return(minAgents[,c("pxcor", "pycor"), drop = FALSE])
+      return(minAgents[, c("pxcor", "pycor"), drop = FALSE])
     }
   }
 )
@@ -1513,11 +1513,11 @@ setMethod(
   definition = function(agents, radius, agents2, world, torus) {
     if (inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
       # Transform agent into a matrix
-      agents <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
+      agents <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
       inRadius(agents = agents, radius = radius, agents2 = agents2, world = world, torus = torus)
     } else if (inherits(agents, "agentMatrix") & !inherits(agents2, "agentMatrix")) {
       # Transform agent into a matrix
-      agents <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
+      agents <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
       inRadius(agents = agents, radius = radius, agents2 = agents2, world = world, torus = torus)
     } else if (!inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
       # Transform the agents into SP to use gBuffer
@@ -1555,19 +1555,19 @@ setMethod(
         agentsWrap <- wrap(agents2cAll[pOver, , drop = FALSE], world@extent)
         agentsXY <- unique(cbind(agentsWrap, id = rep(as.numeric(names(pOverL)), lengthID)))
 
-        tOn <- merge(agentsXY, agents2@.Data[,c("xcor", "ycor", "who"), drop = FALSE],
+        tOn <- merge(agentsXY, agents2@.Data[, c("xcor", "ycor", "who"), drop = FALSE],
                      by.x = c("x", "y"), by.y = c("xcor", "ycor"))
-        return(tOn[order(tOn[,"id"]), c("who", "id")])
+        return(tOn[order(tOn[, "id"]), c("who", "id")])
       } else {
         pOverL <- over(pBuffer,
-                       SpatialPoints(coords = agents2@.Data[,c("xcor", "ycor"), drop = FALSE]),
+                       SpatialPoints(coords = agents2@.Data[, c("xcor", "ycor"), drop = FALSE]),
                        returnList = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- unique(cbind(agents2@.Data[pOver, c("xcor", "ycor"), drop = FALSE],
                                  id = rep(as.numeric(names(pOverL)), lengthID)))
 
-        tOn <- merge(agentsXY, agents2@.Data[,c("xcor", "ycor", "who"), drop = FALSE])
+        tOn <- merge(agentsXY, agents2@.Data[, c("xcor", "ycor", "who"), drop = FALSE])
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       }
     } else {
@@ -1602,7 +1602,7 @@ setMethod(
         pOverL <- over(pBuffer, sp1, returnList = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
-        agentsXY <- cbind(agents2[pOver,, drop = FALSE],
+        agentsXY <- cbind(agents2[pOver, , drop = FALSE],
                           id = rep(as.numeric(names(pOverL)), lengthID))
 
         return(agentsXY)
@@ -1687,13 +1687,13 @@ setMethod(
   signature = c(turtles = "agentMatrix", radius = "numeric", angle = "numeric", agents = "matrix"),
   definition = function(turtles, radius, angle, agents, world, torus) {
     if (inherits(agents, "agentMatrix")) {
-      agentsCoords <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
+      agentsCoords <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
       colnames(agentsCoords) <- c("pxcor", "pycor")
       patchInCone <- inCone(turtles = turtles, radius = radius, angle = angle,
                             agents = agentsCoords, world = world, torus = torus)
       colnames(patchInCone)[1:2] <- c("xcor", "ycor")
-      agentsInCone <- merge(patchInCone, agents@.Data[,c("xcor", "ycor", "who"), drop = FALSE])
-      return(agentsInCone[order(agentsInCone[,"id"]), c("who", "id")])
+      agentsInCone <- merge(patchInCone, agents@.Data[, c("xcor", "ycor", "who"), drop = FALSE])
+      return(agentsInCone[order(agentsInCone[, "id"]), c("who", "id")])
     } else {
       # Find the patches within distances
       agentsInRadius <- inRadius(agents = turtles, radius = radius, agents2 = agents,
@@ -1706,7 +1706,7 @@ setMethod(
 
         # Direction from the turtle to each of their patches within radius distance
         tDir <- lapply(unique(agentsInRadius[, "id"]), function(x) {
-          towards(world = world, agents = turtles[x,],
+          towards(world = world, agents = turtles[x, ],
                   agents2 = agentsInRadius[agentsInRadius[, "id"] == x,
                                            c("pxcor", "pycor"), drop = FALSE],
                   torus = torus)
@@ -1726,7 +1726,7 @@ setMethod(
         # Is the rotation to face the patches smaller than the maximum rotation allowed
         pWithin <- lapply(1:length(unique(agentsInRadius[, "id"])), function(x) {
           posPatch <- which(abs(tCone[[x]]) < angle[x])
-          unique(agentsInRadius[agentsInRadius[,"id"] == unique(agentsInRadius[, "id"])[x],
+          unique(agentsInRadius[agentsInRadius[, "id"] == unique(agentsInRadius[, "id"])[x],
                                 c("pxcor", "pycor"), drop = FALSE][posPatch, , drop = FALSE])
         })
 
@@ -1814,137 +1814,152 @@ setMethod(
 
           # Update the levels as some may have disapeared
           turtlesLevelsVar <- turtles@levels[[var]] # old levels
-          turtlesVar <- turtles@.Data[,var] # old levels number
+          turtlesVar <- turtles@.Data[, var] # old levels number
           turtlesVarUnique <- unique(turtlesVar) # unique old levels numbers
-          turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)[order(turtlesVarUnique)]] # levels in the order of the unique old levels numbers
+          # levels in the order of the unique old levels numbers
+          turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)[order(turtlesVarUnique)]]
           turtles@levels[[var]] <- turtlesLevelsVarUpdated
-          turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique, to = rank(turtlesVarUnique)) # replace the levels number starting to 1 and increasing by 1
-          turtles@.Data[,var] <- turtlesVarUpdated
+          # replace the levels number starting to 1 and increasing by 1
+          turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique, 
+                                         to = rank(turtlesVarUnique))
+          turtles@.Data[, var] <- turtlesVarUpdated
 
           if (identical(agents, turtles)) {
-            turtles[,var] <- as.character(val)
+            turtles[, var] <- as.character(val)
 
           } else {
 
-            iAgents <- match(agents@.Data[,"who"], turtles@.Data[,"who"])
-            turtles[iAgents,var] <- as.character(val)
+            iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
+            turtles[iAgents, var] <- as.character(val)
           }
 
         } else {
 
           if (identical(agents, turtles)) {
-            turtles@.Data[,var] <- as.numeric(val)
+            turtles@.Data[, var] <- as.numeric(val)
 
           } else {
 
-            iAgents <- match(agents@.Data[,"who"], turtles@.Data[,"who"])
-            turtles@.Data[iAgents,var] <- as.numeric(val)
+            iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
+            turtles@.Data[iAgents, var] <- as.numeric(val)
           }
         }
       } else {
 
-        var_levels <- which(var %in% names(turtles@levels))
-        if (length(var_levels) != 0) {
-          var_num <- (1:length(var))[! (1:length(var)) %in% var_levels]
+        varLevels <- which(var %in% names(turtles@levels))
+        if (length(varLevels) != 0) {
+          varNum <- (1:length(var))[! (1:length(var)) %in% varLevels]
         } else {
-          var_num <- 1:length(var)
+          varNum <- 1:length(var)
         }
 
-        if (length(var_levels) != 0) {
-          if (length(var_levels) == 1) {
+        if (length(varLevels) != 0) {
+          if (length(varLevels) == 1) {
 
             # Update the levels as some may have disapeared
-            turtlesLevelsVar <- turtles@levels[[var[var_levels]]] # old levels
-            turtlesVar <- turtles@.Data[,var[var_levels]] # old levels number
+            turtlesLevelsVar <- turtles@levels[[var[varLevels]]] # old levels
+            turtlesVar <- turtles@.Data[, var[varLevels]] # old levels number
             turtlesVarUnique <- unique(turtlesVar) # unique old levels numbers
-            turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)[order(turtlesVarUnique)]] # levels in the order of the unique old levels numbers
-            turtles@levels[[var[var_levels]]] <- turtlesLevelsVarUpdated
-            turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique, to = rank(turtlesVarUnique)) # replace the levels number starting to 1 and increasing by 1
-            turtles@.Data[,var[var_levels]] <- turtlesVarUpdated
+            # levels in the order of the unique old levels numbers
+            turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)
+                                                        [order(turtlesVarUnique)]]
+            turtles@levels[[var[varLevels]]] <- turtlesLevelsVarUpdated
+            # replace the levels number starting to 1 and increasing by 1
+            turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique,
+                                           to = rank(turtlesVarUnique))
+            turtles@.Data[, var[varLevels]] <- turtlesVarUpdated
 
             if (identical(agents, turtles)) {
-              turtles[,var[var_levels]] <- as.character(val[,var_levels])
+              turtles[, var[varLevels]] <- as.character(val[, varLevels])
 
             } else {
 
-              iAgents <- match(agents@.Data[,"who"], turtles@.Data[,"who"])
-              turtles[iAgents,var[var_levels]] <- as.character(val[,var_levels])
+              iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
+              turtles[iAgents, var[varLevels]] <- as.character(val[, varLevels])
             }
 
           } else {
 
             if (identical(agents, turtles)) {
 
-              for(i in var_levels) {
+              for(i in varLevels) {
 
                 # Update the levels as some may have disapeared
                 turtlesLevelsVar <- turtles@levels[[var[i]]] # old levels
-                turtlesVar <- turtles@.Data[,var[i]] # old levels number
+                turtlesVar <- turtles@.Data[, var[i]] # old levels number
                 turtlesVarUnique <- unique(turtlesVar) # unique old levels numbers
-                turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)[order(turtlesVarUnique)]] # levels in the order of the unique old levels numbers
+                # levels in the order of the unique old levels numbers
+                turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)
+                                                            [order(turtlesVarUnique)]]
                 turtles@levels[[var[i]]] <- turtlesLevelsVarUpdated
-                turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique, to = rank(turtlesVarUnique)) # replace the levels number starting to 1 and increasing by 1
-                turtles@.Data[,var[i]] <- turtlesVarUpdated
+                # replace the levels number starting to 1 and increasing by 1
+                turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique,
+                                               to = rank(turtlesVarUnique))
+                turtles@.Data[, var[i]] <- turtlesVarUpdated
 
-                turtles[,var[i]] <- as.character(val[,var[i]])
+                turtles[, var[i]] <- as.character(val[, var[i]])
               }
             } else {
 
-              iAgents <- match(agents@.Data[,"who"], turtles@.Data[,"who"])
-              for(i in var_levels) {
+              iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
+              for(i in varLevels) {
 
                 # Update the levels as some may have disapeared
                 turtlesLevelsVar <- turtles@levels[[var[i]]] # old levels
-                turtlesVar <- turtles@.Data[,var[i]] # old levels number
+                turtlesVar <- turtles@.Data[, var[i]] # old levels number
                 turtlesVarUnique <- unique(turtlesVar) # unique old levels numbers
-                turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)[order(turtlesVarUnique)]] # levels in the order of the unique old levels numbers
+                # levels in the order of the unique old levels numbers
+                turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)
+                                                            [order(turtlesVarUnique)]]
                 turtles@levels[[var[i]]] <- turtlesLevelsVarUpdated
-                turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique, to = rank(turtlesVarUnique)) # replace the levels number starting to 1 and increasing by 1
-                turtles@.Data[,var[i]] <- turtlesVarUpdated
+                # replace the levels number starting to 1 and increasing by 1
+                turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique,
+                                               to = rank(turtlesVarUnique))
+                turtles@.Data[, var[i]] <- turtlesVarUpdated
 
-                turtles[iAgents,var[i]] <- as.character(val[,i])
+                turtles[iAgents, var[i]] <- as.character(val[, i])
               }
             }
           }
         }
 
-        if (length(var_num) != 0) {
+        if (length(varNum) != 0) {
 
-          if (length(var_num) == 1) {
-            if (identical(agents@.Data[,"who"], turtles@.Data[,"who"])) {
+          if (length(varNum) == 1) {
+            if (identical(agents@.Data[, "who"], turtles@.Data[, "who"])) {
 
-              turtles@.Data[,var[var_num]] <- as.numeric(val[,var_num])
+              turtles@.Data[, var[varNum]] <- as.numeric(val[, varNum])
 
             } else {
 
-              iAgents <- match(agents@.Data[,"who"], turtles@.Data[,"who"])
-              turtles@.Data[iAgents,var[var_num]] <- as.numeric(val[,var_num])
+              iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
+              turtles@.Data[iAgents, var[varNum]] <- as.numeric(val[, varNum])
             }
           } else {
 
             if (identical(agents, turtles)) {
 
-              if (inherits(val[,var_num], "data.frame")) {
+              if (inherits(val[, varNum], "data.frame")) {
 
-                turtles@.Data[,var[var_num]] <- as.matrix(val[,var_num])
+                turtles@.Data[, var[varNum]] <- as.matrix(val[, varNum])
 
-              } else if (inherits(val[,var_num, drop = FALSE], "matrix")) {
+              } else if (inherits(val[, varNum, drop = FALSE], "matrix")) {
 
-                turtles@.Data[,var[var_num]] <- matrix(as.numeric(val[,var_num]),
-                                                       ncol = length(var_num))
+                turtles@.Data[, var[varNum]] <- matrix(as.numeric(val[, varNum]),
+                                                        ncol = length(varNum))
               }
             } else {
 
-              iAgents <- match(agents@.Data[,"who"], turtles@.Data[,"who"])
+              iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
 
-              if (inherits(val[,var_num], "data.frame")) {
+              if (inherits(val[, varNum], "data.frame")) {
 
-                turtles@.Data[iAgents,var[var_num]] <- as.matrix(val[,var_num])
+                turtles@.Data[iAgents, var[varNum]] <- as.matrix(val[, varNum])
 
-              } else if (inherits(val[,var_num, drop = FALSE], "matrix")) {
+              } else if (inherits(val[, varNum, drop = FALSE], "matrix")) {
 
-                turtles@.Data[iAgents,var[var_num]] <- matrix(as.numeric(val[,var_num]),
-                                                              ncol = length(var_num))
+                turtles@.Data[iAgents, var[varNum]] <- matrix(as.numeric(val[, varNum]),
+                                                               ncol = length(varNum))
 
               }
             }
@@ -1953,7 +1968,7 @@ setMethod(
       }
 
       if (any(var == "who")) { # if the who numbers have been modified, check for duplicates
-        if (anyDuplicated(turtles@.Data[,"who"]) != 0) {
+        if (anyDuplicated(turtles@.Data[, "who"]) != 0) {
           warning("Duplicated who numbers among the resulting turtles. Please, reassign who
                   numbers to keep them unique inside the agentset.")
         }
@@ -1986,12 +2001,12 @@ setMethod(
 
       } else {
 
-        agents[is.na(agents[,1]),2] <- NA
-        agents[is.na(agents[,2]),1] <- NA
+        agents[is.na(agents[, 1]), 2] <- NA
+        agents[is.na(agents[, 2]), 1] <- NA
 
-        val <- val[!is.na(agents[,1])]
-        i <- agents[!is.na(agents[,1]), 1]
-        j <- agents[!is.na(agents[,1]), 2]
+        val <- val[!is.na(agents[, 1])]
+        i <- agents[!is.na(agents[, 1]), 1]
+        j <- agents[!is.na(agents[, 1]), 2]
 
         world[i, j] <- val
       }
@@ -2020,16 +2035,16 @@ setMethod(
 
         if (identical(patches(world), agents)) {
 
-          world@.Data[,,var] <- matrix(val, ncol = dim(world)[2], byrow = TRUE)
+          world@.Data[, , var] <- matrix(val, ncol = dim(world)[2], byrow = TRUE)
 
         } else {
 
-          agents[is.na(agents[,1]),2] <- NA
-          agents[is.na(agents[,2]),1] <- NA
+          agents[is.na(agents[, 1]), 2] <- NA
+          agents[is.na(agents[, 2]), 1] <- NA
 
-          val <- val[!is.na(agents[,1])]
-          pxcor <- agents[!is.na(agents[,1]), 1]
-          pycor <- agents[!is.na(agents[,1]), 2]
+          val <- val[!is.na(agents[, 1])]
+          pxcor <- agents[!is.na(agents[, 1]), 1]
+          pycor <- agents[!is.na(agents[, 1]), 2]
 
           matj <- pxcor - world@minPxcor + 1
           mati <- world@maxPycor - pycor + 1
@@ -2043,30 +2058,30 @@ setMethod(
         if (identical(patches(world), agents)) {
 
           for(i in 1:length(var)) {
-            val_i <- val[,var[i]]
+            val_i <- val[, var[i]]
 
             if (length(val_i) == 1) {
               val_i <- rep(val_i, NROW(agents))
             }
-            world@.Data[,,var[i]] <- matrix(val_i, ncol = dim(world)[2], byrow = TRUE)
+            world@.Data[, , var[i]] <- matrix(val_i, ncol = dim(world)[2], byrow = TRUE)
 
           }
         } else {
 
-          matj <- agents[,1] - world@minPxcor + 1
-          mati <- world@maxPycor - agents[,2] + 1
+          matj <- agents[, 1] - world@minPxcor + 1
+          mati <- world@maxPycor - agents[, 2] + 1
 
           mati[is.na(matj)] <- NA
           matj[is.na(mati)] <- NA
 
           if (nrow(val) == 1 & length(matj) != 1) {
-            val <- val[rep(1, length(matj)),]
+            val <- val[rep(1, length(matj)), ]
           }
 
           if (is.matrix(val)) {
             val <- val[!is.na(matj), , drop = FALSE]
           } else {
-            val <- val[!is.na(matj),]
+            val <- val[!is.na(matj), ]
           }
 
           matj <- matj[!is.na(matj)]
@@ -2074,7 +2089,7 @@ setMethod(
 
           for(i in 1:length(var)) {
              var_k <- match(var[i], dimnames(world@.Data)[[3]])
-            world@.Data[cbind(mati, matj, var_k)] <- val[,var[i]]
+            world@.Data[cbind(mati, matj, var_k)] <- val[, var[i]]
           }
         }
       }
