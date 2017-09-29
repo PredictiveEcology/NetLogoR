@@ -103,7 +103,7 @@ setMethod(
     if (missing(color))
       color <- rainbow(n)
 
-    turtles<-new("agentMatrix",
+    turtles <- new("agentMatrix",
                  coords = coords,
                  who = seq(from = 0, to = n - 1, by = 1),
                  heading = heading,
@@ -820,8 +820,8 @@ setMethod(
 #' @examples
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
 #'                           data = runif(25))
-#' t1 <- createTurtles(n = 10,coords = cbind(xcor = randomXcor(world = w1, n = 10),
-#'                                           ycor = randomYcor(world = w1, n = 10)))
+#' t1 <- createTurtles(n = 10, coords = cbind(xcor = randomXcor(world = w1, n = 10),
+#'                                            ycor = randomYcor(world = w1, n = 10)))
 #' plot(w1)
 #' points(t1, col = of(agents = t1, var = "color"), pch = 16)
 #'
@@ -1027,7 +1027,7 @@ setMethod(
         toShortest <- agents2
         for(i in 1:NROW(agents)) {
           # All the possibilities for each agents (i.e., agents2 and the wrapped agents2)
-          allToCoords <- rbind(agents2[i, ], to1[i, ], to2[i, ], to3[i, ], to4[i, ], to5[i,],
+          allToCoords <- rbind(agents2[i, ], to1[i, ], to2[i, ], to3[i, ], to4[i, ], to5[i, ],
                                to6[i, ], to7[i, ], to8[i, ])
           toShortest[i, ] <- allToCoords[match(distMin[i], allDist[i, ]), ]
           # if ties, take the first match (good because favor the non wrapped distances)
@@ -1905,7 +1905,7 @@ setMethod(
 
     } else { # if length(n) != 0
 
-      li$patches <- cbind(as.numeric(rep(li$patches[, 1], n)), as.numeric(rep(li$patches[,2], n)))
+      li$patches <- cbind(as.numeric(rep(li$patches[, 1], n)), as.numeric(rep(li$patches[, 2], n)))
       colnames(li$patches) <- c("xcor", "ycor")
 
       if (missing(breed)) li$breed <- rep("turtle", sum(n))
@@ -1941,7 +1941,7 @@ setMethod(
                        n = NLcount(newTurtles))
       # Replace the locations and headings of newTurtles inside turtles
       turtles@.Data[(nrow(turtles@.Data) - NLcount(newTurtles) + 1):
-                      nrow(turtles@.Data), c(1, 2, 4)] <- newTurtles@.Data[,c(1, 2, 4)]
+                      nrow(turtles@.Data), c(1, 2, 4)] <- newTurtles@.Data[, c(1, 2, 4)]
       # Replace the breed and color of the newTurtles inside turtles
       whoNewTurtles <- turtles@.Data[(nrow(turtles@.Data) - NLcount(newTurtles) + 1):
                                        nrow(turtles@.Data), 3]
@@ -2596,7 +2596,7 @@ setMethod(
 
       if (anyDuplicated(allTurtles$who) != 0) {
         warning("Duplicated turtles based on who numbers are present among the inputs.")
-        allTurtles <- allTurtles[match(unique(allTurtles$who), allTurtles$who),]
+        allTurtles <- allTurtles[match(unique(allTurtles$who), allTurtles$who), ]
       }
 
       if (!is(allTurtles, "agentMatrix"))
@@ -2997,7 +2997,7 @@ setMethod(
 #' # Patches
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
 #'                           data = 1:25)
-#' of(world = w1, agents = patch(w1, c(0,0), c(4,0)))
+#' of(world = w1, agents = patch(w1, c(0, 0), c(4, 0)))
 #'
 #' # Turtles
 #' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
@@ -3105,8 +3105,8 @@ setMethod(
 #'          default values as in \code{createTurtles()}.
 #'
 #' @examples
-#' sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1,2,3), y = c(1,2,3)),
-#'                               data = cbind.data.frame(age = c(0,0,3),
+#' sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
+#'                               data = cbind.data.frame(age = c(0, 0, 3),
 #'                                                       sex = c("F", "F", "M")))
 #' t1 <- spdf2turtles(spdf = sp1)
 #'

@@ -762,7 +762,7 @@ cbind.agentMatrix <- function(..., deparse.level) {
       tmp[[2]]@.Data <- tmp[[2]]@.Data[rep_len(1, length.out = NROW(tmp[[1]]@.Data)), ]
     }
 
-    if (any(colnames(tmp[[1]]@.Data)[- (1:2)] %in% colnames(tmp[[2]]@.Data)[-(1:2)])) {
+    if (any(colnames(tmp[[1]]@.Data)[- (1:2)] %in% colnames(tmp[[2]]@.Data)[- (1:2)])) {
       stop("There are duplicate columns in the two agentMatrix objects. Please remove duplicates.")
     }
     newMat <- cbind(tmp[[1]]@.Data, tmp[[2]]@.Data[, - (1:2), drop = FALSE])
