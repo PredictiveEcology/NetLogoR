@@ -440,10 +440,9 @@ setMethod(
   "home",
   signature = c("worldNLR", "agentMatrix", "character"),
   definition = function(world, turtles, home) {
-
     if (home == "home0") {
-      if (world@extent@xmin <= 0 & world@extent@xmax >= 0 & world@extent@ymin <= 0
-          & world@extent@ymax >= 0) {
+      if (world@extent@xmin <= 0 & world@extent@xmax >= 0 &
+          world@extent@ymin <= 0 & world@extent@ymax >= 0) {
         newTurtles <- setXY(turtles = turtles, xcor = 0, ycor = 0, world = world, torus = FALSE)
       } else {
         stop("The world provided does not contain the location [x = 0, y = 0]")
@@ -472,7 +471,6 @@ setMethod(
     return(newTurtles)
   }
 )
-
 
 ################################################################################
 #' x-increment
