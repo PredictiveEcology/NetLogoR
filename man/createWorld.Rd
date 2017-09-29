@@ -45,8 +45,7 @@ If \code{data} is provided, values are assigned by rows.
          See \code{help("worldMatrix-class")} for more details on the worldMatrix class.
 }
 \examples{
-w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-                          data = 1:25)
+w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data = 1:25)
 plot(w1)
 
 
