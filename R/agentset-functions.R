@@ -1796,7 +1796,7 @@ setGeneric(
   "NLset",
   function(world, turtles, agents, var, val) {
     standardGeneric("NLset")
-  })
+})
 
 #' @export
 #' @rdname NLset
@@ -1805,13 +1805,9 @@ setMethod(
   signature = c(world = "missing", turtles = "agentMatrix", agents = "agentMatrix",
                 var = "character", val = "ANY"),
   definition = function(turtles, agents, var, val) {
-
     if (NROW(agents) != 0) {
-
       if (length(var) == 1) {
-
         if (!is.na(match(var, names(turtles@levels)))) {
-
           # Update the levels as some may have disapeared
           turtlesLevelsVar <- turtles@levels[[var]] # old levels
           turtlesVar <- turtles@.Data[, var] # old levels number
@@ -1826,36 +1822,28 @@ setMethod(
 
           if (identical(agents, turtles)) {
             turtles[, var] <- as.character(val)
-
           } else {
-
             iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
             turtles[iAgents, var] <- as.character(val)
           }
-
         } else {
-
           if (identical(agents, turtles)) {
             turtles@.Data[, var] <- as.numeric(val)
-
           } else {
-
             iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
             turtles@.Data[iAgents, var] <- as.numeric(val)
           }
         }
       } else {
-
         varLevels <- which(var %in% names(turtles@levels))
         if (length(varLevels) != 0) {
-          varNum <- (1:length(var))[! (1:length(var)) %in% varLevels]
+          varNum <- (1:length(var))[!(1:length(var)) %in% varLevels]
         } else {
           varNum <- 1:length(var)
         }
 
         if (length(varLevels) != 0) {
           if (length(varLevels) == 1) {
-
             # Update the levels as some may have disapeared
             turtlesLevelsVar <- turtles@levels[[var[varLevels]]] # old levels
             turtlesVar <- turtles@.Data[, var[varLevels]] # old levels number
@@ -1879,11 +1867,8 @@ setMethod(
             }
 
           } else {
-
             if (identical(agents, turtles)) {
-
-              for(i in varLevels) {
-
+              for (i in varLevels) {
                 # Update the levels as some may have disapeared
                 turtlesLevelsVar <- turtles@levels[[var[i]]] # old levels
                 turtlesVar <- turtles@.Data[, var[i]] # old levels number
@@ -1900,9 +1885,8 @@ setMethod(
                 turtles[, var[i]] <- as.character(val[, var[i]])
               }
             } else {
-
               iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
-              for(i in varLevels) {
+              for (i in varLevels) {
 
                 # Update the levels as some may have disapeared
                 turtlesLevelsVar <- turtles@levels[[var[i]]] # old levels
@@ -1924,56 +1908,42 @@ setMethod(
         }
 
         if (length(varNum) != 0) {
-
           if (length(varNum) == 1) {
             if (identical(agents@.Data[, "who"], turtles@.Data[, "who"])) {
-
               turtles@.Data[, var[varNum]] <- as.numeric(val[, varNum])
-
             } else {
-
               iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
               turtles@.Data[iAgents, var[varNum]] <- as.numeric(val[, varNum])
             }
           } else {
-
             if (identical(agents, turtles)) {
-
               if (inherits(val[, varNum], "data.frame")) {
-
                 turtles@.Data[, var[varNum]] <- as.matrix(val[, varNum])
-
               } else if (inherits(val[, varNum, drop = FALSE], "matrix")) {
-
                 turtles@.Data[, var[varNum]] <- matrix(as.numeric(val[, varNum]),
                                                         ncol = length(varNum))
               }
             } else {
-
               iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
 
               if (inherits(val[, varNum], "data.frame")) {
-
                 turtles@.Data[iAgents, var[varNum]] <- as.matrix(val[, varNum])
-
               } else if (inherits(val[, varNum, drop = FALSE], "matrix")) {
-
                 turtles@.Data[iAgents, var[varNum]] <- matrix(as.numeric(val[, varNum]),
                                                                ncol = length(varNum))
-
               }
             }
           }
         }
       }
 
-      if (any(var == "who")) { # if the who numbers have been modified, check for duplicates
+      if (any(var == "who")) {
+        # if the who numbers have been modified, check for duplicates
         if (anyDuplicated(turtles@.Data[, "who"]) != 0) {
-          warning("Duplicated who numbers among the resulting turtles. Please, reassign who
-                  numbers to keep them unique inside the agentset.")
+          warning(paste("Duplicated who numbers among the resulting turtles.",
+                  "Please, reassign who numbers to keep them unique inside the agentset."))
         }
       }
-
     }
 
     return(turtles)
@@ -2013,7 +1983,7 @@ setMethod(
     }
 
     return(world)
-  })
+})
 
 #' @export
 #' @rdname NLset
@@ -2022,23 +1992,15 @@ setMethod(
   signature = c(world = "worldArray", turtles = "missing", agents = "matrix",
                 var = "character", val = "ANY"),
   definition = function(world, agents, var, val) {
-
     if (NROW(agents) != 0) {
-
       if (length(var) == 1) {
-
         if (length(val) == 1 & NROW(agents) != 1) {
-
           val <- rep(val, NROW(agents))
-
         }
 
         if (identical(patches(world), agents)) {
-
           world@.Data[, , var] <- matrix(val, ncol = dim(world)[2], byrow = TRUE)
-
         } else {
-
           agents[is.na(agents[, 1]), 2] <- NA
           agents[is.na(agents[, 2]), 1] <- NA
 
@@ -2051,23 +2013,18 @@ setMethod(
 
           var_k <- match(var, dimnames(world@.Data)[[3]])
           world@.Data[cbind(mati, matj, var_k)] <- val
-
         }
       } else {
-
         if (identical(patches(world), agents)) {
-
-          for(i in 1:length(var)) {
+          for (i in 1:length(var)) {
             val_i <- val[, var[i]]
 
             if (length(val_i) == 1) {
               val_i <- rep(val_i, NROW(agents))
             }
             world@.Data[, , var[i]] <- matrix(val_i, ncol = dim(world)[2], byrow = TRUE)
-
           }
         } else {
-
           matj <- agents[, 1] - world@minPxcor + 1
           mati <- world@maxPycor - agents[, 2] + 1
 
@@ -2087,7 +2044,7 @@ setMethod(
           matj <- matj[!is.na(matj)]
           mati <- mati[!is.na(mati)]
 
-          for(i in 1:length(var)) {
+          for (i in 1:length(var)) {
              var_k <- match(var[i], dimnames(world@.Data)[[3]])
             world@.Data[cbind(mati, matj, var_k)] <- val[, var[i]]
           }

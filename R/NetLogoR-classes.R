@@ -27,7 +27,7 @@
 #' Careful: The methods \code{[]} and \code{[] <-} retrieve or assign values for
 #' the patches in the given order of the patches coordinates provided.
 #' When no patches coordinates are provided, the values retrieved or assigned
-#' is done in the order of the cell numbers as defined in in \code{Raster*} objects 
+#' is done in the order of the cell numbers as defined in in \code{Raster*} objects
 #' (i.e., by rows).
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
@@ -257,7 +257,7 @@ setMethod(
   "[",
   signature("worldArray", "missing", "missing", "ANY"),
   definition = function(x, ..., drop) {
-    cellValues <- unlist(lapply(1:dim(x)[3], function(z){as.numeric(t(x@.Data[, , z]))}))
+    cellValues <- unlist(lapply(1:dim(x)[3], function(z) as.numeric(t(x@.Data[, , z]))))
     dim(cellValues) <- c(dim(x)[1] * dim(x)[2], dim(x)[3])
     colnames(cellValues) <- dimnames(x@.Data)[[3]]
     return(cellValues)
@@ -290,8 +290,9 @@ setReplaceMethod(
   signature("worldArray", "missing", "missing", "matrix"),
   definition = function(x, i, j, value) {
     nCell <- dim(x@.Data)[1] * dim(x@.Data)[2]
-    if (NROW(value) != nCell) { # assuming value has one row
-      value <- value[rep(1, nCell),]
+    if (NROW(value) != nCell) {
+      # assuming value has one row
+      value <- value[rep(1, nCell), ]
     }
     for (k in 1:dim(x)[3]) {
       x@.Data[, , k] <- matrix(data = value[, k], ncol = dim(x@.Data)[2], byrow = TRUE)
@@ -340,7 +341,7 @@ setMethod(
   definition = function(...) {
     NLwMs <- list(...)
     # similar dimensions can have different extent
-    if (length(unique(lapply(NLwMs, FUN = function(x){x@extent}))) == 1) {
+    if (length(unique(lapply(NLwMs, FUN = function(x) x@extent))) == 1) {
       out <- abind::abind(NLwMs@.Data, along = 3)
     } else {
       stop("worldMatrix extents must all be equal")
@@ -503,7 +504,7 @@ setMethod(
   signature = c("worldMatrix", "numeric"),
   definition = function(world, cellNum) {
     b <- dim(world)
-    floor((cellNum - 1) / b[2]) + seq.int(from = 1, to = prod(b), 
+    floor((cellNum - 1) / b[2]) + seq.int(from = 1, to = prod(b),
                                           by = b[1])[(cellNum - 1) %% b[2] + 1]
   }
 )

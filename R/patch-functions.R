@@ -71,7 +71,7 @@ setMethod(
     toGive <- (val * share) / nNeighbors
 
     df <- adj(world@.Data, cells = cellNum, directions = nNeighbors, torus = torus)
-    nNeigh <- plyr::count(df[,"from"])
+    nNeigh <- plyr::count(df[, "from"])
     toGiveNeigh <- rep(toGive, nNeigh$freq)
     df <- df[order(df[, "from"]), ]
     DT <- data.table(df, toGiveNeigh)
@@ -101,7 +101,7 @@ setMethod(
     cellNum <- 1:length(val)
     toGive <- (val * share) / nNeighbors
 
-    df <- adj(world@.Data[,,layer], cells = cellNum, directions = nNeighbors,
+    df <- adj(world@.Data[, , layer], cells = cellNum, directions = nNeighbors,
               torus = torus)
     nNeigh <- plyr::count(df[, "from"])
     toGiveNeigh <- rep(toGive, nNeigh$freq)
@@ -114,7 +114,7 @@ setMethod(
     DT <- DT[, win := sum(toGiveNeigh), by = to] # how much each patch receive
     win <- unique(DT[, c(2, 5), with = FALSE]) # to and win
 
-    newVal <- val - loose[,loose] + win[, win]
+    newVal <- val - loose[, loose] + win[, win]
     world@.Data[, , layer] <- matrix(newVal, ncol = dim(world)[2], byrow = TRUE)
 
     return(world)
@@ -358,11 +358,13 @@ setMethod(
     # To be used with adj()
     if (inherits(world, "worldMatrix")) {
       worldMat <- world@.Data
-    } else { # worldArray
+    } else {
+      # worldArray
       worldMat <- world@.Data[, , 1]
     }
 
-    if (nrow(agents) < 100000) { # df is faster below 100 agents, DT faster above
+    if (nrow(agents) < 100000) {
+      # df is faster below 100 agents, DT faster above
       cellNum <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
       neighbors <- adj(worldMat, cells = cellNum, directions = nNeighbors,
                        torus = torus, id = seq_along(cellNum))
@@ -380,7 +382,7 @@ setMethod(
                                   torus = torus, id = seq_along(cellNum)))
       cellNum <- data.table(cellNum = cellNum, id = seq_along(cellNum))
       pCoords <- PxcorPycorFromCell(world = world, cellNum = neighbors[, to])
-      neighbors[,`:=`(pxcor = pCoords[, 1], pycor = pCoords[, 2])]
+      neighbors[, `:=`(pxcor = pCoords[, 1], pycor = pCoords[, 2])]
       setkey(neighbors, id)
       neighborsID <- cbind(pxcor = neighbors$pxcor,
                            pycor = neighbors$pycor,
@@ -465,8 +467,8 @@ setMethod(
 
     if (torus == TRUE) {
       pCoords <- wrap(cbind(x = pxcor_, y = pycor_), world@extent)
-      pxcor_ <- pCoords[,1]
-      pycor_ <- pCoords[,2]
+      pxcor_ <- pCoords[, 1]
+      pycor_ <- pCoords[, 2]
     }
 
     pxcor_[pxcor_ < world@minPxcor | pxcor_ > world@maxPxcor] <- NA
@@ -475,8 +477,8 @@ setMethod(
     pycor_[is.na(pxcor_)] <- NA
 
     if (out == FALSE) {
-      pxcor_ = pxcor_[!is.na(pxcor_)]
-      pycor_ = pycor_[!is.na(pycor_)]
+      pxcor_ <- pxcor_[!is.na(pxcor_)]
+      pycor_ <- pycor_[!is.na(pycor_)]
     }
 
     pCoords <- matrix(data = c(pxcor_, pycor_), ncol = 2,
@@ -570,7 +572,7 @@ setMethod(
   definition = function(world, agents, dx, dy, torus) {
 
     if (inherits(agents, "agentMatrix")) {
-      agents <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
+      agents <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
     }
 
     pxcor <- agents[, 1] + dx
@@ -645,7 +647,7 @@ setMethod(
   definition = function(world, agents, dist, angle, torus) {
 
     if (inherits(agents, "agentMatrix")) {
-      agents <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
+      agents <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
     }
 
     radAngle <- rad(angle)
@@ -747,7 +749,7 @@ setMethod(
   signature = "matrix",
   definition = function(...) {
 
-    dots <-list(...)
+    dots <- list(...)
     pCoords <- unique(do.call(rbind, dots))
     return(pCoords)
 })

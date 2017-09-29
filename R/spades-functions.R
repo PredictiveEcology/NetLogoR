@@ -169,8 +169,8 @@ setMethod(
   "wrap",
   signature(X = "SpatialPointsDataFrame", bounds = "matrix", withHeading = "logical"),
   definition = function(X, bounds, withHeading) {
-    if ( identical(colnames(bounds), c("min", "max")) &
-         identical(rownames(bounds), c("s1", "s2"))) {
+    if (identical(colnames(bounds), c("min", "max")) &
+        identical(rownames(bounds), c("s1", "s2"))) {
       X <- wrap(X, bounds = extent(bounds), withHeading = withHeading)
       return(X)
     } else {
