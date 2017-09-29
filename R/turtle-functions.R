@@ -965,7 +965,7 @@ setMethod(
   signature = c(agents = "matrix", agents2 = "matrix"),
   definition = function(agents, agents2, world, torus) {
 
-    if (class(agents) != "agentMatrix" & class(agents2) != "agentMatrix") { # patches to patches
+    if (!inherits(agents, "agentMatrix") & !inherits(agents2, "agentMatrix")) { # patches to patches
 
       if (torus == FALSE) {
 
@@ -1034,7 +1034,7 @@ setMethod(
         heading[heading < 0] <- heading[heading < 0] + 360
       }
 
-    } else if (class(agents) == "agentMatrix" & class(agents2) != "agentMatrix") { # turtles to patches
+    } else if (inherits(agents, "agentMatrix") & !inherits(agents2, "agentMatrix")) { # turtles to patches
 
       tCoords <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
       heading <- towards(agents = tCoords, agents2 = agents2, world = world, torus = torus)
@@ -1045,12 +1045,12 @@ setMethod(
         heading[sameLoc] <- agents@.Data[,"heading"][sameLoc]
       }
 
-    } else if (class(agents) != "agentMatrix" & class(agents2) == "agentMatrix") { # patches to turtles
+    } else if (!inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) { # patches to turtles
 
       heading <- towards(agents = agents, agents2 = agents2@.Data[,c("xcor", "ycor"), drop = FALSE],
                          world = world, torus = torus)
 
-    } else if (class(agents) == "agentMatrix" & class(agents2) == "agentMatrix") { # turtles to turtles
+    } else if (inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) { # turtles to turtles
 
       t1Coords <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
       t2Coords <- agents2@.Data[,c("xcor", "ycor"), drop = FALSE]
@@ -2069,7 +2069,7 @@ setMethod(
   "moveTo",
   signature = c("agentMatrix", "matrix"),
   definition = function(turtles, agents) {
-    if (class(agents) != "agentMatrix") {
+    if (!inherits(agents, "agentMatrix")) {
       setXY(turtles = turtles, xcor = as.numeric(agents[,1]),
             ycor = as.numeric(agents[,2]), torus = FALSE)
 
@@ -2327,7 +2327,7 @@ setMethod(
                 agents = "matrix", breed = "missing"),
   definition = function(world, turtles, agents, simplify) {
 
-    if (class(agents) == "agentMatrix") {
+    if (inherits(agents, "agentMatrix")) {
       agents = patchHere(world = world, turtles = agents)
     }
 
@@ -2647,7 +2647,7 @@ setMethod(
   signature = c("agentMatrix", "character", "ANY"),
   definition = function(turtles, tVar, tVal) {
 
-  if (class(tVal) == "numeric" | class(tVal) == "integer") {
+  if (inherits(tVal, "numeric") | inherits(tVal, "integer")) {
 
     turtles@.Data <- cbind(turtles@.Data, newCol = tVal)
     colnames(turtles@.Data)[ncol(turtles@.Data)] <- tVar
@@ -2850,7 +2850,7 @@ setMethod(
   signature = c("matrix", "matrix"),
   definition = function(agents, except) {
 
-    if (class(agents) == "agentMatrix" & class(except) == "agentMatrix") {
+    if (inherits(agents, "agentMatrix") & inherits(except, "agentMatrix")) {
 
       matchWho <- match(except@.Data[,"who"], agents@.Data[,"who"])
       matchWho <- matchWho[!is.na(matchWho)]

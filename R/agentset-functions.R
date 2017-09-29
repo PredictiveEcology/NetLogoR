@@ -132,7 +132,7 @@ setMethod(
   signature = c("matrix"),
   definition = function(agents) {
 
-    if (class(agents) == "agentMatrix") {
+    if (inherits(agents, "agentMatrix")) {
       anyAgents <- ifelse(NROW(agents) == 0, FALSE, TRUE)
 
     } else {
@@ -868,7 +868,7 @@ setMethod(
   signature = c("matrix", "character"),
   definition = function(agents, class) {
     # turtles
-    if (class(agents) == "agentMatrix") {
+    if (inherits(agents, "agentMatrix")) {
       if (class == "agent") {
         class <- "turtle"
       }
@@ -986,7 +986,7 @@ setMethod(
   definition = function(agents, n) {
 
 
-    if (class(agents) == "agentMatrix") {
+    if (inherits(agents, "agentMatrix")) {
       row <- sample(1:NROW(agents), size = n, replace = FALSE)
       row <- row[order(row)]
       turtles <- agents[row, ]
@@ -1095,7 +1095,7 @@ setMethod(
   "oneOf",
   signature = c("matrix"),
   definition = function(agents) {
-    if (class(agents) == "agentMatrix") {
+    if (inherits(agents, "agentMatrix")) {
       nOf(agents = agents, n = 1)
     } else {
       if (ncol(agents) == 2 & colnames(agents)[1] == "pxcor") {
@@ -1511,15 +1511,15 @@ setMethod(
   "inRadius",
   signature = c(agents = "matrix", radius = "numeric", agents2 = "matrix"),
   definition = function(agents, radius, agents2, world, torus) {
-    if (class(agents) == "agentMatrix" & class(agents2) == "agentMatrix") {
+    if (inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
       # Transform agent into a matrix
       agents <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
       inRadius(agents = agents, radius = radius, agents2 = agents2, world = world, torus = torus)
-    } else if (class(agents) == "agentMatrix" & class(agents2) != "agentMatrix") {
+    } else if (inherits(agents, "agentMatrix") & !inherits(agents2, "agentMatrix")) {
       # Transform agent into a matrix
       agents <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
       inRadius(agents = agents, radius = radius, agents2 = agents2, world = world, torus = torus)
-    } else if (class(agents) != "agentMatrix" & class(agents2) == "agentMatrix") {
+    } else if (!inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
       # Transform the agents into SP to use gBuffer
       agentsSP <- SpatialPoints(coords = agents)
 
@@ -1686,7 +1686,7 @@ setMethod(
   "inCone",
   signature = c(turtles = "agentMatrix", radius = "numeric", angle = "numeric", agents = "matrix"),
   definition = function(turtles, radius, angle, agents, world, torus) {
-    if (class(agents) == "agentMatrix") {
+    if (inherits(agents, "agentMatrix")) {
       agentsCoords <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
       colnames(agentsCoords) <- c("pxcor", "pycor")
       patchInCone <- inCone(turtles = turtles, radius = radius, angle = angle,
@@ -1924,11 +1924,11 @@ setMethod(
 
             if (identical(agents, turtles)) {
 
-              if (class(val[,var_num]) == "data.frame") {
+              if (inherits(val[,var_num], "data.frame")) {
 
                 turtles@.Data[,var[var_num]] <- as.matrix(val[,var_num])
 
-              } else if (class(val[,var_num, drop = FALSE]) == "matrix") {
+              } else if (inherits(val[,var_num, drop = FALSE], "matrix")) {
 
                 turtles@.Data[,var[var_num]] <- matrix(as.numeric(val[,var_num]),
                                                        ncol = length(var_num))
@@ -1937,11 +1937,11 @@ setMethod(
 
               iAgents <- match(agents@.Data[,"who"], turtles@.Data[,"who"])
 
-              if (class(val[,var_num]) == "data.frame") {
+              if (inherits(val[,var_num], "data.frame")) {
 
                 turtles@.Data[iAgents,var[var_num]] <- as.matrix(val[,var_num])
 
-              } else if (class(val[,var_num, drop = FALSE]) == "matrix") {
+              } else if (inherits(val[,var_num, drop = FALSE], "matrix")) {
 
                 turtles@.Data[iAgents,var[var_num]] <- matrix(as.numeric(val[,var_num]),
                                                               ncol = length(var_num))

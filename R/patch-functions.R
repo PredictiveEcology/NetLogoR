@@ -190,11 +190,11 @@ setMethod(
   signature = c(agents = "matrix", agents2 = "matrix"),
   definition = function(agents, agents2, world, torus, allPairs) {
 
-    if (class(agents) == "agentMatrix") {
+    if (inherits(agents, "agentMatrix")) {
       agents <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
     }
 
-    if (class(agents2) == "agentMatrix") {
+    if (inherits(agents2, "agentMatrix")) {
       agents2 <- agents2@.Data[,c("xcor", "ycor"), drop = FALSE]
     }
 
@@ -346,13 +346,13 @@ setMethod(
   signature = c(world = "worldNLR", agents = "matrix", nNeighbors = "numeric"),
   definition = function(world, agents, nNeighbors, torus) {
 
-    if (class(agents) == "agentMatrix") {
+    if (inherits(agents, "agentMatrix")) {
       agents <- patch(world = world, x = agents@.Data[,"xcor"],
                       y = agents@.Data[,"ycor"], duplicate = TRUE)
     }
 
     # To be used with adj()
-    if (class(world) == "worldMatrix") {
+    if (inherits(world, "worldMatrix")) {
       worldMat <- world@.Data
     } else { # worldArray
       worldMat <- world@.Data[,,1]
@@ -565,7 +565,7 @@ setMethod(
   signature = c(world = "worldNLR", agents = "matrix", dx = "numeric", dy = "numeric"),
   definition = function(world, agents, dx, dy, torus) {
 
-    if (class(agents) == "agentMatrix") {
+    if (inherits(agents, "agentMatrix")) {
       agents <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
     }
 
@@ -640,7 +640,7 @@ setMethod(
   signature = c(world = "worldNLR", agents = "matrix", dist = "numeric", angle = "numeric"),
   definition = function(world, agents, dist, angle, torus) {
 
-    if (class(agents) == "agentMatrix") {
+    if (inherits(agents, "agentMatrix")) {
       agents <- agents@.Data[,c("xcor", "ycor"), drop = FALSE]
     }
 
