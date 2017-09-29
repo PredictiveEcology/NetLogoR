@@ -33,7 +33,7 @@ of all the matrix cells in the order of cells in a \code{Raster*} (i.e., by rows
 Careful: The methods \code{[]} and \code{[] <-} retrieve or assign values for
 the patches in the given order of the patches coordinates provided.
 When no patches coordinates are provided, the values retrieved or assigned
-is done in the order of the cell numbers as defined in in \code{Raster*} objects 
+is done in the order of the cell numbers as defined in in \code{Raster*} objects
 (i.e., by rows).
 }
 \references{

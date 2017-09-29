@@ -257,7 +257,7 @@ setMethod(
   "[",
   signature("worldArray", "missing", "missing", "ANY"),
   definition = function(x, ..., drop) {
-    cellValues <- unlist(lapply(1:dim(x)[3], function(z){as.numeric(t(x@.Data[, , z]))}))
+    cellValues <- unlist(lapply(1:dim(x)[3], function(z) as.numeric(t(x@.Data[, , z]))))
     dim(cellValues) <- c(dim(x)[1] * dim(x)[2], dim(x)[3])
     colnames(cellValues) <- dimnames(x@.Data)[[3]]
     return(cellValues)
@@ -290,7 +290,8 @@ setReplaceMethod(
   signature("worldArray", "missing", "missing", "matrix"),
   definition = function(x, i, j, value) {
     nCell <- dim(x@.Data)[1] * dim(x@.Data)[2]
-    if (NROW(value) != nCell) { # assuming value has one row
+    if (NROW(value) != nCell) {
+      # assuming value has one row
       value <- value[rep(1, nCell), ]
     }
     for (k in 1:dim(x)[3]) {
@@ -340,7 +341,7 @@ setMethod(
   definition = function(...) {
     NLwMs <- list(...)
     # similar dimensions can have different extent
-    if (length(unique(lapply(NLwMs, FUN = function(x){x@extent}))) == 1) {
+    if (length(unique(lapply(NLwMs, FUN = function(x) x@extent))) == 1) {
       out <- abind::abind(NLwMs@.Data, along = 3)
     } else {
       stop("worldMatrix extents must all be equal")

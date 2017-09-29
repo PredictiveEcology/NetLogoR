@@ -90,7 +90,6 @@ setMethod(
   "createTurtles",
   signature = c("numeric", "missing", "ANY", "ANY", "ANY", "ANY"),
   definition = function(n, coords, world, heading, breed, color) {
-
     coords <- cbind(xcor = rep(((maxPxcor(world) - minPxcor(world)) / 2) + minPxcor(world), n),
                     ycor = rep(((maxPycor(world) - minPycor(world)) / 2) + minPycor(world), n))
 
@@ -103,14 +102,9 @@ setMethod(
     if (missing(color))
       color <- rainbow(n)
 
-    turtles <- new("agentMatrix",
-                 coords = coords,
-                 who = seq(from = 0, to = n - 1, by = 1),
-                 heading = heading,
-                 prevX = rep(NA, n),
-                 prevY = rep(NA, n),
-                 breed = breed,
-                 color = color)
+    turtles <- new("agentMatrix", coords = coords, who = seq(from = 0, to = n - 1, by = 1),
+                   heading = heading, prevX = rep(NA, n), prevY = rep(NA, n),
+                   breed = breed, color = color)
     return(turtles)
   }
 )
@@ -173,22 +167,22 @@ setMethod(
 
     heading <- numeric(n)
     heading[1] <- 0
-    if(n > 1){
+    if (n > 1) {
       heading[2:n] <- heading[1:(n - 1)] + (360 / n) * (1:(n - 1))
     }
 
     li <- lapply(names(match.call()[-1]), function(x) eval(parse(text = x)))
     names(li) <- names(match.call())[-1]
 
-    if(missing(breed)){
+    if (missing(breed)) {
       li$breed <- rep("turtle", n)
     }
 
-    if(length(li$breed) == 1) {
+    if (length(li$breed) == 1) {
       li$breed <- rep(li$breed, n)
     }
 
-    if(missing(color)){
+    if (missing(color)) {
       li$color <- rainbow(n)
     }
 
@@ -458,21 +452,21 @@ setMethod(
 
     if (home == "center") {
       newTurtles <- setXY(turtles = turtles,
-                         xcor = (((world@extent@xmax - world@extent@xmin) / 2) +
-                                   world@extent@xmin),
-                         ycor = (((world@extent@ymax - world@extent@ymin) / 2) +
-                                   world@extent@ymin),
-                         world = world, torus = FALSE)
+                          xcor = ((world@extent@xmax - world@extent@xmin) / 2) +
+                            world@extent@xmin,
+                          ycor = ((world@extent@ymax - world@extent@ymin) / 2) +
+                            world@extent@ymin,
+                          world = world, torus = FALSE)
     }
 
     if (home == "pCorner") {
-      newTurtles <- setXY(turtles = turtles, xcor = world@minPxcor, ycor = world@minPycor,
-                         world = world, torus = FALSE)
+      newTurtles <- setXY(turtles = turtles, xcor = world@minPxcor,
+                          ycor = world@minPycor, world = world, torus = FALSE)
     }
 
     if (home == "corner") {
-      newTurtles <- setXY(turtles = turtles, xcor = world@extent@xmin, ycor = world@extent@ymin,
-                         world = world, torus = FALSE)
+      newTurtles <- setXY(turtles = turtles, xcor = world@extent@xmin,
+                          ycor = world@extent@ymin, world = world, torus = FALSE)
     }
 
     return(newTurtles)
@@ -967,17 +961,13 @@ setMethod(
   signature = c(agents = "matrix", agents2 = "matrix"),
   definition = function(agents, agents2, world, torus) {
 
-    if (!inherits(agents, "agentMatrix") &
-        !inherits(agents2, "agentMatrix")) { # patches to patches
-
+    if (!inherits(agents, "agentMatrix") & !inherits(agents2, "agentMatrix")) {
+      # patches to patches
       if (torus == FALSE) {
-
         heading <- deg(atan2(agents2[, 1] - agents[, 1], agents2[, 2] - agents[, 2]))
         # angles between -180 and 180
         heading[heading < 0] <- heading[heading < 0] + 360
-
       } else {
-
         if (missing(world)) {
           stop("A world must be provided as torus = TRUE")
         }
@@ -987,7 +977,7 @@ setMethod(
           dim(agents2) <- c(NROW(agents), 2L)
         }
         if (NROW(agents) == 1 & NROW(agents2) != 1) {
-          agents <- c(rep(agents[, 1], NROW(agents2)),rep(agents[, 2], NROW(agents2)))
+          agents <- c(rep(agents[, 1], NROW(agents2)), rep(agents[, 2], NROW(agents2)))
           dim(agents) <- c(NROW(agents2), 2L)
         }
 
@@ -1025,7 +1015,7 @@ setMethod(
         distMin <- apply(allDist, 1, min)
 
         toShortest <- agents2
-        for(i in 1:NROW(agents)) {
+        for (i in 1:NROW(agents)) {
           # All the possibilities for each agents (i.e., agents2 and the wrapped agents2)
           allToCoords <- rbind(agents2[i, ], to1[i, ], to2[i, ], to3[i, ], to4[i, ], to5[i, ],
                                to6[i, ], to7[i, ], to8[i, ])
@@ -1038,9 +1028,8 @@ setMethod(
         heading[heading < 0] <- heading[heading < 0] + 360
       }
 
-    } else if (inherits(agents, "agentMatrix") &
-               !inherits(agents2, "agentMatrix")) { # turtles to patches
-
+    } else if (inherits(agents, "agentMatrix") & !inherits(agents2, "agentMatrix")) {
+      # turtles to patches
       tCoords <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
       heading <- towards(agents = tCoords, agents2 = agents2, world = world, torus = torus)
       sameLoc <- tCoords[, 1] == agents2[, 1] & tCoords[, 2] == agents2[, 2]
@@ -1050,15 +1039,14 @@ setMethod(
         heading[sameLoc] <- agents@.Data[, "heading"][sameLoc]
       }
 
-    } else if (!inherits(agents, "agentMatrix") &
-               inherits(agents2, "agentMatrix")) { # patches to turtles
-
+    } else if (!inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
+      # patches to turtles
       heading <- towards(agents = agents,
                          agents2 = agents2@.Data[, c("xcor", "ycor"), drop = FALSE],
                          world = world, torus = torus)
 
-    } else if (inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) { # turtles to turtles
-
+    } else if (inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
+      # turtles to turtles
       t1Coords <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
       t2Coords <- agents2@.Data[, c("xcor", "ycor"), drop = FALSE]
       heading <- towards(agents = t1Coords, agents2 = t2Coords, world = world, torus = torus)
@@ -1068,13 +1056,11 @@ setMethod(
       } else {
         heading[sameLoc] <- agents@.Data[, "heading"][sameLoc]
       }
-
     }
 
     return(heading)
   }
 )
-
 
 ################################################################################
 #' Face something
@@ -1309,7 +1295,7 @@ setGeneric(
 #' @rdname downhill
 setMethod(
   "downhill",
-  signature = c(world = "worldMatrix", pVar = "missing",turtles = "agentMatrix",
+  signature = c(world = "worldMatrix", pVar = "missing", turtles = "agentMatrix",
                 nNeighbors = "numeric"),
   definition = function(world, turtles, nNeighbors, torus) {
 
@@ -1325,7 +1311,7 @@ setMethod(
     allPatches$pVal <- pValues[allPatches$cellNum]
 
     rows <- split(1:nrow(allPatches), allPatches$id)
-    rowMin <- sapply(rows, function(rowi) {rowi[which.min(allPatches$pVal[rowi])]})
+    rowMin <- sapply(rows, function(rowi) rowi[which.min(allPatches$pVal[rowi])])
     # minimum patch value per id
     pMinCoords <- allPatches[rowMin, ]
     pMinCoords1 <- pMinCoords[tapply(1:nrow(pMinCoords), pMinCoords$id, some, 1), ]
@@ -1343,7 +1329,7 @@ setMethod(
 #' @rdname downhill
 setMethod(
   "downhill",
-  signature = c(world = "worldArray", pVar = "character",turtles = "agentMatrix",
+  signature = c(world = "worldArray", pVar = "character", turtles = "agentMatrix",
                 nNeighbors = "numeric"),
   definition = function(world, pVar, turtles, nNeighbors, torus) {
 
@@ -1364,7 +1350,7 @@ setMethod(
     allPatches$pVal <- pValues[allPatches$cellNum]
 
     rows <- split(1:nrow(allPatches), allPatches$id)
-    rowMin <- sapply(rows, function(rowi) {rowi[which.min(allPatches$pVal[rowi])]})
+    rowMin <- sapply(rows, function(rowi) rowi[which.min(allPatches$pVal[rowi])])
     # minimum patch value per id
     pMinCoords <- allPatches[rowMin, ]
     pMinCoords1 <- pMinCoords[tapply(1:nrow(pMinCoords), pMinCoords$id, some, 1), ]
@@ -1438,7 +1424,7 @@ setGeneric(
 #' @rdname uphill
 setMethod(
   "uphill",
-  signature = c(world = "worldMatrix", pVar = "missing",turtles = "agentMatrix",
+  signature = c(world = "worldMatrix", pVar = "missing", turtles = "agentMatrix",
                 nNeighbors = "numeric"),
   definition = function(world, turtles, nNeighbors, torus) {
     # Uphill is the inverse of downhill
@@ -1451,7 +1437,7 @@ setMethod(
 #' @rdname uphill
 setMethod(
   "uphill",
-  signature = c(world = "worldArray", pVar = "character",turtles = "agentMatrix",
+  signature = c(world = "worldArray", pVar = "character", turtles = "agentMatrix",
                 nNeighbors = "numeric"),
   definition = function(world, pVar, turtles, nNeighbors, torus) {
     world[] <- 1 / world[]
@@ -1875,10 +1861,9 @@ setMethod(
   "sprout",
   signature = c(n = "numeric", patches = "matrix"),
   definition = function(n, patches, breed, heading, color, turtles) {
-
     li <- lapply(names(match.call()[-1]), function(x) eval(parse(text = x)))
     names(li) <- names(match.call())[-1]
-    if(length(n) == 1){
+    if (length(n) == 1) {
       if (nrow(li$patches) == 1 & n != 1) {
         li$patches <- cbind(as.numeric(rep(li$patches[, 1], n)),
                             as.numeric(rep(li$patches[, 2], n)))
@@ -1903,29 +1888,30 @@ setMethod(
       newTurtles <- createTurtles(n = n, coords = li$patches, heading = li$heading,
                                     breed = li$breed, color = li$color)
 
-    } else { # if length(n) != 0
-
-      li$patches <- cbind(as.numeric(rep(li$patches[, 1], n)), as.numeric(rep(li$patches[, 2], n)))
+    } else {
+      # if length(n) != 0
+      li$patches <- cbind(as.numeric(rep(li$patches[, 1], n)),
+                          as.numeric(rep(li$patches[, 2], n)))
       colnames(li$patches) <- c("xcor", "ycor")
 
       if (missing(breed)) li$breed <- rep("turtle", sum(n))
       if (length(li$breed) == 1) {
         li$breed <- rep(li$breed, sum(n))
-      } else if(length(li$breed) != sum(n)){
+      } else if (length(li$breed) != sum(n)) {
         li$breed <- rep(li$breed, n)
       }
 
       if (missing(heading)) li$heading <- runif(n = sum(n), min = 0, max = 360)
       if (length(li$heading) == 1) {
         li$heading <- rep(li$heading, sum(n))
-      } else if(length(li$heading) != sum(n)){
+      } else if (length(li$heading) != sum(n)) {
         li$heading <- rep(li$heading, n)
       }
 
       if (missing(color)) li$color <- rainbow(sum(n))
       if (length(li$color) == 1) {
         li$color <- rep(li$color, sum(n))
-      } else if(length(li$color) != sum(n)){
+      } else if (length(li$color) != sum(n)) {
         li$color <- rep(li$color, n)
       }
 
@@ -1940,17 +1926,17 @@ setMethod(
       turtles <- hatch(turtles = turtles, who = max(turtles@.Data[, "who"]),
                        n = NLcount(newTurtles))
       # Replace the locations and headings of newTurtles inside turtles
-      turtles@.Data[(nrow(turtles@.Data) - NLcount(newTurtles) + 1):
-                      nrow(turtles@.Data), c(1, 2, 4)] <- newTurtles@.Data[, c(1, 2, 4)]
+      ids <- (nrow(turtles@.Data) - NLcount(newTurtles) + 1):nrow(turtles@.Data)
+      turtles@.Data[ids, c(1, 2, 4)] <- newTurtles@.Data[, c(1, 2, 4)]
       # Replace the breed and color of the newTurtles inside turtles
-      whoNewTurtles <- turtles@.Data[(nrow(turtles@.Data) - NLcount(newTurtles) + 1):
-                                       nrow(turtles@.Data), 3]
+      ids <- (nrow(turtles@.Data) - NLcount(newTurtles) + 1):nrow(turtles@.Data)
+      whoNewTurtles <- turtles@.Data[ids, 3]
       turtles <- NLset(turtles = turtles, agents = turtle(turtles, who = whoNewTurtles),
                        var = "breed", val = of(agents = newTurtles, var = "breed"))
       turtles <- NLset(turtles = turtles, agents = turtle(turtles, who = whoNewTurtles),
                          var = "color", val = of(agents = newTurtles, var = "color"))
       # Replace any other additional variables
-      if(ncol(turtles@.Data) > 8){
+      if (ncol(turtles@.Data) > 8) {
         valToReplace <- matrix(NA, ncol = (ncol(turtles@.Data) - 8), nrow = NLcount(newTurtles))
         colnames(valToReplace) <- colnames(turtles@.Data)[9:ncol(turtles@.Data)]
         turtles <- NLset(turtles = turtles, agents = turtle(turtles, who = whoNewTurtles),
@@ -1972,9 +1958,7 @@ setMethod(
 
       return(turtles)
     }
-  }
-)
-
+})
 
 ################################################################################
 #' Inspect turtles
@@ -2343,37 +2327,33 @@ setMethod(
   signature = c(world = "worldNLR", turtles = "agentMatrix",
                 agents = "matrix", breed = "missing"),
   definition = function(world, turtles, agents, simplify) {
-
     if (inherits(agents, "agentMatrix")) {
-      agents = patchHere(world = world, turtles = agents)
+      agents <- patchHere(world = world, turtles = agents)
     }
 
     pTurtles <- round(turtles@.Data[, c("xcor", "ycor", "who"), drop = FALSE])
     colnames(pTurtles)[1:2] <- c("pxcor", "pycor") # awkward column name change
 
     if (simplify == TRUE) {
-
       # Instead of merge, which is slow, make an empty matrix (of NAs)
       # and use the agents coordinates directly
-      a = matrix(ncol = ncol(world), nrow = nrow(world))
-      a[agents-(c(attr(world, "minPxcor"), attr(world, "minPycor")) - 1)] <- 1
+      a <- matrix(ncol = ncol(world), nrow = nrow(world))
+      a[agents - (c(attr(world, "minPxcor"), attr(world, "minPycor")) - 1)] <- 1
       # change this 26 to the dimensions of the world, and next line
-      pOn <- na.omit(a[pTurtles[, 1:2, drop = FALSE] - (c(attr(world, "minPxcor"),
-                                         attr(world, "minPycor")) - 1)] * pTurtles)
+      pOn <- na.omit(a[pTurtles[, 1:2, drop = FALSE] -
+                         (c(attr(world, "minPxcor"), attr(world, "minPycor")) - 1)] * pTurtles)
 
       if (nrow(pOn) == 0) {
         return(noTurtles())
       } else {
         return(turtle(turtles = turtles, who = pOn[, 3]))
       }
-
     } else {
-
       if (any(is.na(agents)))
         agents <- na.omit(agents) # There shouldn't be any NAs passed in here, probably
       agents <- cbind(agents, id = 1:dim(agents)[1])
 
-      b <- a <- matrix(ncol=ncol(world), nrow=nrow(world))
+      b <- a <- matrix(ncol = ncol(world), nrow = nrow(world))
       a[agents[, 1:2, drop = FALSE] - (c(attr(world, "minPxcor"),
                                          attr(world, "minPycor")) - 1)] <- 1
       # change this 26 to the dimensions of the world, and next line
@@ -2385,18 +2365,16 @@ setMethod(
       dims <- c(nrow(pOn), ncol(pOn))
       colNames <- colnames(pOn)
       length(pOn) <- length(pOn) + dims[1]
-      dim(pOn) <- dims+c(0, 1)
+      dim(pOn) <- dims + c(0, 1)
       colnames(pOn) <- c(colNames, "id")
       pOn[, "id"] <- na.omit(b[pTurtles[, 1:2, drop = FALSE] -
-                                (c(attr(world, "minPxcor"), attr(world, "minPycor")) - 1)])
-
+                                 (c(attr(world, "minPxcor"), attr(world, "minPycor")) - 1)])
       pOn <- pOn[order(pOn[, "id"]), , drop = FALSE]
       turtlesID <- pOn[, c("who", "id"), drop = FALSE]
       colnames(turtlesID)[1] <- "whoTurtles"
       return(turtlesID)
     }
-  }
-)
+})
 
 #' @export
 #' @rdname turtlesOn
@@ -2572,23 +2550,22 @@ setMethod(
   "turtleSet",
   signature = "agentMatrix",
   definition = function(...) {
-
-    dots <-list(...)
-    nTurtles <- lapply(dots, function(x) {NROW(x)})
+    dots <- list(...)
+    nTurtles <- lapply(dots, function(x) NROW(x))
 
     if (sum(unlist(nTurtles)) == 0) {
       return(noTurtles())
     } else {
-
-      if(any(nTurtles == 0)){
+      if (any(nTurtles == 0)) {
         dots <- dots[which(nTurtles != 0)] # remove the empty agentMatrix
-        if(length(dots) == 1){ # if there is only one list element left
+        if (length(dots) == 1) {
+          # if there is only one list element left
           return(dots[[1]])
         }
       }
 
       # if (do.call(all.equal, lapply(dots, colnames))) {
-         allTurtles <- do.call(rbind, lapply(dots, function(x) {x}))
+         allTurtles <- do.call(rbind, lapply(dots, function(x) x))
       # } else {
       #   allTurtles <- as.data.frame(rbindlist(lapply(dots, function(x) {
       #     inspect(x, who = of(agents = x, var = "who"))}), fill = TRUE))
@@ -2603,11 +2580,8 @@ setMethod(
         allTurtles <- as(allTurtles, "agentMatrix")
 
       return(allTurtles)
-
     }
-  }
-)
-
+})
 
 ################################################################################
 #' New turtles variable
@@ -2751,13 +2725,12 @@ setMethod(
   "subHeadings",
   signature = c(angle1 = "numeric", angle2 = "numeric"),
   definition = function(angle1, angle2, range360) {
-
     len2 <- length(angle2)
     len1 <- length(angle1)
-    if(len2 != len1){
-      if(len2 == 1){
+    if (len2 != len1) {
+      if (len2 == 1) {
         angle2 <- rep(angle2, len1)
-      } else if(len1 == 1){
+      } else if (len1 == 1) {
         angle1 <- rep(angle1, len2)
       } else {
         stop("angle1 and angle2 must be of the same length or one must be of length 1")
@@ -2765,17 +2738,16 @@ setMethod(
     }
     rad2 <- rad(angle2)
     rad1 <- rad(angle1)
-    rads <- rad2-rad1
+    rads <- rad2 - rad1
     angles <- deg(atan2(sin(rads), cos(rads)))
 
-    if(range360 == TRUE){
+    if (range360 == TRUE) {
       anglesNeg <- angles < 0
       angles[anglesNeg] <- angles[anglesNeg] + 360
     }
 
     return(angles)
-  }
-)
+})
 
 #' @export
 #' @rdname subHeadings
@@ -3015,7 +2987,7 @@ setGeneric(
   "of",
   function(world, agents, var) {
     standardGeneric("of")
-  })
+})
 
 #' @export
 #' @rdname of
@@ -3037,20 +3009,15 @@ setMethod(
           newNames <- c(var[!wh], newNames)
         }
         colnames(df) <- newNames
-        return(df[,match(newNames, var)])
-      #} else {
-      #  return(data.frame(agents@.Data[, var]))
-      #}
-
+        return(df[, match(newNames, var)])
     } else {
       if (length(var) == 1) {
         return(agents@.Data[, var])
       } else {
         return(agents@.Data[, var, drop = FALSE])
       }
-
     }
-  })
+})
 
 #' @export
 #' @rdname of
@@ -3065,7 +3032,7 @@ setMethod(
 
       return(world[agents[, 1], agents[, 2]])
     }
-  })
+})
 
 #' @export
 #' @rdname of
@@ -3084,7 +3051,7 @@ setMethod(
       if (length(var) == 1) {
         return(allValues[cellNum, var])
       } else {
-        return(allValues[cellNum, var, drop= FALSE])
+        return(allValues[cellNum, var, drop = FALSE])
       }
     }
 })
@@ -3181,14 +3148,13 @@ setMethod(
                    breed = breed,
                    color = color)
 
-    for(i in which(!names(spdfData) %in% c("who", "heading", "prevX", "prevY",
-                                           "breed", "color", "stringsAsFactors"))) {
+    for (i in which(!names(spdfData) %in% c("who", "heading", "prevX", "prevY",
+                                            "breed", "color", "stringsAsFactors"))) {
       turtles <- turtlesOwn(turtles = turtles, tVar = names(spdfData)[i], tVal = spdfData[, i])
     }
 
     return(turtles)
-  })
-
+})
 
 ################################################################################
 #' From agentMatrix to SpatialPointsDataFrame

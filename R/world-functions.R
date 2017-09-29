@@ -478,7 +478,7 @@ setMethod(
   signature = c("worldArray"),
   definition = function(world) {
 
-    listRaster <- lapply(1:dim(world)[3],function(x) {
+    listRaster <- lapply(1:dim(world)[3], function(x) {
       raster(world@.Data[, , x], xmn = world@extent@xmin, xmx = world@extent@xmax,
              ymn = world@extent@ymin, ymx = world@extent@ymax)
     })

@@ -358,11 +358,13 @@ setMethod(
     # To be used with adj()
     if (inherits(world, "worldMatrix")) {
       worldMat <- world@.Data
-    } else { # worldArray
+    } else {
+      # worldArray
       worldMat <- world@.Data[, , 1]
     }
 
-    if (nrow(agents) < 100000) { # df is faster below 100 agents, DT faster above
+    if (nrow(agents) < 100000) {
+      # df is faster below 100 agents, DT faster above
       cellNum <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
       neighbors <- adj(worldMat, cells = cellNum, directions = nNeighbors,
                        torus = torus, id = seq_along(cellNum))
@@ -475,8 +477,8 @@ setMethod(
     pycor_[is.na(pxcor_)] <- NA
 
     if (out == FALSE) {
-      pxcor_ = pxcor_[!is.na(pxcor_)]
-      pycor_ = pycor_[!is.na(pycor_)]
+      pxcor_ <- pxcor_[!is.na(pxcor_)]
+      pycor_ <- pycor_[!is.na(pycor_)]
     }
 
     pCoords <- matrix(data = c(pxcor_, pycor_), ncol = 2,

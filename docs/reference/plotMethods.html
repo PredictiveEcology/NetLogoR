@@ -136,15 +136,15 @@ rasterStack (worldArray). They can be modified</p>
    <span class='kw'>nums2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>4.5</span>, <span class='fl'>2.6</span>, <span class='fl'>2343</span>),
    <span class='kw'>char2</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fu'>c</span>(<span class='fl'>4</span>, <span class='fl'>24</span>, <span class='fl'>3</span>)],
    <span class='kw'>nums</span> <span class='kw'>=</span> <span class='fl'>5</span>:<span class='fl'>7</span>)
- <span class='fu'>plot</span>(<span class='no'>newAgent</span>)</div><div class='img'><img src='plotMethods-7.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+ <span class='fu'>plot</span>(<span class='no'>newAgent</span>)</div><div class='output co'>#&gt; <span class='error'>Error in plot.new(): figure margins too large</span></div><div class='input'>
 <span class='co'>## worldMatrix</span>
 <span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>100</span>)
-<span class='fu'>plot</span>(<span class='no'>w1</span>)</div><div class='img'><img src='plotMethods-8.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>plot</span>(<span class='no'>w1</span>)</div><div class='output co'>#&gt; <span class='error'>Error in plot.new(): figure margins too large</span></div><div class='input'>
 <span class='co'>## worldArray</span>
 <span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>25</span>)
 <span class='no'>w2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>25</span>:<span class='fl'>1</span>)
 <span class='no'>w3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='stackWorlds.html'>stackWorlds</a></span>(<span class='no'>w1</span>, <span class='no'>w2</span>)
-<span class='fu'>plot</span>(<span class='no'>w3</span>)</div><div class='input'>
+<span class='fu'>plot</span>(<span class='no'>w3</span>)</div><div class='output co'>#&gt; <span class='error'>Error in graphics::par(old.par): invalid value specified for graphical parameter "pin"</span></div><div class='input'>
 <span class='co'># agentMatrix</span>
  <span class='no'>newAgent</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"agentMatrix"</span>,
    <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='agentMatrix-bind-methods.html'>cbind</a></span>(<span class='kw'>pxcor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>5</span>), <span class='kw'>pycor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>6</span>)),
@@ -152,7 +152,7 @@ rasterStack (worldArray). They can be modified</p>
    <span class='kw'>nums2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>4.5</span>, <span class='fl'>2.6</span>, <span class='fl'>2343</span>),
    <span class='kw'>char2</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fu'>c</span>(<span class='fl'>4</span>, <span class='fl'>24</span>, <span class='fl'>3</span>)],
    <span class='kw'>nums</span> <span class='kw'>=</span> <span class='fl'>5</span>:<span class='fl'>7</span>)
- <span class='fu'>points</span>(<span class='no'>newAgent</span>)</div><div class='img'><img src='plotMethods-9.png' alt='' width='700' height='432.632880098887' /></div></pre>
+ <span class='fu'>points</span>(<span class='no'>newAgent</span>)</div><div class='img'><img src='plotMethods-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
