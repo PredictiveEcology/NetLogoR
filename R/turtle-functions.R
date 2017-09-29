@@ -814,8 +814,8 @@ setMethod(
 #' @examples
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
 #'                           data = runif(25))
-#' t1 <- createTurtles(n = 10,coords = cbind(xcor = randomXcor(world = w1, n = 10),
-#'                                           ycor = randomYcor(world = w1, n = 10)))
+#' t1 <- createTurtles(n = 10, coords = cbind(xcor = randomXcor(world = w1, n = 10),
+#'                                            ycor = randomYcor(world = w1, n = 10)))
 #' plot(w1)
 #' points(t1, col = of(agents = t1, var = "color"), pch = 16)
 #'
@@ -2969,7 +2969,7 @@ setMethod(
 #' # Patches
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
 #'                           data = 1:25)
-#' of(world = w1, agents = patch(w1, c(0,0), c(4,0)))
+#' of(world = w1, agents = patch(w1, c(0, 0), c(4, 0)))
 #'
 #' # Turtles
 #' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
@@ -3072,8 +3072,8 @@ setMethod(
 #'          default values as in \code{createTurtles()}.
 #'
 #' @examples
-#' sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1,2,3), y = c(1,2,3)),
-#'                               data = cbind.data.frame(age = c(0,0,3),
+#' sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
+#'                               data = cbind.data.frame(age = c(0, 0, 3),
 #'                                                       sex = c("F", "F", "M")))
 #' t1 <- spdf2turtles(spdf = sp1)
 #'
