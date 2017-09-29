@@ -1820,7 +1820,7 @@ setMethod(
           turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)[order(turtlesVarUnique)]]
           turtles@levels[[var]] <- turtlesLevelsVarUpdated
           # replace the levels number starting to 1 and increasing by 1
-          turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique, 
+          turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique,
                                          to = rank(turtlesVarUnique))
           turtles@.Data[, var] <- turtlesVarUpdated
 
@@ -2050,7 +2050,7 @@ setMethod(
           mati <- world@maxPycor - pycor + 1
 
           var_k <- match(var, dimnames(world@.Data)[[3]])
-          world@.Data[cbind(mati, matj,var_k)] <- val
+          world@.Data[cbind(mati, matj, var_k)] <- val
 
         }
       } else {

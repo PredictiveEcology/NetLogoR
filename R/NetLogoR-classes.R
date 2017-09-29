@@ -27,7 +27,8 @@
 #' Careful: The methods \code{[]} and \code{[] <-} retrieve or assign values for
 #' the patches in the given order of the patches coordinates provided.
 #' When no patches coordinates are provided, the values retrieved or assigned
-#' is done in the order of the cell numbers as defined in in \code{Raster*} objects (i.e., by rows).
+#' is done in the order of the cell numbers as defined in in \code{Raster*} objects 
+#' (i.e., by rows).
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -146,8 +147,7 @@ setReplaceMethod(
 #'             Northwestern University. Evanston, IL.
 #'
 #' @examples
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-#'                           data = 1:25)
+#' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data = 1:25)
 #' plot(w1)
 #'
 #'
@@ -168,7 +168,8 @@ setGeneric(
 #' @rdname createWorld
 setMethod(
   "createWorld",
-  signature = c(minPxcor = "numeric", maxPxcor = "numeric", minPycor = "numeric", maxPycor = "numeric"),
+  signature = c(minPxcor = "numeric", maxPxcor = "numeric", minPycor = "numeric",
+                maxPycor = "numeric"),
   definition = function(minPxcor, maxPxcor, minPycor, maxPycor, data) {
 
     numX <- (maxPxcor - minPxcor + 1)
@@ -179,7 +180,8 @@ setMethod(
 
     world <- new("worldMatrix",
                  .Data = data,
-                 minPxcor = minPxcor, maxPxcor = maxPxcor, minPycor = minPycor, maxPycor = maxPycor,
+                 minPxcor = minPxcor, maxPxcor = maxPxcor,
+                 minPycor = minPycor, maxPycor = maxPycor,
                  extent = extent(minPxcor - 0.5, maxPxcor + 0.5, minPycor - 0.5, maxPycor + 0.5),
                  res = c(1, 1),
                  pCoords = cbind(pxcor = rep_len(minPxcor:maxPxcor, length.out = numX * numY),
@@ -255,7 +257,7 @@ setMethod(
   "[",
   signature("worldArray", "missing", "missing", "ANY"),
   definition = function(x, ..., drop) {
-    cellValues <- unlist(lapply(1:dim(x)[3], function(z){as.numeric(t(x@.Data[,,z]))}))
+    cellValues <- unlist(lapply(1:dim(x)[3], function(z){as.numeric(t(x@.Data[, , z]))}))
     dim(cellValues) <- c(dim(x)[1] * dim(x)[2], dim(x)[3])
     colnames(cellValues) <- dimnames(x@.Data)[[3]]
     return(cellValues)
@@ -273,7 +275,7 @@ setReplaceMethod(
     rowMat <- x@maxPycor - j + 1
     coords <- cbind(rowMat, colMat)
     for (k in 1:dim(x)[3]) {
-      x@.Data[cbind(coords, k)] <- value[,k]
+      x@.Data[cbind(coords, k)] <- value[, k]
     }
     validObject(x)
     return(x)
@@ -292,7 +294,7 @@ setReplaceMethod(
       value <- value[rep(1, nCell),]
     }
     for (k in 1:dim(x)[3]) {
-      x@.Data[,,k] <- matrix(data = value[, k], ncol = dim(x@.Data)[2], byrow = TRUE)
+      x@.Data[, , k] <- matrix(data = value[, k], ncol = dim(x@.Data)[2], byrow = TRUE)
     }
     validObject(x)
     return(x)
@@ -453,7 +455,7 @@ setMethod(
   "PxcorPycorFromCell",
   signature = c("worldNLR", "numeric"),
   definition = function(world, cellNum) {
-    pCoords <- world@pCoords[cellNum,,drop = FALSE]
+    pCoords <- world@pCoords[cellNum, , drop = FALSE]
     return(pCoords)
   }
 )
@@ -501,6 +503,7 @@ setMethod(
   signature = c("worldMatrix", "numeric"),
   definition = function(world, cellNum) {
     b <- dim(world)
-    floor((cellNum - 1) / b[2]) + seq.int(from = 1, to = prod(b), by = b[1])[(cellNum - 1) %% b[2] + 1]
+    floor((cellNum - 1) / b[2]) + seq.int(from = 1, to = prod(b), 
+                                          by = b[1])[(cellNum - 1) %% b[2] + 1]
   }
 )

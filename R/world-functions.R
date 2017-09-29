@@ -208,8 +208,8 @@ setMethod(
   "worldWidth",
   signature = "worldNLR",
   definition = function(world) {
-    w_width <- maxPxcor(world) - minPxcor(world) + 1
-    return(w_width)
+    wWidth <- maxPxcor(world) - minPxcor(world) + 1
+    return(wWidth)
   }
 )
 
@@ -252,8 +252,8 @@ setMethod(
   "worldHeight",
   signature = "worldNLR",
   definition = function(world) {
-    w_height <- maxPycor(world) - minPycor(world) + 1
-    return(w_height)
+    wHeight <- maxPycor(world) - minPycor(world) + 1
+    return(wHeight)
   }
 )
 
@@ -342,7 +342,7 @@ setMethod(
 #'          extent will be bigger by 1 on the width and on the height.
 #'
 #' @examples
-#' r1 <- raster(extent(c(0,10,0,10)), nrows=10, ncols=10)
+#' r1 <- raster(extent(c(0,10,0,10)), nrows = 10, ncols = 10)
 #' r1[]<-runif(100)
 #' w1 <- raster2world(r1, method = "ngb")
 #' plot(r1)
@@ -440,8 +440,7 @@ setMethod(
 #'          at the edges of the cells.
 #'
 #' @examples
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9,
-#'                           data = runif(100))
+#' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = runif(100))
 #' r1 <- world2raster(w1)
 #' plot(r1)
 #'
@@ -480,7 +479,7 @@ setMethod(
   definition = function(world) {
 
     listRaster <- lapply(1:dim(world)[3],function(x) {
-      raster(world@.Data[,,x], xmn = world@extent@xmin, xmx = world@extent@xmax,
+      raster(world@.Data[, , x], xmn = world@extent@xmin, xmx = world@extent@xmax,
              ymn = world@extent@ymin, ymx = world@extent@ymax)
     })
     rasterStack <- stack(listRaster)
