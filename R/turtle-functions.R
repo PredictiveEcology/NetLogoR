@@ -997,19 +997,19 @@ setMethod(
                      agents2[, 2] - (world@extent@ymax - world@extent@ymin))
 
         # All distances in a wrapped world
-        dist_agents2 <- pointDistance(p1 = agents, p2 = agents2, lonlat = FALSE, allpairs = FALSE)
-        dist_to1 <- pointDistance(p1 = agents, p2 = to1, lonlat = FALSE, allpairs = FALSE)
-        dist_to2 <- pointDistance(p1 = agents, p2 = to2, lonlat = FALSE, allpairs = FALSE)
-        dist_to3 <- pointDistance(p1 = agents, p2 = to3, lonlat = FALSE, allpairs = FALSE)
-        dist_to4 <- pointDistance(p1 = agents, p2 = to4, lonlat = FALSE, allpairs = FALSE)
-        dist_to5 <- pointDistance(p1 = agents, p2 = to5, lonlat = FALSE, allpairs = FALSE)
-        dist_to6 <- pointDistance(p1 = agents, p2 = to6, lonlat = FALSE, allpairs = FALSE)
-        dist_to7 <- pointDistance(p1 = agents, p2 = to7, lonlat = FALSE, allpairs = FALSE)
-        dist_to8 <- pointDistance(p1 = agents, p2 = to8, lonlat = FALSE, allpairs = FALSE)
+        distAgents2 <- pointDistance(p1 = agents, p2 = agents2, lonlat = FALSE, allpairs = FALSE)
+        distTo1 <- pointDistance(p1 = agents, p2 = to1, lonlat = FALSE, allpairs = FALSE)
+        distTo2 <- pointDistance(p1 = agents, p2 = to2, lonlat = FALSE, allpairs = FALSE)
+        distTo3 <- pointDistance(p1 = agents, p2 = to3, lonlat = FALSE, allpairs = FALSE)
+        distTo4 <- pointDistance(p1 = agents, p2 = to4, lonlat = FALSE, allpairs = FALSE)
+        distTo5 <- pointDistance(p1 = agents, p2 = to5, lonlat = FALSE, allpairs = FALSE)
+        distTo6 <- pointDistance(p1 = agents, p2 = to6, lonlat = FALSE, allpairs = FALSE)
+        distTo7 <- pointDistance(p1 = agents, p2 = to7, lonlat = FALSE, allpairs = FALSE)
+        distTo8 <- pointDistance(p1 = agents, p2 = to8, lonlat = FALSE, allpairs = FALSE)
 
         # Which distance is the minimum
-        allDist <- cbind(dist_agents2, dist_to1, dist_to2, dist_to3, dist_to4, dist_to5,
-                         dist_to6, dist_to7, dist_to8)
+        allDist <- cbind(distAgents2, distTo1, distTo2, distTo3, distTo4, distTo5,
+                         distTo6, distTo7, distTo8)
         distMin <- apply(allDist, 1, min)
 
         toShortest <- agents2
@@ -1942,18 +1942,6 @@ setMethod(
                          val = valToReplace)
       }
 
-      # newTurtles@.Data[, "who"] <- (max(turtles@.Data[, "who"]) + 1):(NLcount(newTurtles) +
-      #                                                               max(turtles@.Data[, "who"]))
-      # # unique who number
-      # newTurtlesBreed <- of(agents = newTurtles, var = "breed")
-      # newTurtlesColor <- of(agents = newTurtles, var = "color")
-      #
-      # turtles@.Data <- rbind(turtles@.Data, newTurtles@.Data)
-      # turtles <- NLset(turtles = turtles, agents = newTurtles, var = "breed",
-      #                  val = newTurtlesBreed)
-      # turtles <- NLset(turtles = turtles, agents = newTurtles, var = "color",
-      #                  val = newTurtlesColor)
-
       return(turtles)
     }
 })
@@ -2855,7 +2843,7 @@ setMethod(
       return(agents)
 
     } else {
-      pCoords <- agents[!duplicated(rbind(except, agents))[-(1:nrow(except))], ]
+      pCoords <- agents[!duplicated(rbind(except, agents))[- (1:nrow(except))], ]
       return(pCoords)
     }
   }

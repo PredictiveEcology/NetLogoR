@@ -339,10 +339,10 @@ setMethod(
   "stackWorlds",
   signature = "worldMatrix",
   definition = function(...) {
-    NLwMs <- list(...)
+    worlds <- list(...)
     # similar dimensions can have different extent
-    if (length(unique(lapply(NLwMs, FUN = function(x) x@extent))) == 1) {
-      out <- abind::abind(NLwMs@.Data, along = 3)
+    if (length(unique(lapply(worlds, FUN = function(x) x@extent))) == 1) {
+      out <- abind::abind(worlds@.Data, along = 3)
     } else {
       stop("worldMatrix extents must all be equal")
     }
@@ -351,11 +351,11 @@ setMethod(
 
     world <- new("worldArray",
                  .Data = out,
-                 minPxcor = NLwMs[[1]]@minPxcor, maxPxcor = NLwMs[[1]]@maxPxcor,
-                 minPycor = NLwMs[[1]]@minPycor, maxPycor = NLwMs[[1]]@maxPycor,
-                 extent = NLwMs[[1]]@extent,
+                 minPxcor = worlds[[1]]@minPxcor, maxPxcor = worlds[[1]]@maxPxcor,
+                 minPycor = worlds[[1]]@minPycor, maxPycor = worlds[[1]]@maxPycor,
+                 extent = worlds[[1]]@extent,
                  res = c(1, 1),
-                 pCoords = NLwMs[[1]]@pCoords
+                 pCoords = worlds[[1]]@pCoords
     )
 
     return(world)

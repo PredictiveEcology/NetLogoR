@@ -74,13 +74,13 @@ setMethod(
     nNeigh <- plyr::count(df[, "from"])
     toGiveNeigh <- rep(toGive, nNeigh$freq)
     df <- df[order(df[, "from"]), ]
-    DT <- data.table(df, toGiveNeigh)
-    setkey(DT, from)
-    DT <- DT[, loose := sum(toGiveNeigh), by = from] # how much each patch give
-    loose <- unique(DT[, c(1, 4), with = FALSE]) # from and loose
-    setkey(DT, to)
-    DT <- DT[, win := sum(toGiveNeigh), by = to] # how much each patch receive
-    win <- unique(DT[, c(2, 5), with = FALSE]) # to and win
+    dt <- data.table(df, toGiveNeigh)
+    setkey(dt, from)
+    dt <- dt[, loose := sum(toGiveNeigh), by = from] # how much each patch give
+    loose <- unique(dt[, c(1, 4), with = FALSE]) # from and loose
+    setkey(dt, to)
+    dt <- dt[, win := sum(toGiveNeigh), by = to] # how much each patch receive
+    win <- unique(dt[, c(2, 5), with = FALSE]) # to and win
 
     newVal <- val - loose[, loose] + win[, win]
     world[] <- newVal
@@ -106,13 +106,13 @@ setMethod(
     nNeigh <- plyr::count(df[, "from"])
     toGiveNeigh <- rep(toGive, nNeigh$freq)
     df <- df[order(df[, "from"]), ]
-    DT <- data.table(df, toGiveNeigh)
-    setkey(DT, from)
-    DT <- DT[, loose := sum(toGiveNeigh), by = from] # how much each patch give
-    loose <- unique(DT[, c(1, 4), with = FALSE]) # from and loose
-    setkey(DT, to)
-    DT <- DT[, win := sum(toGiveNeigh), by = to] # how much each patch receive
-    win <- unique(DT[, c(2, 5), with = FALSE]) # to and win
+    dt <- data.table(df, toGiveNeigh)
+    setkey(dt, from)
+    dt <- dt[, loose := sum(toGiveNeigh), by = from] # how much each patch give
+    loose <- unique(dt[, c(1, 4), with = FALSE]) # from and loose
+    setkey(dt, to)
+    dt <- dt[, win := sum(toGiveNeigh), by = to] # how much each patch receive
+    win <- unique(dt[, c(2, 5), with = FALSE]) # to and win
 
     newVal <- val - loose[, loose] + win[, win]
     world@.Data[, , layer] <- matrix(newVal, ncol = dim(world)[2], byrow = TRUE)
@@ -369,12 +369,12 @@ setMethod(
       neighbors <- adj(worldMat, cells = cellNum, directions = nNeighbors,
                        torus = torus, id = seq_along(cellNum))
       pCoords <- PxcorPycorFromCell(world = world, cellNum = neighbors[, 2])
-      neighbors_df <- data.frame(neighbors, pCoords)
+      neighborsDf <- data.frame(neighbors, pCoords)
 
       # Output as a matrix
-      neighbors_df <- neighbors_df[order(neighbors_df$id), ]
-      neighborsID <- cbind(pxcor = neighbors_df$pxcor, pycor = neighbors_df$pycor,
-                           id = neighbors_df$id)
+      neighborsDf <- neighborsDf[order(neighborsDf$id), ]
+      neighborsID <- cbind(pxcor = neighborsDf$pxcor, pycor = neighborsDf$pycor,
+                           id = neighborsDf$id)
 
     } else {
       cellNum <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
@@ -462,27 +462,27 @@ setMethod(
   signature = c(world = "worldNLR", x = "numeric", y = "numeric"),
   definition = function(world, x, y, duplicate, torus, out) {
 
-    pxcor_ <- round(x)
-    pycor_ <- round(y)
+    pxcor <- round(x)
+    pycor <- round(y)
 
     if (torus == TRUE) {
-      pCoords <- wrap(cbind(x = pxcor_, y = pycor_), world@extent)
-      pxcor_ <- pCoords[, 1]
-      pycor_ <- pCoords[, 2]
+      pCoords <- wrap(cbind(x = pxcor, y = pycor), world@extent)
+      pxcor <- pCoords[, 1]
+      pycor <- pCoords[, 2]
     }
 
-    pxcor_[pxcor_ < world@minPxcor | pxcor_ > world@maxPxcor] <- NA
-    pycor_[pycor_ < world@minPycor | pycor_ > world@maxPycor] <- NA
-    pxcor_[is.na(pycor_)] <- NA
-    pycor_[is.na(pxcor_)] <- NA
+    pxcor[pxcor < world@minPxcor | pxcor > world@maxPxcor] <- NA
+    pycor[pycor < world@minPycor | pycor > world@maxPycor] <- NA
+    pxcor[is.na(pycor)] <- NA
+    pycor[is.na(pxcor)] <- NA
 
     if (out == FALSE) {
-      pxcor_ <- pxcor_[!is.na(pxcor_)]
-      pycor_ <- pycor_[!is.na(pycor_)]
+      pxcor <- pxcor[!is.na(pxcor)]
+      pycor <- pycor[!is.na(pycor)]
     }
 
-    pCoords <- matrix(data = c(pxcor_, pycor_), ncol = 2,
-                      nrow = length(pxcor_), dimnames = list(NULL, c("pxcor", "pycor")))
+    pCoords <- matrix(data = c(pxcor, pycor), ncol = 2,
+                      nrow = length(pxcor), dimnames = list(NULL, c("pxcor", "pycor")))
 
     if (duplicate == FALSE) {
       pCoords <- unique(pCoords)
@@ -613,7 +613,8 @@ setMethod(
 #'          distance from a turtle using the turtle's heading, look at \code{pacthAhead()},
 #'          \code{patchLeft()} or \code{patchRight()}.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance}
+#' @seealso \url{
+#' https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance}
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,

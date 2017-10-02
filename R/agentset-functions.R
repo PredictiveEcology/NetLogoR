@@ -2011,18 +2011,18 @@ setMethod(
           matj <- pxcor - world@minPxcor + 1
           mati <- world@maxPycor - pycor + 1
 
-          var_k <- match(var, dimnames(world@.Data)[[3]])
-          world@.Data[cbind(mati, matj, var_k)] <- val
+          vark <- match(var, dimnames(world@.Data)[[3]])
+          world@.Data[cbind(mati, matj, vark)] <- val
         }
       } else {
         if (identical(patches(world), agents)) {
           for (i in 1:length(var)) {
-            val_i <- val[, var[i]]
+            vali <- val[, var[i]]
 
-            if (length(val_i) == 1) {
-              val_i <- rep(val_i, NROW(agents))
+            if (length(vali) == 1) {
+              vali <- rep(vali, NROW(agents))
             }
-            world@.Data[, , var[i]] <- matrix(val_i, ncol = dim(world)[2], byrow = TRUE)
+            world@.Data[, , var[i]] <- matrix(vali, ncol = dim(world)[2], byrow = TRUE)
           }
         } else {
           matj <- agents[, 1] - world@minPxcor + 1
@@ -2045,8 +2045,8 @@ setMethod(
           mati <- mati[!is.na(mati)]
 
           for (i in 1:length(var)) {
-             var_k <- match(var[i], dimnames(world@.Data)[[3]])
-            world@.Data[cbind(mati, matj, var_k)] <- val[, var[i]]
+             vark <- match(var[i], dimnames(world@.Data)[[3]])
+            world@.Data[cbind(mati, matj, vark)] <- val[, var[i]]
           }
         }
       }

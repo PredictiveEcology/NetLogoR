@@ -92,7 +92,7 @@ setMethod(
   "initialize",
   "agentMatrix",
   function(.Object="agentMatrix", coords, ..., levelsAM) {
-    Coords <- TRUE
+    coords2 <- TRUE
     if (missing(coords)) {
       coords <- NULL
     }
@@ -105,7 +105,7 @@ setMethod(
       } else {
         coords <- matrix(c(NA, NA), ncol = 2)
       }
-      Coords <- FALSE
+      coords2 <- FALSE
     } else {
       coords <- unname(coords)
     }
@@ -127,8 +127,7 @@ setMethod(
         if (length(otherCols) > 0) {
           .Object@.Data <- otherCols
           .Object@levels <- list(NULL) #rep(list(NULL), ncol(.Object@.Data))
-          #names(.Object@levels) <- colnames(otherCols)
-          if (Coords) {
+          if (coords2) {
             .Object@bbox <- .bboxCoords(coords)
           } else {
             .Object@bbox <- matrix(rep(NA_real_, 4), ncol = 2)
@@ -156,7 +155,6 @@ setMethod(
         }
         otherCols <- append(list(xcor = coords[, 1], ycor = coords[, 2]), dotCols)
         charCols <- sapply(otherCols, is.character)
-        #charCols <- names(charCols)[charCols]
         numCols <- sapply(otherCols, is.numeric)
         facCols <- sapply(otherCols, is.factor)
         charCols <- facCols | charCols
@@ -169,7 +167,7 @@ setMethod(
           .Object@.Data <- do.call(cbind, otherCols)
           .Object@levels <- lapply(otherCols[charCols],
                                    function(x) if (is.factor(x)) levels(x) else NULL)
-          if (Coords) {
+          if (coords2) {
             .Object@bbox <- .bboxCoords(coords)
           } else {
             .Object@bbox <- matrix(rep(NA_real_, 4), ncol = 2)
@@ -182,7 +180,7 @@ setMethod(
       else
         stop("if passing levelsAM, then ... must be a numeric matrix")
       .Object@levels <- levelsAM
-      if (Coords) {
+      if (coords2) {
         .Object@bbox <- .bboxCoords(coords)
       } else {
         .Object@bbox <- matrix(rep(NA_real_, 4), ncol = 2)
@@ -481,21 +479,17 @@ setReplaceMethod(
   definition = function(x, i, j, value) {
     nam <- names(x@levels)
     charCols <- unlist(lapply(value, is.character))
-    #charCols <- match(j, nam)
-    #charCols <- match(nam, j)
-    numCols <- which(!charCols) #colNums[!(colNums %in% charCols)]
+    numCols <- which(!charCols)
     newCols <- match(j, colnames(x))
     if (any(is.na(newCols))) {
       stop("Can only replace columns that are existing. Use cbind.")
     }
 
     if (any(numCols)) {
-      #numColsJ <- which(colNums %in% numCols)
       x@.Data[i, j[numCols]] <- as.matrix(value[, j[numCols]])
     }
 
     if (any(charCols)) {
-      #charColsJ <- which(colNums %in% charCols)
       for (y in j[charCols]) {
         x[i, y] <- value[, y]
       }
@@ -669,7 +663,7 @@ setMethod(
     } else {
       tmp <- object@.Data
     }
-    show(tmp[, -(1:2), drop = FALSE])
+    show(tmp[, - (1:2), drop = FALSE])
 })
 
 #' @param x  An \code{agentMatrix} object.
@@ -742,7 +736,7 @@ cbind.agentMatrix <- function(..., deparse.level) {
       tmp[[2]]@.Data <- tmp[[2]]@.Data[rep_len(1, length.out = NROW(tmp[[1]]@.Data)), ]
     }
 
-    if (any(colnames(tmp[[1]]@.Data)[-(1:2)] %in% colnames(tmp[[2]]@.Data)[-(1:2)])) {
+    if (any(colnames(tmp[[1]]@.Data)[- (1:2)] %in% colnames(tmp[[2]]@.Data)[- (1:2)])) {
       stop("There are duplicate columns in the two agentMatrix objects. Please remove duplicates.")
     }
     newMat <- cbind(tmp[[1]]@.Data, tmp[[2]]@.Data[, - (1:2), drop = FALSE])
@@ -772,18 +766,18 @@ rbind.agentMatrix <- function(..., deparse.level = 1) {
     levels <- dots[[1]]@levels
     if (any(!unlist(lapply(levels, is.null)))) {
       new("agentMatrix", coords = mat[, 1:2, drop = FALSE],
-        mat[, -(1:2)],
+        mat[, - (1:2)],
         levelsAM = levels)
     } else {
       new("agentMatrix", coords = mat[, 1:2, drop = FALSE],
-          mat[, -(1:2), drop = FALSE])
+          mat[, - (1:2), drop = FALSE])
     }
   } else {
     # if levels are not the same, then need to take the "slow" option: convert to data.frame
     mat <- as.data.frame(do.call(rbindlist,
                                  args = list(lapply(dots, function(x) as(x, "data.frame")),
                                              fill = TRUE)))
-    new("agentMatrix", coords = mat[, 1:2], mat[, -(1:2)])
+    new("agentMatrix", coords = mat[, 1:2], mat[, - (1:2)])
   }
 }
 
@@ -824,8 +818,8 @@ plot.agentMatrix <- function(x, ...) {
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 1:100)
 #' plot(w1)
 plot.worldMatrix <- function(x, ...) {
-  Ras <- world2raster(x)
-  plot(Ras, ...)
+  ras <- world2raster(x)
+  plot(ras, ...)
 }
 
 #' @export
@@ -840,8 +834,8 @@ plot.worldMatrix <- function(x, ...) {
 #' w3 <- stackWorlds(w1, w2)
 #' plot(w3)
 plot.worldArray <- function(x, ...) {
-  Ras <- world2raster(x)
-  plot(Ras, ...)
+  ras <- world2raster(x)
+  plot(ras, ...)
 }
 
 #' @export
