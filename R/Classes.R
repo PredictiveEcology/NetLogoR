@@ -277,7 +277,7 @@ setMethod(
 setAs("matrix", "agentMatrix",
       function(from) {
         tmp <- new("agentMatrix",
-                   coords = from[, 1:2, drop = FALSE], from[, - (1:2), drop = FALSE])
+                   coords = from[, 1:2, drop = FALSE], from[, -1:-2, drop = FALSE])
         tmp
 })
 
@@ -285,7 +285,7 @@ setAs("matrix", "agentMatrix",
 setAs("data.frame", "agentMatrix",
       function(from) {
         tmp <- new("agentMatrix",
-                   coords = from[, 1:2, drop = FALSE], from[, - (1:2), drop = FALSE])
+                   coords = from[, 1:2, drop = FALSE], from[, -1:-2, drop = FALSE])
         tmp
 })
 
@@ -604,13 +604,13 @@ setMethod(
     levelIndNoNA <- na.omit(levelInd)
     whInd <- which(!is.na(levelInd))
     if (all(is.na(levelInd))) {
-      (e1@.Data == e2)[, - (1:2)]
+      (e1@.Data == e2)[, -1:-2]
     } else {
       logic <- e1@.Data == e2
       logic[, whInd] <- sapply(levelIndNoNA, function(z) {
         e1@levels[[z]][e1@.Data[, whInd[z]]]
       }) == e2
-      logic[, - (1:2)]
+      logic[, -1:-2]
     }
 })
 
@@ -663,7 +663,7 @@ setMethod(
     } else {
       tmp <- object@.Data
     }
-    show(tmp[, - (1:2), drop = FALSE])
+    show(tmp[, -1:-2, drop = FALSE])
 })
 
 #' @param x  An \code{agentMatrix} object.
@@ -736,10 +736,10 @@ cbind.agentMatrix <- function(..., deparse.level) {
       tmp[[2]]@.Data <- tmp[[2]]@.Data[rep_len(1, length.out = NROW(tmp[[1]]@.Data)), ]
     }
 
-    if (any(colnames(tmp[[1]]@.Data)[- (1:2)] %in% colnames(tmp[[2]]@.Data)[- (1:2)])) {
+    if (any(colnames(tmp[[1]]@.Data)[-1:-2] %in% colnames(tmp[[2]]@.Data)[-1:-2])) {
       stop("There are duplicate columns in the two agentMatrix objects. Please remove duplicates.")
     }
-    newMat <- cbind(tmp[[1]]@.Data, tmp[[2]]@.Data[, - (1:2), drop = FALSE])
+    newMat <- cbind(tmp[[1]]@.Data, tmp[[2]]@.Data[, -1:-2, drop = FALSE])
     tmp[[1]]@.Data <- newMat
     colnames(newMat)
     tmp[[1]]@levels <- updateList(tmp[[2]]@levels, tmp[[1]]@levels)
@@ -766,18 +766,18 @@ rbind.agentMatrix <- function(..., deparse.level = 1) {
     levels <- dots[[1]]@levels
     if (any(!unlist(lapply(levels, is.null)))) {
       new("agentMatrix", coords = mat[, 1:2, drop = FALSE],
-        mat[, - (1:2)],
+        mat[, -1:-2],
         levelsAM = levels)
     } else {
       new("agentMatrix", coords = mat[, 1:2, drop = FALSE],
-          mat[, - (1:2), drop = FALSE])
+          mat[, -1:-2, drop = FALSE])
     }
   } else {
     # if levels are not the same, then need to take the "slow" option: convert to data.frame
     mat <- as.data.frame(do.call(rbindlist,
                                  args = list(lapply(dots, function(x) as(x, "data.frame")),
                                              fill = TRUE)))
-    new("agentMatrix", coords = mat[, 1:2], mat[, - (1:2)])
+    new("agentMatrix", coords = mat[, 1:2], mat[, -1:-2])
   }
 }
 

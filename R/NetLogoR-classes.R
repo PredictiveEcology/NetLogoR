@@ -361,7 +361,6 @@ setMethod(
     return(world)
 })
 
-
 ################################################################################
 #' The worldNLR class
 #'
@@ -418,7 +417,6 @@ setMethod(
     (i - 1) * ncol(world) + j # Faster
 })
 
-
 ################################################################################
 #' Patches coordinates from cells numbers
 #'
@@ -458,9 +456,7 @@ setMethod(
   definition = function(world, cellNum) {
     pCoords <- world@pCoords[cellNum, , drop = FALSE]
     return(pCoords)
-  }
-)
-
+})
 
 ################################################################################
 #' WorldMatrix indices from vector indices
@@ -506,5 +502,4 @@ setMethod(
     b <- dim(world)
     floor((cellNum - 1) / b[2]) + seq.int(from = 1, to = prod(b),
                                           by = b[1])[(cellNum - 1) %% b[2] + 1]
-  }
-)
+})
