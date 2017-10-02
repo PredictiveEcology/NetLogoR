@@ -61,13 +61,13 @@ defineModule(sim, list(
 ## event types
 #   - type `init` is required for initialiazation
 
-doEvent.WolfSheepPredation = function(sim, eventTime, eventType, debug = FALSE) {
+doEvent.WolfSheepPredation <- function(sim, eventTime, eventType, debug = FALSE) {
   if (eventType == "init") {
     ### check for more detailed object dependencies:
     ### (use `checkObject` or similar)
 
     # Create the world, the sheep and the wolves
-    sim <- sim$WolfSheepPredationInit(sim)
+    sim <- sim$wolfSheepPredationInit(sim)
 
     # schedule future event(s)
     sim <- scheduleEvent(sim, params(sim)$WolfSheepPredation$.plotInitialTime,
@@ -79,22 +79,22 @@ doEvent.WolfSheepPredation = function(sim, eventTime, eventType, debug = FALSE) 
   } else if (eventType == "plot") {
 
     dev(4)
-    sim <- sim$WolfSheepPredationPosition(sim)
+    sim <- sim$wolfSheepPredationPosition(sim)
     dev(5)
-    sim <- sim$WolfSheepPredationPopSize(sim)
+    sim <- sim$wolfSheepPredationPopSize(sim)
 
     sim <- scheduleEvent(sim, time(sim) + params(sim)$WolfSheepPredation$.plotInterval,
                          "WolfSheepPredation", "plot")
 
   } else if (eventType == "save") {
 
-    sim <- sim$WolfSheepPredationSave(sim)
+    sim <- sim$wolfSheepPredationSave(sim)
     sim <- scheduleEvent(sim, time(sim) + params(sim)$WolfSheepPredation$.saveInterval,
                          "WolfSheepPredation", "save")
 
   } else if (eventType == "event") {
 
-    sim <- sim$WolfSheepPredationEvent(sim)
+    sim <- sim$wolfSheepPredationEvent(sim)
     sim <- scheduleEvent(sim, time(sim) + 1, "WolfSheepPredation", "event")
 
   } else {
@@ -110,7 +110,7 @@ doEvent.WolfSheepPredation = function(sim, eventTime, eventType, debug = FALSE) 
 #   - keep event functions short and clean, modularize by calling subroutines from section below.
 
 ### template initialization
-WolfSheepPredationInit <- function(sim) {
+wolfSheepPredationInit <- function(sim) {
   # Create the world
   grass <- createWorld(minPxcor = -25, maxPxcor = 25, minPycor = -25, maxPycor = 25)
   if (params(sim)$WolfSheepPredation$grassOn == FALSE) {
@@ -182,7 +182,7 @@ WolfSheepPredationInit <- function(sim) {
 }
 
 ### template for save events
-WolfSheepPredationSave <- function(sim) {
+wolfSheepPredationSave <- function(sim) {
   sim$numSheep <- c(sim$numSheep, NLcount(sim$sheep)) # add the new number of sheep
   sim$numWolves <- c(sim$numWolves, NLcount(sim$wolves)) # add the new numbr of wolves
 
@@ -196,7 +196,8 @@ WolfSheepPredationSave <- function(sim) {
 }
 
 ### template for plot events
-WolfSheepPredationPosition <- function(sim) { # Plot the positions
+# Plot the positions
+wolfSheepPredationPosition <- function(sim) {
   if (time(sim) == start(sim)) clearPlot()
 
   if (params(sim)$WolfSheepPredation$grassOn == TRUE) {
@@ -220,7 +221,7 @@ WolfSheepPredationPosition <- function(sim) { # Plot the positions
 }
 
 # Plot the population sizes
-WolfSheepPredationPopSize <- function(sim) {
+wolfSheepPredationPopSize <- function(sim) {
   if (time(sim) == params(sim)$WolfSheepPredation$.plotInitialTime) {
     clearPlot()
     plot(time(sim), NLcount(sim$wolves), xlim = c(start(sim), end(sim)),
@@ -243,7 +244,7 @@ WolfSheepPredationPopSize <- function(sim) {
 }
 
 ### template for the main event using the different functions defined under
-WolfSheepPredationEvent <- function(sim){
+wolfSheepPredationEvent <- function(sim){
   if (NLany(sim$sheep) | NLany(sim$wolves)) {
     # Ask sheep
     if (NLcount(sim$sheep) != 0) {
@@ -329,9 +330,9 @@ reproduceWolves <- function(sim) {
 #### Sheep and Wolves procedures
 
 move <- function(turtles) {
-  # turtles <- right(turtles, angle = runif(n = NLcount(turtles), min = 0, max = 50))
-  # turtles <- left(turtles, angle = runif(n = NLcount(turtles), min = 0, max = 50))
-  # The two above functions can be replaced by this next one,
+  # In NetLogo, two functions are used to give a random heading
+  # by rotating the turtles to the right and then to the left.
+  # With NetLogoR, it can be replaced by only one function,
   # as a negative value to turn right will turn left:
   turtles <- right(turtles, angle = runif(n = NLcount(turtles), min = -50, max = 50))
   turtles <- fd(world = grass, turtles = turtles, dist = 1, torus = TRUE)

@@ -210,7 +210,7 @@ time <- 1 # to keep track of the time step if wanted
 # as long as there is food in the world...
 while (sum(foodWorld[, "food"]) != 0) {
   print(time)
-  
+
   # Ants not carrying food
   aRed <- NLwith(agents = ants, var = "color", val = "red")
   if (NLcount(aRed) != 0) {
