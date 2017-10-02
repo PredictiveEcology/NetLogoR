@@ -126,7 +126,7 @@ setMethod(
         }
         if (length(otherCols) > 0) {
           .Object@.Data <- otherCols
-          .Object@levels <- list(NULL) #rep(list(NULL), ncol(.Object@.Data))
+          .Object@levels <- list(NULL)
           if (coords2) {
             .Object@bbox <- .bboxCoords(coords)
           } else {
