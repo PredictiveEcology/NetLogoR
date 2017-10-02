@@ -11,6 +11,7 @@ matrix:
       apt:
         packages:
         - libgdal1-dev
+        - libnlopt-dev
         - libproj-dev
     before_install:
     - export DISPLAY=:99.0
