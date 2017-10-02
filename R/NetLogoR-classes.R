@@ -172,8 +172,8 @@ setMethod(
                 maxPycor = "numeric"),
   definition = function(minPxcor, maxPxcor, minPycor, maxPycor, data) {
 
-    numX <- (maxPxcor - minPxcor + 1)
-    numY <- (maxPycor - minPycor + 1)
+    numX <- maxPxcor - minPxcor + 1
+    numY <- maxPycor - minPycor + 1
     data <- matrix(ncol = numX,
                     nrow = numY, data = data, byrow = TRUE)
     # byrow = TRUE to be similar as a raster when assigning data
