@@ -63,9 +63,9 @@ test_that("clearPatches works", {
 
 test_that("raster2world and world2raster work", {
   r1 <- raster(nrows = 10, ncols = 10, xmn = -5, xmx = 10, ymn = 2, ymx = 20)
-  r1[]<-runif(100)
+  r1[] <- runif(100)
   r2 <- r1
-  r2[]<-runif(100)
+  r2[] <- runif(100)
   rs <- stack(r1, r2)
   w1 <- raster2world(r1, method = "ngb")
   w2 <- w1
@@ -73,6 +73,6 @@ test_that("raster2world and world2raster work", {
   ws <- raster2world(rs, method = "ngb")
   expect_identical(w1[], ws[][, 1])
 
-  r1_ <- world2raster(w1)
-  rs_ <- world2raster(ws)
+  r1w <- world2raster(w1)
+  rsw <- world2raster(ws)
 })

@@ -722,7 +722,7 @@ test_that("randomXYcor works", {
   w2 <- w1
   w1[] <- runif(10000)
   w2[] <- runif(10000)
-  ws <-stackWorlds(w1, w2)
+  ws <- stackWorlds(w1, w2)
   t2 <- createTurtles(n = 10000, coords = randomXYcor(world = w1, n = 10000))
   expect_identical(canMove(world = ws, turtles = t2, dist = 0), rep(TRUE, NLcount(t2)))
 })
@@ -741,9 +741,9 @@ test_that("tExist works", {
   expect_identical(tExist(turtles = t1, who = c(3, 9), breed = c("wolf", "sheep")), c(TRUE, TRUE))
   expect_identical(tExist(turtles = t1, who = c(3, 9), breed = "wolf"), c(FALSE, TRUE))
   expect_identical(tExist(turtles = t1, who = c(3, 9), breed = c("sheep", "wolf")), c(TRUE, TRUE))
-  expect_identical(tExist(turtles = t1, who = c(3,11, 9)), c(TRUE, FALSE, TRUE))
-  expect_identical(tExist(turtles = t1, who = c(3,11, 9), breed = "sheep"), c(TRUE, FALSE, FALSE))
-  expect_identical(tExist(turtles = t1, who = c(3,11, 9), breed = c("sheep", "wolf")),
+  expect_identical(tExist(turtles = t1, who = c(3, 11, 9)), c(TRUE, FALSE, TRUE))
+  expect_identical(tExist(turtles = t1, who = c(3, 11, 9), breed = "sheep"), c(TRUE, FALSE, FALSE))
+  expect_identical(tExist(turtles = t1, who = c(3, 11, 9), breed = c("sheep", "wolf")),
                    c(TRUE, FALSE, TRUE))
 })
 
@@ -788,7 +788,7 @@ test_that("turtle works", {
   t15 <- turtle(t6, 3)
   expect_equivalent(t15, t13)
   t16 <- turtle(t1, 11)
-  expect_equivalent(noTurtles(),t16)
+  expect_equivalent(noTurtles(), t16)
 })
 
 test_that("turtlesOn works", {
@@ -862,7 +862,7 @@ test_that("turtlesOn works", {
 
   t10 <- turtlesOn(world = w1, turtles = t1, agents = turtle(t1, who = c(0, 5, 6)),
                    breed = c("sheep", "wolf"), simplify = FALSE)
-  expect_equivalent(t10,t6)
+  expect_equivalent(t10, t6)
   t11 <- turtlesOn(world = w1, turtles = t1,
                    agents = patch(world = w1, x = c(0, 5, 6), y = c(0, 5, 6)),
                    breed = c("sheep", "wolf"), simplify = FALSE)
@@ -979,7 +979,8 @@ test_that("turtlesOwn works", {
   t4 <- turtlesOwn(turtles = t1, tVar = "breed2", tVal = c("bb", "aa", "aa", "cc", "bb"))
   expect_identical(t4@.Data, cbind(t1@.Data, breed2 = c(2, 1, 1, 3, 2)))
   expect_equivalent(t4@levels$breed2, c("aa", "bb", "cc"))
-  t5 <- turtlesOwn(turtles = t1, tVar = "female", tVal = c("TRUE", "TRUE", "FALSE", "FALSE", "FALSE"))
+  t5 <- turtlesOwn(turtles = t1, tVar = "female", tVal = c("TRUE", "TRUE", "FALSE", "FALSE",
+                                                           "FALSE"))
   expect_identical(t5@.Data, cbind(t1@.Data, female = c(2, 2, 1, 1, 1)))
   expect_equivalent(t5@levels$female, c("FALSE", "TRUE"))
 })
@@ -1036,7 +1037,7 @@ test_that("other works", {
   ws <- stackWorlds(w1, w2)
   p4 <- other(agents = patches(ws), except = cbind(pxcor = 0, pycor = 0))
   expect_equivalent(nrow(p4), 99)
-  p5 <- other(agents = patches(ws), except = cbind(pxcor = c(0, 1, 2, 2), pycor = c(0, 1, 2,2)))
+  p5 <- other(agents = patches(ws), except = cbind(pxcor = c(0, 1, 2, 2), pycor = c(0, 1, 2, 2)))
   expect_equivalent(nrow(p5), 97)
   p6 <- other(agents = patches(ws), except = cbind(pxcor = 0, pycor = -1))
   expect_equivalent(nrow(p6), 100)
@@ -1084,34 +1085,34 @@ test_that("layoutCircle works", {
 test_that("of works", {
   # Patches
   w1 <- createWorld(data = 1:25, minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
-  w1_1 <- of(world = w1, agents = patch(w1, 0, 4))
-  expect_equivalent(w1_1, 1)
-  w1_12 <- of(world = w1, agents = patch(w1, c(0, 1), c(4, 4)))
-  expect_equivalent(w1_12, c(1, 2))
-  w1_all <-of(world = w1, agents = patches(w1))
-  expect_equivalent(w1_all, 1:25)
-  w1_31 <- of(world = w1, agents = patch(w1, c(2, 0), c(4, 4)))
-  expect_equivalent(w1_31, c(3, 1))
+  w1p1 <- of(world = w1, agents = patch(w1, 0, 4))
+  expect_equivalent(w1p1, 1)
+  w1p12 <- of(world = w1, agents = patch(w1, c(0, 1), c(4, 4)))
+  expect_equivalent(w1p12, c(1, 2))
+  w1all <- of(world = w1, agents = patches(w1))
+  expect_equivalent(w1all, 1:25)
+  w1p31 <- of(world = w1, agents = patch(w1, c(2, 0), c(4, 4)))
+  expect_equivalent(w1p31, c(3, 1))
 
   w2 <- createWorld(data = 0, minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
   w3 <- stackWorlds(w1, w2)
-  w1_1 <- of(world = w3, var = "w1", agents = patch(w1, 0, 4))
-  expect_equivalent(w1_1, 1)
-  w1_12 <- of(world = w3, var = "w1", agents = patch(w1, c(0, 1), c(4, 4)))
-  expect_equivalent(w1_12, c(1, 2))
-  w1_all <-of(world = w3, var = "w1", agents = patches(w1))
-  expect_equivalent(w1_all, 1:25)
-  w1_31 <- of(world = w3, var = "w1", agents = patch(w1, c(2, 0), c(4, 4)))
-  expect_equivalent(w1_31, c(3, 1))
+  w1p1 <- of(world = w3, var = "w1", agents = patch(w1, 0, 4))
+  expect_equivalent(w1p1, 1)
+  w1p12 <- of(world = w3, var = "w1", agents = patch(w1, c(0, 1), c(4, 4)))
+  expect_equivalent(w1p12, c(1, 2))
+  w1all <- of(world = w3, var = "w1", agents = patches(w1))
+  expect_equivalent(w1all, 1:25)
+  w1p31 <- of(world = w3, var = "w1", agents = patch(w1, c(2, 0), c(4, 4)))
+  expect_equivalent(w1p31, c(3, 1))
 
-  w2_1 <- of(world = w3, var = "w2", agents = patch(w1, 0, 4))
-  expect_equivalent(w2_1, 0)
-  w2_12 <- of(world = w3, var = "w2", agents = patch(w1, c(0, 1), c(4, 4)))
-  expect_equivalent(w2_12, c(0, 0))
-  w2_all <-of(world = w3, var = "w2", agents = patches(w1))
-  expect_equivalent(w2_all, rep(0, 25))
-  w2_31 <- of(world = w3, var = "w2", agents = patch(w1, c(2, 0), c(4, 4)))
-  expect_equivalent(w2_31, c(0, 0))
+  w2p1 <- of(world = w3, var = "w2", agents = patch(w1, 0, 4))
+  expect_equivalent(w2p1, 0)
+  w2p12 <- of(world = w3, var = "w2", agents = patch(w1, c(0, 1), c(4, 4)))
+  expect_equivalent(w2p12, c(0, 0))
+  w2all <- of(world = w3, var = "w2", agents = patches(w1))
+  expect_equivalent(w2all, rep(0, 25))
+  w2p31 <- of(world = w3, var = "w2", agents = patch(w1, c(2, 0), c(4, 4)))
+  expect_equivalent(w2p31, c(0, 0))
 
   # Work with multiple var
   p1 <- of(world = w3, var = c("w2", "w1"), agents = patch(w1, 0, 4))
@@ -1124,7 +1125,7 @@ test_that("of works", {
                      heading = 21:30, color = c(rep("blue", 5), rep("red", 5)))
   twho <- of(agents = t, var = "who")
   expect_equivalent(twho, 0:9)
-  theading <- of(agents = t,var = "heading")
+  theading <- of(agents = t, var = "heading")
   expect_equivalent(theading, 21:30)
   tbreed <- of(agents = t, var = "breed")
   expect_equivalent(tbreed, rep("sheep", 10))
@@ -1179,21 +1180,21 @@ test_that("spdf2turtles and turtles2spdf work", {
   t1 <- turtlesOwn(turtles = t1, tVar = "age", tVal = 1:10)
   t1 <- turtlesOwn(turtles = t1, tVar = "sex", tVal = c(rep("M", 5), rep("F", 5)))
   t2 <- turtles2spdf(t1)
-  expect_equivalent(t2@coords, of(agents = t1, var =c("xcor", "ycor")))
+  expect_equivalent(t2@coords, of(agents = t1, var = c("xcor", "ycor")))
   expect_equivalent(t2@data, inspect(turtles = t1, who = 0:9)[3:10])
 
   sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
                                 data = cbind.data.frame(age = c(0, 0, 3), sex = c("F", "F", "M")))
   sp1Turtles <- spdf2turtles(sp1)
-  expect_equivalent(colnames(sp1Turtles@.Data), c("xcor", "ycor","who", "heading", "prevX", "prevY",
-                                                  "breed", "color", "age", "sex"))
+  expect_equivalent(colnames(sp1Turtles@.Data), c("xcor", "ycor", "who", "heading", "prevX",
+                                                  "prevY", "breed", "color", "age", "sex"))
   expect_equivalent(of(agents = sp1Turtles, var = "age"), c(0, 0, 3))
   expect_equivalent(of(agents = sp1Turtles, var = "sex"), c("F", "F", "M"))
   expect_equivalent(of(agents = sp1Turtles, var = "who"), c(0, 1, 2))
   expect_equivalent(of(agents = sp1Turtles, var = "xcor"), c(1, 2, 3))
 
   sp2 <- spdf2turtles(t2)
-  expect_equivalent(colnames(sp2@.Data), c("xcor", "ycor","who", "heading", "prevX", "prevY",
+  expect_equivalent(colnames(sp2@.Data), c("xcor", "ycor", "who", "heading", "prevX", "prevY",
                                            "breed", "color", "age", "sex"))
   expect_equivalent(of(agents = sp2, var = "age"), 1:10)
   expect_equivalent(of(agents = sp2, var = "sex"), c(rep("M", 5), rep("F", 5)))
