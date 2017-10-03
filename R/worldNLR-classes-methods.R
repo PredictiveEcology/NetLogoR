@@ -40,6 +40,7 @@
 #' @author Sarah Bauduin, Eliot McIntire, and Alex Chubaty
 #' @exportClass worldMatrix
 #' @importClassesFrom raster Extent
+#' @seealso \code{\link{worldArray}}
 #'
 setClass(
   "worldMatrix",
@@ -208,11 +209,13 @@ setMethod(
 #' \code{worldMatrix} objects with the same extent (i.e., same values for all their
 #' slots) stacked together. It is used to keep more than one value per patch.
 #'
+#' @aliases worldArray
 #' @name worldArray-class
 #' @rdname worldArray-class
 #' @author Sarah Bauduin, Eliot McIntire, and Alex Chubaty
 #' @exportClass worldArray
 #' @importClassesFrom raster Extent
+#' @seealso \code{\link{worldMatrix}}
 #'
 setClass(
   "worldArray",
@@ -508,3 +511,55 @@ setMethod(
                                           by = b[1])[(cellNum - 1) %% b[2] + 1]
   }
 )
+
+
+#' Subsetting for worldArray class
+#'
+#' These function similarly to \code{[[} for \code{RasterStack} objects
+#'
+#' @param x     A \code{worldArray} object.
+#' @param i     Index number or layer name specifying a subset of layer(s)
+#'              from the worldArray.
+#' @export
+#' @rdname Subsetting
+#' @importFrom methods .slotNames
+#' @name [[
+#' @aliases [[,worldArray,ANY,ANY-method
+setMethod("[[", signature(x = "worldArray", i = "ANY"),
+          definition = function(x, i) {
+            if(length(i)>1) {
+              x@.Data <- x@.Data[,,i]
+              return(x)
+            } else {
+              worldMat <- .emptyWorldMatrix
+              sns <- .slotNames(x);
+              for(sn in sns[sns!=".Data"]){
+                slot(worldMat, sn, check = FALSE) <- slot(x, sn)
+              }
+              worldMat@.Data <- x@.Data[,,i];
+              return(worldMat)
+            }
+
+          })
+
+#' @export
+#' @param value A replacement worldMatrix layer for one of the current layers in the
+#'              worldArray.
+#' @name [[<-
+#' @aliases [[<-,worldArray,ANY,ANY,ANY-method
+#' @rdname Subsetting
+setReplaceMethod("[[", signature(x = "worldArray", value = "ANY"),
+                 definition = function(x, i, value) {
+                   x@.Data[,,i] <- value
+                   return(x)
+                 })
+
+#' @export
+#' @param name  Layer name, normally without back ticks, unless has symbols.
+#' @name $
+#' @aliases $,worldArray-method
+#' @rdname Subsetting
+setMethod("$", signature(x = "worldArray"),
+          definition = function(x, name) {
+            return(x[[name]])
+          })

@@ -6,7 +6,8 @@
 \alias{NetLogoR-package}
 \title{The \code{NetLogoR} package}
 \description{
-The \code{NetLogoR} package
+The suggested package \pkg{fastshp} can be installed with
+\code{install.packages("fastshp", repos = "http://rforge.net", type = "source")}.
 }
 \seealso{
 Useful links:

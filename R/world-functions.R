@@ -290,6 +290,7 @@ setMethod(
 #'
 #' @author Sarah Bauduin
 #'
+#' @include worldNLR-classes-methods.R
 setGeneric(
   "clearPatches",
   function(world) {
@@ -485,3 +486,96 @@ setMethod(
     rasterStack <- stack(listRaster)
     return(rasterStack)
 })
+
+#' Key base R functions for worldNLR classes
+#'
+#' Slight modifications from the default versions.
+#'
+#' @param object  An \code{agentMatrix} object.
+#'
+#' @export
+#' @importFrom quickPlot numLayers
+#' @docType methods
+#' @rdname show-methods
+setMethod(
+  "show",
+  signature(object = "worldArray"),
+  definition = function(object) {
+    cat("class       :", class(object), "\n")
+    cat("resolution  :", paste(object@res, collapse = ", "), "(x, y)\n")
+    cat("dimensions  : Pxcor: ", object@minPxcor, ",", object@maxPxcor, "\n",
+        "             Pycor: ", object@minPycor, ",", object@maxPycor, "\n")
+
+    # Copied and modified from show method in Raster
+      minv <- format(apply(object@.Data, 3, min))
+      maxv <- format(apply(object@.Data, 3, max))
+      minv <- gsub('Inf', '?', minv)
+      maxv <- gsub('-Inf', '?', maxv)
+      nl <- numLayers(object)
+      mnr <- 15
+
+      if (nl > mnr) {
+        minv <- c(minv[1:mnr], '...')
+        maxv <- c(maxv[1:mnr], '...')
+      }
+
+      ln <- dimnames(object)[[3]]
+      n <- nchar(ln)
+      if (nl > 5) {
+        b <- n > 26
+        if (any(b)) {
+          mid <- floor(n/2)
+          ln[b] <- paste(substr(ln[b], 1, 9), '//', substr(ln[b], nchar(ln[b])-9, nchar(ln[b])), sep='')
+        }
+      }
+
+      w <- pmax(nchar(ln), nchar(minv), nchar(maxv))
+      m <- rbind(ln, minv, maxv)
+      # a loop because 'width' is not recycled by format
+      for (i in 1:ncol(m)) {
+        m[,i]   <- format(m[,i], width=w[i], justify="right")
+      }
+      cat('names       :', paste(m[1,], collapse=', '), '\n')
+      cat('min values  :', paste(m[2,], collapse=', '), '\n')
+      cat('max values  :', paste(m[3,], collapse=', '), '\n')
+
+    # } else {
+    #   cat('names       :', paste(ln, collapse=', '), '\n')
+    # }
+
+    cat("First 4 rows and columns:\n")
+    print(object@.Data[1:4,1:4,])
+
+  })
+
+#' @export
+#' @docType methods
+#' @rdname show-methods
+setMethod(
+  "show",
+  signature(object = "worldMatrix"),
+  definition = function(object) {
+    cat("class       :", class(object), "\n")
+    cat("resolution  :", paste(object@res, collapse = ", "), "(x, y)\n")
+    cat("dimensions  : Pxcor: ", object@minPxcor, ",", object@maxPxcor, "\n",
+        "             Pycor: ", object@minPycor, ",", object@maxPycor, "\n")
+
+    # Copied and modified from show method in Raster
+    minv <- format(min(object@.Data))
+    maxv <- format(max(object@.Data))
+    minv <- gsub('Inf', '?', minv)
+    maxv <- gsub('-Inf', '?', maxv)
+
+    ln <- "layer"
+    w <- pmax(nchar(ln), nchar(minv), nchar(maxv))
+    m <- rbind(ln, minv, maxv)
+    # a loop because 'width' is not recycled by format
+    m   <- format(m, width=w, justify="right")
+    cat('names       :', paste(m[1,], collapse=', '), '\n')
+    cat('min values  :', paste(m[2,], collapse=', '), '\n')
+    cat('max values  :', paste(m[3,], collapse=', '), '\n')
+
+    cat("First 4 rows and columns:\n")
+    print(object@.Data[1:4,1:4])
+
+  })
