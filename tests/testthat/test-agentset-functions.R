@@ -300,9 +300,10 @@ test_that("isNLclass works", {
   expect_identical(isNLclass(agents = patches(w1), class = "agentset"), TRUE)
   expect_identical(isNLclass(agents = t1, class = "agentset"), TRUE)
 
-  expect_identical(isNLclass(agents = patch(w1, x = c(0,2), y = c(1,0)), class = "patch"), FALSE)
+  expect_identical(isNLclass(agents = patch(w1, x = c(0, 2), y = c(1, 0)), class = "patch"),
+                   FALSE)
   expect_identical(isNLclass(agents = noPatches(), class = "patchset"), FALSE)
-  expect_identical(isNLclass(agents = turtle(t1, who = c(0,2)), class = "turtle"), FALSE)
+  expect_identical(isNLclass(agents = turtle(t1, who = c(0, 2)), class = "turtle"), FALSE)
   expect_identical(isNLclass(agents = noTurtles(), class = "turtleset"), FALSE)
   expect_identical(isNLclass(agents = cbind(xcor = 2, ycor = 3), class = "agent"), FALSE)
   expect_identical(isNLclass(agents = patches(w1), class = "agent"), FALSE)
@@ -523,7 +524,7 @@ test_that("inRadius works", {
   p5 <- inRadius(agents = turtle(t1, 0), radius = 2, agents2 = patches(w1), world = w1)
   expect_equivalent(p5, p1)
   p6 <- inRadius(agents = t1, radius = 0.5, agents2 = patches(w1), world = w1)
-  expect_equivalent(length(unique(p6[,"id"])), NLcount(t1))
+  expect_equivalent(length(unique(p6[, "id"])), NLcount(t1))
   expect_equivalent(p6[p6[, "id"] == 1, c("pxcor", "pycor"), drop = FALSE],
                     as.matrix(inspect(t1, 0)[, c("xcor", "ycor"), drop = FALSE]))
   p7 <- inRadius(agents = turtle(t1, 0), radius = 1, agents2 = patches(w1), world = w1,
@@ -535,10 +536,10 @@ test_that("inRadius works", {
                  torus = TRUE)
   expect_equivalent(nrow(merge(p8[p8[, "id"] == 1, c("pxcor", "pycor")],
                                cbind(pxcor = c(0, 0, 0, 1, 4), pycor = c(4, 1, 0, 0, 0)))),
-                    nrow(p8[p8[, "id"] == 1,]))
+                    nrow(p8[p8[, "id"] == 1, ]))
   expect_equivalent(nrow(merge(p8[p8[, "id"] == 2, c("pxcor", "pycor")],
                                cbind(pxcor = c(0, 3, 4, 4, 4), pycor = c(4, 4, 4, 3, 0)))),
-                    nrow(p8[p8[, "id"] == 2,]))
+                    nrow(p8[p8[, "id"] == 2, ]))
   p9 <- inRadius(agents = turtle(t1, 0), radius = 1, agents2 = patch(w1, 4, 4), world = w1)
   expect_equivalent(NROW(p9), 0)
 
@@ -550,7 +551,7 @@ test_that("inRadius works", {
   t10 <- inRadius(agents = turtle(t1, 0), radius = 2, agents2 = t1, world = w1, torus = TRUE)
   expect_equivalent(t10[t10[, "id"] == 1, "who"], c(0, 1, 4))
   t11 <- inRadius(agents = t1, radius = 10, agents2 = t1, world = w1)
-  expect_equivalent(t11[t11[, "id"] == 1, "who"], c(0, 1, 2 , 3, 4))
+  expect_equivalent(t11[t11[, "id"] == 1, "who"], c(0, 1, 2, 3, 4))
 
   # Works without the world provided when torus = FALSE
   p1 <- inRadius(agents = patch(w1, 0, 0), radius = 2, agents2 = patches(w1))
@@ -651,8 +652,8 @@ test_that("NLset works", {
   expect_equivalent(of(world = w1, agents = patch(w1, 0, 0)), 100)
   w1 <- NLset(world = w1, agents = patch(w1, c(-1, 0), c(-1, 0)), val = -10)
   expect_equivalent(of(world = w1, agents = patch(w1, 0, 0)), -10)
-  w1_ <- NLset(world = w1, agents = patch(w1, c(-1, -2), c(-1, 0)), val = -20)
-  expect_equivalent(w1, w1_)
+  w11 <- NLset(world = w1, agents = patch(w1, c(-1, -2), c(-1, 0)), val = -20)
+  expect_equivalent(w1, w11)
 
   w1 <- NLset(world = w1, agents = patches(w1), val = 1:25)
   w2 <- createWorld(data = 25:1, minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
@@ -689,21 +690,21 @@ test_that("NLset works", {
               val = cbind(w2 = 125, w1 = 101))
   expect_equivalent(of(world = w3, var = c("w1", "w2"), agents = patches(w3)),
                     cbind(w1 = rep(101, 25), w2 = rep(125, 25)))
-  w3 <- NLset(world = w3, agents = patch(w3,c(-1, 0), c(-1, 0)), var = c("w1", "w2"),
+  w3 <- NLset(world = w3, agents = patch(w3, c(-1, 0), c(-1, 0)), var = c("w1", "w2"),
               val = cbind(w1 = 0, w2 = 1))
   expect_equivalent(of(world = w3, var = c("w1", "w2"), agents = patch(w3, 0, 0)),
                     cbind(w1 = 0, w2 = 1))
   valW3 <- of(world = w3, var = c("w1", "w2"), agents = patches(w3))
   expect_equivalent(length(valW3[is.na(valW3[, 1]), 1]), 0)
   expect_equivalent(length(valW3[is.na(valW3[, 2]), 2]), 0)
-  w3 <- NLset(world = w3, agents = patch(w3,c(0, 1), c(0, 1)), var = c("w1", "w2"),
+  w3 <- NLset(world = w3, agents = patch(w3, c(0, 1), c(0, 1)), var = c("w1", "w2"),
               val = cbind(w1 = 10, w2 = 11))
   expect_equivalent(of(world = w3, var = c("w1", "w2"), agents = patch(w3, c(0, 1), c(0, 1))),
                     cbind(w1 = c(10, 10), w2 = c(11, 11)))
-  w3 <- NLset(world = w3, agents = patch(w3,c(0, 1), c(0, 1)), var = "w1", val = c(100, 110))
+  w3 <- NLset(world = w3, agents = patch(w3, c(0, 1), c(0, 1)), var = "w1", val = c(100, 110))
   expect_equivalent(of(world = w3, var = c("w1", "w2"), agents = patch(w3, c(0, 1), c(0, 1))),
                     cbind(w1 = c(100, 110), w2 = c(11, 11)))
-  w3 <- NLset(world = w3, agents = patch(w3,c(0, 1), c(0, 1)), var = c("w1", "w2"),
+  w3 <- NLset(world = w3, agents = patch(w3, c(0, 1), c(0, 1)), var = c("w1", "w2"),
               val = cbind.data.frame(w1 = 10, w2 = 11))
   expect_equivalent(of(world = w3, var = c("w1", "w2"), agents = patch(w3, c(0, 1), c(0, 1))),
                     cbind(w1 = c(10, 10), w2 = c(11, 11)))
@@ -724,7 +725,7 @@ test_that("NLset works", {
   t2 <- NLset(turtles = t1, agents = t1, var = "heading", val = 0)
   expect_equivalent(t2@.Data[,  "heading"], rep(0, NLcount(t2)))
   t3 <- NLset(turtles = t1, agents = turtle(t1, 0), var = "xcor", val = 3)
-  expect_equivalent(t3@.Data[,"xcor"], c(3, 1, 2, 3, 4))
+  expect_equivalent(t3@.Data[, "xcor"], c(3, 1, 2, 3, 4))
   t4 <- NLset(turtles = t1, agents = turtle(t1, c(0, 1)), var = "xcor", val = 3)
   expect_equivalent(t4@.Data[, "xcor"], c(3, 3, 2, 3, 4))
 
@@ -756,35 +757,35 @@ test_that("NLset works", {
   expect_equivalent(of(agents = t10, var = "breed"), c("dog", "cat", rep("turtle", 3)))
   expect_equivalent(t10@levels$breed, c("turtle", "dog", "cat"))
   t11 <- NLset(turtles = t1, agents = turtle(t1, c(0, 1)), var = c("breed", "xcor"),
-             val = cbind.data.frame(breed = c("fish", "fish"), xcor = c(1,1)))
+             val = cbind.data.frame(breed = c("fish", "fish"), xcor = c(1, 1)))
   expect_equivalent(of(agents = t11, var = "breed"), c("fish", "fish", rep("turtle", 3)))
   expect_equivalent(of(agents = t11, var = "xcor"), c(1, 1, 2, 3, 4))
   t11 <- NLset(turtles = t1, agents = turtle(t1, c(0, 1)), var = c("breed", "xcor"),
-             val = cbind(breed = c("fish", "fish"), xcor = c(1,1)))
+             val = cbind(breed = c("fish", "fish"), xcor = c(1, 1)))
   expect_equivalent(of(agents = t11, var = "breed"), c("fish", "fish", rep("turtle", 3)))
   expect_equivalent(of(agents = t11, var = "xcor"), c(1, 1, 2, 3, 4))
   t12 <- NLset(turtles = t1, agents = turtle(t1, c(0, 1, 3)), var = c("breed", "xcor", "color",
                                                                       "heading"),
              val = cbind.data.frame(breed = c("aa", "aa", "bb"), xcor = c(10, 10, 12),
                                     color = "red", heading = 222))
-  expect_equivalent(of(agents = t12, var = "breed"), c("aa", "aa","turtle", "bb", "turtle"))
+  expect_equivalent(of(agents = t12, var = "breed"), c("aa", "aa", "turtle", "bb", "turtle"))
   expect_equivalent(of(agents = t12, var = "xcor"), c(10, 10, 2, 12, 4))
-  expect_equivalent(of(agents = t12, var = "color")[c(1, 2, 4)], rep("red",3))
+  expect_equivalent(of(agents = t12, var = "color")[c(1, 2, 4)], rep("red", 3))
   expect_equivalent(of(agents = t12, var = "heading"), c(222, 222, 180, 222, 0))
   t12 <- NLset(turtles = t1, agents = turtle(t1, c(0, 1, 3)), var = c("breed", "xcor", "color",
                                                                       "heading"),
              val = cbind(breed = c("aa", "aa", "bb"), xcor = c(10, 10, 12), color = "red",
                          heading = 222))
-  expect_equivalent(of(agents = t12, var = "breed"), c("aa", "aa","turtle", "bb", "turtle"))
+  expect_equivalent(of(agents = t12, var = "breed"), c("aa", "aa", "turtle", "bb", "turtle"))
   expect_equivalent(of(agents = t12, var = "xcor"), c(10, 10, 2, 12, 4))
   expect_equivalent(of(agents = t12, var = "color")[c(1, 2, 4)], rep("red", 3))
   expect_equivalent(of(agents = t12, var = "heading"), c(222, 222, 180, 222, 0))
   t13 <- NLset(turtles = t1, agents = t1, var = c("breed", "xcor", "color", "heading"),
                val = cbind.data.frame(breed = c("aa", "aa", "bb", "cc", "cc"), xcor = 15,
                                       color = "red", heading = 1:5))
-  expect_equivalent(of(agents = t13, var = "breed"), c("aa", "aa","bb", "cc", "cc"))
+  expect_equivalent(of(agents = t13, var = "breed"), c("aa", "aa", "bb", "cc", "cc"))
   expect_equivalent(of(agents = t13, var = "xcor"), c(15, 15, 15, 15, 15))
-  expect_equivalent(of(agents = t13, var = "color"), rep("red",5))
+  expect_equivalent(of(agents = t13, var = "color"), rep("red", 5))
   expect_equivalent(of(agents = t13, var = "heading"), 1:5)
   t14 <- NLset(turtles = t1, agents = t1, var = c("xcor", "heading"),
                val = cbind(xcor = 21:25, heading = 0))
@@ -810,8 +811,8 @@ test_that("NLset works", {
 
   t19 <- NLset(turtles = t1, agents = t1, var = "breed", val = "wolf")
   t20 <- NLset(turtles = t19, agents = turtle(t19, 1), var = "breed", val = "sheep")
-  t20_breed <- of(agents = t20, var = "breed")
-  expect_equivalent(c("wolf", "sheep", "wolf", "wolf", "wolf"), t20_breed)
+  t20Breed <- of(agents = t20, var = "breed")
+  expect_equivalent(c("wolf", "sheep", "wolf", "wolf", "wolf"), t20Breed)
   t21 <- createTurtles(n = 20, coords = cbind(xcor = 1:20, ycor = 1:20))
   t22 <- die(turtles = t21, who = c(0, 1, 2, 3, 4))
   t23 <- NLset(turtles = t22, agents = turtle(t22, 10), var = "color", val = "red")
