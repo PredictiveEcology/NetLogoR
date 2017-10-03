@@ -109,10 +109,10 @@ test_that("NLdist works for patches", {
   dist <- NLdist(world = w1, agents = cbind(pxcor = 0, pycor = 0),
                  agents2 = cbind(pxcor = c(0, 0), pycor = c(1, 9)), torus = TRUE)
   expect_identical(dist, c(1, 1))
-  dist <- NLdist(world = w1, agents = cbind(pxcor = c(0,0), pycor = c(0,1)),
+  dist <- NLdist(world = w1, agents = cbind(pxcor = c(0, 0), pycor = c(0, 1)),
                  agents2 = cbind(pxcor = c(0, 0), pycor = c(2, 9)))
   expect_identical(dist, c(2, 8))
-  dist <- NLdist(world = w1, agents = cbind(pxcor = c(0,0), pycor = c(0,1)),
+  dist <- NLdist(world = w1, agents = cbind(pxcor = c(0, 0), pycor = c(0, 1)),
                  agents2 = cbind(pxcor = c(0, 0), pycor = c(2, 9)), allPairs = TRUE)
   expect_identical(dist[, 1], c(2, 1))
   expect_identical(dist[, 2], c(9, 8))
@@ -309,65 +309,65 @@ test_that("neighbors works", {
   # Large number of agents
   w1 <- createWorld(0, 500, 0, 500)
   n4 <- neighbors(world = w1, agents = patches(w1), nNeighbors = 4)
-  n4_1 <- cbind(pxcor = c(1, 0), pycor = c(500, 499))
-  n4_251001 <- cbind(pxcor = c(500, 499), pycor = c(1, 0))
-  expect_equivalent(n4[n4[, "id"] == 1, c("pxcor", "pycor")], n4_1)
-  expect_equivalent(n4[n4[, "id"] == 251001, c("pxcor", "pycor")], n4_251001)
+  n4p1 <- cbind(pxcor = c(1, 0), pycor = c(500, 499))
+  n4p251001 <- cbind(pxcor = c(500, 499), pycor = c(1, 0))
+  expect_equivalent(n4[n4[, "id"] == 1, c("pxcor", "pycor")], n4p1)
+  expect_equivalent(n4[n4[, "id"] == 251001, c("pxcor", "pycor")], n4p251001)
   # 4 neighbors, torus = FALSE
   n4double <- neighbors(world = w1, agents = rbind(patches(w1), patches(w1)), nNeighbors = 4)
-  n4double_1 <- neighbors(world = w1, agents = patch(w1, 0, 500), nNeighbors = 4)
+  n4double1 <- neighbors(world = w1, agents = patch(w1, 0, 500), nNeighbors = 4)
   expect_equivalent(n4double[n4double[, 3] == 1, c("pxcor", "pycor")],
-                    n4double_1[, c("pxcor", "pycor")])
+                    n4double1[, c("pxcor", "pycor")])
   expect_equivalent(n4double[n4double[, 3] == 1 + length(w1), c("pxcor", "pycor")],
-                    n4double_1[, c("pxcor", "pycor")])
-  n4double_503 <- neighbors(world = w1, agents = patch(w1, 1, 499), nNeighbors = 4)
+                    n4double1[, c("pxcor", "pycor")])
+  n4double503 <- neighbors(world = w1, agents = patch(w1, 1, 499), nNeighbors = 4)
   expect_equivalent(n4double[n4double[, 3] == 503 + length(w1), c("pxcor", "pycor")],
-                    n4double_503[, c("pxcor", "pycor")])
+                    n4double503[, c("pxcor", "pycor")])
   # 4 neighbors, torus = TRUE
   n4double <- neighbors(world = w1, agents = rbind(patches(w1), patches(w1)), nNeighbors = 4,
                         torus = TRUE)
-  n4double_1 <- neighbors(world = w1, agents = patch(w1, 0, 500), nNeighbors = 4, torus = TRUE)
+  n4double1 <- neighbors(world = w1, agents = patch(w1, 0, 500), nNeighbors = 4, torus = TRUE)
   expect_equivalent(n4double[n4double[, 3] == 1, c("pxcor", "pycor")],
-                    n4double_1[, c("pxcor", "pycor")])
+                    n4double1[, c("pxcor", "pycor")])
   expect_equivalent(n4double[n4double[, 3] == 1 + length(w1), c("pxcor", "pycor")],
-                    n4double_1[, c("pxcor", "pycor")])
-  n4double_503 <- neighbors(world = w1, agents = patch(w1, 1, 499), nNeighbors = 4, torus = TRUE)
+                    n4double1[, c("pxcor", "pycor")])
+  n4double503 <- neighbors(world = w1, agents = patch(w1, 1, 499), nNeighbors = 4, torus = TRUE)
   expect_equivalent(n4double[n4double[, 3] == 503 + length(w1), c("pxcor", "pycor")],
-                    n4double_503[, c("pxcor", "pycor")])
+                    n4double503[, c("pxcor", "pycor")])
   # 8 neighbors, torus = FALSE
   n4double <- neighbors(world = w1, agents = rbind(patches(w1), patches(w1)), nNeighbors = 8)
-  n4double_1 <- neighbors(world = w1, agents = patch(w1, 0, 500), nNeighbors = 8)
+  n4double1 <- neighbors(world = w1, agents = patch(w1, 0, 500), nNeighbors = 8)
   expect_equivalent(n4double[n4double[, 3] == 1, c("pxcor", "pycor")],
-                    n4double_1[, c("pxcor", "pycor")])
+                    n4double1[, c("pxcor", "pycor")])
   expect_equivalent(n4double[n4double[, 3] == 1 + length(w1), c("pxcor", "pycor")],
-                    n4double_1[, c("pxcor", "pycor")])
-  n4double_503 <- neighbors(world = w1, agents = patch(w1, 1, 499), nNeighbors = 8)
+                    n4double1[, c("pxcor", "pycor")])
+  n4double503 <- neighbors(world = w1, agents = patch(w1, 1, 499), nNeighbors = 8)
   expect_equivalent(n4double[n4double[, 3] == 503 + length(w1), c("pxcor", "pycor")],
-                    n4double_503[, c("pxcor", "pycor")])
+                    n4double503[, c("pxcor", "pycor")])
   # 8 neighbors, torus = TRUE
   n4double <- neighbors(world = w1, agents = rbind(patches(w1), patches(w1)), nNeighbors = 8,
                         torus = TRUE)
-  n4double_1 <- neighbors(world = w1, agents = patch(w1, 0, 500), nNeighbors = 8, torus = TRUE)
+  n4double1 <- neighbors(world = w1, agents = patch(w1, 0, 500), nNeighbors = 8, torus = TRUE)
   expect_equivalent(n4double[n4double[, 3] == 1, c("pxcor", "pycor")],
-                    n4double_1[, c("pxcor", "pycor")])
+                    n4double1[, c("pxcor", "pycor")])
   expect_equivalent(n4double[n4double[, 3] == 1 + length(w1), c("pxcor", "pycor")],
-                    n4double_1[, c("pxcor", "pycor")])
-  n4double_503 <- neighbors(world = w1, agents = patch(w1, 1, 499), nNeighbors = 8, torus = TRUE)
+                    n4double1[, c("pxcor", "pycor")])
+  n4double503 <- neighbors(world = w1, agents = patch(w1, 1, 499), nNeighbors = 8, torus = TRUE)
   expect_equivalent(n4double[n4double[, 3] == 503 + length(w1), c("pxcor", "pycor")],
-                    n4double_503[, c("pxcor", "pycor")])
+                    n4double503[, c("pxcor", "pycor")])
 
   # With duplicate
   w1 <- createWorld(0, 9, 0, 9)
   n4 <- neighbors(world = w1, agents = cbind(pxcor = c(0, 9, 0, 9, 0), pycor = c(9, 9, 0, 0, 9)),
                   nNeighbors = 4)
-  n4_1 <- cbind(pxcor = c(1, 0), pycor = c(9, 8))
-  expect_equivalent(n4[n4[, "id"] == 1, c("pxcor", "pycor")], n4_1)
-  expect_equivalent(n4[n4[ ,"id"] == 5, c("pxcor", "pycor")], n4[n4[,"id"] == 5,
+  n4p1 <- cbind(pxcor = c(1, 0), pycor = c(9, 8))
+  expect_equivalent(n4[n4[, "id"] == 1, c("pxcor", "pycor")], n4p1)
+  expect_equivalent(n4[n4[, "id"] == 5, c("pxcor", "pycor")], n4[n4[, "id"] == 5,
                                                                  c("pxcor", "pycor")])
   w1 <- createWorld(0, 50, 0, 50)
   n4 <- neighbors(world = w1, agents = rbind(patches(w1), patches(w1)[1, ]), nNeighbors = 4)
-  n4_1 <- cbind(pxcor = c(1, 0), pycor = c(50, 49))
-  expect_equivalent(n4[n4[, "id"] == 1, c("pxcor", "pycor")], n4_1)
+  n4p1 <- cbind(pxcor = c(1, 0), pycor = c(50, 49))
+  expect_equivalent(n4[n4[, "id"] == 1, c("pxcor", "pycor")], n4p1)
   expect_equivalent(n4[n4[, "id"] == 2602, c("pxcor", "pycor")], n4[n4[, "id"] == 1,
                                                                     c("pxcor", "pycor")])
 
