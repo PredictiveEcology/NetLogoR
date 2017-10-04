@@ -28,7 +28,14 @@ Patches are represented as `matrix` objects with two columns `pxcor` and `pycor`
 See `help("worldMatrix-class")` for more details on the patch coordinates system. Turtles are defined by their coordinates `xcor` and `ycor` and data associated in  `agentMatrix` objects.
 Patches coordinates are always integers but turtles coordinates can have decimals (*i.e.*, a turtle can be positioned anywhere on a patch).
 
-`worldMatrix` and `worldArray` are similar to `RasterLayer` and `RasterStack` in the `raster` package. However, there are several differences. Two important differences are the mapping of X and Y coordinates and whether integer locations are in the center or at the corners of integer coordinate systems. In `worldMatrix` and `worldArray`, 0,0 is at the bottom left like a mathematical graph, whereas it is in the top left in `Raster*` objects, as in geographic coordinates. In `worldMatrix` and `worldArray`, integer coordinates are in the middle of the patch or cell, i.e., 0,0 is in the middle of the patch in a `worldMatrix` that has 1m resolution and integer coordinates, whereas, 0,0 would be at the edge of a cell in a `Raster*` that has 1m resolution and integer coordinates. `agentMatrix` is similar to `SpatialPointsDataFrame` from `sp` package, with a few differences. The key difference in this case is for speed. `agentMatrix` is based on matrices and has no coordinate reference system, both of which make operations dramatically faster than with `SpatialPointsDataFrame` objects. In all cases of similar object types, we have implemented functions to convert between the types.
+`worldMatrix` and `worldArray` are similar to `RasterLayer` and `RasterStack` in the `raster` package. However, there are several differences.
+Two important differences are the mapping of X and Y coordinates and whether integer locations are in the center or at the corners of integer coordinate systems.
+In `worldMatrix` and `worldArray`, `(0, 0)` is at the bottom left, like a mathematical graph, whereas it is in the top left in `Raster*` objects, as in geographic coordinates.
+In `worldMatrix` and `worldArray`, integer coordinates are in the middle of the patch or cell, *i.e.*, `(0, 0)` is in the middle of the patch in a `worldMatrix` that has 1m resolution and integer coordinates, whereas, `(0, 0)` would be at the edge of a cell in a `Raster*` that has 1 m resolution and integer coordinates.
+`agentMatrix` is similar to `SpatialPointsDataFrame` from `sp` package, with a few differences.
+The key difference in this case is for speed.
+`agentMatrix` is based on matrices and has no coordinate reference system, both of which make operations dramatically faster than with `SpatialPointsDataFrame` objects.
+In all cases of similar object types, we have implemented functions to convert between the types.
 
 Links are not implemented in `NetLogoR`.
 
