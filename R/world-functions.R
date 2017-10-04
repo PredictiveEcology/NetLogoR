@@ -509,14 +509,14 @@ setMethod(
     # Copied and modified from show method in Raster
       minv <- format(apply(object@.Data, 3, min))
       maxv <- format(apply(object@.Data, 3, max))
-      minv <- gsub('Inf', '?', minv)
-      maxv <- gsub('-Inf', '?', maxv)
+      minv <- gsub("Inf", "?", minv)
+      maxv <- gsub("-Inf", "?", maxv)
       nl <- numLayers(object)
       mnr <- 15
 
       if (nl > mnr) {
-        minv <- c(minv[1:mnr], '...')
-        maxv <- c(maxv[1:mnr], '...')
+        minv <- c(minv[1:mnr], "...")
+        maxv <- c(maxv[1:mnr], "...")
       }
 
       ln <- dimnames(object)[[3]]
@@ -525,7 +525,8 @@ setMethod(
         b <- n > 26
         if (any(b)) {
           mid <- floor(n/2)
-          ln[b] <- paste(substr(ln[b], 1, 9), '//', substr(ln[b], nchar(ln[b])-9, nchar(ln[b])), sep='')
+          ln[b] <- paste(substr(ln[b], 1, 9), "//",
+                         substr(ln[b], nchar(ln[b]) - 9, nchar(ln[b])), sep = "")
         }
       }
 
@@ -533,20 +534,19 @@ setMethod(
       m <- rbind(ln, minv, maxv)
       # a loop because 'width' is not recycled by format
       for (i in 1:ncol(m)) {
-        m[,i]   <- format(m[,i], width=w[i], justify="right")
+        m[, i]   <- format(m[, i], width = w[i], justify = "right")
       }
-      cat('names       :', paste(m[1,], collapse=', '), '\n')
-      cat('min values  :', paste(m[2,], collapse=', '), '\n')
-      cat('max values  :', paste(m[3,], collapse=', '), '\n')
+      cat("names       :", paste(m[1, ], collapse = ", "), "\n")
+      cat("min values  :", paste(m[2, ], collapse = ", "), "\n")
+      cat("max values  :", paste(m[3, ], collapse = ", "), "\n")
 
     # } else {
-    #   cat('names       :', paste(ln, collapse=', '), '\n')
+    #   cat("names       :", paste(ln, collapse=", "), "\n")
     # }
 
     cat("First 4 rows and columns:\n")
     print(object@.Data[1:4,1:4,])
-
-  })
+})
 
 #' @export
 #' @docType methods
@@ -563,19 +563,18 @@ setMethod(
     # Copied and modified from show method in Raster
     minv <- format(min(object@.Data))
     maxv <- format(max(object@.Data))
-    minv <- gsub('Inf', '?', minv)
-    maxv <- gsub('-Inf', '?', maxv)
+    minv <- gsub("Inf", "?", minv)
+    maxv <- gsub("-Inf", "?", maxv)
 
     ln <- "layer"
     w <- pmax(nchar(ln), nchar(minv), nchar(maxv))
     m <- rbind(ln, minv, maxv)
     # a loop because 'width' is not recycled by format
-    m   <- format(m, width=w, justify="right")
-    cat('names       :', paste(m[1,], collapse=', '), '\n')
-    cat('min values  :', paste(m[2,], collapse=', '), '\n')
-    cat('max values  :', paste(m[3,], collapse=', '), '\n')
+    m   <- format(m, width = w, justify = "right")
+    cat("names       :", paste(m[1, ], collapse = ", "), "\n")
+    cat("min values  :", paste(m[2, ], collapse = ", "), "\n")
+    cat("max values  :", paste(m[3, ], collapse = ", "), "\n")
 
     cat("First 4 rows and columns:\n")
-    print(object@.Data[1:4,1:4])
-
-  })
+    print(object@.Data[1:4, 1:4])
+})

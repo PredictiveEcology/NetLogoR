@@ -3168,7 +3168,7 @@ setGeneric(
   "turtles2spdf",
   function(turtles) {
     standardGeneric("turtles2spdf")
-  })
+})
 
 #' @export
 #' @importFrom sp SpatialPointsDataFrame
@@ -3181,5 +3181,4 @@ setMethod(
                                    data = inspect(turtles, who = turtles@.Data[, "who"])
                                    [3:ncol(turtles@.Data)])
     return(spdf)
-  })
-
+})

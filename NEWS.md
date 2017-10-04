@@ -2,7 +2,7 @@ Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 
 version 0.3.0
 =============
-* add quickPlot version >= 0.1.1.9000 dependency
+* add `quickPlot >= 0.1.1.9000` dependency
 * update dependencies on `SpaDES`-related packages to only include the ones actually used.
 * Define [[ and $ for `worldArray` to extract subset layers.
 * Add `show` methods for `worldMatrix` and `worldArray`, similar to `RasterLayer` and `RasterStack`

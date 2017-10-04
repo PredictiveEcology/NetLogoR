@@ -161,15 +161,12 @@ test_that("agentMatrix benchmarking", {
                                     nums = 5:7))
          },
          sf = {
-           a1 = st_point(cbind(1, 3))
-           a2 = st_point(cbind(2, 4))
-           a3 = st_point(cbind(5, 6))
-           d =  data = data.frame(
-             nums2 = c(4.5, 2.6, 2343),
-             nums = 5:7)
-           d$geom = st_sfc(a1, a2, a3)
-           df = st_as_sf(d)
-
+           a1 <- st_point(cbind(1, 3))
+           a2 <- st_point(cbind(2, 4))
+           a3 <- st_point(cbind(5, 6))
+           d <- data <- data.frame(nums2 = c(4.5, 2.6, 2343), nums = 5:7)
+           d$geom <- st_sfc(a1, a2, a3)
+           df <- st_as_sf(d)
          },
          agentMat = {
            agentMatrix(coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
