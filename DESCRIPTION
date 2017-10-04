@@ -32,7 +32,6 @@ Authors@R: c(
     role = "cph")
     )
 Depends:
-    quickPlot (>= 0.1.1.9002),
     R (>= 3.3.3),
     raster
 Imports:
@@ -45,6 +44,7 @@ Imports:
     matrixStats,
     methods,
     plyr,
+    quickPlot (>= 0.1.1.9002),
     sp,
     SpaDES.tools,
     stats,
