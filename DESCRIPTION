@@ -20,7 +20,7 @@ Description: Easily create agent-based models in R following the 'NetLogo'
     simulator, such as 'SpaDES' (<https://cran.r-project.org/package=SpaDES>).
 URL: http://netlogor.predictiveecology.org
 Version: 0.3.0
-Date: 2017-09-27
+Date: 2017-10-04
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
     role = c("aut")),
