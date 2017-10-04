@@ -188,9 +188,13 @@ The modified R object can later be written out as a file, either by overwritting
 
 There is no interface built-in as part of `NetLogoR`. 
 
-However, you can still plot the world with `plot(nameWorld)` and the agent positions in the world with `points(nameTurtles)` (*i.e.*, "view" in NetLogo), as well as any other plots (*e.g.*, the number of turtles through time) using R plot functions on the R plot interface.
-You can also generate outputs on the screen using different functions.
-To do so, you need to specifically code for these procedures in the model using R functions and of different packages.
+However, you can use different plot functions for visualizations similar to the "View" of NetLogo.
+`plot(nameWorld)` works with both `worldMatrix` and `worldArray`. To visualize only one layer of a `worldArray`, use `plot(nameWorldArray[[layerNumber]])` or `plot(nameWorldArray[["layerName"]])`. Turtles can be plotted alone with `plot(nameTurtles)` or on a world already plotted with `points(nameTurtles)`.
+`Plot()` functions (with a capital "P") from `quickPlot` give a better rendering when plotting multiple time steps. These functions work the same way as the `plot()` ones, except when adding turtles on a world, use `Plot(nameTurtles, addTo = "nameWorld")` instead.
+
+Users can also create any other figures (*e.g.*, the number of turtles through time) on the R plot interface or generate outputs directly on the screen (*e.g.*, show the current time step).
+
+All these procedures need to be coded in the model, either using the `plot()` and `Plot()` functions adapted to the `NetLogoR` classes for the world visualization, or using R functions and of different packages for any other figures.
 Please refer to their manuals for any related questions.
 
 # How to build a model using `NetLogoR`

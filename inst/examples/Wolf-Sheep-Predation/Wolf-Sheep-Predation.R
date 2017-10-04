@@ -87,7 +87,7 @@ if (grassOn == TRUE) {
 
 # Visualize the world
 if (grassOn == TRUE){
-  plot(world2raster(field)[[1]])
+  plot(field[[1]])
   points(sheep, pch = 16, col = "red")
   points(wolves, pch = 16, col = "black")
 } else {

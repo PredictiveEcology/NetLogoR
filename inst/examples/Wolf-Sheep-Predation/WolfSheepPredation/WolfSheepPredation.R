@@ -67,7 +67,7 @@ doEvent.WolfSheepPredation <- function(sim, eventTime, eventType, debug = FALSE)
     ### (use `checkObject` or similar)
 
     # Create the world, the sheep and the wolves
-    sim <- sim$wolfSheepPredationInit(sim)
+    sim <- sim$WolfSheepPredationInit(sim)
 
     # schedule future event(s)
     sim <- scheduleEvent(sim, params(sim)$WolfSheepPredation$.plotInitialTime,
@@ -79,22 +79,22 @@ doEvent.WolfSheepPredation <- function(sim, eventTime, eventType, debug = FALSE)
   } else if (eventType == "plot") {
 
     dev(4)
-    sim <- sim$wolfSheepPredationPosition(sim)
+    sim <- sim$WolfSheepPredationPosition(sim)
     dev(5)
-    sim <- sim$wolfSheepPredationPopSize(sim)
+    sim <- sim$WolfSheepPredationPopSize(sim)
 
     sim <- scheduleEvent(sim, time(sim) + params(sim)$WolfSheepPredation$.plotInterval,
                          "WolfSheepPredation", "plot")
 
   } else if (eventType == "save") {
 
-    sim <- sim$wolfSheepPredationSave(sim)
+    sim <- sim$WolfSheepPredationSave(sim)
     sim <- scheduleEvent(sim, time(sim) + params(sim)$WolfSheepPredation$.saveInterval,
                          "WolfSheepPredation", "save")
 
   } else if (eventType == "event") {
 
-    sim <- sim$wolfSheepPredationEvent(sim)
+    sim <- sim$WolfSheepPredationEvent(sim)
     sim <- scheduleEvent(sim, time(sim) + 1, "WolfSheepPredation", "event")
 
   } else {
@@ -110,7 +110,7 @@ doEvent.WolfSheepPredation <- function(sim, eventTime, eventType, debug = FALSE)
 #   - keep event functions short and clean, modularize by calling subroutines from section below.
 
 ### template initialization
-wolfSheepPredationInit <- function(sim) {
+WolfSheepPredationInit <- function(sim) {
   # Create the world
   grass <- createWorld(minPxcor = -25, maxPxcor = 25, minPycor = -25, maxPycor = 25)
   if (params(sim)$WolfSheepPredation$grassOn == FALSE) {
@@ -182,7 +182,7 @@ wolfSheepPredationInit <- function(sim) {
 }
 
 ### template for save events
-wolfSheepPredationSave <- function(sim) {
+WolfSheepPredationSave <- function(sim) {
   sim$numSheep <- c(sim$numSheep, NLcount(sim$sheep)) # add the new number of sheep
   sim$numWolves <- c(sim$numWolves, NLcount(sim$wolves)) # add the new numbr of wolves
 
@@ -197,31 +197,27 @@ wolfSheepPredationSave <- function(sim) {
 
 ### template for plot events
 # Plot the positions
-wolfSheepPredationPosition <- function(sim) {
+WolfSheepPredationPosition <- function(sim) {
   if (time(sim) == start(sim)) clearPlot()
 
   if (params(sim)$WolfSheepPredation$grassOn == TRUE) {
-    grassRas <- raster(sim$field@.Data[, , "grass"])
-    extent(grassRas) <- extent(sim$field)
+    grassRas <- sim$field[["grass"]]
     Plot(grassRas, na.color = "white")
   } else {
-    grassRas <- raster(sim$grass@.Data)
-    extent(grassRas) <- extent(sim$grass)
+    grassRas <- sim$grass
     Plot(grassRas, col = "green")
   }
 
   if (NLcount(sim$sheep) > 0)
-    sheep <- SpatialPoints(coordinates(sim$sheep))
-    Plot(sheep, addTo = "grassRas", cols = "blue")
+    Plot(sim$sheep, addTo = "grassRas", cols = "blue")
   if (NLcount(sim$wolves) > 0)
-    wolves <- SpatialPoints(coordinates(sim$wolves))
-    Plot(wolves, addTo = "grassRas", cols = "red")
+    Plot(sim$wolves, addTo = "grassRas", cols = "red")
 
   return(invisible(sim))
 }
 
 # Plot the population sizes
-wolfSheepPredationPopSize <- function(sim) {
+WolfSheepPredationPopSize <- function(sim) {
   if (time(sim) == params(sim)$WolfSheepPredation$.plotInitialTime) {
     clearPlot()
     plot(time(sim), NLcount(sim$wolves), xlim = c(start(sim), end(sim)),
@@ -244,7 +240,7 @@ wolfSheepPredationPopSize <- function(sim) {
 }
 
 ### template for the main event using the different functions defined under
-wolfSheepPredationEvent <- function(sim){
+WolfSheepPredationEvent <- function(sim){
   if (NLany(sim$sheep) | NLany(sim$wolves)) {
     # Ask sheep
     if (NLcount(sim$sheep) != 0) {
