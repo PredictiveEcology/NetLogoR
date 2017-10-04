@@ -3,13 +3,13 @@
 \name{.quickPlottables-class}
 \alias{.quickPlottables-class}
 \alias{quickPlottables}
-\title{quickPlot classes -- for using quickPlot::Plot}
+\title{quickPlot classes -- for using `quickPlot::Plot``}
 \description{
-\code{quickPlot} offers a type of plotting that is modular. Users of NetLogoR
-may find this useful for simulation modeling. We have put in place the
-required methods and imported the appropriate classes
-to use the Plot function from the \code{quickPlot} package. Users
-can still use \code{plot} from the \code{base} package, but it is not modular.
+\pkg{quickPlot} offers a type of plotting that is modular.
+Users of NetLogoR may find this useful for simulation modeling.
+We have put in place the required methods and imported the appropriate classes
+to use the `quickPlot::Plot` function.
+Users can still use `plot` from the `graphics` package, but it is not modular.
 }
 \details{
 This adds agentMatrix to the \code{.quickPlottables}, \code{.quickObjects},

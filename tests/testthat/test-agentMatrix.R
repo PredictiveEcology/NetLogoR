@@ -13,7 +13,7 @@ test_that("create agentMatrix does not work", {
                    mat = cbind(char = sample(1:3, replace = TRUE, size = 10),
                              char2 = sample(1:2, replace = TRUE, size = 10),
                              num2 = sample(1:10, replace = TRUE, size = 10)),
-                   levelsAM = list(char = c("a","b","f"),
+                   levelsAM = list(char = c("a", "b", "f"),
                                    char2 = c("test", "fail")))
    expect_is(newAgent, "agentMatrix")
    expect_true(all(is.na(coordinates(newAgent))))
@@ -25,7 +25,7 @@ test_that("create agentMatrix does not work", {
                    mat = cbind(char = sample(1:3, replace = TRUE, size = 10),
                              char2 = sample(1:2, replace = TRUE, size = 10),
                              num2 = sample(1:10, replace = TRUE, size = 10)),
-                   levelsAM = list(char = c("a","b","f"),
+                   levelsAM = list(char = c("a", "b", "f"),
                                    char2 = c("test", "fail")))
    expect_is(newAgent, "agentMatrix")
    expect_true(all(is.na(coordinates(newAgent))))
@@ -37,7 +37,7 @@ test_that("create agentMatrix does not work", {
      mat = cbind(char = sample(1:3, replace = TRUE, size = 10),
                char2 = sample(1:2, replace = TRUE, size = 10),
                num2 = sample(1:10, replace = TRUE, size = 10)),
-     levelsAM = list(char = c("a","b","f"),
+     levelsAM = list(char = c("a", "b", "f"),
                      char2 = c("test", "fail")))
    expect_is(newAgent, "agentMatrix")
    expect_true(all(!is.na(coordinates(newAgent))))
@@ -79,7 +79,7 @@ test_that("create agentMatrix does not work", {
    expect_is(newAgent, "agentMatrix")
    expect_true(all(!is.na(coordinates(newAgent))))
    expect_is(coordinates(newAgent), "matrix")
-   expect_equal(dim(coordinates(newAgent)), c(3,2))
+   expect_equal(dim(coordinates(newAgent)), c(3, 2))
    expect_equal(colnames(newAgent), c("xcor", "ycor", "nums1", "nums2"))
 
    # test all numeric vectors
@@ -100,7 +100,8 @@ test_that("create agentMatrix does not work", {
    expect_true(all(is.na(coordinates(newAgent))))
    expect_is(coordinates(newAgent), "matrix")
    expect_equal(dim(coordinates(newAgent)), c(3, 2))
-   expect_equal(colnames(newAgent), c("xcor", "ycor", "char1", "char2", "nums1", "char3", "char4", "nums2"))
+   expect_equal(colnames(newAgent), c("xcor", "ycor", "char1", "char2", "nums1", "char3",
+                                      "char4", "nums2"))
 
    # mixed numeric and character matrices and vectors
    newAgent <- new("agentMatrix",
@@ -112,29 +113,33 @@ test_that("create agentMatrix does not work", {
    expect_is(newAgent, "agentMatrix")
    expect_true(all(!is.na(coordinates(newAgent))))
    expect_is(coordinates(newAgent), "matrix")
-   expect_equal(dim(coordinates(newAgent)), c(3,2))
-   expect_equal(colnames(newAgent), c("xcor", "ycor", "char1", "char2", "nums1", "char3", "char4", "nums2"))
+   expect_equal(dim(coordinates(newAgent)), c(3, 2))
+   expect_equal(colnames(newAgent), c("xcor", "ycor", "char1", "char2", "nums1", "char3",
+                                      "char4", "nums2"))
 })
 
 test_that("agentMatrix benchmarking", {
    # compare speeds -- if these fail, then should reconsider the need for agentMatrix
    if (require(microbenchmark)) {
      mb <- summary(microbenchmark(times = 50,
-       spdf = {SpatialPointsDataFrame(
-         coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-         data = data.frame(
+       spdf = {
+         SpatialPointsDataFrame(
+           coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
+           data = data.frame(
              char = letters[c(1, 2, 6)],
              nums2 = c(4.5, 2.6, 2343),
              char2 = LETTERS[c(4, 24, 3)],
              nums = 5:7))},
-       agentMat = {agentMatrix(
+       agentMat = {
+         agentMatrix(
            coords = cbind(pxcor = c(1, 2, 5),
            pycor = c(3, 4, 6)),
            char = letters[c(1, 2, 6)],
            nums2 = c(4.5, 2.6, 2343),
            char2 = LETTERS[c(4, 24, 3)],
            nums = 5:7)},
-       agentMatDirect = {new("agentMatrix",
+       agentMatDirect = {
+         new("agentMatrix",
            coords = cbind(pxcor = c(1, 2, 5),
            pycor = c(3, 4, 6)),
            char = letters[c(1, 2, 6)],
@@ -142,10 +147,10 @@ test_that("agentMatrix benchmarking", {
            char2 = LETTERS[c(4, 24, 3)],
            nums = 5:7)}))
    }
-   expect_gt(mb$median[1]/mb$median[3], 3) # expect it is 3 times faster
+   expect_gt(mb$median[1] / mb$median[3], 3) # expect it is 3 times faster
 
    # check just numerics
-   if(require(sf)) {
+   if (require(sf)) {
      if (require(microbenchmark)) {
        mb <- summary(microbenchmark(
          times = 50,
@@ -156,15 +161,12 @@ test_that("agentMatrix benchmarking", {
                                     nums = 5:7))
          },
          sf = {
-           a1 = st_point(cbind(1, 3))
-           a2 = st_point(cbind(2, 4))
-           a3 = st_point(cbind(5, 6))
-           d =  data = data.frame(
-             nums2 = c(4.5, 2.6, 2343),
-             nums = 5:7)
-           d$geom = st_sfc(a1, a2, a3)
-           df = st_as_sf(d)
-
+           a1 <- st_point(cbind(1, 3))
+           a2 <- st_point(cbind(2, 4))
+           a3 <- st_point(cbind(5, 6))
+           d <- data <- data.frame(nums2 = c(4.5, 2.6, 2343), nums = 5:7)
+           d$geom <- st_sfc(a1, a2, a3)
+           df <- st_as_sf(d)
          },
          agentMat = {
            agentMatrix(coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
@@ -176,8 +178,8 @@ test_that("agentMatrix benchmarking", {
          }
        ))
      }
-     expect_gt(mb$median[1]/mb$median[3], 4) # expect it is 8 times faster, but use 4 for safety cushion in tests
-     if (interactive()) expect_gt(mb$median[2]/mb$median[3], 4) # expect it is 8 times faster, but use 4 for safety cushion in tests
+     expect_gt(mb$median[1] / mb$median[3], 4) # use 4 for safety
+     if (interactive()) expect_gt(mb$median[2] / mb$median[3], 4) # use 4 for safety
    }
 })
 
@@ -218,7 +220,8 @@ test_that("agentMatrix subsetting", {
 
    tmpA <- as(newAgent[2, 4], "data.frame")
    tmpB <- as(agentMatrix(coords = coordinates(newAgent)[2, , drop = FALSE],
-                          tmp2 = cbind(tmp2 = newAgent@levels[["tmp2"]][newAgent@.Data[2, 4, drop = FALSE]])), "data.frame")
+                          tmp2 = cbind(tmp2 = newAgent@levels[["tmp2"]][
+                            newAgent@.Data[2, 4, drop = FALSE]])), "data.frame")
    expect_true(all.equal(tmpA, tmpB))
 
    tmpA <- newAgent[2, 3]
@@ -232,16 +235,16 @@ test_that("agentMatrix subsetting", {
                                        stringsAsFactors = FALSE))
    expect_equal(newAgent[, "tmp"], agentMatrix(coords = coordinates(newAgent),
                                                tmp = newAgent@.Data[, "tmp", drop = FALSE]))
-   expect_equal(newAgent[1:2, "tmp"], agentMatrix(coords = coordinates(newAgent)[1:2, , drop = FALSE],
-                                                 tmp = newAgent@.Data[1:2, "tmp", drop = FALSE]))
-
+   expect_equal(newAgent[1:2, "tmp"], agentMatrix(coords = coordinates(newAgent)[
+     1:2, , drop = FALSE], tmp = newAgent@.Data[1:2, "tmp", drop = FALSE]))
    expect_equal(newAgent[, 3], agentMatrix(coords = coordinates(newAgent)[, , drop = FALSE],
                                                  tmp = newAgent@.Data[, 3, drop = FALSE]))
 
    # character column
    tmpA <- as(newAgent[, 4], "data.frame")
    tmpB <- as(agentMatrix(coords = coordinates(newAgent)[, , drop = FALSE],
-                       tmp = cbind(tmp2 = newAgent@levels[["tmp2"]][newAgent@.Data[, 4, drop = FALSE]])), "data.frame")
+                       tmp = cbind(tmp2 = newAgent@levels[["tmp2"]][newAgent@.Data[
+                         , 4, drop = FALSE]])), "data.frame")
    expect_true(all.equal(tmpA, tmpB))
 
    # numeric
@@ -255,7 +258,8 @@ test_that("agentMatrix subsetting", {
    expect_equal(1, sum(newAgent[, "tmp2"] == "f"))
    expect_equal(1, sum(newAgent[, "tmp"] == 2))
 
-   mat <- cbind(coords = matrix(1:6, ncol = 2), data.frame(tmp = 1:3, tmp1 = 1:3, tmp2 = c("e", "f", "g")))
+   mat <- cbind(coords = matrix(1:6, ncol = 2), data.frame(tmp = 1:3, tmp1 = 1:3,
+                                                           tmp2 = c("e", "f", "g")))
    newAgent <- as(mat, "agentMatrix")
    expect_equal(2, sum(newAgent == 2))
 
@@ -268,7 +272,8 @@ test_that("agentMatrix subsetting", {
 })
 
 test_that("agentMatrix rbind cbind, tail, head, nrow, length, show", {
-  mat <- cbind(coords = matrix(1:6, ncol = 2), data.frame(tmp = 1:3, tmp1 = 1:3, tmp2 = c("e", "f", "g")))
+  mat <- cbind(coords = matrix(1:6, ncol = 2), data.frame(tmp = 1:3, tmp1 = 1:3,
+                                                          tmp2 = c("e", "f", "g")))
   newAgent <- as(mat, "agentMatrix")
 
   mat <- cbind(coords = matrix(1:6, ncol = 2), data.frame(tmp = 1:3, tmp2 = c("e", "f", "g")))
@@ -287,7 +292,7 @@ test_that("agentMatrix rbind cbind, tail, head, nrow, length, show", {
 
   newA <- rbind(newAgent, newAgent1)
   expect_true(NROW(newA) == 6)
-  expect_true(all(colnames(newA) == c("xcor", "ycor", "tmp", "tmp1","tmp2")))
+  expect_true(all(colnames(newA) == c("xcor", "ycor", "tmp", "tmp1", "tmp2")))
 
   mat <- cbind(coords = matrix(1:6, ncol = 2), data.frame(tmp3 = 1:3, tmp4 = c("e", "f", "g")))
   mat2 <- cbind(coords = matrix(1:6, ncol = 2), data.frame(tmp = 1:3, tmp2 = c("e", "f", "g")))
@@ -296,11 +301,11 @@ test_that("agentMatrix rbind cbind, tail, head, nrow, length, show", {
 
   cbound <- cbind(newAgent1, newAgent2)
   expect_is(cbound, "agentMatrix")
-  expect_true(ncol(cbound)==6)
-  expect_true(nrow(cbound)==3)
-  expect_true(all(colnames(cbound)==c("xcor", "ycor", "tmp3", "tmp4","tmp", "tmp2")))
-  expect_true(all(cbound@.Data[,"tmp2"] == 1:3 ))
-  expect_true(all(cbound$tmp4 == c("e","f","g") ))
+  expect_true(ncol(cbound) == 6)
+  expect_true(nrow(cbound) == 3)
+  expect_true(all(colnames(cbound) == c("xcor", "ycor", "tmp3", "tmp4", "tmp", "tmp2")))
+  expect_true(all(cbound@.Data[, "tmp2"] == 1:3))
+  expect_true(all(cbound$tmp4 == c("e", "f", "g")))
 
   expect_error(cbound <- cbind(newAgent1, newAgent2, newAgent))
   expect_error(cbound <- cbind(newAgent1, newAgent1))
@@ -325,11 +330,11 @@ test_that("agentMatrix rbind cbind, tail, head, nrow, length, show", {
 
   # test show
   outShow <- capture.output(cbound)
-  expect_true(length(outShow)==4)
-  expect_true(grep(outShow, pattern = c("tmp3 tmp4 tmp tmp2"))==1)
-  expect_true(all(grep(outShow, pattern = c("1    1"))==c(2)))
-  expect_true(all(grep(outShow, pattern = c("e   1"))==c(2)))
-  expect_true(all(grep(outShow, pattern = c("f   1"))==3))
+  expect_true(length(outShow) == 4)
+  expect_true(grep(outShow, pattern = c("tmp3 tmp4 tmp tmp2")) == 1)
+  expect_true(all(grep(outShow, pattern = c("1    1")) == c(2)))
+  expect_true(all(grep(outShow, pattern = c("e   1")) == c(2)))
+  expect_true(all(grep(outShow, pattern = c("f   1")) == 3))
 
   newAgent <- agentMatrix()
   outShow <- capture.output(newAgent)
@@ -356,14 +361,15 @@ test_that("agentMatrix replace methods don't work", {
   expect_true(newAgent$tmp2[1] == "s")
 
   # simple data.frame
-  newAgent[1:2, c("tmp", "tmp2")] <- data.frame(tmp = 6:7, tmp2 = c("r", "w"), stringsAsFactors = FALSE)
+  newAgent[1:2, c("tmp", "tmp2")] <- data.frame(tmp = 6:7, tmp2 = c("r", "w"),
+                                                stringsAsFactors = FALSE)
   expect_true(all(newAgent$tmp[1:2] == 6:7)) # is numeric
   expect_true(all(newAgent$tmp2[1:2] == c("r", "w"))) # maintains character
   expect_true(all(newAgent$tmp2[3] == c("g"))) # untouched
 
   # more complicated data.frame
   newAgent[1:2, c("tmp", "tmp1", "tmp2", "tmpCh")] <- data.frame(
-    tmp = 6:7, tmp1 = 11:12, tmp2 = c("r","w"), tmpCh = LETTERS[13:14],
+    tmp = 6:7, tmp1 = 11:12, tmp2 = c("r", "w"), tmpCh = LETTERS[13:14],
     stringsAsFactors = FALSE)
   expect_true(all(newAgent$tmp[1:2] == 6:7)) # is numeric
   expect_true(all(newAgent$tmp2[1:2] == c("r", "w"))) # maintains character
@@ -380,12 +386,13 @@ test_that("agentMatrix replace methods don't work", {
   expect_true(newAgent[1, 5] == "t")
 
   # data.frame with non existent columns
-  expect_error(newAgent[1:2, c("tmp", "tmp4")] <- data.frame(tmp = 9:10, tmp4 = 15:16, stringsAsFactors = FALSE))
+  expect_error(newAgent[1:2, c("tmp", "tmp4")] <- data.frame(tmp = 9:10, tmp4 = 15:16,
+                                                             stringsAsFactors = FALSE))
 
   # Weird, numeric missing numeric ... this replaces a whole row
   mat <- cbind(coords = matrix(1:6, ncol = 2), data.frame(tmp = 1:3, tmp1 = 1:3))
   newAgent <- as(mat, "agentMatrix")
 
-  newAgent[1,] <- 1:4
-  expect_true(all(newAgent[][1,] == 1:4))
+  newAgent[1, ] <- 1:4
+  expect_true(all(newAgent[][1, ] == 1:4))
 })

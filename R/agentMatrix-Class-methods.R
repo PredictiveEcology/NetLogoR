@@ -47,8 +47,7 @@ setMethod(
         }
         if (length(otherCols) > 0) {
           .Object@.Data <- otherCols
-          .Object@levels <- list(NULL) #rep(list(NULL), ncol(.Object@.Data))
-          #names(.Object@levels) <- colnames(otherCols)
+          .Object@levels <- list(NULL)
           if (Coords) {
             .Object@bbox <- .bboxCoords(coords)
           } else {
@@ -589,7 +588,7 @@ setMethod(
     } else {
       tmp <- object@.Data
     }
-    show(tmp[, -(1:2), drop = FALSE])
+    show(tmp[, -1:-2, drop = FALSE])
   })
 
 #' @param x  An \code{agentMatrix} object.
@@ -662,10 +661,10 @@ cbind.agentMatrix <- function(..., deparse.level) {
     tmp[[2]]@.Data <- tmp[[2]]@.Data[rep_len(1, length.out = NROW(tmp[[1]]@.Data)), ]
   }
 
-  if (any(colnames(tmp[[1]]@.Data)[-(1:2)] %in% colnames(tmp[[2]]@.Data)[-(1:2)])) {
+  if (any(colnames(tmp[[1]]@.Data)[-1:-2] %in% colnames(tmp[[2]]@.Data)[-1:-2])) {
     stop("There are duplicate columns in the two agentMatrix objects. Please remove duplicates.")
   }
-  newMat <- cbind(tmp[[1]]@.Data, tmp[[2]]@.Data[, - (1:2), drop = FALSE])
+  newMat <- cbind(tmp[[1]]@.Data, tmp[[2]]@.Data[, -1:-2, drop = FALSE])
   tmp[[1]]@.Data <- newMat
   colnames(newMat)
   tmp[[1]]@levels <- updateList(tmp[[2]]@levels, tmp[[1]]@levels)
@@ -692,18 +691,18 @@ rbind.agentMatrix <- function(..., deparse.level = 1) {
     levels <- dots[[1]]@levels
     if (any(!unlist(lapply(levels, is.null)))) {
       new("agentMatrix", coords = mat[, 1:2, drop = FALSE],
-          mat[, -(1:2)],
+          mat[, -1:-2],
           levelsAM = levels)
     } else {
       new("agentMatrix", coords = mat[, 1:2, drop = FALSE],
-          mat[, -(1:2), drop = FALSE])
+          mat[, -1:-2, drop = FALSE])
     }
   } else {
     # if levels are not the same, then need to take the "slow" option: convert to data.frame
     mat <- as.data.frame(do.call(rbindlist,
                                  args = list(lapply(dots, function(x) as(x, "data.frame")),
                                              fill = TRUE)))
-    new("agentMatrix", coords = mat[, 1:2], mat[, -(1:2)])
+    new("agentMatrix", coords = mat[, 1:2], mat[, -1:-2])
   }
 }
 
@@ -719,7 +718,7 @@ setMethod(
   signature("worldNLR"),
   definition = function(x, ...) {
     attr(x, "extent")
-  })
+})
 
 #' @include worldNLR-classes-methods.R
 #' @importFrom raster extent
@@ -728,13 +727,12 @@ setMethod(
   "extent",
   signature("agentMatrix"),
   definition = function(x, ...) {
-    if(sum(attr(x, "bbox")!=0)) {
+    if (sum(attr(x, "bbox") != 0)) {
       extent(attr(x, "bbox")) # much faster to access directly, if it exists
     } else {
       extent(bbox(x))
     }
-  })
-
+})
 
 #' \code{.bboxCoords} is a drop in replacement for .bboxCoords in raster package.
 #'
@@ -749,7 +747,6 @@ setMethod(
   bbox
 }
 
-
 #' @include worldNLR-classes-methods.R
 #' @inheritParams sp::bbox
 #' @importFrom sp bbox
@@ -758,13 +755,12 @@ setMethod(
   "bbox",
   signature("agentMatrix"),
   definition = function(obj) {
-    if(sum(attr(obj, "bbox")!=0)) {
+    if (sum(attr(obj, "bbox") != 0)) {
       attr(obj, "bbox")
     } else {
-      cbind(attr(obj, "bbox")[,1]-1, attr(obj, "bbox")[,2]+1)
+      cbind(attr(obj, "bbox")[, 1] - 1, attr(obj, "bbox")[, 2] + 1)
     }
-
-  })
+})
 
 #' @export
 #' @rdname bbox
@@ -774,7 +770,7 @@ setMethod(
 setGeneric("bbox<-",
            function(obj, value) {
              standardGeneric("bbox<-")
-           })
+})
 
 #' @include worldNLR-classes-methods.R
 #' @importFrom sp bbox
@@ -785,7 +781,7 @@ setReplaceMethod(
   definition = function(obj, value) {
     attr(obj, "bbox") <- value
     obj
-  })
+})
 
 #' @include worldNLR-classes-methods.R
 #' @importFrom sp bbox
@@ -795,8 +791,7 @@ setMethod(
   signature("worldNLR"),
   definition = function(obj) {
     bbox(attr(obj, "extent"))
-  })
-
+})
 
 ################################################################################
 .emptyWorldMatrix <- createWorld()

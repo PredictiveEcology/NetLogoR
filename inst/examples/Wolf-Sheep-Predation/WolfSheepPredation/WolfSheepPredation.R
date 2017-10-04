@@ -61,7 +61,7 @@ defineModule(sim, list(
 ## event types
 #   - type `init` is required for initialiazation
 
-doEvent.WolfSheepPredation = function(sim, eventTime, eventType, debug = FALSE) {
+doEvent.WolfSheepPredation <- function(sim, eventTime, eventType, debug = FALSE) {
   if (eventType == "init") {
     ### check for more detailed object dependencies:
     ### (use `checkObject` or similar)
@@ -196,25 +196,22 @@ WolfSheepPredationSave <- function(sim) {
 }
 
 ### template for plot events
-WolfSheepPredationPosition <- function(sim) { # Plot the positions
+# Plot the positions
+WolfSheepPredationPosition <- function(sim) {
   if (time(sim) == start(sim)) clearPlot()
 
   if (params(sim)$WolfSheepPredation$grassOn == TRUE) {
-    grassRas <- raster(sim$field@.Data[, , "grass"])
-    extent(grassRas) <- extent(sim$field)
+    grassRas <- sim$field[["grass"]]
     Plot(grassRas, na.color = "white")
   } else {
-    grassRas <- raster(sim$grass@.Data)
-    extent(grassRas) <- extent(sim$grass)
+    grassRas <- sim$grass
     Plot(grassRas, col = "green")
   }
 
   if (NLcount(sim$sheep) > 0)
-    sheep <- SpatialPoints(coordinates(sim$sheep))
-    Plot(sheep, addTo = "grassRas", cols = "blue")
+    Plot(sim$sheep, addTo = "grassRas", cols = "blue")
   if (NLcount(sim$wolves) > 0)
-    wolves <- SpatialPoints(coordinates(sim$wolves))
-    Plot(wolves, addTo = "grassRas", cols = "red")
+    Plot(sim$wolves, addTo = "grassRas", cols = "red")
 
   return(invisible(sim))
 }
@@ -329,9 +326,9 @@ reproduceWolves <- function(sim) {
 #### Sheep and Wolves procedures
 
 move <- function(turtles) {
-  # turtles <- right(turtles, angle = runif(n = NLcount(turtles), min = 0, max = 50))
-  # turtles <- left(turtles, angle = runif(n = NLcount(turtles), min = 0, max = 50))
-  # The two above functions can be replaced by this next one,
+  # In NetLogo, two functions are used to give a random heading
+  # by rotating the turtles to the right and then to the left.
+  # With NetLogoR, it can be replaced by only one function,
   # as a negative value to turn right will turn left:
   turtles <- right(turtles, angle = runif(n = NLcount(turtles), min = -50, max = 50))
   turtles <- fd(world = grass, turtles = turtles, dist = 1, torus = TRUE)

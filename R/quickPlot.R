@@ -1,11 +1,11 @@
 ################################################################################
-#' quickPlot classes -- for using quickPlot::Plot
+#' quickPlot classes -- for using `quickPlot::Plot``
 #'
-#' \code{quickPlot} offers a type of plotting that is modular. Users of NetLogoR
-#' may find this useful for simulation modeling. We have put in place the
-#' required methods and imported the appropriate classes
-#' to use the Plot function from the \code{quickPlot} package. Users
-#' can still use \code{plot} from the \code{base} package, but it is not modular.
+#' \pkg{quickPlot} offers a type of plotting that is modular.
+#' Users of NetLogoR may find this useful for simulation modeling.
+#' We have put in place the required methods and imported the appropriate classes
+#' to use the `quickPlot::Plot` function.
+#' Users can still use `plot` from the `graphics` package, but it is not modular.
 #'
 #' This adds agentMatrix to the \code{.quickPlottables}, \code{.quickObjects},
 #' and \code{spatialObjects}.
@@ -18,13 +18,13 @@
 #' @slot members \code{\link{.quickPlotObjects}} and \code{\link{.quickPlot}}
 #'
 #' @aliases quickPlottables
+#' @author Eliot McIntire
+#' @importClassesFrom quickPlot .quickPlottables
+#' @importClassesFrom quickPlot griddedClasses spatialObjects
+#' @include Agent-classes.R
 #' @keywords internal
 #' @name .quickPlottables-class
 #' @rdname quickPlottables-class
-#' @importClassesFrom quickPlot .quickPlottables
-#' @importClassesFrom quickPlot griddedClasses spatialObjects
-#' @author Eliot McIntire
-#' @include Agent-classes.R
 #'
 setIs("agentMatrix", ".quickPlottables")
 setIs("agentMatrix", ".quickPlotObjects")
@@ -54,11 +54,9 @@ setMethod(
   signature = "worldArray",
   definition = function(x) {
     return(dim(x)[3])
-  })
-
+})
 
 ############## grobs
-
 if (!isGeneric(".plotGrob")) {
   setGeneric(
     ".plotGrob",
@@ -80,8 +78,8 @@ if (!isGeneric(".plotGrob")) {
 setMethod(
   ".plotGrob",
   signature = c("agentMatrix"),
-  definition = function(grobToPlot, col, size,
-                        legend, gp = gpar(), pch, speedup, name, vp, ...) {
+  definition = function(grobToPlot, col, size, legend, gp = gpar(), pch, speedup,
+                        name, vp, ...) {
 
     speedupScale <- 40
     xyOrd <- coordinates(grobToPlot)
@@ -135,7 +133,7 @@ setMethod(
     )
     grid.draw(pntGrob)
     return(invisible(pntGrob))
-  })
+})
 
 
 #' @export
@@ -147,7 +145,7 @@ setMethod(
   signature = "worldArray",
   definition = function(object) {
     dimnames(object)[[3]]
-  })
+})
 
 
 if (!isGeneric(".identifyGrobToPlot")) {
@@ -155,7 +153,7 @@ if (!isGeneric(".identifyGrobToPlot")) {
     ".identifyGrobToPlot",
     function(toPlot, sGrob, takeFromPlotObj) {
       standardGeneric(".identifyGrobToPlot")
-    })
+  })
 }
 
 #' @rdname quickPlot-methods
@@ -175,10 +173,9 @@ setMethod(
     }
     grobToPlot <- .emptyWorldMatrix
     sns <- slotNames(toPlot);
-    for(sn in sns[sns!=".Data"]){
+    for (sn in sns[sns != ".Data"]) {
       slot(grobToPlot, sn, check = FALSE) <- slot(toPlot, sn)
     }
     grobToPlot@.Data <- toPlot@.Data[,,sGrob@layerName];
     return(grobToPlot)
-  })
-
+})

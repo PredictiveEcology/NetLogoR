@@ -28,7 +28,7 @@ plot(elevation)
 # Create turtles (one butterfly in this model)
 # The butterfly's initial location is [85, 95]
 t1 <- createTurtles(n = 1,  coords = cbind(xcor = 85, ycor = 95))
-# t1 <- createTurtles(n = 100, coords = cbind(xcor = 85, ycor = 95)) # can try with 100 butterflies
+# Can try with 100 butterflies by changing n to 100 in the line above
 # Visualize the turtle
 points(t1, pch = 16)
 
@@ -62,5 +62,5 @@ for (time in 1:1000) {
 
   # Show the time step on the screen
   # Slow, remove for speed
-  # print(time)
+  print(time)
 }

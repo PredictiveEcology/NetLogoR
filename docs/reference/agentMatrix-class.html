@@ -98,6 +98,7 @@
 
     
     <p>Documentation needed.</p>
+<p>Documentation needed.</p>
     
 
         
@@ -135,10 +136,49 @@
         <span class='kw'>char2</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fu'>c</span>(<span class='fl'>4</span>, <span class='fl'>24</span>, <span class='fl'>3</span>)],
         <span class='kw'>nums</span> <span class='kw'>=</span> <span class='fl'>5</span>:<span class='fl'>7</span>)})
 }</div><div class='output co'>#&gt; <span class='message'>Loading required package: microbenchmark</span></div><div class='output co'>#&gt; Unit: microseconds
-#&gt;            expr      min        lq      mean   median        uq       max neval
-#&gt;            spdf 2833.808 3049.3800 3629.2120 3134.297 3351.6505  56689.69   499
-#&gt;        agentMat  775.894  868.1465 1267.8248  942.528 1024.6495 100326.19   499
-#&gt;  agentMatDirect  772.270  814.8075  999.9049  875.595  975.4175  12998.26   499
+#&gt;            expr      min        lq     mean   median       uq        max neval
+#&gt;            spdf 2949.283 3250.7910 4254.089 3500.299 4339.345 142046.150   499
+#&gt;        agentMat  801.102  951.1725 1181.472 1069.389 1395.718  11226.087   499
+#&gt;  agentMatDirect  769.761  876.7065 1077.541  993.419 1251.551   1727.249   499
+#&gt;  cld
+#&gt;    b
+#&gt;   a 
+#&gt;   a </div><div class='input'><span class='no'>newAgent</span> <span class='kw'>&lt;-</span> <span class='fu'>new</span>(<span class='st'>"agentMatrix"</span>,
+      <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='agentMatrix-bind-methods.html'>cbind</a></span>(<span class='kw'>pxcor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>5</span>), <span class='kw'>pycor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>6</span>)),
+      <span class='kw'>char</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>6</span>)],
+      <span class='kw'>nums2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>4.5</span>, <span class='fl'>2.6</span>, <span class='fl'>2343</span>),
+      <span class='kw'>char2</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fu'>c</span>(<span class='fl'>4</span>, <span class='fl'>24</span>, <span class='fl'>3</span>)],
+      <span class='kw'>nums</span> <span class='kw'>=</span> <span class='fl'>5</span>:<span class='fl'>7</span>)
+
+<span class='co'># compare speeds -- about 5x faster</span>
+<span class='kw'>if</span>(<span class='fu'>require</span>(<span class='no'>microbenchmark</span>)) {
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark'>microbenchmark</a></span>(<span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>499</span>,
+    <span class='kw'>spdf</span> <span class='kw'>=</span> {<span class='fu'>SpatialPointsDataFrame</span>(
+      <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='agentMatrix-bind-methods.html'>cbind</a></span>(<span class='kw'>pxcor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>5</span>), <span class='kw'>pycor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>6</span>)),
+      <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(
+          <span class='kw'>char</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>6</span>)],
+          <span class='kw'>nums2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>4.5</span>, <span class='fl'>2.6</span>, <span class='fl'>2343</span>),
+          <span class='kw'>char2</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fu'>c</span>(<span class='fl'>4</span>, <span class='fl'>24</span>, <span class='fl'>3</span>)],
+          <span class='kw'>nums</span> <span class='kw'>=</span> <span class='fl'>5</span>:<span class='fl'>7</span>))},
+    <span class='kw'>agentMat</span> <span class='kw'>=</span> {<span class='fu'><a href='agentMatrix.html'>agentMatrix</a></span>(
+        <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='agentMatrix-bind-methods.html'>cbind</a></span>(<span class='kw'>pxcor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>5</span>),
+        <span class='kw'>pycor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>6</span>)),
+        <span class='kw'>char</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>6</span>)],
+        <span class='kw'>nums2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>4.5</span>, <span class='fl'>2.6</span>, <span class='fl'>2343</span>),
+        <span class='kw'>char2</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fu'>c</span>(<span class='fl'>4</span>, <span class='fl'>24</span>, <span class='fl'>3</span>)],
+        <span class='kw'>nums</span> <span class='kw'>=</span> <span class='fl'>5</span>:<span class='fl'>7</span>)},
+    <span class='kw'>agentMatDirect</span> <span class='kw'>=</span> {<span class='fu'>new</span>(<span class='st'>"agentMatrix"</span>,
+        <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='agentMatrix-bind-methods.html'>cbind</a></span>(<span class='kw'>pxcor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>5</span>),
+        <span class='kw'>pycor</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>3</span>, <span class='fl'>4</span>, <span class='fl'>6</span>)),
+        <span class='kw'>char</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>6</span>)],
+        <span class='kw'>nums2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>4.5</span>, <span class='fl'>2.6</span>, <span class='fl'>2343</span>),
+        <span class='kw'>char2</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fu'>c</span>(<span class='fl'>4</span>, <span class='fl'>24</span>, <span class='fl'>3</span>)],
+        <span class='kw'>nums</span> <span class='kw'>=</span> <span class='fl'>5</span>:<span class='fl'>7</span>)})
+}</div><div class='output co'>#&gt; Unit: microseconds
+#&gt;            expr      min        lq     mean   median       uq       max neval
+#&gt;            spdf 2877.578 3227.8560 3750.975 3447.579 4014.409 14397.890   499
+#&gt;        agentMat  796.418  917.8235 1100.460 1031.956 1197.587  1809.812   499
+#&gt;  agentMatDirect  759.306  858.5545 1064.908  969.009 1147.682 14192.829   499
 #&gt;  cld
 #&gt;    b
 #&gt;   a 
@@ -153,6 +193,8 @@
 
     <h2>Author</h2>
     
+Eliot McIntire
+
 Eliot McIntire
 
   </div>

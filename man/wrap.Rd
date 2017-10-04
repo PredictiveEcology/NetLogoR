@@ -13,26 +13,26 @@
 \alias{wrap,SpatialPointsDataFrame,matrix,logical-method}
 \title{Wrap coordinates or pixels in a torus-like fashion}
 \usage{
-wrap(X, bounds, withHeading)
+wrap(obj, bounds, withHeading)
 
-\S4method{wrap}{matrix,Extent,missing}(X, bounds)
+\S4method{wrap}{matrix,Extent,missing}(obj, bounds)
 
-\S4method{wrap}{SpatialPoints,ANY,missing}(X, bounds)
+\S4method{wrap}{SpatialPoints,ANY,missing}(obj, bounds)
 
-\S4method{wrap}{matrix,Raster,missing}(X, bounds)
+\S4method{wrap}{matrix,Raster,missing}(obj, bounds)
 
-\S4method{wrap}{matrix,Raster,missing}(X, bounds)
+\S4method{wrap}{matrix,Raster,missing}(obj, bounds)
 
-\S4method{wrap}{matrix,matrix,missing}(X, bounds)
+\S4method{wrap}{matrix,matrix,missing}(obj, bounds)
 
-\S4method{wrap}{SpatialPointsDataFrame,Extent,logical}(X, bounds, withHeading)
+\S4method{wrap}{SpatialPointsDataFrame,Extent,logical}(obj, bounds, withHeading)
 
-\S4method{wrap}{SpatialPointsDataFrame,Raster,logical}(X, bounds, withHeading)
+\S4method{wrap}{SpatialPointsDataFrame,Raster,logical}(obj, bounds, withHeading)
 
-\S4method{wrap}{SpatialPointsDataFrame,matrix,logical}(X, bounds, withHeading)
+\S4method{wrap}{SpatialPointsDataFrame,matrix,logical}(obj, bounds, withHeading)
 }
 \arguments{
-\item{X}{A \code{SpatialPoints*} object, or matrix of coordinates.}
+\item{obj}{A \code{SpatialPoints*} object, or matrix of coordinates.}
 
 \item{bounds}{Either a \code{Raster*}, \code{Extent}, or \code{bbox} object
 defining bounds to wrap around.}
@@ -42,13 +42,13 @@ wrapped also so that the subsequent heading calculation will work.
 Default \code{FALSE}. See details.}
 }
 \value{
-Same class as \code{X}, but with coordinates updated to reflect the wrapping.
+Same class as \code{obj}, but with coordinates updated to reflect the wrapping.
 }
 \description{
 Generally for model development purposes.
 }
 \details{
-If \code{withHeading} used, then X must be a \code{SpatialPointsDataFrame}
+If \code{withHeading} used, then obj must be a \code{SpatialPointsDataFrame}
 that contains two columns, \code{x1} and \code{y1}, with the immediately previous
 agent locations.
 }
