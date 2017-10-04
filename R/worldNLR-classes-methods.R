@@ -527,20 +527,19 @@ setMethod(
 #' @aliases [[,worldArray,ANY,ANY-method
 setMethod("[[", signature(x = "worldArray", i = "ANY"),
           definition = function(x, i) {
-            if(length(i)>1) {
-              x@.Data <- x@.Data[,,i]
+            if (length(i) > 1) {
+              x@.Data <- x@.Data[, , i]
               return(x)
             } else {
               worldMat <- .emptyWorldMatrix
               sns <- .slotNames(x);
-              for(sn in sns[sns!=".Data"]){
+              for (sn in sns[sns != ".Data"]) {
                 slot(worldMat, sn, check = FALSE) <- slot(x, sn)
               }
-              worldMat@.Data <- x@.Data[,,i];
+              worldMat@.Data <- x@.Data[, , i];
               return(worldMat)
             }
-
-          })
+})
 
 #' @export
 #' @param value A replacement worldMatrix layer for one of the current layers in the
@@ -550,9 +549,9 @@ setMethod("[[", signature(x = "worldArray", i = "ANY"),
 #' @rdname Subsetting
 setReplaceMethod("[[", signature(x = "worldArray", value = "ANY"),
                  definition = function(x, i, value) {
-                   x@.Data[,,i] <- value
+                   x@.Data[, , i] <- value
                    return(x)
-                 })
+})
 
 #' @export
 #' @param name  Layer name, normally without back ticks, unless has symbols.
@@ -562,4 +561,4 @@ setReplaceMethod("[[", signature(x = "worldArray", value = "ANY"),
 setMethod("$", signature(x = "worldArray"),
           definition = function(x, name) {
             return(x[[name]])
-          })
+})

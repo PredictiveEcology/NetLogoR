@@ -63,4 +63,3 @@ setClass("agentMatrix", contains = "matrix",
 setClassUnion(name = "agentClasses",
               members = c("agentMatrix", "SpatialPointsDataFrame", "SpatialPixelsDataFrame")
 )
-

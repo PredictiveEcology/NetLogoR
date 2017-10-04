@@ -1,16 +1,17 @@
-#' Basic plot methods for agentMatrix, worldMatrix, worldArray
+#' Basic plot methods for `agentMatrix`, `worldMatrix`, `worldArray`
 #'
-#' These pass to plot, as a matrix of points (agentMatrix), as a raster (worldMatrix), or a
-#' rasterStack (worldArray). They can be modified
+#' These pass to plot, as a matrix of points (`agentMatrix`), as a raster (`worldMatrix`),
+#' or a rasterStack (`worldArray`).
+#' They can be modified.
+#'
+#' @param x an agentMatrix, worldMatrix or worldArray object
+#' @param ... arguments passed to plot methods for matrix (agentMatrix) or raster (world*)
 #'
 #' @export
 #' @method plot agentMatrix
-#' @param x an agentMatrix, worldMatrix or worldArray object
-#' @param ... arguments passed to plot methods for matrix (agentMatrix) or raster (world*)
-#' @docType methods
 #' @rdname plotMethods
-#' @examples
 #'
+#' @examples
 #' # agentMatrix
 #'  newAgent <- new("agentMatrix",
 #'    coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
@@ -23,12 +24,10 @@ plot.agentMatrix <- function(x, ...) {
   plot(x@.Data, ...)
 }
 
-
-
 #' @export
-#' @docType methods
-#' @rdname plotMethods
 #' @method plot worldMatrix
+#' @rdname plotMethods
+#'
 #' @examples
 #'
 #' ## worldMatrix
@@ -40,9 +39,9 @@ plot.worldMatrix <- function(x, ...) {
 }
 
 #' @export
-#' @docType methods
-#' @rdname plotMethods
 #' @method plot worldArray
+#' @rdname plotMethods
+#'
 #' @examples
 #'
 #' ## worldArray
@@ -55,12 +54,11 @@ plot.worldArray <- function(x, ...) {
   plot(Ras, ...)
 }
 
-
 #' @export
-#' @docType methods
-#' @rdname plotMethods
-#' @method points agentMatrix
 #' @importFrom graphics points
+#' @method points agentMatrix
+#' @rdname plotMethods
+#'
 #' @examples
 #'
 #' # agentMatrix
