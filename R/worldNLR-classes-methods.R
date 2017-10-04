@@ -40,6 +40,7 @@
 #' @author Sarah Bauduin, Eliot McIntire, and Alex Chubaty
 #' @exportClass worldMatrix
 #' @importClassesFrom raster Extent
+#' @seealso \code{\link{worldArray}}
 #'
 setClass(
   "worldMatrix",
@@ -172,8 +173,8 @@ setMethod(
                 maxPycor = "numeric"),
   definition = function(minPxcor, maxPxcor, minPycor, maxPycor, data) {
 
-    numX <- maxPxcor - minPxcor + 1
-    numY <- maxPycor - minPycor + 1
+    numX <- (maxPxcor - minPxcor + 1)
+    numY <- (maxPycor - minPycor + 1)
     data <- matrix(ncol = numX,
                     nrow = numY, data = data, byrow = TRUE)
     # byrow = TRUE to be similar as a raster when assigning data
@@ -208,11 +209,13 @@ setMethod(
 #' \code{worldMatrix} objects with the same extent (i.e., same values for all their
 #' slots) stacked together. It is used to keep more than one value per patch.
 #'
+#' @aliases worldArray
 #' @name worldArray-class
 #' @rdname worldArray-class
 #' @author Sarah Bauduin, Eliot McIntire, and Alex Chubaty
 #' @exportClass worldArray
 #' @importClassesFrom raster Extent
+#' @seealso \code{\link{worldMatrix}}
 #'
 setClass(
   "worldArray",
@@ -339,10 +342,10 @@ setMethod(
   "stackWorlds",
   signature = "worldMatrix",
   definition = function(...) {
-    worlds <- list(...)
+    NLwMs <- list(...)
     # similar dimensions can have different extent
-    if (length(unique(lapply(worlds, FUN = function(x) x@extent))) == 1) {
-      out <- abind::abind(worlds@.Data, along = 3)
+    if (length(unique(lapply(NLwMs, FUN = function(x) x@extent))) == 1) {
+      out <- abind::abind(NLwMs@.Data, along = 3)
     } else {
       stop("worldMatrix extents must all be equal")
     }
@@ -351,15 +354,16 @@ setMethod(
 
     world <- new("worldArray",
                  .Data = out,
-                 minPxcor = worlds[[1]]@minPxcor, maxPxcor = worlds[[1]]@maxPxcor,
-                 minPycor = worlds[[1]]@minPycor, maxPycor = worlds[[1]]@maxPycor,
-                 extent = worlds[[1]]@extent,
+                 minPxcor = NLwMs[[1]]@minPxcor, maxPxcor = NLwMs[[1]]@maxPxcor,
+                 minPycor = NLwMs[[1]]@minPycor, maxPycor = NLwMs[[1]]@maxPycor,
+                 extent = NLwMs[[1]]@extent,
                  res = c(1, 1),
-                 pCoords = worlds[[1]]@pCoords
+                 pCoords = NLwMs[[1]]@pCoords
     )
 
     return(world)
 })
+
 
 ################################################################################
 #' The worldNLR class
@@ -417,6 +421,7 @@ setMethod(
     (i - 1) * ncol(world) + j # Faster
 })
 
+
 ################################################################################
 #' Patches coordinates from cells numbers
 #'
@@ -456,7 +461,9 @@ setMethod(
   definition = function(world, cellNum) {
     pCoords <- world@pCoords[cellNum, , drop = FALSE]
     return(pCoords)
-})
+  }
+)
+
 
 ################################################################################
 #' WorldMatrix indices from vector indices
@@ -502,4 +509,57 @@ setMethod(
     b <- dim(world)
     floor((cellNum - 1) / b[2]) + seq.int(from = 1, to = prod(b),
                                           by = b[1])[(cellNum - 1) %% b[2] + 1]
-})
+  }
+)
+
+
+#' Subsetting for worldArray class
+#'
+#' These function similarly to \code{[[} for \code{RasterStack} objects
+#'
+#' @param x     A \code{worldArray} object.
+#' @param i     Index number or layer name specifying a subset of layer(s)
+#'              from the worldArray.
+#' @export
+#' @rdname Subsetting
+#' @importFrom methods .slotNames
+#' @name [[
+#' @aliases [[,worldArray,ANY,ANY-method
+setMethod("[[", signature(x = "worldArray", i = "ANY"),
+          definition = function(x, i) {
+            if(length(i)>1) {
+              x@.Data <- x@.Data[,,i]
+              return(x)
+            } else {
+              worldMat <- .emptyWorldMatrix
+              sns <- .slotNames(x);
+              for(sn in sns[sns!=".Data"]){
+                slot(worldMat, sn, check = FALSE) <- slot(x, sn)
+              }
+              worldMat@.Data <- x@.Data[,,i];
+              return(worldMat)
+            }
+
+          })
+
+#' @export
+#' @param value A replacement worldMatrix layer for one of the current layers in the
+#'              worldArray.
+#' @name [[<-
+#' @aliases [[<-,worldArray,ANY,ANY,ANY-method
+#' @rdname Subsetting
+setReplaceMethod("[[", signature(x = "worldArray", value = "ANY"),
+                 definition = function(x, i, value) {
+                   x@.Data[,,i] <- value
+                   return(x)
+                 })
+
+#' @export
+#' @param name  Layer name, normally without back ticks, unless has symbols.
+#' @name $
+#' @aliases $,worldArray-method
+#' @rdname Subsetting
+setMethod("$", signature(x = "worldArray"),
+          definition = function(x, name) {
+            return(x[[name]])
+          })

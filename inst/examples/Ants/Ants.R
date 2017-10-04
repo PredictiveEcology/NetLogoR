@@ -76,12 +76,13 @@ world <- stackWorlds(chemical, nest, nestScent, foodSource, food)
 # Ants
 ants <- createTurtles(n = nAnts, coords = cbind(xcor = 0, ycor = 0),
                       color = "red") # red = not carrying food
+bbox(ants) <- bbox(world) # For Plot, which uses bbox to create frame
 
 ## Visualize the world
-plot(world) # all the layers
-plot(ants) # the ants only
-plot(world2raster(world)$layer.5) # only the food layer
-points(ants, pch = 16) # add the ants on the food layer
+dev() # on Windows and non-server Linux, this opens a new window that is faster than RStudio
+Plot(world) # all the layers
+Plot(ants) # the ants only
+Plot(ants, addTo = "world$food", pch = 16) # add the ants on the food layer
 
 # Initialize the output objects
 foodWorld <- of(world = world, var = c("food", "foodSource"), agents = patches(world))
@@ -249,18 +250,15 @@ while (sum(foodWorld[, "food"]) != 0) {
   # Update the time
   time <- time + 1
 
-  # Plots (slow the model very much)
-  plot(world2raster(world)$layer.5) # food layer
-  points(ants, pch = 16) # add the ants
-
+  Plot(ants, addTo = "world$food", pch = 16, size = 0.25)
 }
 
 ## Plot outputs
-timeStep <- 1:length(food1) # or timeStep <- 1:time
-plot(timeStep, food1, type = "l", col = "coral", lwd = 2, ylab = "Food", xlab = "Time step",
+timeStep <- 1:length(food1)
+Plot(timeStep, food1, type = "l", addTo = "PopulationSize", title = "Population Sizes",
+     col = "coral", lwd = 2, ylab = "Food", xlab = "Time step",
      ylim = c(min = 0, max = max(c(max(food1), max(food2), max(food3)))))
-lines(timeStep, food2, col = "yellow", lwd = 2)
-lines(timeStep, food3, col = "green", lwd = 2)
-
-legend("topright", legend = c("food1", "food2", "food3"), lwd = c(2, 2, 2),
-       col = c("coral", "yellow", "green"), bg = "white")
+Plot(timeStep, food2, type = "l", addTo = "PopulationSize", col = "yellow", lwd = 2)
+Plot(timeStep, food3, type = "l", addTo = "PopulationSize", col = "green", lwd = 2)
+legend("bottomleft", legend = c("food1", "food2", "food3"), lwd = c(2, 2, 2),
+       col = c("coral", "yellow", "green"), bg = "white", cex = 0.5)

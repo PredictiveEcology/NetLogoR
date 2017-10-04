@@ -44,31 +44,39 @@ Imports:
     matrixStats,
     methods,
     plyr,
+    quickPlot (>= 0.1.1.9002),
     sp,
     SpaDES.tools,
     stats,
     rgeos
 Suggests:
+    fastshp,
     knitr,
     magrittr,
     microbenchmark,
-    quickPlot,
     rmarkdown,
     SpaDES.core,
     testthat
+Remotes:
+    s-u/fastshp,
+    PredictiveEcology/quickPlot@development
 License: GPL-3
 VignetteBuilder: knitr, rmarkdown
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
 LazyData: true
 RoxygenNote: 6.0.1
-Collate:
-    'NetLogoR-classes.R'
+Collate: 
+    'Agent-classes.R'
     'Classes.R'
     'NetLogoR-package.R'
+    'worldNLR-classes-methods.R'
+    'agentMatrix-Class-methods.R'
     'agentset-functions.R'
     'function-arguments.R'
     'patch-functions.R'
+    'plot.R'
+    'world-functions.R'
+    'quickPlot.R'
     'spades-functions.R'
     'turtle-functions.R'
-    'world-functions.R'
