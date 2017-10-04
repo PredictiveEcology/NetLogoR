@@ -79,6 +79,7 @@ ants <- createTurtles(n = nAnts, coords = cbind(xcor = 0, ycor = 0),
 bbox(ants) <- bbox(world) # For Plot, which uses bbox to create frame
 
 ## Visualize the world
+library(quickPlot)
 dev() # on Windows and non-server Linux, this opens a new window that is faster than RStudio
 Plot(world) # all the layers
 Plot(ants) # the ants only

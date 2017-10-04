@@ -296,6 +296,7 @@ while ((NLany(sheep) | NLany(wolves)) & time < maxTime) {
 }
 
 ## Plot outputs
+library(quickPlot)
 dev()
 timeStep <- 1:length(numSheep)
 
