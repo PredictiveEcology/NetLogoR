@@ -13,7 +13,7 @@
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#all}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -93,7 +93,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#any}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -163,7 +163,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#count}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -224,7 +224,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#sort-on}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -315,7 +315,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -418,7 +418,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-max}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -526,7 +526,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-min}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -642,7 +642,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-one-of}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -737,7 +737,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-one-of}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -835,7 +835,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#is-of-type}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -952,7 +952,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#n-of}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1062,7 +1062,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#one-of}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1140,7 +1140,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-n-of}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1301,7 +1301,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-n-of}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1476,7 +1476,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#in-radius}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1656,7 +1656,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#in-cone}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1768,7 +1768,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#set}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'

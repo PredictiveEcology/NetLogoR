@@ -72,7 +72,7 @@ t3 <- NLwith(agents = t1, var = "breed", val = c("sheep", "wolf"))
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
             Center for Connected Learning and Computer-Based Modeling,
             Northwestern University. Evanston, IL.
 }

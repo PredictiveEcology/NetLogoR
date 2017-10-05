@@ -67,7 +67,7 @@ t3 <- inRadius(agents = turtle(t1, who = 0), radius = 2, agents2 = t1)
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
             Center for Connected Learning and Computer-Based Modeling,
             Northwestern University. Evanston, IL.
 }
