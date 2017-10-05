@@ -32,7 +32,6 @@
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname NLall
 #' @aliases all
 #'
@@ -113,7 +112,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname NLany
 #' @aliases any
 #'
@@ -179,7 +177,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname NLcount
 #' @aliases count
 #'
@@ -241,7 +238,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname sortOn
 #'
 #' @author Sarah Bauduin
@@ -334,7 +330,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname NLwith
 #' @aliases with
 #'
@@ -436,7 +431,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname withMax
 #'
 #' @author Sarah Bauduin
@@ -544,7 +538,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname withMin
 #'
 #' @author Sarah Bauduin
@@ -660,7 +653,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname maxOneOf
 #'
 #' @author Sarah Bauduin
@@ -755,7 +747,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname minOneOf
 #'
 #' @author Sarah Bauduin
@@ -850,7 +841,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname isNLclass
 #'
 #' @author Sarah Bauduin
@@ -967,7 +957,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname nOf
 #'
 #' @author Sarah Bauduin
@@ -1078,7 +1067,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom Hmisc mApply
-#' @docType methods
 #' @rdname oneOf
 #'
 #' @author Sarah Bauduin
@@ -1158,7 +1146,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname maxNof
 #'
 #' @author Sarah Bauduin
@@ -1319,7 +1306,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname minNof
 #'
 #' @author Sarah Bauduin
@@ -1494,7 +1480,6 @@ setMethod(
 #' @importFrom rgeos gBuffer
 #' @importFrom sp over
 #' @importFrom sp SpatialPoints
-#' @docType methods
 #' @rdname inRadius
 #'
 #' @author Sarah Bauduin
@@ -1669,7 +1654,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname inCone
 #'
 #' @author Sarah Bauduin
@@ -1786,7 +1770,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname NLset
 #' @aliases set
 #'

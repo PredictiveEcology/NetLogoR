@@ -59,7 +59,6 @@ setClass(
 #' @export
 #' @name [
 #' @aliases [,worldMatrix,numeric,numeric,ANY-method
-#' @docType methods
 #' @rdname extract-methods
 setMethod(
   "[",
@@ -154,7 +153,6 @@ setReplaceMethod(
 #'
 #' @export
 #' @importFrom raster extent
-#' @docType methods
 #' @rdname createWorld
 #'
 #' @author Sarah Bauduin, Eliot McIntire, and Alex Chubaty
@@ -234,7 +232,6 @@ setClass(
 #' @export
 #' @name [
 #' @aliases [,worldArray,numeric,numeric,ANY-method
-#' @docType methods
 #' @rdname extract-methods
 setMethod(
   "[",
@@ -254,7 +251,6 @@ setMethod(
 #' @export
 #' @name [
 #' @aliases [,worldArray,missing,missing,ANY-method
-#' @docType methods
 #' @rdname extract-methods
 setMethod(
   "[",
@@ -324,7 +320,6 @@ setReplaceMethod(
 #'
 #' @export
 #' @importFrom abind abind
-#' @docType methods
 #' @rdname stackWorlds
 #'
 #' @author Sarah Bauduin
@@ -399,7 +394,6 @@ setClassUnion(name = "worldNLR",
 #' cellFromPxcorPycor(world = w1, pxcor = c(0, 1, 2), pycor = 0)
 #'
 #' @export
-#' @docType methods
 #' @rdname cellFromPxcorPycor
 #'
 #' @author Sarah Bauduin
@@ -442,7 +436,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname PxcorPycorFromCell
 #'
 #' @author Sarah Bauduin
@@ -475,7 +468,6 @@ setMethod(
 #' @return Numeric. Vector of worldMatrix indices.
 #'
 #' @export
-#' @docType methods
 #' @rdname NLworldIndex
 #'
 #' @author Eliot McIntire

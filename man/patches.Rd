@@ -26,7 +26,6 @@ w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
 allPatches <- patches(world = w1)
 NLcount(allPatches) # 100 patches
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.

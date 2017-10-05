@@ -19,7 +19,6 @@
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname maxPxcor
 #'
 #' @author Sarah Bauduin
@@ -62,7 +61,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname maxPycor
 #'
 #' @author Sarah Bauduin
@@ -105,7 +103,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname minPxcor
 #'
 #' @author Sarah Bauduin
@@ -148,7 +145,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname minPycor
 #'
 #' @author Sarah Bauduin
@@ -191,7 +187,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname worldWidth
 #'
 #' @author Sarah Bauduin
@@ -235,7 +230,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname worldHeight
 #'
 #' @author Sarah Bauduin
@@ -285,7 +279,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname clearPatches
 #'
 #' @author Sarah Bauduin
@@ -352,7 +345,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom abind abind
-#' @docType methods
 #' @rdname raster2world
 #'
 #' @author Sarah Bauduin
@@ -447,7 +439,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname world2raster
 #'
 #' @author Sarah Bauduin
@@ -495,7 +486,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom quickPlot numLayers
-#' @docType methods
 #' @rdname show-methods
 setMethod(
   "show",
@@ -549,7 +539,6 @@ setMethod(
 })
 
 #' @export
-#' @docType methods
 #' @rdname show-methods
 setMethod(
   "show",
