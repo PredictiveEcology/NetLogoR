@@ -44,7 +44,7 @@ Imports:
     matrixStats,
     methods,
     plyr,
-    quickPlot (>= 0.1.1.9002),
+    quickPlot (>= 0.1.2),
     sp,
     SpaDES.tools,
     stats,
@@ -58,8 +58,7 @@ Suggests:
     SpaDES.core,
     testthat
 Remotes:
-    s-u/fastshp,
-    PredictiveEcology/quickPlot@development
+    s-u/fastshp
 License: GPL-3
 VignetteBuilder: knitr, rmarkdown
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
