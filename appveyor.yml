@@ -42,6 +42,7 @@ branches:
 clone_depth: 5
 
 build_script:
+  - Rscript -e "install.packages('quickPlot', repos = 'https://cran.rstudio.com', type = 'source')"
   - travis-tool.sh install_deps
 
 test_script:
