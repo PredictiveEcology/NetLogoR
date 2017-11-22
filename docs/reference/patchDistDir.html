@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -141,30 +141,31 @@ must be of length 1 or of the same length as the number of
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Matrix (ncol = 2) with the first column "pxcor" and the second column
-        "pycor" representing the coordinates of the patches at the distances <code>dist</code>
-        and directions <code>angle</code>
-        of <code>agents</code>. The order of the patches follows the order of the <code>agents</code>.</p>
+        "pycor" representing the coordinates of the patches at the distances
+        <code>dist</code> and directions <code>angle</code> of <code>agents</code>.
+        The order of the patches follows the order of the <code>agents</code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>If <code>torus = FALSE</code> and the patch at distance <code>dist</code> and
-         direction <code>angle</code> of an agent is outside the <code>world</code>'s extent, <code>NA</code>
-         are returned for the patch coordinates. If <code>torus = TRUE</code>, the patch
-         coordinates from a wrapped <code>world</code> are returned.</p>
-<p>If <code>agents</code> are turtles, their headings are not taken into account; the
-         given directions <code>angle</code> are used. To find a patch at certain
+         direction <code>angle</code> of an agent is outside the <code>world</code>'s extent,
+         <code>NA</code> are returned for the patch coordinates.
+         If <code>torus = TRUE</code>, the patch coordinates from a wrapped <code>world</code>
+         are returned.</p>
+<p>If <code>agents</code> are turtles, their headings are not taken into account;
+         the given directions <code>angle</code> are used. To find a patch at certain
          distance from a turtle using the turtle's heading, look at <code>pacthAhead()</code>,
          <code><a href='patchLeft.html'>patchLeft()</a></code> or <code><a href='patchRight.html'>patchRight()</a></code>.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+    <p>Wilensky, U. 1999. NetLogo. <a href='http://ccl.northwestern.edu/netlogo/'>http://ccl.northwestern.edu/netlogo/</a>.
             Center for Connected Learning and Computer-Based Modeling,
             Northwestern University. Evanston, IL.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><a href='https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance'>https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance</a></p>
+    <p><a href='https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance'>https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance</a> # nolint</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

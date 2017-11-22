@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -102,7 +102,12 @@
 <h1 class="hasAnchor">
 <a href="#version-0-3-0" class="anchor"></a>version 0.3.0</h1>
 <ul>
+<li>add <code>quickPlot &gt;= 0.1.1.9000</code> dependency</li>
 <li>update dependencies on <code>SpaDES</code>-related packages to only include the ones actually used.</li>
+<li>Define [[ and $ for <code>worldArray</code> to extract subset layers.</li>
+<li>Add <code>show</code> methods for <code>worldMatrix</code> and <code>worldArray</code>, similar to <code>RasterLayer</code> and <code>RasterStack</code>
+</li>
+<li>Add tools so <code><a href="http://quickplot.predictiveecology.org//reference/Plot.html">quickPlot::Plot</a></code> works, e.g., <code>Plot(agentMatrixObj)</code> or <code>Plot(worldMatrixObj)</code> or <code>Plot(worldArrayObj)</code>, <code>Plot(worldArrayObj$layer1)</code>. <code>addTo</code> argument implemented for layering, <code>Plot(worldMatrixObj); Plot(agentMatrixObj, addTo="worldMatrixObj")</code> will plot the agents on the map.</li>
 </ul>
 </div>
     <div id="version-0-2-0" class="section level1">

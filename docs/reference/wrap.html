@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -100,37 +100,37 @@
     <p>Generally for model development purposes.</p>
     
 
-    <pre class="usage"><span class='fu'>wrap</span>(<span class='no'>X</span>, <span class='no'>bounds</span>, <span class='no'>withHeading</span>)
+    <pre class="usage"><span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>, <span class='no'>withHeading</span>)
 
 <span class='co'># S4 method for matrix,Extent,missing</span>
-<span class='fu'>wrap</span>(<span class='no'>X</span>, <span class='no'>bounds</span>)
+<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>)
 
 <span class='co'># S4 method for SpatialPoints,ANY,missing</span>
-<span class='fu'>wrap</span>(<span class='no'>X</span>, <span class='no'>bounds</span>)
+<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>)
 
 <span class='co'># S4 method for matrix,Raster,missing</span>
-<span class='fu'>wrap</span>(<span class='no'>X</span>, <span class='no'>bounds</span>)
+<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>)
 
 <span class='co'># S4 method for matrix,Raster,missing</span>
-<span class='fu'>wrap</span>(<span class='no'>X</span>, <span class='no'>bounds</span>)
+<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>)
 
 <span class='co'># S4 method for matrix,matrix,missing</span>
-<span class='fu'>wrap</span>(<span class='no'>X</span>, <span class='no'>bounds</span>)
+<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>)
 
 <span class='co'># S4 method for SpatialPointsDataFrame,Extent,logical</span>
-<span class='fu'>wrap</span>(<span class='no'>X</span>, <span class='no'>bounds</span>, <span class='no'>withHeading</span>)
+<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>, <span class='no'>withHeading</span>)
 
 <span class='co'># S4 method for SpatialPointsDataFrame,Raster,logical</span>
-<span class='fu'>wrap</span>(<span class='no'>X</span>, <span class='no'>bounds</span>, <span class='no'>withHeading</span>)
+<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>, <span class='no'>withHeading</span>)
 
 <span class='co'># S4 method for SpatialPointsDataFrame,matrix,logical</span>
-<span class='fu'>wrap</span>(<span class='no'>X</span>, <span class='no'>bounds</span>, <span class='no'>withHeading</span>)</pre>
+<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>, <span class='no'>withHeading</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>X</th>
+      <th>obj</th>
       <td><p>A <code>SpatialPoints*</code> object, or matrix of coordinates.</p></td>
     </tr>
     <tr>
@@ -148,18 +148,20 @@ Default <code>FALSE</code>. See details.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Same class as <code>X</code>, but with coordinates updated to reflect the wrapping.</p>
+    <p>Same class as <code>obj</code>, but with coordinates updated to reflect the wrapping.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>If <code>withHeading</code> used, then X must be a <code>SpatialPointsDataFrame</code>
+    <p>If <code>withHeading</code> used, then obj must be a <code>SpatialPointsDataFrame</code>
 that contains two columns, <code>x1</code> and <code>y1</code>, with the immediately previous
 agent locations.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>quickPlot</span>)
-<span class='fu'>library</span>(<span class='no'>raster</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>quickPlot</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘quickPlot’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:NetLogoR’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    gpar</span></div><div class='input'><span class='fu'>library</span>(<span class='no'>raster</span>)
 
 <span class='no'>xrange</span> <span class='kw'>&lt;-</span> <span class='no'>yrange</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(-<span class='fl'>50</span>, <span class='fl'>50</span>)
 <span class='no'>hab</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/raster/topics/raster'>raster</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/raster/topics/extent'>extent</a></span>(<span class='fu'>c</span>(<span class='no'>xrange</span>, <span class='no'>yrange</span>)))
@@ -183,15 +185,15 @@ agent locations.</p>
 <span class='no'>sd</span> <span class='kw'>&lt;-</span> <span class='fl'>30</span> <span class='co'># could be specified globally in params</span>
 
 <span class='kw'>if</span> (<span class='fu'>interactive</span>()) {
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/quickPlot/topics/clearPlot'>clearPlot</a></span>()
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/quickPlot/topics/Plot'>Plot</a></span>(<span class='no'>hab</span>, <span class='kw'>zero.color</span> <span class='kw'>=</span> <span class='st'>"white"</span>, <span class='kw'>axes</span> <span class='kw'>=</span> <span class='st'>"L"</span>)
-}</div><div class='output co'>#&gt; <span class='error'>Error in plot.new(): figure margins too large</span></div><div class='input'><span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"SpaDES.tools"</span>)) {
+  <span class='fu'><a href='http://quickplot.predictiveecology.org//reference/clearPlot.html'>clearPlot</a></span>()
+  <span class='fu'><a href='http://quickplot.predictiveecology.org//reference/Plot.html'>Plot</a></span>(<span class='no'>hab</span>, <span class='kw'>zero.color</span> <span class='kw'>=</span> <span class='st'>"white"</span>, <span class='kw'>axes</span> <span class='kw'>=</span> <span class='st'>"L"</span>)
+}</div><div class='input'><span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"SpaDES.tools"</span>)) {
   <span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>10</span>) {
 
     <span class='no'>agent</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SpaDES.tools</span><span class='kw ns'>::</span><span class='fu'><a href='http://spades.predictiveecology.org/reference/crw.html'>crw</a></span>(<span class='kw'>agent</span> <span class='kw'>=</span> <span class='no'>agent</span>,
                                <span class='kw'>extent</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/raster/topics/extent'>extent</a></span>(<span class='no'>hab</span>), <span class='kw'>stepLength</span> <span class='kw'>=</span> <span class='no'>ln</span>,
                                <span class='kw'>stddev</span> <span class='kw'>=</span> <span class='no'>sd</span>, <span class='kw'>lonlat</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>torus</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-   <span class='kw'>if</span> (<span class='fu'>interactive</span>()) <span class='fu'><a href='http://www.rdocumentation.org/packages/quickPlot/topics/Plot'>Plot</a></span>(<span class='no'>agent</span>, <span class='kw'>addTo</span> <span class='kw'>=</span> <span class='st'>"hab"</span>, <span class='kw'>axes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+   <span class='kw'>if</span> (<span class='fu'>interactive</span>()) <span class='fu'><a href='http://quickplot.predictiveecology.org//reference/Plot.html'>Plot</a></span>(<span class='no'>agent</span>, <span class='kw'>addTo</span> <span class='kw'>=</span> <span class='st'>"hab"</span>, <span class='kw'>axes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
  }
 }</div><div class='img'><img src='wrap-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>

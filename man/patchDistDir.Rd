@@ -64,8 +64,7 @@ Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
             Northwestern University. Evanston, IL.
 }
 \seealso{
-\url{
-https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance}
+\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance} # nolint
 }
 \author{
 Sarah Bauduin

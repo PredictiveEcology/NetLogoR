@@ -607,8 +607,7 @@ setMethod(
 #'          distance from a turtle using the turtle's heading, look at \code{pacthAhead()},
 #'          \code{patchLeft()} or \code{patchRight()}.
 #'
-#' @seealso \url{
-#' https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance}
+#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance} # nolint
 #'
 #' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
