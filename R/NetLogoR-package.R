@@ -7,3 +7,9 @@
 #' @import methods
 #' @import raster
 NULL
+
+#' Internal CRS usage
+#' This is used in various places when converting \code{agentMatrix} objects to \code{SpatialPoints}
+#' for use with functions, such as \code{\link[raster]{buffer}}. The \code{CRS()} operation is
+#' relatively time consuming. Having a single object useable throughout is MUCH faster.
+projNowhere <- CRS("+proj=utm")

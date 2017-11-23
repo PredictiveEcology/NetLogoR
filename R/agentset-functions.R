@@ -1429,7 +1429,8 @@ setMethod(
 #' Agents in radius
 #'
 #' Report the patches or turtles among \code{agents2} within given distances of
-#' each of the \code{agents}.
+#' each of the \code{agents}. Currently, this function multiplies \code{radius} by
+#' 1.0000001 so that the response of \code{inRadius} is inclusive.
 #'
 #' @inheritParams fargs
 #'
@@ -1506,7 +1507,7 @@ setMethod(
       inRadius(agents = agents, radius = radius, agents2 = agents2, world = world, torus = torus)
     } else if (!inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
       # Transform the agents into SP to use gBuffer
-      agentsSP <- SpatialPoints(coords = agents)
+      agentsSP <- SpatialPoints(coords = agents, proj4string = projNowhere)
 
       # Create buffers around the locations of agents
       pBuffer <- gBuffer(agentsSP, byid = TRUE, id = 1:NROW(agents), width = radius, quadsegs = 50)
@@ -1533,7 +1534,7 @@ setMethod(
                              agents2c5, agents2c6, agents2c7, agents2c8)
 
         # Extract the locations of agents2 under the buffers
-        pOverL <- over(pBuffer, SpatialPoints(coords = agents2cAll), returnList = TRUE)
+        pOverL <- over(pBuffer, SpatialPoints(coords = agents2cAll, proj4string = projNowhere), returnList = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(agents2cAll) <- c("x", "y")
@@ -1545,7 +1546,7 @@ setMethod(
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       } else {
         pOverL <- over(pBuffer,
-                       SpatialPoints(coords = agents2@.Data[, c("xcor", "ycor"), drop = FALSE]),
+                       SpatialPoints(coords = agents2@.Data[, c("xcor", "ycor"), drop = FALSE], proj4string = projNowhere),
                        returnList = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
@@ -1557,10 +1558,10 @@ setMethod(
       }
     } else {
       # Transform the agents into SP to use gBuffer
-      agentsSP <- SpatialPoints(coords = agents)
+      agentsSP <- SpatialPoints(coords = agents, proj4string = projNowhere) # as of raster version 2.6-7, buffer needs a proj4 string in the SP object
 
       # Create buffers around the locations of agents
-      pBuffer <- raster::buffer(agentsSP, dissolve = FALSE, width = radius)
+      pBuffer <- raster::buffer(agentsSP, dissolve = FALSE, width = radius * 1.0000001)
 
       if (torus == TRUE) {
         if (missing(world)) {
@@ -1574,7 +1575,9 @@ setMethod(
         pAllWrap <- patches(worldWrap)
 
         # Extract the locations of agents2 under the buffers
-        pOverL <- over(pBuffer, SpatialPoints(coords = pAllWrap), returnList = TRUE)
+        sp1 <- SpatialPoints(coords = pAllWrap, proj4string = projNowhere)
+
+        pOverL <- over(pBuffer, sp1, returnList = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(pAllWrap) <- c("x", "y")
@@ -1583,7 +1586,8 @@ setMethod(
         colnames(agentsXY)[1:2] <- c("pxcor", "pycor")
         return(agentsXY)
       } else {
-        sp1 <- SpatialPoints(coords = agents2)
+        sp1 <- SpatialPoints(coords = agents2, proj4string = projNowhere)
+
         pOverL <- over(pBuffer, sp1, returnList = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
