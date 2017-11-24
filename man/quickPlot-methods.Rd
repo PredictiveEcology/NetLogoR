@@ -84,5 +84,5 @@ into Plot (\code{TRUE}), or from the (\code{.quickPlotEnv})
 These are required to create plotting methods to work with quickPlot.
 
 The suggested package \code{fastshp} can be installed with:
-\code{install.packages("fastshp", repos = "http://rforge.net", type = "source")}.
+\code{install.packages("fastshp", repos = "https://rforge.net", type = "source")}.
 }

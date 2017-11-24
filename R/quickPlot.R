@@ -66,7 +66,7 @@ if (!isGeneric(".plotGrob")) {
 }
 
 #' The suggested package \code{fastshp} can be installed with:
-#' \code{install.packages("fastshp", repos = "http://rforge.net", type = "source")}.
+#' \code{install.packages("fastshp", repos = "https://rforge.net", type = "source")}.
 #' @export
 #' @exportMethod .plotGrob
 #' @importFrom quickPlot .plotGrob
@@ -105,7 +105,7 @@ setMethod(
           message(
             paste(
               "To speed up Polygons plotting using Plot install the fastshp package:\n",
-              "install.packages(\"fastshp\", repos=\"http://rforge.net\", type=\"source\")."
+              "install.packages(\"fastshp\", repos=\"https://rforge.net\", type=\"source\")."
             )
           )
           if (Sys.info()[["sysname"]] == "Windows") {
