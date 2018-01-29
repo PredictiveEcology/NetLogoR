@@ -31,9 +31,9 @@ must be of length 1 or of the same length as the number of
 }
 \value{
 Matrix (ncol = 2) with the first column "pxcor" and the second column
-        "pycor" representing the coordinates of the patches at the distances \code{dist}
-        and directions \code{angle}
-        of \code{agents}. The order of the patches follows the order of the \code{agents}.
+        "pycor" representing the coordinates of the patches at the distances
+        \code{dist} and directions \code{angle} of \code{agents}.
+        The order of the patches follows the order of the \code{agents}.
 }
 \description{
 Report the coordinates of the patches at the given
@@ -41,12 +41,13 @@ distances and directions from the \code{agents}.
 }
 \details{
 If \code{torus = FALSE} and the patch at distance \code{dist} and
-         direction \code{angle} of an agent is outside the \code{world}'s extent, \code{NA}
-         are returned for the patch coordinates. If \code{torus = TRUE}, the patch
-         coordinates from a wrapped \code{world} are returned.
+         direction \code{angle} of an agent is outside the \code{world}'s extent,
+         \code{NA} are returned for the patch coordinates.
+         If \code{torus = TRUE}, the patch coordinates from a wrapped \code{world}
+         are returned.
 
-         If \code{agents} are turtles, their headings are not taken into account; the
-         given directions \code{angle} are used. To find a patch at certain
+         If \code{agents} are turtles, their headings are not taken into account;
+         the given directions \code{angle} are used. To find a patch at certain
          distance from a turtle using the turtle's heading, look at \code{pacthAhead()},
          \code{patchLeft()} or \code{patchRight()}.
 }
@@ -56,16 +57,14 @@ p1 <- patchDistDir(world = w1, agents = patch(w1, 0, 0), dist = 1, angle = 45)
 t1 <- createTurtles(n = 1, coords = cbind(xcor = 0, ycor = 0), heading = 315)
 p2 <- patchDistDir(world = w1, agents = t1, dist = 1, angle = 45)
 
-
 }
 \references{
-Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
             Center for Connected Learning and Computer-Based Modeling,
             Northwestern University. Evanston, IL.
 }
 \seealso{
-\url{
-https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance}
+\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance} # nolint
 }
 \author{
 Sarah Bauduin

@@ -45,7 +45,6 @@
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname createTurtles
 #'
 #' @author Sarah Bauduin
@@ -146,7 +145,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname createOTurtles
 #'
 #' @author Sarah Bauduin and Eliot McIntire
@@ -245,7 +243,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom CircStats rad
-#' @docType methods
 #' @rdname fd
 #'
 #' @author Sarah Bauduin
@@ -357,7 +354,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname bk
 #'
 #' @author Sarah Bauduin
@@ -423,7 +419,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname home
 #'
 #' @author Sarah Bauduin
@@ -506,7 +501,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom CircStats rad
-#' @docType methods
 #' @rdname dx
 #'
 #' @author Sarah Bauduin
@@ -570,7 +564,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom CircStats rad
-#' @docType methods
 #' @rdname dy
 #'
 #' @author Sarah Bauduin
@@ -630,7 +623,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname die
 #'
 #' @author Sarah Bauduin
@@ -695,7 +687,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname hatch
 #'
 #' @author Sarah Bauduin
@@ -768,7 +759,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname canMove
 #'
 #' @author Sarah Bauduin
@@ -819,7 +809,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname randomXcor
 #'
 #' @author Sarah Bauduin
@@ -870,7 +859,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname randomYcor
 #'
 #' @author Sarah Bauduin
@@ -941,7 +929,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom CircStats deg
-#' @docType methods
 #' @rdname towards
 #'
 #' @author Sarah Bauduin
@@ -1102,7 +1089,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname face
 #'
 #' @author Sarah Bauduin
@@ -1156,7 +1142,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname left
 #'
 #' @author Sarah Bauduin
@@ -1211,7 +1196,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname right
 #'
 #' @author Sarah Bauduin
@@ -1278,7 +1262,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom car some
-#' @docType methods
 #' @rdname downhill
 #'
 #' @author Sarah Bauduin
@@ -1407,7 +1390,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname uphill
 #'
 #' @author Sarah Bauduin
@@ -1480,7 +1462,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom CircStats rad
-#' @docType methods
 #' @rdname patchAhead
 #'
 #' @author Sarah Bauduin
@@ -1538,7 +1519,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname patchHere
 #'
 #' @author Sarah Bauduin
@@ -1605,7 +1585,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname patchLeft
 #'
 #' @author Sarah Bauduin
@@ -1671,7 +1650,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname patchRight
 #'
 #' @author Sarah Bauduin
@@ -1737,7 +1715,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname setXY
 #'
 #' @author Sarah Bauduin
@@ -1840,7 +1817,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname sprout
 #'
 #' @author Sarah Bauduin
@@ -1970,7 +1946,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom plyr mapvalues
-#' @docType methods
 #' @rdname inspect
 #'
 #' @author Sarah Bauduin
@@ -2039,7 +2014,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname moveTo
 #'
 #' @author Sarah Bauduin
@@ -2088,7 +2062,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname randomXYcor
 #'
 #' @author Sarah Bauduin
@@ -2141,7 +2114,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname tExist
 #'
 #' @author Sarah Bauduin
@@ -2212,7 +2184,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname turtle
 #'
 #' @author Sarah Bauduin
@@ -2294,7 +2265,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname turtlesOn
 #'
 #' @author Sarah Bauduin
@@ -2398,7 +2368,6 @@ setMethod(
 #' NLcount(t1)
 #'
 #' @export
-#' @docType methods
 #' @rdname noTurtles
 #'
 #' @author Sarah Bauduin
@@ -2451,7 +2420,6 @@ noTurtles <- function() {
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname turtlesAt
 #'
 #' @author Sarah Bauduin
@@ -2519,7 +2487,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname turtleSet
 #'
 #' @author Sarah Bauduin
@@ -2597,7 +2564,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname turtlesOwn
 #'
 #' @author Sarah Bauduin
@@ -2694,7 +2660,6 @@ setMethod(
 #' @export
 #' @importFrom CircStats rad
 #' @importFrom CircStats deg
-#' @docType methods
 #' @rdname subHeadings
 #'
 #' @author Sarah Bauduin
@@ -2811,7 +2776,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname other
 #'
 #' @author Sarah Bauduin
@@ -2891,7 +2855,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname layoutCircle
 #'
 #' @author Sarah Bauduin
@@ -2964,7 +2927,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom plyr mapvalues
-#' @docType methods
 #' @rdname of
 #'
 #' @author Sarah Bauduin
@@ -3065,7 +3027,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname spdf2turtles
 #'
 #' @author Sarah Bauduin
@@ -3159,7 +3120,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname turtles2spdf
 #'
 #' @author Sarah Bauduin

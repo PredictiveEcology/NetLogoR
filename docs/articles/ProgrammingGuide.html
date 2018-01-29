@@ -29,7 +29,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -87,6 +87,7 @@
 <a href="#world-and-agents" class="anchor"></a>World and agents</h2>
 <p>In <code>NetLogoR</code>, the world is either a <code>worldMatrix</code> object (similar to a <code>matrix</code>) or a <code>worldArray</code> object (similar to an <code>array</code> which is a collection of matrices). It represents a two dimensional landscape, divided into a grid of square patches (<em>i.e.</em>, the matrix cells) of resolution 1.</p>
 <p>There are two types of agents in <code>NetLogoR</code>: the patches and the turtles. Patches cannot move whereas turtles can move. Patches are represented as <code>matrix</code> objects with two columns <code>pxcor</code> and <code>pycor</code>, representing the spatial location (<em>i.e.</em>, coordinates) of the center of the patches. See <code>help("worldMatrix-class")</code> for more details on the patch coordinates system. Turtles are defined by their coordinates <code>xcor</code> and <code>ycor</code> and data associated in <code>agentMatrix</code> objects. Patches coordinates are always integers but turtles coordinates can have decimals (<em>i.e.</em>, a turtle can be positioned anywhere on a patch).</p>
+<p><code>worldMatrix</code> and <code>worldArray</code> are similar to <code>RasterLayer</code> and <code>RasterStack</code> in the <code>raster</code> package. However, there are several differences. Two important differences are the mapping of X and Y coordinates and whether integer locations are in the center or at the corners of integer coordinate systems. In <code>worldMatrix</code> and <code>worldArray</code>, <code>(0, 0)</code> is at the bottom left, like a mathematical graph, whereas it is in the top left in <code>Raster*</code> objects, as in geographic coordinates. In <code>worldMatrix</code> and <code>worldArray</code>, integer coordinates are in the middle of the patch or cell, <em>i.e.</em>, <code>(0, 0)</code> is in the middle of the patch in a <code>worldMatrix</code> that has 1m resolution and integer coordinates, whereas, <code>(0, 0)</code> would be at the edge of a cell in a <code>Raster*</code> that has 1 m resolution and integer coordinates. <code>agentMatrix</code> is similar to <code>SpatialPointsDataFrame</code> from <code>sp</code> package, with a few differences. The key difference in this case is for speed. <code>agentMatrix</code> is based on matrices and has no coordinate reference system, both of which make operations dramatically faster than with <code>SpatialPointsDataFrame</code> objects. In all cases of similar object types, we have implemented functions to convert between the types.</p>
 <p>Links are not implemented in <code>NetLogoR</code>.</p>
 </div>
 <div id="procedures" class="section level2">
@@ -178,7 +179,9 @@ t2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/NLset.ht
 <h2 class="hasAnchor">
 <a href="#view-plot-screen-output" class="anchor"></a>View, plot, screen output</h2>
 <p>There is no interface built-in as part of <code>NetLogoR</code>.</p>
-<p>However, you can still plot the world with <code>plot(nameWorld)</code> and the agent positions in the world with <code>points(nameTurtles)</code> (<em>i.e.</em>, “view” in NetLogo), as well as any other plots (<em>e.g.</em>, the number of turtles through time) using R plot functions on the R plot interface. You can also generate outputs on the screen using different functions. To do so, you need to specifically code for these procedures in the model using R functions and of different packages. Please refer to their manuals for any related questions.</p>
+<p>However, you can use different plot functions for visualizations similar to the “View” of NetLogo. <code>plot(nameWorld)</code> works with both <code>worldMatrix</code> and <code>worldArray</code>. To visualize only one layer of a <code>worldArray</code>, use <code>plot(nameWorldArray[[layerNumber]])</code> or <code>plot(nameWorldArray[["layerName"]])</code>. Turtles can be plotted alone with <code>plot(nameTurtles)</code> or on a world already plotted with <code>points(nameTurtles)</code>. <code>Plot()</code> functions (with a capital “P”) from <code>quickPlot</code> give a better rendering when plotting multiple time steps. These functions work the same way as the <code>plot()</code> ones, except when adding turtles on a world, use <code>Plot(nameTurtles, addTo = "nameWorld")</code> instead of <code>points(nameTurtles)</code>.</p>
+<p>Users can also create any other figures (<em>e.g.</em>, the number of turtles through time) on the R plot interface or generate outputs directly on the screen (<em>e.g.</em>, show the current time step).</p>
+<p>All these procedures need to be coded in the model, either using the <code>plot()</code> or <code>Plot()</code> functions adapted to the <code>NetLogoR</code> classes for the world visualization, or using R functions and of different packages for any other figures. Please refer to their manuals for any related questions.</p>
 </div>
 </div>
 <div id="how-to-build-a-model-using-netlogor" class="section level1">

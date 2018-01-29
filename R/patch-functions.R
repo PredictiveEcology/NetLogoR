@@ -29,7 +29,7 @@ if (getRversion() >= "3.1.0") {
 #'
 #'          \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse4}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -47,7 +47,6 @@ if (getRversion() >= "3.1.0") {
 #' @importFrom data.table setkey
 #' @importFrom SpaDES.tools adj
 #' @importFrom plyr count
-#' @docType methods
 #' @rdname diffuse
 #'
 #' @author Sarah Bauduin
@@ -157,7 +156,7 @@ setMethod(
 #'
 #'          \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distancexy}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -171,7 +170,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname NLdist
 #' @aliases dist
 #'
@@ -251,7 +249,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#member}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -261,7 +259,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname pExist
 #'
 #' @author Sarah Bauduin
@@ -318,7 +315,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#neighbors}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -332,7 +329,6 @@ setMethod(
 #' @export
 #' @importFrom data.table data.table setkey
 #' @importFrom SpaDES.tools adj
-#' @docType methods
 #' @rdname neighbors
 #'
 #' @author Sarah Bauduin
@@ -428,7 +424,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -444,7 +440,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname patch
 #'
 #' @author Sarah Bauduin
@@ -500,7 +495,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#no-patches}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -509,7 +504,6 @@ setMethod(
 #' NLcount(p1)
 #'
 #' @export
-#' @docType methods
 #' @rdname noPatches
 #'
 #' @author Sarah Bauduin
@@ -541,7 +535,7 @@ noPatches <- function() {
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#at-points}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -553,7 +547,6 @@ noPatches <- function() {
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname patchAt
 #'
 #' @author Sarah Bauduin
@@ -599,24 +592,24 @@ setMethod(
 #'               \code{agents}. Angles are in degrees with 0 being North.
 #'
 #' @return Matrix (ncol = 2) with the first column "pxcor" and the second column
-#'         "pycor" representing the coordinates of the patches at the distances \code{dist}
-#'         and directions \code{angle}
-#'         of \code{agents}. The order of the patches follows the order of the \code{agents}.
+#'         "pycor" representing the coordinates of the patches at the distances
+#'         \code{dist} and directions \code{angle} of \code{agents}.
+#'         The order of the patches follows the order of the \code{agents}.
 #'
 #' @details If \code{torus = FALSE} and the patch at distance \code{dist} and
-#'          direction \code{angle} of an agent is outside the \code{world}'s extent, \code{NA}
-#'          are returned for the patch coordinates. If \code{torus = TRUE}, the patch
-#'          coordinates from a wrapped \code{world} are returned.
+#'          direction \code{angle} of an agent is outside the \code{world}'s extent,
+#'          \code{NA} are returned for the patch coordinates.
+#'          If \code{torus = TRUE}, the patch coordinates from a wrapped \code{world}
+#'          are returned.
 #'
-#'          If \code{agents} are turtles, their headings are not taken into account; the
-#'          given directions \code{angle} are used. To find a patch at certain
+#'          If \code{agents} are turtles, their headings are not taken into account;
+#'          the given directions \code{angle} are used. To find a patch at certain
 #'          distance from a turtle using the turtle's heading, look at \code{pacthAhead()},
 #'          \code{patchLeft()} or \code{patchRight()}.
 #'
-#' @seealso \url{
-#' https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance}
+#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance} # nolint
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -626,10 +619,8 @@ setMethod(
 #' t1 <- createTurtles(n = 1, coords = cbind(xcor = 0, ycor = 0), heading = 315)
 #' p2 <- patchDistDir(world = w1, agents = t1, dist = 1, angle = 45)
 #'
-#'
 #' @export
 #' @importFrom CircStats rad
-#' @docType methods
 #' @rdname patchDistDir
 #'
 #' @author Sarah Bauduin
@@ -646,7 +637,6 @@ setMethod(
   "patchDistDir",
   signature = c(world = "worldNLR", agents = "matrix", dist = "numeric", angle = "numeric"),
   definition = function(world, agents, dist, angle, torus) {
-
     if (inherits(agents, "agentMatrix")) {
       agents <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
     }
@@ -673,7 +663,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patches}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -682,13 +672,9 @@ setMethod(
 #' allPatches <- patches(world = w1)
 #' NLcount(allPatches) # 100 patches
 #'
-#'
-#' @export
-#' @docType methods
-#' @rdname patches
-#'
 #' @author Sarah Bauduin
-#'
+#' @export
+#' @rdname patches
 setGeneric(
   "patches",
   function(world) {
@@ -719,7 +705,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-set}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -732,7 +718,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname patchSet
 #'
 #' @author Sarah Bauduin
@@ -766,7 +751,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-pcor}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -776,7 +761,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname randomPxcor
 #'
 #' @author Sarah Bauduin
@@ -808,7 +792,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-pcor}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -818,7 +802,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname randomPycor
 #'
 #' @author Sarah Bauduin

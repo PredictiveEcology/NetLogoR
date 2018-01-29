@@ -79,9 +79,9 @@ ants <- createTurtles(n = nAnts, coords = cbind(xcor = 0, ycor = 0),
 bbox(ants) <- bbox(world) # For Plot, which uses bbox to create frame
 
 ## Visualize the world
+library(quickPlot)
 dev() # on Windows and non-server Linux, this opens a new window that is faster than RStudio
 Plot(world) # all the layers
-Plot(ants) # the ants only
 Plot(ants, addTo = "world$food", pch = 16) # add the ants on the food layer
 
 # Initialize the output objects
@@ -255,10 +255,10 @@ while (sum(foodWorld[, "food"]) != 0) {
 
 ## Plot outputs
 timeStep <- 1:length(food1)
-Plot(timeStep, food1, type = "l", addTo = "PopulationSize", title = "Population Sizes",
+Plot(timeStep, food1, type = "l", addTo = "Abundance",
      col = "coral", lwd = 2, ylab = "Food", xlab = "Time step",
      ylim = c(min = 0, max = max(c(max(food1), max(food2), max(food3)))))
-Plot(timeStep, food2, type = "l", addTo = "PopulationSize", col = "yellow", lwd = 2)
-Plot(timeStep, food3, type = "l", addTo = "PopulationSize", col = "green", lwd = 2)
+Plot(timeStep, food2, type = "l", addTo = "Abundance", col = "yellow", lwd = 2)
+Plot(timeStep, food3, type = "l", addTo = "Abundance", col = "green", lwd = 2)
 legend("bottomleft", legend = c("food1", "food2", "food3"), lwd = c(2, 2, 2),
        col = c("coral", "yellow", "green"), bg = "white", cex = 0.5)

@@ -13,7 +13,7 @@
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#all}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -32,7 +32,6 @@
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname NLall
 #' @aliases all
 #'
@@ -93,7 +92,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#any}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -113,7 +112,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname NLany
 #' @aliases any
 #'
@@ -163,7 +161,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#count}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -179,7 +177,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname NLcount
 #' @aliases count
 #'
@@ -224,7 +221,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#sort-on}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -241,7 +238,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname sortOn
 #'
 #' @author Sarah Bauduin
@@ -315,7 +311,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -334,7 +330,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname NLwith
 #' @aliases with
 #'
@@ -418,7 +413,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-max}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -436,7 +431,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname withMax
 #'
 #' @author Sarah Bauduin
@@ -526,7 +520,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-min}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -544,7 +538,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname withMin
 #'
 #' @author Sarah Bauduin
@@ -642,7 +635,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-one-of}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -660,7 +653,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname maxOneOf
 #'
 #' @author Sarah Bauduin
@@ -737,7 +729,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-one-of}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -755,7 +747,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname minOneOf
 #'
 #' @author Sarah Bauduin
@@ -835,7 +826,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#is-of-type}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -850,7 +841,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname isNLclass
 #'
 #' @author Sarah Bauduin
@@ -952,7 +942,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#n-of}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -967,7 +957,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname nOf
 #'
 #' @author Sarah Bauduin
@@ -1062,7 +1051,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#one-of}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1078,7 +1067,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom Hmisc mApply
-#' @docType methods
 #' @rdname oneOf
 #'
 #' @author Sarah Bauduin
@@ -1140,7 +1128,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-n-of}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1158,7 +1146,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname maxNof
 #'
 #' @author Sarah Bauduin
@@ -1301,7 +1288,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-n-of}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1319,7 +1306,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname minNof
 #'
 #' @author Sarah Bauduin
@@ -1443,7 +1429,8 @@ setMethod(
 #' Agents in radius
 #'
 #' Report the patches or turtles among \code{agents2} within given distances of
-#' each of the \code{agents}.
+#' each of the \code{agents}. Currently, this function multiplies \code{radius} by
+#' 1.0000001 so that the response of \code{inRadius} is inclusive.
 #'
 #' @inheritParams fargs
 #'
@@ -1476,7 +1463,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#in-radius}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1494,7 +1481,6 @@ setMethod(
 #' @importFrom rgeos gBuffer
 #' @importFrom sp over
 #' @importFrom sp SpatialPoints
-#' @docType methods
 #' @rdname inRadius
 #'
 #' @author Sarah Bauduin
@@ -1521,7 +1507,7 @@ setMethod(
       inRadius(agents = agents, radius = radius, agents2 = agents2, world = world, torus = torus)
     } else if (!inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
       # Transform the agents into SP to use gBuffer
-      agentsSP <- SpatialPoints(coords = agents)
+      agentsSP <- SpatialPoints(coords = agents, proj4string = .projNowhere)
 
       # Create buffers around the locations of agents
       pBuffer <- gBuffer(agentsSP, byid = TRUE, id = 1:NROW(agents), width = radius, quadsegs = 50)
@@ -1548,7 +1534,7 @@ setMethod(
                              agents2c5, agents2c6, agents2c7, agents2c8)
 
         # Extract the locations of agents2 under the buffers
-        pOverL <- over(pBuffer, SpatialPoints(coords = agents2cAll), returnList = TRUE)
+        pOverL <- over(pBuffer, SpatialPoints(coords = agents2cAll, proj4string = .projNowhere), returnList = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(agents2cAll) <- c("x", "y")
@@ -1560,7 +1546,7 @@ setMethod(
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       } else {
         pOverL <- over(pBuffer,
-                       SpatialPoints(coords = agents2@.Data[, c("xcor", "ycor"), drop = FALSE]),
+                       SpatialPoints(coords = agents2@.Data[, c("xcor", "ycor"), drop = FALSE], proj4string = .projNowhere),
                        returnList = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
@@ -1572,10 +1558,11 @@ setMethod(
       }
     } else {
       # Transform the agents into SP to use gBuffer
-      agentsSP <- SpatialPoints(coords = agents)
+      # as of raster version 2.6-7, buffer needs a proj4 string in the SP object (#28)
+      agentsSP <- SpatialPoints(coords = agents, proj4string = .projNowhere)
 
       # Create buffers around the locations of agents
-      pBuffer <- raster::buffer(agentsSP, dissolve = FALSE, width = radius)
+      pBuffer <- raster::buffer(agentsSP, dissolve = FALSE, width = radius * 1.0000001) ## (see #28)
 
       if (torus == TRUE) {
         if (missing(world)) {
@@ -1589,7 +1576,9 @@ setMethod(
         pAllWrap <- patches(worldWrap)
 
         # Extract the locations of agents2 under the buffers
-        pOverL <- over(pBuffer, SpatialPoints(coords = pAllWrap), returnList = TRUE)
+        sp1 <- SpatialPoints(coords = pAllWrap, proj4string = .projNowhere)
+
+        pOverL <- over(pBuffer, sp1, returnList = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(pAllWrap) <- c("x", "y")
@@ -1598,7 +1587,8 @@ setMethod(
         colnames(agentsXY)[1:2] <- c("pxcor", "pycor")
         return(agentsXY)
       } else {
-        sp1 <- SpatialPoints(coords = agents2)
+        sp1 <- SpatialPoints(coords = agents2, proj4string = .projNowhere)
+
         pOverL <- over(pBuffer, sp1, returnList = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
@@ -1656,7 +1646,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#in-cone}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1669,7 +1659,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname inCone
 #'
 #' @author Sarah Bauduin
@@ -1768,7 +1757,7 @@ setMethod(
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#set}
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1786,7 +1775,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname NLset
 #' @aliases set
 #'

@@ -19,7 +19,6 @@
 #' @return Same class as \code{obj}, but with coordinates updated to reflect the wrapping.
 #'
 #' @author Eliot McIntire
-#' @docType methods
 #' @export
 #' @importFrom sp coordinates
 #' @rdname wrap
@@ -195,7 +194,6 @@ setMethod(
 #'          replace the values in list \code{x}.
 #'
 #' @author Alex Chubaty
-#' @docType methods
 #' @export
 #' @rdname updateList
 #'

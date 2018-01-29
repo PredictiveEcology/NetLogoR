@@ -45,7 +45,8 @@ Matrix (ncol = 3) with the first column "pxcor"
 }
 \description{
 Report the patches or turtles among \code{agents2} within given distances of
-each of the \code{agents}.
+each of the \code{agents}. Currently, this function multiplies \code{radius} by
+1.0000001 so that the response of \code{inRadius} is inclusive.
 }
 \details{
 Distances from/to patches are calculated from/to their center.
@@ -67,7 +68,7 @@ t3 <- inRadius(agents = turtle(t1, who = 0), radius = 2, agents2 = t1)
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
             Center for Connected Learning and Computer-Based Modeling,
             Northwestern University. Evanston, IL.
 }

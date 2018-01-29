@@ -19,8 +19,8 @@ Description: Easily create agent-based models in R following the 'NetLogo'
     functions can use a for loop or can be integrated with a discrete event
     simulator, such as 'SpaDES' (<https://cran.r-project.org/package=SpaDES>).
 URL: http://netlogor.predictiveecology.org
-Version: 0.3.0
-Date: 2017-09-27
+Version: 0.3.0.9000
+Date: 2017-11-25
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
     role = c("aut")),
@@ -44,7 +44,7 @@ Imports:
     matrixStats,
     methods,
     plyr,
-    quickPlot (>= 0.1.1.9002),
+    quickPlot (>= 0.1.2),
     sp,
     SpaDES.tools,
     stats,
@@ -58,8 +58,7 @@ Suggests:
     SpaDES.core,
     testthat
 Remotes:
-    s-u/fastshp,
-    PredictiveEcology/quickPlot@development
+    s-u/fastshp
 License: GPL-3
 VignetteBuilder: knitr, rmarkdown
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues

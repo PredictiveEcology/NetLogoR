@@ -139,7 +139,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @docType methods
 #' @rdname agentMatrix
 #'
 #' @author Eliot McIntire
@@ -240,7 +239,6 @@ setAs("agentMatrix", "data.frame",
 #' @export
 #' @name [
 #' @aliases [,agentMatrix,numeric,numeric,ANY-method
-#' @docType methods
 #' @rdname extract-methods
 setMethod(
   "[",
@@ -262,7 +260,6 @@ setMethod(
 #' @export
 #' @name [
 #' @aliases [,agentMatrix,logical,missing,ANY-method
-#' @docType methods
 #' @rdname extract-methods
 setMethod(
   "[",
@@ -276,7 +273,6 @@ setMethod(
 
 #' @export
 #' @name [
-#' @docType methods
 #' @aliases [,agentMatrix,numeric,missing,ANY-method
 #' @rdname extract-methods
 setMethod(
@@ -293,7 +289,6 @@ setMethod(
 #' @export
 #' @name [
 #' @aliases [,agentMatrix,missing,missing,missing-method
-#' @docType methods
 #' @rdname extract-methods
 setMethod(
   "[",
@@ -305,7 +300,6 @@ setMethod(
 #' @export
 #' @name [
 #' @aliases [,agentMatrix,missing,character,ANY-method
-#' @docType methods
 #' @rdname extract-methods
 setMethod(
   "[",
@@ -318,7 +312,6 @@ setMethod(
 #' @export
 #' @name [
 #' @aliases [,agentMatrix,numeric,character,ANY-method
-#' @docType methods
 #' @rdname extract-methods
 setMethod(
   "[",
@@ -331,7 +324,6 @@ setMethod(
 #' @export
 #' @name [
 #' @aliases [,agentMatrix,missing,numeric,ANY-method
-#' @docType methods
 #' @rdname extract-methods
 setMethod(
   "[",
@@ -492,7 +484,6 @@ setReplaceMethod(
 #' @param name  documentation needed
 #'
 #' @export
-#' @docType methods
 #' @rdname extract-methods
 setMethod(
   "$",
@@ -514,7 +505,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom stats na.omit
-#' @docType methods
 #' @rdname agentMatrix-compare-methods
 setMethod(
   "==",
@@ -541,7 +531,6 @@ setMethod(
 
 #' @export
 #' @importFrom stats na.omit
-#' @docType methods
 #' @rdname agentMatrix-compare-methods
 setMethod(
   "==",
@@ -570,7 +559,6 @@ setMethod(
 #' @param object  An \code{agentMatrix} object.
 #'
 #' @export
-#' @docType methods
 #' @rdname agentMatrix-show-methods
 setMethod(
   "show",
@@ -594,7 +582,6 @@ setMethod(
 #' @param x  An \code{agentMatrix} object.
 #'
 #' @export
-#' @docType methods
 #' @rdname agentMatrix-show-methods
 setMethod(
   "length",
@@ -604,7 +591,6 @@ setMethod(
   })
 
 #' @export
-#' @docType methods
 #' @rdname agentMatrix-show-methods
 setMethod(
   "nrow",
@@ -619,7 +605,6 @@ setMethod(
 #' @method head agentMatrix
 #' @export head agentMatrix
 #' @name head
-#' @docType methods
 #' @rdname agentMatrix-show-methods
 head.agentMatrix <- function(x, n = 6L, ...) {
   x[seq_len(n), , drop = FALSE]
@@ -628,7 +613,6 @@ head.agentMatrix <- function(x, n = 6L, ...) {
 #' @method tail agentMatrix
 #' @export tail agentMatrix
 #' @name tail
-#' @docType methods
 #' @rdname agentMatrix-show-methods
 tail.agentMatrix <- function(x, n = 6L, ...) {
   len <- NROW(x@.Data)
@@ -650,7 +634,6 @@ tail.agentMatrix <- function(x, n = 6L, ...) {
 #' @method cbind agentMatrix
 #' @export
 #' @name cbind
-#' @docType methods
 #' @rdname agentMatrix-bind-methods
 cbind.agentMatrix <- function(..., deparse.level) {
   tmp <- list(...)
@@ -675,7 +658,6 @@ cbind.agentMatrix <- function(..., deparse.level) {
 #' @export
 #' @importFrom data.table rbindlist
 #' @name rbind
-#' @docType methods
 #' @rdname agentMatrix-bind-methods
 rbind.agentMatrix <- function(..., deparse.level = 1) {
   dots <- list(...)
