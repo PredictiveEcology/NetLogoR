@@ -68,7 +68,7 @@ test_that("createTurtles works", {
 
   expect_silent(Plot(s1$layer.1)) # doesn't change s1$layer.2
   expect_silent(Plot(s1$layer.2)) # doesn't change s1$layer.1
-  expect_silent(Plot(a1[["w1"]]))
+  expect_silent(Plot(a1$w1))
 
   expect_silent(rePlot())
   a <- getFromNamespace(".getQuickPlot", ns = "quickPlot")(paste0("quickPlot", dev.cur()))
