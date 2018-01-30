@@ -18,12 +18,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Alex M Chubaty \email{alexander.chubaty@canada.ca}
+\strong{Maintainer}: Sarah Bauduin \email{sarahbauduin@hotmail.fr}
 
 Authors:
 \itemize{
-  \item Sarah Bauduin \email{sarahbauduin@hotmail.fr}
   \item Eliot J B McIntire \email{eliot.mcintire@canada.ca}
+  \item Alex M Chubaty \email{alexander.chubaty@canada.ca}
 }
 
 Other contributors:

@@ -16,4 +16,5 @@ NULL
 #' Having a single object useable throughout is \emph{much} faster.
 #'
 #' @keywords internal
+#' @rdname projNowhere
 .projNowhere <- CRS("+proj=utm")

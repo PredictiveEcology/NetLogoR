@@ -2807,7 +2807,7 @@ setMethod(
       return(agents)
 
     } else {
-      pCoords <- agents[!duplicated(rbind(except, agents))[-1:-nrow(except)], ]
+      pCoords <- agents[!duplicated(rbind(except, agents))[-1:-nrow(except)], , drop = FALSE]
       return(pCoords)
     }
   }
