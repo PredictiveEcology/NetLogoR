@@ -23,11 +23,11 @@ Version: 0.3.0.9000
 Date: 2017-11-25
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
-    role = c("aut")),
+    role = c("aut", "cre")),
     person("Eliot J B", "McIntire", email = "eliot.mcintire@canada.ca",
     role = c("aut")),
     person("Alex M", "Chubaty", email = "alexander.chubaty@canada.ca",
-    role = c("aut", "cre")),
+    role = c("aut")),
     person("Her Majesty the Queen in Right of Canada, as represented by the Minister of Natural Resources Canada",
     role = "cph")
     )
