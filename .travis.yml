@@ -75,11 +75,15 @@ matrix:
     - sh -e /etc/init.d/xvfb start
     r_packages:
     - devtools
+
   - os: osx
     osx_image: xcode9.1
     latex: false
     r_build_args: '--no-build-vignettes'
     r_check_args: '--as-cran --ignore-vignettes --no-examples'
+    before_script:
+    - Rscript -e "install.packages('digest', type = 'source')"
+
 r_build_args: " "
 r_check_args: "--as-cran"
 warnings_are_errors: true
