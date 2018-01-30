@@ -19,7 +19,9 @@ matrix:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
     r_packages:
-      - survival
+    - survival
+    r_github_packages:
+    - PredictiveEcology/SpaDES.tools
   - os: linux
     dist: trusty
     r: oldrel
