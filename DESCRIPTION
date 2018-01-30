@@ -19,8 +19,8 @@ Description: Easily create agent-based models in R following the 'NetLogo'
     functions can use a for loop or can be integrated with a discrete event
     simulator, such as 'SpaDES' (<https://cran.r-project.org/package=SpaDES>).
 URL: http://netlogor.predictiveecology.org
-Version: 0.3.0
-Date: 2017-10-04
+Version: 0.3.0.9000
+Date: 2017-11-25
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
     role = c("aut")),
