@@ -50,6 +50,8 @@ matrix:
       - covr
     r_github_packages:
       - jimhester/lintr
+    r_packages:
+      - devtools
     after_success:
     - Rscript -e 'covr::coveralls(type = "all", quiet = FALSE)'
     - Rscript -e 'lintr::lint_package()'
