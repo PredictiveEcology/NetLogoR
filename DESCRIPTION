@@ -32,7 +32,7 @@ Authors@R: c(
     role = "cph")
     )
 Depends:
-    R (>= 3.3.3),
+    R (>= 3.3.0),
     raster
 Imports:
     abind,
