@@ -18,7 +18,7 @@ matrix:
     before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
-    r_binary_packages:
+    r_packages:
       - survival
   - os: linux
     dist: trusty
