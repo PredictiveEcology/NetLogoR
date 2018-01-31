@@ -8,18 +8,6 @@ test_that("create agentMatrix does not work", {
          nums = 5:7)
    expect_is(newAgent, "agentMatrix")
 
-   # test levelsAM, which should be faster
-   newAgent <- new("agentMatrix",
-                   mat = cbind(char = sample(1:3, replace = TRUE, size = 10),
-                             char2 = sample(1:2, replace = TRUE, size = 10),
-                             num2 = sample(1:10, replace = TRUE, size = 10)),
-                   levelsAM = list(char = c("a", "b", "f"),
-                                   char2 = c("test", "fail")))
-   expect_is(newAgent, "agentMatrix")
-   expect_true(all(is.na(coordinates(newAgent))))
-   expect_is(coordinates(newAgent), "matrix")
-   expect_true(all(colnames(newAgent) == c("xcor", "ycor", "char", "char2", "num2")))
-
    # test agentMatrix call with levelsAM
    newAgent <- agentMatrix(
                    mat = cbind(char = sample(1:3, replace = TRUE, size = 10),
@@ -29,18 +17,6 @@ test_that("create agentMatrix does not work", {
                                    char2 = c("test", "fail")))
    expect_is(newAgent, "agentMatrix")
    expect_true(all(is.na(coordinates(newAgent))))
-   expect_is(coordinates(newAgent), "matrix")
-   expect_true(all(colnames(newAgent) == c("xcor", "ycor", "char", "char2", "num2")))
-
-   # test agentMatrix call with levelsAM
-   newAgent <- agentMatrix(coords = cbind(pxcor = 1:10, pycor = 1:10),
-     mat = cbind(char = sample(1:3, replace = TRUE, size = 10),
-               char2 = sample(1:2, replace = TRUE, size = 10),
-               num2 = sample(1:10, replace = TRUE, size = 10)),
-     levelsAM = list(char = c("a", "b", "f"),
-                     char2 = c("test", "fail")))
-   expect_is(newAgent, "agentMatrix")
-   expect_true(all(!is.na(coordinates(newAgent))))
    expect_is(coordinates(newAgent), "matrix")
    expect_true(all(colnames(newAgent) == c("xcor", "ycor", "char", "char2", "num2")))
 
@@ -63,16 +39,6 @@ test_that("create agentMatrix does not work", {
    expect_is(coordinates(newAgent), "matrix")
    expect_equal(dim(coordinates(newAgent)), c(3, 2))
    expect_equal(colnames(newAgent), c("xcor", "ycor", "nums1", "nums2"))
-
-   mat <- cbind(nums1 = 1:3, nums2 = 2:4)
-   mat2 <-  cbind(nums3 = 1:3, nums4 = 2:4)
-   expect_silent(newAgent <- new("agentMatrix", mat = mat, mat2 = mat2))
-   expect_is(newAgent, "agentMatrix")
-   expect_true(all(is.na(coordinates(newAgent))))
-   expect_is(coordinates(newAgent), "matrix")
-   expect_equal(dim(coordinates(newAgent)), c(3, 2))
-   expect_equal(colnames(newAgent), c("xcor", "ycor", "nums1", "nums2", "nums3", "nums4"))
-
 
    mat <- cbind(nums1 = 1:3, nums2 = 2:4)
    newAgent <- new("agentMatrix", mat = mat, coords = matrix(1:6, ncol = 2))
@@ -116,71 +82,6 @@ test_that("create agentMatrix does not work", {
    expect_equal(dim(coordinates(newAgent)), c(3, 2))
    expect_equal(colnames(newAgent), c("xcor", "ycor", "char1", "char2", "nums1", "char3",
                                       "char4", "nums2"))
-})
-
-test_that("agentMatrix benchmarking", {
-   # compare speeds -- if these fail, then should reconsider the need for agentMatrix
-   if (require(microbenchmark)) {
-     mb <- summary(microbenchmark(times = 50,
-       spdf = {
-         SpatialPointsDataFrame(
-           coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-           data = data.frame(
-             char = letters[c(1, 2, 6)],
-             nums2 = c(4.5, 2.6, 2343),
-             char2 = LETTERS[c(4, 24, 3)],
-             nums = 5:7))},
-       agentMat = {
-         agentMatrix(
-           coords = cbind(pxcor = c(1, 2, 5),
-           pycor = c(3, 4, 6)),
-           char = letters[c(1, 2, 6)],
-           nums2 = c(4.5, 2.6, 2343),
-           char2 = LETTERS[c(4, 24, 3)],
-           nums = 5:7)},
-       agentMatDirect = {
-         new("agentMatrix",
-           coords = cbind(pxcor = c(1, 2, 5),
-           pycor = c(3, 4, 6)),
-           char = letters[c(1, 2, 6)],
-           nums2 = c(4.5, 2.6, 2343),
-           char2 = LETTERS[c(4, 24, 3)],
-           nums = 5:7)}))
-   }
-   expect_gt(mb$median[1] / mb$median[3], 3) # expect it is 3 times faster
-
-   # check just numerics
-   if (require(sf)) {
-     if (require(microbenchmark)) {
-       mb <- summary(microbenchmark(
-         times = 50,
-         spdf = {
-           SpatialPointsDataFrame(coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-                                  data = data.frame(
-                                    nums2 = c(4.5, 2.6, 2343),
-                                    nums = 5:7))
-         },
-         sf = {
-           a1 <- st_point(cbind(1, 3))
-           a2 <- st_point(cbind(2, 4))
-           a3 <- st_point(cbind(5, 6))
-           d <- data <- data.frame(nums2 = c(4.5, 2.6, 2343), nums = 5:7)
-           d$geom <- st_sfc(a1, a2, a3)
-           df <- st_as_sf(d)
-         },
-         agentMat = {
-           agentMatrix(coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-                       nums2 = c(4.5, 2.6, 2343), nums = 5:7)
-         },
-         agentMatDirect = {
-           new("agentMatrix", coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-               nums2 = c(4.5, 2.6, 2343), nums = 5:7)
-         }
-       ))
-     }
-     expect_gt(mb$median[1] / mb$median[3], 4) # use 4 for safety
-     if (interactive()) expect_gt(mb$median[2] / mb$median[3], 4) # use 4 for safety
-   }
 })
 
 test_that("agentMatrix coersion", {
@@ -360,14 +261,7 @@ test_that("agentMatrix replace methods don't work", {
   newAgent[1, "tmp2"] <- "s"
   expect_true(newAgent$tmp2[1] == "s")
 
-  # simple data.frame
-  newAgent[1:2, c("tmp", "tmp2")] <- data.frame(tmp = 6:7, tmp2 = c("r", "w"),
-                                                stringsAsFactors = FALSE)
-  expect_true(all(newAgent$tmp[1:2] == 6:7)) # is numeric
-  expect_true(all(newAgent$tmp2[1:2] == c("r", "w"))) # maintains character
-  expect_true(all(newAgent$tmp2[3] == c("g"))) # untouched
-
-  # more complicated data.frame
+  # complicated data.frame
   newAgent[1:2, c("tmp", "tmp1", "tmp2", "tmpCh")] <- data.frame(
     tmp = 6:7, tmp1 = 11:12, tmp2 = c("r", "w"), tmpCh = LETTERS[13:14],
     stringsAsFactors = FALSE)
