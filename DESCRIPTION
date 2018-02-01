@@ -18,6 +18,8 @@ Description: Easily create agent-based models in R following the 'NetLogo'
     translated in R language using 'NetLogoR'. NOTE: To increment 'time', these
     functions can use a for loop or can be integrated with a discrete event
     simulator, such as 'SpaDES' (<https://cran.r-project.org/package=SpaDES>).
+    The suggested package 'fastshp' can be installed with
+    'install.packages("fastshp", repos = "http://rforge.net", type = "source")'.
 URL: http://netlogor.predictiveecology.org
 Version: 0.3.1
 Date: 2018-01-31
