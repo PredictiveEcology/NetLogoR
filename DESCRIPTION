@@ -57,14 +57,13 @@ Suggests:
     rmarkdown,
     SpaDES.core,
     testthat
-Remotes:
-    s-u/fastshp
 License: GPL-3
 VignetteBuilder: knitr, rmarkdown
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
 LazyData: true
 RoxygenNote: 6.0.1
+Additional_repositories: https://rforge.net 
 Collate: 
     'Agent-classes.R'
     'Classes.R'
