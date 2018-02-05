@@ -3,6 +3,8 @@
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/k65nup6cuqr5p2hy/branch/master?svg=true)](https://ci.appveyor.com/project/achubaty/netlogor/branch/master)
 [![Build Status](https://travis-ci.org/PredictiveEcology/NetLogoR.svg?branch=master)](https://travis-ci.org/PredictiveEcology/NetLogoR)
 [![Coverage Status](https://coveralls.io/repos/PredictiveEcology/NetLogoR/badge.svg?branch=master)](https://coveralls.io/r/PredictiveEcology/NetLogoR?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/NetLogoR)](https://cran.r-project.org/package=NetLogoR)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/NetLogoR)](https://cran.r-project.org/package=NetLogoR)
 
 ## A Port of NetLogo Functions and Language to R
 
