@@ -1,5 +1,9 @@
 Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 
+version 0.3.1
+=============
+* first CRAN release
+
 version 0.3.0
 =============
 * `inRadius` now multiplies the `width` by a tiny amount so that the function returns an inclusive result.
