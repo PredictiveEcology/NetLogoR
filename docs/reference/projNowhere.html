@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • NetLogoR</title>
+<title>Internal CRS usage — .projNowhere • NetLogoR</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -91,64 +91,34 @@
       </header>
 
       <div class="row">
-
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+    <h1>Internal CRS usage</h1>
     </div>
 
-    <div class="contents">
-    <div id="version-0-3-1" class="section level1">
-<h1 class="hasAnchor">
-<a href="#version-0-3-1" class="anchor"></a>version 0.3.1</h1>
-<ul>
-<li>first CRAN release</li>
-</ul>
-</div>
-    <div id="version-0-3-0" class="section level1">
-<h1 class="hasAnchor">
-<a href="#version-0-3-0" class="anchor"></a>version 0.3.0</h1>
-<ul>
-<li>
-<code>inRadius</code> now multiplies the <code>width</code> by a tiny amount so that the function returns an inclusive result.</li>
-<li>add <code>quickPlot &gt;= 0.1.1.9000</code> dependency</li>
-<li>update dependencies on <code>SpaDES</code>-related packages to only include the ones actually used.</li>
-<li>Define [[ and $ for <code>worldArray</code> to extract subset layers.</li>
-<li>Add <code>show</code> methods for <code>worldMatrix</code> and <code>worldArray</code>, similar to <code>RasterLayer</code> and <code>RasterStack</code>
-</li>
-<li>Add tools so <code><a href="http://quickplot.predictiveecology.org//reference/Plot.html">quickPlot::Plot</a></code> works, e.g., <code>Plot(agentMatrixObj)</code> or <code>Plot(worldMatrixObj)</code> or <code>Plot(worldArrayObj)</code>, <code>Plot(worldArrayObj$layer1)</code>. <code>addTo</code> argument implemented for layering, <code>Plot(worldMatrixObj); Plot(agentMatrixObj, addTo="worldMatrixObj")</code> will plot the agents on the map.</li>
-</ul>
-</div>
-    <div id="version-0-2-0" class="section level1">
-<h1 class="hasAnchor">
-<a href="#version-0-2-0" class="anchor"></a>version 0.2.0</h1>
-<ul>
-<li>minimum R version increased from <code>3.2.5</code> to <code>3.3.0</code> as required by dependency <code>RandomFieldsUtils</code>.</li>
-</ul>
-</div>
-    <div id="version-0-1-0" class="section level1">
-<h1 class="hasAnchor">
-<a href="#version-0-1-0" class="anchor"></a>version 0.1.0</h1>
-<ul>
-<li>all key NetLogo functions rewritten in R, except visualizations and “links” agents</li>
-<li>adapted plot methods</li>
-</ul>
-</div>
-    </div>
+    
+    <p>This is used in various places when converting <code>agentMatrix</code> objects to
+<code>SpatialPoints</code> for use with functions, such as <code><a href='http://www.rdocumentation.org/packages/raster/topics/buffer'>buffer</a></code>.
+The <code>CRS()</code> operation is relatively time consuming.
+Having a single object useable throughout is <em>much</em> faster.</p>
+    
+
+    <pre class="usage"><span class='no'>.projNowhere</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>CRS</code> of length 1.</p>
+    
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#version-0-3-1">0.3.1</a></li>
-        <li><a href="#version-0-3-0">0.3.0</a></li>
-        <li><a href="#version-0-2-0">0.2.0</a></li>
-        <li><a href="#version-0-1-0">0.1.0</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      
+      <li><a href="#format">Format</a></li>
+          </ul>
 
+  </div>
 </div>
 
       <footer>
