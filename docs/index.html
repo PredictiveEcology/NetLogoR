@@ -74,12 +74,12 @@
 <div id="a-port-of-netlogo-functions-and-language-to-r" class="section level2">
 <h2 class="hasAnchor">
 <a href="#a-port-of-netlogo-functions-and-language-to-r" class="anchor"></a>A Port of NetLogo Functions and Language to R</h2>
-<p>Easily create agent-based models in R following the NetLogo framework (<a href="http://ccl.northwestern.edu/netlogo/">Wilensky, 1999</a>). <code>NetLogoR</code> provides classes to represent “patches” (raster cells) and “turtles” (individuals), the necessary <a href="https://ccl.northwestern.edu/netlogo/docs/dictionary.html">NetLogo primitives</a>, and complementary functions to easily build agent-based models or translate NetLogo models in R.</p>
+<p>Easily create agent-based models in R following the NetLogo framework (<a href="http://ccl.northwestern.edu/netlogo/">Wilensky, 1999</a>). <code>NetLogoR</code> provides classes to represent “patches” (raster cells) and “turtles” (moving individuals), functions reproducing the necessary <a href="https://ccl.northwestern.edu/netlogo/docs/dictionary.html">NetLogo primitives</a> as well as new complementary functions to easily build agent-based models or translate NetLogo models in R.</p>
 </div>
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting Started</h2>
-<p>A programming guide derived from the <a href="https://ccl.northwestern.edu/netlogo/docs/programming.html">NetLogo Programming Guide</a> and a dictionary of <a href="https://ccl.northwestern.edu/netlogo/docs/dictionary.html">NetLogo primitives</a> equivalences are available. As examples, three NetLogo models (<a href="http://ccl.northwestern.edu/netlogo/models/Ants">Ants</a>, Butterfly (Railsback and Grimm, 2012) and <a href="http://ccl.northwestern.edu/netlogo/models/WolfSheepPredation">Wolf-Sheep-Predation</a>) were translated to R using <code>NetLogoR</code>.</p>
+<p>A programming guide inspired from the <a href="https://ccl.northwestern.edu/netlogo/docs/programming.html">NetLogo Programming Guide</a> and a dictionary of <a href="https://ccl.northwestern.edu/netlogo/docs/dictionary.html">NetLogo primitives</a> equivalences are available. As examples, three NetLogo models (<a href="http://ccl.northwestern.edu/netlogo/models/Ants">Ants</a>, Butterfly (Railsback and Grimm, 2012) and <a href="http://ccl.northwestern.edu/netlogo/models/WolfSheepPredation">Wolf-Sheep-Predation</a>) were translated to R using <code>NetLogoR</code>.</p>
 </div>
 <div id="installing-netlogor" class="section level2">
 <h2 class="hasAnchor">
@@ -98,6 +98,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
   <div class="col-md-3" id="sidebar">
     <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cran.r-project.org/package=NetLogoR">https://​cran.r-project.org/​package=NetLogoR</a>
+</li>
 <li>Report a bug at <br><a href="https://github.com/PredictiveEcology/NetLogoR/issues">https://​github.com/​PredictiveEcology/​NetLogoR/​issues</a>
 </li>
 </ul>
@@ -105,9 +107,9 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <p><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></p>
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Sarah Bauduin <br><small class="roles"> Author </small> </li>
+<li>Sarah Bauduin <br><small class="roles"> Author, maintainer </small> </li>
 <li>Eliot J B McIntire <br><small class="roles"> Author </small> </li>
-<li>Alex M Chubaty <br><small class="roles"> Author, maintainer </small> </li>
+<li>Alex M Chubaty <br><small class="roles"> Author </small> </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 <h2>Dev status</h2>
@@ -115,6 +117,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <li><a href="https://ci.appveyor.com/project/achubaty/netlogor/branch/master"><img src="https://ci.appveyor.com/api/projects/status/k65nup6cuqr5p2hy/branch/master?svg=true" alt="Appveyor Build status"></a></li>
 <li><a href="https://travis-ci.org/PredictiveEcology/NetLogoR"><img src="https://travis-ci.org/PredictiveEcology/NetLogoR.svg?branch=master" alt="Build Status"></a></li>
 <li><a href="https://coveralls.io/r/PredictiveEcology/NetLogoR?branch=master"><img src="https://coveralls.io/repos/PredictiveEcology/NetLogoR/badge.svg?branch=master" alt="Coverage Status"></a></li>
+<li><a href="https://cran.r-project.org/package=NetLogoR"><img src="http://www.r-pkg.org/badges/version/NetLogoR" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://cran.r-project.org/package=NetLogoR"><img src="http://cranlogs.r-pkg.org/badges/grand-total/NetLogoR" alt="Downloads"></a></li>
 </ul>
 </div>
 </div>
@@ -125,7 +129,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
