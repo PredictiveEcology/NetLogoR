@@ -146,8 +146,8 @@ test_that("agentMatrix benchmarking", {
            nums2 = c(4.5, 2.6, 2343),
            char2 = LETTERS[c(4, 24, 3)],
            nums = 5:7)}))
+     expect_gt(mb$median[1] / mb$median[3], 3) # expect it is 3 times faster
    }
-   expect_gt(mb$median[1] / mb$median[3], 3) # expect it is 3 times faster
 
    # check just numerics
    if (require(sf)) {
@@ -177,9 +177,9 @@ test_that("agentMatrix benchmarking", {
                nums2 = c(4.5, 2.6, 2343), nums = 5:7)
          }
        ))
+       expect_gt(mb$median[1] / mb$median[3], 4) # use 4 for safety
+       if (interactive()) expect_gt(mb$median[2] / mb$median[3], 4) # use 4 for safety
      }
-     expect_gt(mb$median[1] / mb$median[3], 4) # use 4 for safety
-     if (interactive()) expect_gt(mb$median[2] / mb$median[3], 4) # use 4 for safety
    }
 })
 
