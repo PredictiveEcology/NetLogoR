@@ -1,6 +1,11 @@
-## New submission
+## Resubmission
 
-This is a new package submission.
+This is a resubmission. In this version we have:
+
+* Fixed a bug in the function `turtlesOn()`.
+
+* Fixed the use of a package in tests.
+
 
 ## Test environments
 
