@@ -3,6 +3,7 @@ Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 Version 0.3.2
 =============
 * Fix bug in `turtlesOn()`. Error when the world was not square.
+* Fix use of suggested packages in tests.
 
 Version 0.3.1
 =============

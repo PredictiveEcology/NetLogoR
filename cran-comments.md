@@ -32,15 +32,14 @@ There were no ERRORs or WARNINGs
 
 There were 2 NOTES:
 
-    1. Some words were flagged as possibly mispelled, but they are not. 
+    1. Some words were flagged as possibly mispelled, but these are false positives.
      
             Possibly mis-spelled words in DESCRIPTION: 
               Predation (16:29)
               Railsback (15:67)
               Wilensky (4:16)
-These are correctly spelled.
 
-    2. fastshp is on Rforge. We have put the link to the correct Additional_repositories in DESCRIPTION
+    2. `fastshp` is on Rforge. We have put the link to the correct Additional_repositories in DESCRIPTION
 
 ## Downstream dependencies
 
