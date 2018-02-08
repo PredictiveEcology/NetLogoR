@@ -31,7 +31,7 @@ branches:
     - gh-pages
 clone_depth: 5
 build_script:
-  - Rscript -e "install.packages(c('devtools', 'data.table'), repos = 'https://cran.rstudio.com', type = 'source')"
+  - Rscript -e "install.packages(c('devtools', 'data.table', 'raster', 'sp'), repos = 'https://cran.rstudio.com', type = 'source')"
   - Rscript -e "install.packages('fastshp', repos = 'https://rforge.net', type = 'source')"
   - travis-tool.sh install_deps
 test_script:
