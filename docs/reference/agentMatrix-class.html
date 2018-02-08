@@ -34,6 +34,18 @@
 <![endif]-->
 
 
+<!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58633549-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
   </head>
 
   <body>
@@ -142,15 +154,11 @@
         <span class='kw'>nums2</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>4.5</span>, <span class='fl'>2.6</span>, <span class='fl'>2343</span>),
         <span class='kw'>char2</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fu'>c</span>(<span class='fl'>4</span>, <span class='fl'>24</span>, <span class='fl'>3</span>)],
         <span class='kw'>nums</span> <span class='kw'>=</span> <span class='fl'>5</span>:<span class='fl'>7</span>)})
-}</div><div class='output co'>#&gt; <span class='message'>Loading required package: microbenchmark</span></div><div class='output co'>#&gt; Unit: microseconds
-#&gt;            expr      min       lq      mean   median       uq       max neval
-#&gt;            spdf 2284.380 2383.874 3303.7065 2444.830 2539.405 290607.79   499
-#&gt;        agentMat  704.273  734.015  788.3011  749.683  781.394   1563.73   499
-#&gt;  agentMatDirect  679.022  705.660  772.3087  720.956  755.785   7997.26   499
-#&gt;  cld
-#&gt;    b
-#&gt;   a 
-#&gt;   a </div></pre>
+}</div><div class='output co'>#&gt; Unit: microseconds
+#&gt;            expr      min        lq      mean   median        uq       max neval
+#&gt;            spdf 1740.414 2027.3420 2434.6030 2251.197 2579.5815  5505.899   499
+#&gt;        agentMat  476.957  544.3070  736.5755  653.129  789.8125  9346.206   499
+#&gt;  agentMatDirect  444.822  495.3305  691.7564  611.250  727.0345 10071.474   499</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -34,6 +34,18 @@
 <![endif]-->
 
 
+<!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58633549-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
   </head>
 
   <body>
@@ -98,42 +110,6 @@
     </div>
 
     <div class="contents">
-    <div id="version-0-3-1" class="section level1">
-<h1 class="hasAnchor">
-<a href="#version-0-3-1" class="anchor"></a>version 0.3.1</h1>
-<ul>
-<li>first CRAN release</li>
-</ul>
-</div>
-    <div id="version-0-3-0" class="section level1">
-<h1 class="hasAnchor">
-<a href="#version-0-3-0" class="anchor"></a>version 0.3.0</h1>
-<ul>
-<li>
-<code>inRadius</code> now multiplies the <code>width</code> by a tiny amount so that the function returns an inclusive result.</li>
-<li>add <code>quickPlot &gt;= 0.1.1.9000</code> dependency</li>
-<li>update dependencies on <code>SpaDES</code>-related packages to only include the ones actually used.</li>
-<li>Define [[ and $ for <code>worldArray</code> to extract subset layers.</li>
-<li>Add <code>show</code> methods for <code>worldMatrix</code> and <code>worldArray</code>, similar to <code>RasterLayer</code> and <code>RasterStack</code>
-</li>
-<li>Add tools so <code><a href="http://quickplot.predictiveecology.org//reference/Plot.html">quickPlot::Plot</a></code> works, e.g., <code>Plot(agentMatrixObj)</code> or <code>Plot(worldMatrixObj)</code> or <code>Plot(worldArrayObj)</code>, <code>Plot(worldArrayObj$layer1)</code>. <code>addTo</code> argument implemented for layering, <code>Plot(worldMatrixObj); Plot(agentMatrixObj, addTo="worldMatrixObj")</code> will plot the agents on the map.</li>
-</ul>
-</div>
-    <div id="version-0-2-0" class="section level1">
-<h1 class="hasAnchor">
-<a href="#version-0-2-0" class="anchor"></a>version 0.2.0</h1>
-<ul>
-<li>minimum R version increased from <code>3.2.5</code> to <code>3.3.0</code> as required by dependency <code>RandomFieldsUtils</code>.</li>
-</ul>
-</div>
-    <div id="version-0-1-0" class="section level1">
-<h1 class="hasAnchor">
-<a href="#version-0-1-0" class="anchor"></a>version 0.1.0</h1>
-<ul>
-<li>all key NetLogo functions rewritten in R, except visualizations and “links” agents</li>
-<li>adapted plot methods</li>
-</ul>
-</div>
     </div>
   </div>
 
@@ -141,10 +117,6 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#version-0-3-1">0.3.1</a></li>
-        <li><a href="#version-0-3-0">0.3.0</a></li>
-        <li><a href="#version-0-2-0">0.2.0</a></li>
-        <li><a href="#version-0-1-0">0.1.0</a></li>
       </ul>
     </div>
   </div>
