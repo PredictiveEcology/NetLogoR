@@ -2294,10 +2294,13 @@ setMethod(
       # Instead of merge, which is slow, make an empty matrix (of NAs)
       # and use the agents coordinates directly
       a <- matrix(ncol = ncol(world), nrow = nrow(world))
-      a[agents - (c(attr(world, "minPxcor"), attr(world, "minPycor")) - 1)] <- 1
-      # change this 26 to the dimensions of the world, and next line
-      pOn <- na.omit(a[pTurtles[, 1:2, drop = FALSE] -
-                         (c(attr(world, "minPxcor"), attr(world, "minPycor")) - 1)] * pTurtles)
+      # pxcor and pycor do not correspond to [x;y] in a matrix
+      x <- attr(world, "maxPycor") - agents[, 2] + 1
+      y <- agents[, 1] - attr(world, "minPxcor") + 1
+      a[cbind(x, y)] <- 1
+      px <- attr(world, "maxPycor") - pTurtles[, 2] + 1
+      py <- pTurtles[, 1] - attr(world, "minPxcor") + 1
+      pOn <- na.omit(a[cbind(px, py)] * pTurtles)
 
       if (nrow(pOn) == 0) {
         return(noTurtles())
@@ -2309,22 +2312,25 @@ setMethod(
         agents <- na.omit(agents) # There shouldn't be any NAs passed in here, probably
       agents <- cbind(agents, id = 1:dim(agents)[1])
 
-      b <- a <- matrix(ncol = ncol(world), nrow = nrow(world))
-      a[agents[, 1:2, drop = FALSE] - (c(attr(world, "minPxcor"),
-                                         attr(world, "minPycor")) - 1)] <- 1
-      # change this 26 to the dimensions of the world, and next line
-      b[agents[, 1:2, drop = FALSE] - (c(attr(world, "minPxcor"),
-                                         attr(world, "minPycor")) - 1)] <- agents[, 3]
-      # change this 26 to the dimensions of the world, and next line
-      pOn <- na.omit(a[pTurtles[, 1:2, drop = FALSE] -
-                         (c(attr(world, "minPxcor"), attr(world, "minPycor")) - 1)] * pTurtles)
+      # pxcor and pycor do not correspond to [x;y] in a matrix
+      x <- attr(world, "maxPycor") - agents[, 2] + 1
+      y <- agents[, 1] - attr(world, "minPxcor") + 1
+
+      a <- matrix(ncol = ncol(world), nrow = nrow(world))
+      b <- a
+      a[cbind(x, y)] <- 1
+      b[cbind(x, y)] <- agents[, 3]
+
+      px <- attr(world, "maxPycor") - pTurtles[, 2] + 1
+      py <- pTurtles[, 1] - attr(world, "minPxcor") + 1
+      pOn <- na.omit(a[cbind(px, py)] * pTurtles)
+
       dims <- c(nrow(pOn), ncol(pOn))
       colNames <- colnames(pOn)
       length(pOn) <- length(pOn) + dims[1]
       dim(pOn) <- dims + c(0, 1)
       colnames(pOn) <- c(colNames, "id")
-      pOn[, "id"] <- na.omit(b[pTurtles[, 1:2, drop = FALSE] -
-                                 (c(attr(world, "minPxcor"), attr(world, "minPycor")) - 1)])
+      pOn[, "id"] <- na.omit(b[cbind(px, py)])
       pOn <- pOn[order(pOn[, "id"]), , drop = FALSE]
       turtlesID <- pOn[, c("who", "id"), drop = FALSE]
       colnames(turtlesID)[1] <- "whoTurtles"

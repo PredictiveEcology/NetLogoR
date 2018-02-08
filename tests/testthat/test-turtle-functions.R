@@ -793,7 +793,7 @@ test_that("turtle works", {
 
 test_that("turtlesOn works", {
   # Examples with Simplify = TRUE
-  w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
+  w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 12)
   t1 <- createTurtles(n = 10, coords = cbind(xcor = 0:9, ycor = 0:9), breed = c(rep("sheep", 5),
                                                                                 rep("wolf", 5)))
   t2 <- turtlesOn(world = w1, turtles = t1, agents = turtle(t1, 0))
@@ -871,6 +871,21 @@ test_that("turtlesOn works", {
   t12 <- turtlesOn(world = w1, turtles = t1, agents = turtle(t1, who = c(0, 5, 6)),
                    breed = "moose", simplify = FALSE)
   expect_equivalent(nrow(t12), 0)
+
+  # New tests with bug fixed on Feb 7 2018
+  t13 <- turtlesOn(world = w1, turtles = t1, agents = patches(w1))
+  expect_equivalent(t13, t13)
+
+  t14 <- turtlesOn(world = w1, turtles = t1[1], agents = patches(w1))
+  expect_equivalent(t14, t1[1])
+
+  t15 <- turtlesOn(world = w1, turtles = t1[1], agents = patch(w1, 1, 1))
+  expect_equivalent(t15, noTurtles())
+
+  w2 <- createWorld(1, 5, 1, 4, data = 0)
+  t21 <- createTurtles(n = 5, coords = randomXYcor(w2, n = 5))
+  t22 <- turtlesOn(world = w2, turtles = t21, agents = patches(w2))
+  expect_equivalent(t22, t21)
 })
 
 test_that("noTurtles works", {
