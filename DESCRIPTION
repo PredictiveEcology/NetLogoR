@@ -21,8 +21,8 @@ Description: Easily create agent-based models in R following the 'NetLogo'
     The suggested package 'fastshp' can be installed with
     'install.packages("fastshp", repos = "https://rforge.net", type = "source")'.
 URL: http://netlogor.predictiveecology.org
-Version: 0.3.2
-Date: 2018-02-07
+Version: 0.3.2.9000
+Date: 2018-02-08
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
     role = c("aut", "cre")),
