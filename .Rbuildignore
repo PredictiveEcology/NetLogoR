@@ -11,9 +11,7 @@
 ^cran-comments\.md$
 ^docs$
 ^LICENSE$
-^_ignore$
 ^_pkgdown\.yml$
 ^travis_wait_.*\.log$
 vignettes/.*_cache$
 vignettes/.*\.log$
-
