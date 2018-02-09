@@ -40,7 +40,8 @@ There were 2 NOTES:
               Railsback (15:67)
               Wilensky (4:16)
 
-    2. `fastshp` is on Rforge. We have put the link to the correct Additional_repositories in DESCRIPTION
+    2. `fastshp` is on Rforge. We have put the link to the correct Additional_repositories in DESCRIPTION.
+       The URL given to install the package is in quotes and not in angle brackets as it is part of a command.
 
 ## Downstream dependencies
 
