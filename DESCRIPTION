@@ -28,7 +28,7 @@ Authors@R: c(
     role = c("aut", "cre")),
     person("Eliot J B", "McIntire", email = "eliot.mcintire@canada.ca",
     role = c("aut")),
-    person("Alex M", "Chubaty", email = "alexander.chubaty@canada.ca",
+    person("Alex M", "Chubaty", email = "alex.chubaty@gmail.com",
     role = c("aut")),
     person("Her Majesty the Queen in Right of Canada, as represented by the Minister of Natural Resources Canada",
     role = "cph")
