@@ -57,6 +57,7 @@ Suggests:
     magrittr,
     microbenchmark,
     rmarkdown,
+    sf,
     SpaDES.core,
     testthat
 License: GPL-3
