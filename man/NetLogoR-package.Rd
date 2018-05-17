@@ -23,7 +23,7 @@ Useful links:
 Authors:
 \itemize{
   \item Eliot J B McIntire \email{eliot.mcintire@canada.ca}
-  \item Alex M Chubaty \email{alexander.chubaty@canada.ca}
+  \item Alex M Chubaty \email{alex.chubaty@gmail.com}
 }
 
 Other contributors:
