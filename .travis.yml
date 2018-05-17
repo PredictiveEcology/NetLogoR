@@ -24,6 +24,24 @@ matrix:
     - PredictiveEcology/SpaDES.tools
   - os: linux
     dist: trusty
+    r: 3.4.0
+    addons:
+      apt:
+        sources:
+        - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
+        packages:
+        - libgdal1-dev
+        - libnlopt-dev
+        - libproj-dev
+    before_install:
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
+    r_packages:
+    - survival
+    r_github_packages:
+    - PredictiveEcology/SpaDES.tools
+  - os: linux
+    dist: trusty
     r: oldrel
     addons:
       apt:
