@@ -18,13 +18,32 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="The worldMatrix class — worldMatrix-class" />
+
+<meta property="og:description" content="This is an s4 class extension of matrix with 7 additional slots.
+A worldMatrix object can be viewed as a grid composed of squared patches
+(i.e., matrix cells). Patches have two spatial coordinates pxcor and
+pycor, representing the location of their center. pxcor and
+pycor are always integer and increment by 1. pxcor increases as
+you move right and pycor increases as you move up.  pxcor and
+pycor can be negative if there are patches to the left or below the patch
+[pxcor = 0, pycor = 0]." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -34,16 +53,14 @@
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58633549-3"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-58633549-3', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-58633549-3');
 </script>
 
   </head>
@@ -59,8 +76,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">NetLogoR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">NetLogoR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -88,13 +109,14 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -102,12 +124,15 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>The worldMatrix class</h1>
+    
+    <div class="hidden name"><code>worldMatrix-class.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This is an s4 class extension of <code>matrix</code> with 7 additional slots.
 A <code>worldMatrix</code> object can be viewed as a grid composed of squared patches
@@ -118,6 +143,7 @@ you move right and <code>pycor</code> increases as you move up.  <code>pxcor</co
 <code>pycor</code> can be negative if there are patches to the left or below the patch
 <code>[pxcor = 0, pycor = 0]</code>.</p>
     
+    </div>
 
         
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -149,7 +175,7 @@ is done in the order of the cell numbers as defined in in <code>Raster*</code> o
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='worldArray-class.html'>worldArray</a></code></p>
+    <div class='dont-index'><p><code><a href='worldArray-class.html'>worldArray</a></code></p></div>
     
 
   </div>
@@ -183,5 +209,8 @@ Sarah Bauduin, Eliot McIntire, and Alex Chubaty
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

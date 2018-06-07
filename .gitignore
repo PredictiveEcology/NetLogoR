@@ -1,10 +1,10 @@
+.csv
+.log
 .Rapp.history
 .RData
 .Rhistory
 .Rproj.user
-.csv
-.log
-last.dump.rda
+revdep/.cache.rds
 tests/testthat/*.pdf
 tests/testthat/*.RData
 vignettes/.build.timestamp

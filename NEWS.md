@@ -1,5 +1,9 @@
 Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 
+Version 0.3.3
+=============
+* Add `sf` to Suggests, as it is used in tests.
+
 Version 0.3.2
 =============
 * Fix bug in `turtlesOn()`. Error when the world was not square.

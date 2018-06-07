@@ -12,9 +12,35 @@ matrix:
         sources:
         - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
         packages:
+        - libgdal-dev
         - libgdal1-dev
+        - libgeos-dev
         - libnlopt-dev
         - libproj-dev
+        - libudunits2-dev
+        - gdal-bin
+    before_install:
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
+    r_packages:
+    - survival
+    r_github_packages:
+    - PredictiveEcology/SpaDES.tools
+  - os: linux
+    dist: trusty
+    r: 3.4.0
+    addons:
+      apt:
+        sources:
+        - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
+        packages:
+        - libgdal-dev
+        - libgdal1-dev
+        - libgeos-dev
+        - libnlopt-dev
+        - libproj-dev
+        - libudunits2-dev
+        - gdal-bin
     before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
@@ -30,9 +56,13 @@ matrix:
         sources:
         - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
         packages:
+        - libgdal-dev
         - libgdal1-dev
+        - libgeos-dev
         - libnlopt-dev
         - libproj-dev
+        - libudunits2-dev
+        - gdal-bin
     before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
@@ -44,9 +74,13 @@ matrix:
         sources:
         - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
         packages:
+        - libgdal-dev
         - libgdal1-dev
+        - libgeos-dev
         - libnlopt-dev
         - libproj-dev
+        - libudunits2-dev
+        - gdal-bin
     before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
@@ -66,9 +100,13 @@ matrix:
         sources:
         - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
         packages:
+        - libgdal-dev
         - libgdal1-dev
+        - libgeos-dev
         - libnlopt-dev
         - libproj-dev
+        - libudunits2-dev
+        - gdal-bin
     before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
@@ -81,6 +119,8 @@ matrix:
     r_check_args: '--as-cran --ignore-vignettes --no-examples'
     before_install:
     - Rscript -e "install.packages('digest', type = 'source')"
+    r_github_packages:
+    - s-u/fastshp
 r_build_args: " "
 r_check_args: "--as-cran"
 warnings_are_errors: true

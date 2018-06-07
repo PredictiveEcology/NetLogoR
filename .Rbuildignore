@@ -1,9 +1,9 @@
-^\.lintr$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 .*\.tar\.gz$
-.*\.zip$
 .*\.toc$
+.*\.zip$
+^\.lintr$
 \.travis\.yml
 ^appveyor\.yml$
 ^appveyor_cache.txt$
@@ -12,6 +12,7 @@
 ^docs$
 ^LICENSE$
 ^_pkgdown\.yml$
+^revdep$
 ^travis_wait_.*\.log$
 vignettes/.*_cache$
 vignettes/.*\.log$
