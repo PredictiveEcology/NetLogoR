@@ -30,20 +30,9 @@ In this version we have fixed the use of a suggested package in tests, which was
 
 There were no ERRORs or WARNINGs
 
-There were 3 NOTES:
+There was 1 NOTE:
 
-    1. Some words were flagged as possibly mispelled, but these are false positives.
-     
-            Possibly mis-spelled words in DESCRIPTION: 
-              NetLogo (8:48, 9:6, 20:43, 22:8)
-              NetLogo's (13:16)
-              Predation (16:58)
-              Railsback (16:16)
-              Wilensky (6:6)
-
-    2. `fastshp` is on Rforge. We have put the link to the correct Additional_repositories in DESCRIPTION.
-       
-    3. The URL given to install `fastshp` is in quotes in DESCRIPTION as it is part of a command.
+1. The URL given to install `fastshp` is in quotes in DESCRIPTION as it is part of a command.
 
 ## Downstream dependencies
 
