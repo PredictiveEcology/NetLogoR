@@ -18,13 +18,26 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="The agentMatrix class — agentMatrix-class" />
+
+<meta property="og:description" content="Documentation needed.
+Documentation needed." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -33,6 +46,16 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58633549-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58633549-3');
+</script>
 
   </head>
 
@@ -47,8 +70,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">NetLogoR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">NetLogoR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,13 +103,14 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -90,16 +118,20 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>The agentMatrix class</h1>
+    
+    <div class="hidden name"><code>agentMatrix-class.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Documentation needed.</p>
 <p>Documentation needed.</p>
     
+    </div>
 
         
 
@@ -143,10 +175,10 @@
         <span class='kw'>char2</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fu'>c</span>(<span class='fl'>4</span>, <span class='fl'>24</span>, <span class='fl'>3</span>)],
         <span class='kw'>nums</span> <span class='kw'>=</span> <span class='fl'>5</span>:<span class='fl'>7</span>)})
 }</div><div class='output co'>#&gt; <span class='message'>Loading required package: microbenchmark</span></div><div class='output co'>#&gt; Unit: microseconds
-#&gt;            expr      min       lq      mean   median       uq       max neval
-#&gt;            spdf 2284.380 2383.874 3303.7065 2444.830 2539.405 290607.79   499
-#&gt;        agentMat  704.273  734.015  788.3011  749.683  781.394   1563.73   499
-#&gt;  agentMatDirect  679.022  705.660  772.3087  720.956  755.785   7997.26   499
+#&gt;            expr      min        lq      mean   median        uq       max neval
+#&gt;            spdf 2326.308 2411.6475 2757.4060 2509.014 2663.2655 49723.045   499
+#&gt;        agentMat  712.351  727.8405  802.7627  749.341  812.2985  9374.259   499
+#&gt;  agentMatDirect  680.987  697.1515  751.0686  716.033  773.3620  1325.707   499
 #&gt;  cld
 #&gt;    b
 #&gt;   a 
@@ -180,5 +212,8 @@ Eliot McIntire
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

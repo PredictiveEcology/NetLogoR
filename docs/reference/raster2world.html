@@ -18,13 +18,26 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Convert a Raster* object into a worldMatrix or worldArray object — raster2world" />
+
+<meta property="og:description" content="Convert a RasterLayer object into a worldMatrix object or a RasterStack object
+into a worldArray object." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -33,6 +46,16 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58633549-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58633549-3');
+</script>
 
   </head>
 
@@ -47,8 +70,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">NetLogoR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">NetLogoR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,13 +103,14 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -90,16 +118,20 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Convert a Raster* object into a worldMatrix or worldArray object</h1>
+    
+    <div class="hidden name"><code>raster2world.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Convert a RasterLayer object into a worldMatrix object or a RasterStack object
 into a worldArray object.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>raster2world</span>(<span class='no'>raster</span>, <span class='no'>method</span>)
 
@@ -109,7 +141,7 @@ into a worldArray object.</p>
 <span class='co'># S4 method for RasterStack,character</span>
 <span class='fu'>raster2world</span>(<span class='no'>raster</span>, <span class='no'>method</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -140,7 +172,7 @@ into a worldArray object.</p>
     <pre class="examples"><div class='input'><span class='no'>r1</span> <span class='kw'>&lt;-</span> <span class='fu'>raster</span>(<span class='fu'>extent</span>(<span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>10</span>, <span class='fl'>0</span>, <span class='fl'>10</span>)), <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='fl'>10</span>)
 <span class='no'>r1</span>[]<span class='kw'>&lt;-</span><span class='fu'>runif</span>(<span class='fl'>100</span>)
 <span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>raster2world</span>(<span class='no'>r1</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"ngb"</span>)
-<span class='fu'>plot</span>(<span class='no'>r1</span>)</div><div class='img'><img src='raster2world-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>w1</span>)</div><div class='img'><img src='raster2world-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+<span class='fu'>plot</span>(<span class='no'>r1</span>)</div><div class='img'><img src='raster2world-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>w1</span>)</div><div class='img'><img src='raster2world-2.png' alt='' width='700' height='433' /></div><div class='input'>
 
 </div></pre>
   </div>
@@ -175,5 +207,8 @@ Sarah Bauduin
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

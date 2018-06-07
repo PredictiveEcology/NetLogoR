@@ -18,13 +18,26 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="N agents with minimum — minNof" />
+
+<meta property="og:description" content="Report the n patches or turtles among agents which have their variable
+among the minimum values." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -33,6 +46,16 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58633549-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58633549-3');
+</script>
 
   </head>
 
@@ -47,8 +70,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">NetLogoR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">NetLogoR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,13 +103,14 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -90,16 +118,20 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>N agents with minimum</h1>
+    
+    <div class="hidden name"><code>minNof.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Report the <code>n</code> patches or turtles among <code>agents</code> which have their variable
 among the minimum values.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>minNof</span>(<span class='no'>agents</span>, <span class='no'>n</span>, <span class='no'>world</span>, <span class='no'>var</span>)
 
@@ -112,7 +144,7 @@ among the minimum values.</p>
 <span class='co'># S4 method for agentMatrix,numeric,missing,character</span>
 <span class='fu'>minNof</span>(<span class='no'>agents</span>, <span class='no'>n</span>, <span class='no'>var</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -168,14 +200,14 @@ as well as any variable created using <code><a href='turtlesOwn.html'>turtlesOwn
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><a href='https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-n-of'>https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-n-of</a></p>
+    <div class='dont-index'><p><a href='https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-n-of'>https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-n-of</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Patches</span>
 <span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>,
                   <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>25</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
-<span class='fu'>plot</span>(<span class='no'>w1</span>)</div><div class='img'><img src='minNof-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='no'>p1</span> <span class='kw'>&lt;-</span> <span class='fu'>minNof</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patches.html'>patches</a></span>(<span class='no'>w1</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>)
+<span class='fu'>plot</span>(<span class='no'>w1</span>)</div><div class='img'><img src='minNof-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>p1</span> <span class='kw'>&lt;-</span> <span class='fu'>minNof</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patches.html'>patches</a></span>(<span class='no'>w1</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>)
 
 <span class='co'># Turtles</span>
 <span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='randomXYcor.html'>randomXYcor</a></span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>),
@@ -217,5 +249,8 @@ Sarah Bauduin
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

@@ -18,13 +18,25 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Rotate to the left — left" />
+
+<meta property="og:description" content="Rotate the turtles's headings to the left of angle degrees." />
+<meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -33,6 +45,16 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58633549-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58633549-3');
+</script>
 
   </head>
 
@@ -47,8 +69,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">NetLogoR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">NetLogoR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,13 +102,14 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -90,22 +117,26 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Rotate to the left</h1>
+    
+    <div class="hidden name"><code>left.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Rotate the <code>turtles</code>'s headings to the left of <code>angle</code> degrees.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>left</span>(<span class='no'>turtles</span>, <span class='no'>angle</span>)
 
 <span class='co'># S4 method for agentMatrix,numeric</span>
 <span class='fu'>left</span>(<span class='no'>turtles</span>, <span class='no'>angle</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -135,16 +166,16 @@ headings. Must be of length 1 or of length <code>turtles</code>.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><a href='https://ccl.northwestern.edu/netlogo/docs/dictionary.html#left'>https://ccl.northwestern.edu/netlogo/docs/dictionary.html#left</a></p>
+    <div class='dont-index'><p><a href='https://ccl.northwestern.edu/netlogo/docs/dictionary.html#left'>https://ccl.northwestern.edu/netlogo/docs/dictionary.html#left</a></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>)
 <span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>)
-<span class='fu'><a href='of.html'>of</a></span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1] 285.911439  72.350250 238.564365 274.554375 344.347359 109.487620
-#&gt;  [7]   4.809002  48.691139 153.598423 252.887464</div><div class='input'><span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>left</span>(<span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>angle</span> <span class='kw'>=</span> <span class='fl'>180</span>)
-<span class='fu'><a href='of.html'>of</a></span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1] 105.91144 252.35025  58.56437  94.55438 164.34736 289.48762 184.80900
-#&gt;  [8] 228.69114 333.59842  72.88746</div><div class='input'>
+<span class='fu'><a href='of.html'>of</a></span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1] 169.76217 220.71269 353.50096 127.83442 326.49468 341.31058 318.61398
+#&gt;  [8] 223.80648  78.17190  21.20544</div><div class='input'><span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>left</span>(<span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>angle</span> <span class='kw'>=</span> <span class='fl'>180</span>)
+<span class='fu'><a href='of.html'>of</a></span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1] 349.76217  40.71269 173.50096 307.83442 146.49468 161.31058 138.61398
+#&gt;  [8]  43.80648 258.17190 201.20544</div><div class='input'>
 
 </div></pre>
   </div>
@@ -183,5 +214,8 @@ Sarah Bauduin
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

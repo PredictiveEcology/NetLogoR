@@ -18,13 +18,22 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Function reference" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -33,6 +42,16 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58633549-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58633549-3');
+</script>
 
   </head>
 
@@ -47,8 +66,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">NetLogoR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">NetLogoR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,13 +99,14 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -90,658 +114,654 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.3.1</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="agentClasses-class.html">agentClasses-class</a></code> </p>
-          </td>
-          <td><p>A meta class for agentMatrix and SpatialPointsDataFrame</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="agentMatrix-bind-methods.html">cbind</a></code> <code><a href="agentMatrix-bind-methods.html">rbind</a></code> </p>
-          </td>
-          <td><p>Combine R Objects by Rows or Columns</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="agentMatrix-class.html">agentMatrix-class</a></code> </p>
-          </td>
-          <td><p>The agentMatrix class</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="agentMatrix-compare-methods.html">==,agentMatrix,character-method</a></code> </p>
-          </td>
-          <td><p>Relational Operators</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="agentMatrix.html">agentMatrix</a></code> </p>
-          </td>
-          <td><p>Create a new agentMatrix object</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="agentMatrix-show-methods.html">show</a></code> <code><a href="agentMatrix-show-methods.html">length</a></code> <code><a href="agentMatrix-show-methods.html">nrow</a></code> <code><a href="agentMatrix-show-methods.html">head</a></code> <code><a href="agentMatrix-show-methods.html">tail</a></code> </p>
-          </td>
-          <td><p>Key base R functions for agentMatrix class</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="bbox.html">extent</a></code> <code><a href="bbox.html">.bboxCoords</a></code> <code><a href="bbox.html">bbox</a></code> <code><a href="bbox.html">bbox<-</a></code> </p>
-          </td>
-          <td><p>Bounding box and extent methods for NetLogoR classes</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="bk.html">bk</a></code> </p>
-          </td>
-          <td><p>Move backward</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="canMove.html">canMove</a></code> </p>
-          </td>
-          <td><p>Can the turtles move?</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cellFromPxcorPycor.html">cellFromPxcorPycor</a></code> </p>
-          </td>
-          <td><p>Cells numbers from patches coordinates</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="clearPatches.html">clearPatches</a></code> </p>
-          </td>
-          <td><p>Clear world's patches</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="coordinates.html">coordinates</a></code> </p>
-          </td>
-          <td><p>Set spatial coordinates</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="createOTurtles.html">createOTurtles</a></code> </p>
-          </td>
-          <td><p>Create ordered turtles</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="createTurtles.html">createTurtles</a></code> </p>
-          </td>
-          <td><p>Create turtles</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="createWorld.html">createWorld</a></code> </p>
-          </td>
-          <td><p>Create a world</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="die.html">die</a></code> </p>
-          </td>
-          <td><p>Kill turtles</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="diffuse.html">diffuse</a></code> </p>
-          </td>
-          <td><p>Diffuse values in a world</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="downhill.html">downhill</a></code> </p>
-          </td>
-          <td><p>Move downhill</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="dx.html">dx</a></code> </p>
-          </td>
-          <td><p>x-increment</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="dy.html">dy</a></code> </p>
-          </td>
-          <td><p>y-increment</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="extract-methods.html">[</a></code> </p>
-          </td>
-          <td><p>Extract or Replace Parts of an Object</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="face.html">face</a></code> </p>
-          </td>
-          <td><p>Face something</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fargs.html">fargs</a></code> </p>
-          </td>
-          <td><p>Function arguments</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fd.html">fd</a></code> </p>
-          </td>
-          <td><p>Move forward</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="hatch.html">hatch</a></code> </p>
-          </td>
-          <td><p>Hatch new turtles</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="home.html">home</a></code> </p>
-          </td>
-          <td><p>Return home</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="inCone.html">inCone</a></code> </p>
-          </td>
-          <td><p>Agents in cone</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="initialize-agentMatrix-method.html">initialize</a></code> </p>
-          </td>
-          <td><p>Initialize for agentMatrix Class</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="inRadius.html">inRadius</a></code> </p>
-          </td>
-          <td><p>Agents in radius</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="inspect.html">inspect</a></code> </p>
-          </td>
-          <td><p>Inspect turtles</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="isNLclass.html">isNLclass</a></code> </p>
-          </td>
-          <td><p>Type of object</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="layoutCircle.html">layoutCircle</a></code> </p>
-          </td>
-          <td><p>Layout turtles on a circle</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="left.html">left</a></code> </p>
-          </td>
-          <td><p>Rotate to the left</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="maxNof.html">maxNof</a></code> </p>
-          </td>
-          <td><p>N agents with maximum</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="maxOneOf.html">maxOneOf</a></code> </p>
-          </td>
-          <td><p>One agent with maximum</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="maxPxcor.html">maxPxcor</a></code> </p>
-          </td>
-          <td><p>Maximum pxcor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="maxPycor.html">maxPycor</a></code> </p>
-          </td>
-          <td><p>Maximum pycor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="minNof.html">minNof</a></code> </p>
-          </td>
-          <td><p>N agents with minimum</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="minOneOf.html">minOneOf</a></code> </p>
-          </td>
-          <td><p>One agent with minimum</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="minPxcor.html">minPxcor</a></code> </p>
-          </td>
-          <td><p>Minimum pxcor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="minPycor.html">minPycor</a></code> </p>
-          </td>
-          <td><p>Minimum pycor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="moveTo.html">moveTo</a></code> </p>
-          </td>
-          <td><p>Move to</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="neighbors.html">neighbors</a></code> </p>
-          </td>
-          <td><p>Neighbors patches</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="NetLogoR-package.html">NetLogoR-package</a></code> </p>
-          </td>
-          <td><p>The <code>NetLogoR</code> package</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="NLall.html">NLall</a></code> </p>
-          </td>
-          <td><p>All agents?</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="NLany.html">NLany</a></code> </p>
-          </td>
-          <td><p>Any agents?</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="NLcount.html">NLcount</a></code> </p>
-          </td>
-          <td><p>Count agents</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="NLdist.html">NLdist</a></code> </p>
-          </td>
-          <td><p>Distances between agents</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="NLset.html">NLset</a></code> </p>
-          </td>
-          <td><p>Set an agents variable</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="NLwith.html">NLwith</a></code> </p>
-          </td>
-          <td><p>Agents with</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="NLworldIndex.html">NLworldIndex</a></code> </p>
-          </td>
-          <td><p>WorldMatrix indices from vector indices</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="nOf.html">nOf</a></code> </p>
-          </td>
-          <td><p>N random agents</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="noPatches.html">noPatches</a></code> </p>
-          </td>
-          <td><p>No patches</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="noTurtles.html">noTurtles</a></code> </p>
-          </td>
-          <td><p>No turtles</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="of.html">of</a></code> </p>
-          </td>
-          <td><p>Values of an agents variable</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="oneOf.html">oneOf</a></code> </p>
-          </td>
-          <td><p>One random agent</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="other.html">other</a></code> </p>
-          </td>
-          <td><p>Others</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="patchAhead.html">patchAhead</a></code> </p>
-          </td>
-          <td><p>Patches ahead</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="patchAt.html">patchAt</a></code> </p>
-          </td>
-          <td><p>Patches at</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="patchDistDir.html">patchDistDir</a></code> </p>
-          </td>
-          <td><p>Patches at given distances and directions</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="patches.html">patches</a></code> </p>
-          </td>
-          <td><p>All the patches in a world</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="patchHere.html">patchHere</a></code> </p>
-          </td>
-          <td><p>Patches here</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="patchLeft.html">patchLeft</a></code> </p>
-          </td>
-          <td><p>Patches on the left</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="patch.html">patch</a></code> </p>
-          </td>
-          <td><p>Patches coordinates</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="patchRight.html">patchRight</a></code> </p>
-          </td>
-          <td><p>Patches on the right</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="patchSet.html">patchSet</a></code> </p>
-          </td>
-          <td><p>Patch set</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="pExist.html">pExist</a></code> </p>
-          </td>
-          <td><p>Do the patches exist?</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="plotMethods.html">plot</a></code> <code><a href="plotMethods.html">points</a></code> </p>
-          </td>
-          <td><p>Basic plot methods for `agentMatrix`, `worldMatrix`, `worldArray`</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="PxcorPycorFromCell.html">PxcorPycorFromCell</a></code> </p>
-          </td>
-          <td><p>Patches coordinates from cells numbers</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="quickPlot-methods.html">numLayers</a></code> <code><a href="quickPlot-methods.html">.plotGrob</a></code> <code><a href="quickPlot-methods.html">layerNames</a></code> <code><a href="quickPlot-methods.html">.identifyGrobToPlot</a></code> </p>
-          </td>
-          <td><p>Methods for quickPlot</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="randomPxcor.html">randomPxcor</a></code> </p>
-          </td>
-          <td><p>Random pxcor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="randomPycor.html">randomPycor</a></code> </p>
-          </td>
-          <td><p>Random pycor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="randomXcor.html">randomXcor</a></code> </p>
-          </td>
-          <td><p>Random xcor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="randomXYcor.html">randomXYcor</a></code> </p>
-          </td>
-          <td><p>Random turtles coordinates</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="randomYcor.html">randomYcor</a></code> </p>
-          </td>
-          <td><p>Random ycor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="raster2world.html">raster2world</a></code> </p>
-          </td>
-          <td><p>Convert a Raster* object into a worldMatrix or worldArray object</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="right.html">right</a></code> </p>
-          </td>
-          <td><p>Rotate to the right</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="setXY.html">setXY</a></code> </p>
-          </td>
-          <td><p>Set turtles' locations</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="show-methods.html">show</a></code> </p>
-          </td>
-          <td><p>Key base R functions for worldNLR classes</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="sortOn.html">sortOn</a></code> </p>
-          </td>
-          <td><p>Sort agents</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="spdf2turtles.html">spdf2turtles</a></code> </p>
-          </td>
-          <td><p>From SpatialPointsDataFrame to agentMatrix</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="sprout.html">sprout</a></code> </p>
-          </td>
-          <td><p>Sprout new turtles</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="stackWorlds.html">stackWorlds</a></code> </p>
-          </td>
-          <td><p>Stack worlds</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="subHeadings.html">subHeadings</a></code> </p>
-          </td>
-          <td><p>Substract headings</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="Subsetting.html">[[</a></code> </p>
-          </td>
-          <td><p>Subsetting for worldArray class</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tExist.html">tExist</a></code> </p>
-          </td>
-          <td><p>Do the turtles exist?</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="towards.html">towards</a></code> </p>
-          </td>
-          <td><p>Directions towards</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="turtle.html">turtle</a></code> </p>
-          </td>
-          <td><p>Select turtles</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="turtles2spdf.html">turtles2spdf</a></code> </p>
-          </td>
-          <td><p>From agentMatrix to SpatialPointsDataFrame</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="turtlesAt.html">turtlesAt</a></code> </p>
-          </td>
-          <td><p>Turtles at</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="turtleSet.html">turtleSet</a></code> </p>
-          </td>
-          <td><p>Create a turtle agenset</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="turtlesOn.html">turtlesOn</a></code> </p>
-          </td>
-          <td><p>Turtles on</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="turtlesOwn.html">turtlesOwn</a></code> </p>
-          </td>
-          <td><p>New turtles variable</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="updateList.html">updateList</a></code> </p>
-          </td>
-          <td><p>Update elements of a named list with elements of a second named list</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="uphill.html">uphill</a></code> </p>
-          </td>
-          <td><p>Move uphill</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="withMax.html">withMax</a></code> </p>
-          </td>
-          <td><p>Agents with maximum</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="withMin.html">withMin</a></code> </p>
-          </td>
-          <td><p>Agents with minimum</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="world2raster.html">world2raster</a></code> </p>
-          </td>
-          <td><p>Convert a worldMatrix or worldArray object into a Raster* object</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="worldArray-class.html">worldArray-class</a></code> </p>
-          </td>
-          <td><p>The worldArray class</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="worldHeight.html">worldHeight</a></code> </p>
-          </td>
-          <td><p>World height</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="worldMatrix-class.html">worldMatrix-class</a></code> </p>
-          </td>
-          <td><p>The worldMatrix class</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="worldNLR-class.html">worldNLR-class</a></code> </p>
-          </td>
-          <td><p>The worldNLR class</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="worldWidth.html">worldWidth</a></code> </p>
-          </td>
-          <td><p>World width</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="wrap.html">wrap</a></code> </p>
-          </td>
-          <td><p>Wrap coordinates or pixels in a torus-like fashion</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="NLall.html">NLall()</a></code> </p>
+        </td>
+        <td><p>All agents?</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NLany.html">NLany()</a></code> </p>
+        </td>
+        <td><p>Any agents?</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NLcount.html">NLcount()</a></code> </p>
+        </td>
+        <td><p>Count agents</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NLdist.html">NLdist()</a></code> </p>
+        </td>
+        <td><p>Distances between agents</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NLset.html">NLset()</a></code> </p>
+        </td>
+        <td><p>Set an agents variable</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NLwith.html">NLwith()</a></code> </p>
+        </td>
+        <td><p>Agents with</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NLworldIndex.html">NLworldIndex()</a></code> </p>
+        </td>
+        <td><p>WorldMatrix indices from vector indices</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NetLogoR-package.html">NetLogoR-package</a></code> </p>
+        </td>
+        <td><p>The <code>NetLogoR</code> package</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="PxcorPycorFromCell.html">PxcorPycorFromCell()</a></code> </p>
+        </td>
+        <td><p>Patches coordinates from cells numbers</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="Subsetting.html">`[[`(<i>&lt;worldArray&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Subsetting.html">`[[<-`(<i>&lt;worldArray&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Subsetting.html">`$`(<i>&lt;worldArray&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Subsetting for worldArray class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="agentClasses-class.html">agentClasses-class</a></code> </p>
+        </td>
+        <td><p>A meta class for agentMatrix and SpatialPointsDataFrame</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="agentMatrix-bind-methods.html">cbind(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="agentMatrix-bind-methods.html">rbind(<i>&lt;agentMatrix&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Combine R Objects by Rows or Columns</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="agentMatrix-class.html">agentMatrix-class</a></code> </p>
+        </td>
+        <td><p>The agentMatrix class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="agentMatrix-compare-methods.html">`==`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="agentMatrix-compare-methods.html">`==`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Relational Operators</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="agentMatrix-show-methods.html">show(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="agentMatrix-show-methods.html">length(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="agentMatrix-show-methods.html">nrow(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="agentMatrix-show-methods.html">head(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="agentMatrix-show-methods.html">tail(<i>&lt;agentMatrix&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Key base R functions for agentMatrix class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="agentMatrix.html">agentMatrix()</a></code> </p>
+        </td>
+        <td><p>Create a new agentMatrix object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="bbox.html">extent(<i>&lt;worldNLR&gt;</i>)</a></code> <code><a href="bbox.html">extent(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="bbox.html">.bboxCoords()</a></code> <code><a href="bbox.html">bbox(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="bbox.html">`bbox<-`()</a></code> <code><a href="bbox.html">bbox(<i>&lt;worldNLR&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Bounding box and extent methods for NetLogoR classes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="bk.html">bk()</a></code> </p>
+        </td>
+        <td><p>Move backward</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="canMove.html">canMove()</a></code> </p>
+        </td>
+        <td><p>Can the turtles move?</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="cellFromPxcorPycor.html">cellFromPxcorPycor()</a></code> </p>
+        </td>
+        <td><p>Cells numbers from patches coordinates</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="clearPatches.html">clearPatches()</a></code> </p>
+        </td>
+        <td><p>Clear world's patches</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="coordinates.html">coordinates(<i>&lt;agentMatrix&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Set spatial coordinates</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="createOTurtles.html">createOTurtles()</a></code> </p>
+        </td>
+        <td><p>Create ordered turtles</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="createTurtles.html">createTurtles()</a></code> </p>
+        </td>
+        <td><p>Create turtles</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="createWorld.html">createWorld()</a></code> </p>
+        </td>
+        <td><p>Create a world</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="die.html">die()</a></code> </p>
+        </td>
+        <td><p>Kill turtles</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="diffuse.html">diffuse()</a></code> </p>
+        </td>
+        <td><p>Diffuse values in a world</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="downhill.html">downhill()</a></code> </p>
+        </td>
+        <td><p>Move downhill</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dx.html">dx()</a></code> </p>
+        </td>
+        <td><p>x-increment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dy.html">dy()</a></code> </p>
+        </td>
+        <td><p>y-increment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="extract-methods.html">`[`(<i>&lt;worldMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;worldMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[<-`(<i>&lt;worldMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[<-`(<i>&lt;worldMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;worldArray&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;worldArray&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[<-`(<i>&lt;worldArray&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;matrix&gt;</i>)</a></code> <code><a href="extract-methods.html">`[<-`(<i>&lt;worldArray&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;matrix&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;logical&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[<-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="extract-methods.html">`[<-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="extract-methods.html">`[<-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="extract-methods.html">`[<-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="extract-methods.html">`[<-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="extract-methods.html">`[<-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="extract-methods.html">`[<-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="extract-methods.html">`[<-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="extract-methods.html">`$`(<i>&lt;agentMatrix&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Extract or Replace Parts of an Object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="face.html">face()</a></code> </p>
+        </td>
+        <td><p>Face something</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fargs.html">fargs</a></code> </p>
+        </td>
+        <td><p>Function arguments</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fd.html">fd()</a></code> </p>
+        </td>
+        <td><p>Move forward</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hatch.html">hatch()</a></code> </p>
+        </td>
+        <td><p>Hatch new turtles</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="home.html">home()</a></code> </p>
+        </td>
+        <td><p>Return home</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="inCone.html">inCone()</a></code> </p>
+        </td>
+        <td><p>Agents in cone</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="inRadius.html">inRadius()</a></code> </p>
+        </td>
+        <td><p>Agents in radius</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="initialize-agentMatrix-method.html">initialize(<i>&lt;agentMatrix&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Initialize for agentMatrix Class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="inspect.html">inspect()</a></code> </p>
+        </td>
+        <td><p>Inspect turtles</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="isNLclass.html">isNLclass()</a></code> </p>
+        </td>
+        <td><p>Type of object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="layoutCircle.html">layoutCircle()</a></code> </p>
+        </td>
+        <td><p>Layout turtles on a circle</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="left.html">left()</a></code> </p>
+        </td>
+        <td><p>Rotate to the left</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="maxNof.html">maxNof()</a></code> </p>
+        </td>
+        <td><p>N agents with maximum</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="maxOneOf.html">maxOneOf()</a></code> </p>
+        </td>
+        <td><p>One agent with maximum</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="maxPxcor.html">maxPxcor()</a></code> </p>
+        </td>
+        <td><p>Maximum pxcor</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="maxPycor.html">maxPycor()</a></code> </p>
+        </td>
+        <td><p>Maximum pycor</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="minNof.html">minNof()</a></code> </p>
+        </td>
+        <td><p>N agents with minimum</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="minOneOf.html">minOneOf()</a></code> </p>
+        </td>
+        <td><p>One agent with minimum</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="minPxcor.html">minPxcor()</a></code> </p>
+        </td>
+        <td><p>Minimum pxcor</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="minPycor.html">minPycor()</a></code> </p>
+        </td>
+        <td><p>Minimum pycor</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="moveTo.html">moveTo()</a></code> </p>
+        </td>
+        <td><p>Move to</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nOf.html">nOf()</a></code> </p>
+        </td>
+        <td><p>N random agents</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="neighbors.html">neighbors()</a></code> </p>
+        </td>
+        <td><p>Neighbors patches</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="noPatches.html">noPatches()</a></code> </p>
+        </td>
+        <td><p>No patches</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="noTurtles.html">noTurtles()</a></code> </p>
+        </td>
+        <td><p>No turtles</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="of.html">of()</a></code> </p>
+        </td>
+        <td><p>Values of an agents variable</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="oneOf.html">oneOf()</a></code> </p>
+        </td>
+        <td><p>One random agent</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="other.html">other()</a></code> </p>
+        </td>
+        <td><p>Others</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pExist.html">pExist()</a></code> </p>
+        </td>
+        <td><p>Do the patches exist?</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="patch.html">patch()</a></code> </p>
+        </td>
+        <td><p>Patches coordinates</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="patchAhead.html">patchAhead()</a></code> </p>
+        </td>
+        <td><p>Patches ahead</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="patchAt.html">patchAt()</a></code> </p>
+        </td>
+        <td><p>Patches at</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="patchDistDir.html">patchDistDir()</a></code> </p>
+        </td>
+        <td><p>Patches at given distances and directions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="patchHere.html">patchHere()</a></code> </p>
+        </td>
+        <td><p>Patches here</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="patchLeft.html">patchLeft()</a></code> </p>
+        </td>
+        <td><p>Patches on the left</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="patchRight.html">patchRight()</a></code> </p>
+        </td>
+        <td><p>Patches on the right</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="patchSet.html">patchSet()</a></code> </p>
+        </td>
+        <td><p>Patch set</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="patches.html">patches()</a></code> </p>
+        </td>
+        <td><p>All the patches in a world</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotMethods.html">plot(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="plotMethods.html">plot(<i>&lt;worldMatrix&gt;</i>)</a></code> <code><a href="plotMethods.html">plot(<i>&lt;worldArray&gt;</i>)</a></code> <code><a href="plotMethods.html">points(<i>&lt;agentMatrix&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Basic plot methods for `agentMatrix`, `worldMatrix`, `worldArray`</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="quickPlot-methods.html">numLayers(<i>&lt;worldArray&gt;</i>)</a></code> <code><a href="quickPlot-methods.html">.plotGrob(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="quickPlot-methods.html">layerNames(<i>&lt;worldArray&gt;</i>)</a></code> <code><a href="quickPlot-methods.html">.identifyGrobToPlot(<i>&lt;worldArray&gt;</i>,<i>&lt;.quickPlotGrob&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Methods for quickPlot</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="randomPxcor.html">randomPxcor()</a></code> </p>
+        </td>
+        <td><p>Random pxcor</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="randomPycor.html">randomPycor()</a></code> </p>
+        </td>
+        <td><p>Random pycor</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="randomXYcor.html">randomXYcor()</a></code> </p>
+        </td>
+        <td><p>Random turtles coordinates</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="randomXcor.html">randomXcor()</a></code> </p>
+        </td>
+        <td><p>Random xcor</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="randomYcor.html">randomYcor()</a></code> </p>
+        </td>
+        <td><p>Random ycor</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="raster2world.html">raster2world()</a></code> </p>
+        </td>
+        <td><p>Convert a Raster* object into a worldMatrix or worldArray object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="right.html">right()</a></code> </p>
+        </td>
+        <td><p>Rotate to the right</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="setXY.html">setXY()</a></code> </p>
+        </td>
+        <td><p>Set turtles' locations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="show-methods.html">show(<i>&lt;worldArray&gt;</i>)</a></code> <code><a href="show-methods.html">show(<i>&lt;worldMatrix&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Key base R functions for worldNLR classes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sortOn.html">sortOn()</a></code> </p>
+        </td>
+        <td><p>Sort agents</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="spdf2turtles.html">spdf2turtles()</a></code> </p>
+        </td>
+        <td><p>From SpatialPointsDataFrame to agentMatrix</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sprout.html">sprout()</a></code> </p>
+        </td>
+        <td><p>Sprout new turtles</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="stackWorlds.html">stackWorlds()</a></code> </p>
+        </td>
+        <td><p>Stack worlds</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="subHeadings.html">subHeadings()</a></code> </p>
+        </td>
+        <td><p>Substract headings</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tExist.html">tExist()</a></code> </p>
+        </td>
+        <td><p>Do the turtles exist?</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="towards.html">towards()</a></code> </p>
+        </td>
+        <td><p>Directions towards</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="turtle.html">turtle()</a></code> </p>
+        </td>
+        <td><p>Select turtles</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="turtleSet.html">turtleSet()</a></code> </p>
+        </td>
+        <td><p>Create a turtle agenset</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="turtles2spdf.html">turtles2spdf()</a></code> </p>
+        </td>
+        <td><p>From agentMatrix to SpatialPointsDataFrame</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="turtlesAt.html">turtlesAt()</a></code> </p>
+        </td>
+        <td><p>Turtles at</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="turtlesOn.html">turtlesOn()</a></code> </p>
+        </td>
+        <td><p>Turtles on</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="turtlesOwn.html">turtlesOwn()</a></code> </p>
+        </td>
+        <td><p>New turtles variable</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="updateList.html">updateList()</a></code> </p>
+        </td>
+        <td><p>Update elements of a named list with elements of a second named list</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="uphill.html">uphill()</a></code> </p>
+        </td>
+        <td><p>Move uphill</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="withMax.html">withMax()</a></code> </p>
+        </td>
+        <td><p>Agents with maximum</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="withMin.html">withMin()</a></code> </p>
+        </td>
+        <td><p>Agents with minimum</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="world2raster.html">world2raster()</a></code> </p>
+        </td>
+        <td><p>Convert a worldMatrix or worldArray object into a Raster* object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="worldArray-class.html">worldArray-class</a></code> </p>
+        </td>
+        <td><p>The worldArray class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="worldHeight.html">worldHeight()</a></code> </p>
+        </td>
+        <td><p>World height</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="worldMatrix-class.html">worldMatrix-class</a></code> </p>
+        </td>
+        <td><p>The worldMatrix class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="worldNLR-class.html">worldNLR-class</a></code> </p>
+        </td>
+        <td><p>The worldNLR class</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="worldWidth.html">worldWidth()</a></code> </p>
+        </td>
+        <td><p>World width</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="wrap.html">wrap()</a></code> </p>
+        </td>
+        <td><p>Wrap coordinates or pixels in a torus-like fashion</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -764,5 +784,8 @@
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
