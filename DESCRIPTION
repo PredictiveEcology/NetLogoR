@@ -3,9 +3,8 @@ Title: Build and Run Spatially Explicit Agent-Based Models
 Description: Build and run spatially explicit
     agent-based models using only the R platform. 'NetLogoR' follows the same
     framework as the 'NetLogo' software
-    (Wilensky, 1999 <http://ccl.northwestern.edu/netlogo/>), however, this
-    package is not a call function to use 'NetLogo'; it is a translation in R
-    language of the structure and functions of NetLogo
+    (Wilensky, 1999 <http://ccl.northwestern.edu/netlogo/>) and is a translation
+    in R of the structure and functions of NetLogo
     (NetLogo primitives <https://ccl.northwestern.edu/netlogo/docs/dictionary.html>).
     'NetLogoR' provides new R classes to define model agents and functions to
     implement spatially explicit agent-based models in the R environment. This
@@ -20,15 +19,15 @@ Description: Build and run spatially explicit
     A programming guide inspired from the NetLogo Programming Guide
     (<https://ccl.northwestern.edu/netlogo/docs/programming.html>) and a dictionary
     of NetLogo primitives (<https://ccl.northwestern.edu/netlogo/docs/dictionary.html>)
-    equivalences are also available. 
-    NOTE: To increment 'time', these
-    functions can use a for loop or can be integrated with a discrete event
-    simulator, such as 'SpaDES' (<https://cran.r-project.org/package=SpaDES>).
+    equivalences are also available.
+    NOTE: To increment 'time', these functions can use a for loop or can be
+    integrated with a discrete event simulator, such as 'SpaDES'
+    (<https://cran.r-project.org/package=SpaDES>).
     The suggested package 'fastshp' can be installed with
     'install.packages("fastshp", repos = "https://rforge.net", type = "source")'.
 URL: http://netlogor.predictiveecology.org
-Version: 0.3.2.9000
-Date: 2018-05-17
+Version: 0.3.3
+Date: 2018-06-07
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
     role = c("aut", "cre")),

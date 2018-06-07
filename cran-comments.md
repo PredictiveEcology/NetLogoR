@@ -1,31 +1,30 @@
 ## Resubmission
 
 In this version we have fixed the use of a suggested package in tests, which was causing errors on CRAN.
-We also fixed another bug (see `NEWS.md`).
 
 ## Test environments
 
 ### Previous R versions
-* Ubuntu 14.04       (travis-ci), R 3.3.0
-* Windows             (appveyor), R 3.3.0
-
-* Ubuntu 14.04       (travis-ci), R 3.3.3
-* Windows             (appveyor), R 3.3.3
-* Windows 7              (local), R 3.3.3
+* Ubuntu 14.04        (travis-ci), R 3.3.0
+* Ubuntu 14.04        (travis-ci), R 3.4.0
+* Windows              (appveyor), R 3.3.0
+* Windows              (appveyor), R 3.4.0
+* Windows                 (local), R 3.4.4
 
 ### Current R versions
-* macOS High Sierra  (travis-ci), R 3.4.3
-* OSX Sierra 10.12.6 (travis-ci), R 3.4.3 
-* Ubuntu 14.04       (travis-ci), R 3.4.3
-* Windows             (appveyor), R 3.4.3
-* Windows 7              (local), R 3.4.4
-* Windows          (win-builder), R 3.4.4
+* macOS High Sierra    (local), R 3.5.0
+* OS X El Capitan  (travis-ci), R 3.5.0
+* Ubuntu 14.04     (travis-ci), R 3.5.0
+* Ubuntu 18.04         (local), R 3.5.0
+* Windows           (appveyor), R 3.5.0
+* Windows        (win-builder), R 3.5.0
+* Windows 7            (local), R 3.5.0
 
 ### Development R version
-* Ubuntu 14.04     (travis-ci), R 3.5.0 (2018-02-07 r74234)
-* Windows           (appveyor), R 3.5.0 (2018-02-06 r74231)
-* Windows              (local), R 3.5.0 (2018-02-07 r74234)
-* Windows        (win-builder), R 3.5.0 (2018-04-23)
+* Ubuntu 14.04     (travis-ci), R 3.6.0 (2018-06-05 r74851)
+* Ubuntu 18.04         (local), R 3.6.0 (2018-06-05 r74852)
+* Windows           (appveyor), R 3.6.0 (2018-06-05 r74852)
+* Windows        (win-builder), R 3.6.0 (2018-06-05 r74852)
 
 ## R CMD check results
 
