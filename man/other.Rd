@@ -36,7 +36,7 @@ Report an agentset of the \code{agents} except specific ones.
 Both \code{agents} and \code{except} must be of the same class (e.g., both
          patches or both turtles).
 
-         Carefull: this function removes turtles only based on similar "who" numbers
+         Warning: this function removes turtles only based on similar "who" numbers
          and "breed" names.
 }
 \examples{

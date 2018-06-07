@@ -18,8 +18,8 @@ createTurtles(n, coords, world, heading, breed, color)
 \arguments{
 \item{n}{Integer.}
 
-\item{coords}{Matrix (ncol = 2) with the first column "xcor" and the second
-column "ycor" representing the turtles inital locations.
+\item{coords}{Matrix (ncol = 2) with the first column \code{xcor} and the second
+column \code{ycor} representing the turtles initial locations.
 \code{nrow(coords)} must be equal to 1 or to \code{n}.
 Given coordinates must be inside the \code{world}'s extent. If missing,
 turtles are put in the center of the \code{world}.}

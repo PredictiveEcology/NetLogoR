@@ -306,12 +306,11 @@ setMethod(
 #'          the turtle is located on around which the neighbors are identified, is not
 #'          returned.
 #'
-#'          If \code{torus = FALSE}, \code{agents} located on the edges of the \code{world}
-#'          have less than \code{nNeighbors} patches around them. If
-#'          \code{torus = TRUE}, all \code{agents}
-#'          located on the egdes of the \code{world} have \code{nNeighbors}
-#'          patches around them, which
-#'          some may be on the other sides of the \code{world}.
+#'          If \code{torus = FALSE}, \code{agents} located on the edges of the
+#'          \code{world} have less than \code{nNeighbors} patches around them.
+#'          If \code{torus = TRUE}, all \code{agents} located on the edges of the
+#'          \code{world} have \code{nNeighbors} patches around them,
+#'          which some may be on the other sides of the \code{world}.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#neighbors}
 #'
@@ -607,7 +606,7 @@ setMethod(
 #'          distance from a turtle using the turtle's heading, look at \code{pacthAhead()},
 #'          \code{patchLeft()} or \code{patchRight()}.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance} # nolint
+#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance}
 #'
 #' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
 #'             Center for Connected Learning and Computer-Based Modeling,

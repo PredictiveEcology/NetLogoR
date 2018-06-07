@@ -12,6 +12,6 @@
 This is used in various places when converting \code{agentMatrix} objects to
 \code{SpatialPoints} for use with functions, such as \code{\link[raster]{buffer}}.
 The \code{CRS()} operation is relatively time consuming.
-Having a single object useable throughout is \emph{much} faster.
+Having a single object usable throughout is \emph{much} faster.
 }
 \keyword{internal}

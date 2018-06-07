@@ -5,8 +5,8 @@
 #'
 #' @inheritParams fargs
 #'
-#' @param coords  Matrix (ncol = 2) with the first column "xcor" and the second
-#'                column "ycor" representing the turtles inital locations.
+#' @param coords  Matrix (ncol = 2) with the first column \code{xcor} and the second
+#'                column \code{ycor} representing the turtles initial locations.
 #'                \code{nrow(coords)} must be equal to 1 or to \code{n}.
 #'                Given coordinates must be inside the \code{world}'s extent. If missing,
 #'                turtles are put in the center of the \code{world}.
@@ -1238,9 +1238,9 @@ setMethod(
 #'
 #'          If a turtle is located on a patch on the edge
 #'          of the \code{world} and \code{torus = FALSE}, it has fewer
-#'          neighborhing patches as options to move than \code{nNeighbors}; if
+#'          neighbouring patches as options to move than \code{nNeighbors}; if
 #'          \code{torus = TRUE}, the turtle can move on the other side of the \code{world} to
-#'          move downhill and its choice of neighborhing patches is always equals to
+#'          move downhill and its choice of neighbouring patches is always equals to
 #'          \code{nNeighbors}.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#downhill}
@@ -1367,9 +1367,9 @@ setMethod(
 #'
 #'          If a turtle is located on a patch on the edge
 #'          of the \code{world} and \code{torus = FALSE}, it has fewer
-#'          neighborhing patches as options to move than \code{nNeighbors}; if
+#'          neighbouring patches as options to move than \code{nNeighbors}; if
 #'          \code{torus = TRUE}, the turtle can move on the other side of the \code{world} to
-#'          move uphill and its choice of neighborhing patches is always equals to
+#'          move uphill and its choice of neighbouring patches is always equals to
 #'          \code{nNeighbors}.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#uphill}
@@ -2235,7 +2235,7 @@ setMethod(
 #'                 individually.
 #'
 #' @return AgentMatrix representing any individuals from \code{turtles} of
-#'         any of the given \code{breed}, if speficied,
+#'         any of the given \code{breed}, if specified,
 #'         located on the same patches as any of the \code{agents}, if \code{simplify = TRUE}, or
 #'
 #'         Matrix (ncol = 2) with the first column "whoTurtles" and the second column
@@ -2389,9 +2389,8 @@ noTurtles <- function() {
 ################################################################################
 #' Turtles at
 #'
-#' Report the indviduals among \code{turtles} that are located on the patches at
-#' \code{(dx, dy)} distances of the
-#' \code{agents}.
+#' Report the individuals among \code{turtles} that are located on the patches at
+#' \code{(dx, dy)} distances of the \code{agents}.
 #'
 #' @inheritParams fargs
 #'
@@ -2462,7 +2461,7 @@ setMethod(
 
 
 ################################################################################
-#' Create a turtle agenset
+#' Create a turtle agentset
 #'
 #' Report a turtle agentset containing all unique turtles provided in the inputs.
 #'
@@ -2620,7 +2619,7 @@ setMethod(
 
 
 ################################################################################
-#' Substract headings
+#' Subtract headings
 #'
 #' Compute the difference between headings.
 #'
@@ -2760,7 +2759,7 @@ setMethod(
 #' @details Both \code{agents} and \code{except} must be of the same class (e.g., both
 #'          patches or both turtles).
 #'
-#'          Carefull: this function removes turtles only based on similar "who" numbers
+#'          Warning: this function removes turtles only based on similar "who" numbers
 #'          and "breed" names.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#other}

@@ -49,9 +49,9 @@ If no neighboring patch has a larger value than the patch where the
 
          If a turtle is located on a patch on the edge
          of the \code{world} and \code{torus = FALSE}, it has fewer
-         neighborhing patches as options to move than \code{nNeighbors}; if
+         neighbouring patches as options to move than \code{nNeighbors}; if
          \code{torus = TRUE}, the turtle can move on the other side of the \code{world} to
-         move uphill and its choice of neighborhing patches is always equals to
+         move uphill and its choice of neighbouring patches is always equals to
          \code{nNeighbors}.
 }
 \examples{

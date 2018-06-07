@@ -50,9 +50,8 @@ AgentMatrix representing the individuals among \code{turtles}
         \code{agents}.
 }
 \description{
-Report the indviduals among \code{turtles} that are located on the patches at
-\code{(dx, dy)} distances of the
-\code{agents}.
+Report the individuals among \code{turtles} that are located on the patches at
+\code{(dx, dy)} distances of the \code{agents}.
 }
 \details{
 If the patch at distance \code{(dx, dy)}

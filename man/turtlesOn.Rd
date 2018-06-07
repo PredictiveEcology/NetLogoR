@@ -35,7 +35,7 @@ individually.}
 }
 \value{
 AgentMatrix representing any individuals from \code{turtles} of
-        any of the given \code{breed}, if speficied,
+        any of the given \code{breed}, if specified,
         located on the same patches as any of the \code{agents}, if \code{simplify = TRUE}, or
 
         Matrix (ncol = 2) with the first column "whoTurtles" and the second column

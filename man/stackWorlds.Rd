@@ -14,7 +14,7 @@ stackWorlds(...)
 \item{...}{worldMatrix objects.}
 }
 \value{
-WorldArray object.
+worldArray object.
 }
 \description{
 Stack multiple worldMatrix into a worldArray.
