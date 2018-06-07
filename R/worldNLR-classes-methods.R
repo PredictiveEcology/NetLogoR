@@ -308,7 +308,7 @@ setReplaceMethod(
 #'
 #' @param ... worldMatrix objects.
 #'
-#' @return WorldArray object.
+#' @return worldArray object.
 #'
 #' @details The worldMatrix objects must all have the same extents.
 #'

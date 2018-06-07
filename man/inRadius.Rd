@@ -34,13 +34,13 @@ inRadius(agents, radius, agents2, world, torus = FALSE)
 Matrix (ncol = 3) with the first column "pxcor"
         and the second column "pycor" representing the coordinates of the
         patches among \code{agents2} within \code{radius} distances for each \code{agents}
-        which are reprensented by the "id" column, if
+        which are represented by the "id" column, if
         \code{agents2} are patches, or
 
         Matrix (ncol = 2) with the first column "who"
         representing the "who" numbers of the
         turtles among \code{agents2} within \code{radius} distances for each \code{agents}
-        which are reprensented by the "id" column, if
+        which are represented by the "id" column, if
         \code{agents2} are turtles.
 }
 \description{
@@ -53,7 +53,7 @@ Distances from/to patches are calculated from/to their center.
 
          If \code{torus = FALSE}, \code{world} does not need to be provided.
 
-         If \code{torus = TRUE}, the \code{radius} distances are calculared
+         If \code{torus = TRUE}, the \code{radius} distances are calculated
          around the sides of the \code{world} to select \code{agents2}.
 }
 \examples{

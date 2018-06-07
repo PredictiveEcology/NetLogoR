@@ -4,7 +4,7 @@
 \name{turtleSet}
 \alias{turtleSet}
 \alias{turtleSet,agentMatrix-method}
-\title{Create a turtle agenset}
+\title{Create a turtle agentset}
 \usage{
 turtleSet(...)
 

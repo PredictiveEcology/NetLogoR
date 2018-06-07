@@ -7,7 +7,7 @@
 \alias{subHeadings,agentMatrix,numeric-method}
 \alias{subHeadings,numeric,agentMatrix-method}
 \alias{subHeadings,agentMatrix,agentMatrix-method}
-\title{Substract headings}
+\title{Subtract headings}
 \usage{
 subHeadings(angle1, angle2, range360 = FALSE)
 

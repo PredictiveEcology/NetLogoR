@@ -39,12 +39,11 @@ The patch around which the neighbors are identified, or the patch where
          the turtle is located on around which the neighbors are identified, is not
          returned.
 
-         If \code{torus = FALSE}, \code{agents} located on the edges of the \code{world}
-         have less than \code{nNeighbors} patches around them. If
-         \code{torus = TRUE}, all \code{agents}
-         located on the egdes of the \code{world} have \code{nNeighbors}
-         patches around them, which
-         some may be on the other sides of the \code{world}.
+         If \code{torus = FALSE}, \code{agents} located on the edges of the
+         \code{world} have less than \code{nNeighbors} patches around them.
+         If \code{torus = TRUE}, all \code{agents} located on the edges of the
+         \code{world} have \code{nNeighbors} patches around them,
+         which some may be on the other sides of the \code{world}.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
