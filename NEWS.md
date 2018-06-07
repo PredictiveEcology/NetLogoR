@@ -2,7 +2,8 @@ Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 
 Version 0.3.2.9000
 ==================
-* Add `sf` to Suggests, as it's used in tests.
+* Add `sf` to Suggests, as it is used in tests.
+* Update DESCRIPTION and README
 
 Version 0.3.2
 =============
