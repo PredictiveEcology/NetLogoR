@@ -18,14 +18,14 @@ We also fixed another bug (see `NEWS.md`).
 * OSX Sierra 10.12.6 (travis-ci), R 3.4.3 
 * Ubuntu 14.04       (travis-ci), R 3.4.3
 * Windows             (appveyor), R 3.4.3
-* Windows 7              (local), R 3.4.3
-* Windows          (win-builder), R 3.4.3
+* Windows 7              (local), R 3.4.4
+* Windows          (win-builder), R 3.4.4
 
 ### Development R version
 * Ubuntu 14.04     (travis-ci), R 3.5.0 (2018-02-07 r74234)
 * Windows           (appveyor), R 3.5.0 (2018-02-06 r74231)
 * Windows              (local), R 3.5.0 (2018-02-07 r74234)
-* Windows        (win-builder), R 3.5.0 (2018-02-07 r74234)
+* Windows        (win-builder), R 3.5.0 (2018-04-23)
 
 ## R CMD check results
 
@@ -36,9 +36,11 @@ There were 3 NOTES:
     1. Some words were flagged as possibly mispelled, but these are false positives.
      
             Possibly mis-spelled words in DESCRIPTION: 
-              Predation (16:29)
-              Railsback (15:67)
-              Wilensky (4:16)
+              NetLogo (8:48, 9:6, 20:43, 22:8)
+              NetLogo's (13:16)
+              Predation (16:58)
+              Railsback (16:16)
+              Wilensky (6:6)
 
     2. `fastshp` is on Rforge. We have put the link to the correct Additional_repositories in DESCRIPTION.
        
