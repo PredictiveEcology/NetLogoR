@@ -1,6 +1,6 @@
 Package: NetLogoR
-Title: Build and run spatially explicit agent-based models
-Description: 'NetLogoR' is an R package to build and run spatially explicit
+Title: Build and Run Spatially Explicit Agent-Based Models
+Description: Build and run spatially explicit
     agent-based models using only the R platform. 'NetLogoR' follows the same
     framework as the 'NetLogo' software
     (Wilensky, 1999 <http://ccl.northwestern.edu/netlogo/>), however, this
