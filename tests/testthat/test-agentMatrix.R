@@ -119,7 +119,9 @@ test_that("create agentMatrix does not work", {
 })
 
 test_that("agentMatrix benchmarking", {
-   # compare speeds -- if these fail, then should reconsider the need for agentMatrix
+  set.seed(20180924)
+
+  # compare speeds -- if these fail, then should reconsider the need for agentMatrix
    if (require(microbenchmark)) {
      mb <- summary(microbenchmark(times = 50,
        spdf = {
