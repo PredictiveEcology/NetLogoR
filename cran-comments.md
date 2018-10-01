@@ -23,7 +23,7 @@ We will ensure all seeds work in a future release.
 
 ### Development R version
 * Ubuntu 14.04     (travis-ci), R 3.6.0 (2018-06-05 r74851)
-* Ubuntu 18.04         (local), R 3.6.0 (2018-06-05 r74852)
+* Ubuntu 18.04         (local), R 3.6.0 (2018-10-01 r75383)
 * Windows           (appveyor), R 3.6.0 (2018-06-05 r74852)
 * Windows        (win-builder), R 3.6.0 (2018-06-05 r74852)
 
