@@ -8,8 +8,8 @@
 \usage{
 patch(world, x, y, duplicate = FALSE, torus = FALSE, out = FALSE)
 
-\S4method{patch}{worldNLR,numeric,numeric}(world, x, y, duplicate = FALSE,
-  torus = FALSE, out = FALSE)
+\S4method{patch}{worldNLR,numeric,numeric}(world, x, y,
+  duplicate = FALSE, torus = FALSE, out = FALSE)
 }
 \arguments{
 \item{world}{WorldMatrix or worldArray object.}

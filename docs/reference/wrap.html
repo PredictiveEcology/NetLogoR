@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.4</span>
       </span>
     </div>
 
@@ -149,13 +149,16 @@
 <span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>)
 
 <span class='co'># S4 method for SpatialPointsDataFrame,Extent,logical</span>
-<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>, <span class='no'>withHeading</span>)
+<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>,
+  <span class='no'>withHeading</span>)
 
 <span class='co'># S4 method for SpatialPointsDataFrame,Raster,logical</span>
-<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>, <span class='no'>withHeading</span>)
+<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>,
+  <span class='no'>withHeading</span>)
 
 <span class='co'># S4 method for SpatialPointsDataFrame,matrix,logical</span>
-<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>, <span class='no'>withHeading</span>)</pre>
+<span class='fu'>wrap</span>(<span class='no'>obj</span>, <span class='no'>bounds</span>,
+  <span class='no'>withHeading</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -203,7 +206,7 @@ agent locations.</p>
 <span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='fu'>rep</span>(<span class='fl'>0</span>, <span class='no'>N</span>)
 <span class='no'>y1</span> <span class='kw'>&lt;-</span> <span class='fu'>rep</span>(<span class='fl'>0</span>, <span class='no'>N</span>)
 <span class='co'># initial points</span>
-<span class='no'>starts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='agentMatrix-bind-methods.html'>cbind</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/stats/topics/Uniform'>runif</a></span>(<span class='no'>N</span>, <span class='no'>xrange</span>[<span class='fl'>1</span>], <span class='no'>xrange</span>[<span class='fl'>2</span>]),
+<span class='no'>starts</span> <span class='kw'>&lt;-</span> <span class='fu'>cbind</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/stats/topics/Uniform'>runif</a></span>(<span class='no'>N</span>, <span class='no'>xrange</span>[<span class='fl'>1</span>], <span class='no'>xrange</span>[<span class='fl'>2</span>]),
                 <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/stats/topics/Uniform'>runif</a></span>(<span class='no'>N</span>, <span class='no'>yrange</span>[<span class='fl'>1</span>], <span class='no'>yrange</span>[<span class='fl'>2</span>]))
 
 <span class='co'># create the agent object</span>

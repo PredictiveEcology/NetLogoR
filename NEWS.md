@@ -2,7 +2,7 @@ Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 
 Version 0.3.4
 =============
-* Set seed in two tests.
+* Set random seed in two tests.
 
 Version 0.3.3
 =============

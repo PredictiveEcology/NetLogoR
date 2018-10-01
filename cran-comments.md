@@ -1,6 +1,7 @@
 ## Resubmission
 
-In this version we have fixed the use of a suggested package in tests, which was causing errors on CRAN.
+In this version we have set a seed in tests to avoid random CRAN test failures.
+We will ensure all seeds work in a future release. 
 
 ## Test environments
 

@@ -25,8 +25,8 @@ Description: Build and run spatially explicit
     The suggested package 'fastshp' can be installed with
     'install.packages("fastshp", repos = "https://rforge.net", type = "source")'.
 URL: http://netlogor.predictiveecology.org
-Version: 0.3.3
-Date: 2018-06-07
+Version: 0.3.4
+Date: 2018-10-01
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
     role = c("aut", "cre")),
@@ -65,11 +65,12 @@ Suggests:
     SpaDES.core,
     testthat
 License: GPL-3
+Encoding: UTF-8
 VignetteBuilder: knitr, rmarkdown
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Additional_repositories: https://rforge.net 
 Collate: 
     'Agent-classes.R'

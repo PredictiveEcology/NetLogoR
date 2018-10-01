@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.4</span>
       </span>
     </div>
 
@@ -155,10 +155,10 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>100</span>)
-<span class='no'>w1Ras</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='world2raster.html'>world2raster</a></span>(<span class='no'>w1</span>)
+    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>100</span>)
+<span class='no'>w1Ras</span> <span class='kw'>&lt;-</span> <span class='fu'>world2raster</span>(<span class='no'>w1</span>)
 <span class='no'>index</span> <span class='kw'>&lt;-</span> <span class='fl'>24</span>
-<span class='no'>pxpy</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='PxcorPycorFromCell.html'>PxcorPycorFromCell</a></span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>cellNum</span> <span class='kw'>=</span> <span class='no'>index</span>)
+<span class='no'>pxpy</span> <span class='kw'>&lt;-</span> <span class='fu'>PxcorPycorFromCell</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>cellNum</span> <span class='kw'>=</span> <span class='no'>index</span>)
 
 <span class='no'>rasValue</span> <span class='kw'>&lt;-</span> <span class='fu'>as.integer</span>(<span class='fu'>unname</span>(<span class='no'>w1Ras</span>[<span class='no'>index</span>]))
 <span class='co'># Not correct index:</span>

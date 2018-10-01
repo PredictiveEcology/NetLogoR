@@ -11,12 +11,13 @@
 \usage{
 NLset(world, turtles, agents, var, val)
 
-\S4method{NLset}{missing,agentMatrix,agentMatrix,character}(turtles, agents,
-  var, val)
+\S4method{NLset}{missing,agentMatrix,agentMatrix,character}(turtles,
+  agents, var, val)
 
 \S4method{NLset}{worldMatrix,missing,matrix,missing}(world, agents, val)
 
-\S4method{NLset}{worldArray,missing,matrix,character}(world, agents, var, val)
+\S4method{NLset}{worldArray,missing,matrix,character}(world, agents, var,
+  val)
 }
 \arguments{
 \item{world}{WorldMatrix or worldArray object.}

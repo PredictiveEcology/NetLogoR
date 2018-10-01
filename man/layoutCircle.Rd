@@ -8,8 +8,8 @@
 \usage{
 layoutCircle(world, turtles, radius, torus = FALSE)
 
-\S4method{layoutCircle}{worldNLR,agentMatrix,numeric}(world, turtles, radius,
-  torus = FALSE)
+\S4method{layoutCircle}{worldNLR,agentMatrix,numeric}(world, turtles,
+  radius, torus = FALSE)
 }
 \arguments{
 \item{world}{WorldMatrix or worldArray object.}

@@ -6,7 +6,6 @@
 \alias{wrap,matrix,Extent,missing-method}
 \alias{wrap,SpatialPoints,ANY,missing-method}
 \alias{wrap,matrix,Raster,missing-method}
-\alias{wrap,matrix,Raster,missing-method}
 \alias{wrap,matrix,matrix,missing-method}
 \alias{wrap,SpatialPointsDataFrame,Extent,logical-method}
 \alias{wrap,SpatialPointsDataFrame,Raster,logical-method}
@@ -25,11 +24,14 @@ wrap(obj, bounds, withHeading)
 
 \S4method{wrap}{matrix,matrix,missing}(obj, bounds)
 
-\S4method{wrap}{SpatialPointsDataFrame,Extent,logical}(obj, bounds, withHeading)
+\S4method{wrap}{SpatialPointsDataFrame,Extent,logical}(obj, bounds,
+  withHeading)
 
-\S4method{wrap}{SpatialPointsDataFrame,Raster,logical}(obj, bounds, withHeading)
+\S4method{wrap}{SpatialPointsDataFrame,Raster,logical}(obj, bounds,
+  withHeading)
 
-\S4method{wrap}{SpatialPointsDataFrame,matrix,logical}(obj, bounds, withHeading)
+\S4method{wrap}{SpatialPointsDataFrame,matrix,logical}(obj, bounds,
+  withHeading)
 }
 \arguments{
 \item{obj}{A \code{SpatialPoints*} object, or matrix of coordinates.}

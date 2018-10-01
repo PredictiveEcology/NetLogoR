@@ -12,7 +12,8 @@ maxNof(agents, n, world, var)
 
 \S4method{maxNof}{matrix,numeric,worldMatrix,missing}(agents, n, world)
 
-\S4method{maxNof}{matrix,numeric,worldArray,character}(agents, n, world, var)
+\S4method{maxNof}{matrix,numeric,worldArray,character}(agents, n, world,
+  var)
 
 \S4method{maxNof}{agentMatrix,numeric,missing,character}(agents, n, var)
 }

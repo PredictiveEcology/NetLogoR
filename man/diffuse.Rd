@@ -12,8 +12,8 @@ diffuse(world, pVar, share, nNeighbors, torus = FALSE)
 \S4method{diffuse}{worldMatrix,missing,numeric,numeric}(world, share,
   nNeighbors, torus)
 
-\S4method{diffuse}{worldArray,character,numeric,numeric}(world, pVar, share,
-  nNeighbors, torus = FALSE)
+\S4method{diffuse}{worldArray,character,numeric,numeric}(world, pVar,
+  share, nNeighbors, torus = FALSE)
 }
 \arguments{
 \item{world}{WorldMatrix or worldArray object.}
