@@ -22,8 +22,8 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Eliot J B McIntire \email{eliot.mcintire@canada.ca} (https://orcid.org/0000-0002-6914-8316)
-  \item Alex M Chubaty \email{alex.chubaty@gmail.com} (https://orcid.org/0000-0001-7146-8135)
+  \item Eliot J B McIntire \email{eliot.mcintire@canada.ca} (0000-0002-6914-8316)
+  \item Alex M Chubaty \email{alex.chubaty@gmail.com} (0000-0001-7146-8135)
 }
 
 Other contributors:
