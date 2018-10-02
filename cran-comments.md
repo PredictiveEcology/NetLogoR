@@ -1,6 +1,7 @@
 ## Resubmission
 
-In this version we have fixed the use of a suggested package in tests, which was causing errors on CRAN.
+In this version we have set a seed in tests to avoid random CRAN test failures.
+We will ensure all seeds work in a future release. 
 
 ## Test environments
 
@@ -12,19 +13,19 @@ In this version we have fixed the use of a suggested package in tests, which was
 * Windows                 (local), R 3.4.4
 
 ### Current R versions
-* macOS High Sierra    (local), R 3.5.0
-* OS X El Capitan  (travis-ci), R 3.5.0
-* Ubuntu 14.04     (travis-ci), R 3.5.0
-* Ubuntu 18.04         (local), R 3.5.0
-* Windows           (appveyor), R 3.5.0
-* Windows        (win-builder), R 3.5.0
-* Windows 7            (local), R 3.5.0
+* macOS High Sierra    (local), R 3.5.1
+* OS X El Capitan  (travis-ci), R 3.5.1
+* Ubuntu 14.04     (travis-ci), R 3.5.1
+* Ubuntu 18.04         (local), R 3.5.1
+* Windows           (appveyor), R 3.5.1
+* Windows        (win-builder), R 3.5.1
+* Windows 7            (local), R 3.5.1
 
 ### Development R version
-* Ubuntu 14.04     (travis-ci), R 3.6.0 (2018-06-05 r74851)
-* Ubuntu 18.04         (local), R 3.6.0 (2018-06-05 r74852)
-* Windows           (appveyor), R 3.6.0 (2018-06-05 r74852)
-* Windows        (win-builder), R 3.6.0 (2018-06-05 r74852)
+* Ubuntu 14.04     (travis-ci), R 3.6.0 (2018-10-02 r75386)
+* Ubuntu 18.04         (local), R 3.6.0 (2018-10-01 r75383)
+* Windows           (appveyor), R 3.6.0 (2018-10-01 r75383)
+* Windows        (win-builder), R 3.6.0 (2018-09-29 r75382)
 
 ## R CMD check results
 

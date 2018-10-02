@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.4</span>
       </span>
     </div>
 
@@ -170,12 +170,12 @@ headings. Must be of length 1 or of length <code>turtles</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>)
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>)
-<span class='fu'><a href='of.html'>of</a></span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1] 116.60476 274.79901  57.43871 236.72740 193.20493  24.08878 241.04943
-#&gt;  [8]  39.80003  60.79073 332.26980</div><div class='input'><span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>right</span>(<span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>angle</span> <span class='kw'>=</span> <span class='fl'>180</span>)
-<span class='fu'><a href='of.html'>of</a></span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1] 296.60476  94.79901 237.43871  56.72740  13.20493 204.08878  61.04943
-#&gt;  [8] 219.80003 240.79073 152.26980</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>)
+<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>)
+<span class='fu'>of</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1] 263.79130  15.02393 173.18107 127.63246  49.17949 230.15355 261.00908
+#&gt;  [8] 343.58080  75.21599 145.59065</div><div class='input'><span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>right</span>(<span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>angle</span> <span class='kw'>=</span> <span class='fl'>180</span>)
+<span class='fu'>of</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1]  83.79130 195.02393 353.18107 307.63246 229.17949  50.15355  81.00908
+#&gt;  [8] 163.58080 255.21599 325.59065</div><div class='input'>
 
 </div></pre>
   </div>

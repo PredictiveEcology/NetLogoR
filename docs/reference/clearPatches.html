@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.4</span>
       </span>
     </div>
 
@@ -164,13 +164,13 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>()
-<span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='NLset.html'>NLset</a></span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patches.html'>patches</a></span>(<span class='no'>w1</span>), <span class='kw'>val</span> <span class='kw'>=</span> <span class='fu'>runif</span>(<span class='fu'><a href='NLcount.html'>NLcount</a></span>(<span class='fu'><a href='patches.html'>patches</a></span>(<span class='no'>w1</span>))))
-<span class='no'>w1Val</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='of.html'>of</a></span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patches.html'>patches</a></span>(<span class='no'>w1</span>))
+    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>()
+<span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>NLset</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'>patches</span>(<span class='no'>w1</span>), <span class='kw'>val</span> <span class='kw'>=</span> <span class='fu'>runif</span>(<span class='fu'>NLcount</span>(<span class='fu'>patches</span>(<span class='no'>w1</span>))))
+<span class='no'>w1Val</span> <span class='kw'>&lt;-</span> <span class='fu'>of</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'>patches</span>(<span class='no'>w1</span>))
 <span class='fu'>summary</span>(<span class='no'>w1Val</span>)</div><div class='output co'>#&gt;      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-#&gt; 0.0006031 0.2408527 0.4884343 0.4944438 0.7399759 0.9990620 </div><div class='input'>
+#&gt; 0.0006031 0.2397561 0.4761861 0.4878095 0.7361248 0.9990620 </div><div class='input'>
 <span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>clearPatches</span>(<span class='no'>w1</span>)
-<span class='no'>w1Val</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='of.html'>of</a></span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patches.html'>patches</a></span>(<span class='no'>w1</span>))
+<span class='no'>w1Val</span> <span class='kw'>&lt;-</span> <span class='fu'>of</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'>patches</span>(<span class='no'>w1</span>))
 <span class='fu'>summary</span>(<span class='no'>w1Val</span>)</div><div class='output co'>#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
 #&gt;      NA      NA      NA     NaN      NA      NA    1089 </div><div class='input'>
 

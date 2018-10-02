@@ -12,7 +12,8 @@ minNof(agents, n, world, var)
 
 \S4method{minNof}{matrix,numeric,worldMatrix,missing}(agents, n, world)
 
-\S4method{minNof}{matrix,numeric,worldArray,character}(agents, n, world, var)
+\S4method{minNof}{matrix,numeric,worldArray,character}(agents, n, world,
+  var)
 
 \S4method{minNof}{agentMatrix,numeric,missing,character}(agents, n, var)
 }

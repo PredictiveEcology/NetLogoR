@@ -72,7 +72,7 @@ equals to the minimum value." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.4</span>
       </span>
     </div>
 
@@ -167,7 +167,7 @@ object, <code>var</code> is the name of the layer to use to define the patches
 values. If <code>agents</code> are turtles, <code>var</code> is one of
 the turtles' variable and can be equal to <code>"xcor"</code>,
 <code>"ycor"</code>, any of the variables created when turtles were created,
-as well as any variable created using <code><a href='turtlesOwn.html'>turtlesOwn()</a></code>.</p></td>
+as well as any variable created using <code>turtlesOwn()</code>.</p></td>
     </tr>
     </table>
     
@@ -198,12 +198,12 @@ as well as any variable created using <code><a href='turtlesOwn.html'>turtlesOwn
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Patches</span>
-<span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>,
+<span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>,
                           <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>5</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>25</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
-<span class='fu'>plot</span>(<span class='no'>w1</span>)</div><div class='img'><img src='withMin-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>p1</span> <span class='kw'>&lt;-</span> <span class='fu'>withMin</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patches.html'>patches</a></span>(<span class='no'>w1</span>), <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>)
+<span class='fu'>plot</span>(<span class='no'>w1</span>)</div><div class='img'><img src='withMin-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>p1</span> <span class='kw'>&lt;-</span> <span class='fu'>withMin</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'>patches</span>(<span class='no'>w1</span>), <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>)
 
 <span class='co'># Turtles</span>
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='randomXYcor.html'>randomXYcor</a></span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>),
+<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'>randomXYcor</span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>),
                     <span class='kw'>heading</span> <span class='kw'>=</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>replace</span><span class='kw'>=</span> <span class='fl'>TRUE</span>))
 <span class='no'>t2</span> <span class='kw'>&lt;-</span> <span class='fu'>withMin</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div></pre>
   </div>

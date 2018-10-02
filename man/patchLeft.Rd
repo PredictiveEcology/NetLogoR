@@ -8,8 +8,8 @@
 \usage{
 patchLeft(world, turtles, dist, angle, torus = FALSE)
 
-\S4method{patchLeft}{worldNLR,agentMatrix,numeric,numeric}(world, turtles, dist,
-  angle, torus = FALSE)
+\S4method{patchLeft}{worldNLR,agentMatrix,numeric,numeric}(world, turtles,
+  dist, angle, torus = FALSE)
 }
 \arguments{
 \item{world}{WorldMatrix or worldArray object.}

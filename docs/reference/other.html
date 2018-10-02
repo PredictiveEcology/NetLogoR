@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.4</span>
       </span>
     </div>
 
@@ -181,13 +181,13 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Patches</span>
-<span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
-<span class='no'>p1</span> <span class='kw'>&lt;-</span> <span class='fu'>other</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patches.html'>patches</a></span>(<span class='no'>w1</span>), <span class='kw'>except</span> <span class='kw'>=</span> <span class='fu'><a href='patch.html'>patch</a></span>(<span class='no'>w1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>))
-<span class='fu'><a href='NLcount.html'>NLcount</a></span>(<span class='no'>p1</span>) <span class='co'># 99 patches</span></div><div class='output co'>#&gt; [1] 99</div><div class='input'>
+<span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
+<span class='no'>p1</span> <span class='kw'>&lt;-</span> <span class='fu'>other</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'>patches</span>(<span class='no'>w1</span>), <span class='kw'>except</span> <span class='kw'>=</span> <span class='fu'>patch</span>(<span class='no'>w1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>))
+<span class='fu'>NLcount</span>(<span class='no'>p1</span>) <span class='co'># 99 patches</span></div><div class='output co'>#&gt; [1] 99</div><div class='input'>
 <span class='co'># Turtles</span>
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='agentMatrix-bind-methods.html'>cbind</a></span>(<span class='kw'>xcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>ycor</span> <span class='kw'>=</span> <span class='fl'>0</span>))
-<span class='no'>t2</span> <span class='kw'>&lt;-</span> <span class='fu'>other</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>except</span> <span class='kw'>=</span> <span class='fu'><a href='turtle.html'>turtle</a></span>(<span class='no'>t1</span>, <span class='kw'>who</span> <span class='kw'>=</span> <span class='fl'>0</span>))
-<span class='fu'><a href='NLcount.html'>NLcount</a></span>(<span class='no'>t2</span>) <span class='co'># 9 turtles</span></div><div class='output co'>#&gt; [1] 9</div><div class='input'>
+<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'>cbind</span>(<span class='kw'>xcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>ycor</span> <span class='kw'>=</span> <span class='fl'>0</span>))
+<span class='no'>t2</span> <span class='kw'>&lt;-</span> <span class='fu'>other</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>except</span> <span class='kw'>=</span> <span class='fu'>turtle</span>(<span class='no'>t1</span>, <span class='kw'>who</span> <span class='kw'>=</span> <span class='fl'>0</span>))
+<span class='fu'>NLcount</span>(<span class='no'>t2</span>) <span class='co'># 9 turtles</span></div><div class='output co'>#&gt; [1] 9</div><div class='input'>
 
 </div></pre>
   </div>

@@ -72,7 +72,7 @@ and given angle left of their headings." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.4</span>
       </span>
     </div>
 
@@ -136,8 +136,8 @@ and given <code>angle</code> left of their headings.</p>
     <pre class="usage"><span class='fu'>patchLeft</span>(<span class='no'>world</span>, <span class='no'>turtles</span>, <span class='no'>dist</span>, <span class='no'>angle</span>, <span class='kw'>torus</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for worldNLR,agentMatrix,numeric,numeric</span>
-<span class='fu'>patchLeft</span>(<span class='no'>world</span>, <span class='no'>turtles</span>, <span class='no'>dist</span>,
-  <span class='no'>angle</span>, <span class='kw'>torus</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>patchLeft</span>(<span class='no'>world</span>, <span class='no'>turtles</span>,
+  <span class='no'>dist</span>, <span class='no'>angle</span>, <span class='kw'>torus</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -197,8 +197,8 @@ length <code>turtles</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='agentMatrix-bind-methods.html'>cbind</a></span>(<span class='kw'>xcor</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>ycor</span> <span class='kw'>=</span> <span class='fl'>2</span>), <span class='kw'>heading</span> <span class='kw'>=</span> <span class='fl'>90</span>)
+    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
+<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'>cbind</span>(<span class='kw'>xcor</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>ycor</span> <span class='kw'>=</span> <span class='fl'>2</span>), <span class='kw'>heading</span> <span class='kw'>=</span> <span class='fl'>90</span>)
 <span class='fu'>patchLeft</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>angle</span> <span class='kw'>=</span> <span class='fl'>90</span>)</div><div class='output co'>#&gt;      pxcor pycor
 #&gt; [1,]     2     4</div><div class='input'>
 

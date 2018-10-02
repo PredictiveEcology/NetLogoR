@@ -9,8 +9,8 @@
 \usage{
 downhill(world, pVar, turtles, nNeighbors, torus = FALSE)
 
-\S4method{downhill}{worldMatrix,missing,agentMatrix,numeric}(world, turtles,
-  nNeighbors, torus)
+\S4method{downhill}{worldMatrix,missing,agentMatrix,numeric}(world,
+  turtles, nNeighbors, torus)
 
 \S4method{downhill}{worldArray,character,agentMatrix,numeric}(world, pVar,
   turtles, nNeighbors, torus = FALSE)

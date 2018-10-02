@@ -8,8 +8,8 @@
 \usage{
 patchDistDir(world, agents, dist, angle, torus = FALSE)
 
-\S4method{patchDistDir}{worldNLR,matrix,numeric,numeric}(world, agents, dist,
-  angle, torus = FALSE)
+\S4method{patchDistDir}{worldNLR,matrix,numeric,numeric}(world, agents,
+  dist, angle, torus = FALSE)
 }
 \arguments{
 \item{world}{WorldMatrix or worldArray object.}

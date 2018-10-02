@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.4</span>
       </span>
     </div>
 
@@ -134,7 +134,8 @@
     <pre class="usage"><span class='fu'>sprout</span>(<span class='no'>n</span>, <span class='no'>patches</span>, <span class='no'>breed</span>, <span class='no'>heading</span>, <span class='no'>color</span>, <span class='no'>turtles</span>)
 
 <span class='co'># S4 method for numeric,matrix</span>
-<span class='fu'>sprout</span>(<span class='no'>n</span>, <span class='no'>patches</span>, <span class='no'>breed</span>, <span class='no'>heading</span>, <span class='no'>color</span>, <span class='no'>turtles</span>)</pre>
+<span class='fu'>sprout</span>(<span class='no'>n</span>, <span class='no'>patches</span>, <span class='no'>breed</span>, <span class='no'>heading</span>, <span class='no'>color</span>,
+  <span class='no'>turtles</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,7 +192,7 @@ If missing, colors are assigned using the function rainbow(n)</p></td>
          is provided, a new agentMatrix is created and the who numbers
          start at 0.</p>
 <p>If <code>turtles</code> is provided and had additional variables created
-         with <code><a href='turtlesOwn.html'>turtlesOwn()</a></code>, <code>NA</code> is given for these variables
+         with <code>turtlesOwn()</code>, <code>NA</code> is given for these variables
          for the new sprouted turtles.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -206,8 +207,8 @@ If missing, colors are assigned using the function rainbow(n)</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>sprout</span>(<span class='kw'>patches</span> <span class='kw'>=</span> <span class='fu'><a href='agentMatrix-bind-methods.html'>cbind</a></span>(<span class='kw'>pxcor</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>pycor</span> <span class='kw'>=</span> <span class='fl'>2</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>)
-<span class='no'>t2</span> <span class='kw'>&lt;-</span> <span class='fu'>sprout</span>(<span class='kw'>patches</span> <span class='kw'>=</span> <span class='fu'><a href='agentMatrix-bind-methods.html'>cbind</a></span>(<span class='kw'>pxcor</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>pycor</span> <span class='kw'>=</span> <span class='fl'>3</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t1</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>sprout</span>(<span class='kw'>patches</span> <span class='kw'>=</span> <span class='fu'>cbind</span>(<span class='kw'>pxcor</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>pycor</span> <span class='kw'>=</span> <span class='fl'>2</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>)
+<span class='no'>t2</span> <span class='kw'>&lt;-</span> <span class='fu'>sprout</span>(<span class='kw'>patches</span> <span class='kw'>=</span> <span class='fu'>cbind</span>(<span class='kw'>pxcor</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>pycor</span> <span class='kw'>=</span> <span class='fl'>3</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t1</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

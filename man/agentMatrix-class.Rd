@@ -3,7 +3,6 @@
 \docType{class}
 \name{agentMatrix-class}
 \alias{agentMatrix-class}
-\alias{agentMatrix-class}
 \title{The agentMatrix class}
 \description{
 Documentation needed.

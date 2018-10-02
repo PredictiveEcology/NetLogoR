@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.3</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.4</span>
       </span>
     </div>
 
@@ -134,14 +134,15 @@
     <pre class="usage"><span class='fu'>NLset</span>(<span class='no'>world</span>, <span class='no'>turtles</span>, <span class='no'>agents</span>, <span class='no'>var</span>, <span class='no'>val</span>)
 
 <span class='co'># S4 method for missing,agentMatrix,agentMatrix,character</span>
-<span class='fu'>NLset</span>(<span class='no'>turtles</span>, <span class='no'>agents</span>,
-  <span class='no'>var</span>, <span class='no'>val</span>)
+<span class='fu'>NLset</span>(<span class='no'>turtles</span>,
+  <span class='no'>agents</span>, <span class='no'>var</span>, <span class='no'>val</span>)
 
 <span class='co'># S4 method for worldMatrix,missing,matrix,missing</span>
 <span class='fu'>NLset</span>(<span class='no'>world</span>, <span class='no'>agents</span>, <span class='no'>val</span>)
 
 <span class='co'># S4 method for worldArray,missing,matrix,character</span>
-<span class='fu'>NLset</span>(<span class='no'>world</span>, <span class='no'>agents</span>, <span class='no'>var</span>, <span class='no'>val</span>)</pre>
+<span class='fu'>NLset</span>(<span class='no'>world</span>, <span class='no'>agents</span>, <span class='no'>var</span>,
+  <span class='no'>val</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -171,13 +172,13 @@ use to define the patches
 values. If <code>agents</code> are turtles, <code>var</code> is some of
 the turtles' variable and can be any of the variables created
 when turtles were created,
-as well as any variable created with <code><a href='turtlesOwn.html'>turtlesOwn()</a></code>.</p></td>
+as well as any variable created with <code>turtlesOwn()</code>.</p></td>
     </tr>
     <tr>
       <th>val</th>
-      <td><p>Numeric or character. Vector of length 1 or length <code><a href='NLcount.html'>NLcount(agents)</a></code>
+      <td><p>Numeric or character. Vector of length 1 or length <code>NLcount(agents)</code>
            if <code>length(var) == 1</code>, or</p>
-<p>Matrix or Dataframe (ncol = <code>length(var)</code>, nrow = <code><a href='NLcount.html'>NLcount(agents)</a></code>).
+<p>Matrix or Dataframe (ncol = <code>length(var)</code>, nrow = <code>NLcount(agents)</code>).
            Columns must be in the same order as <code>var</code>.</p></td>
     </tr>
     </table>
@@ -208,15 +209,15 @@ as well as any variable created with <code><a href='turtlesOwn.html'>turtlesOwn(
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>)
-<span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>NLset</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patches.html'>patches</a></span>(<span class='no'>w1</span>), <span class='kw'>val</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>)
+<span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>NLset</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'>patches</span>(<span class='no'>w1</span>), <span class='kw'>val</span> <span class='kw'>=</span> <span class='fl'>1</span>)
 <span class='co'># Set the patch[0,4] to 0</span>
-<span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>NLset</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patch.html'>patch</a></span>(<span class='no'>w1</span>, <span class='fl'>0</span>, <span class='fl'>4</span>), <span class='kw'>val</span> <span class='kw'>=</span> <span class='fl'>0</span>)
-<span class='fu'><a href='of.html'>of</a></span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patches.html'>patches</a></span>(<span class='no'>w1</span>))</div><div class='output co'>#&gt;  [1] 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</div><div class='input'>
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>heading</span> <span class='kw'>=</span> <span class='fl'>0</span>)
+<span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>NLset</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'>patch</span>(<span class='no'>w1</span>, <span class='fl'>0</span>, <span class='fl'>4</span>), <span class='kw'>val</span> <span class='kw'>=</span> <span class='fl'>0</span>)
+<span class='fu'>of</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'>patches</span>(<span class='no'>w1</span>))</div><div class='output co'>#&gt;  [1] 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</div><div class='input'>
+<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>heading</span> <span class='kw'>=</span> <span class='fl'>0</span>)
 <span class='co'># Set the heading of turtle 0 to 180</span>
-<span class='no'>t2</span> <span class='kw'>&lt;-</span> <span class='fu'>NLset</span>(<span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='turtle.html'>turtle</a></span>(<span class='no'>t1</span>, <span class='kw'>who</span> <span class='kw'>=</span> <span class='fl'>0</span>), <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='fl'>180</span>)
-<span class='fu'><a href='of.html'>of</a></span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t2</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>) <span class='co'># c(180, 0, 0)</span></div><div class='output co'>#&gt; [1] 180   0   0</div><div class='input'>
+<span class='no'>t2</span> <span class='kw'>&lt;-</span> <span class='fu'>NLset</span>(<span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'>turtle</span>(<span class='no'>t1</span>, <span class='kw'>who</span> <span class='kw'>=</span> <span class='fl'>0</span>), <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='fl'>180</span>)
+<span class='fu'>of</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t2</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>) <span class='co'># c(180, 0, 0)</span></div><div class='output co'>#&gt; [1] 180   0   0</div><div class='input'>
 
 </div></pre>
   </div>

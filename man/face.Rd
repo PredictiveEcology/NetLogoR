@@ -8,7 +8,8 @@
 \usage{
 face(turtles, agents2, world, torus = FALSE)
 
-\S4method{face}{agentMatrix,matrix}(turtles, agents2, world, torus = FALSE)
+\S4method{face}{agentMatrix,matrix}(turtles, agents2, world,
+  torus = FALSE)
 }
 \arguments{
 \item{turtles}{AgentMatrix object representing the moving agents.}
