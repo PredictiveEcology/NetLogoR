@@ -4,20 +4,20 @@
 \name{patchDistDir}
 \alias{patchDistDir}
 \alias{patchDistDir,worldNLR,matrix,numeric,numeric-method}
-\title{Patches at given distances and directions}
+\title{\code{Patches} at given distances and directions}
 \usage{
 patchDistDir(world, agents, dist, angle, torus = FALSE)
 
-\S4method{patchDistDir}{worldNLR,matrix,numeric,numeric}(world, agents,
-  dist, angle, torus = FALSE)
+\S4method{patchDistDir}{worldNLR,matrix,numeric,numeric}(world, agents, dist,
+  angle, torus = FALSE)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{dist}{Numeric. Vector of distances from the \code{agents}. Must be
 of length 1 or of the same length as the number of \code{agents}.}
@@ -30,25 +30,25 @@ must be of length 1 or of the same length as the number of
 \code{torus = FALSE}.}
 }
 \value{
-Matrix (ncol = 2) with the first column "pxcor" and the second column
-        "pycor" representing the coordinates of the patches at the distances
+Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+        \code{pycor} representing the coordinates of the \code{patches} at the distances
         \code{dist} and directions \code{angle} of \code{agents}.
-        The order of the patches follows the order of the \code{agents}.
+        The order of the \code{patches} follows the order of the \code{agents}.
 }
 \description{
-Report the coordinates of the patches at the given
+Report the coordinates of the \code{patches} at the given
 distances and directions from the \code{agents}.
 }
 \details{
-If \code{torus = FALSE} and the patch at distance \code{dist} and
-         direction \code{angle} of an agent is outside the \code{world}'s extent,
-         \code{NA} are returned for the patch coordinates.
-         If \code{torus = TRUE}, the patch coordinates from a wrapped \code{world}
+If \code{torus = FALSE} and the \code{patch} at distance \code{dist} and
+         direction \code{angle} of an \code{agent} is outside the \code{world}'s extent,
+         \code{NA} are returned for the \code{patch} coordinates.
+         If \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world}
          are returned.
 
-         If \code{agents} are turtles, their headings are not taken into account;
-         the given directions \code{angle} are used. To find a patch at certain
-         distance from a turtle using the turtle's heading, look at \code{pacthAhead()},
+         If \code{agents} are \code{turtles}, their \code{headings} are not taken into account;
+         the given directions \code{angle} are used. To find a \code{patch} at certain
+         distance from a \code{turtle} using the \code{turtle}'s \code{heading}, look at \code{pacthAhead()},
          \code{patchLeft()} or \code{patchRight()}.
 }
 \examples{

@@ -4,20 +4,20 @@
 \name{worldHeight}
 \alias{worldHeight}
 \alias{worldHeight,worldNLR-method}
-\title{World height}
+\title{\code{World} height}
 \usage{
 worldHeight(world)
 
 \S4method{worldHeight}{worldNLR}(world)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 }
 \value{
 Integer.
 }
 \description{
-Report the height of the \code{world} in patch number.
+Report the height of the \code{world} in \code{patch} number.
 }
 \examples{
 w1 <- createWorld()

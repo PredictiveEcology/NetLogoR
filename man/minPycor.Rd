@@ -4,20 +4,20 @@
 \name{minPycor}
 \alias{minPycor}
 \alias{minPycor,worldNLR-method}
-\title{Minimum pycor}
+\title{Minimum \code{pycor}}
 \usage{
 minPycor(world)
 
 \S4method{minPycor}{worldNLR}(world)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 }
 \value{
 Integer.
 }
 \description{
-Report the patches minimum pycor in the \code{world}.
+Report the patches minimum \code{pycor} in the \code{world}.
 }
 \examples{
 w1 <- createWorld()

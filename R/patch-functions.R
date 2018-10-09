@@ -3,24 +3,24 @@ if (getRversion() >= "3.1.0") {
 }
 
 ################################################################################
-#' Diffuse values in a world
+#' Diffuse values in a \code{world}
 #'
-#' Each patch gives an equal share of a portion of its value to its neighbor patches.
+#' Each \code{patch} gives an equal share of a portion of its value to its neighbor \code{patches}.
 #'
 #' @inheritParams fargs
 #'
 #' @param share      Numeric. Value between 0 and 1 representing the portion of
-#'                   the patches values to be diffused among the neighbors.
+#'                   the \code{patches} values to be diffused among the neighbors.
 #'
-#' @return WorldMatrix or worldArray object with patches values updated.
+#' @return \code{WorldMatrix} or \code{worldArray} object with \code{patches} values updated.
 #'
 #' @details What is given is lost for the patches.
 #'
-#'          If \code{torus = TRUE}, all patches have \code{nNeighbors} patches around
+#'          If \code{torus = TRUE}, all \code{patches} have \code{nNeighbors} \code{patches} around
 #'          them, which
 #'          some may be on the other sides of the \code{world}. If \code{torus = FALSE},
-#'          patches located on the edges of the \code{world} have less than
-#'          \code{nNeighbors} patches around them.
+#'          \code{patches} located on the edges of the \code{world} have less than
+#'          \code{nNeighbors} \code{patches} around them.
 #'          However, each neighbor still gets 1/4 or 1/8 of the shared amount
 #'          and the diffusing
 #'          patch keeps the leftover.
@@ -291,19 +291,19 @@ setMethod(
 })
 
 ################################################################################
-#' Neighbors patches
+#' Neighbors \code{patches}
 #'
-#' Report the coordinates of the neighbors patches around the \code{agents}.
+#' Report the coordinates of the neighbors \code{patches} around the \code{agents}.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (ncol = 3) with the first column "pxcor"
-#'         and the second column "pycor" representing the coordinates of the neighbors
-#'         patches around the \code{agents} and the third column "id" representing
-#'         the "id" of the \code{agents} in the order provided.
+#' @return Matrix (\code{ncol} = 3) with the first column \code{pxcor}
+#'         and the second column \code{pycor} representing the coordinates of the neighbors
+#'         \code{patches} around the \code{agents} and the third column \code{id} representing
+#'         the \code{id} of the \code{agents} in the order provided.
 #'
-#' @details The patch around which the neighbors are identified, or the patch where
-#'          the turtle is located on around which the neighbors are identified, is not
+#' @details The \code{patch} around which the neighbors are identified, or the \code{patch} where
+#'          the \code{turtle} is located on around which the neighbors are identified, is not
 #'          returned.
 #'
 #'          If \code{torus = FALSE}, \code{agents} located on the edges of the
@@ -388,37 +388,37 @@ setMethod(
 })
 
 ################################################################################
-#' Patches coordinates
+#' \code{Patches} coordinates
 #'
-#' Report the coordinates of the patches at the given \code{[x, y]} locations.
+#' Report the coordinates of the \code{patches} at the given \code{[x, y]} locations.
 #'
 #' @inheritParams fargs
 #'
-#' @param x          Numeric. Vector of x coordinates. Must be of same
+#' @param x          Numeric. Vector of \code{x} coordinates. Must be of same
 #'                   length as \code{y}.
 #'
-#' @param y          Numeric. Vector of y coordinates. Must be of same
+#' @param y          Numeric. Vector of \code{y} coordinates. Must be of same
 #'                   length as \code{x}.
 #'
 #' @param duplicate  Logical. If more than one location \code{[x, y]}
-#'                   fall into the same patch and \code{duplicate == TRUE}, the
-#'                   patch coordinates are returned the number of times the locations.
-#'                   If \code{duplicate == FALSE}, the patch coordinates
+#'                   fall into the same \code{patch} and \code{duplicate == TRUE}, the
+#'                   \code{patch} coordinates are returned the number of times the locations.
+#'                   If \code{duplicate == FALSE}, the \code{patch} coordinates
 #'                   are only returned once.
 #'                   Default is \code{duplicate == FALSE}.
 #'
-#' @param out        Logical. If \code{out = FALSE}, no patch coordinates are returned
-#'                   for patches outside of the \code{world}'s extent, if \code{out = TRUE},
+#' @param out        Logical. If \code{out = FALSE}, no \code{patch} coordinates are returned
+#'                   for \code{patches} outside of the \code{world}'s extent, if \code{out = TRUE},
 #'                   \code{NA} are returned.
 #'                   Default is \code{out = FALSE}.
 #'
-#' @return Matrix (ncol = 2) with the first column "pxcor" and the second column
-#'         "pycor" representing the patches coordinates at \code{[x, y]}.
+#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+#'         \code{pycor} representing the \code{patches} coordinates at \code{[x, y]}.
 #'
 #' @details If a location \code{[x, y]} is outside the \code{world}'s extent and
-#'          \code{torus = FALSE} and \code{out = FALSE}, no patch coordinates are returned;
+#'          \code{torus = FALSE} and \code{out = FALSE}, no \code{patch} coordinates are returned;
 #'          if \code{torus = FALSE} and \code{out = TRUE}, \code{NA} are returned;
-#'          if \code{torus = TRUE}, the patch coordinates from a wrapped \code{world} are
+#'          if \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world} are
 #'          returned.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch}
@@ -485,12 +485,12 @@ setMethod(
 })
 
 ################################################################################
-#' No patches
+#' No \code{patches}
 #'
-#' Report an empty patch agentset.
+#' Report an empty \code{patch} \code{agentset}.
 #'
-#' @return Matrix (ncol = 2, nrow = 0) with the first column "pxcor" and the
-#'         second column "pycor".
+#' @return Matrix (\code{ncol} = 2, \code{nrow} = 0) with the first column \code{pxcor} and the
+#'         second column \code{pycor}.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#no-patches}
 #'
@@ -512,22 +512,22 @@ noPatches <- function() {
 }
 
 ################################################################################
-#' Patches at
+#' \code{Patches} at
 #'
-#' Report the coordinates of the patches at \code{(dx, dy)} distances of the \code{agents}.
+#' Report the coordinates of the \code{patches} at \code{(dx, dy)} distances of the \code{agents}.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (ncol = 2) with the first column "pxcor" and the second column
-#'         "pycor" representing the coordinates of the patches at \code{(dx, dy)}
-#'         distances of the \code{agents}. The order of the patches follows the order
+#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+#'         \code{pycor} representing the coordinates of the \code{patches} at \code{(dx, dy)}
+#'         distances of the \code{agents}. The order of the \code{patches} follows the order
 #'         of the \code{agents}.
 #'
-#' @details If the patch at distance \code{(dx, dy)}
-#'          of an agent is outside of the \code{world}'s extent and \code{torus = FALSE},
+#' @details If the \code{patch} at distance \code{(dx, dy)}
+#'          of an \code{agent} is outside of the \code{world}'s extent and \code{torus = FALSE},
 #'          \code{NA} are returned
-#'          for the patch coordinates;
-#'          if \code{torus = TRUE}, the patch coordinates from a wrapped \code{world} are
+#'          for the \code{patch} coordinates;
+#'          if \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world} are
 #'          returned.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at}
@@ -576,9 +576,9 @@ setMethod(
 })
 
 ################################################################################
-#' Patches at given distances and directions
+#' \code{Patches} at given distances and directions
 #'
-#' Report the coordinates of the patches at the given
+#' Report the coordinates of the \code{patches} at the given
 #' distances and directions from the \code{agents}.
 #'
 #' @inheritParams fargs
@@ -590,20 +590,20 @@ setMethod(
 #'               must be of length 1 or of the same length as the number of
 #'               \code{agents}. Angles are in degrees with 0 being North.
 #'
-#' @return Matrix (ncol = 2) with the first column "pxcor" and the second column
-#'         "pycor" representing the coordinates of the patches at the distances
+#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+#'         \code{pycor} representing the coordinates of the \code{patches} at the distances
 #'         \code{dist} and directions \code{angle} of \code{agents}.
-#'         The order of the patches follows the order of the \code{agents}.
+#'         The order of the \code{patches} follows the order of the \code{agents}.
 #'
-#' @details If \code{torus = FALSE} and the patch at distance \code{dist} and
-#'          direction \code{angle} of an agent is outside the \code{world}'s extent,
-#'          \code{NA} are returned for the patch coordinates.
-#'          If \code{torus = TRUE}, the patch coordinates from a wrapped \code{world}
+#' @details If \code{torus = FALSE} and the \code{patch} at distance \code{dist} and
+#'          direction \code{angle} of an \code{agent} is outside the \code{world}'s extent,
+#'          \code{NA} are returned for the \code{patch} coordinates.
+#'          If \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world}
 #'          are returned.
 #'
-#'          If \code{agents} are turtles, their headings are not taken into account;
-#'          the given directions \code{angle} are used. To find a patch at certain
-#'          distance from a turtle using the turtle's heading, look at \code{pacthAhead()},
+#'          If \code{agents} are \code{turtles}, their \code{headings} are not taken into account;
+#'          the given directions \code{angle} are used. To find a \code{patch} at certain
+#'          distance from a \code{turtle} using the \code{turtle}'s \code{heading}, look at \code{pacthAhead()},
 #'          \code{patchLeft()} or \code{patchRight()}.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance}
@@ -650,15 +650,15 @@ setMethod(
 })
 
 ################################################################################
-#' All the patches in a world
+#' All the \code{patches} in a \code{world}
 #'
-#' Report the coordinates of all the patches in the \code{world}.
+#' Report the coordinates of all the \code{patches} in the \code{world}.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (ncol = 2) with the first column "pxcor" and the second column
-#'         "pycor" representing the patches coordinates. The order of the patches
-#'         follows the order of the cells numbers as defined for a Raster* object.
+#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+#'         \code{pycor} representing the \code{patches} coordinates. The order of the \code{patches}
+#'         follows the order of the cells numbers as defined for a \code{Raster*} object.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patches}
 #'
@@ -690,17 +690,17 @@ setMethod(
 })
 
 ################################################################################
-#' Patch set
+#' \code{Patch} set
 #'
-#' Report the patch coordinates of all the unique patches contained in the inputs.
+#' Report the \code{patch} coordinates of all the unique \code{patches} contained in the inputs.
 #'
-#' @param ... Matrices (ncol = 2) of patches coordinates with the first column
-#'            "pxcor" and the second column "pycor".
+#' @param ... Matrices (\code{ncol} = 2) of \code{patches} coordinates with the first column
+#'            \code{pxcor} and the second column \code{pycor}.
 #'
-#' @return Matrix (ncol = 2) with the first column "pxcor" and the second column
-#'         "pycor" representing the patches coordinates.
+#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+#'         \code{pycor} representing the \code{patches} coordinates.
 #'
-#' @details Duplicate patches among the inputs are removed in the returned matrix.
+#' @details Duplicate \code{patches} among the inputs are removed in the returned matrix.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-set}
 #'
@@ -740,13 +740,13 @@ setMethod(
 })
 
 ################################################################################
-#' Random pxcor
+#' Random \code{pxcor}
 #'
-#' Report \code{n} random pxcor coordinates within the \code{world}'s extent.
+#' Report \code{n} random \code{pxcor} coordinates within the \code{world}'s extent.
 #'
 #' @inheritParams fargs
 #'
-#' @return Integer. Vector of length \code{n} of pxcor coordinates.
+#' @return Integer. Vector of length \code{n} of \code{pxcor} coordinates.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-pcor}
 #'
@@ -781,13 +781,13 @@ setMethod(
 })
 
 ################################################################################
-#' Random pycor
+#' Random \code{pycor}
 #'
-#' Report \code{n} random pycor coordinates within the \code{world}'s extent.
+#' Report \code{n} random \code{pycor} coordinates within the \code{world}'s extent.
 #'
 #' @inheritParams fargs
 #'
-#' @return Integer. Vector of length \code{n} of pycor coordinates.
+#' @return Integer. Vector of length \code{n} of \code{pycor} coordinates.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-pcor}
 #'

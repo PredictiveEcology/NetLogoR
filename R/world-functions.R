@@ -1,7 +1,7 @@
 ################################################################################
-#' Maximum pxcor
+#' Maximum \code{pxcor}
 #'
-#' Report the patches maximum pxcor in the \code{world}.
+#' Report the patches maximum \code{pxcor} in the \code{world}.
 #'
 #' @inheritParams fargs
 #'
@@ -41,9 +41,9 @@ setMethod(
 
 
 ################################################################################
-#' Maximum pycor
+#' Maximum \code{pycor}
 #'
-#' Report the patches maximum pycor in the \code{world}.
+#' Report the patches maximum \code{pycor} in the \code{world}.
 #'
 #' @inheritParams fargs
 #'
@@ -83,9 +83,9 @@ setMethod(
 
 
 ################################################################################
-#' Minimum pxcor
+#' Minimum \code{pxcor}
 #'
-#' Report the patches minimum pxcor in the \code{world}.
+#' Report the patches minimum \code{pxcor} in the \code{world}.
 #'
 #' @inheritParams fargs
 #'
@@ -125,9 +125,9 @@ setMethod(
 
 
 ################################################################################
-#' Minimum pycor
+#' Minimum \code{pycor}
 #'
-#' Report the patches minimum pycor in the \code{world}.
+#' Report the patches minimum \code{pycor} in the \code{world}.
 #'
 #' @inheritParams fargs
 #'
@@ -167,9 +167,9 @@ setMethod(
 
 
 ################################################################################
-#' World width
+#' \code{World} width
 #'
-#' Report the width of the \code{world} in patch number.
+#' Report the width of the \code{world} in \code{patch} number.
 #'
 #' @inheritParams fargs
 #'
@@ -210,9 +210,9 @@ setMethod(
 
 
 ################################################################################
-#' World height
+#' \code{World} height
 #'
-#' Report the height of the \code{world} in patch number.
+#' Report the height of the \code{world} in \code{patch} number.
 #'
 #' @inheritParams fargs
 #'
@@ -253,13 +253,13 @@ setMethod(
 
 
 ################################################################################
-#' Clear world's patches
+#' Clear \code{world}'s \code{patches}
 #'
-#' Reset all patches values to \code{NA}.
+#' Reset all \code{patches} values to \code{NA}.
 #'
 #' @inheritParams fargs
 #'
-#' @return WorldMatrix object with \code{NA} values for all patches.
+#' @return \code{WorldMatrix} object with \code{NA} values for all \code{patches}.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-patches}
 #'
@@ -316,23 +316,23 @@ setMethod(
 
 
 ################################################################################
-#' Convert a Raster* object into a worldMatrix or worldArray object
+#' Convert a \code{Raster*} object into a \code{worldMatrix} or \code{worldArray} object
 #'
-#' Convert a RasterLayer object into a worldMatrix object or a RasterStack object
-#' into a worldArray object.
+#' Convert a \code{RasterLayer} object into a \code{worldMatrix} object or a \code{RasterStack} object
+#' into a \code{worldArray} object.
 #'
-#' @param raster RasterLayer or RasterStack object.
+#' @param raster \code{RasterLayer} or \code{RasterStack} object.
 #'
-#' @param method "ngb" or "bilinear" for the resample method.
+#' @param method "\code{ngb} or \code{bilinear} for the resample method.
 #'
-#' @return WorldMatrix or worldArray object depending on the input \code{raster}.
-#'         Patches value are retained from the \code{raster}.
+#' @return \code{WorldMatrix} or \code{worldArray} object depending on the input \code{raster}.
+#'         \code{Patches} value are retained from the \code{raster}.
 #'
 #' @details See \code{help("worldMatrix-class")} or \code{help("worldArray-class")}
 #'          for more details on the classes.
 #'
 #'          The \code{raster} is resampled to match the coordinates system and
-#'          resolution of a worldMatrix or worldArray using the chosen \code{method}. The
+#'          resolution of a \code{worldMatrix} or \code{worldArray} using the chosen \code{method}. The
 #'          extent will be bigger by 1 on the width and on the height.
 #'
 #' @examples
@@ -418,17 +418,17 @@ setMethod(
 
 
 ################################################################################
-#' Convert a worldMatrix or worldArray object into a Raster* object
+#' Convert a \code{worldMatrix} or \code{worldArray} object into a \code{Raster*} object
 #'
-#' Convert a worldMatrix object into a RasterLayer object or a
-#' worldArray object into a RasterStack object
+#' Convert a \code{worldMatrix} object into a \code{RasterLayer} object or a
+#' \code{worldArray} object into a \code{RasterStack} object
 #'
 #' @inheritParams fargs
 #'
-#' @return RasterLayer or RasterStack object depending on the input \code{world}.
-#'         Patches value are retained from the \code{world}.
+#' @return \code{RasterLayer} or \code{RasterStack} object depending on the input \code{world}.
+#'         \code{Patches} value are retained from the \code{world}.
 #'
-#' @details The Raster* returned has the same extent and resolution as the \code{world}
+#' @details The \code{Raster*} returned has the same extent and resolution as the \code{world}
 #'          with round coordinates at the center of the cells and coordinates \code{x.5}
 #'          at the edges of the cells.
 #'
@@ -478,7 +478,7 @@ setMethod(
     return(rasterStack)
 })
 
-#' Key base R functions for worldNLR classes
+#' Key base R functions for \code{worldNLR} classes
 #'
 #' Slight modifications from the default versions.
 #'

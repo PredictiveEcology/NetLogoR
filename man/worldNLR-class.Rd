@@ -4,7 +4,7 @@
 \name{worldNLR-class}
 \alias{worldNLR-class}
 \alias{worldNLR}
-\title{The worldNLR class}
+\title{The \code{worldNLR} class}
 \description{
 The \code{worldNLR} class is the union of the \code{worldMatrix} and \code{worldArray}
 classes. Mostly used for building function purposes.

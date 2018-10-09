@@ -5,7 +5,7 @@
 \alias{agentMatrix}
 \alias{agentMatrix,matrix-method}
 \alias{agentMatrix,missing-method}
-\title{Create a new agentMatrix object}
+\title{Create a new \code{agentMatrix} object}
 \usage{
 agentMatrix(..., coords)
 
@@ -15,12 +15,12 @@ agentMatrix(..., coords)
 }
 \arguments{
 \item{...}{Vectors, a data.frame, or a matrix of extra columns to add to the coordinates,
-or a SpatialPointsDataFrame.}
+or a \code{SpatialPointsDataFrame}.}
 
-\item{coords}{A matrix with 2 columns representing x and y coordinates}
+\item{coords}{A matrix with 2 columns representing \code{x} and \code{y} coordinates}
 }
 \description{
-This is a fast alternative to the SpatialPointsDataFrame. It is meant to replace
+This is a fast alternative to the \code{SpatialPointsDataFrame}. It is meant to replace
 that functionality, though there are not as many methods (yet). The object is primarily
 a numeric matrix. Any character column passed to ... will be converted to a numeric,
 using \code{as.factor} internally, and stored as a numeric. Methods using this class

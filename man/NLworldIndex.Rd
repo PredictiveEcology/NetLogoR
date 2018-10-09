@@ -4,22 +4,22 @@
 \name{NLworldIndex}
 \alias{NLworldIndex}
 \alias{NLworldIndex,worldMatrix,numeric-method}
-\title{WorldMatrix indices from vector indices}
+\title{\code{WorldMatrix} indices from vector indices}
 \usage{
 NLworldIndex(world, cellNum)
 
 \S4method{NLworldIndex}{worldMatrix,numeric}(world, cellNum)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{cellNum}{Integer. Vector of cells number.}
 }
 \value{
-Numeric. Vector of worldMatrix indices.
+Numeric. Vector of \code{worldMatrix} indices.
 }
 \description{
-Convert vector indices or Raster* cellnumbers into worldMatrix indices.
+Convert vector indices or \code{Raster*} cell numbers into \code{worldMatrix} indices.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 1:100)

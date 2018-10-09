@@ -4,7 +4,9 @@
 \name{agentClasses-class}
 \alias{agentClasses-class}
 \alias{agentClasses}
-\title{A meta class for agentMatrix and SpatialPointsDataFrame}
+\alias{agentClasses-class}
+\alias{agentClasses}
+\title{A meta class for \code{agentMatrix} and \code{SpatialPointsDataFrame}}
 \description{
 Both these types can be used by NetLogoR to describe turtle agents.
 

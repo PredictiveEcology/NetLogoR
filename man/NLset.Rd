@@ -7,59 +7,58 @@
 \alias{NLset,missing,agentMatrix,agentMatrix,character-method}
 \alias{NLset,worldMatrix,missing,matrix,missing-method}
 \alias{NLset,worldArray,missing,matrix,character-method}
-\title{Set an agents variable}
+\title{Set an \code{agents} variable}
 \usage{
 NLset(world, turtles, agents, var, val)
 
-\S4method{NLset}{missing,agentMatrix,agentMatrix,character}(turtles,
-  agents, var, val)
+\S4method{NLset}{missing,agentMatrix,agentMatrix,character}(turtles, agents,
+  var, val)
 
 \S4method{NLset}{worldMatrix,missing,matrix,missing}(world, agents, val)
 
-\S4method{NLset}{worldArray,missing,matrix,character}(world, agents, var,
-  val)
+\S4method{NLset}{worldArray,missing,matrix,character}(world, agents, var, val)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{var}{Character. Vector of the names of the selected \code{agents} variables.
-If \code{agents} are patches and the \code{world} is a
+If \code{agents} are \code{patches} and the \code{world} is a
 \code{worldMatrix} object, \code{var} must not be provided. If
-\code{agents} are patches and the \code{world} is a
+\code{agents} are \code{patches} and the \code{world} is a
 \code{worldArray} object, \code{var} is the name of the layers to
-use to define the patches
-values. If \code{agents} are turtles, \code{var} is some of
-the turtles' variable and can be any of the variables created
-when turtles were created,
+use to define the \code{patches}
+values. If \code{agents} are \code{turtles}, \code{var} is some of
+the \code{turtles}' variable and can be any of the variables created
+when \code{turtles} were created,
 as well as any variable created with \code{turtlesOwn()}.}
 
 \item{val}{Numeric or character. Vector of length 1 or length \code{NLcount(agents)}
            if \code{length(var) == 1}, or
 
-           Matrix or Dataframe (ncol = \code{length(var)}, nrow = \code{NLcount(agents)}).
+           Matrix or \code{Dataframe} (\code{ncol} = \code{length(var)}, \code{nrow} = \code{NLcount(agents)}).
            Columns must be in the same order as \code{var}.}
 }
 \value{
-WorldMatrix or worldArray object with the values \code{val} assigned to the patches
+\code{WorldMatrix} or \code{worldArray} object with the values \code{val} assigned to the \code{patches}
         variables \code{var}
         for the \code{agents}, or
 
-        AgentMatrix representing the \code{turtles} with
+        \code{AgentMatrix} representing the \code{turtles} with
         the values \code{val} assigned to the variables \code{var} for the \code{agents}.
 }
 \description{
 Assign values to the \code{agents} for the selected variables.
 }
 \details{
-If \code{agents} are patches, \code{world} must be provided and \code{turtles}
-         must not be provided. If \code{agents} are turtles, \code{turtles} must be
+If \code{agents} are \code{patches}, \code{world} must be provided and \code{turtles}
+         must not be provided. If \code{agents} are \code{turtles}, \code{turtles} must be
          provided and \code{world} must not be provided.
 }
 \examples{

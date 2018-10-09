@@ -4,20 +4,20 @@
 \name{worldWidth}
 \alias{worldWidth}
 \alias{worldWidth,worldNLR-method}
-\title{World width}
+\title{\code{World} width}
 \usage{
 worldWidth(world)
 
 \S4method{worldWidth}{worldNLR}(world)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 }
 \value{
 Integer.
 }
 \description{
-Report the width of the \code{world} in patch number.
+Report the width of the \code{world} in \code{patch} number.
 }
 \examples{
 w1 <- createWorld()

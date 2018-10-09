@@ -12,10 +12,10 @@ NLcount(agents)
 \S4method{NLcount}{matrix}(agents)
 }
 \arguments{
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 }
 \value{
 Integer.

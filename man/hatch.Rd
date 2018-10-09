@@ -4,39 +4,39 @@
 \name{hatch}
 \alias{hatch}
 \alias{hatch,agentMatrix,numeric,numeric-method}
-\title{Hatch new turtles}
+\title{Hatch new \code{turtles}}
 \usage{
 hatch(turtles, who, n, breed)
 
 \S4method{hatch}{agentMatrix,numeric,numeric}(turtles, who, n, breed)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{who}{Integer. Vector of the "who" numbers for the selected \code{turtles}.}
+\item{who}{Integer. Vector of the \code{who} numbers for the selected \code{turtles}.}
 
-\item{n}{Integer. Vector of length 1 or of length \code{who}. Number of new turtles
+\item{n}{Integer. Vector of length 1 or of length \code{who}. Number of new \code{turtles}
 to create for each parent.}
 
-\item{breed}{Character. One "breed" name. If missing,
-the created turtles are of the same "breed" as their parent turtle.}
+\item{breed}{Character. One \code{breed} name. If missing,
+the created \code{turtles} are of the same \code{breed} as their parent \code{turtle}.}
 }
 \value{
-AgentMatrix representing the \code{turtles} with the new
+\code{AgentMatrix} representing the \code{turtles} with the new
         hatched ones.
 }
 \description{
-Create new turtles from parent turtles.
+Create new \code{turtles} from parent \code{turtles}.
 }
 \details{
-The parent turtle must be contained in the \code{turtles}.
+The parent \code{turtle} must be contained in the \code{turtles}.
 
-         The created turtles inherit of all the data from the parent turtle,
-         except for the "breed" if specified otherwise, and for the "who" numbers.
-         The "who" numbers of the turtles created take on following the highest
-         "who" number among the \code{turtles}.
+         The created \code{turtles} inherit of all the data from the parent \code{turtle},
+         except for the \code{breed} if specified otherwise, and for the \code{who} numbers.
+         The \code{who}" numbers of the \code{turtles} created take on following the highest
+         \code{who} number among the \code{turtles}.
 
-         All new hatched turtles are placed at the end of the agentMatrix object.
+         All new hatched \code{turtles} are placed at the end of the \code{agentMatrix} object.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)

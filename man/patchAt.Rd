@@ -4,7 +4,7 @@
 \name{patchAt}
 \alias{patchAt}
 \alias{patchAt,worldNLR,matrix,numeric,numeric-method}
-\title{Patches at}
+\title{\code{Patches} at}
 \usage{
 patchAt(world, agents, dx, dy, torus = FALSE)
 
@@ -12,41 +12,41 @@ patchAt(world, agents, dx, dy, torus = FALSE)
   torus = FALSE)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{dx}{Numeric. Vector of distances to the east (right) from the \code{agents}.
 If \code{dx} is negative, the distance to the west (left) is computed.
-\code{dx} must be of length 1 or of the same length as number of patches
-or turtles in \code{agents}.}
+\code{dx} must be of length 1 or of the same length as number of \code{patches}
+or \code{turtles} in \code{agents}.}
 
 \item{dy}{Numeric. Vector of distances to the north (up) from the \code{agents}.
 If \code{dy} is negative, the distance to the south is computed (down).
-\code{dy} must be of length 1 or of the same length as number of patches
-or turtles in \code{agents}.}
+\code{dy} must be of length 1 or of the same length as number of \code{patches}
+or \code{turtles} in \code{agents}.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}
 }
 \value{
-Matrix (ncol = 2) with the first column "pxcor" and the second column
-        "pycor" representing the coordinates of the patches at \code{(dx, dy)}
-        distances of the \code{agents}. The order of the patches follows the order
+Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+        \code{pycor} representing the coordinates of the \code{patches} at \code{(dx, dy)}
+        distances of the \code{agents}. The order of the \code{patches} follows the order
         of the \code{agents}.
 }
 \description{
-Report the coordinates of the patches at \code{(dx, dy)} distances of the \code{agents}.
+Report the coordinates of the \code{patches} at \code{(dx, dy)} distances of the \code{agents}.
 }
 \details{
-If the patch at distance \code{(dx, dy)}
-         of an agent is outside of the \code{world}'s extent and \code{torus = FALSE},
+If the \code{patch} at distance \code{(dx, dy)}
+         of an \code{agent} is outside of the \code{world}'s extent and \code{torus = FALSE},
          \code{NA} are returned
-         for the patch coordinates;
-         if \code{torus = TRUE}, the patch coordinates from a wrapped \code{world} are
+         for the \code{patch} coordinates;
+         if \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world} are
          returned.
 }
 \examples{

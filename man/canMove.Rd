@@ -4,16 +4,16 @@
 \name{canMove}
 \alias{canMove}
 \alias{canMove,worldNLR,agentMatrix,numeric-method}
-\title{Can the turtles move?}
+\title{Can the \code{turtles} move?}
 \usage{
 canMove(world, turtles, dist)
 
 \S4method{canMove}{worldNLR,agentMatrix,numeric}(world, turtles, dist)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{dist}{Numeric. Vector of distances to move. Must
 be of length 1 or of length \code{turtles}.}
@@ -22,7 +22,7 @@ be of length 1 or of length \code{turtles}.}
 Logical. Vector of length \code{turtles}.
 }
 \description{
-Report \code{TRUE} if a turtle can move the given distance without leaving
+Report \code{TRUE} if a \code{turtle} can move the given distance without leaving
 the \code{world}'s extent, report \code{FALSE} otherwise.
 }
 \examples{

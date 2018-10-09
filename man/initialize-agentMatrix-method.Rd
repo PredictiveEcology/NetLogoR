@@ -3,7 +3,7 @@
 \docType{methods}
 \name{initialize,agentMatrix-method}
 \alias{initialize,agentMatrix-method}
-\title{Initialize for agentMatrix Class}
+\title{Initialize for \code{agentMatrix} Class}
 \usage{
 \S4method{initialize}{agentMatrix}(.Object = "agentMatrix", coords, ...,
   levelsAM)
@@ -21,5 +21,5 @@ match with elements in ..., and each character vector
 should be the length of unique elements in the ... element.}
 }
 \description{
-To create a new agentMatrix object.
+To create a new \code{agentMatrix} object.
 }

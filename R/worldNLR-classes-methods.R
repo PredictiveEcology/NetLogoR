@@ -1,32 +1,32 @@
 ################################################################################
-#' The worldMatrix class
+#' The \code{worldMatrix} class
 #'
 #' This is an s4 class extension of \code{matrix} with 7 additional slots.
-#' A \code{worldMatrix} object can be viewed as a grid composed of squared patches
-#' (i.e., matrix cells). Patches have two spatial coordinates \code{pxcor} and
+#' A \code{worldMatrix} object can be viewed as a grid composed of squared \code{patches}
+#' (i.e., matrix cells). \code{Patches} have two spatial coordinates \code{pxcor} and
 #' \code{pycor}, representing the location of their center. \code{pxcor} and
 #' \code{pycor} are always integer and increment by 1. \code{pxcor} increases as
 #' you move right and \code{pycor} increases as you move up.  \code{pxcor} and
-#' \code{pycor} can be negative if there are patches to the left or below the patch
+#' \code{pycor} can be negative if there are \code{patches} to the left or below the \code{patch}
 #' \code{[pxcor = 0, pycor = 0]}.
 #'
 #' The first four slots of the \code{worldMatrix} are: \code{minPxcor}, \code{maxPxcor},
-#' \code{minPycor}, \code{maxPycor} which represent the minimum and maximum patches
+#' \code{minPycor}, \code{maxPycor} which represent the minimum and maximum \code{patches}
 #' coordinates in the \code{worldMatrix}.
 #' The slot \code{extent} is similar to a \code{Raster*} extent. Because \code{pxcor}
-#' and \code{pycor} represent the spatial location at the center of the patches and the
+#' and \code{pycor} represent the spatial location at the center of the \code{patches} and the
 #' resolution of them is 1, the extent of the \code{worldMatrix} is equal to
 #' \code{xmin = minPxcor - 0.5}, \code{xmax = maxPxcor + 0.5}, \code{ymin = minPycor - 0.5},
 #' and \code{ymax = maxPycor + 0.5}.
-#' The number of patches in a \code{worldMatrix} is equal to
+#' The number of \code{patches} in a \code{worldMatrix} is equal to
 #' \code{((maxPxcor - minPxcor) + 1) * ((maxPycor - minPycor) + 1)}.
-#' The slot \code{res} is equal to \code{1} as it is the spatial resolution of the patches.
-#' The last slot \code{pCoords} is a \code{matrix} representing the patches coordinates
+#' The slot \code{res} is equal to \code{1} as it is the spatial resolution of the \code{patches}.
+#' The last slot \code{pCoords} is a \code{matrix} representing the \code{patches} coordinates
 #' of all the matrix cells in the order of cells in a \code{Raster*} (i.e., by rows).
 #'
 #' Careful: The methods \code{[]} and \code{[] <-} retrieve or assign values for
-#' the patches in the given order of the patches coordinates provided.
-#' When no patches coordinates are provided, the values retrieved or assigned
+#' the \code{patches} in the given order of the \code{patches} coordinates provided.
+#' When no \code{patches} coordinates are provided, the values retrieved or assigned
 #' is done in the order of the cell numbers as defined in in \code{Raster*} objects
 #' (i.e., by rows).
 #'
@@ -120,9 +120,9 @@ setReplaceMethod(
 
 
 ################################################################################
-#' Create a world
+#' Create a \code{world}
 #'
-#' Create a world of patches of class worldMatrix.
+#' Create a \code{world} of \code{patches} of class \code{worldMatrix}.
 #'
 #' @inheritParams fargs
 #'
@@ -130,7 +130,7 @@ setReplaceMethod(
 #'            \code{(maxPxcor - minPxcor + 1) * (maxPycor - minPycor + 1)}.
 #'             Default is \code{NA}.
 #'
-#' @return WorldMatrix object composed of
+#' @return \code{WorldMatrix} object composed of
 #'         \code{(maxPxcor - minPxcor + 1) * (maxPycor - minPycor + 1)}
 #'         patches (i.e., matrix cells).
 #'
@@ -140,7 +140,7 @@ setReplaceMethod(
 #'          \code{minPxcor = -16},
 #'          \code{maxPxcor = 16}, \code{minPycor = -16}, and \code{maxPycor = 16}.
 #'
-#'          See \code{help("worldMatrix-class")} for more details on the worldMatrix class.
+#'          See \code{help("worldMatrix-class")} for more details on the \code{worldMatrix} class.
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -201,11 +201,11 @@ setMethod(
 
 
 ################################################################################
-#' The worldArray class
+#' The \code{worldArray} class
 #'
 #' This is an s4 class extension of \code{array}. It is a collection of several
 #' \code{worldMatrix} objects with the same extent (i.e., same values for all their
-#' slots) stacked together. It is used to keep more than one value per patch.
+#' slots) stacked together. It is used to keep more than one value per \code{patch}.
 #'
 #' @aliases worldArray
 #' @name worldArray-class
@@ -302,15 +302,15 @@ setReplaceMethod(
 
 
 ################################################################################
-#' Stack worlds
+#' Stack \code{worlds}
 #'
-#' Stack multiple worldMatrix into a worldArray.
+#' Stack multiple \code{worldMatrix} into a \code{worldArray}.
 #'
-#' @param ... worldMatrix objects.
+#' @param ... \code{worldMatrix} objects.
 #'
-#' @return worldArray object.
+#' @return \code{worldArray} object.
 #'
-#' @details The worldMatrix objects must all have the same extents.
+#' @details The \code{worldMatrix} objects must all have the same extents.
 #'
 #' @examples
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data = 1:25)
@@ -361,7 +361,7 @@ setMethod(
 
 
 ################################################################################
-#' The worldNLR class
+#' The \code{worldNLR} class
 #'
 #'
 #' The \code{worldNLR} class is the union of the \code{worldMatrix} and \code{worldArray}
@@ -379,9 +379,9 @@ setClassUnion(name = "worldNLR",
 
 
 ################################################################################
-#' Cells numbers from patches coordinates
+#' Cells numbers from \code{patches} coordinates
 #'
-#' Report the cells numbers as defined for a Raster* object given the patches
+#' Report the cells numbers as defined for a \code{Raster*} object given the \code{patches}
 #' coordinates \code{pxcor} and \code{pycor}.
 #'
 #' @inheritParams fargs
@@ -417,15 +417,15 @@ setMethod(
 
 
 ################################################################################
-#' Patches coordinates from cells numbers
+#' \code{Patches} coordinates from cells numbers
 #'
-#' Report the patches coordinates \code{pxcor} and \code{pycor} given the cells
-#' numbers as defined for a Raster* object.
+#' Report the \code{patches} coordinates \code{pxcor} and \code{pycor} given the cells
+#' numbers as defined for a \code{Raster*} object.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (ncol = 2) with the first column "pxcor" and the second
-#'         column "pycor" in the order of the given \code{cellNum}.
+#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+#'         column \code{pycor} in the order of the given \code{cellNum}.
 #'
 #' @examples
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
@@ -459,13 +459,13 @@ setMethod(
 
 
 ################################################################################
-#' WorldMatrix indices from vector indices
+#' \code{WorldMatrix} indices from vector indices
 #'
-#' Convert vector indices or Raster* cellnumbers into worldMatrix indices.
+#' Convert vector indices or \code{Raster*} cell numbers into \code{worldMatrix} indices.
 #'
 #' @inheritParams fargs
 #'
-#' @return Numeric. Vector of worldMatrix indices.
+#' @return Numeric. Vector of \code{worldMatrix} indices.
 #'
 #' @export
 #' @rdname NLworldIndex
@@ -505,13 +505,13 @@ setMethod(
 )
 
 
-#' Subsetting for worldArray class
+#' Subsetting for \code{worldArray} class
 #'
 #' These function similarly to \code{[[} for \code{RasterStack} objects
 #'
 #' @param x     A \code{worldArray} object.
 #' @param i     Index number or layer name specifying a subset of layer(s)
-#'              from the worldArray.
+#'              from the \code{worldArray}.
 #' @export
 #' @rdname Subsetting
 #' @importFrom methods .slotNames
@@ -534,8 +534,8 @@ setMethod("[[", signature(x = "worldArray", i = "ANY"),
 })
 
 #' @export
-#' @param value A replacement worldMatrix layer for one of the current layers in the
-#'              worldArray.
+#' @param value A replacement \code{worldMatrix} layer for one of the current layers in the
+#'              \code{worldArray}.
 #' @name [[<-
 #' @aliases [[<-,worldArray,ANY,ANY,ANY-method
 #' @rdname Subsetting

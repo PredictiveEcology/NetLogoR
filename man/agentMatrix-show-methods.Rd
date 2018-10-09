@@ -9,7 +9,7 @@
 \alias{head.agentMatrix}
 \alias{tail}
 \alias{tail.agentMatrix}
-\title{Key base R functions for agentMatrix class}
+\title{Key base R functions for \code{agentMatrix} class}
 \usage{
 \S4method{show}{agentMatrix}(object)
 

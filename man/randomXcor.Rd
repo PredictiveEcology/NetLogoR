@@ -4,22 +4,22 @@
 \name{randomXcor}
 \alias{randomXcor}
 \alias{randomXcor,worldNLR,numeric-method}
-\title{Random xcor}
+\title{Random \code{xcor}}
 \usage{
 randomXcor(world, n)
 
 \S4method{randomXcor}{worldNLR,numeric}(world, n)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{n}{Integer.}
 }
 \value{
-Numeric. Vector of length \code{n} of xcor coordinates.
+Numeric. Vector of length \code{n} of \code{xcor} coordinates.
 }
 \description{
-Report \code{n} random xcor coordinates within the \code{world}'s extent.
+Report \code{n} random \code{xcor} coordinates within the \code{world}'s extent.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,

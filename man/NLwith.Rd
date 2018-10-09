@@ -7,7 +7,7 @@
 \alias{NLwith,matrix,worldMatrix,missing-method}
 \alias{NLwith,matrix,worldArray,character-method}
 \alias{NLwith,agentMatrix,missing,character-method}
-\title{Agents with}
+\title{\code{Agents} with}
 \usage{
 NLwith(agents, world, var, val)
 
@@ -18,41 +18,41 @@ NLwith(agents, world, var, val)
 \S4method{NLwith}{agentMatrix,missing,character}(agents, var, val)
 }
 \arguments{
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{var}{Character. The name of the selected \code{agents} variable.
-If \code{agents} are patches and the \code{world} is a
-worldMatrix object, \code{var} must not be provided. If
-\code{agents} are patches and the \code{world} is a worldArray
-object, \code{var} is the name of the layer to use to define the patches
-values. If \code{agents} are turtles, \code{var} is one of
-the turtles' variable and can be equal to \code{"xcor"},
-\code{"ycor"}, any of the variables created when turtles were created,
+If \code{agents} are \code{patches} and the \code{world} is a
+\code{worldMatrix} object, \code{var} must not be provided. If
+\code{agents} are \code{patches} and the \code{world} is a \code{worldArray}
+object, \code{var} is the name of the layer to use to define the \code{patches}
+values. If \code{agents} are \code{turtles}, \code{var} is one of
+the \code{turtles}' variable and can be equal to \code{xcor},
+\code{ycor}, any of the variables created when \code{turtles} were created,
 as well as any variable created using \code{turtlesOwn()}.}
 
 \item{val}{Numeric or character. Vector of any length.}
 }
 \value{
-Matrix (ncol = 2) with the first column "pxcor" and the second column
-        "pycor" representing the coordinates of the patches among the \code{agents}
+Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+        \code{pycor} representing the coordinates of the \code{patches} among the \code{agents}
         which have their variable
         equals to any \code{val}, or
 
-        AgentMatrix representing the turtles among the \code{agents}
+        \code{AgentMatrix} representing the \code{turtles} among the \code{agents}
         which have their variable
         \code{var} equals to any \code{val}.
 }
 \description{
-Report the patches or the turtles among \code{agents} which have their variable
+Report the \code{patches} or the \code{turtles} among \code{agents} which have their variable
 equals to specific values.
 }
 \details{
-\code{world} must not be provided if \code{agents} are turtles.
+\code{world} must not be provided if \code{agents} are \code{turtles}.
 
          This is equivalent in R to subsetting.
 }

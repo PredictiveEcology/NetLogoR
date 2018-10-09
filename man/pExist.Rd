@@ -11,12 +11,12 @@ pExist(world, pxcor, pycor)
 \S4method{pExist}{worldNLR,numeric,numeric}(world, pxcor, pycor)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{pxcor}{Integer. Vector of patches pxcor coordinates. Must be of length 1
+\item{pxcor}{Integer. Vector of patches \code{pxcor} coordinates. Must be of length 1
 or of the same length as \code{pycor}.}
 
-\item{pycor}{Integer. Vector of patches pycor coordinates. Must be of length 1
+\item{pycor}{Integer. Vector of patches \code{pycor} coordinates. Must be of length 1
 or of the same length as \code{pxcor}.}
 }
 \value{

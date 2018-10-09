@@ -40,4 +40,6 @@ When \code{x} is a Raster* object, you can pass four additional arguments to cro
 }
 \description{
 Same as \code{\link[sp]{bbox}} and \code{\link[raster]{extent}}
+
+\code{.bboxCoords} is a drop in replacement for .bboxCoords in raster package.
 }

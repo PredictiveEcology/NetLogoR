@@ -5,7 +5,7 @@
 \alias{turtlesOwn}
 \alias{turtlesOwn,agentMatrix,character,missing-method}
 \alias{turtlesOwn,agentMatrix,character,ANY-method}
-\title{New turtles variable}
+\title{New \code{turtles} variable}
 \usage{
 turtlesOwn(turtles, tVar, tVal)
 
@@ -14,7 +14,7 @@ turtlesOwn(turtles, tVar, tVal)
 \S4method{turtlesOwn}{agentMatrix,character,ANY}(turtles, tVar, tVal)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{tVar}{Character. the name of the \code{turtles} variable to create.}
 
@@ -23,7 +23,7 @@ Must be of length 1 or of length \code{turtles}.
 If missing, \code{NA} is given.}
 }
 \value{
-AgentMatrix representing the \code{turtles} with the new
+\code{AgentMatrix} representing the \code{turtles} with the new
         variable \code{tVar} added.
 }
 \description{

@@ -4,22 +4,22 @@
 \name{turtles2spdf}
 \alias{turtles2spdf}
 \alias{turtles2spdf,agentMatrix-method}
-\title{From agentMatrix to SpatialPointsDataFrame}
+\title{From \code{agentMatrix} to \code{SpatialPointsDataFrame}}
 \usage{
 turtles2spdf(turtles)
 
 \S4method{turtles2spdf}{agentMatrix}(turtles)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 }
 \value{
-SpatialPointsDataFrame object representing the moving agents
+\code{SpatialPointsDataFrame} object representing the moving \code{agents}
        (coordinates and data)
         as contained in \code{turtles}.
 }
 \description{
-Convert an agentMatrix object into a SpatialPointsDataFrame object.
+Convert an \code{agentMatrix} object into a \code{SpatialPointsDataFrame} object.
 }
 \examples{
 t1 <- createTurtles(n = 10, coords = cbind(xcor = 1:10, ycor = 1:10))

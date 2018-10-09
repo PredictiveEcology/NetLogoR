@@ -7,10 +7,10 @@
 #' to use the `quickPlot::Plot` function.
 #' Users can still use `plot` from the `graphics` package, but it is not modular.
 #'
-#' This adds agentMatrix to the \code{.quickPlottables}, \code{.quickObjects},
+#' This adds \code{agentMatrix} to the \code{.quickPlottables}, \code{.quickObjects},
 #' and \code{spatialObjects}.
 #'
-#' This adds worldMatrix to the \code{.quickPlottables}, \code{.quickObjects},
+#' This adds \code{worldMatrix} to the \code{.quickPlottables}, \code{.quickObjects},
 #' \code{spatialObjects} and \code{griddedClasses}.
 #'
 #' @seealso \code{\link{quickPlotClasses}}

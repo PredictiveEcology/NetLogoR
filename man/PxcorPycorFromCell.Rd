@@ -4,24 +4,24 @@
 \name{PxcorPycorFromCell}
 \alias{PxcorPycorFromCell}
 \alias{PxcorPycorFromCell,worldNLR,numeric-method}
-\title{Patches coordinates from cells numbers}
+\title{\code{Patches} coordinates from cells numbers}
 \usage{
 PxcorPycorFromCell(world, cellNum)
 
 \S4method{PxcorPycorFromCell}{worldNLR,numeric}(world, cellNum)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{cellNum}{Integer. Vector of cells number.}
 }
 \value{
-Matrix (ncol = 2) with the first column "pxcor" and the second
-        column "pycor" in the order of the given \code{cellNum}.
+Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+        column \code{pycor} in the order of the given \code{cellNum}.
 }
 \description{
-Report the patches coordinates \code{pxcor} and \code{pycor} given the cells
-numbers as defined for a Raster* object.
+Report the \code{patches} coordinates \code{pxcor} and \code{pycor} given the cells
+numbers as defined for a \code{Raster*} object.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)

@@ -6,78 +6,78 @@
 \arguments{
 \item{n}{Integer.}
 
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}
 
-\item{minPxcor}{Integer. Minimum pxcor for the patches (world's left border).}
+\item{minPxcor}{Integer. Minimum \code{pxcor} for the \code{patches} (\code{world}'s left border).}
 
-\item{maxPxcor}{Integer. Maximum pxcor for the patches (world's right border).}
+\item{maxPxcor}{Integer. Maximum \code{pxcor} for the \code{patches} (\code{world}'s right border).}
 
-\item{minPycor}{Integer. Minimum pycor for the patches (world's bottom border).}
+\item{minPycor}{Integer. Minimum \code{pycor} for the \code{patches} (\code{world}'s bottom border).}
 
-\item{maxPycor}{Integer. Maximum pycor for the patches (world's top border).}
+\item{maxPycor}{Integer. Maximum \code{pycor} for the \code{patches} (\code{world}'s top border).}
 
-\item{pxcor}{Integer. Vector of patches pxcor coordinates. Must be of length 1
+\item{pxcor}{Integer. Vector of patches \code{pxcor} coordinates. Must be of length 1
 or of the same length as \code{pycor}.}
 
-\item{pycor}{Integer. Vector of patches pycor coordinates. Must be of length 1
+\item{pycor}{Integer. Vector of patches \code{pycor} coordinates. Must be of length 1
 or of the same length as \code{pxcor}.}
 
 \item{cellNum}{Integer. Vector of cells number.}
 
-\item{pVar}{Character. If the \code{world} is a worldArray object, \code{pVar}
-is the name of the layer to use to define the patches values.
-\code{pVar} must not be provided if the \code{world} is a worldMatrix object.}
+\item{pVar}{Character. If the \code{world} is a \code{worldArray} object, \code{pVar}
+is the name of the layer to use to define the \code{patches} values.
+\code{pVar} must not be provided if the \code{world} is a \code{worldMatrix} object.}
 
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{patches}{Matrix (ncol = 2) with the first column "pxcor" and the second
-column "pycor" representing the patches coordinates.}
+\item{patches}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+column \code{pycor} representing the \code{patches} coordinates.}
 
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{agents2}{Matrix (ncol = 2) with the first column "pxcor" and the second
-               column "pycor" representing the patches coordinates, or
+\item{agents2}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+               column \code{pycor} representing the \code{patches} coordinates, or
 
-               AgentMatrix object representing the moving agents, or
+               \code{AgentMatrix} object representing the moving \code{agents}, or
 
-               Matrix (ncol = 2) with the first column "x and the second column
-               "y" representing locations coordinates.}
+               Matrix (\code{ncol} = 2) with the first column \code{x} and the second column
+               \code{y} representing locations coordinates.}
 
-\item{nNeighbors}{Integer: 4 or 8. Represents the number of neighbor patches
+\item{nNeighbors}{Integer: 4 or 8. Represents the number of neighbor \code{patches}
 considered.}
 
 \item{dx}{Numeric. Vector of distances to the east (right) from the \code{agents}.
 If \code{dx} is negative, the distance to the west (left) is computed.
-\code{dx} must be of length 1 or of the same length as number of patches
-or turtles in \code{agents}.}
+\code{dx} must be of length 1 or of the same length as number of \code{patches}
+or \code{turtles} in \code{agents}.}
 
 \item{dy}{Numeric. Vector of distances to the north (up) from the \code{agents}.
 If \code{dy} is negative, the distance to the south is computed (down).
-\code{dy} must be of length 1 or of the same length as number of patches
-or turtles in \code{agents}.}
+\code{dy} must be of length 1 or of the same length as number of \code{patches}
+or \code{turtles} in \code{agents}.}
 
-\item{color}{Character. Vector of color names. Must be of length \code{n}.
-If missing, colors are assigned using the function \code{rainbow(n)}.}
+\item{color}{Character. Vector of \code{color} names. Must be of length \code{n}.
+If missing, \code{colors} are assigned using the function \code{rainbow(n)}.}
 
-\item{who}{Integer. Vector of the "who" numbers for the selected \code{turtles}.}
+\item{who}{Integer. Vector of the \code{who} numbers for the selected \code{turtles}.}
 
-\item{breed}{Characters. Vector of "breed" names for the selected \code{turtles}.
-If missing, there is no distinction based upon "breed".}
+\item{breed}{Characters. Vector of \code{breed} names for the selected \code{turtles}.
+If missing, there is no distinction based upon \code{breed}.}
 
 \item{var}{Character. The name of the selected \code{agents} variable.
-If \code{agents} are patches and the \code{world} is a
-worldMatrix object, \code{var} must not be provided. If
-\code{agents} are patches and the \code{world} is a worldArray
-object, \code{var} is the name of the layer to use to define the patches
-values. If \code{agents} are turtles, \code{var} is one of
-the turtles' variable and can be equal to \code{"xcor"},
-\code{"ycor"}, any of the variables created when turtles were created,
+If \code{agents} are \code{patches} and the \code{world} is a
+\code{worldMatrix} object, \code{var} must not be provided. If
+\code{agents} are \code{patches} and the \code{world} is a \code{worldArray}
+object, \code{var} is the name of the layer to use to define the \code{patches}
+values. If \code{agents} are \code{turtles}, \code{var} is one of
+the \code{turtles}' variable and can be equal to \code{xcor},
+\code{ycor}, any of the variables created when \code{turtles} were created,
 as well as any variable created using \code{turtlesOwn()}.}
 
 \item{val}{Numeric or character. Vector of any length.}

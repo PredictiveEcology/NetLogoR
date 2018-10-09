@@ -5,7 +5,7 @@
 \alias{raster2world}
 \alias{raster2world,RasterLayer,character-method}
 \alias{raster2world,RasterStack,character-method}
-\title{Convert a Raster* object into a worldMatrix or worldArray object}
+\title{Convert a \code{Raster*} object into a \code{worldMatrix} or \code{worldArray} object}
 \usage{
 raster2world(raster, method)
 
@@ -14,24 +14,24 @@ raster2world(raster, method)
 \S4method{raster2world}{RasterStack,character}(raster, method)
 }
 \arguments{
-\item{raster}{RasterLayer or RasterStack object.}
+\item{raster}{\code{RasterLayer} or \code{RasterStack} object.}
 
-\item{method}{"ngb" or "bilinear" for the resample method.}
+\item{method}{"\code{ngb} or \code{bilinear} for the resample method.}
 }
 \value{
-WorldMatrix or worldArray object depending on the input \code{raster}.
-        Patches value are retained from the \code{raster}.
+\code{WorldMatrix} or \code{worldArray} object depending on the input \code{raster}.
+        \code{Patches} value are retained from the \code{raster}.
 }
 \description{
-Convert a RasterLayer object into a worldMatrix object or a RasterStack object
-into a worldArray object.
+Convert a \code{RasterLayer} object into a \code{worldMatrix} object or a \code{RasterStack} object
+into a \code{worldArray} object.
 }
 \details{
 See \code{help("worldMatrix-class")} or \code{help("worldArray-class")}
          for more details on the classes.
 
          The \code{raster} is resampled to match the coordinates system and
-         resolution of a worldMatrix or worldArray using the chosen \code{method}. The
+         resolution of a \code{worldMatrix} or \code{worldArray} using the chosen \code{method}. The
          extent will be bigger by 1 on the width and on the height.
 }
 \examples{

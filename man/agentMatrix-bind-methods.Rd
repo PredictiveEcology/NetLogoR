@@ -12,12 +12,12 @@
 \method{rbind}{agentMatrix}(..., deparse.level = 1)
 }
 \arguments{
-\item{...}{Two agentMatrix objects}
+\item{...}{Two \code{agentMatrix} objects}
 
 \item{deparse.level}{See \code{\link[base]{cbind}}}
 }
 \description{
-Take a sequence of agentMatrix arguments and combine by columns or rows, respectively.
+Take a sequence of \code{agentMatrix} arguments and combine by columns or rows, respectively.
 This will take the coordinates of the first argument and remove the coordinates
 of the second object.
 }

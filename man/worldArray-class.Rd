@@ -4,11 +4,11 @@
 \name{worldArray-class}
 \alias{worldArray-class}
 \alias{worldArray}
-\title{The worldArray class}
+\title{The \code{worldArray} class}
 \description{
 This is an s4 class extension of \code{array}. It is a collection of several
 \code{worldMatrix} objects with the same extent (i.e., same values for all their
-slots) stacked together. It is used to keep more than one value per patch.
+slots) stacked together. It is used to keep more than one value per \code{patch}.
 }
 \seealso{
 \code{\link{worldMatrix}}

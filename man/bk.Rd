@@ -12,24 +12,24 @@ bk(turtles, dist, world, torus = FALSE, out = TRUE)
   out = TRUE)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{dist}{Numeric. Vector of distances to move. Must
 be of length 1 or of length \code{turtles}.}
 
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}
 
-\item{out}{Logical. Determine if a turtle should move when
+\item{out}{Logical. Determine if a \code{turtle} should move when
 \code{torus = FALSE} and its ending position will be outside of
 the \code{world}'s extent. Default is \code{out = TRUE}.}
 }
 \value{
-AgentMatrix representing the \code{turtles} with updated
-        coordinates and updated data for their previous coordinates "prevX"
-        and "prevY".
+\code{AgentMatrix} representing the \code{turtles} with updated
+        coordinates and updated data for their previous coordinates \code{prevX}
+        and \code{prevY}.
 }
 \description{
 Move the \code{turtles} backward of their headings' directions.
@@ -38,16 +38,16 @@ Move the \code{turtles} backward of their headings' directions.
 If \code{torus = FALSE} and \code{out = TRUE}, \code{world}
          does not need to be provided.
 
-         If a distance to move leads a turtle outside of the \code{world}'s extent
-         and \code{torus = TRUE}, the turtle is
+         If a distance to move leads a \code{turtle} outside of the \code{world}'s extent
+         and \code{torus = TRUE}, the \code{turtle} is
          relocated on the other side of the \code{world}, inside its extent; if
-         \code{torus = FALSE} and \code{out = TRUE}, the turtle moves past the
+         \code{torus = FALSE} and \code{out = TRUE}, the \code{turtle} moves past the
          \code{world}'s extent; if \code{torus = FALSE} and \code{out = FALSE}, the
-         turtle does not move at all. In the event that a turtle does not move,
+         \code{turtle} does not move at all. In the event that a \code{turtle} does not move,
          its previous coordinates are still updated with its position before
          running \code{bk()} (i.e., its current position).
 
-         If a given \code{dist} value is negative, then the turtle moves
+         If a given \code{dist} value is negative, then the \code{turtle} moves
          forward.
 
          The \code{turtles}' headings are not affected by the function (i.e., the

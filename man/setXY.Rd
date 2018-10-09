@@ -5,44 +5,44 @@
 \alias{setXY}
 \alias{setXY,agentMatrix,numeric,numeric,missing,ANY-method}
 \alias{setXY,agentMatrix,numeric,numeric,worldNLR,logical-method}
-\title{Set turtles' locations}
+\title{Set \code{turtles}' locations}
 \usage{
 setXY(turtles, xcor, ycor, world, torus = FALSE)
 
-\S4method{setXY}{agentMatrix,numeric,numeric,missing,ANY}(turtles, xcor,
-  ycor, torus)
+\S4method{setXY}{agentMatrix,numeric,numeric,missing,ANY}(turtles, xcor, ycor,
+  torus)
 
-\S4method{setXY}{agentMatrix,numeric,numeric,worldNLR,logical}(turtles,
-  xcor, ycor, world, torus = FALSE)
+\S4method{setXY}{agentMatrix,numeric,numeric,worldNLR,logical}(turtles, xcor,
+  ycor, world, torus = FALSE)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{xcor}{Numeric. Vector of x coordinates. Must be of length 1 or
+\item{xcor}{Numeric. Vector of \code{x} coordinates. Must be of length 1 or
 of length \code{turtles}.}
 
-\item{ycor}{Numeric. Vector of y coordinates. Must be of length 1 or
+\item{ycor}{Numeric. Vector of \code{y} coordinates. Must be of length 1 or
 of length \code{turtles}.}
 
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}
 }
 \value{
-AgentMatrix representing the \code{turtles} with updated coordinates
-        and updated data for their previous coordinates "prevX" and "prevY"
+\code{AgentMatrix} representing the \code{turtles} with updated coordinates
+        and updated data for their previous coordinates \code{prevX} and \code{prevY}.
 }
 \description{
-Set the turtles \code{xcor} and \code{ycor} coordinates.
+Set the \code{turtles} \code{xcor} and \code{ycor} coordinates.
 }
 \details{
 \code{world} must be provided only if \code{torus = TRUE}.
 
          If the given coordinates \code{[xcor, ycor]}
          are located outside of the \code{world}'s extent and \code{torus = TRUE},
-         then the coordinates assigned to the turtle
-         are the ones from a wrapped \code{word}; if \code{torus = FALSE}, the turtle
+         then the coordinates assigned to the \code{turtle}
+         are the ones from a wrapped \code{word}; if \code{torus = FALSE}, the \code{turtle}
          is located outside of the \code{world}'s extent with the given coordinates.
 }
 \examples{

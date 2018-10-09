@@ -2,16 +2,16 @@
 % Please edit documentation in R/patch-functions.R
 \name{noPatches}
 \alias{noPatches}
-\title{No patches}
+\title{No \code{patches}}
 \usage{
 noPatches()
 }
 \value{
-Matrix (ncol = 2, nrow = 0) with the first column "pxcor" and the
-        second column "pycor".
+Matrix (\code{ncol} = 2, \code{nrow} = 0) with the first column \code{pxcor} and the
+        second column \code{pycor}.
 }
 \description{
-Report an empty patch agentset.
+Report an empty \code{patch} \code{agentset}.
 }
 \examples{
 p1 <- noPatches()

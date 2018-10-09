@@ -4,27 +4,26 @@
 \name{cellFromPxcorPycor}
 \alias{cellFromPxcorPycor}
 \alias{cellFromPxcorPycor,worldNLR,numeric,numeric-method}
-\title{Cells numbers from patches coordinates}
+\title{Cells numbers from \code{patches} coordinates}
 \usage{
 cellFromPxcorPycor(world, pxcor, pycor)
 
-\S4method{cellFromPxcorPycor}{worldNLR,numeric,numeric}(world, pxcor,
-  pycor)
+\S4method{cellFromPxcorPycor}{worldNLR,numeric,numeric}(world, pxcor, pycor)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{pxcor}{Integer. Vector of patches pxcor coordinates. Must be of length 1
+\item{pxcor}{Integer. Vector of patches \code{pxcor} coordinates. Must be of length 1
 or of the same length as \code{pycor}.}
 
-\item{pycor}{Integer. Vector of patches pycor coordinates. Must be of length 1
+\item{pycor}{Integer. Vector of patches \code{pycor} coordinates. Must be of length 1
 or of the same length as \code{pxcor}.}
 }
 \value{
 Numeric. Vector of cells number.
 }
 \description{
-Report the cells numbers as defined for a Raster* object given the patches
+Report the cells numbers as defined for a \code{Raster*} object given the \code{patches}
 coordinates \code{pxcor} and \code{pycor}.
 }
 \examples{

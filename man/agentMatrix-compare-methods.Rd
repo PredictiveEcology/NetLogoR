@@ -16,5 +16,5 @@
 \item{e2}{atomic vector, symbol, call, or other object for which methods have been written.}
 }
 \description{
-Binary operators which allow the comparison of values in an agentMatrix.
+Binary operators which allow the comparison of values in an \code{agentMatrix.}
 }
