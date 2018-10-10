@@ -1,11 +1,10 @@
-################################################################################
-#' quickPlot classes -- for using `quickPlot::Plot``
+#' \code{quickPlot} classes -- for using `quickPlot::Plot``
 #'
 #' \pkg{quickPlot} offers a type of plotting that is modular.
 #' Users of NetLogoR may find this useful for simulation modeling.
 #' We have put in place the required methods and imported the appropriate classes
-#' to use the `quickPlot::Plot` function.
-#' Users can still use `plot` from the `graphics` package, but it is not modular.
+#' to use the \code{quickPlot::Plot} function.
+#' Users can still use \code{plot} from the \pkg{graphics} package, but it is not modular.
 #'
 #' This adds \code{agentMatrix} to the \code{.quickPlottables}, \code{.quickObjects},
 #' and \code{spatialObjects}.
@@ -38,10 +37,9 @@ setIs("worldArray", ".quickPlotObjects")
 setIs("worldArray", "griddedClasses")
 setIs("worldArray", "spatialObjects")
 
-###### quickPlot methods
-#' Methods for quickPlot
+#' Methods for \code{quickPlot}
 #'
-#' These are required to create plotting methods to work with quickPlot.
+#' These are required to create plotting methods to work with \pkg{quickPlot}.
 #'
 #' @export
 #' @inheritParams quickPlot::numLayers
@@ -67,10 +65,11 @@ if (!isGeneric(".plotGrob")) {
 
 #' The suggested package \code{fastshp} can be installed with:
 #' \code{install.packages("fastshp", repos = "https://rforge.net", type = "source")}.
+#'
 #' @export
 #' @exportMethod .plotGrob
 #' @importFrom quickPlot .plotGrob
-#' @importFrom grid gpar gTree gList grid.draw pointsGrob unit
+#' @importFrom grid gList gpar grid.draw gTree pointsGrob unit
 #' @importMethodsFrom quickPlot .plotGrob
 #' @include world-functions.R
 #' @inheritParams quickPlot::.plotGrob
@@ -135,7 +134,6 @@ setMethod(
     return(invisible(pntGrob))
 })
 
-
 #' @export
 #' @inheritParams quickPlot::layerNames
 #' @importFrom quickPlot layerNames
@@ -146,7 +144,6 @@ setMethod(
   definition = function(object) {
     dimnames(object)[[3]]
 })
-
 
 if (!isGeneric(".identifyGrobToPlot")) {
   setGeneric(

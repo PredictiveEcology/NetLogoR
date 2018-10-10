@@ -6,14 +6,14 @@
 \alias{.plotGrob,agentMatrix-method}
 \alias{layerNames,worldArray-method}
 \alias{.identifyGrobToPlot,worldArray,.quickPlotGrob-method}
-\title{Methods for quickPlot}
+\title{Methods for \code{quickPlot}}
 \usage{
 \S4method{numLayers}{worldArray}(x)
 
 \S4method{.plotGrob}{agentMatrix}(grobToPlot, col = NULL, real = FALSE,
-  size = unit(5, "points"), minv, maxv, legend = TRUE, legendText = NULL,
-  length = NULL, gp = gpar(), gpText = gpar(), pch = 19, speedup = 1,
-  name = character(), vp = list(), ...)
+  size = unit(5, "points"), minv, maxv, legend = TRUE,
+  legendText = NULL, length = NULL, gp = gpar(), gpText = gpar(),
+  pch = 19, speedup = 1, name = character(), vp = list(), ...)
 
 \S4method{layerNames}{worldArray}(object)
 
@@ -81,8 +81,5 @@ into Plot (\code{TRUE}), or from the (\code{.quickPlotEnv})
 (\code{FALSE}).}
 }
 \description{
-These are required to create plotting methods to work with quickPlot.
-
-The suggested package \code{fastshp} can be installed with:
-\code{install.packages("fastshp", repos = "https://rforge.net", type = "source")}.
+These are required to create plotting methods to work with \pkg{quickPlot}.
 }

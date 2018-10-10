@@ -9,8 +9,8 @@
 \usage{
 createWorld(minPxcor, maxPxcor, minPycor, maxPycor, data = NA)
 
-\S4method{createWorld}{numeric,numeric,numeric,numeric,ANY}(minPxcor, maxPxcor,
-  minPycor, maxPycor, data = NA)
+\S4method{createWorld}{numeric,numeric,numeric,numeric,ANY}(minPxcor,
+  maxPxcor, minPycor, maxPycor, data = NA)
 
 \S4method{createWorld}{missing,missing,missing,missing,missing}()
 }

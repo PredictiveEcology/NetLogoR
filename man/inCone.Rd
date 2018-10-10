@@ -8,8 +8,8 @@
 \usage{
 inCone(turtles, radius, angle, agents, world, torus = FALSE)
 
-\S4method{inCone}{agentMatrix,numeric,numeric,matrix}(turtles, radius, angle,
-  agents, world, torus = FALSE)
+\S4method{inCone}{agentMatrix,numeric,numeric,matrix}(turtles, radius,
+  angle, agents, world, torus = FALSE)
 }
 \arguments{
 \item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}

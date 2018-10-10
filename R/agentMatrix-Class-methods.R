@@ -716,7 +716,7 @@ setMethod(
     }
 })
 
-#' \code{.bboxCoords} is a drop in replacement for .bboxCoords in raster package.
+#' \code{.bboxCoords} is a drop in replacement for \code{raster::.bboxCoords}.
 #'
 #' @param coords documentation needed
 #'

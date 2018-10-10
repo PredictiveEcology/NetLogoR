@@ -12,8 +12,8 @@ createTurtles(n, coords, world, heading, breed, color)
 \S4method{createTurtles}{numeric,matrix,missing}(n, coords, world, heading,
   breed, color)
 
-\S4method{createTurtles}{numeric,missing,ANY}(n, coords, world, heading, breed,
-  color)
+\S4method{createTurtles}{numeric,missing,ANY}(n, coords, world, heading,
+  breed, color)
 }
 \arguments{
 \item{n}{Integer.}

@@ -5,49 +5,28 @@
 \name{[}
 \alias{[}
 \alias{[,worldMatrix,numeric,numeric,ANY-method}
-\alias{[}
 \alias{[,worldMatrix,missing,missing,ANY-method}
 \alias{[<-}
 \alias{[<-,worldMatrix,numeric,numeric,ANY-method}
-\alias{[<-}
 \alias{[<-,worldMatrix,missing,missing,ANY-method}
-\alias{[}
 \alias{[,worldArray,numeric,numeric,ANY-method}
-\alias{[}
 \alias{[,worldArray,missing,missing,ANY-method}
-\alias{[<-}
 \alias{[<-,worldArray,numeric,numeric,matrix-method}
-\alias{[<-}
 \alias{[<-,worldArray,missing,missing,matrix-method}
-\alias{[}
 \alias{[,agentMatrix,numeric,numeric,ANY-method}
-\alias{[}
 \alias{[,agentMatrix,logical,missing,ANY-method}
-\alias{[}
 \alias{[,agentMatrix,numeric,missing,ANY-method}
-\alias{[}
 \alias{[,agentMatrix,missing,missing,missing-method}
-\alias{[}
 \alias{[,agentMatrix,missing,character,ANY-method}
-\alias{[}
 \alias{[,agentMatrix,numeric,character,ANY-method}
-\alias{[}
 \alias{[,agentMatrix,missing,numeric,ANY-method}
-\alias{[<-}
 \alias{[<-,agentMatrix,numeric,numeric,numeric-method}
-\alias{[<-}
 \alias{[<-,agentMatrix,missing,numeric,numeric-method}
-\alias{[<-}
 \alias{[<-,agentMatrix,numeric,missing,numeric-method}
-\alias{[<-}
 \alias{[<-,agentMatrix,numeric,character,data.frame-method}
-\alias{[<-}
 \alias{[<-,agentMatrix,numeric,numeric,character-method}
-\alias{[<-}
 \alias{[<-,agentMatrix,missing,numeric,character-method}
-\alias{[<-}
 \alias{[<-,agentMatrix,missing,character,character-method}
-\alias{[<-}
 \alias{[<-,agentMatrix,numeric,character,character-method}
 \alias{$,agentMatrix-method}
 \title{Extract or Replace Parts of an Object}
@@ -74,11 +53,14 @@
 
 \S4method{[}{agentMatrix,numeric,missing,ANY}(x, i, j, ..., drop = TRUE)
 
-\S4method{[}{agentMatrix,missing,missing,missing}(x, i, j, ..., drop = TRUE)
+\S4method{[}{agentMatrix,missing,missing,missing}(x, i, j, ...,
+  drop = TRUE)
 
-\S4method{[}{agentMatrix,missing,character,ANY}(x, i, j, ..., drop = TRUE)
+\S4method{[}{agentMatrix,missing,character,ANY}(x, i, j, ...,
+  drop = TRUE)
 
-\S4method{[}{agentMatrix,numeric,character,ANY}(x, i, j, ..., drop = TRUE)
+\S4method{[}{agentMatrix,numeric,character,ANY}(x, i, j, ...,
+  drop = TRUE)
 
 \S4method{[}{agentMatrix,missing,numeric,ANY}(x, i, j, ..., drop = TRUE)
 

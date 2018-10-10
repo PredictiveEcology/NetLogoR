@@ -8,7 +8,8 @@
 \usage{
 cellFromPxcorPycor(world, pxcor, pycor)
 
-\S4method{cellFromPxcorPycor}{worldNLR,numeric,numeric}(world, pxcor, pycor)
+\S4method{cellFromPxcorPycor}{worldNLR,numeric,numeric}(world, pxcor,
+  pycor)
 }
 \arguments{
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}

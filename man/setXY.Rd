@@ -9,11 +9,11 @@
 \usage{
 setXY(turtles, xcor, ycor, world, torus = FALSE)
 
-\S4method{setXY}{agentMatrix,numeric,numeric,missing,ANY}(turtles, xcor, ycor,
-  torus)
+\S4method{setXY}{agentMatrix,numeric,numeric,missing,ANY}(turtles, xcor,
+  ycor, torus)
 
-\S4method{setXY}{agentMatrix,numeric,numeric,worldNLR,logical}(turtles, xcor,
-  ycor, world, torus = FALSE)
+\S4method{setXY}{agentMatrix,numeric,numeric,worldNLR,logical}(turtles,
+  xcor, ycor, world, torus = FALSE)
 }
 \arguments{
 \item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}

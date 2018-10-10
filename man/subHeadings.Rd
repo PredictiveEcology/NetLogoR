@@ -13,9 +13,11 @@ subHeadings(angle1, angle2, range360 = FALSE)
 
 \S4method{subHeadings}{numeric,numeric}(angle1, angle2, range360 = FALSE)
 
-\S4method{subHeadings}{agentMatrix,numeric}(angle1, angle2, range360 = FALSE)
+\S4method{subHeadings}{agentMatrix,numeric}(angle1, angle2,
+  range360 = FALSE)
 
-\S4method{subHeadings}{numeric,agentMatrix}(angle1, angle2, range360 = FALSE)
+\S4method{subHeadings}{numeric,agentMatrix}(angle1, angle2,
+  range360 = FALSE)
 
 \S4method{subHeadings}{agentMatrix,agentMatrix}(angle1, angle2,
   range360 = FALSE)

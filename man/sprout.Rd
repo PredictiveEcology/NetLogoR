@@ -8,7 +8,8 @@
 \usage{
 sprout(n, patches, breed, heading, color, turtles)
 
-\S4method{sprout}{numeric,matrix}(n, patches, breed, heading, color, turtles)
+\S4method{sprout}{numeric,matrix}(n, patches, breed, heading, color,
+  turtles)
 }
 \arguments{
 \item{n}{Integer. Vector of length 1 or of length the number of \code{patches}.
