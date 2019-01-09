@@ -110,7 +110,12 @@ distances and directions from the agents." />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/PredictiveEcology/NetLogoR">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -124,7 +129,7 @@ distances and directions from the agents." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1><code>Patches</code> at given distances and directions</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/PredictiveEcology/NetLogoR/blob/master/R/patch-functions.R'><code>R/patch-functions.R</code></a></small>
     <div class="hidden name"><code>patchDistDir.Rd</code></div>
     </div>
 
@@ -189,7 +194,7 @@ must be of length 1 or of the same length as the number of
 <p>If <code>agents</code> are <code>turtles</code>, their <code>headings</code> are not taken into account;
          the given directions <code>angle</code> are used. To find a <code>patch</code> at certain
          distance from a <code>turtle</code> using the <code>turtle</code>'s <code>heading</code>, look at <code>pacthAhead()</code>,
-         <code>patchLeft()</code> or <code>patchRight()</code>.</p>
+         <code><a href='patchLeft.html'>patchLeft()</a></code> or <code><a href='patchRight.html'>patchRight()</a></code>.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -203,9 +208,9 @@ must be of length 1 or of the same length as the number of
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
-<span class='no'>p1</span> <span class='kw'>&lt;-</span> <span class='fu'>patchDistDir</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'>patch</span>(<span class='no'>w1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>), <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>angle</span> <span class='kw'>=</span> <span class='fl'>45</span>)
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span>(<span class='kw'>xcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>ycor</span> <span class='kw'>=</span> <span class='fl'>0</span>), <span class='kw'>heading</span> <span class='kw'>=</span> <span class='fl'>315</span>)
+    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
+<span class='no'>p1</span> <span class='kw'>&lt;-</span> <span class='fu'>patchDistDir</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patch.html'>patch</a></span>(<span class='no'>w1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>), <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>angle</span> <span class='kw'>=</span> <span class='fl'>45</span>)
+<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='agentMatrix-bind-methods.html'>cbind</a></span>(<span class='kw'>xcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>ycor</span> <span class='kw'>=</span> <span class='fl'>0</span>), <span class='kw'>heading</span> <span class='kw'>=</span> <span class='fl'>315</span>)
 <span class='no'>p2</span> <span class='kw'>&lt;-</span> <span class='fu'>patchDistDir</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>angle</span> <span class='kw'>=</span> <span class='fl'>45</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

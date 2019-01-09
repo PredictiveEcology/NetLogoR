@@ -109,7 +109,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/PredictiveEcology/NetLogoR">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -123,7 +128,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Subtract <code>headings</code></h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/PredictiveEcology/NetLogoR/blob/master/R/turtle-functions.R'><code>R/turtle-functions.R</code></a></small>
     <div class="hidden name"><code>subHeadings.Rd</code></div>
     </div>
 
@@ -200,8 +205,8 @@ Default is <code>range360 = FALSE</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>createOTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>)
+    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
+<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createOTurtles.html'>createOTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>)
 <span class='fu'>subHeadings</span>(<span class='kw'>angle1</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>angle2</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt;  [1]    0  -36  -72 -108 -144 -180  144  108   72   36</div><div class='input'>
 
 </div></pre>

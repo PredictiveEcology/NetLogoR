@@ -109,7 +109,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/PredictiveEcology/NetLogoR">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -123,7 +128,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1><code>Patches</code> at</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/PredictiveEcology/NetLogoR/blob/master/R/patch-functions.R'><code>R/patch-functions.R</code></a></small>
     <div class="hidden name"><code>patchAt.Rd</code></div>
     </div>
 
@@ -202,9 +207,9 @@ or <code>turtles</code> in <code>agents</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
-<span class='no'>patchCorner</span> <span class='kw'>&lt;-</span> <span class='fu'>patchAt</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'>patch</span>(<span class='no'>w1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>), <span class='kw'>dx</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>dy</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span>(<span class='kw'>xcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>ycor</span> <span class='kw'>=</span> <span class='fl'>0</span>))
+    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
+<span class='no'>patchCorner</span> <span class='kw'>&lt;-</span> <span class='fu'>patchAt</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patch.html'>patch</a></span>(<span class='no'>w1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>), <span class='kw'>dx</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>dy</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='agentMatrix-bind-methods.html'>cbind</a></span>(<span class='kw'>xcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>ycor</span> <span class='kw'>=</span> <span class='fl'>0</span>))
 <span class='no'>patchCorner</span> <span class='kw'>&lt;-</span> <span class='fu'>patchAt</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>dx</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>dy</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

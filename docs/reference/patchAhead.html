@@ -110,7 +110,12 @@ distances of the turtles in the direction of their headings." />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/PredictiveEcology/NetLogoR">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -124,7 +129,7 @@ distances of the turtles in the direction of their headings." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1><code>Patches</code> ahead</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/PredictiveEcology/NetLogoR/blob/master/R/turtle-functions.R'><code>R/turtle-functions.R</code></a></small>
     <div class="hidden name"><code>patchAhead.Rd</code></div>
     </div>
 
@@ -190,8 +195,8 @@ of length 1 or of length <code>turtles</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'>randomXYcor</span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>))
+    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
+<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='randomXYcor.html'>randomXYcor</a></span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>))
 <span class='fu'>patchAhead</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt;       pxcor pycor
 #&gt;  [1,]     8     6
 #&gt;  [2,]     3     0

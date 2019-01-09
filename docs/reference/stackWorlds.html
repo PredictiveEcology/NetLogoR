@@ -109,7 +109,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/PredictiveEcology/NetLogoR">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -123,7 +128,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Stack <code>worlds</code></h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/PredictiveEcology/NetLogoR/blob/master/R/worldNLR-classes-methods.R'><code>R/worldNLR-classes-methods.R</code></a></small>
     <div class="hidden name"><code>stackWorlds.Rd</code></div>
     </div>
 
@@ -157,8 +162,8 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>25</span>)
-<span class='no'>w2</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>25</span>:<span class='fl'>1</span>)
+    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>25</span>)
+<span class='no'>w2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>25</span>:<span class='fl'>1</span>)
 <span class='no'>w3</span> <span class='kw'>&lt;-</span> <span class='fu'>stackWorlds</span>(<span class='no'>w1</span>, <span class='no'>w2</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>w3</span>)</div><div class='img'><img src='stackWorlds-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>

@@ -109,7 +109,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/PredictiveEcology/NetLogoR">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -123,7 +128,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create a <code>turtle</code> <code>agentset</code></h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/PredictiveEcology/NetLogoR/blob/master/R/turtle-functions.R'><code>R/turtle-functions.R</code></a></small>
     <div class="hidden name"><code>turtleSet.Rd</code></div>
     </div>
 
@@ -155,7 +160,7 @@
 
     <p>Duplicated <code>turtles</code> are identified based only on their <code>who</code> numbers.
          The <code>turtle</code> chosen for a who number is the first one given in the inputs.
-         To keep all <code>turtles</code> from the inputs, use <code>NLset()</code> to
+         To keep all <code>turtles</code> from the inputs, use <code><a href='NLset.html'>NLset()</a></code> to
          reassign <code>who</code> numbers in some of the inputs, prior using
          <code>turtleSet()</code>, to avoid <code>turtles</code> with duplicated <code>who</code> numbers.</p>
     
@@ -171,12 +176,12 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'>randomXYcor</span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>), <span class='kw'>breed</span> <span class='kw'>=</span> <span class='st'>"sheep"</span>)
-<span class='no'>t2</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'>randomXYcor</span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>), <span class='kw'>breed</span> <span class='kw'>=</span> <span class='st'>"wolf"</span>)
-<span class='no'>t2</span> <span class='kw'>&lt;-</span> <span class='fu'>NLset</span>(<span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t2</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t2</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"who"</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>10</span>, <span class='fl'>11</span>))
-<span class='no'>t3</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'>randomXYcor</span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='kw'>breed</span> <span class='kw'>=</span> <span class='st'>"sheperd"</span>)
-<span class='no'>t3</span> <span class='kw'>&lt;-</span> <span class='fu'>NLset</span>(<span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t3</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t3</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"who"</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='fl'>12</span>)
+    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
+<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='randomXYcor.html'>randomXYcor</a></span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>), <span class='kw'>breed</span> <span class='kw'>=</span> <span class='st'>"sheep"</span>)
+<span class='no'>t2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='randomXYcor.html'>randomXYcor</a></span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>), <span class='kw'>breed</span> <span class='kw'>=</span> <span class='st'>"wolf"</span>)
+<span class='no'>t2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='NLset.html'>NLset</a></span>(<span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t2</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t2</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"who"</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>10</span>, <span class='fl'>11</span>))
+<span class='no'>t3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='randomXYcor.html'>randomXYcor</a></span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='kw'>breed</span> <span class='kw'>=</span> <span class='st'>"sheperd"</span>)
+<span class='no'>t3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='NLset.html'>NLset</a></span>(<span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t3</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t3</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"who"</span>, <span class='kw'>val</span> <span class='kw'>=</span> <span class='fl'>12</span>)
 <span class='no'>t4</span> <span class='kw'>&lt;-</span> <span class='fu'>turtleSet</span>(<span class='no'>t1</span>, <span class='no'>t2</span>, <span class='no'>t3</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

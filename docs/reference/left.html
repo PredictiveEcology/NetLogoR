@@ -109,7 +109,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/PredictiveEcology/NetLogoR">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -123,7 +128,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Rotate to the left</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/PredictiveEcology/NetLogoR/blob/master/R/turtle-functions.R'><code>R/turtle-functions.R</code></a></small>
     <div class="hidden name"><code>left.Rd</code></div>
     </div>
 
@@ -172,11 +177,11 @@ headings. Must be of length 1 or of length <code>turtles</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>)
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>)
-<span class='fu'>of</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1] 349.19542 224.14516 162.05979 103.94759  80.60326  47.86232 109.89710
+    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>)
+<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>)
+<span class='fu'><a href='of.html'>of</a></span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1] 349.19542 224.14516 162.05979 103.94759  80.60326  47.86232 109.89710
 #&gt;  [8] 269.87545 157.68032 179.85000</div><div class='input'><span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>left</span>(<span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>angle</span> <span class='kw'>=</span> <span class='fl'>180</span>)
-<span class='fu'>of</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1] 169.19542  44.14516 342.05979 283.94759 260.60326 227.86232 289.89710
+<span class='fu'><a href='of.html'>of</a></span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1] 169.19542  44.14516 342.05979 283.94759 260.60326 227.86232 289.89710
 #&gt;  [8]  89.87545 337.68032 359.85000</div><div class='input'>
 
 </div></pre>

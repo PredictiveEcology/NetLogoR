@@ -109,7 +109,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/PredictiveEcology/NetLogoR">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -123,7 +128,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Values of an <code>agents</code> variable</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/PredictiveEcology/NetLogoR/blob/master/R/turtle-functions.R'><code>R/turtle-functions.R</code></a></small>
     <div class="hidden name"><code>of.Rd</code></div>
     </div>
 
@@ -168,7 +173,7 @@ use to define the <code>patches</code>
 values. If <code>agents</code> are <code>turtles</code>, <code>var</code> is some of
 the <code>turtles</code>' variable and can be any of the variables created
 when <code>turtles</code> were created,
-as well as any variable created with <code>turtlesOwn()</code>.</p></td>
+as well as any variable created with <code><a href='turtlesOwn.html'>turtlesOwn()</a></code>.</p></td>
     </tr>
     </table>
     
@@ -178,7 +183,7 @@ as well as any variable created with <code>turtlesOwn()</code>.</p></td>
         requested. The class depends
         of the variable class. The order of the vector follows the order
         of the <code>agents</code>, or</p>
-<p>Matrix or <code>Dataframe</code> (<code>ncol</code> = <code><a href='https://www.rdocumentation.org/packages/base/topics/length'>length(var)</a></code>, <code>nrow</code> = <code>NLcount(agents)</code>)
+<p>Matrix or <code>Dataframe</code> (<code>ncol</code> = <code><a href='https://www.rdocumentation.org/packages/base/topics/length'>length(var)</a></code>, <code>nrow</code> = <code><a href='NLcount.html'>NLcount(agents)</a></code>)
         if more than one variable is requested. The row order
         follows the order of the <code>agents</code>.</p>
     
@@ -199,11 +204,11 @@ as well as any variable created with <code>turtlesOwn()</code>.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Patches</span>
-<span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'>createWorld</span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>,
+<span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>4</span>,
                           <span class='kw'>data</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>25</span>)
-<span class='fu'>of</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'>patch</span>(<span class='no'>w1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>4</span>, <span class='fl'>0</span>)))</div><div class='output co'>#&gt; [1]  1 21</div><div class='input'>
+<span class='fu'>of</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>agents</span> <span class='kw'>=</span> <span class='fu'><a href='patch.html'>patch</a></span>(<span class='no'>w1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>4</span>, <span class='fl'>0</span>)))</div><div class='output co'>#&gt; [1]  1 21</div><div class='input'>
 <span class='co'># Turtles</span>
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'>createTurtles</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'>randomXYcor</span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>))
+<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='randomXYcor.html'>randomXYcor</a></span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>))
 <span class='fu'>of</span>(<span class='kw'>agents</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"heading"</span>)</div><div class='output co'>#&gt;  [1] 304.72221 253.81440 334.76772 275.38292 173.05177 259.21408  99.37126
 #&gt;  [8] 253.61576 114.38920 220.46261</div><div class='input'>
 

@@ -13,6 +13,7 @@ The suggested package \pkg{fastshp} can be installed with
 Useful links:
 \itemize{
   \item \url{http://netlogor.predictiveecology.org}
+  \item \url{https://github.com/PredictiveEcology/NetLogoR/}
   \item Report bugs at \url{https://github.com/PredictiveEcology/NetLogoR/issues}
 }
 
