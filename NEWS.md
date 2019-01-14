@@ -1,8 +1,8 @@
 Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 
-Version 0.3.4.9000
+Version 0.3.5
 =============
-* Lorem ipsum...
+* Updates to fix CRAN check problems.
 
 Version 0.3.4
 =============
