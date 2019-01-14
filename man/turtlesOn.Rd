@@ -5,7 +5,7 @@
 \alias{turtlesOn}
 \alias{turtlesOn,worldNLR,agentMatrix,matrix,missing-method}
 \alias{turtlesOn,worldNLR,agentMatrix,matrix,character-method}
-\title{Turtles on}
+\title{\code{Turtles} on}
 \usage{
 turtlesOn(world, turtles, agents, breed, simplify = TRUE)
 
@@ -16,37 +16,37 @@ turtlesOn(world, turtles, agents, breed, simplify = TRUE)
   agents, breed, simplify = TRUE)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{breed}{Characters. Vector of "breed" names for the selected \code{turtles}.
-If missing, there is no distinction based upon "breed".}
+\item{breed}{Characters. Vector of \code{breed} names for the selected \code{turtles}.
+If missing, there is no distinction based upon \code{breed}.}
 
 \item{simplify}{Logical. If \code{simplify = TRUE}, all \code{turtles} on the same
-patches as any \code{agents} are returned; if \code{simplify = FALSE},
-the \code{turtles} are evaluated for each \code{agents}'s patches
+\code{patches} as any \code{agents} are returned; if \code{simplify = FALSE},
+the \code{turtles} are evaluated for each \code{agents}'s \code{patches}
 individually.}
 }
 \value{
-AgentMatrix representing any individuals from \code{turtles} of
+\code{AgentMatrix} representing any individuals from \code{turtles} of
         any of the given \code{breed}, if specified,
-        located on the same patches as any of the \code{agents}, if \code{simplify = TRUE}, or
+        located on the same \code{patches} as any of the \code{agents}, if \code{simplify = TRUE}, or
 
-        Matrix (ncol = 2) with the first column "whoTurtles" and the second column
-        "id" showing which \code{turtles} are on the same
-        patches as which \code{agents} represented by "id", if \code{simplify = FALSE}.
-        "id" represents and follows the order of the \code{agents}. "id" does not represent
-        the "who" numbers
-        of the \code{agents} if \code{agents} are turtles.
+        Matrix (\code{ncol} = 2) with the first column \code{whoTurtles} and the second column
+        \code{id} showing which \code{turtles} are on the same
+        \code{patches} as which \code{agents} represented by \code{id}, if \code{simplify = FALSE}.
+        \code{id} represents and follows the order of the \code{agents}. \code{id} does not represent
+        the \code{who} numbers
+        of the \code{agents} if \code{agents} are \code{turtles}.
 }
 \description{
-Report the individuals among \code{turtles} that are on the same patches as
+Report the individuals among \code{turtles} that are on the same \code{patches} as
 the \code{agents}.
 }
 \details{

@@ -1,7 +1,7 @@
 ##########################################################
-#' Initialize for agentMatrix Class
+#' Initialize for \code{agentMatrix} Class
 #'
-#' To create a new agentMatrix object.
+#' To create a new \code{agentMatrix} object.
 #'
 #' @include Agent-classes.R
 #' @inheritParams methods::initialize
@@ -111,17 +111,17 @@ setMethod(
   })
 
 ################################################################################
-#' Create a new agentMatrix object
+#' Create a new \code{agentMatrix} object
 #'
-#' This is a fast alternative to the SpatialPointsDataFrame. It is meant to replace
+#' This is a fast alternative to the \code{SpatialPointsDataFrame}. It is meant to replace
 #' that functionality, though there are not as many methods (yet). The object is primarily
 #' a numeric matrix. Any character column passed to ... will be converted to a numeric,
 #' using \code{as.factor} internally, and stored as a numeric. Methods using this class
 #' will automatically convert character queries to the correct numeric alternative.
 #'
-#' @param coords  A matrix with 2 columns representing x and y coordinates
+#' @param coords  A matrix with 2 columns representing \code{x} and \code{y} coordinates
 #' @param ... Vectors, a data.frame, or a matrix of extra columns to add to the coordinates,
-#'            or a SpatialPointsDataFrame.
+#'            or a \code{SpatialPointsDataFrame}.
 #'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-turtles}
 #'
@@ -223,7 +223,7 @@ setAs("agentMatrix", "data.frame",
 #'
 #' Operators acting on vectors, matrices, arrays and lists to extract or replace parts.
 #'
-#' @note Extract methods for agentMatrix class will generally maintain the \code{agentMatrix} class.
+#' @note Extract methods for \code{agentMatrix} class will generally maintain the \code{agentMatrix} class.
 #' This means that there will still be coordinates, character columns represented as numerics etc.
 #' \code{$} is for extracting the raw columns and does not maintain the \code{agentMatrix} class.
 #' \code{[]} will extract all values, and result in a data.frame with the correct character and
@@ -498,7 +498,7 @@ setMethod(
 
 #' Relational Operators
 #'
-#' Binary operators which allow the comparison of values in an agentMatrix.
+#' Binary operators which allow the comparison of values in an \code{agentMatrix.}
 #'
 #' @param e1  An \code{agentMatrix} object.
 #' @param e2  atomic vector, symbol, call, or other object for which methods have been written.
@@ -552,7 +552,7 @@ setMethod(
     (e1@.Data[, -ind] == e2)
   })
 
-#' Key base R functions for agentMatrix class
+#' Key base R functions for \code{agentMatrix} class
 #'
 #' Slight modifications from the default versions.
 #'
@@ -624,12 +624,12 @@ tail.agentMatrix <- function(x, n = 6L, ...) {
 
 #' Combine R Objects by Rows or Columns
 #'
-#' Take a sequence of agentMatrix arguments and combine by columns or rows, respectively.
+#' Take a sequence of \code{agentMatrix} arguments and combine by columns or rows, respectively.
 #' This will take the coordinates of the first argument and remove the coordinates
 #' of the second object.
 #'
 #' @param deparse.level See \code{\link[base]{cbind}}
-#' @param ... Two agentMatrix objects
+#' @param ... Two \code{agentMatrix} objects
 #'
 #' @method cbind agentMatrix
 #' @export
@@ -716,7 +716,7 @@ setMethod(
     }
 })
 
-#' \code{.bboxCoords} is a drop in replacement for .bboxCoords in raster package.
+#' \code{.bboxCoords} is a drop in replacement for \code{raster::.bboxCoords}.
 #'
 #' @param coords documentation needed
 #'

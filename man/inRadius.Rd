@@ -4,7 +4,7 @@
 \name{inRadius}
 \alias{inRadius}
 \alias{inRadius,matrix,numeric,matrix-method}
-\title{Agents in radius}
+\title{\code{Agents} in radius}
 \usage{
 inRadius(agents, radius, agents2, world, torus = FALSE)
 
@@ -12,44 +12,44 @@ inRadius(agents, radius, agents2, world, torus = FALSE)
   torus = FALSE)
 }
 \arguments{
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{radius}{Numeric. Vector of distances from \code{agents} to locate
 \code{agents2}. Must be of length 1 or of length \code{agents}.}
 
-\item{agents2}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents2}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}
 }
 \value{
-Matrix (ncol = 3) with the first column "pxcor"
-        and the second column "pycor" representing the coordinates of the
-        patches among \code{agents2} within \code{radius} distances for each \code{agents}
-        which are represented by the "id" column, if
-        \code{agents2} are patches, or
+Matrix (\code{ncol} = 3) with the first column \code{pxcor}
+        and the second column \code{pycor} representing the coordinates of the
+        \code{patches} among \code{agents2} within \code{radius} distances for each \code{agents}
+        which are represented by the \code{id} column, if
+        \code{agents2} are \code{patches}, or
 
-        Matrix (ncol = 2) with the first column "who"
-        representing the "who" numbers of the
-        turtles among \code{agents2} within \code{radius} distances for each \code{agents}
-        which are represented by the "id" column, if
-        \code{agents2} are turtles.
+        Matrix (\code{ncol} = 2) with the first column \code{who}
+        representing the \code{who} numbers of the
+        \code{turtles} among \code{agents2} within \code{radius} distances for each \code{agents}
+        which are represented by the \code{id} column, if
+        \code{agents2} are \code{turtles}.
 }
 \description{
-Report the patches or turtles among \code{agents2} within given distances of
+Report the \code{patches} or \code{turtles} among \code{agents2} within given distances of
 each of the \code{agents}. Currently, this function multiplies \code{radius} by
 1.0000001 so that the response of \code{inRadius} is inclusive.
 }
 \details{
-Distances from/to patches are calculated from/to their center.
+Distances from/to \code{patches} are calculated from/to their center.
 
          If \code{torus = FALSE}, \code{world} does not need to be provided.
 

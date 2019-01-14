@@ -4,7 +4,7 @@
 \name{patch}
 \alias{patch}
 \alias{patch,worldNLR,numeric,numeric-method}
-\title{Patches coordinates}
+\title{\code{Patches} coordinates}
 \usage{
 patch(world, x, y, duplicate = FALSE, torus = FALSE, out = FALSE)
 
@@ -12,41 +12,41 @@ patch(world, x, y, duplicate = FALSE, torus = FALSE, out = FALSE)
   duplicate = FALSE, torus = FALSE, out = FALSE)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{x}{Numeric. Vector of x coordinates. Must be of same
+\item{x}{Numeric. Vector of \code{x} coordinates. Must be of same
 length as \code{y}.}
 
-\item{y}{Numeric. Vector of y coordinates. Must be of same
+\item{y}{Numeric. Vector of \code{y} coordinates. Must be of same
 length as \code{x}.}
 
 \item{duplicate}{Logical. If more than one location \code{[x, y]}
-fall into the same patch and \code{duplicate == TRUE}, the
-patch coordinates are returned the number of times the locations.
-If \code{duplicate == FALSE}, the patch coordinates
+fall into the same \code{patch} and \code{duplicate == TRUE}, the
+\code{patch} coordinates are returned the number of times the locations.
+If \code{duplicate == FALSE}, the \code{patch} coordinates
 are only returned once.
 Default is \code{duplicate == FALSE}.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}
 
-\item{out}{Logical. If \code{out = FALSE}, no patch coordinates are returned
-for patches outside of the \code{world}'s extent, if \code{out = TRUE},
+\item{out}{Logical. If \code{out = FALSE}, no \code{patch} coordinates are returned
+for \code{patches} outside of the \code{world}'s extent, if \code{out = TRUE},
 \code{NA} are returned.
 Default is \code{out = FALSE}.}
 }
 \value{
-Matrix (ncol = 2) with the first column "pxcor" and the second column
-        "pycor" representing the patches coordinates at \code{[x, y]}.
+Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+        \code{pycor} representing the \code{patches} coordinates at \code{[x, y]}.
 }
 \description{
-Report the coordinates of the patches at the given \code{[x, y]} locations.
+Report the coordinates of the \code{patches} at the given \code{[x, y]} locations.
 }
 \details{
 If a location \code{[x, y]} is outside the \code{world}'s extent and
-         \code{torus = FALSE} and \code{out = FALSE}, no patch coordinates are returned;
+         \code{torus = FALSE} and \code{out = FALSE}, no \code{patch} coordinates are returned;
          if \code{torus = FALSE} and \code{out = TRUE}, \code{NA} are returned;
-         if \code{torus = TRUE}, the patch coordinates from a wrapped \code{world} are
+         if \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world} are
          returned.
 }
 \examples{

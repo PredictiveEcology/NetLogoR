@@ -6,7 +6,7 @@
 \alias{of,missing,agentMatrix,character-method}
 \alias{of,worldMatrix,matrix,missing-method}
 \alias{of,worldArray,matrix,character-method}
-\title{Values of an agents variable}
+\title{Values of an \code{agents} variable}
 \usage{
 of(world, agents, var)
 
@@ -17,22 +17,22 @@ of(world, agents, var)
 \S4method{of}{worldArray,matrix,character}(world, agents, var)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{var}{Character. Vector of the names of the selected \code{agents} variables.
-If \code{agents} are patches and the \code{world} is a
+If \code{agents} are \code{patches} and the \code{world} is a
 \code{worldMatrix} object, \code{var} must not be provided. If
-\code{agents} are patches and the \code{world} is a
+\code{agents} are \code{patches} and the \code{world} is a
 \code{worldArray} object, \code{var} is the name of the layers to
-use to define the patches
-values. If \code{agents} are turtles, \code{var} is some of
-the turtles' variable and can be any of the variables created
-when turtles were created,
+use to define the \code{patches}
+values. If \code{agents} are \code{turtles}, \code{var} is some of
+the \code{turtles}' variable and can be any of the variables created
+when \code{turtles} were created,
 as well as any variable created with \code{turtlesOwn()}.}
 }
 \value{
@@ -41,7 +41,7 @@ Vector of values for the \code{agents} if one variable is
         of the variable class. The order of the vector follows the order
         of the \code{agents}, or
 
-        Matrix or Dataframe (ncol = \code{length(var)}, nrow = \code{NLcount(agents)})
+        Matrix or \code{Dataframe} (\code{ncol} = \code{length(var)}, \code{nrow} = \code{NLcount(agents)})
         if more than one variable is requested. The row order
         follows the order of the \code{agents}.
 }
@@ -49,7 +49,7 @@ Vector of values for the \code{agents} if one variable is
 Report the \code{agents} values for the requested variable.
 }
 \details{
-\code{world} must be provided only if \code{agents} are patches.
+\code{world} must be provided only if \code{agents} are \code{patches}.
 }
 \examples{
 # Patches

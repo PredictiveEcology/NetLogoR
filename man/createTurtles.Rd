@@ -5,7 +5,7 @@
 \alias{createTurtles}
 \alias{createTurtles,numeric,matrix,missing-method}
 \alias{createTurtles,numeric,missing,ANY-method}
-\title{Create turtles}
+\title{Create \code{turtles}}
 \usage{
 createTurtles(n, coords, world, heading, breed, color)
 
@@ -18,40 +18,40 @@ createTurtles(n, coords, world, heading, breed, color)
 \arguments{
 \item{n}{Integer.}
 
-\item{coords}{Matrix (ncol = 2) with the first column \code{xcor} and the second
-column \code{ycor} representing the turtles initial locations.
+\item{coords}{Matrix (\code{ncol} = 2) with the first column \code{xcor} and the second
+column \code{ycor} representing the \code{turtles} initial locations.
 \code{nrow(coords)} must be equal to 1 or to \code{n}.
 Given coordinates must be inside the \code{world}'s extent. If missing,
-turtles are put in the center of the \code{world}.}
+\code{turtles} are put in the center of the \code{world}.}
 
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{heading}{Numeric. Vector of values between 0 and 360. Must be of length 1 or
-of length \code{n}. If missing, a random heading is assigned to
-each turtle.}
+of length \code{n}. If missing, a random \code{heading} is assigned to
+each \code{turtle}.}
 
-\item{breed}{Character. Vector of "breed" names. Must be of length 1 or of length
-\code{n}. If missing, \code{breed = "turtle"} for all turtles.}
+\item{breed}{Character. Vector of \code{breed} names. Must be of length 1 or of length
+\code{n}. If missing, \code{breed = "turtle"} for all \code{turtles}.}
 
-\item{color}{Character. Vector of color names. Must be of length \code{n}.
-If missing, colors are assigned using the function \code{rainbow(n)}.}
+\item{color}{Character. Vector of \code{color} names. Must be of length \code{n}.
+If missing, \code{colors} are assigned using the function \code{rainbow(n)}.}
 }
 \value{
-AgentMatrix object of length \code{n} with data for the
-        turtles being: "xcor", "ycor", "who", "heading", "prevX", "prevY",
-        "breed", and "color".
+\code{AgentMatrix} object of length \code{n} with data for the
+        \code{turtles} being: \code{xcor}, \code{ycor}, \code{who}, \code{heading}, \code{prevX}, \code{prevY},
+        \code{breed}, and \code{color}.
 }
 \description{
-Create \code{n} moving agents with a set of defined variables.
+Create \code{n} moving \code{agents} with a set of defined variables.
 }
 \details{
 If \code{coords} is provided, \code{world} must not be provided.
 
-         The identity of the turtles is defined by their "who" number. This
+         The identity of the \code{turtles} is defined by their \code{who} number. This
          numbering starts at 0 and increments by 1.
 
-         The coordinates from the previous time step are stored in "prevX" and
-         "prevY". The initial values are \code{NA}.
+         The coordinates from the previous time step are stored in \code{prevX} and
+         \code{prevY}. The initial values are \code{NA}.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,

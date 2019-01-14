@@ -12,26 +12,26 @@ face(turtles, agents2, world, torus = FALSE)
   torus = FALSE)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{agents2}{Matrix (ncol = 2) with the first column "pxcor" and the second
-               column "pycor" representing the patches coordinates, or
+\item{agents2}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+               column \code{pycor} representing the \code{patches} coordinates, or
 
-               AgentMatrix object representing the moving agents, or
+               \code{AgentMatrix} object representing the moving \code{agents}, or
 
-               Matrix (ncol = 2) with the first column "x and the second column
-               "y" representing locations coordinates.}
+               Matrix (\code{ncol} = 2) with the first column \code{x} and the second column
+               \code{y} representing locations coordinates.}
 
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}
 }
 \value{
-AgentMatrix representing the \code{turtles} with updated headings.
+\code{AgentMatrix} representing the \code{turtles} with updated \code{headings}.
 }
 \description{
-Set the \code{turtles}' heading towards \code{agents2}.
+Set the \code{turtles}' \code{heading} towards \code{agents2}.
 }
 \details{
 The number of agents/locations in \code{agents2} must be equal to 1 or
@@ -42,7 +42,7 @@ The number of agents/locations in \code{agents2} must be equal to 1 or
          If \code{torus = TRUE} and the distance from one \code{turtles} to
          its corresponding agent/location \code{agents2} is smaller around the
          sides of the \code{world} than across it, then the direction to the agent/location
-         \code{agents2} going around the sides of the \code{world} is given to the turtle.
+         \code{agents2} going around the sides of the \code{world} is given to the \code{turtle}.
 
          If a turtle is facing its own location, its heading does not change.
 }

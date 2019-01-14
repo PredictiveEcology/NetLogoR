@@ -1,5 +1,9 @@
 Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 
+Version 0.3.4.9000
+=============
+* Lorem ipsum...
+
 Version 0.3.4
 =============
 * Set random seed in two tests.

@@ -14,7 +14,7 @@ dy(turtles, dist = 1)
 \S4method{dy}{agentMatrix,missing}(turtles)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{dist}{Numeric. Vector of distances the \code{turtles} would have to
 move forward to
@@ -25,12 +25,12 @@ compute the increment values. Must be of length 1 or of length
 Numeric. Vector of length \code{turtles}.
 }
 \description{
-Report the amount by which the \code{turtles}' coordinates ycor would change
+Report the amount by which the \code{turtles}' coordinates \code{ycor} would change
 if the \code{turtles} were
-to move forward the given distances with their current headings.
+to move forward the given distances with their current \code{headings}.
 }
 \details{
-Report the cosine of the \code{turtles}' heading multiplied by the \code{dist}
+Report the cosine of the \code{turtles}' \code{heading} multiplied by the \code{dist}
          values. Heading 0 is north and angles are calculated in degrees in a
          clockwise manner.
 }

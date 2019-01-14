@@ -6,7 +6,7 @@
 \alias{minNof,matrix,numeric,worldMatrix,missing-method}
 \alias{minNof,matrix,numeric,worldArray,character-method}
 \alias{minNof,agentMatrix,numeric,missing,character-method}
-\title{N agents with minimum}
+\title{\code{N} \code{agents} with minimum}
 \usage{
 minNof(agents, n, world, var)
 
@@ -18,44 +18,44 @@ minNof(agents, n, world, var)
 \S4method{minNof}{agentMatrix,numeric,missing,character}(agents, n, var)
 }
 \arguments{
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{n}{Integer.}
 
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{var}{Character. The name of the selected \code{agents} variable.
-If \code{agents} are patches and the \code{world} is a
-worldMatrix object, \code{var} must not be provided. If
-\code{agents} are patches and the \code{world} is a worldArray
-object, \code{var} is the name of the layer to use to define the patches
-values. If \code{agents} are turtles, \code{var} is one of
-the turtles' variable and can be equal to \code{"xcor"},
-\code{"ycor"}, any of the variables created when turtles were created,
+If \code{agents} are \code{patches} and the \code{world} is a
+\code{worldMatrix} object, \code{var} must not be provided. If
+\code{agents} are \code{patches} and the \code{world} is a \code{worldArray}
+object, \code{var} is the name of the layer to use to define the \code{patches}
+values. If \code{agents} are \code{turtles}, \code{var} is one of
+the \code{turtles}' variable and can be equal to \code{xcor},
+\code{ycor}, any of the variables created when \code{turtles} were created,
 as well as any variable created using \code{turtlesOwn()}.}
 }
 \value{
-Matrix (ncol = 2, nrow = \code{n}) with the first column "pxcor" and
-        the second column "pycor" representing the coordinates of the \code{n}
-        patches among the \code{agents} which have their variable values among
+Matrix (\code{ncol} = 2, \code{nrow} = \code{n}) with the first column \code{pxcor} and
+        the second column \code{pycor} representing the coordinates of the \code{n}
+        \code{patches} among the \code{agents} which have their variable values among
         the minimum values among the
         \code{agents}, or
 
-        AgentMatrix of length \code{n} representing the turtles among the
+        \code{AgentMatrix} of length \code{n} representing the \code{turtles} among the
         \code{agents} which
         have their \code{var} values among the minimum values among the \code{agents}.
 }
 \description{
-Report the \code{n} patches or turtles among \code{agents} which have their variable
+Report the \code{n} \code{patches} or \code{turtles} among \code{agents} which have their variable
 among the minimum values.
 }
 \details{
-\code{world} must not be provided if \code{agents} are turtles.
+\code{world} must not be provided if \code{agents} are \code{turtles}.
 
-         If there is a tie that would make the number of returned patches or turtles larger
+         If there is a tie that would make the number of returned \code{patches} or \code{turtles} larger
          than \code{n}, it is broken randomly.
 }
 \examples{

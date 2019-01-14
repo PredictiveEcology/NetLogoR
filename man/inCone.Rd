@@ -4,7 +4,7 @@
 \name{inCone}
 \alias{inCone}
 \alias{inCone,agentMatrix,numeric,numeric,matrix-method}
-\title{Agents in cone}
+\title{\code{Agents} in cone}
 \usage{
 inCone(turtles, radius, angle, agents, world, torus = FALSE)
 
@@ -12,42 +12,42 @@ inCone(turtles, radius, angle, agents, world, torus = FALSE)
   angle, agents, world, torus = FALSE)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{radius}{Numeric. Vector of distances from \code{turtles} to locate
 \code{agents}. Must be of length 1 or of length \code{turtles}.}
 
 \item{angle}{Numeric. Vector of angles to define the size of the cone of vision
 for the \code{turtles}. The cone of vision is defined between the
-direction of their headings minus \code{angle / 2}
-to the direction of their headings plus \code{angle / 2}. Must be of
+direction of their \code{headings} minus \code{angle / 2}
+to the direction of their \code{headings} plus \code{angle / 2}. Must be of
 length 1 or
 of length \code{turtles}.}
 
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}
 }
 \value{
-Matrix (ncol = 3) with the first column "pxcor"
-        and the second column "pycor" representing the coordinates of the
-        patches among \code{agents2} within the cone of vision of each of the
+Matrix (\code{ncol} = 3) with the first column \code{pxcor}
+        and the second column \code{pycor} representing the coordinates of the
+        \code{patches} among \code{agents2} within the cone of vision of each of the
         \code{turtles}
-        which are represented by the "id" column, if
-        \code{agents} are patches, or
+        which are represented by the \code{id} column, if
+        \code{agents} are \code{patches}, or
 
-        Matrix (ncol = 2) with the first column "who"
-        representing the "who" numbers of the
-        turtles among \code{agents2} within the cone of vision of each of  the
+        Matrix (\code{ncol} = 2) with the first column \code{who}
+        representing the \code{who} numbers of the
+        \code{turtles} among \code{agents2} within the cone of vision of each of  the
         \code{turtles}
-        which are represented by the "id" column, if
-        \code{agents} are turtles.
+        which are represented by the \code{id} column, if
+        \code{agents} are \code{turtles}.
 }
 \description{
 Report the \code{agents} within the "cone of vision" in front of each one of the
@@ -55,10 +55,10 @@ Report the \code{agents} within the "cone of vision" in front of each one of the
 }
 \details{
 \code{agents} are reported if there are within \code{radius}
-         distance of the turtle and their direction from the turtle is within
-         \code{[-angle, + angle]} of the turtle's heading.
+         distance of the \code{turtle} and their direction from the \code{turtle} is within
+         \code{[-angle, + angle]} of the \code{turtle}'s heading.
 
-         Distances to patches are calculated to their center.
+         Distances to \code{patches} are calculated to their center.
 
          If \code{torus = FALSE}, \code{world} does not need to be provided.
 

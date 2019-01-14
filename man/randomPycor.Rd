@@ -4,22 +4,22 @@
 \name{randomPycor}
 \alias{randomPycor}
 \alias{randomPycor,worldNLR,numeric-method}
-\title{Random pycor}
+\title{Random \code{pycor}}
 \usage{
 randomPycor(world, n)
 
 \S4method{randomPycor}{worldNLR,numeric}(world, n)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{n}{Integer.}
 }
 \value{
-Integer. Vector of length \code{n} of pycor coordinates.
+Integer. Vector of length \code{n} of \code{pycor} coordinates.
 }
 \description{
-Report \code{n} random pycor coordinates within the \code{world}'s extent.
+Report \code{n} random \code{pycor} coordinates within the \code{world}'s extent.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)

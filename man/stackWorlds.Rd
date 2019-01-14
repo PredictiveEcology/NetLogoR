@@ -4,23 +4,23 @@
 \name{stackWorlds}
 \alias{stackWorlds}
 \alias{stackWorlds,worldMatrix-method}
-\title{Stack worlds}
+\title{Stack \code{worlds}}
 \usage{
 stackWorlds(...)
 
 \S4method{stackWorlds}{worldMatrix}(...)
 }
 \arguments{
-\item{...}{worldMatrix objects.}
+\item{...}{\code{worldMatrix} objects.}
 }
 \value{
-worldArray object.
+\code{worldArray} object.
 }
 \description{
-Stack multiple worldMatrix into a worldArray.
+Stack multiple \code{worldMatrix} into a \code{worldArray}.
 }
 \details{
-The worldMatrix objects must all have the same extents.
+The \code{worldMatrix} objects must all have the same extents.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data = 1:25)

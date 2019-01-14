@@ -1,11 +1,11 @@
-#' Basic plot methods for `agentMatrix`, `worldMatrix`, `worldArray`
+#' Basic plot methods for \code{agentMatrix}, \code{worldMatrix}, \code{worldArray}
 #'
-#' These pass to plot, as a matrix of points (`agentMatrix`), as a raster (`worldMatrix`),
-#' or a rasterStack (`worldArray`).
+#' These pass to plot, as a matrix of points (\code{agentMatrix}), as a \code{raster} (\code{worldMatrix}),
+#' or a \code{rasterStack} (\code{worldArray}).
 #' They can be modified.
 #'
-#' @param x an agentMatrix, worldMatrix or worldArray object
-#' @param ... arguments passed to plot methods for matrix (agentMatrix) or raster (world*)
+#' @param x an \code{agentMatrix}, \code{worldMatrix} or \code{worldArray} object
+#' @param ... arguments passed to plot methods for matrix (\code{agentMatrix}) or \code{raster} (\code{world*})
 #'
 #' @export
 #' @method plot agentMatrix

@@ -4,7 +4,7 @@
 \name{layoutCircle}
 \alias{layoutCircle}
 \alias{layoutCircle,worldNLR,agentMatrix,numeric-method}
-\title{Layout turtles on a circle}
+\title{Layout \code{turtles} on a circle}
 \usage{
 layoutCircle(world, turtles, radius, torus = FALSE)
 
@@ -12,9 +12,9 @@ layoutCircle(world, turtles, radius, torus = FALSE)
   radius, torus = FALSE)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{radius}{Numeric. Radius of the circle.}
 
@@ -22,10 +22,10 @@ layoutCircle(world, turtles, radius, torus = FALSE)
 \code{torus = FALSE}.}
 }
 \value{
-AgentMatrix representing the \code{turtles} with updated
-        coordinates and updated data for their "heading" values and
-        previous coordinates "prevX"
-        and "prevY".
+\code{AgentMatrix} representing the \code{turtles} with updated
+        coordinates and updated data for their \code{heading} values and
+        previous coordinates \code{prevX}
+        and \code{prevY}.
 }
 \description{
 Relocate the \code{turtles} on a circle centered on the \code{world}.
@@ -34,11 +34,11 @@ Relocate the \code{turtles} on a circle centered on the \code{world}.
 The \code{turtles} point outwards.
 
          If the
-         \code{radius} value leads turtles outside of the \code{world}'s extent
+         \code{radius} value leads \code{turtles} outside of the \code{world}'s extent
          and \code{torus = TRUE}, they are
          relocated on the other sides of the \code{world}, inside its extent; if
-         \code{torus = FALSE}, the turtles are located past
-         the world's extent.
+         \code{torus = FALSE}, the \code{turtles} are located past
+         the \code{world}'s extent.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9,

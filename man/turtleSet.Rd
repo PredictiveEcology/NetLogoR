@@ -4,27 +4,27 @@
 \name{turtleSet}
 \alias{turtleSet}
 \alias{turtleSet,agentMatrix-method}
-\title{Create a turtle agentset}
+\title{Create a \code{turtle} \code{agentset}}
 \usage{
 turtleSet(...)
 
 \S4method{turtleSet}{agentMatrix}(...)
 }
 \arguments{
-\item{...}{AgentMatrix objects representing the moving agents.}
+\item{...}{\code{AgentMatrix} objects representing the moving \code{agents}.}
 }
 \value{
-AgentMatrix object containing all the unique turtles.
+\code{AgentMatrix} object containing all the unique \code{turtles}.
 }
 \description{
-Report a turtle agentset containing all unique turtles provided in the inputs.
+Report a \code{turtle} \code{agentset} containing all unique \code{turtles} provided in the inputs.
 }
 \details{
-Duplicated turtles are identified based only on their who numbers.
-         The turtle chosen for a who number is the first one given in the inputs.
-         To keep all turtles from the inputs, use NLset() to
-         reassign who numbers in some of the inputs, prior using
-         turtleSet(), to avoid turtles with duplicated who numbers.
+Duplicated \code{turtles} are identified based only on their \code{who} numbers.
+         The \code{turtle} chosen for a who number is the first one given in the inputs.
+         To keep all \code{turtles} from the inputs, use \code{NLset()} to
+         reassign \code{who} numbers in some of the inputs, prior using
+         \code{turtleSet()}, to avoid \code{turtles} with duplicated \code{who} numbers.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)

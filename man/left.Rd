@@ -11,19 +11,19 @@ left(turtles, angle)
 \S4method{left}{agentMatrix,numeric}(turtles, angle)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{angle}{Numeric. Vector of angles in degrees by which to rotate the \code{turtles}'
 headings. Must be of length 1 or of length \code{turtles}.}
 }
 \value{
-AgentMatrix representing the \code{turtles} with updated "heading" values.
+\code{AgentMatrix} representing the \code{turtles} with updated \code{heading} values.
 }
 \description{
 Rotate the \code{turtles}'s headings to the left of \code{angle} degrees.
 }
 \details{
-If a given \code{angle} value is negative, then the turtle rotates to the right.
+If a given \code{angle} value is negative, then the \code{turtle} rotates to the right.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)

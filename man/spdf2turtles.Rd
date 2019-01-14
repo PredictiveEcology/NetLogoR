@@ -4,21 +4,21 @@
 \name{spdf2turtles}
 \alias{spdf2turtles}
 \alias{spdf2turtles,SpatialPointsDataFrame-method}
-\title{From SpatialPointsDataFrame to agentMatrix}
+\title{From \code{SpatialPointsDataFrame} to \code{agentMatrix}}
 \usage{
 spdf2turtles(spdf)
 
 \S4method{spdf2turtles}{SpatialPointsDataFrame}(spdf)
 }
 \arguments{
-\item{spdf}{SpatialPointsDataFrame object representing moving agents.}
+\item{spdf}{\code{SpatialPointsDataFrame} object representing moving \code{agents}.}
 }
 \value{
-AgentMatrix object representing the moving agents (coordinates and data)
+\code{AgentMatrix} object representing the moving \code{agents} (coordinates and data)
         as contained in \code{spdf}.
 }
 \description{
-Convert a SpatialPointsDataFrame object into an agentMatrix object.
+Convert a \code{SpatialPointsDataFrame} object into an \code{agentMatrix} object.
 }
 \details{
 If the \code{spdf} does not contain the variables created with

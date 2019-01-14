@@ -4,25 +4,25 @@
 \name{patchSet}
 \alias{patchSet}
 \alias{patchSet,matrix-method}
-\title{Patch set}
+\title{\code{Patch} set}
 \usage{
 patchSet(...)
 
 \S4method{patchSet}{matrix}(...)
 }
 \arguments{
-\item{...}{Matrices (ncol = 2) of patches coordinates with the first column
-"pxcor" and the second column "pycor".}
+\item{...}{Matrices (\code{ncol} = 2) of \code{patches} coordinates with the first column
+\code{pxcor} and the second column \code{pycor}.}
 }
 \value{
-Matrix (ncol = 2) with the first column "pxcor" and the second column
-        "pycor" representing the patches coordinates.
+Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+        \code{pycor} representing the \code{patches} coordinates.
 }
 \description{
-Report the patch coordinates of all the unique patches contained in the inputs.
+Report the \code{patch} coordinates of all the unique \code{patches} contained in the inputs.
 }
 \details{
-Duplicate patches among the inputs are removed in the returned matrix.
+Duplicate \code{patches} among the inputs are removed in the returned matrix.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)

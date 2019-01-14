@@ -16,42 +16,42 @@ downhill(world, pVar, turtles, nNeighbors, torus = FALSE)
   turtles, nNeighbors, torus = FALSE)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{pVar}{Character. If the \code{world} is a worldArray object, \code{pVar}
-is the name of the layer to use to define the patches values.
-\code{pVar} must not be provided if the \code{world} is a worldMatrix object.}
+\item{pVar}{Character. If the \code{world} is a \code{worldArray} object, \code{pVar}
+is the name of the layer to use to define the \code{patches} values.
+\code{pVar} must not be provided if the \code{world} is a \code{worldMatrix} object.}
 
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{nNeighbors}{Integer: 4 or 8. Represents the number of neighbor patches
+\item{nNeighbors}{Integer: 4 or 8. Represents the number of neighbor \code{patches}
 considered.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}
 }
 \value{
-AgentMatrix representing the \code{turtles} with updated
-        coordinates and updated data for their "heading" values and
-        previous coordinates "prevX"
-        and "prevY".
+\code{AgentMatrix} representing the \code{turtles} with updated
+        coordinates and updated data for their \code{heading} values and
+        previous coordinates \code{prevX}
+        and \code{prevY}.
 }
 \description{
 Move the \code{turtles} to their neighboring patch with the lowest value.
 }
 \details{
-If no neighboring patch has a smaller value than the patch where the
-         turtle is currently located on, the turtle stays on this patch. It still
-         moves to the patch center if it was not already on it.
+If no neighboring \code{patch} has a smaller value than the \code{patch} where the
+         \code{turtle} is currently located on, the \code{turtle} stays on this \code{patch}. It still
+         moves to the \code{patch} center if it was not already on it.
 
-         If there are multiple neighboring patches with the same lowest value,
-         the turtle chooses one patch randomly.
+         If there are multiple neighboring \code{patches} with the same lowest value,
+         the \code{turtle} chooses one \code{patch} randomly.
 
-         If a turtle is located on a patch on the edge
+         If a \code{turtle} is located on a \code{patch} on the edge
          of the \code{world} and \code{torus = FALSE}, it has fewer
-         neighbouring patches as options to move than \code{nNeighbors}; if
-         \code{torus = TRUE}, the turtle can move on the other side of the \code{world} to
-         move downhill and its choice of neighbouring patches is always equals to
+         neighboring \code{patches} as options to move than \code{nNeighbors}; if
+         \code{torus = TRUE}, the \code{turtle} can move on the other side of the \code{world} to
+         move downhill and its choice of neighboring \code{patches} is always equals to
          \code{nNeighbors}.
 }
 \examples{

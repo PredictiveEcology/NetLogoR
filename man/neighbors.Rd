@@ -4,7 +4,7 @@
 \name{neighbors}
 \alias{neighbors}
 \alias{neighbors,worldNLR,matrix,numeric-method}
-\title{Neighbors patches}
+\title{Neighbors \code{patches}}
 \usage{
 neighbors(world, agents, nNeighbors, torus = FALSE)
 
@@ -12,31 +12,31 @@ neighbors(world, agents, nNeighbors, torus = FALSE)
   torus = FALSE)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{nNeighbors}{Integer: 4 or 8. Represents the number of neighbor patches
+\item{nNeighbors}{Integer: 4 or 8. Represents the number of neighbor \code{patches}
 considered.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}
 }
 \value{
-Matrix (ncol = 3) with the first column "pxcor"
-        and the second column "pycor" representing the coordinates of the neighbors
-        patches around the \code{agents} and the third column "id" representing
-        the "id" of the \code{agents} in the order provided.
+Matrix (\code{ncol} = 3) with the first column \code{pxcor}
+        and the second column \code{pycor} representing the coordinates of the neighbors
+        \code{patches} around the \code{agents} and the third column \code{id} representing
+        the \code{id} of the \code{agents} in the order provided.
 }
 \description{
-Report the coordinates of the neighbors patches around the \code{agents}.
+Report the coordinates of the neighbors \code{patches} around the \code{agents}.
 }
 \details{
-The patch around which the neighbors are identified, or the patch where
-         the turtle is located on around which the neighbors are identified, is not
+The \code{patch} around which the neighbors are identified, or the \code{patch} where
+         the \code{turtle} is located on around which the neighbors are identified, is not
          returned.
 
          If \code{torus = FALSE}, \code{agents} located on the edges of the

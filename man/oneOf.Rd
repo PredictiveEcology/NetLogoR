@@ -4,51 +4,51 @@
 \name{oneOf}
 \alias{oneOf}
 \alias{oneOf,matrix-method}
-\title{One random agent}
+\title{One random \code{agent}}
 \usage{
 oneOf(agents)
 
 \S4method{oneOf}{matrix}(agents)
 }
 \arguments{
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              Matrix (ncol = 3) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates and the
-              third column "id", or
+              Matrix (\code{ncol} = 3) with the first column "\code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates and the
+              third column \code{id}, or
 
-              AgentMatrix object representing the moving agents, or
+              \code{AgentMatrix} object representing the moving \code{agents}, or
 
-              Matrix (ncol = 2) with the first column "whoTurtles" and the
-              second column "id".}
+              Matrix (\code{ncol} = 2) with the first column \code{whoTurtles} and the
+              second column \code{id}.}
 }
 \value{
-Matrix (ncol = 2, nrow = 1) with the first column "pxcor"
-        and the second  column "pycor" representing the coordinates of the
-        selected patch from \code{agents}, or
+Matrix (\code{ncol} = 2, \code{nrow} = 1) with the first column \code{pxcor}
+        and the second  column \code{pycor} representing the coordinates of the
+        selected \code{patch} from \code{agents}, or
 
-        Matrix (ncol = 2) with the first column "pxcor"
-        and the second  column "pycor" representing the coordinates of the
-        selected patches from \code{agents}, one per individual "id", or
+        Matrix (\code{ncol} = 2) with the first column \code{pxcor}
+        and the second  column \code{pycor} representing the coordinates of the
+        selected \code{patches} from \code{agents}, one per individual \code{id}, or
 
-        AgentMatrix object representing the turtle
+        \code{AgentMatrix} object representing the \code{turtle}
         selected from \code{agents}, or
 
-        Integer. Vector of "who" numbers for the selected turtles from
-        \code{agents}, one per individual "id".
+        Integer. Vector of \code{who} numbers for the selected \code{turtles} from
+        \code{agents}, one per individual \code{id}.
 }
 \description{
-Report one patch or turtle randomly selected among \code{agents}.
+Report one \code{patch} or \code{turtle} randomly selected among \code{agents}.
 }
 \details{
-If \code{agents} is a matrix with ncol = 3, the selection of one
-         random patch is done per individual "id". The order of the patches
-         coordinates returned follow the order of "id".
-         If \code{agents} is a matrix (ncol = 2) with columns "whoTurtles" and
-         "id", the selection of one random turtle (defined by their "whoTurtles")
-         is done per individual "id". The order of the "who" numbers returned
-         follow the order of "id".
+If \code{agents} is a matrix with \code{ncol} = 3, the selection of one
+         random \code{patch} is done per individual \code{id}. The order of the \code{patches}
+         coordinates returned follow the order of \code{id}.
+         If \code{agents} is a matrix (\code{ncol} = 2) with columns \code{whoTurtles} and
+         \code{id}, the selection of one random \code{turtle} (defined by their \code{whoTurtles})
+         is done per individual \code{id}. The order of the \code{who} numbers returned
+         follow the order of \code{id}.
 }
 \examples{
 # Patches

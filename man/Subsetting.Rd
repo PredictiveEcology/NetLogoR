@@ -8,7 +8,7 @@
 \alias{[[<-,worldArray,ANY,ANY,ANY-method}
 \alias{$}
 \alias{$,worldArray-method}
-\title{Subsetting for worldArray class}
+\title{Subsetting for \code{worldArray} class}
 \usage{
 \S4method{[[}{worldArray,ANY,ANY}(x, i)
 
@@ -20,10 +20,10 @@
 \item{x}{A \code{worldArray} object.}
 
 \item{i}{Index number or layer name specifying a subset of layer(s)
-from the worldArray.}
+from the \code{worldArray}.}
 
-\item{value}{A replacement worldMatrix layer for one of the current layers in the
-worldArray.}
+\item{value}{A replacement \code{worldMatrix} layer for one of the current layers in the
+\code{worldArray}.}
 
 \item{name}{Layer name, normally without back ticks, unless has symbols.}
 }

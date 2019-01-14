@@ -3,19 +3,19 @@
 \name{.quickPlottables-class}
 \alias{.quickPlottables-class}
 \alias{quickPlottables}
-\title{quickPlot classes -- for using `quickPlot::Plot``}
+\title{\code{quickPlot} classes -- for using `quickPlot::Plot``}
 \description{
 \pkg{quickPlot} offers a type of plotting that is modular.
 Users of NetLogoR may find this useful for simulation modeling.
 We have put in place the required methods and imported the appropriate classes
-to use the `quickPlot::Plot` function.
-Users can still use `plot` from the `graphics` package, but it is not modular.
+to use the \code{quickPlot::Plot} function.
+Users can still use \code{plot} from the \pkg{graphics} package, but it is not modular.
 }
 \details{
-This adds agentMatrix to the \code{.quickPlottables}, \code{.quickObjects},
+This adds \code{agentMatrix} to the \code{.quickPlottables}, \code{.quickObjects},
 and \code{spatialObjects}.
 
-This adds worldMatrix to the \code{.quickPlottables}, \code{.quickObjects},
+This adds \code{worldMatrix} to the \code{.quickPlottables}, \code{.quickObjects},
 \code{spatialObjects} and \code{griddedClasses}.
 }
 \section{Slots}{

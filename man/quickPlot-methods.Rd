@@ -6,7 +6,7 @@
 \alias{.plotGrob,agentMatrix-method}
 \alias{layerNames,worldArray-method}
 \alias{.identifyGrobToPlot,worldArray,.quickPlotGrob-method}
-\title{Methods for quickPlot}
+\title{Methods for \code{quickPlot}}
 \usage{
 \S4method{numLayers}{worldArray}(x)
 
@@ -81,5 +81,5 @@ into Plot (\code{TRUE}), or from the (\code{.quickPlotEnv})
 (\code{FALSE}).}
 }
 \description{
-These are required to create plotting methods to work with quickPlot.
+These are required to create plotting methods to work with \pkg{quickPlot}.
 }

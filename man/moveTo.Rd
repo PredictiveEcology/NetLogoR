@@ -11,16 +11,16 @@ moveTo(turtles, agents)
 \S4method{moveTo}{agentMatrix,matrix}(turtles, agents)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 }
 \value{
-AgentMatrix representing the \code{turtles} with updated coordinates
-        and updated data for their previous coordinates "prevX" and "prevY".
+\code{AgentMatrix} representing the \code{turtles} with updated coordinates
+        and updated data for their previous coordinates \code{prevX} and \code{prevY}.
 }
 \description{
 Move the \code{turtles} to the \code{agents}' locations.
@@ -29,10 +29,10 @@ Move the \code{turtles} to the \code{agents}' locations.
 The number of \code{agents} must be equal to 1 or to
          length \code{turtles}.
 
-         The \code{turtle}'s headings are not affected with this function.
+         The \code{turtle}'s \code{headings} are not affected with this function.
 
-         If a turtle is moving to a patch location, it will be located at
-         the patch center.
+         If a \code{turtle} is moving to a \code{patch} location, it will be located at
+         the \code{patch} center.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9,

@@ -4,7 +4,7 @@
 \name{show,worldArray-method}
 \alias{show,worldArray-method}
 \alias{show,worldMatrix-method}
-\title{Key base R functions for worldNLR classes}
+\title{Key base R functions for \code{worldNLR} classes}
 \usage{
 \S4method{show}{worldArray}(object)
 

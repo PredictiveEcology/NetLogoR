@@ -4,20 +4,20 @@
 \name{minPxcor}
 \alias{minPxcor}
 \alias{minPxcor,worldNLR-method}
-\title{Minimum pxcor}
+\title{Minimum \code{pxcor}}
 \usage{
 minPxcor(world)
 
 \S4method{minPxcor}{worldNLR}(world)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 }
 \value{
 Integer.
 }
 \description{
-Report the patches minimum pxcor in the \code{world}.
+Report the patches minimum \code{pxcor} in the \code{world}.
 }
 \examples{
 w1 <- createWorld()

@@ -13,20 +13,20 @@ NLdist(agents, agents2, world, torus = FALSE, allPairs = FALSE)
   allPairs = FALSE)
 }
 \arguments{
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{agents2}{Matrix (ncol = 2) with the first column "pxcor" and the second
-               column "pycor" representing the patches coordinates, or
+\item{agents2}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+               column \code{pycor} representing the \code{patches} coordinates, or
 
-               AgentMatrix object representing the moving agents, or
+               \code{AgentMatrix} object representing the moving \code{agents}, or
 
-               Matrix (ncol = 2) with the first column "x and the second column
-               "y" representing locations coordinates.}
+               Matrix (\code{ncol} = 2) with the first column \code{x} and the second column
+               \code{y} representing locations coordinates.}
 
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}

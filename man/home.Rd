@@ -11,9 +11,9 @@ home(world, turtles, home)
 \S4method{home}{worldNLR,agentMatrix,character}(world, turtles, home)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{home}{Character. Can take one of the following options to define where
                to relocate the \code{turtles}:
@@ -25,15 +25,15 @@ home(world, turtles, home)
                the \code{world}.
 
                \code{home = "pCorner"} will place the \code{turtles} at the center of
-               the patch located in the left bottom corner of the \code{world}.
+               the \code{patch} located in the left bottom corner of the \code{world}.
 
                \code{home = "corner"} will place the \code{turtles} at the left bottom
                corner of the \code{world}.}
 }
 \value{
-AgentMatrix representing the \code{turtles} with updated
-        coordinates and updated data for their previous coordinates "prevX"
-        and "prevY".
+\code{AgentMatrix} representing the \code{turtles} with updated
+        coordinates and updated data for their previous coordinates \code{prevX}
+        and \code{prevY}.
 }
 \description{
 Move the \code{turtles} back \code{home}.

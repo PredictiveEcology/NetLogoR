@@ -4,20 +4,20 @@
 \name{maxPycor}
 \alias{maxPycor}
 \alias{maxPycor,worldNLR-method}
-\title{Maximum pycor}
+\title{Maximum \code{pycor}}
 \usage{
 maxPycor(world)
 
 \S4method{maxPycor}{worldNLR}(world)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 }
 \value{
 Integer.
 }
 \description{
-Report the patches maximum pycor in the \code{world}.
+Report the patches maximum \code{pycor} in the \code{world}.
 }
 \examples{
 w1 <- createWorld()

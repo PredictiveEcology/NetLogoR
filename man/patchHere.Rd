@@ -4,30 +4,30 @@
 \name{patchHere}
 \alias{patchHere}
 \alias{patchHere,worldNLR,agentMatrix-method}
-\title{Patches here}
+\title{\code{Patches} here}
 \usage{
 patchHere(world, turtles)
 
 \S4method{patchHere}{worldNLR,agentMatrix}(world, turtles)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 }
 \value{
-Matrix (ncol = 2) with the first column "pxcor" and the second column
-        "pycor" representing the coordinates of the patches at the \code{turtles}
-        location. The order of the patches follows the order of the \code{turtles}.
+Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+        \code{pycor} representing the coordinates of the \code{patches} at the \code{turtles}
+        location. The order of the \code{patches} follows the order of the \code{turtles}.
 }
 \description{
-Report the coordinates of the patches under the \code{turtles}
+Report the coordinates of the \code{patches} under the \code{turtles}
 locations.
 }
 \details{
-If a turtle is located outside of the \code{world}'s extent,
+If a \code{turtle} is located outside of the \code{world}'s extent,
          \code{NA} are returned
-         for the patch coordinates.
+         for the \code{patch} coordinates.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)

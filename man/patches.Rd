@@ -4,22 +4,22 @@
 \name{patches}
 \alias{patches}
 \alias{patches,worldNLR-method}
-\title{All the patches in a world}
+\title{All the \code{patches} in a \code{world}}
 \usage{
 patches(world)
 
 \S4method{patches}{worldNLR}(world)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 }
 \value{
-Matrix (ncol = 2) with the first column "pxcor" and the second column
-        "pycor" representing the patches coordinates. The order of the patches
-        follows the order of the cells numbers as defined for a Raster* object.
+Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+        \code{pycor} representing the \code{patches} coordinates. The order of the \code{patches}
+        follows the order of the cells numbers as defined for a \code{Raster*} object.
 }
 \description{
-Report the coordinates of all the patches in the \code{world}.
+Report the coordinates of all the \code{patches} in the \code{world}.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)

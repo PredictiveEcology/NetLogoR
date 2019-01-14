@@ -4,35 +4,35 @@
 \name{worldMatrix-class}
 \alias{worldMatrix-class}
 \alias{worldMatrix}
-\title{The worldMatrix class}
+\title{The \code{worldMatrix} class}
 \description{
 This is an s4 class extension of \code{matrix} with 7 additional slots.
-A \code{worldMatrix} object can be viewed as a grid composed of squared patches
-(i.e., matrix cells). Patches have two spatial coordinates \code{pxcor} and
+A \code{worldMatrix} object can be viewed as a grid composed of squared \code{patches}
+(i.e., matrix cells). \code{Patches} have two spatial coordinates \code{pxcor} and
 \code{pycor}, representing the location of their center. \code{pxcor} and
 \code{pycor} are always integer and increment by 1. \code{pxcor} increases as
 you move right and \code{pycor} increases as you move up.  \code{pxcor} and
-\code{pycor} can be negative if there are patches to the left or below the patch
+\code{pycor} can be negative if there are \code{patches} to the left or below the \code{patch}
 \code{[pxcor = 0, pycor = 0]}.
 }
 \details{
 The first four slots of the \code{worldMatrix} are: \code{minPxcor}, \code{maxPxcor},
-\code{minPycor}, \code{maxPycor} which represent the minimum and maximum patches
+\code{minPycor}, \code{maxPycor} which represent the minimum and maximum \code{patches}
 coordinates in the \code{worldMatrix}.
 The slot \code{extent} is similar to a \code{Raster*} extent. Because \code{pxcor}
-and \code{pycor} represent the spatial location at the center of the patches and the
+and \code{pycor} represent the spatial location at the center of the \code{patches} and the
 resolution of them is 1, the extent of the \code{worldMatrix} is equal to
 \code{xmin = minPxcor - 0.5}, \code{xmax = maxPxcor + 0.5}, \code{ymin = minPycor - 0.5},
 and \code{ymax = maxPycor + 0.5}.
-The number of patches in a \code{worldMatrix} is equal to
+The number of \code{patches} in a \code{worldMatrix} is equal to
 \code{((maxPxcor - minPxcor) + 1) * ((maxPycor - minPycor) + 1)}.
-The slot \code{res} is equal to \code{1} as it is the spatial resolution of the patches.
-The last slot \code{pCoords} is a \code{matrix} representing the patches coordinates
+The slot \code{res} is equal to \code{1} as it is the spatial resolution of the \code{patches}.
+The last slot \code{pCoords} is a \code{matrix} representing the \code{patches} coordinates
 of all the matrix cells in the order of cells in a \code{Raster*} (i.e., by rows).
 
 Careful: The methods \code{[]} and \code{[] <-} retrieve or assign values for
-the patches in the given order of the patches coordinates provided.
-When no patches coordinates are provided, the values retrieved or assigned
+the \code{patches} in the given order of the \code{patches} coordinates provided.
+When no \code{patches} coordinates are provided, the values retrieved or assigned
 is done in the order of the cell numbers as defined in in \code{Raster*} objects
 (i.e., by rows).
 }

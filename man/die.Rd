@@ -4,26 +4,26 @@
 \name{die}
 \alias{die}
 \alias{die,agentMatrix,numeric-method}
-\title{Kill turtles}
+\title{Kill \code{turtles}}
 \usage{
 die(turtles, who)
 
 \S4method{die}{agentMatrix,numeric}(turtles, who)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{who}{Integer. Vector of the "who" numbers for the selected \code{turtles}.}
+\item{who}{Integer. Vector of the \code{who} numbers for the selected \code{turtles}.}
 }
 \value{
-AgentMatrix representing the \code{turtles} with the selected
+\code{AgentMatrix} representing the \code{turtles} with the selected
         ones removed.
 }
 \description{
-Kill selected turtles.
+Kill selected \code{turtles}.
 }
 \details{
-The "who" numbers of the remaining \code{turtles} are unchanged.
+The \code{who} numbers of the remaining \code{turtles} are unchanged.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)

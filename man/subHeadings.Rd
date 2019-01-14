@@ -7,7 +7,7 @@
 \alias{subHeadings,agentMatrix,numeric-method}
 \alias{subHeadings,numeric,agentMatrix-method}
 \alias{subHeadings,agentMatrix,agentMatrix-method}
-\title{Subtract headings}
+\title{Subtract \code{headings}}
 \usage{
 subHeadings(angle1, angle2, range360 = FALSE)
 
@@ -23,11 +23,11 @@ subHeadings(angle1, angle2, range360 = FALSE)
   range360 = FALSE)
 }
 \arguments{
-\item{angle1}{AgentMatrix object representing the moving agents, or
+\item{angle1}{\code{AgentMatrix} object representing the moving \code{agents}, or
 
               Numeric. Vector of angles.}
 
-\item{angle2}{AgentMatrix object representing the moving agents, or
+\item{angle2}{\code{AgentMatrix} object representing the moving \code{agents}, or
 
               Numeric. Vector of angles.}
 
@@ -43,7 +43,7 @@ Numeric. Vector of the smallest angles in degrees
         (i.e., the target heading).
 }
 \description{
-Compute the difference between headings.
+Compute the difference between \code{headings}.
 }
 \details{
 This function does the opposite as the one in NetLogo where

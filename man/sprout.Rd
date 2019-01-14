@@ -4,7 +4,7 @@
 \name{sprout}
 \alias{sprout}
 \alias{sprout,numeric,matrix-method}
-\title{Sprout new turtles}
+\title{Sprout new \code{turtles}}
 \usage{
 sprout(n, patches, breed, heading, color, turtles)
 
@@ -13,48 +13,48 @@ sprout(n, patches, breed, heading, color, turtles)
 }
 \arguments{
 \item{n}{Integer. Vector of length 1 or of length the number of \code{patches}.
-Number of new turtles
-to create on each patch.}
+Number of new \code{turtles}
+to create on each \code{patch}.}
 
-\item{patches}{Matrix (ncol = 2) with the first column "pxcor" and the second
-column "pycor" representing the patches coordinates.}
+\item{patches}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+column \code{pycor} representing the \code{patches} coordinates.}
 
-\item{breed}{Character. Vector of "breed" names.
+\item{breed}{Character. Vector of \code{breed} names.
 Must be of length 1 or of length the number of \code{patches}.
-If missing, breed = "turtle" for all the sprouted turtles.}
+If missing, \code{breed} = \code{turtle} for all the sprouted \code{turtles}.}
 
 \item{heading}{Numeric. Vector of values between 0 and 360.
 Must be of length 1 or of length the number of \code{patches}.
-If missing, a random heading is assigned to each sprouted turtle.}
+If missing, a random \code{heading} is assigned to each sprouted \code{turtle}.}
 
-\item{color}{Character. Vector of color names.
+\item{color}{Character. Vector of \code{color} names.
 Must be of length 1, of length the number of \code{patches} or
 of length \code{sum(n)}.
-If missing, colors are assigned using the function rainbow(n)}
+If missing, \code{colors} are assigned using the function \code{rainbow(n)}.}
 
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 }
 \value{
-AgentMatrix including the new
-        sprouted turtles.
+\code{AgentMatrix} including the new
+        sprouted \code{turtles}.
 }
 \description{
-Create \code{n} new turtles on specific \code{patches}.
+Create \code{n} new \code{turtles} on specific \code{patches}.
 }
 \details{
 \code{nrow(patches)} must be equal to 1 or to \code{n}.
 
-         If \code{turtles} is provided, the new turtles are added to
-         the \code{turtles} when returned. The who numbers of the sprouted turtles
+         If \code{turtles} is provided, the new \code{turtles} are added to
+         the \code{turtles} when returned. The \code{who} numbers of the sprouted \code{turtles}
          therefore follow the ones from the \code{turtles}.
-         All new sprouted turtles are placed at the end of the agentMatrix object.
+         All new sprouted \code{turtles} are placed at the end of the \code{agentMatrix} object.
          If no \code{turtles}
-         is provided, a new agentMatrix is created and the who numbers
+         is provided, a new \code{agentMatrix} is created and the \code{who} numbers
          start at 0.
 
          If \code{turtles} is provided and had additional variables created
          with \code{turtlesOwn()}, \code{NA} is given for these variables
-         for the new sprouted turtles.
+         for the new sprouted \code{turtles}.
 }
 \examples{
 t1 <- sprout(patches = cbind(pxcor = 2, pycor = 2), n = 3)

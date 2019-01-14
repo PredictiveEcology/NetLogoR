@@ -11,10 +11,10 @@ isNLclass(agents, class)
 \S4method{isNLclass}{matrix,character}(agents, class)
 }
 \arguments{
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{class}{Character. Can take one of the following options to define
 the \code{class}: \code{"agent"}, \code{"agentset"},
@@ -30,15 +30,15 @@ report \code{FALSE} otherwise.
 \details{
 Careful! The \code{class} tested does not correspond to actual R classes.
 
-         \code{agents} is \code{"patch"} if it is a matrix (ncol = 2) with the
-         first column "pxcor" and the second column "pycor" with only
+         \code{agents} is \code{"patch"} if it is a matrix (\code{ncol} = 2) with the
+         first column \code{pxcor} and the second column \code{pycor} with only
          one row. \code{agents} is \code{"patcheset"} if the matrix has more than
          one row.
 
-         \code{agents} is \code{"turtle"} if it is an agentMatrix
-         containing only one turtle.
+         \code{agents} is \code{"turtle"} if it is an \code{agentMatrix}
+         containing only one \code{turtle}.
          \code{agents} is \code{"turtleset"} if the
-         agentMatrix contains more than one turtle.
+         \code{agentMatrix} contains more than one \code{turtle}.
 
          \code{agents} is \code{"agent"} if it is either \code{"patch"} or
          \code{"turtle"}. \code{agents} is \code{"agentset"} if it is either

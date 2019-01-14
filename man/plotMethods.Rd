@@ -5,7 +5,7 @@
 \alias{plot.worldMatrix}
 \alias{plot.worldArray}
 \alias{points.agentMatrix}
-\title{Basic plot methods for `agentMatrix`, `worldMatrix`, `worldArray`}
+\title{Basic plot methods for \code{agentMatrix}, \code{worldMatrix}, \code{worldArray}}
 \usage{
 \method{plot}{agentMatrix}(x, ...)
 
@@ -16,13 +16,13 @@
 \method{points}{agentMatrix}(x, ...)
 }
 \arguments{
-\item{x}{an agentMatrix, worldMatrix or worldArray object}
+\item{x}{an \code{agentMatrix}, \code{worldMatrix} or \code{worldArray} object}
 
-\item{...}{arguments passed to plot methods for matrix (agentMatrix) or raster (world*)}
+\item{...}{arguments passed to plot methods for matrix (\code{agentMatrix}) or \code{raster} (\code{world*})}
 }
 \description{
-These pass to plot, as a matrix of points (`agentMatrix`), as a raster (`worldMatrix`),
-or a rasterStack (`worldArray`).
+These pass to plot, as a matrix of points (\code{agentMatrix}), as a \code{raster} (\code{worldMatrix}),
+or a \code{rasterStack} (\code{worldArray}).
 They can be modified.
 }
 \examples{

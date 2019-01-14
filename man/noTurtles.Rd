@@ -2,16 +2,16 @@
 % Please edit documentation in R/turtle-functions.R
 \name{noTurtles}
 \alias{noTurtles}
-\title{No turtles}
+\title{No \code{turtles}}
 \usage{
 noTurtles()
 }
 \value{
-AgentMatrix with the turtle variables defined as when using
-        \code{createTurtles()} but with 0 turtles.
+\code{AgentMatrix} with the \code{turtle} variables defined as when using
+        \code{createTurtles()} but with 0 \code{turtle}.
 }
 \description{
-Report an empty turtle agentset.
+Report an empty \code{turtle} \code{agentset}.
 }
 \examples{
 t1 <- noTurtles()

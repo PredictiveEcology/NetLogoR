@@ -5,7 +5,7 @@
 \alias{turtle}
 \alias{turtle,agentMatrix,numeric,missing-method}
 \alias{turtle,agentMatrix,numeric,character-method}
-\title{Select turtles}
+\title{Select \code{turtles}}
 \usage{
 turtle(turtles, who, breed)
 
@@ -14,15 +14,15 @@ turtle(turtles, who, breed)
 \S4method{turtle}{agentMatrix,numeric,character}(turtles, who, breed)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{who}{Integer. Vector of the "who" numbers for the selected \code{turtles}.}
+\item{who}{Integer. Vector of the \code{who} numbers for the selected \code{turtles}.}
 
-\item{breed}{Characters. Vector of "breed" names for the selected \code{turtles}.
-If missing, there is no distinction based upon "breed".}
+\item{breed}{Characters. Vector of \code{breed} names for the selected \code{turtles}.
+If missing, there is no distinction based upon \code{breed}.}
 }
 \value{
-AgentMatrix of the selected \code{turtles} sorted in the order of
+\code{AgentMatrix} of the selected \code{turtles} sorted in the order of
         the \code{who} numbers requested. If \code{breed} was provided, the
         \code{turtles} selected are of one of the \code{breed}.
 }
@@ -31,12 +31,12 @@ Report the individuals among \code{turtles} based on their \code{who} numbers
 and \code{breed}.
 }
 \details{
-If no turtle matches the given \code{who} numbers, with potentially
+If no \code{turtle} matches the given \code{who} numbers, with potentially
          one of the given
-         \code{breed}, inside \code{turtles}, then an empty agentMatrix is returned.
+         \code{breed}, inside \code{turtles}, then an empty \code{agentMatrix} is returned.
 
-         If there are duplicates "who" numbers among the \code{turtles}, the first
-         matching turtle with the requested \code{who} number is returned.
+         If there are duplicates \code{who} numbers among the \code{turtles}, the first
+         matching \code{turtle} with the requested \code{who} number is returned.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)

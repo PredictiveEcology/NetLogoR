@@ -5,7 +5,7 @@
 \alias{clearPatches}
 \alias{clearPatches,worldMatrix-method}
 \alias{clearPatches,worldArray-method}
-\title{Clear world's patches}
+\title{Clear \code{world}'s \code{patches}}
 \usage{
 clearPatches(world)
 
@@ -14,13 +14,13 @@ clearPatches(world)
 \S4method{clearPatches}{worldArray}(world)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 }
 \value{
-WorldMatrix object with \code{NA} values for all patches.
+\code{WorldMatrix} object with \code{NA} values for all \code{patches}.
 }
 \description{
-Reset all patches values to \code{NA}.
+Reset all \code{patches} values to \code{NA}.
 }
 \examples{
 w1 <- createWorld()

@@ -11,33 +11,33 @@ other(agents, except)
 \S4method{other}{matrix,matrix}(agents, except)
 }
 \arguments{
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{except}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{except}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 }
 \value{
-Matrix (ncol = 2) with the first column "pxcor" and the second
-        column "pycor" representing the patches in \code{agents} without
+Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+        column \code{pycor} representing the \code{patches} in \code{agents} without
         the ones in \code{except}, or
 
-        AgentMatrix representing the turtles in \code{agents} without
+        \code{AgentMatrix} representing the \code{turtles} in \code{agents} without
         the ones in \code{except}.
 }
 \description{
-Report an agentset of the \code{agents} except specific ones.
+Report an \code{agentset} of the \code{agents} except specific ones.
 }
 \details{
 Both \code{agents} and \code{except} must be of the same class (e.g., both
-         patches or both turtles).
+         \code{patches} or both \code{turtles}).
 
-         Warning: this function removes turtles only based on similar "who" numbers
-         and "breed" names.
+         Warning: this function removes \code{turtles} only based on similar \code{who} numbers
+         and \code{breed} names.
 }
 \examples{
 # Patches

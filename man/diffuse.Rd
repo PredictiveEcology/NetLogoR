@@ -5,7 +5,7 @@
 \alias{diffuse}
 \alias{diffuse,worldMatrix,missing,numeric,numeric-method}
 \alias{diffuse,worldArray,character,numeric,numeric-method}
-\title{Diffuse values in a world}
+\title{Diffuse values in a \code{world}}
 \usage{
 diffuse(world, pVar, share, nNeighbors, torus = FALSE)
 
@@ -16,35 +16,35 @@ diffuse(world, pVar, share, nNeighbors, torus = FALSE)
   share, nNeighbors, torus = FALSE)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{pVar}{Character. If the \code{world} is a worldArray object, \code{pVar}
-is the name of the layer to use to define the patches values.
-\code{pVar} must not be provided if the \code{world} is a worldMatrix object.}
+\item{pVar}{Character. If the \code{world} is a \code{worldArray} object, \code{pVar}
+is the name of the layer to use to define the \code{patches} values.
+\code{pVar} must not be provided if the \code{world} is a \code{worldMatrix} object.}
 
 \item{share}{Numeric. Value between 0 and 1 representing the portion of
-the patches values to be diffused among the neighbors.}
+the \code{patches} values to be diffused among the neighbors.}
 
-\item{nNeighbors}{Integer: 4 or 8. Represents the number of neighbor patches
+\item{nNeighbors}{Integer: 4 or 8. Represents the number of neighbor \code{patches}
 considered.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}
 }
 \value{
-WorldMatrix or worldArray object with patches values updated.
+\code{WorldMatrix} or \code{worldArray} object with \code{patches} values updated.
 }
 \description{
-Each patch gives an equal share of a portion of its value to its neighbor patches.
+Each \code{patch} gives an equal share of a portion of its value to its neighbor \code{patches}.
 }
 \details{
 What is given is lost for the patches.
 
-         If \code{torus = TRUE}, all patches have \code{nNeighbors} patches around
+         If \code{torus = TRUE}, all \code{patches} have \code{nNeighbors} \code{patches} around
          them, which
          some may be on the other sides of the \code{world}. If \code{torus = FALSE},
-         patches located on the edges of the \code{world} have less than
-         \code{nNeighbors} patches around them.
+         \code{patches} located on the edges of the \code{world} have less than
+         \code{nNeighbors} \code{patches} around them.
          However, each neighbor still gets 1/4 or 1/8 of the shared amount
          and the diffusing
          patch keeps the leftover.

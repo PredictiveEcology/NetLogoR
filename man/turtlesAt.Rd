@@ -5,7 +5,7 @@
 \alias{turtlesAt}
 \alias{turtlesAt,worldNLR,agentMatrix,matrix,numeric,numeric,missing-method}
 \alias{turtlesAt,worldNLR,agentMatrix,matrix,numeric,numeric,character-method}
-\title{Turtles at}
+\title{\code{Turtles} at}
 \usage{
 turtlesAt(world, turtles, agents, dx, dy, breed, torus = FALSE)
 
@@ -18,46 +18,46 @@ turtlesAt(world, turtles, agents, dx, dy, breed, torus = FALSE)
   turtles, agents, dx, dy, breed, torus = FALSE)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{agents}{Matrix (ncol = 2) with the first column "pxcor" and the second
-              column "pycor" representing the patches coordinates, or
+\item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
+              column \code{pycor} representing the \code{patches} coordinates, or
 
-              AgentMatrix object representing the moving agents.}
+              \code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{dx}{Numeric. Vector of distances to the east (right) from the \code{agents}.
 If \code{dx} is negative, the distance to the west (left) is computed.
-\code{dx} must be of length 1 or of the same length as number of patches
-or turtles in \code{agents}.}
+\code{dx} must be of length 1 or of the same length as number of \code{patches}
+or \code{turtles} in \code{agents}.}
 
 \item{dy}{Numeric. Vector of distances to the north (up) from the \code{agents}.
 If \code{dy} is negative, the distance to the south is computed (down).
-\code{dy} must be of length 1 or of the same length as number of patches
-or turtles in \code{agents}.}
+\code{dy} must be of length 1 or of the same length as number of \code{patches}
+or \code{turtles} in \code{agents}.}
 
-\item{breed}{Characters. Vector of "breed" names for the selected \code{turtles}.
-If missing, there is no distinction based upon "breed".}
+\item{breed}{Characters. Vector of \code{breed} names for the selected \code{turtles}.
+If missing, there is no distinction based upon \code{breed}.}
 
 \item{torus}{Logical to determine if the \code{world} is wrapped. Default is
 \code{torus = FALSE}.}
 }
 \value{
-AgentMatrix representing the individuals among \code{turtles}
+\code{AgentMatrix} representing the individuals among \code{turtles}
         of any of the given \code{breed}, if specified,
-        which are located on the patches at \code{(dx, dy)} distances of the
+        which are located on the \code{patches} at \code{(dx, dy)} distances of the
         \code{agents}.
 }
 \description{
-Report the individuals among \code{turtles} that are located on the patches at
+Report the individuals among \code{turtles} that are located on the \code{patches} at
 \code{(dx, dy)} distances of the \code{agents}.
 }
 \details{
-If the patch at distance \code{(dx, dy)}
-         of an agent is outside of the \code{world}'s extent and \code{torus = FALSE},
-         no turtle is returned;
-         if \code{torus = TRUE}, the turtle located on the patch whose coordinates
+If the \code{patch} at distance \code{(dx, dy)}
+         of an \code{agent} is outside of the \code{world}'s extent and \code{torus = FALSE},
+         no \code{turtle} is returned;
+         if \code{torus = TRUE}, the \code{turtle} located on the \code{patch} whose coordinates
          are defined from the wrapped \code{world} is returned.
 }
 \examples{

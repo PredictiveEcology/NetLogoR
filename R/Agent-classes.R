@@ -2,7 +2,7 @@ if (getRversion() >= "3.1.0") {
   utils::globalVariables(c("xcor", "ycor"))
 }
 
-#' The agentMatrix class
+#' The \code{agentMatrix} class
 #'
 #' Documentation needed.
 #'
@@ -25,7 +25,7 @@ setClass("agentMatrix", contains = "matrix",
          )
 )
 
-#' A meta class for agentMatrix and SpatialPointsDataFrame
+#' A meta class for \code{agentMatrix} and \code{SpatialPointsDataFrame}
 #'
 #' Both these types can be used by NetLogoR to describe turtle agents.
 #'

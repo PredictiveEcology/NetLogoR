@@ -5,7 +5,7 @@
 \alias{tExist}
 \alias{tExist,agentMatrix,numeric,missing-method}
 \alias{tExist,agentMatrix,numeric,character-method}
-\title{Do the turtles exist?}
+\title{Do the \code{turtle} exist?}
 \usage{
 tExist(turtles, who, breed)
 
@@ -14,12 +14,12 @@ tExist(turtles, who, breed)
 \S4method{tExist}{agentMatrix,numeric,character}(turtles, who, breed)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{who}{Integer. Vector of the "who" numbers for the selected \code{turtles}.}
+\item{who}{Integer. Vector of the \code{who} numbers for the selected \code{turtles}.}
 
-\item{breed}{Characters. Vector of "breed" names for the selected \code{turtles}.
-If missing, there is no distinction based upon "breed".}
+\item{breed}{Characters. Vector of \code{breed} names for the selected \code{turtles}.
+If missing, there is no distinction based upon \code{breed}.}
 }
 \value{
 Logical. Vector of \code{TRUE} or \code{FALSE} if the \code{who} numbers
@@ -27,7 +27,7 @@ Logical. Vector of \code{TRUE} or \code{FALSE} if the \code{who} numbers
         inside the \code{turtles}.
 }
 \description{
-Report \code{TRUE} if a turtle exists inside the \code{turtles}, report
+Report \code{TRUE} if a \code{turtle} exists inside the \code{turtles}, report
 \code{FALSE} otherwise.
 }
 \examples{

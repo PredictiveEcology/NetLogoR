@@ -4,19 +4,19 @@
 \name{inspect}
 \alias{inspect}
 \alias{inspect,agentMatrix,numeric-method}
-\title{Inspect turtles}
+\title{Inspect \code{turtles}}
 \usage{
 inspect(turtles, who)
 
 \S4method{inspect}{agentMatrix,numeric}(turtles, who)
 }
 \arguments{
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
-\item{who}{Integer. Vector of the "who" numbers for the selected \code{turtles}.}
+\item{who}{Integer. Vector of the \code{who} numbers for the selected \code{turtles}.}
 }
 \value{
-Dataframe (nrow = \code{length(who)}) of the variables of the selected
+\code{Dataframe} (\code{nrow} = \code{length(who)}) of the variables of the selected
         individuals among the \code{turtles}.
 }
 \description{

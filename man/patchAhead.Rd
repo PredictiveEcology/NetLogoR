@@ -4,7 +4,7 @@
 \name{patchAhead}
 \alias{patchAhead}
 \alias{patchAhead,worldNLR,agentMatrix,numeric-method}
-\title{Patches ahead}
+\title{\code{Patches} ahead}
 \usage{
 patchAhead(world, turtles, dist, torus = FALSE)
 
@@ -12,9 +12,9 @@ patchAhead(world, turtles, dist, torus = FALSE)
   torus = FALSE)
 }
 \arguments{
-\item{world}{WorldMatrix or worldArray object.}
+\item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
-\item{turtles}{AgentMatrix object representing the moving agents.}
+\item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{dist}{Numeric. Vector of distances from the \code{turtles}. \code{dist} must be
 of length 1 or of length \code{turtles}.}
@@ -23,19 +23,19 @@ of length 1 or of length \code{turtles}.}
 \code{torus = FALSE}.}
 }
 \value{
-Matrix (ncol = 2) with the first column "pxcor" and the second column
-        "pycor" representing the coordinates of the patches at the distances \code{dist}
-        and \code{turtles}'s headings directions
-        of \code{turtles}. The order of the patches follows the order of the \code{turtles}.
+Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
+        \code{pycor} representing the coordinates of the \code{patches} at the distances \code{dist}
+        and \code{turtles}'s \code{headings} directions
+        of \code{turtles}. The order of the \code{patches} follows the order of the \code{turtles}.
 }
 \description{
-Report the coordinates of the patches at the given
-distances of the \code{turtles} in the direction of their headings.
+Report the coordinates of the \code{patches} at the given
+distances of the \code{turtles} in the direction of their \code{headings}.
 }
 \details{
-If \code{torus = FALSE} and the patch at distance \code{dist} of a turtle
+If \code{torus = FALSE} and the \code{patch} at distance \code{dist} of a \code{turtle}
          is outside the \code{world}'s extent, \code{NA}
-         are returned for the patch coordinates. If \code{torus = TRUE}, the patch
+         are returned for the \code{patch} coordinates. If \code{torus = TRUE}, the \code{patch}
          coordinates from a wrapped \code{world} are returned.
 }
 \examples{
