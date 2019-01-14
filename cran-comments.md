@@ -18,14 +18,14 @@ We will ensure all seeds work in a future release.
 * Ubuntu 14.04     (travis-ci), R 3.5.1
 * Ubuntu 18.04         (local), R 3.5.1
 * Windows           (appveyor), R 3.5.1
-* Windows        (win-builder), R 3.5.1
+* Windows        (win-builder), R 3.5.2
 * Windows 7            (local), R 3.5.1
 
 ### Development R version
 * Ubuntu 14.04     (travis-ci), R 3.6.0 (2018-10-02 r75386)
 * Ubuntu 18.04         (local), R 3.6.0 (2018-10-01 r75383)
 * Windows           (appveyor), R 3.6.0 (2018-10-01 r75383)
-* Windows        (win-builder), R 3.6.0 (2018-09-29 r75382)
+* Windows        (win-builder), R 3.6.0 (2018-12-28 r75917)
 
 ## R CMD check results
 
