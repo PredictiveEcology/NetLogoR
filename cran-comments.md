@@ -1,7 +1,6 @@
 ## Resubmission
 
-In this version we have set a seed in tests to avoid random CRAN test failures.
-We will ensure all seeds work in a future release. 
+In this version we fix problems discovered during CRAN checks.
 
 ## Test environments
 
