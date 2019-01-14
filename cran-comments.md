@@ -13,13 +13,13 @@ We will ensure all seeds work in a future release.
 * Windows                 (local), R 3.4.4
 
 ### Current R versions
-* macOS High Sierra    (local), R 3.5.1
-* OS X El Capitan  (travis-ci), R 3.5.1
-* Ubuntu 14.04     (travis-ci), R 3.5.1
-* Ubuntu 18.04         (local), R 3.5.1
-* Windows           (appveyor), R 3.5.1
+* macOS High Sierra    (local), R 3.5.2
+* OS X El Capitan  (travis-ci), R 3.5.2
+* Ubuntu 14.04     (travis-ci), R 3.5.2
+* Ubuntu 18.04         (local), R 3.5.2
+* Windows           (appveyor), R 3.5.2
 * Windows        (win-builder), R 3.5.2
-* Windows 7            (local), R 3.5.1
+* Windows 7            (local), R 3.5.2
 
 ### Development R version
 * Ubuntu 14.04     (travis-ci), R 3.6.0 (2018-10-02 r75386)
