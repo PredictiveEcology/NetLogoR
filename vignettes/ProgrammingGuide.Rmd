@@ -79,7 +79,7 @@ To perform the button action in `NetLogoR`, the code must be sent to the R conso
 The code can be sent directly by the observer or by a scheduler function (*e.g.*, see `SpaDES` package) which executes the code according to the schedule.
 
 The R language uses `#` to add comments to the script.
-Comments make your code easier to read and understand, but they don't affect its behavior.
+Comments make your code easier to read and understand, but they don't affect its behaviour.
 
 ## Variables
 

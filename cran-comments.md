@@ -1,7 +1,6 @@
 ## Resubmission
 
-In this version we have set a seed in tests to avoid random CRAN test failures.
-We will ensure all seeds work in a future release. 
+In this version we fix problems discovered during CRAN checks.
 
 ## Test environments
 
@@ -13,19 +12,19 @@ We will ensure all seeds work in a future release.
 * Windows                 (local), R 3.4.4
 
 ### Current R versions
-* macOS High Sierra    (local), R 3.5.1
-* OS X El Capitan  (travis-ci), R 3.5.1
-* Ubuntu 14.04     (travis-ci), R 3.5.1
-* Ubuntu 18.04         (local), R 3.5.1
-* Windows           (appveyor), R 3.5.1
-* Windows        (win-builder), R 3.5.1
-* Windows 7            (local), R 3.5.1
+* macOS High Sierra       (local), R 3.5.2
+* macOS High Sierra   (travis-ci), R 3.5.2
+* Ubuntu 14.04        (travis-ci), R 3.5.2
+* Ubuntu 18.04            (local), R 3.5.2
+* Windows              (appveyor), R 3.5.2
+* Windows           (win-builder), R 3.5.2
+* Windows 7               (local), R 3.5.2
 
 ### Development R version
-* Ubuntu 14.04     (travis-ci), R 3.6.0 (2018-10-02 r75386)
-* Ubuntu 18.04         (local), R 3.6.0 (2018-10-01 r75383)
-* Windows           (appveyor), R 3.6.0 (2018-10-01 r75383)
-* Windows        (win-builder), R 3.6.0 (2018-09-29 r75382)
+* Ubuntu 14.04        (travis-ci), R 3.6.0 (2019-01-22 r76003)
+* Ubuntu 18.04            (local), R 3.6.0 (2019-01-25 r76014)
+* Windows              (appveyor), R 3.6.0 (2019-01-13 r75986)
+* Windows           (win-builder), R 3.6.0 (2019-01-23 r76007)
 
 ## R CMD check results
 
