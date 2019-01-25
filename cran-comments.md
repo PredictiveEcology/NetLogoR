@@ -24,7 +24,7 @@ In this version we fix problems discovered during CRAN checks.
 * Ubuntu 14.04        (travis-ci), R 3.6.0 (2018-10-02 r75386)
 * Ubuntu 18.04            (local), R 3.6.0 (2018-10-01 r75383)
 * Windows              (appveyor), R 3.6.0 (2018-10-01 r75383)
-* Windows           (win-builder), R 3.6.0 (2018-12-28 r75917)
+* Windows           (win-builder), R 3.6.0 (2019-01-23 r76007)
 
 ## R CMD check results
 
