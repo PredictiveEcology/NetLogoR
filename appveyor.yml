@@ -13,7 +13,7 @@ cache:
 version: 1.0.{build}-{branch}
 environment:
   global:
-    PKGTYPE: source
+    #PKGTYPE: source
     R_ARCH: x64
     R_REMOTES_STANDALONE: true
     USE_RTOOLS: true
