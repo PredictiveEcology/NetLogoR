@@ -15,6 +15,7 @@ environment:
   global:
     PKGTYPE: source
     R_ARCH: x64
+    R_REMOTES_STANDALONE: true
     USE_RTOOLS: true
     WARNINGS_ARE_ERRORS: 1
   matrix:
