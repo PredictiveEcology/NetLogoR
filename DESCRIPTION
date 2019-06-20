@@ -64,8 +64,6 @@ Suggests:
     sf,
     SpaDES.core,
     testthat
-Remotes:
-    s-u/fastshp
 License: GPL-3
 Encoding: UTF-8
 VignetteBuilder: knitr, rmarkdown
