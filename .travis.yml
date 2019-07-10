@@ -1,53 +1,9 @@
 sudo: required
 language: r
 cache: packages
-cran: https://cran.rstudio.com/
+cran: https://cloud.r-project.org
 matrix:
   include:
-  - os: linux
-    dist: trusty
-    r: 3.3.0
-    addons:
-      apt:
-        sources:
-        - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
-        packages:
-        - libgdal-dev
-        - libgdal1-dev
-        - libgeos-dev
-        - libnlopt-dev
-        - libproj-dev
-        - libudunits2-dev
-        - gdal-bin
-    before_install:
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
-    r_packages:
-    - survival
-    r_github_packages:
-    - PredictiveEcology/SpaDES.tools
-  - os: linux
-    dist: trusty
-    r: 3.4.0
-    addons:
-      apt:
-        sources:
-        - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
-        packages:
-        - libgdal-dev
-        - libgdal1-dev
-        - libgeos-dev
-        - libnlopt-dev
-        - libproj-dev
-        - libudunits2-dev
-        - gdal-bin
-    before_install:
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
-    r_packages:
-    - survival
-    r_github_packages:
-    - PredictiveEcology/SpaDES.tools
   - os: linux
     dist: trusty
     r: oldrel
@@ -119,8 +75,7 @@ matrix:
     r_check_args: '--as-cran --ignore-vignettes --no-examples'
     before_install:
     - Rscript -e "install.packages('digest', type = 'source')"
-    r_github_packages:
-    - s-u/fastshp
+    - Rscript -e "install.packages('fastshp', repos = 'https://rforge.net', type = 'source')"
 r_build_args: " "
 r_check_args: "--as-cran"
 warnings_are_errors: true
