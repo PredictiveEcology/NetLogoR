@@ -1,0 +1,26 @@
+citHeader("To cite NetLogoR in publications use:")
+
+bibentry(
+  bibtype = "Article",
+  title    = "{NetLogoR}: A package to build and run spatially explicit agent‐based models in R",
+  author   = c(person("Sarah", "Bauduin"),
+               person("Eliot J B", "McIntire"),
+               person("Alex M", "Chubaty")),
+  journal  = "Ecography",
+  year     = "2019",
+  volume   = "42",
+  number   = "11",
+  pages    = "1841-1849",
+  doi      = "10.1111/ecog.04516"
+)
+
+bibentry(
+  bibtype = "Manual",
+  title = "{NetLogoR}: Build and Run Spatially Explicit Agent-Based Models",
+  author   = c(person("Sarah", "Bauduin"),
+               person("Eliot J B", "McIntire"),
+               person("Alex M", "Chubaty")),
+  year = sub("-.*", "", meta$Date),
+  note = sprintf("R package version %s", meta$Version),
+  url = "https://CRAN.R-project.org/package=NetLogoR"
+)
