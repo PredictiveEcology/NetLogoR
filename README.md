@@ -20,6 +20,12 @@ A programming guide inspired from the [NetLogo Programming Guide](https://ccl.no
 
 ## Installing `NetLogoR`
 
+### From CRAN
+
+```r
+install.packages("NetLogoR")
+```
+
 ### From GitHub
 
 ```r
