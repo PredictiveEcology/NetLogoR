@@ -191,7 +191,7 @@ Please see R manuals for any related questions on basic functions, as well as th
 
 In R, a file is loaded/opened by assigning its content to an R object.
 The R object can be read, used and modified but this does not affect the original file.
-The modified R object can later be written out as a file, either by overwritting the original file or by creating a new file.
+The modified R object can later be written out as a file, either by overwriting the original file or by creating a new file.
 
 ## View, plot, screen output
 

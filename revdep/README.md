@@ -10,23 +10,19 @@
 |collate  |en_CA.UTF-8                  |
 |ctype    |en_CA.UTF-8                  |
 |tz       |America/Edmonton             |
-|date     |2019-08-22                   |
+|date     |2019-11-01                   |
 
 # Dependencies
 
-|package      |old   |new        |Δ  |
-|:------------|:-----|:----------|:--|
-|NetLogoR     |0.3.5 |0.3.5.9000 |*  |
-|base64enc    |NA    |0.1-4      |*  |
-|fastmatch    |NA    |1.1-1      |*  |
-|googledrive  |NA    |1.0.0      |*  |
-|highr        |NA    |0.8.1      |*  |
-|markdown     |NA    |1.1.1      |*  |
-|mime         |NA    |0.7.1      |*  |
-|reproducible |NA    |0.2.9.9002 |*  |
-|sys          |NA    |3.3        |*  |
-|units        |NA    |0.6-4      |*  |
-|xfun         |NA    |0.9        |*  |
+|package   |old   |new        |Δ  |
+|:---------|:-----|:----------|:--|
+|NetLogoR  |0.3.5 |0.3.5.9000 |*  |
+|base64enc |NA    |0.1-4      |*  |
+|fastmatch |NA    |1.1-1      |*  |
+|highr     |NA    |0.8.1      |*  |
+|hms       |NA    |0.5.2      |*  |
+|markdown  |NA    |1.1.1      |*  |
+|mime      |NA    |0.7.1      |*  |
 
 # Revdeps
 
