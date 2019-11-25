@@ -5,11 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Programming Guide <code>NetLogoR</code> • NetLogoR</title>
+<title>Programming Guide `NetLogoR` • NetLogoR</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Programming Guide &lt;code&gt;NetLogoR&lt;/code&gt;">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Programming Guide `NetLogoR`">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -36,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.6</span>
       </span>
     </div>
 
@@ -44,7 +45,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -73,7 +74,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/PredictiveEcology/NetLogoR">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -86,6 +87,7 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -110,7 +112,7 @@
 <h2 class="hasAnchor">
 <a href="#world-and-agents" class="anchor"></a>World and agents</h2>
 <p>In <code>NetLogoR</code>, the world is either a <code>worldMatrix</code> object (similar to a <code>matrix</code>) or a <code>worldArray</code> object (similar to an <code>array</code> which is a collection of matrices). It represents a two dimensional landscape, divided into a grid of square patches (<em>i.e.</em>, the matrix cells) of resolution 1.</p>
-<p>There are two types of agents in <code>NetLogoR</code>: the patches and the turtles. Patches cannot move whereas turtles can move. Patches are represented as <code>matrix</code> objects with two columns <code>pxcor</code> and <code>pycor</code>, representing the spatial location (<em>i.e.</em>, coordinates) of the center of the patches. See <code><a href="https://www.rdocumentation.org/packages/utils/topics/help">help("worldMatrix-class")</a></code> for more details on the patch coordinates system. Turtles are defined by their coordinates <code>xcor</code> and <code>ycor</code> and data associated in <code>agentMatrix</code> objects. Patches coordinates are always integers but turtles coordinates can have decimals (<em>i.e.</em>, a turtle can be positioned anywhere on a patch).</p>
+<p>There are two types of agents in <code>NetLogoR</code>: the patches and the turtles. Patches cannot move whereas turtles can move. Patches are represented as <code>matrix</code> objects with two columns <code>pxcor</code> and <code>pycor</code>, representing the spatial location (<em>i.e.</em>, coordinates) of the center of the patches. See <code><a href="https://rdrr.io/r/utils/help.html">help("worldMatrix-class")</a></code> for more details on the patch coordinates system. Turtles are defined by their coordinates <code>xcor</code> and <code>ycor</code> and data associated in <code>agentMatrix</code> objects. Patches coordinates are always integers but turtles coordinates can have decimals (<em>i.e.</em>, a turtle can be positioned anywhere on a patch).</p>
 <p><code>worldMatrix</code> and <code>worldArray</code> are similar to <code>RasterLayer</code> and <code>RasterStack</code> in the <code>raster</code> package. However, there are several differences. Two important differences are the mapping of X and Y coordinates and whether integer locations are in the center or at the corners of integer coordinate systems. In <code>worldMatrix</code> and <code>worldArray</code>, <code>(0, 0)</code> is at the bottom left, like a mathematical graph, whereas it is in the top left in <code>Raster*</code> objects, as in geographic coordinates. In <code>worldMatrix</code> and <code>worldArray</code>, integer coordinates are in the middle of the patch or cell, <em>i.e.</em>, <code>(0, 0)</code> is in the middle of the patch in a <code>worldMatrix</code> that has 1m resolution and integer coordinates, whereas, <code>(0, 0)</code> would be at the edge of a cell in a <code>Raster*</code> that has 1 m resolution and integer coordinates. <code>agentMatrix</code> is similar to <code>SpatialPointsDataFrame</code> from <code>sp</code> package, with a few differences. The key difference in this case is for speed. <code>agentMatrix</code> is based on matrices and has no coordinate reference system, both of which make operations dramatically faster than with <code>SpatialPointsDataFrame</code> objects. In all cases of similar object types, we have implemented functions to convert between the types.</p>
 <p>Links are not implemented in <code>NetLogoR</code>.</p>
 </div>
@@ -119,19 +121,19 @@
 <a href="#procedures" class="anchor"></a>Procedures</h2>
 <p>In <code>NetLogoR</code>, functions act on the worlds and on the agents. Functions can modify or used them to compute some values. Functions available from the R software and from different packages can be used, as well as the functions from <code>NetLogoR</code>. Most of the <code>NetLogoR</code> functions are a translation into the R language of the NetLogo primitives (<em>i.e.</em>, “built-in commands and reporters”). You can create new functions or wrap several existing functions into one. The rules to do so are imposed by the R language.</p>
 <p>R functions take arguments which are R objects or values. Arguments are used to carry out actions and compute results.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a world according to a given extent</span>
-w1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createWorld.html">createWorld</a></span>(<span class="dt">minPxcor =</span> <span class="dv">0</span>, <span class="dt">maxPxcor =</span> <span class="dv">10</span>, <span class="dt">minPycor =</span> <span class="dv">0</span>, <span class="dt">maxPycor =</span> <span class="dv">10</span>)
-
-<span class="co"># Report the distance between the patch [pxcor = 0, pycor = 0] and the patch [pxcor = 1, pycor = 1]</span>
-pDist &lt;-<span class="st"> </span><span class="kw"><a href="../reference/NLdist.html">NLdist</a></span>(<span class="dt">agents =</span> <span class="kw"><a href="../reference/agentMatrix-bind-methods.html">cbind</a></span>(<span class="dt">pxcor =</span> <span class="dv">0</span>, <span class="dt">pycor =</span> <span class="dv">0</span>),
-                <span class="dt">agents2 =</span> <span class="kw"><a href="../reference/agentMatrix-bind-methods.html">cbind</a></span>(<span class="dt">pxcor =</span> <span class="dv">1</span>, <span class="dt">pycor =</span> <span class="dv">1</span>, <span class="dt">world =</span> w1, <span class="dt">torus =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Create a world according to a given extent</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">w1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createWorld.html">createWorld</a></span>(<span class="dt">minPxcor =</span> <span class="dv">0</span>, <span class="dt">maxPxcor =</span> <span class="dv">10</span>, <span class="dt">minPycor =</span> <span class="dv">0</span>, <span class="dt">maxPycor =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># Report the distance between the patch [pxcor = 0, pycor = 0] and the patch [pxcor = 1, pycor = 1]</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">pDist &lt;-<span class="st"> </span><span class="kw"><a href="../reference/NLdist.html">NLdist</a></span>(<span class="dt">agents =</span> <span class="kw"><a href="../reference/agentMatrix-bind-methods.html">cbind</a></span>(<span class="dt">pxcor =</span> <span class="dv">0</span>, <span class="dt">pycor =</span> <span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">                <span class="dt">agents2 =</span> <span class="kw"><a href="../reference/agentMatrix-bind-methods.html">cbind</a></span>(<span class="dt">pxcor =</span> <span class="dv">1</span>, <span class="dt">pycor =</span> <span class="dv">1</span>, <span class="dt">world =</span> w1, <span class="dt">torus =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>In <code>NetLogoR</code>, the function arguments indicate which world and/or agents (<em>i.e.</em>, patches and/or turtles) are involved in the function. For example, in the <code>NLdist</code> function, the argument <code>agents</code> takes one patch coordinates, the argument <code>agents2</code> takes another patch coordinates, the argument <code>world</code> takes a <code>worldMatrix</code> or a <code>worldArray</code> object to indicate in which world <code>agents</code> and <code>agents2</code> are located and the argument <code>torus</code> indicate that the world is wrapped.</p>
 <p>The result/output of a function needs to be assigned to an object to be kept and re-used later in the model. Functions in R create new objects, they do not directly modify the ones given as arguments. For example, when moving turtles around using the <code>fd</code> function, the output of the function (<em>i.e.</em>, the turtles with new coordinates) needs to be re-assigned to the turtles object.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create 10 turtles in the world w1</span>
-t1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTurtles.html">createTurtles</a></span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">world =</span> w1)
-
-<span class="co"># Move all the turtles by a distance of 1</span>
-t1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/fd.html">fd</a></span>(<span class="dt">world =</span> w1, <span class="dt">turtles =</span> t1, <span class="dt">dist =</span> <span class="dv">1</span>)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Create 10 turtles in the world w1</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">t1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTurtles.html">createTurtles</a></span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">world =</span> w1)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># Move all the turtles by a distance of 1</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">t1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/fd.html">fd</a></span>(<span class="dt">world =</span> w1, <span class="dt">turtles =</span> t1, <span class="dt">dist =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p>In NetLogo, pressing a button runs some code. To perform the button action in <code>NetLogoR</code>, the code must be sent to the R console to be executed. The code can be sent directly by the observer or by a scheduler function (<em>e.g.</em>, see <code>SpaDES</code> package) which executes the code according to the schedule.</p>
 <p>The R language uses <code>#</code> to add comments to the script. Comments make your code easier to read and understand, but they don’t affect its behaviour.</p>
 </div>
@@ -142,27 +144,27 @@ t1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/fd.html"
 <p>To create a global variable, you create an R object. <em>e.g.</em>, <code>score &lt;- 15</code>.</p>
 <p>Agent variables are places to store different values for an agent. An agent variable can be a patch or a turtle variable. A <code>worldMatrix</code> object holds only one variable (<em>i.e.</em>, value) per patch. A <code>worldArray</code> object holds several variables per patch (<em>i.e.</em>, from the different <code>worldMatrix</code> stacked). Turtles variables are stored as columns in the data of the <code>agentMatrix</code> object that represent them. You can have patch and turtle variables defined by the same name as they are not stored in the same object.</p>
 <p>To create a new patch variable, you create a <code>worldMatrix</code> and assign values. The name of the object to which the world is assigned is treated as the name of the patch variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For all patches, assign a random value between 0 and 1</span>
-pQuality &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createWorld.html">createWorld</a></span>(<span class="dt">minPxcor =</span> <span class="dv">0</span>, <span class="dt">maxPxcor =</span> <span class="dv">9</span>, <span class="dt">minPycor =</span> <span class="dv">0</span>, <span class="dt">maxPycor =</span> <span class="dv">9</span>, <span class="dt">data =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">1</span>))</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># For all patches, assign a random value between 0 and 1</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">pQuality &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createWorld.html">createWorld</a></span>(<span class="dt">minPxcor =</span> <span class="dv">0</span>, <span class="dt">maxPxcor =</span> <span class="dv">9</span>, <span class="dt">minPycor =</span> <span class="dv">0</span>, <span class="dt">maxPycor =</span> <span class="dv">9</span>, <span class="dt">data =</span> <span class="kw"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">1</span>))</a></code></pre></div>
 <p>Several turtle variables built-in in NetLogo are created at the same time when creating a turtle object in <code>NetLogoR</code>: <code>xcor</code>, <code>ycor</code>, <code>who</code>, <code>heading</code>, <code>prevX</code>, <code>prevY</code>, <code>breed</code>, and <code>color</code>. New turtle variables can be created:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Now each turtle in t1 has a "sex" variable</span>
-t1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/turtlesOwn.html">turtlesOwn</a></span> (<span class="dt">turtles =</span> t1, <span class="dt">tVar =</span> <span class="st">"sex"</span>,
-                  <span class="dt">tVal =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>))</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Now each turtle in t1 has a "sex" variable</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">t1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/turtlesOwn.html">turtlesOwn</a></span> (<span class="dt">turtles =</span> t1, <span class="dt">tVar =</span> <span class="st">"sex"</span>,</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">                  <span class="dt">tVal =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>))</a></code></pre></div>
 <p>Turtle’s breed is a turtle variable and you can have different breeds behaving differently. For example, you could have breeds called <code>sheep</code> and <code>wolf</code>, and have the wolves trying to eat the sheep. You can either specify different breeds in the same turtle object or create two objects, one sheep and one wolf.</p>
 <p>You define turtles’ breed by filling the breed column when creating the turtles.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 5 sheep and 5 wolves</span>
-t2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTurtles.html">createTurtles</a></span>(<span class="dt">world =</span> w1, <span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">breed =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="st">"sheep"</span>, <span class="dv">5</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="st">"wolf"</span>, <span class="dv">5</span>)))
-
-<span class="co"># Or</span>
-sheep &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTurtles.html">createTurtles</a></span>(<span class="dt">world =</span> w1, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">breed =</span> <span class="st">"sheep"</span>) <span class="co"># 5 sheep</span>
-wolves &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTurtles.html">createTurtles</a></span>(<span class="dt">world =</span> w1, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">breed =</span> <span class="st">"wolf"</span>) <span class="co"># 5 wolves</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># 5 sheep and 5 wolves</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">t2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTurtles.html">createTurtles</a></span>(<span class="dt">world =</span> w1, <span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">breed =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"sheep"</span>, <span class="dv">5</span>), <span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"wolf"</span>, <span class="dv">5</span>)))</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co"># Or</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">sheep &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTurtles.html">createTurtles</a></span>(<span class="dt">world =</span> w1, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">breed =</span> <span class="st">"sheep"</span>) <span class="co"># 5 sheep</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">wolves &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTurtles.html">createTurtles</a></span>(<span class="dt">world =</span> w1, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">breed =</span> <span class="st">"wolf"</span>) <span class="co"># 5 wolves</span></a></code></pre></div>
 <p>Or you can modify the turtles’ breed after creation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Turtle 0 which was "sheep" becomes "wolf"</span>
-t2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/NLset.html">NLset</a></span>(<span class="dt">turtles =</span> t2, <span class="dt">agents =</span> <span class="kw"><a href="../reference/turtle.html">turtle</a></span>(t2, <span class="dt">who =</span> <span class="dv">0</span>), <span class="dt">var =</span> <span class="st">"breed"</span>, <span class="dt">val =</span> <span class="st">"wolf"</span>)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Turtle 0 which was "sheep" becomes "wolf"</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">t2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/NLset.html">NLset</a></span>(<span class="dt">turtles =</span> t2, <span class="dt">agents =</span> <span class="kw"><a href="../reference/turtle.html">turtle</a></span>(t2, <span class="dt">who =</span> <span class="dv">0</span>), <span class="dt">var =</span> <span class="st">"breed"</span>, <span class="dt">val =</span> <span class="st">"wolf"</span>)</a></code></pre></div>
 <p>Global variables are available for all agents. Patch and turtle variables are available to other agents if they can be identified by their coordinates or some other variables.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Reports the pQuality value of the patches:</span>
-<span class="co"># [pxcor = 0, pycor = 0], [pxcor = 0, pycor = 1], and [pxcor = 0, pycor = 2]</span>
-<span class="kw"><a href="../reference/of.html">of</a></span>(<span class="dt">world =</span> pQuality, <span class="dt">agents =</span> <span class="kw"><a href="../reference/patch.html">patch</a></span>(pQuality, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>)))</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># Reports the pQuality value of the patches:</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co"># [pxcor = 0, pycor = 0], [pxcor = 0, pycor = 1], and [pxcor = 0, pycor = 2]</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw"><a href="../reference/of.html">of</a></span>(<span class="dt">world =</span> pQuality, <span class="dt">agents =</span> <span class="kw"><a href="../reference/patch.html">patch</a></span>(pQuality, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>)))</a></code></pre></div>
 <p>Local variables may occur in <code>NetLogoR</code> as inherent to the R software. For example, variables only defined inside functions are local variables and therefore cannot be accessed outside of the functions.</p>
 </div>
 <div id="agentsets" class="section level2">
@@ -197,15 +199,15 @@ t2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/NLset.ht
 <h2 class="hasAnchor">
 <a href="#inputoutput" class="anchor"></a>Input/output</h2>
 <p>Reading and writing files is inherent to the R language. Please see R manuals for any related questions on basic functions, as well as the different packages, for more complex functions to manage files.</p>
-<p>In R, a file is loaded/opened by assigning its content to an R object. The R object can be read, used and modified but this does not affect the original file. The modified R object can later be written out as a file, either by overwritting the original file or by creating a new file.</p>
+<p>In R, a file is loaded/opened by assigning its content to an R object. The R object can be read, used and modified but this does not affect the original file. The modified R object can later be written out as a file, either by overwriting the original file or by creating a new file.</p>
 </div>
 <div id="view-plot-screen-output" class="section level2">
 <h2 class="hasAnchor">
 <a href="#view-plot-screen-output" class="anchor"></a>View, plot, screen output</h2>
 <p>There is no interface built-in as part of <code>NetLogoR</code>.</p>
-<p>However, you can use different plot functions for visualizations similar to the “View” of NetLogo. <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(nameWorld)</a></code> works with both <code>worldMatrix</code> and <code>worldArray</code>. To visualize only one layer of a <code>worldArray</code>, use <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(nameWorldArray[[layerNumber]])</a></code> or <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(nameWorldArray[["layerName"]])</a></code>. Turtles can be plotted alone with <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(nameTurtles)</a></code> or on a world already plotted with <code><a href="https://www.rdocumentation.org/packages/graphics/topics/points">points(nameTurtles)</a></code>. <code>Plot()</code> functions (with a capital “P”) from <code>quickPlot</code> give a better rendering when plotting multiple time steps. These functions work the same way as the <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot()</a></code> ones, except when adding turtles on a world, use <code>Plot(nameTurtles, addTo = "nameWorld")</code> instead of <code><a href="https://www.rdocumentation.org/packages/graphics/topics/points">points(nameTurtles)</a></code>.</p>
+<p>However, you can use different plot functions for visualizations similar to the “View” of NetLogo. <code><a href="https://rdrr.io/r/graphics/plot.html">plot(nameWorld)</a></code> works with both <code>worldMatrix</code> and <code>worldArray</code>. To visualize only one layer of a <code>worldArray</code>, use <code><a href="https://rdrr.io/r/graphics/plot.html">plot(nameWorldArray[[layerNumber]])</a></code> or <code><a href="https://rdrr.io/r/graphics/plot.html">plot(nameWorldArray[["layerName"]])</a></code>. Turtles can be plotted alone with <code><a href="https://rdrr.io/r/graphics/plot.html">plot(nameTurtles)</a></code> or on a world already plotted with <code><a href="https://rdrr.io/r/graphics/points.html">points(nameTurtles)</a></code>. <code>Plot()</code> functions (with a capital “P”) from <code>quickPlot</code> give a better rendering when plotting multiple time steps. These functions work the same way as the <code><a href="https://rdrr.io/r/graphics/plot.html">plot()</a></code> ones, except when adding turtles on a world, use <code>Plot(nameTurtles, addTo = "nameWorld")</code> instead of <code><a href="https://rdrr.io/r/graphics/points.html">points(nameTurtles)</a></code>.</p>
 <p>Users can also create any other figures (<em>e.g.</em>, the number of turtles through time) on the R plot interface or generate outputs directly on the screen (<em>e.g.</em>, show the current time step).</p>
-<p>All these procedures need to be coded in the model, either using the <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot()</a></code> or <code>Plot()</code> functions adapted to the <code>NetLogoR</code> classes for the world visualization, or using R functions and of different packages for any other figures. Please refer to their manuals for any related questions.</p>
+<p>All these procedures need to be coded in the model, either using the <code><a href="https://rdrr.io/r/graphics/plot.html">plot()</a></code> or <code>Plot()</code> functions adapted to the <code>NetLogoR</code> classes for the world visualization, or using R functions and of different packages for any other figures. Please refer to their manuals for any related questions.</p>
 </div>
 </div>
 <div id="how-to-build-a-model-using-netlogor" class="section level1">
@@ -213,15 +215,15 @@ t2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/NLset.ht
 <a href="#how-to-build-a-model-using-netlogor" class="anchor"></a>How to build a model using <code>NetLogoR</code>
 </h1>
 <p>The following steps describe how to build a basic NetLogo-type model in R using <code>NetLogoR</code>. Examples of R scripts are available in the “examples” folder, which can be found using:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"examples"</span>, <span class="dt">package =</span> <span class="st">"NetLogoR"</span>)</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"examples"</span>, <span class="dt">package =</span> <span class="st">"NetLogoR"</span>)</a></code></pre></div>
 <ul>
 <li><p>Open a new R script (using RStudio or an adapted text editor like Tinn-R) to write the code of the model in it. Save it under the name of the model in an appropriate folder.</p></li>
 <li><p>Start by naming and describing the model using the symbol <code>#</code> in front of each line to “comment” the information. This description section is not mandatory but very helpful. It can be considered like the “Info” tab in NetLogo but, in a R script, this section should be kept short and concise.</p></li>
-<li><p>Load the needed packages (<em>e.g.</em>, <code>NetLogoR</code>) with the function <code><a href="https://www.rdocumentation.org/packages/base/topics/library">library()</a></code>. This can be done at any time in the code section but must appear before using any function from a package. It is convenient to load all the packages needed at the beginning.</p></li>
+<li><p>Load the needed packages (<em>e.g.</em>, <code>NetLogoR</code>) with the function <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. This can be done at any time in the code section but must appear before using any function from a package. It is convenient to load all the packages needed at the beginning.</p></li>
 <li><p>Define the global variables as R objects. Global variables can be defined at any time in the code but it must be done before they are used. Buttons in NetLogo used to set variables must be defined as global variables at the beginning of the R script.</p></li>
 <li><p>Create the world in which the agents will evolve with the function <code><a href="../reference/createWorld.html">createWorld()</a></code>. Defining the world’s extent in <code><a href="../reference/createWorld.html">createWorld()</a></code> is similar as going in the “Interface” tab in NetLogo and clicking on the “Settings” button to change the model settings.</p></li>
-<li><p>Define and assign values to the patches when creating the world <code><a href="../reference/createWorld.html">createWorld(..., data = ...)</a></code> or after using the function <code><a href="../reference/NLset.html">NLset()</a></code>. You can visualize the world with <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(nameWorld)</a></code>.</p></li>
-<li><p>Create the turtles (<em>i.e.</em>, moving agents) with the function <code><a href="../reference/createTurtles.html">createTurtles()</a></code>. You can visualize the turtles by plotting them on the world with <code><a href="https://www.rdocumentation.org/packages/graphics/topics/points">points(nameTurtles, pch = 16)</a></code>.</p></li>
+<li><p>Define and assign values to the patches when creating the world <code><a href="../reference/createWorld.html">createWorld(..., data = ...)</a></code> or after using the function <code><a href="../reference/NLset.html">NLset()</a></code>. You can visualize the world with <code><a href="https://rdrr.io/r/graphics/plot.html">plot(nameWorld)</a></code>.</p></li>
+<li><p>Create the turtles (<em>i.e.</em>, moving agents) with the function <code><a href="../reference/createTurtles.html">createTurtles()</a></code>. You can visualize the turtles by plotting them on the world with <code><a href="https://rdrr.io/r/graphics/points.html">points(nameTurtles, pch = 16)</a></code>.</p></li>
 <li><p>Create the different procedures (<em>i.e.</em>, functions affecting the agents) by using the <code>NetLogoR</code> functions, the R functions or some from other packages.</p></li>
 <li><p>It is useful to test the different procedures individually with a small world and a few numbers of turtles to make sure the code is doing what you want it to do.</p></li>
 <li><p>Then, build the main procedure for the model. A for-loop or a scheduler function (<em>e.g.</em>, see <code>SpaDES</code> package) can be used to manage time. The functions placed inside the for-loop or the scheduler function will be iterated the number of time steps defined. The for-loop automatically increases the time step and the scheduler function internally manages time so no “tick” variable is necessary. Executing the for-loop or the scheduler function correponds in NetLogo as hitting the “Go” button in a forever mode. The visualization can be updated at each time step and/or plotted at the end when the iterations are over. Remember that plot functions take time to be executed and can slow down the model.</p></li>
@@ -230,6 +232,7 @@ t2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/NLset.ht
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -256,17 +259,20 @@ t2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/NLset.ht
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Sarah Bauduin, Eliot J B McIntire, Alex M Chubaty.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
