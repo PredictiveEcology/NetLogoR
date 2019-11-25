@@ -26,7 +26,7 @@ Description: Build and run spatially explicit
     'install.packages("fastshp", repos = "https://rforge.net", type = "source")'.
 URL: http://netlogor.predictiveecology.org, https://github.com/PredictiveEcology/NetLogoR/
 Version: 0.3.6
-Date: 2019-11-01
+Date: 2019-11-25
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
     role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3252-5894")),
@@ -73,7 +73,7 @@ VignetteBuilder: knitr, rmarkdown
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.0
 Additional_repositories: https://rforge.net
 Collate: 
     'Agent-classes.R'
