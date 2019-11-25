@@ -5,6 +5,11 @@ Version 0.3.6
 * R 3.5 is now minimum R version required. Too many dependencies are not maintaining their backwards compatibility.
 * Added new citation for the Ecography paper describing the package.
 
+Version 0.3.6
+=============
+* Drop support for R < 3.5
+* Add Ecography paper `citation()`
+
 Version 0.3.5
 =============
 * Updates to fix CRAN check problems.

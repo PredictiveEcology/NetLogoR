@@ -745,7 +745,6 @@ setMethod(
 })
 
 #' @export
-#' @rdname bbox
 #' @importFrom sp bbox
 #' @param value 2x2 matrix representing the bounding box. See \code{\link[sp]{bbox}}
 #' @rdname bbox
