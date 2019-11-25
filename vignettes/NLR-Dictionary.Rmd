@@ -133,7 +133,7 @@ See http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf for more colors.
 
 * clear-ticks: tick counter not implemented. If a global variable is used to store the time (e.g., `time <- 0`; `time <- time + 1`), see NetLogoR dictionnary entry for clear-globals.
 
-* clear-turtles (ct): see NetLogoR dictionnary entry for clear-globals. If reassigning, `turtles <- noTurtles()` can be used to kill all the turtles in the agentset and replace it by an empty turtle agenset.
+* clear-turtles (ct): see NetLogoR dictionnary entry for clear-globals. If reassigning, `turtles <- noTurtles()` can be used to kill all the turtles in the agentset and replace it by an empty turtle agentset.
 
 * color: use `of()` from NetLogoR to access turtles' colors.
 
@@ -471,7 +471,7 @@ See http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf for more colors.
 
 * median: `median()`. Use `unlist()` to transform a list into a vector prior using `median()`.
 
-* member?: `pExist()` or `tExist()`, both from NetLogoR to test patches or turtles existence in an agenset. `element %in% nameList` for lists and vectors; `grepl()` for strings.
+* member?: `pExist()` or `tExist()`, both from NetLogoR to test patches or turtles existence in an agentset. `element %in% nameList` for lists and vectors; `grepl()` for strings.
 
 * min: `min()`. Use `unlist()` to transform a list into a vector prior using `min()`.
 

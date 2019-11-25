@@ -8,6 +8,13 @@
 \description{
 The suggested package \pkg{fastshp} can be installed with
 \code{install.packages("fastshp", repos = "https://rforge.net", type = "source")}.
+The examples included with the package, are located in the R package "examples" folder,
+which can be found at \code{system.file(package = "NetLogoR", "examples")}. The 3 specific
+R examples can be opened here:
+\code{file.edit(file.path(system.file(package = "NetLogoR", "examples"), "Ants", "Ants.R"))},
+\code{file.edit(file.path(system.file(package = "NetLogoR", "examples"), "Butterfly", "Butterfly-1.R"))},
+or
+\code{file.edit(file.path(system.file(package = "NetLogoR", "examples"), "Wolf-Sheep-Predation", "Wolf-Sheep-Predation.R"))}.
 }
 \seealso{
 Useful links:
@@ -19,12 +26,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Sarah Bauduin \email{sarahbauduin@hotmail.fr} (0000-0002-3252-5894)
+\strong{Maintainer}: Sarah Bauduin \email{sarahbauduin@hotmail.fr} (\href{https://orcid.org/0000-0002-3252-5894}{ORCID})
 
 Authors:
 \itemize{
-  \item Eliot J B McIntire \email{eliot.mcintire@canada.ca} (0000-0002-6914-8316)
-  \item Alex M Chubaty \email{alex.chubaty@gmail.com} (0000-0001-7146-8135)
+  \item Eliot J B McIntire \email{eliot.mcintire@canada.ca} (\href{https://orcid.org/0000-0002-6914-8316}{ORCID})
+  \item Alex M Chubaty \email{alex.chubaty@gmail.com} (\href{https://orcid.org/0000-0001-7146-8135}{ORCID})
 }
 
 Other contributors:

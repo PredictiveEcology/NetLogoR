@@ -1,30 +1,27 @@
-## Resubmission
+## Maintenance release
 
-In this version we fix problems discovered during CRAN checks.
+In this version we add a citation to our paper for this package, and drop support for R<3.5.
 
 ## Test environments
 
 ### Previous R versions
-* Ubuntu 14.04        (travis-ci), R 3.3.0
-* Ubuntu 14.04        (travis-ci), R 3.4.0
-* Windows              (appveyor), R 3.3.0
-* Windows              (appveyor), R 3.4.0
-* Windows                 (local), R 3.4.4
+* Ubuntu 16.04              (travis-ci), R 3.5.3
+* Windows                    (appveyor), R 3.5.3
+* Windows                 (win-builder), R 3.5.3
 
 ### Current R versions
-* macOS High Sierra       (local), R 3.5.2
-* macOS High Sierra   (travis-ci), R 3.5.2
-* Ubuntu 14.04        (travis-ci), R 3.5.2
-* Ubuntu 18.04            (local), R 3.5.2
-* Windows              (appveyor), R 3.5.2
-* Windows           (win-builder), R 3.5.2
-* Windows 7               (local), R 3.5.2
+* macOS 10.13.3 High Sierra (travis-ci), R 3.6.1
+* macOS 10.15.1 Catalina        (local), R 3.6.1
+* Ubuntu 16.04              (travis-ci), R 3.6.1
+* Ubuntu 18.04                  (local), R 3.6.1
+* Windows                    (appveyor), R 3.6.1
+* Windows                 (win-builder), R 3.6.1
 
 ### Development R version
-* Ubuntu 14.04        (travis-ci), R 3.6.0 (2019-01-22 r76003)
-* Ubuntu 18.04            (local), R 3.6.0 (2019-01-25 r76014)
-* Windows              (appveyor), R 3.6.0 (2019-01-13 r75986)
-* Windows           (win-builder), R 3.6.0 (2019-01-23 r76007)
+* Ubuntu 16.04              (travis-ci), R 4.0.0 (2019-11-21 r77446)
+* Ubuntu 18.04                  (local), R 4.0.0 (2019-11-21 r77446)
+* Windows                    (appveyor), R 4.0.0 (2019-11-20 r77445)
+* Windows                 (win-builder), R 4.0.0 (2019-11-21 r77446)
 
 ## R CMD check results
 

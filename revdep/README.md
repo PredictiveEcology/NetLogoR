@@ -1,31 +1,30 @@
-# Setup
+# Platform
 
-## Platform
-
-|setting  |value                        |
+|field    |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.4.4 (2018-03-15) |
+|version  |R version 3.6.1 (2019-07-05) |
+|os       |Ubuntu 18.04.3 LTS           |
 |system   |x86_64, linux-gnu            |
-|ui       |RStudio (1.1.453)            |
-|language |en_CA:en                     |
+|ui       |RStudio                      |
+|language |en_CA                        |
 |collate  |en_CA.UTF-8                  |
+|ctype    |en_CA.UTF-8                  |
 |tz       |America/Edmonton             |
-|date     |2018-06-07                   |
+|date     |2019-11-25                   |
 
-## Packages
+# Dependencies
 
-|package      |*  |version    |date       |source                                          |
-|:------------|:--|:----------|:----------|:-----------------------------------------------|
-|fastshp      |   |0.1-2      |2018-06-07 |cran (@0.1-2)                                   |
-|NetLogoR     |   |0.3.3      |2018-06-07 |local (PredictiveEcology/NetLogoR@017dfe5)      |
-|quickPlot    |   |0.1.3.9002 |2018-06-07 |Github (PredictiveEcology/quickPlot@d26bb6e)    |
-|SpaDES.core  |   |0.2.0      |2018-06-07 |Github (PredictiveEcology/SpaDES.core@2b36fef)  |
-|SpaDES.tools |   |0.1.1.9010 |2018-06-07 |Github (PredictiveEcology/SpaDES.tools@dee5890) |
+|package      |old   |new    |Δ  |
+|:------------|:-----|:------|:--|
+|NetLogoR     |0.3.5 |0.3.6  |*  |
+|base64enc    |NA    |0.1-4  |*  |
+|digest       |NA    |0.6.23 |*  |
+|fastmatch    |NA    |1.1-1  |*  |
+|highr        |NA    |0.8.1  |*  |
+|markdown     |NA    |1.1.1  |*  |
+|mime         |NA    |0.7.1  |*  |
+|rlang        |NA    |0.4.2  |*  |
+|SpaDES.tools |NA    |0.3.3  |*  |
 
-# Check results
-
-0 packages
-
-
-
+# Revdeps
 
