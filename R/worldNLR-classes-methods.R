@@ -199,13 +199,13 @@ setMethod(
     createWorld(-16, 16, -16, 16, data = NA)
 })
 
-
 ################################################################################
 #' The \code{worldArray} class
 #'
-#' This is an s4 class extension of \code{array}. It is a collection of several
-#' \code{worldMatrix} objects with the same extent (i.e., same values for all their
-#' slots) stacked together. It is used to keep more than one value per \code{patch}.
+#' This is an s4 class extension of \code{array}.
+#' It is a collection of several \code{worldMatrix} objects with the same extent
+#' (i.e., same values for all their slots) stacked together.
+#' It is used to keep more than one value per \code{patch}.
 #'
 #' @aliases worldArray
 #' @name worldArray-class
@@ -300,7 +300,6 @@ setReplaceMethod(
     return(x)
 })
 
-
 ################################################################################
 #' Stack \code{worlds}
 #'
@@ -359,7 +358,6 @@ setMethod(
     return(world)
 })
 
-
 ################################################################################
 #' The \code{worldNLR} class
 #'
@@ -415,7 +413,6 @@ setMethod(
     (i - 1) * ncol(world) + j # Faster
 })
 
-
 ################################################################################
 #' \code{Patches} coordinates from cells numbers
 #'
@@ -433,7 +430,6 @@ setMethod(
 #' PxcorPycorFromCell(world = w1, cellNum = cellNum)
 #' cellNum <- cellFromPxcorPycor(world = w1, pxcor = c(0, 1, 2), pycor = 0)
 #' PxcorPycorFromCell(world = w1, cellNum = cellNum)
-#'
 #'
 #' @export
 #' @rdname PxcorPycorFromCell
@@ -456,7 +452,6 @@ setMethod(
     return(pCoords)
   }
 )
-
 
 ################################################################################
 #' \code{WorldMatrix} indices from vector indices
@@ -504,19 +499,19 @@ setMethod(
   }
 )
 
-
 #' Subsetting for \code{worldArray} class
 #'
-#' These function similarly to \code{[[} for \code{RasterStack} objects
+#' These function similarly to \code{[[} for \code{RasterStack} objects.
 #'
 #' @param x     A \code{worldArray} object.
 #' @param i     Index number or layer name specifying a subset of layer(s)
 #'              from the \code{worldArray}.
+#'
+#' @aliases [[,worldArray,ANY,ANY-method
 #' @export
-#' @rdname Subsetting
 #' @importFrom methods .slotNames
 #' @name [[
-#' @aliases [[,worldArray,ANY,ANY-method
+#' @rdname Subsetting
 setMethod("[[", signature(x = "worldArray", i = "ANY"),
           definition = function(x, i) {
             if (length(i) > 1) {
@@ -533,13 +528,14 @@ setMethod("[[", signature(x = "worldArray", i = "ANY"),
             }
 })
 
-#' @export
 #' @param value A replacement \code{worldMatrix} layer for one of the current layers in the
 #'              \code{worldArray}.
+#'
+#' @aliases [[<-,worldArray,ANY,ANY-method
+#' @export
 #' @name [[<-
-#' @aliases [[<-,worldArray,ANY,ANY,ANY-method
 #' @rdname Subsetting
-setReplaceMethod("[[", signature(x = "worldArray", value = "ANY"),
+setReplaceMethod("[[", signature(x = "worldArray", i = "ANY", value = "ANY"),
                  definition = function(x, i, value) {
                    x@.Data[, , i] <- value
                    return(x)

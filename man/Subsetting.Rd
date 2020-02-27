@@ -4,14 +4,14 @@
 \alias{[[}
 \alias{[[,worldArray,ANY,ANY-method}
 \alias{[[<-}
-\alias{[[<-,worldArray,ANY,ANY,ANY-method}
+\alias{[[<-,worldArray,ANY,ANY-method}
 \alias{$}
 \alias{$,worldArray-method}
 \title{Subsetting for \code{worldArray} class}
 \usage{
 \S4method{[[}{worldArray,ANY,ANY}(x, i)
 
-\S4method{[[}{worldArray,ANY,ANY,ANY}(x, i) <- value
+\S4method{[[}{worldArray,ANY,ANY}(x, i) <- value
 
 \S4method{$}{worldArray}(x, name)
 }
@@ -27,5 +27,5 @@ from the \code{worldArray}.}
 \item{name}{Layer name, normally without back ticks, unless has symbols.}
 }
 \description{
-These function similarly to \code{[[} for \code{RasterStack} objects
+These function similarly to \code{[[} for \code{RasterStack} objects.
 }

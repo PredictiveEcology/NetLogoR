@@ -1,5 +1,9 @@
 Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 
+Version 0.3.7
+=============
+* Updates to fix documentation and CRAN check problems
+
 Version 0.3.6
 =============
 * R 3.5 is now minimum R version required. Too many dependencies are not maintaining their backwards compatibility.
