@@ -26,12 +26,12 @@ Description: Build and run spatially explicit
     'install.packages("fastshp", repos = "https://rforge.net", type = "source")'.
 URL: http://netlogor.predictiveecology.org, https://github.com/PredictiveEcology/NetLogoR/
 Version: 0.3.7
-Date: 2020-02-27
+Date: 2020-02-28
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
-    role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3252-5894")),
+    role = c("aut"), comment = c(ORCID = "0000-0002-3252-5894")),
     person("Eliot J B", "McIntire", email = "eliot.mcintire@canada.ca",
-    role = c("aut"), comment=c(ORCID = "0000-0002-6914-8316")),
+    role = c("aut", "cre"), comment=c(ORCID = "0000-0002-6914-8316")),
     person("Alex M", "Chubaty", email = "alex.chubaty@gmail.com",
     role = c("aut"), comment = c(ORCID = "0000-0001-7146-8135")),
     person("Her Majesty the Queen in Right of Canada, as represented by the Minister of Natural Resources Canada",

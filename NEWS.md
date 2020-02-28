@@ -3,6 +3,7 @@ Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 Version 0.3.7
 =============
 * Updates to fix documentation and CRAN check problems
+* change maintainer to Eliot
 
 Version 0.3.6
 =============

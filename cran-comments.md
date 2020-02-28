@@ -1,6 +1,7 @@
 ## Maintenance release
 
 In this version we correct documentation problems revealed in CRAN checks.
+Eliot McIntire (<eliot.mcintire@canada.ca>) will takeover as maintainer of the package.
 
 ## Test environments
 
@@ -18,10 +19,10 @@ In this version we correct documentation problems revealed in CRAN checks.
 * Windows                 (win-builder), R 3.6.2
 
 ### Development R version
-* Ubuntu 16.04              (travis-ci), R 4.0.0 (2020-02-20 r77834)
+* Ubuntu 16.04              (travis-ci), R 4.0.0 (2020-02-27 r77865)
 * Ubuntu 18.04                  (local), R 4.0.0 (2020-02-20 r77837)
-* Windows                    (appveyor), R 4.0.0 (2020-02-16 r77813)
-* Windows                 (win-builder), R 4.0.0 (2020-02-16 r77813)
+* Windows                    (appveyor), R 4.0.0 (2020-02-26 r77861)
+* Windows                 (win-builder), R 4.0.0 (2020-01-28 r77738)
 
 ## R CMD check results
 
