@@ -29,7 +29,6 @@ PxcorPycorFromCell(world = w1, cellNum = cellNum)
 cellNum <- cellFromPxcorPycor(world = w1, pxcor = c(0, 1, 2), pycor = 0)
 PxcorPycorFromCell(world = w1, cellNum = cellNum)
 
-
 }
 \author{
 Sarah Bauduin

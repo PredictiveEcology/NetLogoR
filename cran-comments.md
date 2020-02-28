@@ -1,6 +1,7 @@
 ## Maintenance release
 
-In this version we add a citation to our paper for this package, and drop support for R<3.5.
+In this version we correct documentation problems revealed in CRAN checks.
+Eliot McIntire (<eliot.mcintire@canada.ca>) will takeover as maintainer of the package.
 
 ## Test environments
 
@@ -10,22 +11,22 @@ In this version we add a citation to our paper for this package, and drop suppor
 * Windows                 (win-builder), R 3.5.3
 
 ### Current R versions
-* macOS 10.13.3 High Sierra (travis-ci), R 3.6.1
-* macOS 10.15.1 Catalina        (local), R 3.6.1
-* Ubuntu 16.04              (travis-ci), R 3.6.1
-* Ubuntu 18.04                  (local), R 3.6.1
-* Windows                    (appveyor), R 3.6.1
-* Windows                 (win-builder), R 3.6.1
+* macOS 10.13.3 High Sierra (travis-ci), R 3.6.2
+* macOS 10.15.1 Catalina        (local), R 3.6.2
+* Ubuntu 16.04              (travis-ci), R 3.6.2
+* Ubuntu 18.04                  (local), R 3.6.2
+* Windows                    (appveyor), R 3.6.2
+* Windows                 (win-builder), R 3.6.2
 
 ### Development R version
-* Ubuntu 16.04              (travis-ci), R 4.0.0 (2019-11-21 r77446)
-* Ubuntu 18.04                  (local), R 4.0.0 (2019-11-21 r77446)
-* Windows                    (appveyor), R 4.0.0 (2019-11-20 r77445)
-* Windows                 (win-builder), R 4.0.0 (2019-11-25 r77460)
+* Ubuntu 16.04              (travis-ci), R 4.0.0 (2020-02-27 r77865)
+* Ubuntu 18.04                  (local), R 4.0.0 (2020-02-20 r77837)
+* Windows                    (appveyor), R 4.0.0 (2020-02-26 r77861)
+* Windows                 (win-builder), R 4.0.0 (2020-01-28 r77738)
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs
+There were no ERRORs or WARNINGs.
 
 There was 1 NOTE:
 
