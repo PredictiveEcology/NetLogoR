@@ -18,6 +18,7 @@ jobs:
         - libgdal-dev
         - libgdal1-dev
         - libgeos-dev
+        - libglpk-dev
         - libnlopt-dev
         - libproj-dev
         - libudunits2-dev
@@ -43,6 +44,7 @@ jobs:
         - libgdal-dev
         - libgdal1-dev
         - libgeos-dev
+        - libglpk-dev
         - libnlopt-dev
         - libproj-dev
         - libudunits2-dev
@@ -73,6 +75,7 @@ jobs:
         - libgdal-dev
         - libgdal1-dev
         - libgeos-dev
+        - libglpk-dev
         - libnlopt-dev
         - libproj-dev
         - libudunits2-dev
