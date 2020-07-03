@@ -1,73 +1,82 @@
-sudo: required
 language: r
-cache: packages
+cache:
+  - $HOME/.ccache
+  - packages
 cran: https://cloud.r-project.org
-matrix:
+jobs:
   include:
   - os: linux
-    dist: trusty
+    dist: xenial
     r: oldrel
     addons:
       apt:
         sources:
         - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
         packages:
+        - ccache
+        - gdal-bin
         - libgdal-dev
         - libgdal1-dev
         - libgeos-dev
         - libnlopt-dev
         - libproj-dev
         - libudunits2-dev
-        - gdal-bin
+    services:
+      - xvfb
     before_install:
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
+      - echo 'options(repos = c(CRAN = "https://packagemanager.rstudio.com/all/__linux__/xenial/latest"))' >> ~/.Rprofile.site
+      - echo 'options(HTTPUserAgent = paste0("R/", getRversion(), " R (", paste(getRversion(), R.version["platform"], R.version["arch"], R.version["os"]), ")"))' >> ~/.Rprofile.site
+      - mkdir $HOME/.R && echo -e 'CXX_STD = CXX14\n\nVER=\nCCACHE=ccache\nCC=$(CCACHE) gcc$(VER) -std=gnu99\nCXX=$(CCACHE) g++$(VER)\nC11=$(CCACHE) g++$(VER)\nC14=$(CCACHE) g++$(VER)\nFC=$(CCACHE) gfortran$(VER)\nF77=$(CCACHE) gfortran$(VER)' > $HOME/.R/Makevars
+      - echo -e 'max_size = 5.0G\nsloppiness = include_file_ctime\nhash_dir=false' > $HOME/.ccache/ccache.conf
   - os: linux
-    dist: trusty
+    dist: xenial
     r: release
     addons:
       apt:
         sources:
         - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
         packages:
+        - ccache
+        - gdal-bin
         - libgdal-dev
         - libgdal1-dev
         - libgeos-dev
         - libnlopt-dev
         - libproj-dev
         - libudunits2-dev
-        - gdal-bin
     before_install:
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
+      - echo 'options(repos = c(CRAN = "https://packagemanager.rstudio.com/all/__linux__/xenial/latest"))' >> ~/.Rprofile.site
+      - echo 'options(HTTPUserAgent = paste0("R/", getRversion(), " R (", paste(getRversion(), R.version["platform"], R.version["arch"], R.version["os"]), ")"))' >> ~/.Rprofile.site
+      - mkdir $HOME/.R && echo -e 'CXX_STD = CXX14\n\nVER=\nCCACHE=ccache\nCC=$(CCACHE) gcc$(VER) -std=gnu99\nCXX=$(CCACHE) g++$(VER)\nC11=$(CCACHE) g++$(VER)\nC14=$(CCACHE) g++$(VER)\nFC=$(CCACHE) gfortran$(VER)\nF77=$(CCACHE) gfortran$(VER)' > $HOME/.R/Makevars
+      - echo -e 'max_size = 5.0G\nsloppiness = include_file_ctime\nhash_dir=false' > $HOME/.ccache/ccache.conf
     r_packages:
       - covr
-      - devtools
     r_github_packages:
       - jimhester/lintr
     after_success:
     - Rscript -e 'covr::coveralls(type = "all", quiet = FALSE)'
     - Rscript -e 'lintr::lint_package()'
   - os: linux
-    dist: trusty
+    dist: xenial
     r: devel
     addons:
       apt:
         sources:
         - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
         packages:
+        - ccache
+        - gdal-bin
         - libgdal-dev
         - libgdal1-dev
         - libgeos-dev
         - libnlopt-dev
         - libproj-dev
         - libudunits2-dev
-        - gdal-bin
     before_install:
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
-    r_packages:
-    - devtools
+      - echo 'options(repos = c(CRAN = "https://packagemanager.rstudio.com/all/__linux__/xenial/latest"))' >> ~/.Rprofile.site
+      - echo 'options(HTTPUserAgent = paste0("R/", getRversion(), " R (", paste(getRversion(), R.version["platform"], R.version["arch"], R.version["os"]), ")"))' >> ~/.Rprofile.site
+      - mkdir $HOME/.R && echo -e 'CXX_STD = CXX14\n\nVER=\nCCACHE=ccache\nCC=$(CCACHE) gcc$(VER) -std=gnu99\nCXX=$(CCACHE) g++$(VER)\nC11=$(CCACHE) g++$(VER)\nC14=$(CCACHE) g++$(VER)\nFC=$(CCACHE) gfortran$(VER)\nF77=$(CCACHE) gfortran$(VER)' > $HOME/.R/Makevars
+      - echo -e 'max_size = 5.0G\nsloppiness = include_file_ctime\nhash_dir=false' > $HOME/.ccache/ccache.conf
 #  - os: osx
 #    osx_image: xcode9.4
 #    latex: false
