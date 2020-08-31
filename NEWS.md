@@ -1,5 +1,9 @@
 Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
 
+Version 0.3.7.9000
+=============
+* Drop support for R 3.5 (several dependencies require R >= 3.6)
+
 Version 0.3.7
 =============
 * Updates to fix documentation and CRAN check problems

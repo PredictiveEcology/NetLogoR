@@ -2,7 +2,6 @@ acos
 agentset
 agentsets
 Agentsets
-Appveyor
 asin
 atan
 autoplot
@@ -13,6 +12,7 @@ behaviour
 butfirst
 ccl
 cd
+Codecov
 coordiantes
 correponds
 cp
