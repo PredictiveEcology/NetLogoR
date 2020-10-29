@@ -309,6 +309,8 @@ setMethod(
 #'
 #'          This is equivalent in R to subsetting.
 #'
+#'          \code{val} can include \code{NA}.
+#'
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with}
 #'
 #' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
@@ -376,10 +378,14 @@ setMethod(
   definition = function(agents, var, val) {
     # simpler for speed if only 1 val
     if (length(val) == 1) {
-      if (!is.numeric(val)) {
-        toReturn <- (agents[agents@levels[[var]][agents@.Data[, var]] == val, ])
+      if(is.na(val)){
+        toReturn <- agents[is.na(agents@.Data[, var]), ]
       } else {
-        toReturn <- agents[agents@.Data[, var] == val, ]
+        if (!is.numeric(val)) {
+          toReturn <- (agents[agents@levels[[var]][agents@.Data[, var]] == val, ])
+        } else {
+          toReturn <- agents[agents@.Data[, var] == val, ]
+        }
       }
     } else {
       if (!is.numeric(val)) {
