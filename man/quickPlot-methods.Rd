@@ -62,7 +62,8 @@ by default. Currently, only a single vector is accepted.}
 
 \item{length}{Numeric.}
 
-\item{gp}{\code{grid} parameters, usually the output of a call to \code{\link[quickPlot]{gpar}}.}
+\item{gp}{\code{grid} parameters, usually the output of a call to
+\code{\link[quickPlot]{gpar}}.}
 
 \item{gpText}{\code{gpar} object for legend label text.}
 

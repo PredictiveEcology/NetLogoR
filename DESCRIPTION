@@ -26,7 +26,7 @@ Description: Build and run spatially explicit
     'install.packages("fastshp", repos = "https://rforge.net", type = "source")'.
 URL: http://netlogor.predictiveecology.org, https://github.com/PredictiveEcology/NetLogoR/
 Version: 0.3.7.9000
-Date: 2020-08-31
+Date: 2021-06-08
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
     role = c("aut"), comment = c(ORCID = "0000-0002-3252-5894")),
@@ -66,16 +66,17 @@ Suggests:
     SpaDES.core,
     testthat
 Remotes:
-    s-u/fastshp
-License: GPL-3
-Language: en-US
-Encoding: UTF-8
-VignetteBuilder: knitr, rmarkdown
+    s-u/fastshp,
+    PredictiveEcology/SpaDES.tools@development,
+    PredictiveEcology/SpaDES.core@development
+Additional_repositories: https://rforge.net
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
-LazyData: true
+Encoding: UTF-8
+Language: en-US
+License: GPL-3
 RoxygenNote: 7.1.1
-Additional_repositories: https://rforge.net
+VignetteBuilder: knitr, rmarkdown
 Collate: 
     'Agent-classes.R'
     'Classes.R'

@@ -163,7 +163,6 @@ test_that("NLwith works", {
   t10 <- NLwith(agents = t1, var = "ycor", val = NA)
   t11 <- NLwith(agents = t1, var = "ycor", val = c(NA, 2))
   t12 <- NLwith(agents = t1, var = "breed", val = c("sheep", NA))
-
 })
 
 test_that("withMax works", {

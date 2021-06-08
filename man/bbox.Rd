@@ -25,7 +25,7 @@ bbox(obj) <- value
 \S4method{bbox}{worldNLR}(obj)
 }
 \arguments{
-\item{x}{Raster* or Extent object, a matrix, or a vector of four numbers }
+\item{x}{Raster* or Extent object, a matrix, a bbox, or a vector of four numbers }
 
 \item{...}{Additional arguments. When x is a single number representing 'xmin', you can pass three additional numbers (xmax, ymin, ymax)
 
