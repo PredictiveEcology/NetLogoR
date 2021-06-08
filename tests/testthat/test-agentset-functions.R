@@ -142,8 +142,10 @@ test_that("NLwith works", {
   expect_equivalent(p6, noPatches())
 
   # Turtles
-  t1 <- createTurtles(n = 8, coords = cbind(xcor = c(1, 1, 1, 2, 3, NA, 6, NA), ycor = c(2, 3, 4, 4, 5, 6, NA, NA)),
-                      heading = 0, breed = c("sheep", "sheep", "wolf", "sheep", "sheperd", NA, NA, "sheperd"))
+  t1 <- createTurtles(n = 8, coords = cbind(xcor = c(1, 1, 1, 2, 3, NA, 6, NA),
+                                            ycor = c(2, 3, 4, 4, 5, 6, NA, NA)),
+                      heading = 0, breed = c("sheep", "sheep", "wolf", "sheep",
+                                             "shepherd", NA, NA, "shepherd"))
   t2 <- NLwith(agents = t1, var = "xcor", val = 1)
   expect_equivalent(t2, turtle(turtles = t1, who = c(0, 1, 2)))
   t3 <- NLwith(agents = t1, var = "ycor", val = c(2, 3))
