@@ -54,6 +54,8 @@ equals to specific values.
 \code{world} must not be provided if \code{agents} are \code{turtles}.
 
          This is equivalent in R to subsetting.
+
+         \code{val} can include \code{NA}.
 }
 \examples{
 # Patches

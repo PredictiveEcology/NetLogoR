@@ -1,5 +1,5 @@
 ---
-title: "`NetLogoR` Dictionary"
+title: "NetLogoR Dictionary"
 author: "Sarah Bauduin"
 date: "17 juin 2016"
 output: 

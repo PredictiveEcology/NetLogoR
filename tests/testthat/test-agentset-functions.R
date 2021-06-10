@@ -119,6 +119,17 @@ test_that("NLwith works", {
   expect_equivalent(patches(world = w1), p3)
   p4 <- NLwith(agents = patches(world = w1), world = w1, val = 10)
   expect_equivalent(p4, noPatches())
+  # Works with NA
+  valw1[c(2, 17)] <- NA
+  w1 <- createWorld(data = valw1, minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
+  p1NA <- NLwith(world = w1, agents = patches(world = w1), val = NA)
+  expect_equivalent(p1NA, p1)
+  valw1[c(3, 17)] <- 1
+  w1 <- createWorld(data = valw1, minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
+  p2NA <- NLwith(world = w1, agents = patches(world = w1), val = c(1, NA))
+  expect_equivalent(nrow(p2NA), 3)
+  p3NA <- NLwith(world = w1, agents = patches(world = w1), val = 0)
+  expect_equivalent(nrow(p3NA), 22)
 
   # With worldArray
   valw2 <- rep(0, 25)
@@ -126,13 +137,17 @@ test_that("NLwith works", {
   w2 <- createWorld(data = valw2, minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
   w3 <- stackWorlds(w1, w2)
   p5 <- NLwith(world = w3, agents = patches(world = w3), var = "w1", val = 1)
-  expect_equivalent(p1, p5)
+  expect_equivalent(p5, cbind(pxcor = c(2,1), pycor = c(4,1)))
   p6 <- NLwith(agents = patches(world = w3), world = w3, var = "w1", val = 10)
   expect_equivalent(p6, noPatches())
+  p7 <- NLwith(agents = patches(world = w3), world = w3, var = "w1", val = NA)
+  expect_equivalent(p7, cbind(pxcor = 1, pycor = 4))
 
   # Turtles
-  t1 <- createTurtles(n = 5, coords = cbind(xcor = c(1, 1, 1, 2, 3), ycor = c(2, 3, 4, 4, 5)),
-                      heading = 0, breed = c("sheep", "sheep", "wolf", "sheep", "sheperd"))
+  t1 <- createTurtles(n = 8, coords = cbind(xcor = c(1, 1, 1, 2, 3, NA, 6, NA),
+                                            ycor = c(2, 3, 4, 4, 5, 6, NA, NA)),
+                      heading = 0, breed = c("sheep", "sheep", "wolf", "sheep",
+                                             "shepherd", NA, NA, "shepherd"))
   t2 <- NLwith(agents = t1, var = "xcor", val = 1)
   expect_equivalent(t2, turtle(turtles = t1, who = c(0, 1, 2)))
   t3 <- NLwith(agents = t1, var = "ycor", val = c(2, 3))
@@ -145,6 +160,13 @@ test_that("NLwith works", {
   expect_equivalent(t6, turtle(turtles = t1, who = c(0, 1, 2, 3)))
   t7 <- NLwith(agents = t1, var = "breed", val = "moose")
   expect_equivalent(t7, noTurtles())
+
+  # Works with NA
+  t8 <- NLwith(agents = t1, var = "breed", val = NA)
+  t9 <- NLwith(agents = t1, var = "xcor", val = NA)
+  t10 <- NLwith(agents = t1, var = "ycor", val = NA)
+  t11 <- NLwith(agents = t1, var = "ycor", val = c(NA, 2))
+  t12 <- NLwith(agents = t1, var = "breed", val = c("sheep", NA))
 })
 
 test_that("withMax works", {

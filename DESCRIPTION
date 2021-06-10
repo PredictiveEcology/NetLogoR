@@ -24,21 +24,24 @@ Description: Build and run spatially explicit
     (<https://cran.r-project.org/package=SpaDES>).
     The suggested package 'fastshp' can be installed with
     'install.packages("fastshp", repos = "https://rforge.net", type = "source")'.
-URL: http://netlogor.predictiveecology.org, https://github.com/PredictiveEcology/NetLogoR/
+URL:
+    https://netlogor.predictiveecology.org,
+    https://github.com/PredictiveEcology/NetLogoR/
 Version: 0.3.7
 Date: 2020-02-28
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
-    role = c("aut"), comment = c(ORCID = "0000-0002-3252-5894")),
+           role = c("aut"), comment = c(ORCID = "0000-0002-3252-5894")),
     person("Eliot J B", "McIntire", email = "eliot.mcintire@canada.ca",
-    role = c("aut", "cre"), comment=c(ORCID = "0000-0002-6914-8316")),
-    person("Alex M", "Chubaty", email = "alex.chubaty@gmail.com",
-    role = c("aut"), comment = c(ORCID = "0000-0001-7146-8135")),
-    person("Her Majesty the Queen in Right of Canada, as represented by the Minister of Natural Resources Canada",
-    role = "cph")
+           role = c("aut", "cre"), comment=c(ORCID = "0000-0002-6914-8316")),
+    person("Alex M", "Chubaty", email = "achubaty@for-cast.ca",
+           role = c("aut"), comment = c(ORCID = "0000-0001-7146-8135")),
+    person(paste("Her Majesty the Queen in Right of Canada,",
+                 "as represented by the Minister of Natural Resources Canada"),
+           role = "cph")
     )
 Depends:
-    R (>= 3.5),
+    R (>= 3.6),
     raster
 Imports:
     abind,
@@ -64,15 +67,14 @@ Suggests:
     sf,
     SpaDES.core,
     testthat
-License: GPL-3
-Language: en-US
-Encoding: UTF-8
-VignetteBuilder: knitr, rmarkdown
+Additional_repositories: https://rforge.net
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
-LazyData: true
-RoxygenNote: 7.0.2
-Additional_repositories: https://rforge.net
+Encoding: UTF-8
+License: GPL-3
+Language: en-US
+RoxygenNote: 7.1.1
+VignetteBuilder: knitr, rmarkdown
 Collate: 
     'Agent-classes.R'
     'Classes.R'

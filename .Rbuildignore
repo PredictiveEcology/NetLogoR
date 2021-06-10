@@ -1,14 +1,14 @@
+^\.github$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 .*\.tar\.gz$
 .*\.toc$
 .*\.zip$
 ^\.lintr$
-\.travis\.yml
-^appveyor\.yml$
-^appveyor_cache.txt$
+^codecov\.yml$
 ^CONTRIBUTING\.md$
 ^cran-comments\.md$
+^CRAN-RELEASE$
 ^docs$
 ^ignore$
 ^LICENSE$
@@ -17,4 +17,3 @@
 ^travis_wait_.*\.log$
 vignettes/.*_cache$
 vignettes/.*\.log$
-^CRAN-RELEASE$

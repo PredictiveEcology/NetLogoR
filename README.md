@@ -1,10 +1,11 @@
 # NetLogoR
 
-[![Appveyor Build status](https://ci.appveyor.com/api/projects/status/k65nup6cuqr5p2hy/branch/master?svg=true)](https://ci.appveyor.com/project/achubaty/netlogor/branch/master)
-[![Build Status](https://travis-ci.org/PredictiveEcology/NetLogoR.svg?branch=master)](https://travis-ci.org/PredictiveEcology/NetLogoR)
-[![Coverage Status](https://coveralls.io/repos/PredictiveEcology/NetLogoR/badge.svg?branch=master)](https://coveralls.io/r/PredictiveEcology/NetLogoR?branch=master)
+<!-- badges: start -->
+[![R build status](https://github.com/PredictiveEcology/NetLogoR/workflows/R-CMD-check/badge.svg)](https://github.com/PredictiveEcology/NetLogoR/actions)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/NetLogoR)](https://cran.r-project.org/package=NetLogoR)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/NetLogoR)](https://cran.r-project.org/package=NetLogoR)
+[![Codecov test coverage](https://codecov.io/gh/PredictiveEcology/NetLogoR/branch/master/graph/badge.svg)](https://codecov.io/gh/PredictiveEcology/NetLogoR?branch=master)
+<!-- badges: end -->
 
 ## Build and run spatially explicit agent-based models in R
 
