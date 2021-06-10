@@ -6,23 +6,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><code>Patches</code> ahead — patchAhead • NetLogoR</title>
+<title>Patches ahead — patchAhead • NetLogoR</title>
+
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,11 +38,11 @@
 
 
 
-<meta property="og:title" content="<code>Patches</code> ahead — patchAhead" />
 
+<meta property="og:title" content="Patches ahead — patchAhead" />
 <meta property="og:description" content="Report the coordinates of the patches at the given
 distances of the turtles in the direction of their headings." />
-<meta name="twitter:card" content="summary" />
+
 
 
 
@@ -58,9 +66,10 @@ distances of the turtles in the direction of their headings." />
   gtag('config', 'UA-58633549-3');
 </script>
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -74,7 +83,7 @@ distances of the turtles in the direction of their headings." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.8</span>
       </span>
     </div>
 
@@ -82,7 +91,7 @@ distances of the turtles in the direction of their headings." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -97,7 +106,7 @@ distances of the turtles in the direction of their headings." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/NLR-Dictionary.html">`NetLogoR` Dictionary</a>
+      <a href="../articles/NLR-Dictionary.html">NetLogoR Dictionary</a>
     </li>
     <li>
       <a href="../articles/ProgrammingGuide.html">Programming Guide `NetLogoR`</a>
@@ -108,11 +117,10 @@ distances of the turtles in the direction of their headings." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/PredictiveEcology/NetLogoR">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/PredictiveEcology/NetLogoR/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -123,6 +131,7 @@ distances of the turtles in the direction of their headings." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -134,18 +143,15 @@ distances of the turtles in the direction of their headings." />
     </div>
 
     <div class="ref-description">
-    
     <p>Report the coordinates of the <code>patches</code> at the given
 distances of the <code>turtles</code> in the direction of their <code>headings</code>.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>patchAhead</span>(<span class='no'>world</span>, <span class='no'>turtles</span>, <span class='no'>dist</span>, <span class='kw'>torus</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>patchAhead</span><span class='op'>(</span><span class='va'>world</span>, <span class='va'>turtles</span>, <span class='va'>dist</span>, torus <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'># S4 method for worldNLR,agentMatrix,numeric</span>
-<span class='fu'>patchAhead</span>(<span class='no'>world</span>, <span class='no'>turtles</span>, <span class='no'>dist</span>,
-  <span class='kw'>torus</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
+<span class='fu'>patchAhead</span><span class='op'>(</span><span class='va'>world</span>, <span class='va'>turtles</span>, <span class='va'>dist</span>, torus <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -168,69 +174,56 @@ of length 1 or of length <code>turtles</code>.</p></td>
 <code>torus = FALSE</code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Matrix (<code>ncol</code> = 2) with the first column <code>pxcor</code> and the second column
         <code>pycor</code> representing the coordinates of the <code>patches</code> at the distances <code>dist</code>
         and <code>turtles</code>'s <code>headings</code> directions
         of <code>turtles</code>. The order of the <code>patches</code> follows the order of the <code>turtles</code>.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>If <code>torus = FALSE</code> and the <code>patch</code> at distance <code>dist</code> of a <code>turtle</code>
          is outside the <code>world</code>'s extent, <code>NA</code>
          are returned for the <code>patch</code> coordinates. If <code>torus = TRUE</code>, the <code>patch</code>
          coordinates from a wrapped <code>world</code> are returned.</p>
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
             Center for Connected Learning and Computer-Based Modeling,
             Northwestern University. Evanston, IL.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-ahead'>https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-ahead</a></p></div>
-    
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Sarah Bauduin</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>w1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span>(<span class='kw'>minPxcor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPxcor</span> <span class='kw'>=</span> <span class='fl'>9</span>, <span class='kw'>minPycor</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>maxPycor</span> <span class='kw'>=</span> <span class='fl'>9</span>)
-<span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='randomXYcor.html'>randomXYcor</a></span>(<span class='no'>w1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>))
-<span class='fu'>patchAhead</span>(<span class='kw'>world</span> <span class='kw'>=</span> <span class='no'>w1</span>, <span class='kw'>turtles</span> <span class='kw'>=</span> <span class='no'>t1</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt;       pxcor pycor
-#&gt;  [1,]     8     6
-#&gt;  [2,]     3     0
-#&gt;  [3,]    NA    NA
-#&gt;  [4,]     2     8
-#&gt;  [5,]     6     2
-#&gt;  [6,]     2     7
-#&gt;  [7,]    NA    NA
-#&gt;  [8,]     4     2
-#&gt;  [9,]     1     9
-#&gt; [10,]    NA    NA</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='va'>w1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='createWorld.html'>createWorld</a></span><span class='op'>(</span>minPxcor <span class='op'>=</span> <span class='fl'>0</span>, maxPxcor <span class='op'>=</span> <span class='fl'>9</span>, minPycor <span class='op'>=</span> <span class='fl'>0</span>, maxPycor <span class='op'>=</span> <span class='fl'>9</span><span class='op'>)</span>
+<span class='va'>t1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='createTurtles.html'>createTurtles</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>10</span>, coords <span class='op'>=</span> <span class='fu'><a href='randomXYcor.html'>randomXYcor</a></span><span class='op'>(</span><span class='va'>w1</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>patchAhead</span><span class='op'>(</span>world <span class='op'>=</span> <span class='va'>w1</span>, turtles <span class='op'>=</span> <span class='va'>t1</span>, dist <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;       pxcor pycor
+#&gt;  [1,]    NA    NA
+#&gt;  [2,]     6     6
+#&gt;  [3,]     0     9
+#&gt;  [4,]     0     5
+#&gt;  [5,]     4     6
+#&gt;  [6,]     2     5
+#&gt;  [7,]     1     6
+#&gt;  [8,]     1     8
+#&gt;  [9,]     7     9
+#&gt; [10,]     8     5</div><div class='input'>
 
 </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Sarah Bauduin</p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -238,13 +231,16 @@ of length 1 or of length <code>turtles</code>.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

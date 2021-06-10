@@ -24,7 +24,9 @@ Description: Build and run spatially explicit
     (<https://cran.r-project.org/package=SpaDES>).
     The suggested package 'fastshp' can be installed with
     'install.packages("fastshp", repos = "https://rforge.net", type = "source")'.
-URL: http://netlogor.predictiveecology.org, https://github.com/PredictiveEcology/NetLogoR/
+URL:
+    https://netlogor.predictiveecology.org,
+    https://github.com/PredictiveEcology/NetLogoR/
 Version: 0.3.8
 Date: 2021-06-10
 Authors@R: c(
