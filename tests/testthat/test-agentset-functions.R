@@ -137,9 +137,11 @@ test_that("NLwith works", {
   w2 <- createWorld(data = valw2, minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
   w3 <- stackWorlds(w1, w2)
   p5 <- NLwith(world = w3, agents = patches(world = w3), var = "w1", val = 1)
-  expect_equivalent(p1, p5)
+  expect_equivalent(p5, cbind(pxcor = c(2,1), pycor = c(4,1)))
   p6 <- NLwith(agents = patches(world = w3), world = w3, var = "w1", val = 10)
   expect_equivalent(p6, noPatches())
+  p7 <- NLwith(agents = patches(world = w3), world = w3, var = "w1", val = NA)
+  expect_equivalent(p7, cbind(pxcor = 1, pycor = 4))
 
   # Turtles
   t1 <- createTurtles(n = 8, coords = cbind(xcor = c(1, 1, 1, 2, 3, NA, 6, NA),
