@@ -1,28 +1,31 @@
-## Maintenance release
+## Updated release
 
-In this version we correct documentation problems revealed in CRAN checks.
-Eliot McIntire (<eliot.mcintire@canada.ca>) will takeover as maintainer of the package.
+This release is to restore this package on CRAN following removal of dependencies `reproducible`, `SpaDES.tools`, and `SpaDES.core` (which have now been restored on CRAN).
+See `NEWS.md` for a full list of changes.
 
 ## Test environments
 
 ### Previous R versions
-* Ubuntu 16.04              (travis-ci), R 3.5.3
-* Windows                    (appveyor), R 3.5.3
-* Windows                 (win-builder), R 3.5.3
+* Ubuntu 20.04                 (GitHub), R 3.6.3
+* Ubuntu 20.04                 (GitHub), R 4.0.5
+* Windows                      (GitHub), R 3.6.3
+* Windows                      (GitHub), R 4.0.5
+* Windows                 (win-builder), R 4.0.5
 
 ### Current R versions
-* macOS 10.13.3 High Sierra (travis-ci), R 3.6.2
-* macOS 10.15.1 Catalina        (local), R 3.6.2
-* Ubuntu 16.04              (travis-ci), R 3.6.2
-* Ubuntu 18.04                  (local), R 3.6.2
-* Windows                    (appveyor), R 3.6.2
-* Windows                 (win-builder), R 3.6.2
+* macOS 10.15.7 Catalina       (GitHub), R 4.1.0
+* macOS 11.1 Big Sur            (local), R 4.1.0
+* Ubuntu 20.04                 (GitHub), R 4.1.0
+* Ubuntu 20.04                  (local), R 4.1.0
+* Windows                      (GitHub), R 4.1.0
+* Windows                       (local), R 4.1.0
+* Windows                 (win-builder), R 4.1.0
 
 ### Development R version
-* Ubuntu 16.04              (travis-ci), R 4.0.0 (2020-02-27 r77865)
-* Ubuntu 18.04                  (local), R 4.0.0 (2020-02-20 r77837)
-* Windows                    (appveyor), R 4.0.0 (2020-02-26 r77861)
-* Windows                 (win-builder), R 4.0.0 (2020-01-28 r77738)
+* Ubuntu 20.04                 (GitHub), R-devel (2021-06-09 r80471)
+* Ubuntu 20.04                  (local), R-devel (2021-05-31 r80426)
+* Windows                      (GitHub), R-devel (2021-06-09 r80471)
+* Windows                 (win-builder), R-devel (2021-06-07 r80458)
 
 ## R CMD check results
 
