@@ -35,7 +35,7 @@ Authors@R: c(
     person("Alex M", "Chubaty", email = "achubaty@for-cast.ca",
            role = c("aut"), comment = c(ORCID = "0000-0001-7146-8135")),
     person(paste("Her Majesty the Queen in Right of Canada,",
-           "as represented by the Minister of Natural Resources Canada"),
+                 "as represented by the Minister of Natural Resources Canada"),
            role = "cph")
     )
 Depends:
