@@ -5,6 +5,7 @@ Version 0.3.8
 * Drop support for R 3.5 (several dependencies require R >= 3.6)
 * `NLwith()` now handles `NA` values (#36)
 * fixed bug in Programming Guide vignette (@DataStrategist, #42)
+* improved documentation
 
 Version 0.3.7
 =============

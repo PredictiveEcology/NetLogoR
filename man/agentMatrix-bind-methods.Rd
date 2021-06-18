@@ -12,9 +12,12 @@
 \method{rbind}{agentMatrix}(..., deparse.level = 1)
 }
 \arguments{
-\item{...}{Two \code{agentMatrix} objects}
+\item{...}{Two \code{agentMatrix} objects.}
 
-\item{deparse.level}{See \code{\link[base]{cbind}}}
+\item{deparse.level}{See \code{\link[base]{cbind}}.}
+}
+\value{
+\code{agentMatrix}
 }
 \description{
 Take a sequence of \code{agentMatrix} arguments and combine by columns or rows, respectively.

@@ -35,7 +35,11 @@ When \code{x} is a Raster* object, you can pass four additional arguments to cro
 
 \item{obj}{ object deriving from class "Spatial", or one of classes: "Line", "Lines", "Polygon" or "Polygons", or ANY, which requires obj to be an array with at least two columns }
 
-\item{value}{2x2 matrix representing the bounding box. See \code{\link[sp]{bbox}}}
+\item{value}{2x2 matrix representing the bounding box. See \code{\link[sp]{bbox}}.}
+}
+\value{
+two-column matrix; the first column has the minimum, the second the maximum values;
+        rows represent the spatial dimensions. See \code{\link[sp]{bbox}}.
 }
 \description{
 Same as \code{\link[sp]{bbox}} and \code{\link[raster]{extent}}

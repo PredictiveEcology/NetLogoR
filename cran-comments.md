@@ -23,7 +23,7 @@ See `NEWS.md` for a full list of changes.
 
 ### Development R version
 * Ubuntu 20.04                 (GitHub), R-devel (2021-06-09 r80471)
-* Ubuntu 20.04                  (local), R-devel (2021-05-31 r80426)
+* Ubuntu 20.04                  (local), R-devel (2021-06-18 r80526)
 * Windows                      (GitHub), R-devel (2021-06-09 r80471)
 * Windows                 (win-builder), R-devel (2021-06-07 r80458)
 
