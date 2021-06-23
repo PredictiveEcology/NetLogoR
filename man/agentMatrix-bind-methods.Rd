@@ -17,7 +17,7 @@
 \item{deparse.level}{See \code{\link[base]{cbind}}.}
 }
 \value{
-\code{agentMatrix}
+An \code{agentMatrix} object.
 }
 \description{
 Take a sequence of \code{agentMatrix} arguments and combine by columns or rows, respectively.

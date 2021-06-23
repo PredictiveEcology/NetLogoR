@@ -38,9 +38,13 @@ When \code{x} is a Raster* object, you can pass four additional arguments to cro
 \item{value}{2x2 matrix representing the bounding box. See \code{\link[sp]{bbox}}.}
 }
 \value{
+\code{bbox} returns a two-column matrix; the first column has the minimum,
+        the second the maximum values; rows represent the spatial dimensions.
+        \code{extent} returns an \code{extent} object.
+
 two-column matrix; the first column has the minimum, the second the maximum values;
         rows represent the spatial dimensions. See \code{\link[sp]{bbox}}.
 }
 \description{
-Same as \code{\link[sp]{bbox}} and \code{\link[raster]{extent}}
+Same as \code{\link[sp]{bbox}} and \code{\link[raster]{extent}}.
 }

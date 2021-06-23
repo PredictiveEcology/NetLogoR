@@ -19,7 +19,7 @@ or a \code{SpatialPointsDataFrame}.}
 \item{coords}{A matrix with 2 columns representing \code{x} and \code{y} coordinates}
 }
 \value{
-an \code{agentMatrix} object
+An \code{agentMatrix} object
 }
 \description{
 This is a fast alternative to the \code{SpatialPointsDataFrame}.

@@ -15,8 +15,11 @@
       be passed to \code{initialize()}.}
 
 \item{levelsAM}{A list with named character vectors. Each name should
-match with elements in ..., and each character vector
-should be the length of unique elements in the ... element.}
+match with elements in \code{...}, and each character vector
+should be the length of unique elements in the \code{...} element.}
+}
+\value{
+An \code{agentMatrix} object.
 }
 \description{
 To create a new \code{agentMatrix} object.
