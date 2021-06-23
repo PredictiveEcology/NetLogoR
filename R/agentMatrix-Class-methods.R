@@ -9,6 +9,10 @@
 #' @param levelsAM A list with named character vectors. Each name should
 #'                 match with elements in ..., and each character vector
 #'                 should be the length of unique elements in the ... element.
+#'
+#' @return An \code{agentMatrix} object.
+#'
+#'
 setMethod(
   "initialize",
   "agentMatrix",
@@ -125,7 +129,7 @@ setMethod(
 #' @param ... Vectors, a data.frame, or a matrix of extra columns to add to the coordinates,
 #'            or a \code{SpatialPointsDataFrame}.
 #'
-#' @return an \code{agentMatrix} object
+#' @return An \code{agentMatrix} object
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-turtles}
 #'
 #' @examples
@@ -237,6 +241,10 @@ setAs("agentMatrix", "data.frame",
 #' @param j     see \code{i}.
 #' @param ...   other named arguments
 #' @param drop  not implemented
+#'
+#' @return An \code{agentMatrix} when full row(s), full column(s) or element(s)
+#'        at specific row(s) and column(s) is/are extracted.
+#'
 #'
 #' @export
 #' @name [
@@ -559,6 +567,16 @@ setMethod(
 #'
 #' Slight modifications from the default versions.
 #'
+#' @return An \code{agentMatrix} when using \code{show}.
+#'         The five first rows of an \code{agentMatrix} when using \code{head}
+#'         and the five last rows when using \code{tail}.
+#'         An integer equal to the total number of elements inside an
+#'         \code{agentMatrix} which corresponds to the number of rows times
+#'         the number of columns when showing the full data with
+#'         \code{agentMatrix@.Data} when using \code{length}.
+#'         An integer which equal to the number of rows of an \code{agentMatrix}
+#'         when using \code{nrow}.
+#'
 #' @param object  An \code{agentMatrix} object.
 #'
 #' @export
@@ -634,7 +652,7 @@ tail.agentMatrix <- function(x, n = 6L, ...) {
 #' @param deparse.level See \code{\link[base]{cbind}}.
 #' @param ... Two \code{agentMatrix} objects.
 #'
-#' @return \code{agentMatrix}
+#' @return An \code{agentMatrix} object.
 #'
 #' @export
 #' @method cbind agentMatrix
@@ -699,6 +717,10 @@ rbind.agentMatrix <- function(..., deparse.level = 1) {
 #' @inheritParams raster::extent
 #' @include worldNLR-classes-methods.R
 #' @importFrom raster extent
+#'
+#' @return An \code{extent} of all the coordinates inside the
+#'         \code{agentMatrix}.
+#'
 #' @rdname bbox
 setMethod(
   "extent",

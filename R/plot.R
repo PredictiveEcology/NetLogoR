@@ -7,6 +7,9 @@
 #' @param x an \code{agentMatrix}, \code{worldMatrix} or \code{worldArray} object
 #' @param ... arguments passed to plot methods for matrix (\code{agentMatrix}) or \code{raster} (\code{world*})
 #'
+#' @return Figure of a grid when plotting a \code{WorldMatrix} or \code{worldArray}.
+#'         Figure with points when plotting an \code{agentMatrix}.
+#'
 #' @export
 #' @method plot agentMatrix
 #' @rdname plotMethods
