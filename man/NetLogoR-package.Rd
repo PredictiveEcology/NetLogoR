@@ -21,6 +21,7 @@ Useful links:
 \itemize{
   \item \url{https://netlogor.predictiveecology.org}
   \item \url{https://github.com/PredictiveEcology/NetLogoR/}
+  \item \url{https://groups.google.com/g/netlogor}
   \item Report bugs at \url{https://github.com/PredictiveEcology/NetLogoR/issues}
 }
 

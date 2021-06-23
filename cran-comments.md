@@ -1,6 +1,7 @@
 ## Updated release
 
 This release is to restore this package on CRAN following removal of dependencies `reproducible`, `SpaDES.tools`, and `SpaDES.core` (which have now been restored on CRAN).
+We have also improved the documentation, and added return values for most functions.
 See `NEWS.md` for a full list of changes.
 
 ## Test environments
