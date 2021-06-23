@@ -83,7 +83,6 @@ RoxygenNote: 7.1.1
 VignetteBuilder: knitr, rmarkdown
 Collate: 
     'Agent-classes.R'
-    'Classes.R'
     'NetLogoR-package.R'
     'worldNLR-classes-methods.R'
     'agentMatrix-Class-methods.R'

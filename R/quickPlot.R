@@ -45,7 +45,6 @@ setIs("worldArray", "spatialObjects")
 #' @inheritParams quickPlot::numLayers
 #' @importFrom quickPlot numLayers
 #' @rdname quickPlot-methods
-#' @include Classes.R
 #' @include Agent-classes.R
 setMethod(
   "numLayers",
