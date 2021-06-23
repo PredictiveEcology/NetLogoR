@@ -744,7 +744,7 @@ setMethod(
 
 #' \code{.bboxCoords} is a drop in replacement for \code{raster::.bboxCoords}.
 #'
-#' @param coords documentation needed
+#' @param coords xy coordinates for all cells, e.g., produced by \code{raster::coordinates}.
 #'
 #' @importFrom matrixStats colRanges
 #' @rdname bbox

@@ -3,7 +3,7 @@
 \name{.quickPlottables-class}
 \alias{.quickPlottables-class}
 \alias{quickPlottables}
-\title{\code{quickPlot} classes -- for using `quickPlot::Plot``}
+\title{\code{quickPlot} classes}
 \description{
 \pkg{quickPlot} offers a type of plotting that is modular.
 Users of NetLogoR may find this useful for simulation modeling.

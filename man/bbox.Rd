@@ -31,7 +31,7 @@ bbox(obj) <- value
 
 When \code{x} is a Raster* object, you can pass four additional arguments to crop the extent: \code{r1, r2, c1, c2}, representing the first and last row and column number }
 
-\item{coords}{documentation needed}
+\item{coords}{xy coordinates for all cells, e.g., produced by \code{raster::coordinates}.}
 
 \item{obj}{ object deriving from class "Spatial", or one of classes: "Line", "Lines", "Polygon" or "Polygons", or ANY, which requires obj to be an array with at least two columns }
 

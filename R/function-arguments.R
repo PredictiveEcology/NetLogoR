@@ -1,7 +1,7 @@
 ################################################################################
 #' Function arguments
 #'
-#' @keywords integral
+#' @keywords internal
 #'
 #' @name fargs
 #'
@@ -83,6 +83,5 @@
 #'            as well as any variable created using \code{turtlesOwn()}.
 #'
 #' @param val Numeric or character. Vector of any length.
-#'
 #'
 NULL

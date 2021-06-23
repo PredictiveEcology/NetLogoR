@@ -1,4 +1,4 @@
-#' \code{quickPlot} classes -- for using `quickPlot::Plot``
+#' \code{quickPlot} classes
 #'
 #' \pkg{quickPlot} offers a type of plotting that is modular.
 #' Users of NetLogoR may find this useful for simulation modeling.
@@ -59,7 +59,7 @@ if (!isGeneric(".plotGrob")) {
     ".plotGrob",
     function(object, objects, compareRasterFileLength = 1e6, algo = "xxhash64") {
       standardGeneric(".plotGrob")
-    })
+  })
 }
 
 #' The suggested package \code{fastshp} can be installed with:
@@ -76,9 +76,7 @@ if (!isGeneric(".plotGrob")) {
 setMethod(
   ".plotGrob",
   signature = c("agentMatrix"),
-  definition = function(grobToPlot, col, size, legend, gp = gpar(), pch, speedup,
-                        name, vp, ...) {
-
+  definition = function(grobToPlot, col, size, legend, gp = gpar(), pch, speedup, name, vp, ...) {
     speedupScale <- 40
     xyOrd <- coordinates(grobToPlot)
 
