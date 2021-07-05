@@ -59,7 +59,6 @@ jobs:
           do
             eval sudo $cmd
           done < <(Rscript -e 'cat(unique(c(remotes::system_requirements("ubuntu", "20.04"), remotes::system_requirements("ubuntu", "20.04", package = "sf"))), sep = "\n")')
-                - name: Build binary packages (macOS)
 
       - name: Install system dependencies (macOS)
         if: runner.os == 'macOS'
