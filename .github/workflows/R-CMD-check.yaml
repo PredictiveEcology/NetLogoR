@@ -52,13 +52,20 @@ jobs:
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
 
-      - name: Install system dependencies
+      - name: Install system dependencies (Linux)
         if: runner.os == 'Linux'
         run: |
           while read -r cmd
           do
             eval sudo $cmd
           done < <(Rscript -e 'cat(unique(c(remotes::system_requirements("ubuntu", "20.04"), remotes::system_requirements("ubuntu", "20.04", package = "sf"))), sep = "\n")')
+                - name: Build binary packages (macOS)
+
+      - name: Install system dependencies (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install gdal udunits
+          Rscript -e 'install.packages("sf", configure.args = "--with-proj-lib=/usr/local/lib/")'
 
       - name: Install additional dependencies
         run: |
