@@ -169,18 +169,25 @@
     </tr>
     <tr>
       <th>x</th>
-      <td><p>An <code>agentMatrix</code> object.</p></td>
+      <td><p>An <code>agentMatrix</code> object</p></td>
     </tr>
     <tr>
       <th>n</th>
-      <td><p>documentation needed</p></td>
+      <td><p>an integer vector of length up to dim(x) (or 1, for non-dimensioned objects).</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>documentation needed</p></td>
+      <td><p>arguments to be passed to or from other methods (currently, none used).</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>show</code> returns an invisible <code>NULL</code>.
+        <code>length</code> returns a non-negative integer of length 1,
+        except for vectors of more than 2^31 - 1 elements, when it returns a double.
+        <code>nrow</code> returns an integer of length 1 or <code>NULL</code>.</p>
+<p>An <code>agentMatrix</code> object, like <code>x</code>, but generally smaller.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

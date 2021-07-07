@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Bounding box and extent methods for NetLogoR classes — extent,worldNLR-method" />
-<meta property="og:description" content="Same as bbox and extent" />
+<meta property="og:description" content="Same as bbox and extent." />
 
 
 
@@ -142,7 +142,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Same as <code><a href='https://rdrr.io/pkg/sp/man/bbox.html'>bbox</a></code> and <code><a href='https://rdrr.io/pkg/raster/man/extent.html'>extent</a></code></p>
+    <p>Same as <code><a href='https://rdrr.io/pkg/sp/man/bbox.html'>bbox</a></code> and <code><a href='https://rdrr.io/pkg/raster/man/extent.html'>extent</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='co'># S4 method for worldNLR</span>
@@ -178,7 +178,7 @@
     </tr>
     <tr>
       <th>coords</th>
-      <td><p>documentation needed</p></td>
+      <td><p>xy coordinates for all cells, e.g., produced by <code><a href='https://rdrr.io/pkg/raster/man/xyFromCell.html'>raster::coordinates</a></code>.</p></td>
     </tr>
     <tr>
       <th>obj</th>
@@ -186,10 +186,17 @@
     </tr>
     <tr>
       <th>value</th>
-      <td><p>2x2 matrix representing the bounding box. See <code><a href='https://rdrr.io/pkg/sp/man/bbox.html'>bbox</a></code></p></td>
+      <td><p>2x2 matrix representing the bounding box. See <code><a href='https://rdrr.io/pkg/sp/man/bbox.html'>bbox</a></code>.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>bbox</code> returns a two-column matrix; the first column has the minimum,
+        the second the maximum values; rows represent the spatial dimensions.
+        <code>extent</code> returns an <code>extent</code> object.</p>
+<p>two-column matrix; the first column has the minimum, the second the maximum values;
+        rows represent the spatial dimensions. See <code><a href='https://rdrr.io/pkg/sp/man/bbox.html'>bbox</a></code>.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
