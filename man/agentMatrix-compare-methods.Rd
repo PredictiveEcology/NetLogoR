@@ -14,6 +14,9 @@
 
 \item{e2}{atomic vector, symbol, call, or other object for which methods have been written.}
 }
+\value{
+A logical vector indicating the result of the element by element comparison.
+}
 \description{
-Binary operators which allow the comparison of values in an \code{agentMatrix.}
+Binary operators which allow the comparison of values in an \code{agentMatrix}.
 }

@@ -92,7 +92,11 @@ in which to replace element(s).}
 
 \item{value}{Any R object}
 
-\item{name}{documentation needed}
+\item{name}{A literal character string or a \code{\link{name}} (possibly backtick quoted).}
+}
+\value{
+An \code{agentMatrix} when full row(s), full column(s) or element(s)
+        at specific row(s) and column(s) is/are extracted.
 }
 \description{
 Operators acting on vectors, matrices, arrays and lists to extract or replace parts.

@@ -7,8 +7,12 @@
 #' @inheritParams methods::initialize
 #' @param coords 2 column matrix of coordinates
 #' @param levelsAM A list with named character vectors. Each name should
-#'                 match with elements in ..., and each character vector
-#'                 should be the length of unique elements in the ... element.
+#'                 match with elements in \code{...}, and each character vector
+#'                 should be the length of unique elements in the \code{...} element.
+#'
+#' @return An \code{agentMatrix} object.
+#'
+#'
 setMethod(
   "initialize",
   "agentMatrix",
@@ -108,21 +112,24 @@ setMethod(
       }
     }
     .Object
-  })
+})
 
 ################################################################################
 #' Create a new \code{agentMatrix} object
 #'
-#' This is a fast alternative to the \code{SpatialPointsDataFrame}. It is meant to replace
-#' that functionality, though there are not as many methods (yet). The object is primarily
-#' a numeric matrix. Any character column passed to ... will be converted to a numeric,
-#' using \code{as.factor} internally, and stored as a numeric. Methods using this class
-#' will automatically convert character queries to the correct numeric alternative.
+#' This is a fast alternative to the \code{SpatialPointsDataFrame}.
+#' It is meant to replace that functionality, though there are not as many methods (yet).
+#' The object is primarily a numeric matrix.
+#' Any character column passed to \code{...} will be converted to a numeric, using \code{as.factor}
+#' internally, and stored as a numeric.
+#' Methods using this class will automatically convert character queries to the correct numeric
+#' alternative.
 #'
 #' @param coords  A matrix with 2 columns representing \code{x} and \code{y} coordinates
 #' @param ... Vectors, a data.frame, or a matrix of extra columns to add to the coordinates,
 #'            or a \code{SpatialPointsDataFrame}.
 #'
+#' @return An \code{agentMatrix} object
 #' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-turtles}
 #'
 #' @examples
@@ -137,12 +144,9 @@ setMethod(
 #'                           data = runif(25))
 #' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 #'
-#'
+#' @author Eliot McIntire
 #' @export
 #' @rdname agentMatrix
-#'
-#' @author Eliot McIntire
-#'
 setGeneric(
   "agentMatrix",
   function(..., coords) {
@@ -179,10 +183,12 @@ setMethod(
 
 #' Set spatial coordinates
 #'
-#' @param obj  documentation needed
+#' @param obj  an \code{AgentMatrix} object
 #' @param ...  additional arguments that may be used by particular methods
 #'
-#'  description needed
+#' @return usually an object of class \code{SpatialPointsDataFrame}; if the coordinates set cover
+#'         the full set of variables in object, an object of class \code{SpatialPoints} is returned.
+#'         See \code{\link[sp]{coordinates}}.
 #'
 #' @export
 #' @rdname coordinates
@@ -191,23 +197,23 @@ setMethod(
   signature("agentMatrix"),
   definition = function(obj, ...) {
     obj@.Data[, 1:2, drop = FALSE]
-  })
+})
 
 #' @export
 setAs("matrix", "agentMatrix",
       function(from) {
         tmp <- new("agentMatrix",
-                   coords = from[, 1:2, drop = FALSE], from[, - (1:2), drop = FALSE])
+                   coords = from[, 1:2, drop = FALSE], from[, -(1:2), drop = FALSE])
         tmp
-      })
+})
 
 #' @export
 setAs("data.frame", "agentMatrix",
       function(from) {
         tmp <- new("agentMatrix",
-                   coords = from[, 1:2, drop = FALSE], from[, - (1:2), drop = FALSE])
+                   coords = from[, 1:2, drop = FALSE], from[, -(1:2), drop = FALSE])
         tmp
-      })
+})
 
 #' @export
 setAs("agentMatrix", "data.frame",
@@ -217,7 +223,7 @@ setAs("agentMatrix", "data.frame",
         nam <- names(from@levels)
         tmp[, nam] <- lapply(nam, function(n) from@levels[[n]][tmp[, n]])
         tmp
-      })
+})
 
 #' Extract or Replace Parts of an Object
 #'
@@ -235,6 +241,9 @@ setAs("agentMatrix", "data.frame",
 #' @param j     see \code{i}.
 #' @param ...   other named arguments
 #' @param drop  not implemented
+#'
+#' @return An \code{agentMatrix} when full row(s), full column(s) or element(s)
+#'         at specific row(s) and column(s) is/are extracted.
 #'
 #' @export
 #' @name [
@@ -254,8 +263,7 @@ setMethod(
     }
     x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
     x
-  }
-)
+})
 
 #' @export
 #' @name [
@@ -269,7 +277,7 @@ setMethod(
     if (length(x@.Data) > 0)
       x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
     x
-  })
+})
 
 #' @export
 #' @name [
@@ -284,7 +292,7 @@ setMethod(
       x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
     }
     x
-  })
+})
 
 #' @export
 #' @name [
@@ -307,7 +315,7 @@ setMethod(
   definition = function(x, j, ..., drop) {
     cols <- match(j, colnames(x@.Data))
     x[, cols, ..., drop = FALSE]
-  })
+})
 
 #' @export
 #' @name [
@@ -319,7 +327,7 @@ setMethod(
   definition = function(x, i, j, ..., drop) {
     cols <- match(j, colnames(x@.Data))
     x[i, cols, ..., drop = FALSE]
-  })
+})
 
 #' @export
 #' @name [
@@ -339,7 +347,7 @@ setMethod(
     }
     x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
     x
-  })
+})
 
 #' @param value  Any R object
 #'
@@ -354,7 +362,7 @@ setReplaceMethod(
     x@.Data[i, j] <- value
     validObject(x)
     return(x)
-  })
+})
 
 #' @export
 #' @name [<-
@@ -367,7 +375,7 @@ setReplaceMethod(
     x@.Data[, j] <- value
     validObject(x)
     return(x)
-  })
+})
 
 #' @export
 #' @name [<-
@@ -380,7 +388,7 @@ setReplaceMethod(
     x@.Data[i, ] <- value
     validObject(x)
     return(x)
-  })
+})
 
 #' @export
 #' @name [<-
@@ -413,7 +421,7 @@ setReplaceMethod(
     }
     validObject(x)
     return(x)
-  })
+})
 
 #' @export
 #' @name [<-
@@ -441,7 +449,7 @@ setReplaceMethod(
     x@.Data[i, j] <- match(value, x@levels[[levelInd]])
     validObject(x)
     return(x)
-  })
+})
 
 #' @export
 #' @name [<-
@@ -453,7 +461,7 @@ setReplaceMethod(
   definition = function(x, i, j, value) {
     x[seq_len(NROW(x)), j] <- value
     return(x)
-  })
+})
 
 #' @export
 #' @name [<-
@@ -466,7 +474,7 @@ setReplaceMethod(
     cols <- match(j, colnames(x@.Data))
     x[seq_len(NROW(x)), cols] <- value
     return(x)
-  })
+})
 
 #' @export
 #' @name [<-
@@ -479,9 +487,9 @@ setReplaceMethod(
     cols <- match(j, colnames(x@.Data))
     x[i, cols] <- value
     return(x)
-  })
+})
 
-#' @param name  documentation needed
+#' @param name  A literal character string or a \code{\link{name}} (possibly backtick quoted).
 #'
 #' @export
 #' @rdname extract-methods
@@ -494,14 +502,16 @@ setMethod(
     } else {
       x@.Data[, name]
     }
-  })
+})
 
 #' Relational Operators
 #'
-#' Binary operators which allow the comparison of values in an \code{agentMatrix.}
+#' Binary operators which allow the comparison of values in an \code{agentMatrix}.
 #'
 #' @param e1  An \code{agentMatrix} object.
 #' @param e2  atomic vector, symbol, call, or other object for which methods have been written.
+#'
+#' @return A logical vector indicating the result of the element by element comparison.
 #'
 #' @export
 #' @importFrom stats na.omit
@@ -519,15 +529,15 @@ setMethod(
     levelIndNoNA <- na.omit(levelInd)
     whInd <- which(!is.na(levelInd))
     if (all(is.na(levelInd))) {
-      (e1@.Data == e2)[, - (1:2)]
+      (e1@.Data == e2)[, -(1:2)]
     } else {
       logic <- e1@.Data == e2
       logic[, whInd] <- sapply(levelIndNoNA, function(z) {
         e1@levels[[z]][e1@.Data[, whInd[z]]]
       }) == e2
-      logic[, - (1:2)]
+      logic[, -(1:2)]
     }
-  })
+})
 
 #' @export
 #' @importFrom stats na.omit
@@ -550,13 +560,19 @@ setMethod(
       ind <- c(1, 2)
 
     (e1@.Data[, -ind] == e2)
-  })
+})
 
 #' Key base R functions for \code{agentMatrix} class
 #'
 #' Slight modifications from the default versions.
 #'
 #' @param object  An \code{agentMatrix} object.
+#'
+#' @return \code{show} returns an invisible \code{NULL}.
+#'         \code{length} returns a non-negative integer of length 1,
+#'         except for vectors of more than 2^31 - 1 elements, when it returns a double.
+#'         \code{nrow} returns an integer of length 1 or \code{NULL}.
+
 #'
 #' @export
 #' @rdname agentMatrix-show-methods
@@ -577,9 +593,9 @@ setMethod(
       tmp <- object@.Data
     }
     show(tmp[, -1:-2, drop = FALSE])
-  })
+})
 
-#' @param x  An \code{agentMatrix} object.
+#' @param x  An \code{agentMatrix} object
 #'
 #' @export
 #' @rdname agentMatrix-show-methods
@@ -588,8 +604,9 @@ setMethod(
   signature(x = "agentMatrix"),
   definition = function(x) {
     length(x@.Data)
-  })
+})
 
+#'
 #' @export
 #' @rdname agentMatrix-show-methods
 setMethod(
@@ -597,10 +614,12 @@ setMethod(
   signature(x = "agentMatrix"),
   definition = function(x) {
     nrow(x@.Data)
-  })
+})
 
-#' @param n  documentation needed
-#' @param ...  documentation needed
+#' @param n  an integer vector of length up to dim(x) (or 1, for non-dimensioned objects).
+#' @param ...  arguments to be passed to or from other methods (currently, none used).
+#'
+#' @return An \code{agentMatrix} object, like \code{x}, but generally smaller.
 #'
 #' @method head agentMatrix
 #' @export head agentMatrix
@@ -628,11 +647,13 @@ tail.agentMatrix <- function(x, n = 6L, ...) {
 #' This will take the coordinates of the first argument and remove the coordinates
 #' of the second object.
 #'
-#' @param deparse.level See \code{\link[base]{cbind}}
-#' @param ... Two \code{agentMatrix} objects
+#' @param deparse.level See \code{\link[base]{cbind}}.
+#' @param ... Two \code{agentMatrix} objects.
 #'
-#' @method cbind agentMatrix
+#' @return An \code{agentMatrix} object.
+#'
 #' @export
+#' @method cbind agentMatrix
 #' @name cbind
 #' @rdname agentMatrix-bind-methods
 cbind.agentMatrix <- function(..., deparse.level) {
@@ -690,10 +711,15 @@ rbind.agentMatrix <- function(..., deparse.level = 1) {
 
 #' Bounding box and extent methods for NetLogoR classes
 #'
-#' Same as \code{\link[sp]{bbox}} and \code{\link[raster]{extent}}
+#' Same as \code{\link[sp]{bbox}} and \code{\link[raster]{extent}}.
+#'
 #' @inheritParams raster::extent
 #' @include worldNLR-classes-methods.R
 #' @importFrom raster extent
+#'
+#' @return \code{bbox} returns a two-column matrix; the first column has the minimum,
+#'         the second the maximum values; rows represent the spatial dimensions.
+#'         \code{extent} returns an \code{extent} object.
 #' @rdname bbox
 setMethod(
   "extent",
@@ -718,7 +744,7 @@ setMethod(
 
 #' \code{.bboxCoords} is a drop in replacement for \code{raster::.bboxCoords}.
 #'
-#' @param coords documentation needed
+#' @param coords xy coordinates for all cells, e.g., produced by \code{raster::coordinates}.
 #'
 #' @importFrom matrixStats colRanges
 #' @rdname bbox
@@ -732,6 +758,8 @@ setMethod(
 #' @include worldNLR-classes-methods.R
 #' @inheritParams sp::bbox
 #' @importFrom sp bbox
+#' @return two-column matrix; the first column has the minimum, the second the maximum values;
+#'         rows represent the spatial dimensions. See \code{\link[sp]{bbox}}.
 #' @rdname bbox
 setMethod(
   "bbox",
@@ -746,7 +774,7 @@ setMethod(
 
 #' @export
 #' @importFrom sp bbox
-#' @param value 2x2 matrix representing the bounding box. See \code{\link[sp]{bbox}}
+#' @param value 2x2 matrix representing the bounding box. See \code{\link[sp]{bbox}}.
 #' @rdname bbox
 setGeneric("bbox<-",
            function(obj, value) {

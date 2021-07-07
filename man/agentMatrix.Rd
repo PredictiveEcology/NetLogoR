@@ -18,12 +18,17 @@ or a \code{SpatialPointsDataFrame}.}
 
 \item{coords}{A matrix with 2 columns representing \code{x} and \code{y} coordinates}
 }
+\value{
+An \code{agentMatrix} object
+}
 \description{
-This is a fast alternative to the \code{SpatialPointsDataFrame}. It is meant to replace
-that functionality, though there are not as many methods (yet). The object is primarily
-a numeric matrix. Any character column passed to ... will be converted to a numeric,
-using \code{as.factor} internally, and stored as a numeric. Methods using this class
-will automatically convert character queries to the correct numeric alternative.
+This is a fast alternative to the \code{SpatialPointsDataFrame}.
+It is meant to replace that functionality, though there are not as many methods (yet).
+The object is primarily a numeric matrix.
+Any character column passed to \code{...} will be converted to a numeric, using \code{as.factor}
+internally, and stored as a numeric.
+Methods using this class will automatically convert character queries to the correct numeric
+alternative.
 }
 \examples{
 newAgent <- agentMatrix(
@@ -36,7 +41,6 @@ newAgent <- agentMatrix(
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
                           data = runif(25))
 t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
-
 
 }
 \seealso{

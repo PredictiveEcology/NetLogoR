@@ -11,8 +11,6 @@
 #' \code{file.edit(file.path(system.file(package = "NetLogoR", "examples"), "Wolf-Sheep-Predation", "Wolf-Sheep-Predation.R"))}.
 "_PACKAGE"
 
-
-
 #' @import methods
 #' @import raster
 NULL

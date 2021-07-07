@@ -20,6 +20,9 @@
 
 \item{...}{arguments passed to plot methods for matrix (\code{agentMatrix}) or \code{raster} (\code{world*})}
 }
+\value{
+none; invoked for side-effect of generating a plot.
+}
 \description{
 These pass to plot, as a matrix of points (\code{agentMatrix}), as a \code{raster} (\code{worldMatrix}),
 or a \code{rasterStack} (\code{worldArray}).

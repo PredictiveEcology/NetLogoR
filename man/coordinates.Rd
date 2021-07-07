@@ -7,11 +7,14 @@
 \S4method{coordinates}{agentMatrix}(obj, ...)
 }
 \arguments{
-\item{obj}{documentation needed}
+\item{obj}{an \code{AgentMatrix} object}
 
-\item{...}{additional arguments that may be used by particular methods
-
- description needed}
+\item{...}{additional arguments that may be used by particular methods}
+}
+\value{
+usually an object of class \code{SpatialPointsDataFrame}; if the coordinates set cover
+        the full set of variables in object, an object of class \code{SpatialPoints} is returned.
+        See \code{\link[sp]{coordinates}}.
 }
 \description{
 Set spatial coordinates

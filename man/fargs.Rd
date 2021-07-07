@@ -85,4 +85,4 @@ as well as any variable created using \code{turtlesOwn()}.}
 \description{
 Function arguments
 }
-\keyword{integral}
+\keyword{internal}

@@ -7,6 +7,8 @@
 #' @param x an \code{agentMatrix}, \code{worldMatrix} or \code{worldArray} object
 #' @param ... arguments passed to plot methods for matrix (\code{agentMatrix}) or \code{raster} (\code{world*})
 #'
+#' @return none; invoked for side-effect of generating a plot.
+#'
 #' @export
 #' @method plot agentMatrix
 #' @rdname plotMethods

@@ -31,9 +31,13 @@ jobs:
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
 
-      - name: Install additional dependencies
+      - name: Install system dependencies
         run: |
-          remotes::install_github('traversc/stringfish')
+          brew install gdal udunits
+
+      - name: Install additional R package dependencies
+        run: |
+          install.packages("sf", configure.args = "--with-proj-lib=/usr/local/lib/")
           remotes::install_github('PredictiveEcology/Require@development')
           remotes::install_github('PredictiveEcology/reproducible@development')
           remotes::install_github('s-u/fastshp')
