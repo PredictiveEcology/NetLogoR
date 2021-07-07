@@ -142,6 +142,8 @@ test_that("create agentMatrix does not work", {
 })
 
 test_that("agentMatrix benchmarking", {
+  skip_on_cran()
+
   set.seed(20180924) ## TODO: why are some seeds failing?
 
   # compare speeds -- if these fail, then should reconsider the need for agentMatrix
