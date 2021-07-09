@@ -29,7 +29,7 @@ URL:
     https://github.com/PredictiveEcology/NetLogoR/,
     https://groups.google.com/g/netlogor
 Version: 0.3.8
-Date: 2021-06-10
+Date: 2021-07-09
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
            role = c("aut"), comment = c(ORCID = "0000-0002-3252-5894")),
