@@ -64,10 +64,10 @@ jobs:
         if: runner.os == 'macOS'
         run: |
           brew install gdal udunits
-          Rscript -e 'install.packages("sf", configure.args = c("--with-proj-lib=/usr/local/lib/", "--with-proj-include=/usr/local/include/"))'
 
       - name: Install additional dependencies
         run: |
+          install.packages('sf', configure.args = c('--with-proj-lib=/usr/local/lib/', '--with-proj-include=/usr/local/include/'))
           install.packages('igraph', repos = 'https://cran.rstudio.com') ## need source, not RSPM binary
           remotes::install_github('s-u/fastshp')
         shell: Rscript {0}
