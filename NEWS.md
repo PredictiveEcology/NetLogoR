@@ -1,4 +1,8 @@
-Known issues: https://github.com/PredictiveEcology/NetLogoR/issues
+Known issues: <https://github.com/PredictiveEcology/NetLogoR/issues>
+
+Version 0.3.8.9000
+=============
+* none
 
 Version 0.3.8
 =============
