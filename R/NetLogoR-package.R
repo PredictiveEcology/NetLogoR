@@ -24,4 +24,5 @@ NULL
 #'
 #' @keywords internal
 #' @rdname projNowhere
-.projNowhere <- CRS("+proj=utm")
+.projNowhere <- CRS("EPSG:32632") # This is actually in central Europe; but exact
+                                  #  location is not relevant as this is used in examples
