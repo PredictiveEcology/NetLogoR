@@ -62,7 +62,8 @@ by default. Currently, only a single vector is accepted.}
 
 \item{length}{Numeric.}
 
-\item{gp}{\code{grid} parameters, usually the output of a call to \code{\link[quickPlot]{gpar}}.}
+\item{gp}{\code{grid} parameters, usually the output of a call to
+\code{\link[quickPlot]{gpar}}.}
 
 \item{gpText}{\code{gpar} object for legend label text.}
 
@@ -83,12 +84,13 @@ make plotting faster.}
 or \code{SpatialPolygons*} object; or list of these.}
 
 \item{toPlot}{The object to plot. Should be a single layer if from a multi-layer
-object such as a \code{RasterStack}.}
+object such as a RasterStack.}
 
-\item{sGrob}{\code{quickPlot} grob object}
+\item{sGrob}{quickPlot grob object}
 
 \item{takeFromPlotObj}{Logical. Should the data come from the argument passed
-into \code{Plot} (\code{TRUE}), or from the (\code{.quickPlotEnv}) (\code{FALSE}).}
+into Plot (\code{TRUE}), or from the (\code{.quickPlotEnv})
+(\code{FALSE}).}
 }
 \description{
 These are required to create plotting methods to work with \pkg{quickPlot}.
