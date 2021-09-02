@@ -10,7 +10,9 @@ stackWorlds(...)
 \S4method{stackWorlds}{worldMatrix}(...)
 }
 \arguments{
-\item{...}{\code{worldMatrix} objects.}
+\item{...}{\code{worldMatrix} objects. If passed as unnamed objects, then the function
+will attempt to use their object names as layer names. Alternatively, to be more
+reliable, these can be passed as named arguments. See examples.}
 }
 \value{
 \code{worldArray} object.
@@ -26,6 +28,9 @@ w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data =
 w2 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data = 25:1)
 w3 <- stackWorlds(w1, w2)
 plot(w3)
+
+# pass named arguments to specify a different name than the object name
+w4 <- stackWorlds(layer1 = w1, layer2 = w2)
 
 }
 \author{

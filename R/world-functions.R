@@ -363,14 +363,22 @@ setMethod(
   signature = c("RasterLayer", "character"),
   definition = function(raster, method) {
 
-    minPxcor <- round(raster@extent@xmin)
-    maxPxcor <- round(raster@extent@xmax)
-    minPycor <- round(raster@extent@ymin)
-    maxPycor <- round(raster@extent@ymax)
-    world <- createWorld(minPxcor = minPxcor, maxPxcor = maxPxcor,
-                                 minPycor = minPycor, maxPycor = maxPycor)
-    worldRaster <- raster(world@extent)
-    res(worldRaster) <- c(1, 1)
+    exts <- list()
+    exts[["minPxcor"]] <- round(raster@extent@xmin)
+    exts[["maxPxcor"]] <- round(raster@extent@xmax)
+    exts[["minPycor"]] <- round(raster@extent@ymin)
+    exts[["maxPycor"]] <- round(raster@extent@ymax)
+
+    # in cases where resolution is not c(1,1)
+    if (!all(res(raster) == c(1,1))) {
+      exts[c("minPxcor", "maxPxcor")] <- lapply(exts[c("minPxcor", "maxPxcor")], function(x) x/xres(raster))
+      exts[c("minPycor", "maxPycor")] <- lapply(exts[c("minPycor", "maxPycor")], function(x) x/yres(raster))
+    }
+
+    world <- do.call(createWorld, exts)
+    # world <- createWorld(minPxcor = minPxcor, maxPxcor = maxPxcor,
+    #                      minPycor = minPycor, maxPycor = maxPycor)
+    worldRaster <- raster(world@extent * rep(res(raster), each = 2), ncol = ncol(world), nrow = nrow(world))
 
     worldR <- resample(raster, worldRaster, method = method)
 
@@ -382,36 +390,44 @@ setMethod(
 
 #' @export
 #' @rdname raster2world
+#' @importFrom raster unstack
 setMethod(
   "raster2world",
   signature = c("RasterStack", "character"),
   definition = function(raster, method) {
 
-    minPxcor <- round(raster@extent@xmin)
-    maxPxcor <- round(raster@extent@xmax)
-    minPycor <- round(raster@extent@ymin)
-    maxPycor <- round(raster@extent@ymax)
-    world <- createWorld(minPxcor = minPxcor, maxPxcor = maxPxcor,
-                                 minPycor = minPycor, maxPycor = maxPycor)
-    worldRaster <- raster(world@extent)
-    res(worldRaster) <- c(1, 1)
-
-    worldR <- lapply(1:nlayers(raster), function(x) {
-      layer <- resample(raster[[x]], worldRaster, method = method)
-      matrix(values(layer), ncol = dim(world)[2], byrow = TRUE)
+    rasList <- raster::unstack(raster)
+    names(rasList) <- names(raster)
+    worldList <- lapply(rasList, function(ras) {
+      raster2world(ras, method = method)
     })
+    wArray <- do.call(stackWorlds, worldList)
+    # wArray <- stackWorlds(worldList[[1]], worldList[[2]])
 
-    out <- abind::abind(worldR, along = 3)
-    dimnames(out) <- list(NULL, NULL, names(raster))
-
-    wArray <- new("worldArray",
-                      .Data = out,
-                      minPxcor = minPxcor, maxPxcor = maxPxcor,
-                      minPycor = minPycor, maxPycor = maxPycor,
-                      extent = world@extent,
-                      res = c(1, 1),
-                      pCoords = world@pCoords
-    )
+    # minPxcor <- round(raster@extent@xmin)
+    # maxPxcor <- round(raster@extent@xmax)
+    # minPycor <- round(raster@extent@ymin)
+    # maxPycor <- round(raster@extent@ymax)
+    # world <- createWorld(minPxcor = minPxcor, maxPxcor = maxPxcor,
+    #                              minPycor = minPycor, maxPycor = maxPycor)
+    # worldRaster <- raster(world@extent)
+    # res(worldRaster) <- c(1, 1)
+    #
+    # worldR <- lapply(1:nlayers(raster), function(x) {
+    #   layer <- resample(raster[[x]], worldRaster, method = method)
+    #   matrix(values(layer), ncol = dim(world)[2], byrow = TRUE)
+    # })
+    #
+    # out <- abind::abind(worldR, along = 3)
+    # dimnames(out) <- list(NULL, NULL, names(raster))
+    # wArray <- new("worldArray",
+    #                   .Data = out,
+    #                   minPxcor = minPxcor, maxPxcor = maxPxcor,
+    #                   minPycor = minPycor, maxPycor = maxPycor,
+    #                   extent = world@extent,
+    #                   res = c(1, 1),
+    #                   pCoords = world@pCoords
+    # )
 
     return(wArray)
   })

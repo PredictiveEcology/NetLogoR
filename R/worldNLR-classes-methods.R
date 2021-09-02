@@ -305,7 +305,9 @@ setReplaceMethod(
 #'
 #' Stack multiple \code{worldMatrix} into a \code{worldArray}.
 #'
-#' @param ... \code{worldMatrix} objects.
+#' @param ... \code{worldMatrix} objects. If passed as unnamed objects, then the function
+#'   will attempt to use their object names as layer names. Alternatively, to be more
+#'   reliable, these can be passed as named arguments. See examples.
 #'
 #' @return \code{worldArray} object.
 #'
@@ -316,6 +318,9 @@ setReplaceMethod(
 #' w2 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data = 25:1)
 #' w3 <- stackWorlds(w1, w2)
 #' plot(w3)
+#'
+#' # pass named arguments to specify a different name than the object name
+#' w4 <- stackWorlds(layer1 = w1, layer2 = w2)
 #'
 #' @export
 #' @importFrom abind abind
@@ -337,13 +342,16 @@ setMethod(
   signature = "worldMatrix",
   definition = function(...) {
     NLwMs <- list(...)
+    objNames <- names(NLwMs)
+    if (is.null(objNames)) {
+      objNames <- as.character(substitute(deparse(...))[-1])
+    }
     # similar dimensions can have different extent
     if (length(unique(lapply(NLwMs, FUN = function(x) x@extent))) == 1) {
       out <- abind::abind(NLwMs@.Data, along = 3)
     } else {
       stop("worldMatrix extents must all be equal")
     }
-    objNames <- as.character(substitute(deparse(...))[-1])
     dimnames(out) <- list(NULL, NULL, objNames)
 
     world <- new("worldArray",
