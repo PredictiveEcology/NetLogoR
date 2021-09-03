@@ -19,10 +19,17 @@ NULL
 #'
 #' This is used in various places when converting \code{agentMatrix} objects to
 #' \code{SpatialPoints} for use with functions, such as \code{\link[raster]{buffer}}.
+#' None of these functions results in any real geospatial information being conserved,
+#' other than distance and angle  calculations. Buffering still occurs on the
+#' unit-less World. This is therefore a way to allow \code{sp} and \code{raster}
+#' functions to work \emph{as if a cell in the World was equal to 1 m}. The resulting
+#' answers will be converted back to units of "cells", not "m".
 #' The \code{CRS()} operation is relatively time consuming.
 #' Having a single object usable throughout is \emph{much} faster.
 #'
 #' @keywords internal
 #' @rdname projNowhere
-.projNowhere <- CRS("EPSG:32632") # This is actually in central Europe; but exact
-                                  #  location is not relevant as this is used in examples
+.projNowhere <- CRS("+proj=utm +zone=32 +datum=WGS84 +units=m +no_defs")
+# This is actually in central Europe; but exact
+#  location is not relevant as this is used to calculate
+# distances .projNowhere <- CRS("EPSG:32632")
