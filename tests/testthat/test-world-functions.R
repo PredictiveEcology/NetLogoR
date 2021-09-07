@@ -75,4 +75,12 @@ test_that("raster2world and world2raster work", {
 
   r1w <- world2raster(w1)
   rsw <- world2raster(ws)
+
+  r4 <- raster(extent(c(0, 20000, 0, 20000)), nrows = 100, ncols = 100)
+  res(r4) <- 200
+  r4[]<-runif(10000)
+  r5 <- raster2world(r4, method = "ngb")
+  expect_identical(ncol(r4), ncol(r5@.Data))
+  expect_identical(nrow(r4), nrow(r5@.Data))
+  expect_identical(as.numeric(r5@.Data[1,]), values(r4)[1:100])
 })
