@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.9</span>
       </span>
     </div>
 
@@ -155,7 +155,9 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p><code>worldMatrix</code> objects.</p></td>
+      <td><p><code>worldMatrix</code> objects. If passed as unnamed objects, then the function
+will attempt to use their object names as layer names. Alternatively, to be more
+reliable, these can be passed as named arguments. See examples.</p></td>
     </tr>
     </table>
 
@@ -175,6 +177,9 @@
 <span class='va'>w3</span> <span class='op'>&lt;-</span> <span class='fu'>stackWorlds</span><span class='op'>(</span><span class='va'>w1</span>, <span class='va'>w2</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>w3</span><span class='op'>)</span>
 </div><div class='img'><img src='stackWorlds-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># pass named arguments to specify a different name than the object name</span>
+<span class='va'>w4</span> <span class='op'>&lt;-</span> <span class='fu'>stackWorlds</span><span class='op'>(</span>layer1 <span class='op'>=</span> <span class='va'>w1</span>, layer2 <span class='op'>=</span> <span class='va'>w2</span><span class='op'>)</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

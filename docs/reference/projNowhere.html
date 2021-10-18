@@ -42,6 +42,11 @@
 <meta property="og:title" content="Internal CRS usage — .projNowhere" />
 <meta property="og:description" content="This is used in various places when converting agentMatrix objects to
 SpatialPoints for use with functions, such as buffer.
+None of these functions results in any real geospatial information being conserved,
+other than distance and angle  calculations. Buffering still occurs on the
+unit-less World. This is therefore a way to allow sp and raster
+functions to work as if a cell in the World was equal to 1 m. The resulting
+answers will be converted back to units of &quot;cells&quot;, not &quot;m&quot;.
 The CRS() operation is relatively time consuming.
 Having a single object usable throughout is much faster." />
 
@@ -85,7 +90,7 @@ Having a single object usable throughout is much faster." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.9</span>
       </span>
     </div>
 
@@ -147,6 +152,11 @@ Having a single object usable throughout is much faster." />
     <div class="ref-description">
     <p>This is used in various places when converting <code>agentMatrix</code> objects to
 <code>SpatialPoints</code> for use with functions, such as <code><a href='https://rdrr.io/pkg/raster/man/buffer.html'>buffer</a></code>.
+None of these functions results in any real geospatial information being conserved,
+other than distance and angle  calculations. Buffering still occurs on the
+unit-less World. This is therefore a way to allow <code>sp</code> and <code>raster</code>
+functions to work <em>as if a cell in the World was equal to 1 m</em>. The resulting
+answers will be converted back to units of "cells", not "m".
 The <code>CRS()</code> operation is relatively time consuming.
 Having a single object usable throughout is <em>much</em> faster.</p>
     </div>
