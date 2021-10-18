@@ -1,7 +1,6 @@
 ## Updated release
 
-This release is to restore this package on CRAN following removal of dependencies `reproducible`, `SpaDES.tools`, and `SpaDES.core` (which have now been restored on CRAN).
-We have also improved the documentation, and added return values for most functions.
+This release fixes an issue related to latest GDAL/PROJ updates.
 See `NEWS.md` for a full list of changes.
 
 ## Test environments
@@ -14,19 +13,20 @@ See `NEWS.md` for a full list of changes.
 * Windows                 (win-builder), R 4.0.5
 
 ### Current R versions
-* macOS 10.15.7 Catalina       (GitHub), R 4.1.0
-* macOS 11.1 Big Sur            (local), R 4.1.0
-* Ubuntu 20.04                 (GitHub), R 4.1.0
-* Ubuntu 20.04                  (local), R 4.1.0
-* Windows                      (GitHub), R 4.1.0
-* Windows                       (local), R 4.1.0
-* Windows                 (win-builder), R 4.1.0
+* macOS 10.15.7 Catalina       (GitHub), R 4.1.1
+* macOS 11.6 Big Sur            (local), R 4.1.1
+* macOs (m1) Big Sur             (rhub), R 4.1.1
+* Ubuntu 20.04                 (GitHub), R 4.1.1
+* Ubuntu 20.04                  (local), R 4.1.1
+* Windows                      (GitHub), R 4.1.1
+* Windows                       (local), R 4.1.1
+* Windows                 (win-builder), R 4.1.1
 
 ### Development R version
-* Ubuntu 20.04                 (GitHub), R-devel (2021-07-03 r80596)
-* Ubuntu 20.04                  (local), R-devel (2021-07-05 r80598)
-* Windows                      (GitHub), R-devel (2021-07-03 r80596)
-* Windows                 (win-builder), R-devel (2021-07-03 r80596)
+* Ubuntu 20.04                 (GitHub), R-devel (2021-09-18 r80932)
+* Ubuntu 20.04                  (local), R-devel (2021-10-17 r81070)
+* Windows                      (GitHub), R-devel (2021-10-17 r81069)
+* Windows                 (win-builder), R-devel (2021-10-14 r81057)
 
 ## R CMD check results
 

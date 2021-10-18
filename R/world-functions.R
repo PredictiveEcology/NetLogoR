@@ -323,99 +323,69 @@ setMethod(
 #'
 #' @param raster \code{RasterLayer} or \code{RasterStack} object.
 #'
-#' @param method "\code{ngb} or \code{bilinear} for the resample method.
-#'
 #' @return \code{WorldMatrix} or \code{worldArray} object depending on the input \code{raster}.
 #'         \code{Patches} value are retained from the \code{raster}.
 #'
 #' @details See \code{help("worldMatrix-class")} or \code{help("worldArray-class")}
 #'          for more details on the classes.
 #'
-#'          The \code{raster} is resampled to match the coordinates system and
-#'          resolution of a \code{worldMatrix} or \code{worldArray} using the chosen \code{method}. The
-#'          extent will be bigger by 1 on the width and on the height.
+#'          The number of rows and columns, as well as the cell values of the \code{raster}
+#'          are kept the same. However, to match the coordinates system and resolution of a
+#'          \code{worldMatrix} or \code{worldArray}, the grid is shifted by a 1/2 cell to have
+#'          round coordinate values at the center of the patches and patch size is equal to (1,1).
+#'          The bottom left corner cell coordinates of the \code{worldMatrix} or \code{worldArray}
+#'          will be (pxcor = 0, pycor = 0).
 #'
 #' @examples
 #' r1 <- raster(extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)
 #' r1[]<-runif(100)
-#' w1 <- raster2world(r1, method = "ngb")
+#' w1 <- raster2world(r1)
 #' plot(r1)
 #' plot(w1)
 #'
 #'
 #' @export
-#' @importFrom abind abind
 #' @rdname raster2world
 #'
 #' @author Sarah Bauduin
 #'
 setGeneric(
   "raster2world",
-  function(raster, method) {
+  function(raster) {
     standardGeneric("raster2world")
-  })
-
+})
 
 #' @export
 #' @rdname raster2world
 setMethod(
   "raster2world",
-  signature = c("RasterLayer", "character"),
-  definition = function(raster, method) {
+  signature = c("RasterLayer"),
+  definition = function(raster) {
 
-    minPxcor <- round(raster@extent@xmin)
-    maxPxcor <- round(raster@extent@xmax)
-    minPycor <- round(raster@extent@ymin)
-    maxPycor <- round(raster@extent@ymax)
-    world <- createWorld(minPxcor = minPxcor, maxPxcor = maxPxcor,
-                                 minPycor = minPycor, maxPycor = maxPycor)
-    worldRaster <- raster(world@extent)
-    res(worldRaster) <- c(1, 1)
-
-    worldR <- resample(raster, worldRaster, method = method)
-
-    world[] <- values(worldR)
+    world <- createWorld(minPxcor = 0, maxPxcor = raster@ncols - 1,
+                         minPycor = 0, maxPycor = raster@nrows - 1,
+                         data = values(raster))
 
     return(world)
-  })
-
+})
 
 #' @export
 #' @rdname raster2world
+#' @importFrom raster unstack
 setMethod(
   "raster2world",
-  signature = c("RasterStack", "character"),
-  definition = function(raster, method) {
+  signature = c("RasterStack"),
+  definition = function(raster) {
 
-    minPxcor <- round(raster@extent@xmin)
-    maxPxcor <- round(raster@extent@xmax)
-    minPycor <- round(raster@extent@ymin)
-    maxPycor <- round(raster@extent@ymax)
-    world <- createWorld(minPxcor = minPxcor, maxPxcor = maxPxcor,
-                                 minPycor = minPycor, maxPycor = maxPycor)
-    worldRaster <- raster(world@extent)
-    res(worldRaster) <- c(1, 1)
-
-    worldR <- lapply(1:nlayers(raster), function(x) {
-      layer <- resample(raster[[x]], worldRaster, method = method)
-      matrix(values(layer), ncol = dim(world)[2], byrow = TRUE)
+    rasList <- raster::unstack(raster)
+    names(rasList) <- names(raster)
+    worldList <- lapply(rasList, function(ras) {
+      raster2world(ras)
     })
-
-    out <- abind::abind(worldR, along = 3)
-    dimnames(out) <- list(NULL, NULL, names(raster))
-
-    wArray <- new("worldArray",
-                      .Data = out,
-                      minPxcor = minPxcor, maxPxcor = maxPxcor,
-                      minPycor = minPycor, maxPycor = maxPycor,
-                      extent = world@extent,
-                      res = c(1, 1),
-                      pCoords = world@pCoords
-    )
+    wArray <- do.call(stackWorlds, worldList)
 
     return(wArray)
-  })
-
+})
 
 ################################################################################
 #' Convert a \code{worldMatrix} or \code{worldArray} object into a \code{Raster*} object
