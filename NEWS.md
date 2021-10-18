@@ -2,10 +2,9 @@ Known issues: <https://github.com/PredictiveEcology/NetLogoR/issues>
 
 Version 0.3.9
 =============
-* none
 
 # Bugfixes
-* Fix for issue #43 opened by Roger Bivand.
+* Fix for GDAL/PROJ crs issue (#43, @rsbivand)
 
 Version 0.3.8
 =============

@@ -6,7 +6,7 @@
 \alias{raster2world,RasterStack-method}
 \title{Convert a \code{Raster*} object into a \code{worldMatrix} or \code{worldArray} object}
 \usage{
-raster2world(raster, method)
+raster2world(raster)
 
 \S4method{raster2world}{RasterLayer}(raster)
 

@@ -351,10 +351,9 @@ setMethod(
 #'
 setGeneric(
   "raster2world",
-  function(raster, method) {
+  function(raster) {
     standardGeneric("raster2world")
-  })
-
+})
 
 #' @export
 #' @rdname raster2world
@@ -368,8 +367,7 @@ setMethod(
                          data = values(raster))
 
     return(world)
-  })
-
+})
 
 #' @export
 #' @rdname raster2world
@@ -387,8 +385,7 @@ setMethod(
     wArray <- do.call(stackWorlds, worldList)
 
     return(wArray)
-  })
-
+})
 
 ################################################################################
 #' Convert a \code{worldMatrix} or \code{worldArray} object into a \code{Raster*} object
