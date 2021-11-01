@@ -1949,7 +1949,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom plyr mapvalues
 #' @rdname inspect
 #'
 #' @author Sarah Bauduin
@@ -1969,10 +1968,18 @@ setMethod(
     tData <- as.data.frame(turtles@.Data[turtles@.Data[, "who"] %in% who, , drop = FALSE],
                            stringsAsFactors = FALSE)
     tData[, names(turtles@levels)] <- do.call(cbind, lapply(1:length(turtles@levels), function(x){
-      unlist(mapvalues(tData[, names(turtles@levels)[x]],
+      unlist(rename(tData[, names(turtles@levels)[x]],
                        from = unique(tData[, names(turtles@levels)[x]]),
                        to = turtles@levels[names(turtles@levels)[x]][[1]][
                          unique(tData[, names(turtles@levels)[x]])]))}))
+
+    # tData[, names(turtles@levels)] <- do.call(cbind, lapply(1:length(turtles@levels), function(x){
+    #   unlist(mapvalues(tData[, names(turtles@levels)[x]],
+    #                    from = unique(tData[, names(turtles@levels)[x]]),
+    #                    to = turtles@levels[names(turtles@levels)[x]][[1]][
+    #                      unique(tData[, names(turtles@levels)[x]])]))}))
+    #
+    # if (!identical(unname(as.matrix(tData[, names(turtles@levels)])), a)) stop("mapvalues replacement was wrong")
 
     return(tData)
   }
@@ -2935,7 +2942,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom plyr mapvalues
 #' @rdname of
 #'
 #' @author Sarah Bauduin

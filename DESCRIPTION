@@ -51,7 +51,6 @@ Imports:
     grDevices,
     matrixStats,
     methods,
-    plyr,
     quickPlot (>= 0.1.2),
     sp,
     SpaDES.tools,
