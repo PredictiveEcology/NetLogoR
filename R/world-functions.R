@@ -503,9 +503,13 @@ setMethod(
     # } else {
     #   cat("names       :", paste(ln, collapse=", "), "\n")
     # }
+      dims <- dim(object@.Data)
+      dims <- pmin(dims, 4)
+      if (any(dims >= 4))
+        cat("First",dims[1],"rows and ",dims[2],"columns:\n")
 
-    cat("First 4 rows and columns:\n")
-    print(object@.Data[1:4,1:4,])
+    # cat("First 4 rows and columns:\n")
+      print(object@.Data[1:dims[1], 1:dims[2], ])
 })
 
 #' @export
@@ -534,6 +538,9 @@ setMethod(
     cat("min values  :", paste(m[2, ], collapse = ", "), "\n")
     cat("max values  :", paste(m[3, ], collapse = ", "), "\n")
 
-    cat("First 4 rows and columns:\n")
-    print(object@.Data[1:4, 1:4])
+    dims <- dim(object@.Data)
+    dims <- pmin(dims, 4)
+    if (any(dims >= 4))
+      cat("First",dims[1],"rows and ",dims[2],"columns:\n")
+    print(object@.Data[1:dims[1], 1:dims[2]])
 })
