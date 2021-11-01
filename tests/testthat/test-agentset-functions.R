@@ -368,12 +368,19 @@ test_that("nOf works", {
   p5 <- nOf(agents = n4, n = 2)
   expect_equivalent(nrow(p5), NLcount(t1) * 2)
 
+  # bugfix for sample vs resample -- this fails with code prior to NetLogoR v 0.3.9.9001
+  wh <- tapply(1:NROW(n4), n4[, "id"], function(x) x[1]) # just take 1 per agent id
+  n5 <- n4[wh,]
+  p5 <- nOf(n5, 1)
+  expect_true(identical(n5[, c("pxcor", "pycor")], p5))
+
   # With matrix ncol = 2 "whoTurtles" and "id"
   t4 <- turtlesOn(world = w1, turtles = t1, agents = patches(w1), simplify = FALSE)
   expect_error(nOf(agents = t4, n = 2))
   t5 <- nOf(agents = t4, n = 1)
   expect_equivalent(nrow(merge(as.data.frame(t5), t4, by.x = "t5", by.y = "whoTurtles")),
                     length(unique(t4[, "id"])))
+
 })
 
 test_that("oneOf works", {
@@ -398,6 +405,13 @@ test_that("oneOf works", {
   # With matrix ncol = 3
   n4 <- neighbors(world = w1, agents = t1, nNeighbors = 4)
   p4 <- oneOf(n4)
+  expect_equivalent(nrow(p4), NLcount(t1))
+
+  # bugfix for sample vs resample
+  wh <- tapply(1:NROW(n4), n4[, "id"], function(x) x[1]) # just take 1 per agent id
+  n5 <- n4[wh,]
+  p5 <- oneOf(n5) # n5 only has 1 per id, so oneOf should return same
+  expect_true(identical(p5, n5[, c("pxcor", "pycor")]))
   expect_equivalent(nrow(p4), NLcount(t1))
 
   # With matrix ncol = 2 "whoTurtles" and "id"

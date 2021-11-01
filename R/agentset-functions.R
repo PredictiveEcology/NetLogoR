@@ -676,7 +676,7 @@ setMethod(
   signature = c("matrix", "worldMatrix", "missing"),
   definition = function(agents, world) {
     maxAgents <- withMax(world = world, agents = agents)
-    row <- sample(1:NROW(maxAgents), size = 1)
+    row <- resample(1:NROW(maxAgents), size = 1)
     return(maxAgents[row, , drop = FALSE])
   }
 )
@@ -688,7 +688,7 @@ setMethod(
   signature = c("matrix", "worldArray", "character"),
   definition = function(agents, world, var) {
     maxAgents <- withMax(world = world, agents = agents, var = var)
-    row <- sample(1:NROW(maxAgents), size = 1)
+    row <- resample(1:NROW(maxAgents), size = 1)
     return(maxAgents[row, , drop = FALSE])
   }
 )
@@ -700,7 +700,7 @@ setMethod(
   signature = c("agentMatrix", "missing", "character"),
   definition = function(agents, var) {
     maxAgents <- withMax(agents = agents, var = var)
-    row <- sample(1:NLcount(maxAgents), size = 1)
+    row <- resample(1:NLcount(maxAgents), size = 1)
     return(maxAgents[row, ])
   }
 )
@@ -770,7 +770,7 @@ setMethod(
   signature = c("matrix", "worldMatrix", "missing"),
   definition = function(agents, world) {
     minAgents <- withMin(world = world, agents = agents)
-    row <- sample(1:NROW(minAgents), size = 1)
+    row <- resample(1:NROW(minAgents), size = 1)
     return(minAgents[row, , drop = FALSE])
   }
 )
@@ -782,7 +782,7 @@ setMethod(
   signature = c("matrix", "worldArray", "character"),
   definition = function(agents, world, var) {
     minAgents <- withMin(world = world, agents = agents, var = var)
-    row <- sample(1:NROW(minAgents), size = 1)
+    row <- resample(1:NROW(minAgents), size = 1)
     return(minAgents[row, , drop = FALSE])
   }
 )
@@ -794,7 +794,7 @@ setMethod(
   signature = c("agentMatrix", "missing", "character"),
   definition = function(agents, var) {
     minAgents <- withMin(agents = agents, var = var)
-    row <- sample(1:NLcount(minAgents), size = 1)
+    row <- resample(1:NLcount(minAgents), size = 1)
     return(minAgents[row, ])
   }
 )
@@ -982,14 +982,14 @@ setMethod(
 
 
     if (inherits(agents, "agentMatrix")) {
-      row <- sample(1:NROW(agents), size = n, replace = FALSE)
+      row <- resample(1:NROW(agents), size = n, replace = FALSE)
       row <- row[order(row)]
       turtles <- agents[row, ]
       return(turtles)
     } else {
       if (ncol(agents) == 2 & colnames(agents)[1] == "pxcor") {
         # patches
-        row <- sample(1:NROW(agents), size = n, replace = FALSE)
+        row <- resample(1:NROW(agents), size = n, replace = FALSE)
         row <- row[order(row)]
         patches <- agents[row, , drop = FALSE]
         return(patches)
@@ -1001,13 +1001,13 @@ setMethod(
           if (ncol(agents) == 3) {
             # patches with id
             row <- tapply(X = 1:nrow(agents), INDEX = as.factor(agents[, "id"]),
-                          FUN = function(x) sample(x, size = n, replace = FALSE))
+                          FUN = function(x) resample(x, size = n, replace = FALSE))
             patches <- agents[unlist(row), c("pxcor", "pycor")]
             return(patches)
           } else {
             # whoNUmbers of turtles with id
             row <- tapply(X = 1:nrow(agents), INDEX = as.factor(agents[, "id"]),
-                          FUN = function(x) sample(x, size = n, replace = FALSE))
+                          FUN = function(x) resample(x, size = n, replace = FALSE))
             turtles <- agents[unlist(row), "whoTurtles"]
             return(turtles)
           }
