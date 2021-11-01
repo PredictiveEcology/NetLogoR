@@ -49,7 +49,6 @@ Imports:
     CircStats,
     data.table,
     grDevices,
-    Hmisc,
     matrixStats,
     methods,
     plyr,

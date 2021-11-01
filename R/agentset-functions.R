@@ -1072,7 +1072,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom Hmisc mApply
 #' @rdname oneOf
 #'
 #' @author Sarah Bauduin
@@ -1089,23 +1088,28 @@ setMethod(
   "oneOf",
   signature = c("matrix"),
   definition = function(agents) {
-    if (inherits(agents, "agentMatrix")) {
-      nOf(agents = agents, n = 1)
-    } else {
-      if (ncol(agents) == 2 & colnames(agents)[1] == "pxcor") {
-        # patches
-        nOf(agents = agents, n = 1)
-      } else if (ncol(agents) == 3) {
-        # patches with id
-        mApply(X = agents[, c("pxcor", "pycor")], INDEX = as.factor(agents[, "id"]),
-               FUN = oneOf, keepmatrix = TRUE)
-      } else {
-        # whoNUmbers of turtles with id
-        whoTurtles <- tapply(X = agents[, "whoTurtles"], INDEX = as.factor(agents[, "id"]),
-                             FUN = function(x) ifelse(length(x) == 1, x, sample(x, size = 1)))
-        return(as.numeric(whoTurtles))
-      }
-    }
+    nOf(agents = agents, n = 1)
+    # if (inherits(agents, "agentMatrix")) {
+    #   nOf(agents = agents, n = 1)
+    # } else {
+    #   nO
+    #   if (ncol(agents) == 2 & colnames(agents)[1] == "pxcor") {
+    #     # patches
+    #     nOf(agents = agents, n = 1)
+    #   } else if (ncol(agents) == 3) {
+    #     # patches with id
+    #     out <- nOf(agents = agents, n = 1)
+    #     # out <- mApply(X = agents[, c("pxcor", "pycor")], INDEX = as.factor(agents[, "id"]),
+    #     #        FUN = oneOf, keepmatrix = TRUE)
+    #     return(out)
+    #
+    #   } else {
+    #     # whoNUmbers of turtles with id
+    #     whoTurtles <- tapply(X = agents[, "whoTurtles"], INDEX = as.factor(agents[, "id"]),
+    #                          FUN = function(x) resample(x, size = 1) )
+    #     return(as.numeric(whoTurtles))
+    #   }
+    # }
   }
 )
 

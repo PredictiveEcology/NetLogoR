@@ -1,5 +1,11 @@
 Known issues: <https://github.com/PredictiveEcology/NetLogoR/issues>
 
+
+Version 0.3.10
+=============
+
+# remove package dependencies: car, Hmisc
+
 Version 0.3.9
 =============
 
