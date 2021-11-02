@@ -46,7 +46,6 @@ if (getRversion() >= "3.1.0") {
 #' @importFrom data.table data.table ':='
 #' @importFrom data.table setkey
 #' @importFrom SpaDES.tools adj
-#' @importFrom plyr count
 #' @rdname diffuse
 #'
 #' @author Sarah Bauduin
@@ -70,8 +69,10 @@ setMethod(
     toGive <- (val * share) / nNeighbors
 
     df <- adj(world@.Data, cells = cellNum, directions = nNeighbors, torus = torus)
-    nNeigh <- plyr::count(df[, "from"])
-    toGiveNeigh <- rep(toGive, nNeigh$freq)
+    # nNeigh <- plyr::count(df[, "from"])
+    nNeigh <- as.data.frame(table(df[, "from"]))
+    # if (!identical(nNeigh2[[2]], nNeigh[[2]])) stop("count and table error 1")
+    toGiveNeigh <- rep(toGive, nNeigh$Freq)
     df <- df[order(df[, "from"]), ]
     dt <- data.table(df, toGiveNeigh)
     setkey(dt, from)
@@ -102,8 +103,11 @@ setMethod(
 
     df <- adj(world@.Data[, , layer], cells = cellNum, directions = nNeighbors,
               torus = torus)
-    nNeigh <- plyr::count(df[, "from"])
-    toGiveNeigh <- rep(toGive, nNeigh$freq)
+    # nNeigh <- plyr::count(df[, "from"])
+    nNeigh <- as.data.frame(table(df[, "from"]))
+    # if (!identical(nNeigh2[[2]], nNeigh[[2]])) stop("count and table error 2")
+
+    toGiveNeigh <- rep(toGive, nNeigh$Freq)
     df <- df[order(df[, "from"]), ]
     dt <- data.table(df, toGiveNeigh)
     setkey(dt, from)

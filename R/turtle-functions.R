@@ -1261,7 +1261,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom car some
 #' @rdname downhill
 #'
 #' @author Sarah Bauduin
@@ -1295,8 +1294,13 @@ setMethod(
     rowMin <- sapply(rows, function(rowi) rowi[which.min(allPatches$pVal[rowi])])
     # minimum patch value per id
     pMinCoords <- allPatches[rowMin, ]
-    pMinCoords1 <- pMinCoords[tapply(1:nrow(pMinCoords), pMinCoords$id, some, 1), ]
-    # select randomly one row per id
+
+    pMinCoords1 <- if (length(unique(pMinCoords$id)) == NROW(pMinCoords)) {
+      pMinCoords
+    } else {
+      pMinCoords[tapply(1:nrow(pMinCoords), pMinCoords$id, resample, 1), ]
+    }
+
     pMinCoords1 <- pMinCoords1[order(pMinCoords1$id), ] # order by turtles
     pMinCoords2 <- cbind(pxcor = pMinCoords1[, 1], pycor = pMinCoords1[, 2])
 
@@ -1334,7 +1338,7 @@ setMethod(
     rowMin <- sapply(rows, function(rowi) rowi[which.min(allPatches$pVal[rowi])])
     # minimum patch value per id
     pMinCoords <- allPatches[rowMin, ]
-    pMinCoords1 <- pMinCoords[tapply(1:nrow(pMinCoords), pMinCoords$id, some, 1), ]
+    pMinCoords1 <- pMinCoords[tapply(1:nrow(pMinCoords), pMinCoords$id, resample, 1), ]
     # select randomly one row per id
     pMinCoords1 <- pMinCoords1[order(pMinCoords1$id), ] # order by turtles
     pMinCoords2 <- cbind(pxcor = pMinCoords1[, 1], pycor = pMinCoords1[, 2])
@@ -1945,7 +1949,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom plyr mapvalues
 #' @rdname inspect
 #'
 #' @author Sarah Bauduin
@@ -1965,10 +1968,18 @@ setMethod(
     tData <- as.data.frame(turtles@.Data[turtles@.Data[, "who"] %in% who, , drop = FALSE],
                            stringsAsFactors = FALSE)
     tData[, names(turtles@levels)] <- do.call(cbind, lapply(1:length(turtles@levels), function(x){
-      unlist(mapvalues(tData[, names(turtles@levels)[x]],
+      unlist(rename(tData[, names(turtles@levels)[x]],
                        from = unique(tData[, names(turtles@levels)[x]]),
                        to = turtles@levels[names(turtles@levels)[x]][[1]][
                          unique(tData[, names(turtles@levels)[x]])]))}))
+
+    # tData[, names(turtles@levels)] <- do.call(cbind, lapply(1:length(turtles@levels), function(x){
+    #   unlist(mapvalues(tData[, names(turtles@levels)[x]],
+    #                    from = unique(tData[, names(turtles@levels)[x]]),
+    #                    to = turtles@levels[names(turtles@levels)[x]][[1]][
+    #                      unique(tData[, names(turtles@levels)[x]])]))}))
+    #
+    # if (!identical(unname(as.matrix(tData[, names(turtles@levels)])), a)) stop("mapvalues replacement was wrong")
 
     return(tData)
   }
@@ -2931,7 +2942,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom plyr mapvalues
 #' @rdname of
 #'
 #' @author Sarah Bauduin

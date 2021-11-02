@@ -28,8 +28,8 @@ URL:
     https://netlogor.predictiveecology.org,
     https://github.com/PredictiveEcology/NetLogoR/,
     https://groups.google.com/g/netlogor
-Version: 0.3.9
-Date: 2021-10-18
+Version: 0.3.9.9001
+Date: 2021-11-01
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
            role = c("aut"), comment = c(ORCID = "0000-0002-3252-5894")),
@@ -42,18 +42,15 @@ Authors@R: c(
            role = "cph")
     )
 Depends:
-    R (>= 3.6),
+    R (>= 4.0),
     raster
 Imports:
     abind,
-    car,
     CircStats,
     data.table,
     grDevices,
-    Hmisc,
     matrixStats,
     methods,
-    plyr,
     quickPlot (>= 0.1.2),
     sp,
     SpaDES.tools,
@@ -83,6 +80,7 @@ Collate:
     'agentMatrix-Class-methods.R'
     'agentset-functions.R'
     'function-arguments.R'
+    'helpers.R'
     'patch-functions.R'
     'plot.R'
     'world-functions.R'
