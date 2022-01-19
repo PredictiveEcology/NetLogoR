@@ -16,7 +16,7 @@ We welcome contributions to `NetLogoR`, both as bug reports or package enhanceme
 
 3. If adding new functionality, please include instructional examples and/or [unit tests](http://r-pkgs.had.co.nz/tests.html).
 
-3. Submit a [pull request](https://help.github.com/articles/using-pull-requests) against the development branch.
+3. Submit a [pull request](https://docs.github.com/articles/using-pull-requests) against the development branch.
 
 We'll try to review your pull request and provide feedback / merge improvements as quickly as possible.
 
