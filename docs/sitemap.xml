@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://netlogor.predictiveecology.org/404.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/articles/NLR-Dictionary.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/articles/ProgrammingGuide.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/authors.html</loc>
+  </url>
+  <url>
     <loc>https://netlogor.predictiveecology.org/index.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/news/index.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/NLall.html</loc>
@@ -34,6 +55,9 @@
     <loc>https://netlogor.predictiveecology.org/reference/Subsetting.html</loc>
   </url>
   <url>
+    <loc>https://netlogor.predictiveecology.org/reference/adj.html</loc>
+  </url>
+  <url>
     <loc>https://netlogor.predictiveecology.org/reference/agentClasses-class.html</loc>
   </url>
   <url>
@@ -53,6 +77,9 @@
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/bbox.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/bboxCoords.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/bk.html</loc>
@@ -116,6 +143,9 @@
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/inRadius.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/index.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/initialize-agentMatrix-method.html</loc>
@@ -320,11 +350,5 @@
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/wrap.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/articles/NLR-Dictionary.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/articles/ProgrammingGuide.html</loc>
   </url>
 </urlset>
