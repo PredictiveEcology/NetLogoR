@@ -17,3 +17,4 @@
 ^travis_wait_.*\.log$
 vignettes/.*_cache$
 vignettes/.*\.log$
+^CRAN-SUBMISSION$
