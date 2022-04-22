@@ -1488,7 +1488,8 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom rgeos gBuffer
+#' @importFrom sf st_sf
+#' @importFrom sf st_buffer
 #' @importFrom sp over
 #' @importFrom sp SpatialPoints
 #' @rdname inRadius
@@ -1520,7 +1521,12 @@ setMethod(
       agentsSP <- SpatialPoints(coords = agents, proj4string = .projNowhere)
 
       # Create buffers around the locations of agents
-      pBuffer <- gBuffer(agentsSP, byid = TRUE, id = 1:NROW(agents), width = radius, quadsegs = 50)
+      # pBuffer <- gBuffer(agentsSP, byid = TRUE, id = 1:NROW(agents), width = radius, quadsegs = 50)
+      # The package rgeos will be removed
+      # Replacement of gBuffer from rgeos with st_buffer from sf
+      # Need to backtransform pBuffer of sf object into a sp object
+      agents_sf <- st_as_sf(agentsSP)
+      pBuffer <- as(st_buffer(agents_sf, dist = radius), "Spatial")
 
       if (torus == TRUE) {
         if (missing(world)) {

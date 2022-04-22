@@ -1,5 +1,12 @@
 Known issues: <https://github.com/PredictiveEcology/NetLogoR/issues>
 
+Version 0.3.11
+=============
+
+# Dependency changes
+* removed dependency: `rgeos`
+* added dependency: `sf`
+
 Version 0.3.10
 =============
 

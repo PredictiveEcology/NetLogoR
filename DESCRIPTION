@@ -52,10 +52,10 @@ Imports:
     matrixStats,
     methods,
     quickPlot (>= 0.1.2),
+    sf,
     sp,
     SpaDES.tools,
-    stats,
-    rgeos
+    stats
 Suggests:
     covr,
     fastshp,
@@ -63,7 +63,6 @@ Suggests:
     magrittr,
     microbenchmark,
     rmarkdown,
-    sf,
     SpaDES.core,
     testthat
 Remotes:
