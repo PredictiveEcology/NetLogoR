@@ -1488,10 +1488,8 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom sf st_sf
-#' @importFrom sf st_buffer
-#' @importFrom sp over
-#' @importFrom sp SpatialPoints
+#' @importFrom sf as_Spatial st_as_sf st_buffer st_sf
+#' @importFrom sp over SpatialPoints
 #' @rdname inRadius
 #'
 #' @author Sarah Bauduin
@@ -1526,7 +1524,7 @@ setMethod(
       # Replacement of gBuffer from rgeos with st_buffer from sf
       # Need to backtransform pBuffer of sf object into a sp object
       agents_sf <- st_as_sf(agentsSP)
-      pBuffer <- as(st_buffer(agents_sf, dist = radius), "Spatial")
+      pBuffer <- as_Spatial(st_buffer(agents_sf, dist = radius))
 
       if (torus == TRUE) {
         if (missing(world)) {
