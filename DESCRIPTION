@@ -28,7 +28,7 @@ URL:
     https://netlogor.predictiveecology.org,
     https://github.com/PredictiveEcology/NetLogoR/,
     https://groups.google.com/g/netlogor
-Version: 0.3.10
+Version: 0.3.11
 Date: 2022-08-16
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
