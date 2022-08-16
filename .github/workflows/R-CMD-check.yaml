@@ -52,7 +52,6 @@ jobs:
         with:
           extra-packages: |
             any::rcmdcheck
-            any::XML
             fastshp=?ignore
             PredictiveEcology/reproducible@development
             PredictiveEcology/Require@development
