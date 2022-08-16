@@ -35,10 +35,10 @@ jobs:
             any::XML
             local::.
             fastshp=?ignore
-            PredictiveEcology/reproducible
+            PredictiveEcology/reproducible@development
             PredictiveEcology/Require@development
-            PredictiveEcology/SpaDES.core
-            PredictiveEcology/SpaDES.tools
+            PredictiveEcology/SpaDES.core@development
+            PredictiveEcology/SpaDES.tools@development
           needs: website
 
       - name: Install additional package dependencies

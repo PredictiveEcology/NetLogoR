@@ -32,10 +32,10 @@ jobs:
             any::covr
             any::XML
             fastshp=?ignore
-            PredictiveEcology/reproducible
+            PredictiveEcology/reproducible@development
             PredictiveEcology/Require@development
-            PredictiveEcology/SpaDES.core
-            PredictiveEcology/SpaDES.tools
+            PredictiveEcology/SpaDES.core@development
+            PredictiveEcology/SpaDES.tools@development
 
       - name: Install additional package dependencies
         run: |
