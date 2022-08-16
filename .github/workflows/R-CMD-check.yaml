@@ -52,7 +52,7 @@ jobs:
         with:
           extra-packages: |
             any::rcmdcheck
-            any:XML
+            any::XML
             fastshp=?ignore
             PredictiveEcology/reproducible
             PredictiveEcology/Require@development

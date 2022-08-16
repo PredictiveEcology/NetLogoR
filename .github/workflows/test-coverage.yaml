@@ -30,7 +30,7 @@ jobs:
         with:
           extra-packages: |
             any::covr
-            any:XML
+            any::XML
             fastshp=?ignore
             PredictiveEcology/reproducible
             PredictiveEcology/Require@development
