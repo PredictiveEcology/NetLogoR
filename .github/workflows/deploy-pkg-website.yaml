@@ -32,7 +32,6 @@ jobs:
         with:
           extra-packages: |
             any::pkgdown
-            any::XML
             local::.
             fastshp=?ignore
             PredictiveEcology/reproducible@development
