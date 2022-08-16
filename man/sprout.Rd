@@ -34,7 +34,7 @@ If missing, \code{colors} are assigned using the function \code{rainbow(n)}.}
 }
 \value{
 \code{AgentMatrix} including the new
-        sprouted \code{turtles}.
+sprouted \code{turtles}.
 }
 \description{
 Create \code{n} new \code{turtles} on specific \code{patches}.
@@ -42,17 +42,18 @@ Create \code{n} new \code{turtles} on specific \code{patches}.
 \details{
 \code{nrow(patches)} must be equal to 1 or to \code{n}.
 
-         If \code{turtles} is provided, the new \code{turtles} are added to
-         the \code{turtles} when returned. The \code{who} numbers of the sprouted \code{turtles}
-         therefore follow the ones from the \code{turtles}.
-         All new sprouted \code{turtles} are placed at the end of the \code{agentMatrix} object.
-         If no \code{turtles}
-         is provided, a new \code{agentMatrix} is created and the \code{who} numbers
-         start at 0.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If `turtles` is provided, the new `turtles` are added to
+     the `turtles` when returned. The `who` numbers of the sprouted `turtles`
+     therefore follow the ones from the `turtles`.
+     All new sprouted `turtles` are placed at the end of the `agentMatrix` object.
+     If no `turtles`
+     is provided, a new `agentMatrix` is created and the `who` numbers
+     start at 0.
 
-         If \code{turtles} is provided and had additional variables created
-         with \code{turtlesOwn()}, \code{NA} is given for these variables
-         for the new sprouted \code{turtles}.
+     If `turtles` is provided and had additional variables created
+     with `turtlesOwn()`, `NA` is given for these variables
+     for the new sprouted `turtles`.
+}\if{html}{\out{</div>}}
 }
 \examples{
 t1 <- sprout(patches = cbind(pxcor = 2, pycor = 2), n = 3)
@@ -62,8 +63,8 @@ t2 <- sprout(patches = cbind(pxcor = 3, pycor = 3), n = 3, turtles = t1)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#sprout}

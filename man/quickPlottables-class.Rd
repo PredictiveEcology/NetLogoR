@@ -21,11 +21,11 @@ This adds \code{worldMatrix} to the \code{.quickPlottables}, \code{.quickObjects
 \section{Slots}{
 
 \describe{
-\item{\code{members}}{\code{\link{.quickPlotObjects}} and \code{\link{.quickPlot}}}
+\item{\code{members}}{\code{\link[=.quickPlotObjects]{.quickPlotObjects()}} and \code{\link[=.quickPlot]{.quickPlot()}}}
 }}
 
 \seealso{
-\code{\link{quickPlotClasses}}
+\code{\link[=quickPlotClasses]{quickPlotClasses()}}
 }
 \author{
 Eliot McIntire

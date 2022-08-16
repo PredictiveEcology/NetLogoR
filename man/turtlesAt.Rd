@@ -18,9 +18,10 @@ turtlesAt(world, turtles, agents, dx, dy, breed, torus = FALSE)
 \item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{dx}{Numeric. Vector of distances to the east (right) from the \code{agents}.
 If \code{dx} is negative, the distance to the west (left) is computed.
@@ -40,20 +41,20 @@ If missing, there is no distinction based upon \code{breed}.}
 }
 \value{
 \code{AgentMatrix} representing the individuals among \code{turtles}
-        of any of the given \code{breed}, if specified,
-        which are located on the \code{patches} at \code{(dx, dy)} distances of the
-        \code{agents}.
+of any of the given \code{breed}, if specified,
+which are located on the \code{patches} at \verb{(dx, dy)} distances of the
+\code{agents}.
 }
 \description{
 Report the individuals among \code{turtles} that are located on the \code{patches} at
-\code{(dx, dy)} distances of the \code{agents}.
+\verb{(dx, dy)} distances of the \code{agents}.
 }
 \details{
-If the \code{patch} at distance \code{(dx, dy)}
-         of an \code{agent} is outside of the \code{world}'s extent and \code{torus = FALSE},
-         no \code{turtle} is returned;
-         if \code{torus = TRUE}, the \code{turtle} located on the \code{patch} whose coordinates
-         are defined from the wrapped \code{world} is returned.
+If the \code{patch} at distance \verb{(dx, dy)}
+of an \code{agent} is outside of the \code{world}'s extent and \code{torus = FALSE},
+no \code{turtle} is returned;
+if \code{torus = TRUE}, the \code{turtle} located on the \code{patch} whose coordinates
+are defined from the wrapped \code{world} is returned.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
@@ -69,8 +70,8 @@ t3 <- turtlesAt(world = w1, turtles = t1,
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtles-at}

@@ -22,9 +22,10 @@ NLset(world, turtles, agents, var, val)
 \item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{var}{Character. Vector of the names of the selected \code{agents} variables.
 If \code{agents} are \code{patches} and the \code{world} is a
@@ -38,26 +39,28 @@ when \code{turtles} were created,
 as well as any variable created with \code{turtlesOwn()}.}
 
 \item{val}{Numeric or character. Vector of length 1 or length \code{NLcount(agents)}
-           if \code{length(var) == 1}, or
+if \code{length(var) == 1}, or
 
-           Matrix or \code{Dataframe} (\code{ncol} = \code{length(var)}, \code{nrow} = \code{NLcount(agents)}).
-           Columns must be in the same order as \code{var}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{       Matrix or `Dataframe` (`ncol` = `length(var)`, `nrow` = `NLcount(agents)`).
+       Columns must be in the same order as `var`.
+}\if{html}{\out{</div>}}}
 }
 \value{
 \code{WorldMatrix} or \code{worldArray} object with the values \code{val} assigned to the \code{patches}
-        variables \code{var}
-        for the \code{agents}, or
+variables \code{var}
+for the \code{agents}, or
 
-        \code{AgentMatrix} representing the \code{turtles} with
-        the values \code{val} assigned to the variables \code{var} for the \code{agents}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    `AgentMatrix` representing the `turtles` with
+    the values `val` assigned to the variables `var` for the `agents`.
+}\if{html}{\out{</div>}}
 }
 \description{
 Assign values to the \code{agents} for the selected variables.
 }
 \details{
 If \code{agents} are \code{patches}, \code{world} must be provided and \code{turtles}
-         must not be provided. If \code{agents} are \code{turtles}, \code{turtles} must be
-         provided and \code{world} must not be provided.
+must not be provided. If \code{agents} are \code{turtles}, \code{turtles} must be
+provided and \code{world} must not be provided.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
@@ -75,8 +78,8 @@ of(agents = t2, var = "heading") # c(180, 0, 0)
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#set}

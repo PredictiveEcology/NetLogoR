@@ -16,7 +16,7 @@ die(turtles, who)
 }
 \value{
 \code{AgentMatrix} representing the \code{turtles} with the selected
-        ones removed.
+ones removed.
 }
 \description{
 Kill selected \code{turtles}.
@@ -35,8 +35,8 @@ NLcount(t1)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#die}

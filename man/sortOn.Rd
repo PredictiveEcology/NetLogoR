@@ -17,9 +17,10 @@ sortOn(agents, world, var)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
@@ -35,13 +36,14 @@ as well as any variable created using \code{turtlesOwn()}.}
 }
 \value{
 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-        \code{pycor} representing the coordinates of the \code{patches} sorted according to
-        their values, if \code{agents}
-        are \code{patches}, or
+\code{pycor} representing the coordinates of the \code{patches} sorted according to
+their values, if \code{agents}
+are \code{patches}, or
 
-        \code{AgentMatrix} representing the \code{turtles} sorted according
-        to their \code{var} values, if \code{agents} are
-        \code{turtles}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    `AgentMatrix` representing the `turtles` sorted according
+    to their `var` values, if `agents` are
+    `turtles`.
+}\if{html}{\out{</div>}}
 }
 \description{
 Return the \code{agents} sorted according to their value.
@@ -49,7 +51,8 @@ Return the \code{agents} sorted according to their value.
 \details{
 \code{world} must not be provided if \code{agents} are \code{turtles}.
 
-         The sorting of the \code{agents} is done in a increasing order.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     The sorting of the `agents` is done in a increasing order.
+}\if{html}{\out{</div>}}
 }
 \examples{
 # Patches
@@ -66,8 +69,8 @@ sortHeadingT1 <- sortOn(agents = t1, var = "heading")
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#sort-on}

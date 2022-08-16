@@ -19,9 +19,10 @@ of(world, agents, var)
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{var}{Character. Vector of the names of the selected \code{agents} variables.
 If \code{agents} are \code{patches} and the \code{world} is a
@@ -36,13 +37,14 @@ as well as any variable created with \code{turtlesOwn()}.}
 }
 \value{
 Vector of values for the \code{agents} if one variable is
-        requested. The class depends
-        of the variable class. The order of the vector follows the order
-        of the \code{agents}, or
+requested. The class depends
+of the variable class. The order of the vector follows the order
+of the \code{agents}, or
 
-        Matrix or \code{Dataframe} (\code{ncol} = \code{length(var)}, \code{nrow} = \code{NLcount(agents)})
-        if more than one variable is requested. The row order
-        follows the order of the \code{agents}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    Matrix or `Dataframe` (`ncol` = `length(var)`, `nrow` = `NLcount(agents)`)
+    if more than one variable is requested. The row order
+    follows the order of the `agents`.
+}\if{html}{\out{</div>}}
 }
 \description{
 Report the \code{agents} values for the requested variable.
@@ -64,8 +66,8 @@ of(agents = t1, var = "heading")
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#of}

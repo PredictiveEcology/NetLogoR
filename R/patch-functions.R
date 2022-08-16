@@ -3,33 +3,33 @@ if (getRversion() >= "3.1.0") {
 }
 
 ################################################################################
-#' Diffuse values in a \code{world}
+#' Diffuse values in a `world`
 #'
-#' Each \code{patch} gives an equal share of a portion of its value to its neighbor \code{patches}.
+#' Each `patch` gives an equal share of a portion of its value to its neighbor `patches`.
 #'
 #' @inheritParams fargs
 #'
 #' @param share      Numeric. Value between 0 and 1 representing the portion of
-#'                   the \code{patches} values to be diffused among the neighbors.
+#'                   the `patches` values to be diffused among the neighbors.
 #'
-#' @return \code{WorldMatrix} or \code{worldArray} object with \code{patches} values updated.
+#' @return `WorldMatrix` or `worldArray` object with `patches` values updated.
 #'
 #' @details What is given is lost for the patches.
 #'
-#'          If \code{torus = TRUE}, all \code{patches} have \code{nNeighbors} \code{patches} around
+#'          If `torus = TRUE`, all `patches` have `nNeighbors` `patches` around
 #'          them, which
-#'          some may be on the other sides of the \code{world}. If \code{torus = FALSE},
-#'          \code{patches} located on the edges of the \code{world} have less than
-#'          \code{nNeighbors} \code{patches} around them.
+#'          some may be on the other sides of the `world`. If `torus = FALSE`,
+#'          `patches` located on the edges of the `world` have less than
+#'          `nNeighbors` `patches` around them.
 #'          However, each neighbor still gets 1/4 or 1/8 of the shared amount
 #'          and the diffusing
 #'          patch keeps the leftover.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse>
 #'
-#'          \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse4}
+#'          <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse4>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -126,41 +126,41 @@ setMethod(
 ################################################################################
 #' Distances between agents
 #'
-#' Report the distances between \code{agents} and \code{agents2}.
+#' Report the distances between `agents` and `agents2`.
 #'
 #' @inheritParams fargs
 #'
 #' @param allPairs Logical. Only relevant if the number of agents/locations in
-#'                 \code{agents} and in \code{agents2} are the same. If
-#'                 \code{allPairs = FALSE},
-#'                 the distance between each \code{agents} with the
-#'                 corresponding \code{agents2} is returned. If
-#'                 \code{allPairs = TRUE}, a full
-#'                 distance matrix is returned. Default is \code{allPairs = FALSE}.
+#'                 `agents` and in `agents2` are the same. If
+#'                 `allPairs = FALSE`,
+#'                 the distance between each `agents` with the
+#'                 corresponding `agents2` is returned. If
+#'                 `allPairs = TRUE`, a full
+#'                 distance matrix is returned. Default is `allPairs = FALSE`.
 #'
-#' @return Numeric. Vector of distances between \code{agents} and \code{agents2} if
-#'         \code{agents} and/or \code{agents2} contained
-#'         one agent/location, or if \code{agents} and \code{agents2} contained the same
-#'         number of agents/locations and \code{allPairs = FALSE}, or
+#' @return Numeric. Vector of distances between `agents` and `agents2` if
+#'         `agents` and/or `agents2` contained
+#'         one agent/location, or if `agents` and `agents2` contained the same
+#'         number of agents/locations and `allPairs = FALSE`, or
 #'
-#'         Matrix of distances between \code{agents} (rows) and
-#'         \code{agents2} (columns)
-#'         if \code{agents} and \code{agents2} are of different lengths,
+#'         Matrix of distances between `agents` (rows) and
+#'         `agents2` (columns)
+#'         if `agents` and `agents2` are of different lengths,
 #'         or of same length
-#'         and \code{allPairs = TRUE}.
+#'         and `allPairs = TRUE`.
 #'
 #' @details Distances from/to a patch are measured from/to its center.
 #'
-#'          If \code{torus = FALSE}, \code{world} does not need to be provided.
+#'          If `torus = FALSE`, `world` does not need to be provided.
 #'
-#'          If \code{torus = TRUE}, a distance around the sides of the \code{world} is
-#'          reported only if smaller than the one across the \code{world}.
+#'          If `torus = TRUE`, a distance around the sides of the `world` is
+#'          reported only if smaller than the one across the `world`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distance}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distance>
 #'
-#'          \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distancexy}
+#'          <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distancexy>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -244,16 +244,16 @@ setMethod(
 ################################################################################
 #' Do the patches exist?
 #'
-#' Report \code{TRUE} if a patch exists inside the \code{world}'s extent, report
-#' \code{FALSE} otherwise.
+#' Report `TRUE` if a patch exists inside the `world`'s extent, report
+#' `FALSE` otherwise.
 #'
 #' @inheritParams fargs
 #'
 #' @return Logical.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#member}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#member>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -295,30 +295,30 @@ setMethod(
 })
 
 ################################################################################
-#' Neighbors \code{patches}
+#' Neighbors `patches`
 #'
-#' Report the coordinates of the neighbors \code{patches} around the \code{agents}.
+#' Report the coordinates of the neighbors `patches` around the `agents`.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 3) with the first column \code{pxcor}
-#'         and the second column \code{pycor} representing the coordinates of the neighbors
-#'         \code{patches} around the \code{agents} and the third column \code{id} representing
-#'         the \code{id} of the \code{agents} in the order provided.
+#' @return Matrix (`ncol` = 3) with the first column `pxcor`
+#'         and the second column `pycor` representing the coordinates of the neighbors
+#'         `patches` around the `agents` and the third column `id` representing
+#'         the `id` of the `agents` in the order provided.
 #'
-#' @details The \code{patch} around which the neighbors are identified, or the \code{patch} where
-#'          the \code{turtle} is located on around which the neighbors are identified, is not
+#' @details The `patch` around which the neighbors are identified, or the `patch` where
+#'          the `turtle` is located on around which the neighbors are identified, is not
 #'          returned.
 #'
-#'          If \code{torus = FALSE}, \code{agents} located on the edges of the
-#'          \code{world} have less than \code{nNeighbors} patches around them.
-#'          If \code{torus = TRUE}, all \code{agents} located on the edges of the
-#'          \code{world} have \code{nNeighbors} patches around them,
-#'          which some may be on the other sides of the \code{world}.
+#'          If `torus = FALSE`, `agents` located on the edges of the
+#'          `world` have less than `nNeighbors` patches around them.
+#'          If `torus = TRUE`, all `agents` located on the edges of the
+#'          `world` have `nNeighbors` patches around them,
+#'          which some may be on the other sides of the `world`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#neighbors}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#neighbors>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -392,42 +392,42 @@ setMethod(
 })
 
 ################################################################################
-#' \code{Patches} coordinates
+#' `Patches` coordinates
 #'
-#' Report the coordinates of the \code{patches} at the given \code{[x, y]} locations.
+#' Report the coordinates of the `patches` at the given `[x, y]` locations.
 #'
 #' @inheritParams fargs
 #'
-#' @param x          Numeric. Vector of \code{x} coordinates. Must be of same
-#'                   length as \code{y}.
+#' @param x          Numeric. Vector of `x` coordinates. Must be of same
+#'                   length as `y`.
 #'
-#' @param y          Numeric. Vector of \code{y} coordinates. Must be of same
-#'                   length as \code{x}.
+#' @param y          Numeric. Vector of `y` coordinates. Must be of same
+#'                   length as `x`.
 #'
-#' @param duplicate  Logical. If more than one location \code{[x, y]}
-#'                   fall into the same \code{patch} and \code{duplicate == TRUE}, the
-#'                   \code{patch} coordinates are returned the number of times the locations.
-#'                   If \code{duplicate == FALSE}, the \code{patch} coordinates
+#' @param duplicate  Logical. If more than one location `[x, y]`
+#'                   fall into the same `patch` and `duplicate == TRUE`, the
+#'                   `patch` coordinates are returned the number of times the locations.
+#'                   If `duplicate == FALSE`, the `patch` coordinates
 #'                   are only returned once.
-#'                   Default is \code{duplicate == FALSE}.
+#'                   Default is `duplicate == FALSE`.
 #'
-#' @param out        Logical. If \code{out = FALSE}, no \code{patch} coordinates are returned
-#'                   for \code{patches} outside of the \code{world}'s extent, if \code{out = TRUE},
-#'                   \code{NA} are returned.
-#'                   Default is \code{out = FALSE}.
+#' @param out        Logical. If `out = FALSE`, no `patch` coordinates are returned
+#'                   for `patches` outside of the `world`'s extent, if `out = TRUE`,
+#'                   `NA` are returned.
+#'                   Default is `out = FALSE`.
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-#'         \code{pycor} representing the \code{patches} coordinates at \code{[x, y]}.
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second column
+#'         `pycor` representing the `patches` coordinates at `[x, y]`.
 #'
-#' @details If a location \code{[x, y]} is outside the \code{world}'s extent and
-#'          \code{torus = FALSE} and \code{out = FALSE}, no \code{patch} coordinates are returned;
-#'          if \code{torus = FALSE} and \code{out = TRUE}, \code{NA} are returned;
-#'          if \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world} are
+#' @details If a location `[x, y]` is outside the `world`'s extent and
+#'          `torus = FALSE` and `out = FALSE`, no `patch` coordinates are returned;
+#'          if `torus = FALSE` and `out = TRUE`, `NA` are returned;
+#'          if `torus = TRUE`, the `patch` coordinates from a wrapped `world` are
 #'          returned.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -489,16 +489,16 @@ setMethod(
 })
 
 ################################################################################
-#' No \code{patches}
+#' No `patches`
 #'
-#' Report an empty \code{patch} \code{agentset}.
+#' Report an empty `patch` `agentset`.
 #'
-#' @return Matrix (\code{ncol} = 2, \code{nrow} = 0) with the first column \code{pxcor} and the
-#'         second column \code{pycor}.
+#' @return Matrix (`ncol` = 2, `nrow` = 0) with the first column `pxcor` and the
+#'         second column `pycor`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#no-patches}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#no-patches>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -516,29 +516,29 @@ noPatches <- function() {
 }
 
 ################################################################################
-#' \code{Patches} at
+#' `Patches` at
 #'
-#' Report the coordinates of the \code{patches} at \code{(dx, dy)} distances of the \code{agents}.
+#' Report the coordinates of the `patches` at `(dx, dy)` distances of the `agents`.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-#'         \code{pycor} representing the coordinates of the \code{patches} at \code{(dx, dy)}
-#'         distances of the \code{agents}. The order of the \code{patches} follows the order
-#'         of the \code{agents}.
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second column
+#'         `pycor` representing the coordinates of the `patches` at `(dx, dy)`
+#'         distances of the `agents`. The order of the `patches` follows the order
+#'         of the `agents`.
 #'
-#' @details If the \code{patch} at distance \code{(dx, dy)}
-#'          of an \code{agent} is outside of the \code{world}'s extent and \code{torus = FALSE},
-#'          \code{NA} are returned
-#'          for the \code{patch} coordinates;
-#'          if \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world} are
+#' @details If the `patch` at distance `(dx, dy)`
+#'          of an `agent` is outside of the `world`'s extent and `torus = FALSE`,
+#'          `NA` are returned
+#'          for the `patch` coordinates;
+#'          if `torus = TRUE`, the `patch` coordinates from a wrapped `world` are
 #'          returned.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at>
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#at-points}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#at-points>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -580,39 +580,39 @@ setMethod(
 })
 
 ################################################################################
-#' \code{Patches} at given distances and directions
+#' `Patches` at given distances and directions
 #'
-#' Report the coordinates of the \code{patches} at the given
-#' distances and directions from the \code{agents}.
+#' Report the coordinates of the `patches` at the given
+#' distances and directions from the `agents`.
 #'
 #' @inheritParams fargs
 #'
-#' @param dist   Numeric. Vector of distances from the \code{agents}. Must be
-#'               of length 1 or of the same length as the number of \code{agents}.
+#' @param dist   Numeric. Vector of distances from the `agents`. Must be
+#'               of length 1 or of the same length as the number of `agents`.
 #'
-#' @param angle  Numeric. Absolute directions from the \code{agents}. \code{angle}
+#' @param angle  Numeric. Absolute directions from the `agents`. `angle`
 #'               must be of length 1 or of the same length as the number of
-#'               \code{agents}. Angles are in degrees with 0 being North.
+#'               `agents`. Angles are in degrees with 0 being North.
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-#'         \code{pycor} representing the coordinates of the \code{patches} at the distances
-#'         \code{dist} and directions \code{angle} of \code{agents}.
-#'         The order of the \code{patches} follows the order of the \code{agents}.
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second column
+#'         `pycor` representing the coordinates of the `patches` at the distances
+#'         `dist` and directions `angle` of `agents`.
+#'         The order of the `patches` follows the order of the `agents`.
 #'
-#' @details If \code{torus = FALSE} and the \code{patch} at distance \code{dist} and
-#'          direction \code{angle} of an \code{agent} is outside the \code{world}'s extent,
-#'          \code{NA} are returned for the \code{patch} coordinates.
-#'          If \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world}
+#' @details If `torus = FALSE` and the `patch` at distance `dist` and
+#'          direction `angle` of an `agent` is outside the `world`'s extent,
+#'          `NA` are returned for the `patch` coordinates.
+#'          If `torus = TRUE`, the `patch` coordinates from a wrapped `world`
 #'          are returned.
 #'
-#'          If \code{agents} are \code{turtles}, their \code{headings} are not taken into account;
-#'          the given directions \code{angle} are used. To find a \code{patch} at certain
-#'          distance from a \code{turtle} using the \code{turtle}'s \code{heading}, look at \code{pacthAhead()},
-#'          \code{patchLeft()} or \code{patchRight()}.
+#'          If `agents` are `turtles`, their `headings` are not taken into account;
+#'          the given directions `angle` are used. To find a `patch` at certain
+#'          distance from a `turtle` using the `turtle`'s `heading`, look at `pacthAhead()`,
+#'          `patchLeft()` or `patchRight()`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -654,19 +654,19 @@ setMethod(
 })
 
 ################################################################################
-#' All the \code{patches} in a \code{world}
+#' All the `patches` in a `world`
 #'
-#' Report the coordinates of all the \code{patches} in the \code{world}.
+#' Report the coordinates of all the `patches` in the `world`.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-#'         \code{pycor} representing the \code{patches} coordinates. The order of the \code{patches}
-#'         follows the order of the cells numbers as defined for a \code{Raster*} object.
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second column
+#'         `pycor` representing the `patches` coordinates. The order of the `patches`
+#'         follows the order of the cells numbers as defined for a `Raster*` object.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patches}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patches>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -694,21 +694,21 @@ setMethod(
 })
 
 ################################################################################
-#' \code{Patch} set
+#' `Patch` set
 #'
-#' Report the \code{patch} coordinates of all the unique \code{patches} contained in the inputs.
+#' Report the `patch` coordinates of all the unique `patches` contained in the inputs.
 #'
-#' @param ... Matrices (\code{ncol} = 2) of \code{patches} coordinates with the first column
-#'            \code{pxcor} and the second column \code{pycor}.
+#' @param ... Matrices (`ncol` = 2) of `patches` coordinates with the first column
+#'            `pxcor` and the second column `pycor`.
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-#'         \code{pycor} representing the \code{patches} coordinates.
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second column
+#'         `pycor` representing the `patches` coordinates.
 #'
-#' @details Duplicate \code{patches} among the inputs are removed in the returned matrix.
+#' @details Duplicate `patches` among the inputs are removed in the returned matrix.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-set}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-set>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -744,17 +744,17 @@ setMethod(
 })
 
 ################################################################################
-#' Random \code{pxcor}
+#' Random `pxcor`
 #'
-#' Report \code{n} random \code{pxcor} coordinates within the \code{world}'s extent.
+#' Report `n` random `pxcor` coordinates within the `world`'s extent.
 #'
 #' @inheritParams fargs
 #'
-#' @return Integer. Vector of length \code{n} of \code{pxcor} coordinates.
+#' @return Integer. Vector of length `n` of `pxcor` coordinates.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-pcor}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-pcor>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -785,17 +785,17 @@ setMethod(
 })
 
 ################################################################################
-#' Random \code{pycor}
+#' Random `pycor`
 #'
-#' Report \code{n} random \code{pycor} coordinates within the \code{world}'s extent.
+#' Report `n` random `pycor` coordinates within the `world`'s extent.
 #'
 #' @inheritParams fargs
 #'
-#' @return Integer. Vector of length \code{n} of \code{pycor} coordinates.
+#' @return Integer. Vector of length `n` of `pycor` coordinates.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-pcor}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-pcor>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'

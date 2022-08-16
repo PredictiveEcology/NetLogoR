@@ -12,17 +12,19 @@ NLdist(agents, agents2, world, torus = FALSE, allPairs = FALSE)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{agents2}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-               column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-               \code{AgentMatrix} object representing the moving \code{agents}, or
+\if{html}{\out{<div class="sourceCode">}}\preformatted{           `AgentMatrix` object representing the moving `agents`, or
 
-               Matrix (\code{ncol} = 2) with the first column \code{x} and the second column
-               \code{y} representing locations coordinates.}
+           Matrix (`ncol` = 2) with the first column `x` and the second column
+           `y` representing locations coordinates.
+}\if{html}{\out{</div>}}}
 
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
@@ -39,15 +41,16 @@ distance matrix is returned. Default is \code{allPairs = FALSE}.}
 }
 \value{
 Numeric. Vector of distances between \code{agents} and \code{agents2} if
-        \code{agents} and/or \code{agents2} contained
-        one agent/location, or if \code{agents} and \code{agents2} contained the same
-        number of agents/locations and \code{allPairs = FALSE}, or
+\code{agents} and/or \code{agents2} contained
+one agent/location, or if \code{agents} and \code{agents2} contained the same
+number of agents/locations and \code{allPairs = FALSE}, or
 
-        Matrix of distances between \code{agents} (rows) and
-        \code{agents2} (columns)
-        if \code{agents} and \code{agents2} are of different lengths,
-        or of same length
-        and \code{allPairs = TRUE}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    Matrix of distances between `agents` (rows) and
+    `agents2` (columns)
+    if `agents` and `agents2` are of different lengths,
+    or of same length
+    and `allPairs = TRUE`.
+}\if{html}{\out{</div>}}
 }
 \description{
 Report the distances between \code{agents} and \code{agents2}.
@@ -55,10 +58,11 @@ Report the distances between \code{agents} and \code{agents2}.
 \details{
 Distances from/to a patch are measured from/to its center.
 
-         If \code{torus = FALSE}, \code{world} does not need to be provided.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If `torus = FALSE`, `world` does not need to be provided.
 
-         If \code{torus = TRUE}, a distance around the sides of the \code{world} is
-         reported only if smaller than the one across the \code{world}.
+     If `torus = TRUE`, a distance around the sides of the `world` is
+     reported only if smaller than the one across the `world`.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
@@ -72,13 +76,14 @@ NLdist(agents = t1, agents2 = patch(w1, c(1,9), c(1,9)), allPairs = TRUE)
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distance}
 
-         \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distancexy}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distancexy>
+}\if{html}{\out{</div>}}
 }
 \author{
 Sarah Bauduin

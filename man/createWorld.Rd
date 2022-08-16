@@ -23,12 +23,12 @@ createWorld(minPxcor, maxPxcor, minPycor, maxPycor, data = NA)
 
 \item{data}{Vector of length 1 or length
 \code{(maxPxcor - minPxcor + 1) * (maxPycor - minPycor + 1)}.
- Default is \code{NA}.}
+Default is \code{NA}.}
 }
 \value{
 \code{WorldMatrix} object composed of
-        \code{(maxPxcor - minPxcor + 1) * (maxPycor - minPycor + 1)}
-        patches (i.e., matrix cells).
+\code{(maxPxcor - minPxcor + 1) * (maxPycor - minPycor + 1)}
+patches (i.e., matrix cells).
 }
 \description{
 Create a \code{world} of \code{patches} of class \code{worldMatrix}.
@@ -36,11 +36,12 @@ Create a \code{world} of \code{patches} of class \code{worldMatrix}.
 \details{
 If \code{data} is provided, values are assigned by rows.
 
-         If no parameters value are provided, default values are:
-         \code{minPxcor = -16},
-         \code{maxPxcor = 16}, \code{minPycor = -16}, and \code{maxPycor = 16}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If no parameters value are provided, default values are:
+     `minPxcor = -16`,
+     `maxPxcor = 16`, `minPycor = -16`, and `maxPycor = 16`.
 
-         See \code{help("worldMatrix-class")} for more details on the \code{worldMatrix} class.
+     See `help("worldMatrix-class")` for more details on the `worldMatrix` class.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data = 1:25)
@@ -50,8 +51,8 @@ plot(w1)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \author{
 Sarah Bauduin, Eliot McIntire, and Alex Chubaty

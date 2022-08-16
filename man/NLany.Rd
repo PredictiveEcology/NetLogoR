@@ -12,13 +12,14 @@ NLany(agents)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 }
 \value{
 Logical. \code{TRUE} if there is at least one patch or one turtle in the
-        \code{agents}, \code{FALSE} otherwise.
+\code{agents}, \code{FALSE} otherwise.
 }
 \description{
 Report \code{TRUE} if \code{agents} is non empty, report \code{FALSE} otherwise.
@@ -41,8 +42,8 @@ NLany(t2)
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#any}

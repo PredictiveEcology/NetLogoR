@@ -23,8 +23,8 @@ updateList(x, y)
 }
 \value{
 A named list, with elements sorted by name.
-         The values of matching elements in list \code{y}
-         replace the values in list \code{x}.
+The values of matching elements in list \code{y}
+replace the values in list \code{x}.
 }
 \description{
 Merge two named list based on their named entries.

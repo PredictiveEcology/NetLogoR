@@ -28,7 +28,7 @@ of length \code{turtles}.}
 }
 \value{
 \code{AgentMatrix} representing the \code{turtles} with updated coordinates
-        and updated data for their previous coordinates \code{prevX} and \code{prevY}.
+and updated data for their previous coordinates \code{prevX} and \code{prevY}.
 }
 \description{
 Set the \code{turtles} \code{xcor} and \code{ycor} coordinates.
@@ -36,11 +36,12 @@ Set the \code{turtles} \code{xcor} and \code{ycor} coordinates.
 \details{
 \code{world} must be provided only if \code{torus = TRUE}.
 
-         If the given coordinates \code{[xcor, ycor]}
-         are located outside of the \code{world}'s extent and \code{torus = TRUE},
-         then the coordinates assigned to the \code{turtle}
-         are the ones from a wrapped \code{word}; if \code{torus = FALSE}, the \code{turtle}
-         is located outside of the \code{world}'s extent with the given coordinates.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If the given coordinates `[xcor, ycor]`
+     are located outside of the `world`'s extent and `torus = TRUE`,
+     then the coordinates assigned to the `turtle`
+     are the ones from a wrapped `word`; if `torus = FALSE`, the `turtle`
+     is located outside of the `world`'s extent with the given coordinates.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9,
@@ -56,8 +57,8 @@ points(t1, col = of(agents = t1, var = "color"), pch = 16)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#setxy}

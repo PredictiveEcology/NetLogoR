@@ -14,15 +14,15 @@ spdf2turtles(spdf)
 }
 \value{
 \code{AgentMatrix} object representing the moving \code{agents} (coordinates and data)
-        as contained in \code{spdf}.
+as contained in \code{spdf}.
 }
 \description{
 Convert a \code{SpatialPointsDataFrame} object into an \code{agentMatrix} object.
 }
 \details{
 If the \code{spdf} does not contain the variables created with
-         \code{createTurtles()}, these variables will be created with the
-         default values as in \code{createTurtles()}.
+\code{createTurtles()}, these variables will be created with the
+default values as in \code{createTurtles()}.
 }
 \examples{
 sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),

@@ -26,30 +26,31 @@ the \code{world}'s extent. Default is \code{out = TRUE}.}
 }
 \value{
 \code{AgentMatrix} representing the \code{turtles} with updated
-        coordinates and updated data for their previous coordinates \code{prevX}
-        and \code{prevY}.
+coordinates and updated data for their previous coordinates \code{prevX}
+and \code{prevY}.
 }
 \description{
 Move the \code{turtles} backward of their headings' directions.
 }
 \details{
 If \code{torus = FALSE} and \code{out = TRUE}, \code{world}
-         does not need to be provided.
+does not need to be provided.
 
-         If a distance to move leads a \code{turtle} outside of the \code{world}'s extent
-         and \code{torus = TRUE}, the \code{turtle} is
-         relocated on the other side of the \code{world}, inside its extent; if
-         \code{torus = FALSE} and \code{out = TRUE}, the \code{turtle} moves past the
-         \code{world}'s extent; if \code{torus = FALSE} and \code{out = FALSE}, the
-         \code{turtle} does not move at all. In the event that a \code{turtle} does not move,
-         its previous coordinates are still updated with its position before
-         running \code{bk()} (i.e., its current position).
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If a distance to move leads a `turtle` outside of the `world`'s extent
+     and `torus = TRUE`, the `turtle` is
+     relocated on the other side of the `world`, inside its extent; if
+     `torus = FALSE` and `out = TRUE`, the `turtle` moves past the
+     `world`'s extent; if `torus = FALSE` and `out = FALSE`, the
+     `turtle` does not move at all. In the event that a `turtle` does not move,
+     its previous coordinates are still updated with its position before
+     running `bk()` (i.e., its current position).
 
-         If a given \code{dist} value is negative, then the \code{turtle} moves
-         forward.
+     If a given `dist` value is negative, then the `turtle` moves
+     forward.
 
-         The \code{turtles}' headings are not affected by the function (i.e., the
-         \code{turtles} do not face backward).
+     The `turtles`' headings are not affected by the function (i.e., the
+     `turtles` do not face backward).
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
@@ -69,13 +70,14 @@ points(t1, col = of(agents = t1, var = "color"), pch = 16)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#back}
 
-         \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#jump}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#jump>
+}\if{html}{\out{</div>}}
 }
 \author{
 Sarah Bauduin

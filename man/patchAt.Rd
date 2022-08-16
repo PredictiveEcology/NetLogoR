@@ -13,9 +13,10 @@ patchAt(world, agents, dx, dy, torus = FALSE)
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{dx}{Numeric. Vector of distances to the east (right) from the \code{agents}.
 If \code{dx} is negative, the distance to the west (left) is computed.
@@ -32,20 +33,20 @@ or \code{turtles} in \code{agents}.}
 }
 \value{
 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-        \code{pycor} representing the coordinates of the \code{patches} at \code{(dx, dy)}
-        distances of the \code{agents}. The order of the \code{patches} follows the order
-        of the \code{agents}.
+\code{pycor} representing the coordinates of the \code{patches} at \verb{(dx, dy)}
+distances of the \code{agents}. The order of the \code{patches} follows the order
+of the \code{agents}.
 }
 \description{
-Report the coordinates of the \code{patches} at \code{(dx, dy)} distances of the \code{agents}.
+Report the coordinates of the \code{patches} at \verb{(dx, dy)} distances of the \code{agents}.
 }
 \details{
-If the \code{patch} at distance \code{(dx, dy)}
-         of an \code{agent} is outside of the \code{world}'s extent and \code{torus = FALSE},
-         \code{NA} are returned
-         for the \code{patch} coordinates;
-         if \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world} are
-         returned.
+If the \code{patch} at distance \verb{(dx, dy)}
+of an \code{agent} is outside of the \code{world}'s extent and \code{torus = FALSE},
+\code{NA} are returned
+for the \code{patch} coordinates;
+if \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world} are
+returned.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
@@ -57,8 +58,8 @@ patchCorner <- patchAt(world = w1, agents = t1, dx = 1, dy = 1)
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at}

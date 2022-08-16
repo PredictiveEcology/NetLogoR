@@ -17,9 +17,10 @@ minOneOf(agents, world, var)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
@@ -35,15 +36,16 @@ as well as any variable created using \code{turtlesOwn()}.}
 }
 \value{
 Matrix (\code{ncol} = 2, \code{nrow} = 1) with the first column \code{pxcor} and
-        the second column \code{pycor} representing the coordinates of the \code{patch}
-        (or of one of the \code{patches}) among the \code{agents} which has its variable
-        equals to the minimum value
-        among the \code{agents}, or
+the second column \code{pycor} representing the coordinates of the \code{patch}
+(or of one of the \code{patches}) among the \code{agents} which has its variable
+equals to the minimum value
+among the \code{agents}, or
 
-        \code{AgentMatrix} of length 1 representing the \code{turtle} (or one of
-        the \code{turtles}) among the \code{agents} which has its variable \code{var}
-        equals to the minimum value
-        among the \code{agents}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    `AgentMatrix` of length 1 representing the `turtle` (or one of
+    the `turtles`) among the `agents` which has its variable `var`
+    equals to the minimum value
+    among the `agents`.
+}\if{html}{\out{</div>}}
 }
 \description{
 Report one \code{patch} or one \code{turtle} among \code{agents} which has its variable equals
@@ -52,11 +54,12 @@ to the minimum value.
 \details{
 \code{world} must not be provided if \code{agents} are turtles.
 
-         If there are several \code{patches} or \code{turtles} among \code{agents} with their
-         variable equal to the minimum
-         value, one is chosen randomly. To access to all \code{patches} or \code{turtles} among
-         \code{agents} which have their variable equal
-         to the minimum value, use \code{withMin()}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If there are several `patches` or `turtles` among `agents` with their
+     variable equal to the minimum
+     value, one is chosen randomly. To access to all `patches` or `turtles` among
+     `agents` which have their variable equal
+     to the minimum value, use `withMin()`.
+}\if{html}{\out{</div>}}
 }
 \examples{
 # Patches
@@ -74,8 +77,8 @@ t2 <- minOneOf(agents = t1, var = "heading")
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-one-of}

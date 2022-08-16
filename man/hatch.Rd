@@ -22,7 +22,7 @@ the created \code{turtles} are of the same \code{breed} as their parent \code{tu
 }
 \value{
 \code{AgentMatrix} representing the \code{turtles} with the new
-        hatched ones.
+hatched ones.
 }
 \description{
 Create new \code{turtles} from parent \code{turtles}.
@@ -30,12 +30,13 @@ Create new \code{turtles} from parent \code{turtles}.
 \details{
 The parent \code{turtle} must be contained in the \code{turtles}.
 
-         The created \code{turtles} inherit of all the data from the parent \code{turtle},
-         except for the \code{breed} if specified otherwise, and for the \code{who} numbers.
-         The \code{who}" numbers of the \code{turtles} created take on following the highest
-         \code{who} number among the \code{turtles}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     The created `turtles` inherit of all the data from the parent `turtle`,
+     except for the `breed` if specified otherwise, and for the `who` numbers.
+     The `who`" numbers of the `turtles` created take on following the highest
+     `who` number among the `turtles`.
 
-         All new hatched \code{turtles} are placed at the end of the \code{agentMatrix} object.
+     All new hatched `turtles` are placed at the end of the `agentMatrix` object.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
@@ -48,8 +49,8 @@ NLcount(t1)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#hatch}

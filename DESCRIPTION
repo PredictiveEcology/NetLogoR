@@ -28,8 +28,8 @@ URL:
     https://netlogor.predictiveecology.org,
     https://github.com/PredictiveEcology/NetLogoR/,
     https://groups.google.com/g/netlogor
-Version: 0.3.10
-Date: 2022-02-17
+Version: 0.3.11
+Date: 2022-08-16
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
            role = c("aut"), comment = c(ORCID = "0000-0002-3252-5894")),
@@ -52,17 +52,16 @@ Imports:
     matrixStats,
     methods,
     quickPlot (>= 0.1.2),
+    sf,
     sp,
     SpaDES.tools,
-    stats,
-    rgeos
+    stats
 Suggests:
     fastshp,
     knitr,
     magrittr,
     microbenchmark,
     rmarkdown,
-    sf,
     SpaDES.core,
     testthat
 Additional_repositories: https://rforge.net
@@ -71,7 +70,7 @@ ByteCompile: yes
 Encoding: UTF-8
 Language: en-CA
 License: GPL-3
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 VignetteBuilder: knitr, rmarkdown
 Collate: 
     'Agent-classes.R'
@@ -87,3 +86,4 @@ Collate:
     'quickPlot.R'
     'spades-functions.R'
     'turtle-functions.R'
+Roxygen: list(markdown = TRUE)

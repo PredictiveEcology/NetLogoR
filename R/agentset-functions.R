@@ -1,19 +1,19 @@
 ################################################################################
 #' All agents?
 #'
-#' Report \code{TRUE} if all \code{agents} have their variable equal to a given value,
-#' report \code{FALSE} otherwise.
+#' Report `TRUE` if all `agents` have their variable equal to a given value,
+#' report `FALSE` otherwise.
 #'
 #' @inheritParams fargs
 #'
-#' @return Logical. \code{TRUE} if all the \code{agents} have their variable equal to
-#'         \code{val}, \code{FALSE} otherwise.
+#' @return Logical. `TRUE` if all the `agents` have their variable equal to
+#'         `val`, `FALSE` otherwise.
 #'
-#' @details \code{world} must not be provided if \code{agents} are turtles.
+#' @details `world` must not be provided if `agents` are turtles.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#all}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#all>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -83,16 +83,16 @@ setMethod(
 ################################################################################
 #' Any agents?
 #'
-#' Report \code{TRUE} if \code{agents} is non empty, report \code{FALSE} otherwise.
+#' Report `TRUE` if `agents` is non empty, report `FALSE` otherwise.
 #'
 #' @inheritParams fargs
 #'
-#' @return Logical. \code{TRUE} if there is at least one patch or one turtle in the
-#'         \code{agents}, \code{FALSE} otherwise.
+#' @return Logical. `TRUE` if there is at least one patch or one turtle in the
+#'         `agents`, `FALSE` otherwise.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#any}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#any>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -153,15 +153,15 @@ setMethod(
 ################################################################################
 #' Count agents
 #'
-#' Report the number of patches or turtles inside \code{agents}.
+#' Report the number of patches or turtles inside `agents`.
 #'
 #' @inheritParams fargs
 #'
 #' @return Integer.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#count}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#count>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -200,28 +200,28 @@ setMethod(
 
 
 ################################################################################
-#' Sort \code{agents}
+#' Sort `agents`
 #'
-#' Return the \code{agents} sorted according to their value.
+#' Return the `agents` sorted according to their value.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-#'         \code{pycor} representing the coordinates of the \code{patches} sorted according to
-#'         their values, if \code{agents}
-#'         are \code{patches}, or
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second column
+#'         `pycor` representing the coordinates of the `patches` sorted according to
+#'         their values, if `agents`
+#'         are `patches`, or
 #'
-#'         \code{AgentMatrix} representing the \code{turtles} sorted according
-#'         to their \code{var} values, if \code{agents} are
-#'         \code{turtles}.
+#'         `AgentMatrix` representing the `turtles` sorted according
+#'         to their `var` values, if `agents` are
+#'         `turtles`.
 #'
-#' @details \code{world} must not be provided if \code{agents} are \code{turtles}.
+#' @details `world` must not be provided if `agents` are `turtles`.
 #'
-#'          The sorting of the \code{agents} is done in a increasing order.
+#'          The sorting of the `agents` is done in a increasing order.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#sort-on}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#sort-on>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -289,31 +289,31 @@ setMethod(
 
 
 ################################################################################
-#' \code{Agents} with
+#' `Agents` with
 #'
-#' Report the \code{patches} or the \code{turtles} among \code{agents} which have their variable
+#' Report the `patches` or the `turtles` among `agents` which have their variable
 #' equals to specific values.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-#'         \code{pycor} representing the coordinates of the \code{patches} among the \code{agents}
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second column
+#'         `pycor` representing the coordinates of the `patches` among the `agents`
 #'         which have their variable
-#'         equals to any \code{val}, or
+#'         equals to any `val`, or
 #'
-#'         \code{AgentMatrix} representing the \code{turtles} among the \code{agents}
+#'         `AgentMatrix` representing the `turtles` among the `agents`
 #'         which have their variable
-#'         \code{var} equals to any \code{val}.
+#'         `var` equals to any `val`.
 #'
-#' @details \code{world} must not be provided if \code{agents} are \code{turtles}.
+#' @details `world` must not be provided if `agents` are `turtles`.
 #'
 #'          This is equivalent in R to subsetting.
 #'
-#'          \code{val} can include \code{NA}.
+#'          `val` can include `NA`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -399,27 +399,27 @@ setMethod(
 )
 
 ################################################################################
-#' \code{Agents} with maximum
+#' `Agents` with maximum
 #'
-#' Report the \code{patches} or \code{turtles} among \code{agents} which have their variable
+#' Report the `patches` or `turtles` among `agents` which have their variable
 #' equals to the maximum value.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-#'         \code{pycor} representing the coordinates of the patches among the \code{agents}
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second column
+#'         `pycor` representing the coordinates of the patches among the `agents`
 #'         which have their variable
-#'         equal to the maximum value among the \code{agents}, or
+#'         equal to the maximum value among the `agents`, or
 #'
-#'         \code{AgentMatrix} representing the \code{turtles} among the \code{agents}
+#'         `AgentMatrix` representing the `turtles` among the `agents`
 #'         which have their variable
-#'         \code{var} equal to the maximum value among the \code{agents}.
+#'         `var` equal to the maximum value among the `agents`.
 #'
-#' @details \code{world} must not be provided if \code{agents} are turtles.
+#' @details `world` must not be provided if `agents` are turtles.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-max}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-max>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -506,27 +506,27 @@ setMethod(
 
 
 ################################################################################
-#' \code{Agents} with minimum
+#' `Agents` with minimum
 #'
-#' Report the \code{patches} or \code{turtles} among \code{agents} which have their variable
+#' Report the `patches` or `turtles` among `agents` which have their variable
 #' equals to the minimum value.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-#'         \code{pycor} representing the coordinates of the \code{patches} among the \code{agents}
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second column
+#'         `pycor` representing the coordinates of the `patches` among the `agents`
 #'         which have their variable
-#'         equal to the minimum value among the \code{agents}, or
+#'         equal to the minimum value among the `agents`, or
 #'
-#'         \code{AgentMatrix} representing the \code{turtles} among the \code{agents}
+#'         `AgentMatrix` representing the `turtles` among the `agents`
 #'         which have their variable
-#'         \code{var} equal to the minimum value among the \code{agents}.
+#'         `var` equal to the minimum value among the `agents`.
 #'
-#' @details \code{world} must not be provided if \code{agents} are turtles.
+#' @details `world` must not be provided if `agents` are turtles.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-min}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-min>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -613,35 +613,35 @@ setMethod(
 
 
 ################################################################################
-#' One \code{agent} with maximum
+#' One `agent` with maximum
 #'
-#' Report one \code{patch} or one \code{turtle} among \code{agents} which has its variable equals
+#' Report one `patch` or one `turtle` among `agents` which has its variable equals
 #' to the maximum value.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 2, \code{nrow} = 1) with the first column \code{pxcor} and
-#'         the second column \code{pycor} representing the coordinates of the \code{patch}
-#'         (or of one of the \code{patches}) among the \code{agents} which has its variable
+#' @return Matrix (`ncol` = 2, `nrow` = 1) with the first column `pxcor` and
+#'         the second column `pycor` representing the coordinates of the `patch`
+#'         (or of one of the `patches`) among the `agents` which has its variable
 #'         equals to the maximum value
-#'         among the \code{agents}, or
+#'         among the `agents`, or
 #'
-#'         \code{AgentMatrix} of length 1 representing the \code{turtle} (or one of
-#'         the \code{turtles}) among the \code{agents} which has its variable \code{var}
+#'         `AgentMatrix` of length 1 representing the `turtle` (or one of
+#'         the `turtles`) among the `agents` which has its variable `var`
 #'         equals to the maximum value
-#'         among the \code{agents}.
+#'         among the `agents`.
 #'
-#' @details \code{world} must not be provided if \code{agents} are turtles.
+#' @details `world` must not be provided if `agents` are turtles.
 #'
-#'          If there are several \code{patches} or \code{turtles} among \code{agents} with their
+#'          If there are several `patches` or `turtles` among `agents` with their
 #'          variable equal to the maximum
-#'          value, one is chosen randomly. To access to all \code{patches} or \code{turtles} among
-#'          \code{agents} which have their variable equal
-#'          to the maximum value, use \code{withMax()}.
+#'          value, one is chosen randomly. To access to all `patches` or `turtles` among
+#'          `agents` which have their variable equal
+#'          to the maximum value, use `withMax()`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-one-of}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-one-of>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -707,35 +707,35 @@ setMethod(
 
 
 ################################################################################
-#' One \code{agent} with minimum
+#' One `agent` with minimum
 #'
-#' Report one \code{patch} or one \code{turtle} among \code{agents} which has its variable equals
+#' Report one `patch` or one `turtle` among `agents` which has its variable equals
 #' to the minimum value.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 2, \code{nrow} = 1) with the first column \code{pxcor} and
-#'         the second column \code{pycor} representing the coordinates of the \code{patch}
-#'         (or of one of the \code{patches}) among the \code{agents} which has its variable
+#' @return Matrix (`ncol` = 2, `nrow` = 1) with the first column `pxcor` and
+#'         the second column `pycor` representing the coordinates of the `patch`
+#'         (or of one of the `patches`) among the `agents` which has its variable
 #'         equals to the minimum value
-#'         among the \code{agents}, or
+#'         among the `agents`, or
 #'
-#'         \code{AgentMatrix} of length 1 representing the \code{turtle} (or one of
-#'         the \code{turtles}) among the \code{agents} which has its variable \code{var}
+#'         `AgentMatrix` of length 1 representing the `turtle` (or one of
+#'         the `turtles`) among the `agents` which has its variable `var`
 #'         equals to the minimum value
-#'         among the \code{agents}.
+#'         among the `agents`.
 #'
-#' @details \code{world} must not be provided if \code{agents} are turtles.
+#' @details `world` must not be provided if `agents` are turtles.
 #'
-#'          If there are several \code{patches} or \code{turtles} among \code{agents} with their
+#'          If there are several `patches` or `turtles` among `agents` with their
 #'          variable equal to the minimum
-#'          value, one is chosen randomly. To access to all \code{patches} or \code{turtles} among
-#'          \code{agents} which have their variable equal
-#'          to the minimum value, use \code{withMin()}.
+#'          value, one is chosen randomly. To access to all `patches` or `turtles` among
+#'          `agents` which have their variable equal
+#'          to the minimum value, use `withMin()`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-one-of}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-one-of>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -803,36 +803,36 @@ setMethod(
 ################################################################################
 #' Type of object
 #'
-#' Report \code{TRUE} if the \code{agents} is of the \code{class} tested,
-#' report \code{FALSE} otherwise.
+#' Report `TRUE` if the `agents` is of the `class` tested,
+#' report `FALSE` otherwise.
 #'
 #' @inheritParams fargs
 #'
 #' @param class  Character. Can take one of the following options to define
-#'               the \code{class}: \code{"agent"}, \code{"agentset"},
-#'               \code{"patch"}, \code{"patchset"}. \code{"turtle"} or \code{"turtleset"}.
+#'               the `class`: `"agent"`, `"agentset"`,
+#'               `"patch"`, `"patchset"`. `"turtle"` or `"turtleset"`.
 #'
-#' @return Logical. \code{TRUE} if \code{agents} is of the \code{class} tested.
+#' @return Logical. `TRUE` if `agents` is of the `class` tested.
 #'
-#' @details Careful! The \code{class} tested does not correspond to actual R classes.
+#' @details Careful! The `class` tested does not correspond to actual R classes.
 #'
-#'          \code{agents} is \code{"patch"} if it is a matrix (\code{ncol} = 2) with the
-#'          first column \code{pxcor} and the second column \code{pycor} with only
-#'          one row. \code{agents} is \code{"patcheset"} if the matrix has more than
+#'          `agents` is `"patch"` if it is a matrix (`ncol` = 2) with the
+#'          first column `pxcor` and the second column `pycor` with only
+#'          one row. `agents` is `"patcheset"` if the matrix has more than
 #'          one row.
 #'
-#'          \code{agents} is \code{"turtle"} if it is an \code{agentMatrix}
-#'          containing only one \code{turtle}.
-#'          \code{agents} is \code{"turtleset"} if the
-#'          \code{agentMatrix} contains more than one \code{turtle}.
+#'          `agents` is `"turtle"` if it is an `agentMatrix`
+#'          containing only one `turtle`.
+#'          `agents` is `"turtleset"` if the
+#'          `agentMatrix` contains more than one `turtle`.
 #'
-#'          \code{agents} is \code{"agent"} if it is either \code{"patch"} or
-#'          \code{"turtle"}. \code{agents} is \code{"agentset"} if it is either
-#'          \code{"patcheset"} or \code{"turtleset"}.
+#'          `agents` is `"agent"` if it is either `"patch"` or
+#'          `"turtle"`. `agents` is `"agentset"` if it is either
+#'          `"patcheset"` or `"turtleset"`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#is-of-type}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#is-of-type>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -913,42 +913,42 @@ setMethod(
 
 
 ################################################################################
-#' N random \code{agents}
+#' N random `agents`
 #'
-#' Report \code{n} \code{patches} or \code{turtles} randomly selected among \code{agents}.
+#' Report `n` `patches` or `turtles` randomly selected among `agents`.
 #'
 #' @inheritParams oneOf
 #'
-#' @param n  Integer. Number of \code{patches} or \code{turtles} to select from \code{agents}.
+#' @param n  Integer. Number of `patches` or `turtles` to select from `agents`.
 #'
-#' @return Matrix (\code{ncol} = 2, \code{nrow} = \code{n}) with the first column \code{pxcor}
-#'         and the second  column \code{pycor} representing the coordinates of the
-#'         selected patches from \code{agents}, or
+#' @return Matrix (`ncol` = 2, `nrow` = `n`) with the first column `pxcor`
+#'         and the second  column `pycor` representing the coordinates of the
+#'         selected patches from `agents`, or
 #'
-#'         Matrix (\code{ncol} = 2) with the first column \code{pxcor}
-#'         and the second  column \code{pycor} representing the coordinates of the
-#'         selected \code{patches} from \code{agents}, \code{n} per individual "id", or
+#'         Matrix (`ncol` = 2) with the first column `pxcor`
+#'         and the second  column `pycor` representing the coordinates of the
+#'         selected `patches` from `agents`, `n` per individual "id", or
 #'
-#'         \code{AgentMatrix} (\code{nrow} = \code{n}) representing the \code{turtles}
-#'         selected from \code{agents},
+#'         `AgentMatrix` (`nrow` = `n`) representing the `turtles`
+#'         selected from `agents`,
 #'
-#'         Integer. Vector of \code{who} numbers for the selected \code{turtles} from
-#'         \code{agents}, \code{n} per individual "id".
+#'         Integer. Vector of `who` numbers for the selected `turtles` from
+#'         `agents`, `n` per individual "id".
 #'
-#' @details \code{n} must be less or equal the number of \code{patches}
-#'          or \code{turtles} in \code{agents}.
+#' @details `n` must be less or equal the number of `patches`
+#'          or `turtles` in `agents`.
 #'
-#'          If \code{agents} is a matrix with \code{ncol} = 3, the selection of \code{n}
-#'          random \code{patches} is done per individual "id". The order of the \code{patches}
+#'          If `agents` is a matrix with `ncol` = 3, the selection of `n`
+#'          random `patches` is done per individual "id". The order of the `patches`
 #'          coordinates returned follow the order of "id".
-#'          If \code{agents} is a matrix (\code{ncol} = 2) with columns \code{whoTurtles} and
-#'          \code{id}, the selection of \code{n} random \code{turtles} (defined by their \code{whoTurtles})
-#'          is done per individual "id". The order of the \code{who} numbers returned
+#'          If `agents` is a matrix (`ncol` = 2) with columns `whoTurtles` and
+#'          `id`, the selection of `n` random `turtles` (defined by their `whoTurtles`)
+#'          is done per individual "id". The order of the `who` numbers returned
 #'          follow the order of "id".
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#n-of}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#n-of>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1017,47 +1017,47 @@ setMethod(
 })
 
 ################################################################################
-#' One random \code{agent}
+#' One random `agent`
 #'
-#' Report one \code{patch} or \code{turtle} randomly selected among \code{agents}.
+#' Report one `patch` or `turtle` randomly selected among `agents`.
 #'
-#' @param agents Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-#'               column \code{pycor} representing the \code{patches} coordinates, or
+#' @param agents Matrix (`ncol` = 2) with the first column `pxcor` and the second
+#'               column `pycor` representing the `patches` coordinates, or
 #'
-#'               Matrix (\code{ncol} = 3) with the first column "\code{pxcor} and the second
-#'               column \code{pycor} representing the \code{patches} coordinates and the
-#'               third column \code{id}, or
+#'               Matrix (`ncol` = 3) with the first column "`pxcor` and the second
+#'               column `pycor` representing the `patches` coordinates and the
+#'               third column `id`, or
 #'
-#'               \code{AgentMatrix} object representing the moving \code{agents}, or
+#'               `AgentMatrix` object representing the moving `agents`, or
 #'
-#'               Matrix (\code{ncol} = 2) with the first column \code{whoTurtles} and the
-#'               second column \code{id}.
+#'               Matrix (`ncol` = 2) with the first column `whoTurtles` and the
+#'               second column `id`.
 #'
-#' @return Matrix (\code{ncol} = 2, \code{nrow} = 1) with the first column \code{pxcor}
-#'         and the second  column \code{pycor} representing the coordinates of the
-#'         selected \code{patch} from \code{agents}, or
+#' @return Matrix (`ncol` = 2, `nrow` = 1) with the first column `pxcor`
+#'         and the second  column `pycor` representing the coordinates of the
+#'         selected `patch` from `agents`, or
 #'
-#'         Matrix (\code{ncol} = 2) with the first column \code{pxcor}
-#'         and the second  column \code{pycor} representing the coordinates of the
-#'         selected \code{patches} from \code{agents}, one per individual \code{id}, or
+#'         Matrix (`ncol` = 2) with the first column `pxcor`
+#'         and the second  column `pycor` representing the coordinates of the
+#'         selected `patches` from `agents`, one per individual `id`, or
 #'
-#'         \code{AgentMatrix} object representing the \code{turtle}
-#'         selected from \code{agents}, or
+#'         `AgentMatrix` object representing the `turtle`
+#'         selected from `agents`, or
 #'
-#'         Integer. Vector of \code{who} numbers for the selected \code{turtles} from
-#'         \code{agents}, one per individual \code{id}.
+#'         Integer. Vector of `who` numbers for the selected `turtles` from
+#'         `agents`, one per individual `id`.
 #'
-#' @details If \code{agents} is a matrix with \code{ncol} = 3, the selection of one
-#'          random \code{patch} is done per individual \code{id}. The order of the \code{patches}
-#'          coordinates returned follow the order of \code{id}.
-#'          If \code{agents} is a matrix (\code{ncol} = 2) with columns \code{whoTurtles} and
-#'          \code{id}, the selection of one random \code{turtle} (defined by their \code{whoTurtles})
-#'          is done per individual \code{id}. The order of the \code{who} numbers returned
-#'          follow the order of \code{id}.
+#' @details If `agents` is a matrix with `ncol` = 3, the selection of one
+#'          random `patch` is done per individual `id`. The order of the `patches`
+#'          coordinates returned follow the order of `id`.
+#'          If `agents` is a matrix (`ncol` = 2) with columns `whoTurtles` and
+#'          `id`, the selection of one random `turtle` (defined by their `whoTurtles`)
+#'          is done per individual `id`. The order of the `who` numbers returned
+#'          follow the order of `id`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#one-of}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#one-of>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1114,31 +1114,31 @@ setMethod(
 )
 
 ################################################################################
-#' \code{N} \code{agents} with maximum
+#' `N` `agents` with maximum
 #'
-#' Report the \code{n} \code{patches} or \code{turtles} among \code{agents} which have their variable
+#' Report the `n` `patches` or `turtles` among `agents` which have their variable
 #' among the maximum values.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 2, \code{nrow} = \code{n}) with the first column \code{pxcor} and
-#'         the second column \code{pycor} representing the coordinates of the \code{n}
-#'         \code{patches} among the \code{agents} which have their variable values among
+#' @return Matrix (`ncol` = 2, `nrow` = `n`) with the first column `pxcor` and
+#'         the second column `pycor` representing the coordinates of the `n`
+#'         `patches` among the `agents` which have their variable values among
 #'         the maximum values among the
-#'         \code{agents}, or
+#'         `agents`, or
 #'
-#'         \code{AgentMatrix} of length \code{n} representing the \code{turtles} among the
-#'         \code{agents} which
-#'         have their \code{var} values among the maximum values among the \code{agents}.
+#'         `AgentMatrix` of length `n` representing the `turtles` among the
+#'         `agents` which
+#'         have their `var` values among the maximum values among the `agents`.
 #'
-#' @details \code{world} must not be provided if \code{agents} are \code{turtles}.
+#' @details `world` must not be provided if `agents` are `turtles`.
 #'
-#'          If there is a tie that would make the number of returned \code{patches} or \code{turtles} larger
-#'          than \code{n}, it is broken randomly.
+#'          If there is a tie that would make the number of returned `patches` or `turtles` larger
+#'          than `n`, it is broken randomly.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-n-of}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-n-of>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1274,31 +1274,31 @@ setMethod(
 )
 
 ################################################################################
-#' \code{N} \code{agents} with minimum
+#' `N` `agents` with minimum
 #'
-#' Report the \code{n} \code{patches} or \code{turtles} among \code{agents} which have their variable
+#' Report the `n` `patches` or `turtles` among `agents` which have their variable
 #' among the minimum values.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 2, \code{nrow} = \code{n}) with the first column \code{pxcor} and
-#'         the second column \code{pycor} representing the coordinates of the \code{n}
-#'         \code{patches} among the \code{agents} which have their variable values among
+#' @return Matrix (`ncol` = 2, `nrow` = `n`) with the first column `pxcor` and
+#'         the second column `pycor` representing the coordinates of the `n`
+#'         `patches` among the `agents` which have their variable values among
 #'         the minimum values among the
-#'         \code{agents}, or
+#'         `agents`, or
 #'
-#'         \code{AgentMatrix} of length \code{n} representing the \code{turtles} among the
-#'         \code{agents} which
-#'         have their \code{var} values among the minimum values among the \code{agents}.
+#'         `AgentMatrix` of length `n` representing the `turtles` among the
+#'         `agents` which
+#'         have their `var` values among the minimum values among the `agents`.
 #'
-#' @details \code{world} must not be provided if \code{agents} are \code{turtles}.
+#' @details `world` must not be provided if `agents` are `turtles`.
 #'
-#'          If there is a tie that would make the number of returned \code{patches} or \code{turtles} larger
-#'          than \code{n}, it is broken randomly.
+#'          If there is a tie that would make the number of returned `patches` or `turtles` larger
+#'          than `n`, it is broken randomly.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-n-of}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-n-of>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1436,44 +1436,44 @@ setMethod(
 
 
 ################################################################################
-#' \code{Agents} in radius
+#' `Agents` in radius
 #'
-#' Report the \code{patches} or \code{turtles} among \code{agents2} within given distances of
-#' each of the \code{agents}. Currently, this function multiplies \code{radius} by
-#' 1.0000001 so that the response of \code{inRadius} is inclusive.
+#' Report the `patches` or `turtles` among `agents2` within given distances of
+#' each of the `agents`. Currently, this function multiplies `radius` by
+#' 1.0000001 so that the response of `inRadius` is inclusive.
 #'
 #' @inheritParams fargs
 #'
-#' @param radius  Numeric. Vector of distances from \code{agents} to locate
-#'                \code{agents2}. Must be of length 1 or of length \code{agents}.
+#' @param radius  Numeric. Vector of distances from `agents` to locate
+#'                `agents2`. Must be of length 1 or of length `agents`.
 #'
-#' @param agents2 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-#'               column \code{pycor} representing the \code{patches} coordinates, or
+#' @param agents2 Matrix (`ncol` = 2) with the first column `pxcor` and the second
+#'               column `pycor` representing the `patches` coordinates, or
 #'
-#'               \code{AgentMatrix} object representing the moving \code{agents}.
+#'               `AgentMatrix` object representing the moving `agents`.
 #'
-#' @return Matrix (\code{ncol} = 3) with the first column \code{pxcor}
-#'         and the second column \code{pycor} representing the coordinates of the
-#'         \code{patches} among \code{agents2} within \code{radius} distances for each \code{agents}
-#'         which are represented by the \code{id} column, if
-#'         \code{agents2} are \code{patches}, or
+#' @return Matrix (`ncol` = 3) with the first column `pxcor`
+#'         and the second column `pycor` representing the coordinates of the
+#'         `patches` among `agents2` within `radius` distances for each `agents`
+#'         which are represented by the `id` column, if
+#'         `agents2` are `patches`, or
 #'
-#'         Matrix (\code{ncol} = 2) with the first column \code{who}
-#'         representing the \code{who} numbers of the
-#'         \code{turtles} among \code{agents2} within \code{radius} distances for each \code{agents}
-#'         which are represented by the \code{id} column, if
-#'         \code{agents2} are \code{turtles}.
+#'         Matrix (`ncol` = 2) with the first column `who`
+#'         representing the `who` numbers of the
+#'         `turtles` among `agents2` within `radius` distances for each `agents`
+#'         which are represented by the `id` column, if
+#'         `agents2` are `turtles`.
 #'
-#' @details Distances from/to \code{patches} are calculated from/to their center.
+#' @details Distances from/to `patches` are calculated from/to their center.
 #'
-#'          If \code{torus = FALSE}, \code{world} does not need to be provided.
+#'          If `torus = FALSE`, `world` does not need to be provided.
 #'
-#'          If \code{torus = TRUE}, the \code{radius} distances are calculated
-#'          around the sides of the \code{world} to select \code{agents2}.
+#'          If `torus = TRUE`, the `radius` distances are calculated
+#'          around the sides of the `world` to select `agents2`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#in-radius}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#in-radius>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1488,9 +1488,8 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom rgeos gBuffer
-#' @importFrom sp over
-#' @importFrom sp SpatialPoints
+#' @importFrom sf as_Spatial st_as_sf st_buffer st_sf
+#' @importFrom sp over SpatialPoints
 #' @rdname inRadius
 #'
 #' @author Sarah Bauduin
@@ -1520,7 +1519,12 @@ setMethod(
       agentsSP <- SpatialPoints(coords = agents, proj4string = .projNowhere)
 
       # Create buffers around the locations of agents
-      pBuffer <- gBuffer(agentsSP, byid = TRUE, id = 1:NROW(agents), width = radius, quadsegs = 50)
+      # pBuffer <- gBuffer(agentsSP, byid = TRUE, id = 1:NROW(agents), width = radius, quadsegs = 50)
+      # The package rgeos will be removed
+      # Replacement of gBuffer from rgeos with st_buffer from sf
+      # Need to backtransform pBuffer of sf object into a sp object
+      agents_sf <- st_as_sf(agentsSP)
+      pBuffer <- as_Spatial(st_buffer(agents_sf, dist = radius))
 
       if (torus == TRUE) {
         if (missing(world)) {
@@ -1612,51 +1616,51 @@ setMethod(
 )
 
 ################################################################################
-#' \code{Agents} in cone
+#' `Agents` in cone
 #'
-#' Report the \code{agents} within the "cone of vision" in front of each one of the
-#' \code{turtles}.
+#' Report the `agents` within the "cone of vision" in front of each one of the
+#' `turtles`.
 #'
 #' @inheritParams fargs
 #'
-#' @param radius  Numeric. Vector of distances from \code{turtles} to locate
-#'                \code{agents}. Must be of length 1 or of length \code{turtles}.
+#' @param radius  Numeric. Vector of distances from `turtles` to locate
+#'                `agents`. Must be of length 1 or of length `turtles`.
 #'
 #' @param angle   Numeric. Vector of angles to define the size of the cone of vision
-#'                for the \code{turtles}. The cone of vision is defined between the
-#'                direction of their \code{headings} minus \code{angle / 2}
-#'                to the direction of their \code{headings} plus \code{angle / 2}. Must be of
+#'                for the `turtles`. The cone of vision is defined between the
+#'                direction of their `headings` minus `angle / 2`
+#'                to the direction of their `headings` plus `angle / 2`. Must be of
 #'                length 1 or
-#'                of length \code{turtles}.
+#'                of length `turtles`.
 #'
-#' @return Matrix (\code{ncol} = 3) with the first column \code{pxcor}
-#'         and the second column \code{pycor} representing the coordinates of the
-#'         \code{patches} among \code{agents2} within the cone of vision of each of the
-#'         \code{turtles}
-#'         which are represented by the \code{id} column, if
-#'         \code{agents} are \code{patches}, or
+#' @return Matrix (`ncol` = 3) with the first column `pxcor`
+#'         and the second column `pycor` representing the coordinates of the
+#'         `patches` among `agents2` within the cone of vision of each of the
+#'         `turtles`
+#'         which are represented by the `id` column, if
+#'         `agents` are `patches`, or
 #'
-#'         Matrix (\code{ncol} = 2) with the first column \code{who}
-#'         representing the \code{who} numbers of the
-#'         \code{turtles} among \code{agents2} within the cone of vision of each of  the
-#'         \code{turtles}
-#'         which are represented by the \code{id} column, if
-#'         \code{agents} are \code{turtles}.
+#'         Matrix (`ncol` = 2) with the first column `who`
+#'         representing the `who` numbers of the
+#'         `turtles` among `agents2` within the cone of vision of each of  the
+#'         `turtles`
+#'         which are represented by the `id` column, if
+#'         `agents` are `turtles`.
 #'
-#' @details \code{agents} are reported if there are within \code{radius}
-#'          distance of the \code{turtle} and their direction from the \code{turtle} is within
-#'          \code{[-angle, + angle]} of the \code{turtle}'s heading.
+#' @details `agents` are reported if there are within `radius`
+#'          distance of the `turtle` and their direction from the `turtle` is within
+#'          `[-angle, + angle]` of the `turtle`'s heading.
 #'
-#'          Distances to \code{patches} are calculated to their center.
+#'          Distances to `patches` are calculated to their center.
 #'
-#'          If \code{torus = FALSE}, \code{world} does not need to be provided.
+#'          If `torus = FALSE`, `world` does not need to be provided.
 #'
-#'          If \code{torus = TRUE}, the \code{radius} distances are calculated
-#'          around the sides of the \code{world} to select \code{agents}.
+#'          If `torus = TRUE`, the `radius` distances are calculated
+#'          around the sides of the `world` to select `agents`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#in-cone}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#in-cone>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1740,34 +1744,34 @@ setMethod(
 )
 
 ################################################################################
-#' Set an \code{agents} variable
+#' Set an `agents` variable
 #'
-#' Assign values to the \code{agents} for the selected variables.
+#' Assign values to the `agents` for the selected variables.
 #'
 #' @inheritParams of
 #'
 #' @inheritParams fargs
 #'
-#' @param val Numeric or character. Vector of length 1 or length \code{NLcount(agents)}
-#'            if \code{length(var) == 1}, or
+#' @param val Numeric or character. Vector of length 1 or length `NLcount(agents)`
+#'            if `length(var) == 1`, or
 #'
-#'            Matrix or \code{Dataframe} (\code{ncol} = \code{length(var)}, \code{nrow} = \code{NLcount(agents)}).
-#'            Columns must be in the same order as \code{var}.
+#'            Matrix or `Dataframe` (`ncol` = `length(var)`, `nrow` = `NLcount(agents)`).
+#'            Columns must be in the same order as `var`.
 #'
-#' @return \code{WorldMatrix} or \code{worldArray} object with the values \code{val} assigned to the \code{patches}
-#'         variables \code{var}
-#'         for the \code{agents}, or
+#' @return `WorldMatrix` or `worldArray` object with the values `val` assigned to the `patches`
+#'         variables `var`
+#'         for the `agents`, or
 #'
-#'         \code{AgentMatrix} representing the \code{turtles} with
-#'         the values \code{val} assigned to the variables \code{var} for the \code{agents}.
+#'         `AgentMatrix` representing the `turtles` with
+#'         the values `val` assigned to the variables `var` for the `agents`.
 #'
-#' @details If \code{agents} are \code{patches}, \code{world} must be provided and \code{turtles}
-#'          must not be provided. If \code{agents} are \code{turtles}, \code{turtles} must be
-#'          provided and \code{world} must not be provided.
+#' @details If `agents` are `patches`, `world` must be provided and `turtles`
+#'          must not be provided. If `agents` are `turtles`, `turtles` must be
+#'          provided and `world` must not be provided.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#set}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#set>
 #'
-#' @references Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
+#' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'

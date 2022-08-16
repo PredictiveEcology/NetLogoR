@@ -11,43 +11,45 @@ oneOf(agents)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              Matrix (\code{ncol} = 3) with the first column "\code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates and the
-              third column \code{id}, or
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          Matrix (`ncol` = 3) with the first column "`pxcor` and the second
+          column `pycor` representing the `patches` coordinates and the
+          third column `id`, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}, or
+          `AgentMatrix` object representing the moving `agents`, or
 
-              Matrix (\code{ncol} = 2) with the first column \code{whoTurtles} and the
-              second column \code{id}.}
+          Matrix (`ncol` = 2) with the first column `whoTurtles` and the
+          second column `id`.
+}\if{html}{\out{</div>}}}
 }
 \value{
 Matrix (\code{ncol} = 2, \code{nrow} = 1) with the first column \code{pxcor}
-        and the second  column \code{pycor} representing the coordinates of the
-        selected \code{patch} from \code{agents}, or
+and the second  column \code{pycor} representing the coordinates of the
+selected \code{patch} from \code{agents}, or
 
-        Matrix (\code{ncol} = 2) with the first column \code{pxcor}
-        and the second  column \code{pycor} representing the coordinates of the
-        selected \code{patches} from \code{agents}, one per individual \code{id}, or
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    Matrix (`ncol` = 2) with the first column `pxcor`
+    and the second  column `pycor` representing the coordinates of the
+    selected `patches` from `agents`, one per individual `id`, or
 
-        \code{AgentMatrix} object representing the \code{turtle}
-        selected from \code{agents}, or
+    `AgentMatrix` object representing the `turtle`
+    selected from `agents`, or
 
-        Integer. Vector of \code{who} numbers for the selected \code{turtles} from
-        \code{agents}, one per individual \code{id}.
+    Integer. Vector of `who` numbers for the selected `turtles` from
+    `agents`, one per individual `id`.
+}\if{html}{\out{</div>}}
 }
 \description{
 Report one \code{patch} or \code{turtle} randomly selected among \code{agents}.
 }
 \details{
 If \code{agents} is a matrix with \code{ncol} = 3, the selection of one
-         random \code{patch} is done per individual \code{id}. The order of the \code{patches}
-         coordinates returned follow the order of \code{id}.
-         If \code{agents} is a matrix (\code{ncol} = 2) with columns \code{whoTurtles} and
-         \code{id}, the selection of one random \code{turtle} (defined by their \code{whoTurtles})
-         is done per individual \code{id}. The order of the \code{who} numbers returned
-         follow the order of \code{id}.
+random \code{patch} is done per individual \code{id}. The order of the \code{patches}
+coordinates returned follow the order of \code{id}.
+If \code{agents} is a matrix (\code{ncol} = 2) with columns \code{whoTurtles} and
+\code{id}, the selection of one random \code{turtle} (defined by their \code{whoTurtles})
+is done per individual \code{id}. The order of the \code{who} numbers returned
+follow the order of \code{id}.
 }
 \examples{
 # Patches
@@ -62,8 +64,8 @@ tSelect <- oneOf(agents = t1)
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#one-of}

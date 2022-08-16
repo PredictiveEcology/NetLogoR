@@ -21,11 +21,13 @@ subHeadings(angle1, angle2, range360 = FALSE)
 \arguments{
 \item{angle1}{\code{AgentMatrix} object representing the moving \code{agents}, or
 
-              Numeric. Vector of angles.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          Numeric. Vector of angles.
+}\if{html}{\out{</div>}}}
 
 \item{angle2}{\code{AgentMatrix} object representing the moving \code{agents}, or
 
-              Numeric. Vector of angles.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          Numeric. Vector of angles.
+}\if{html}{\out{</div>}}}
 
 \item{range360}{Logical. If \code{range360 = TRUE}, returned values are
 between 0 and 360 degrees;
@@ -35,21 +37,22 @@ Default is \code{range360 = FALSE}.}
 }
 \value{
 Numeric. Vector of the smallest angles in degrees
-        by which \code{angle1} could be rotated to produce \code{angle2}
-        (i.e., the target heading).
+by which \code{angle1} could be rotated to produce \code{angle2}
+(i.e., the target heading).
 }
 \description{
 Compute the difference between \code{headings}.
 }
 \details{
 This function does the opposite as the one in NetLogo where
-         \code{angle1} is the target heading.
+\code{angle1} is the target heading.
 
-        \code{angle1} and \code{angle2} must be of the same length or if different,
-        one of them must be of length 1.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    `angle1` and `angle2` must be of the same length or if different,
+    one of them must be of length 1.
 
-         Positive values mean clockwise rotations, negative value mean
-         counterclockwise rotations.
+     Positive values mean clockwise rotations, negative value mean
+     counterclockwise rotations.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
@@ -60,8 +63,8 @@ subHeadings(angle1 = t1, angle2 = 0)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#subtract-headings}

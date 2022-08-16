@@ -13,8 +13,8 @@
 }
 \value{
 usually an object of class \code{SpatialPointsDataFrame}; if the coordinates set cover
-        the full set of variables in object, an object of class \code{SpatialPoints} is returned.
-        See \code{\link[sp]{coordinates}}.
+the full set of variables in object, an object of class \code{SpatialPoints} is returned.
+See \code{\link[sp:coordinates]{sp::coordinates()}}.
 }
 \description{
 Set spatial coordinates

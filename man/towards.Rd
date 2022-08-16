@@ -11,17 +11,19 @@ towards(agents, agents2, world, torus = FALSE)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{agents2}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-               column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-               \code{AgentMatrix} object representing the moving \code{agents}, or
+\if{html}{\out{<div class="sourceCode">}}\preformatted{           `AgentMatrix` object representing the moving `agents`, or
 
-               Matrix (\code{ncol} = 2) with the first column \code{x} and the second column
-               \code{y} representing locations coordinates.}
+           Matrix (`ncol` = 2) with the first column `x` and the second column
+           `y` representing locations coordinates.
+}\if{html}{\out{</div>}}}
 
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
@@ -30,27 +32,28 @@ towards(agents, agents2, world, torus = FALSE)
 }
 \value{
 Numeric. Vector of angles in degrees of length equal to the largest
-        number of agents/locations between \code{agents} and \code{agents2}.
+number of agents/locations between \code{agents} and \code{agents2}.
 }
 \description{
 Report the directions of each \code{agents} towards each corresponding \code{agents2}.
 }
 \details{
 \code{agents} and \code{agents2} must have the same number of agents/locations
-         or if different, one of them must have only one agent/location. If
-         \code{agents} and \code{agents2} have the same number of agents/locations,
-         the directions are calculated for each pair \code{agents[i]} and \code{agents2[i]}
-         and not for each \code{agents} towards every single \code{agents2}.
+or if different, one of them must have only one agent/location. If
+\code{agents} and \code{agents2} have the same number of agents/locations,
+the directions are calculated for each pair \code{agents[i]} and \code{agents2[i]}
+and not for each \code{agents} towards every single \code{agents2}.
 
-         If \code{torus = FALSE}, \code{world} does not need to be provided.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If `torus = FALSE`, `world` does not need to be provided.
 
-         If \code{torus = TRUE} and the distance from one \code{agents} to
-         its corresponding \code{agents2} is smaller around the
-         sides of the \code{world} than across it, then the direction to \code{agents2}
-         going around the sides of the \code{world} is returned.
+     If `torus = TRUE` and the distance from one `agents` to
+     its corresponding `agents2` is smaller around the
+     sides of the `world` than across it, then the direction to `agents2`
+     going around the sides of the `world` is returned.
 
-         The direction from a patch to its location returns 0; the direction from
-         a turtle to its location returns the turtle's heading.
+     The direction from a patch to its location returns 0; the direction from
+     a turtle to its location returns the turtle's heading.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
@@ -62,13 +65,14 @@ towards(agents = t1, agents2 = cbind(x = 0, y = 0))
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#towards}
 
-         \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#towardsxy}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#towardsxy>
+}\if{html}{\out{</div>}}
 }
 \author{
 Sarah Bauduin

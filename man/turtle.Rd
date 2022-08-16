@@ -22,8 +22,8 @@ If missing, there is no distinction based upon \code{breed}.}
 }
 \value{
 \code{AgentMatrix} of the selected \code{turtles} sorted in the order of
-        the \code{who} numbers requested. If \code{breed} was provided, the
-        \code{turtles} selected are of one of the \code{breed}.
+the \code{who} numbers requested. If \code{breed} was provided, the
+\code{turtles} selected are of one of the \code{breed}.
 }
 \description{
 Report the individuals among \code{turtles} based on their \code{who} numbers
@@ -31,11 +31,12 @@ and \code{breed}.
 }
 \details{
 If no \code{turtle} matches the given \code{who} numbers, with potentially
-         one of the given
-         \code{breed}, inside \code{turtles}, then an empty \code{agentMatrix} is returned.
+one of the given
+\code{breed}, inside \code{turtles}, then an empty \code{agentMatrix} is returned.
 
-         If there are duplicates \code{who} numbers among the \code{turtles}, the first
-         matching \code{turtle} with the requested \code{who} number is returned.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If there are duplicates `who` numbers among the `turtles`, the first
+     matching `turtle` with the requested `who` number is returned.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
@@ -46,8 +47,8 @@ t2 <- turtle(t1, who = 2)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtle}

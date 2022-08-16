@@ -20,10 +20,10 @@ Report a \code{turtle} \code{agentset} containing all unique \code{turtles} prov
 }
 \details{
 Duplicated \code{turtles} are identified based only on their \code{who} numbers.
-         The \code{turtle} chosen for a who number is the first one given in the inputs.
-         To keep all \code{turtles} from the inputs, use \code{NLset()} to
-         reassign \code{who} numbers in some of the inputs, prior using
-         \code{turtleSet()}, to avoid \code{turtles} with duplicated \code{who} numbers.
+The \code{turtle} chosen for a who number is the first one given in the inputs.
+To keep all \code{turtles} from the inputs, use \code{NLset()} to
+reassign \code{who} numbers in some of the inputs, prior using
+\code{turtleSet()}, to avoid \code{turtles} with duplicated \code{who} numbers.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
@@ -38,8 +38,8 @@ t4 <- turtleSet(t1, t2, t3)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtle-set}

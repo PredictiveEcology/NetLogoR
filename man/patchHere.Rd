@@ -16,8 +16,8 @@ patchHere(world, turtles)
 }
 \value{
 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-        \code{pycor} representing the coordinates of the \code{patches} at the \code{turtles}
-        location. The order of the \code{patches} follows the order of the \code{turtles}.
+\code{pycor} representing the coordinates of the \code{patches} at the \code{turtles}
+location. The order of the \code{patches} follows the order of the \code{turtles}.
 }
 \description{
 Report the coordinates of the \code{patches} under the \code{turtles}
@@ -25,8 +25,8 @@ locations.
 }
 \details{
 If a \code{turtle} is located outside of the \code{world}'s extent,
-         \code{NA} are returned
-         for the \code{patch} coordinates.
+\code{NA} are returned
+for the \code{patch} coordinates.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
@@ -37,8 +37,8 @@ patchHere(world = w1, turtles = t1)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-here}

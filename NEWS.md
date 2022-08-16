@@ -1,13 +1,20 @@
 Known issues: <https://github.com/PredictiveEcology/NetLogoR/issues>
 
+Version 0.3.11
+=============
+
+## Dependency changes
+* removed dependency: `rgeos`
+* added dependency: `sf`
+
 Version 0.3.10
 =============
 
-# Dependency changes
+## Dependency changes
 * removed support for R 3.6. To our knowledge, `NetLogoR` will still work with R 3.6, but we no longer support it.
 * removed dependencies: `car`, `Hmisc`, `plyr`
 
-# Bugfixes
+## Bugfixes
 * using sample in several agent functions would have given the wrong sample (see `?sample`) when the length of the argument `x` is 1.
   This occurred under some (but now all) conditions where there are multiple agents with the same `id`, along with some agents with only one member within an `id`, and where the objective is to select one of the using `oneOf` or `nOf(agent, n = 1)`. Now we use `resample` as defined in the examples of `?base::sample`.
 * minor bugfixes
@@ -15,11 +22,12 @@ Version 0.3.10
 Version 0.3.9
 =============
 
-# Bugfixes
+## Bugfixes
 * Fix for GDAL/PROJ crs issue (#43, @rsbivand)
 
 Version 0.3.8
 =============
+
 * Drop support for R 3.5 (several dependencies require R >= 3.6)
 * `NLwith()` now handles `NA` values (#36)
 * fixed bug in Programming Guide vignette (@DataStrategist, #42)

@@ -16,11 +16,11 @@ PxcorPycorFromCell(world, cellNum)
 }
 \value{
 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-        column \code{pycor} in the order of the given \code{cellNum}.
+column \code{pycor} in the order of the given \code{cellNum}.
 }
 \description{
 Report the \code{patches} coordinates \code{pxcor} and \code{pycor} given the cells
-numbers as defined for a \code{Raster*} object.
+numbers as defined for a \verb{Raster*} object.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)

@@ -14,8 +14,8 @@ turtles2spdf(turtles)
 }
 \value{
 \code{SpatialPointsDataFrame} object representing the moving \code{agents}
-       (coordinates and data)
-        as contained in \code{turtles}.
+(coordinates and data)
+as contained in \code{turtles}.
 }
 \description{
 Convert an \code{agentMatrix} object into a \code{SpatialPointsDataFrame} object.

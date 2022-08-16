@@ -13,9 +13,10 @@ patchDistDir(world, agents, dist, angle, torus = FALSE)
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{dist}{Numeric. Vector of distances from the \code{agents}. Must be
 of length 1 or of the same length as the number of \code{agents}.}
@@ -29,9 +30,9 @@ must be of length 1 or of the same length as the number of
 }
 \value{
 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-        \code{pycor} representing the coordinates of the \code{patches} at the distances
-        \code{dist} and directions \code{angle} of \code{agents}.
-        The order of the \code{patches} follows the order of the \code{agents}.
+\code{pycor} representing the coordinates of the \code{patches} at the distances
+\code{dist} and directions \code{angle} of \code{agents}.
+The order of the \code{patches} follows the order of the \code{agents}.
 }
 \description{
 Report the coordinates of the \code{patches} at the given
@@ -39,15 +40,16 @@ distances and directions from the \code{agents}.
 }
 \details{
 If \code{torus = FALSE} and the \code{patch} at distance \code{dist} and
-         direction \code{angle} of an \code{agent} is outside the \code{world}'s extent,
-         \code{NA} are returned for the \code{patch} coordinates.
-         If \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world}
-         are returned.
+direction \code{angle} of an \code{agent} is outside the \code{world}'s extent,
+\code{NA} are returned for the \code{patch} coordinates.
+If \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world}
+are returned.
 
-         If \code{agents} are \code{turtles}, their \code{headings} are not taken into account;
-         the given directions \code{angle} are used. To find a \code{patch} at certain
-         distance from a \code{turtle} using the \code{turtle}'s \code{heading}, look at \code{pacthAhead()},
-         \code{patchLeft()} or \code{patchRight()}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If `agents` are `turtles`, their `headings` are not taken into account;
+     the given directions `angle` are used. To find a `patch` at certain
+     distance from a `turtle` using the `turtle`'s `heading`, look at `pacthAhead()`,
+     `patchLeft()` or `patchRight()`.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
@@ -58,8 +60,8 @@ p2 <- patchDistDir(world = w1, agents = t1, dist = 1, angle = 45)
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance}

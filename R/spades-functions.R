@@ -3,20 +3,20 @@
 #'
 #' Generally for model development purposes.
 #'
-#' If \code{withHeading} used, then obj must be a \code{SpatialPointsDataFrame}
-#' that contains two columns, \code{x1} and \code{y1}, with the immediately previous
+#' If `withHeading` used, then obj must be a `SpatialPointsDataFrame`
+#' that contains two columns, `x1` and `y1`, with the immediately previous
 #' agent locations.
 #'
-#' @param obj A \code{SpatialPoints*} object, or matrix of coordinates.
+#' @param obj A `SpatialPoints*` object, or matrix of coordinates.
 #'
-#' @param bounds Either a \code{Raster*}, \code{Extent}, or \code{bbox} object
+#' @param bounds Either a `Raster*`, `Extent`, or `bbox` object
 #'               defining bounds to wrap around.
 #'
-#' @param withHeading Logical. If \code{TRUE}, then the previous points must be
+#' @param withHeading Logical. If `TRUE`, then the previous points must be
 #' wrapped also so that the subsequent heading calculation will work.
-#' Default \code{FALSE}. See details.
+#' Default `FALSE`. See details.
 #'
-#' @return Same class as \code{obj}, but with coordinates updated to reflect the wrapping.
+#' @return Same class as `obj`, but with coordinates updated to reflect the wrapping.
 #'
 #' @author Eliot McIntire
 #' @export
@@ -190,8 +190,8 @@ setMethod(
 #' @param x,y   a named list
 #'
 #' @return A named list, with elements sorted by name.
-#'          The values of matching elements in list \code{y}
-#'          replace the values in list \code{x}.
+#'          The values of matching elements in list `y`
+#'          replace the values in list `x`.
 #'
 #' @author Alex Chubaty
 #' @export

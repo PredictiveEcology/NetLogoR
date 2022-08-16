@@ -143,6 +143,7 @@ test_that("create agentMatrix does not work", {
 
 test_that("agentMatrix benchmarking", {
   skip_on_cran()
+  skip_on_ci()
 
   set.seed(20180924) ## TODO: why are some seeds failing?
 
@@ -186,7 +187,7 @@ test_that("agentMatrix benchmarking", {
         )
       }
     ))
-    expect_gt(mb$median[1] / mb$median[3], 3) # expect it is 3 times faster
+    expect_gt(mb$median[1] / mb$median[3], 3) # expect it is ~3 times faster
   }
 
   # check just numerics

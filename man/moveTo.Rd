@@ -13,25 +13,27 @@ moveTo(turtles, agents)
 \item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 }
 \value{
 \code{AgentMatrix} representing the \code{turtles} with updated coordinates
-        and updated data for their previous coordinates \code{prevX} and \code{prevY}.
+and updated data for their previous coordinates \code{prevX} and \code{prevY}.
 }
 \description{
 Move the \code{turtles} to the \code{agents}' locations.
 }
 \details{
 The number of \code{agents} must be equal to 1 or to
-         length \code{turtles}.
+length \code{turtles}.
 
-         The \code{turtle}'s \code{headings} are not affected with this function.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     The `turtle`'s `headings` are not affected with this function.
 
-         If a \code{turtle} is moving to a \code{patch} location, it will be located at
-         the \code{patch} center.
+     If a `turtle` is moving to a `patch` location, it will be located at
+     the `patch` center.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9,
@@ -50,8 +52,8 @@ points(t1, col = "blue", pch = 16)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#move-to}

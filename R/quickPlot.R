@@ -1,20 +1,20 @@
-#' \code{quickPlot} classes
+#' `quickPlot` classes
 #'
 #' \pkg{quickPlot} offers a type of plotting that is modular.
 #' Users of NetLogoR may find this useful for simulation modeling.
 #' We have put in place the required methods and imported the appropriate classes
-#' to use the \code{quickPlot::Plot} function.
-#' Users can still use \code{plot} from the \pkg{graphics} package, but it is not modular.
+#' to use the `quickPlot::Plot` function.
+#' Users can still use `plot` from the \pkg{graphics} package, but it is not modular.
 #'
-#' This adds \code{agentMatrix} to the \code{.quickPlottables}, \code{.quickObjects},
-#' and \code{spatialObjects}.
+#' This adds `agentMatrix` to the `.quickPlottables`, `.quickObjects`,
+#' and `spatialObjects`.
 #'
-#' This adds \code{worldMatrix} to the \code{.quickPlottables}, \code{.quickObjects},
-#' \code{spatialObjects} and \code{griddedClasses}.
+#' This adds `worldMatrix` to the `.quickPlottables`, `.quickObjects`,
+#' `spatialObjects` and `griddedClasses`.
 #'
-#' @seealso \code{\link{quickPlotClasses}}
+#' @seealso [quickPlotClasses()]
 #'
-#' @slot members \code{\link{.quickPlotObjects}} and \code{\link{.quickPlot}}
+#' @slot members [.quickPlotObjects()] and [.quickPlot()]
 #'
 #' @aliases quickPlottables
 #' @author Eliot McIntire
@@ -37,7 +37,7 @@ setIs("worldArray", ".quickPlotObjects")
 setIs("worldArray", "griddedClasses")
 setIs("worldArray", "spatialObjects")
 
-#' Methods for \code{quickPlot}
+#' Methods for `quickPlot`
 #'
 #' These are required to create plotting methods to work with \pkg{quickPlot}.
 #'
@@ -62,8 +62,8 @@ if (!isGeneric(".plotGrob")) {
   })
 }
 
-#' The suggested package \code{fastshp} can be installed with:
-#' \code{install.packages("fastshp", repos = "https://rforge.net", type = "source")}.
+#' The suggested package `fastshp` can be installed with:
+#' `install.packages("fastshp", repos = "https://rforge.net", type = "source")`.
 #'
 #' @export
 #' @exportMethod .plotGrob

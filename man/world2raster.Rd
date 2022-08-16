@@ -4,7 +4,7 @@
 \alias{world2raster}
 \alias{world2raster,worldMatrix-method}
 \alias{world2raster,worldArray-method}
-\title{Convert a \code{worldMatrix} or \code{worldArray} object into a \code{Raster*} object}
+\title{Convert a \code{worldMatrix} or \code{worldArray} object into a \verb{Raster*} object}
 \usage{
 world2raster(world)
 
@@ -17,16 +17,16 @@ world2raster(world)
 }
 \value{
 \code{RasterLayer} or \code{RasterStack} object depending on the input \code{world}.
-        \code{Patches} value are retained from the \code{world}.
+\code{Patches} value are retained from the \code{world}.
 }
 \description{
 Convert a \code{worldMatrix} object into a \code{RasterLayer} object or a
 \code{worldArray} object into a \code{RasterStack} object
 }
 \details{
-The \code{Raster*} returned has the same extent and resolution as the \code{world}
-         with round coordinates at the center of the cells and coordinates \code{x.5}
-         at the edges of the cells.
+The \verb{Raster*} returned has the same extent and resolution as the \code{world}
+with round coordinates at the center of the cells and coordinates \code{x.5}
+at the edges of the cells.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = runif(100))

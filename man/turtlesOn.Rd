@@ -18,9 +18,10 @@ turtlesOn(world, turtles, agents, breed, simplify = TRUE)
 \item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{breed}{Characters. Vector of \code{breed} names for the selected \code{turtles}.
 If missing, there is no distinction based upon \code{breed}.}
@@ -32,15 +33,16 @@ individually.}
 }
 \value{
 \code{AgentMatrix} representing any individuals from \code{turtles} of
-        any of the given \code{breed}, if specified,
-        located on the same \code{patches} as any of the \code{agents}, if \code{simplify = TRUE}, or
+any of the given \code{breed}, if specified,
+located on the same \code{patches} as any of the \code{agents}, if \code{simplify = TRUE}, or
 
-        Matrix (\code{ncol} = 2) with the first column \code{whoTurtles} and the second column
-        \code{id} showing which \code{turtles} are on the same
-        \code{patches} as which \code{agents} represented by \code{id}, if \code{simplify = FALSE}.
-        \code{id} represents and follows the order of the \code{agents}. \code{id} does not represent
-        the \code{who} numbers
-        of the \code{agents} if \code{agents} are \code{turtles}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    Matrix (`ncol` = 2) with the first column `whoTurtles` and the second column
+    `id` showing which `turtles` are on the same
+    `patches` as which `agents` represented by `id`, if `simplify = FALSE`.
+    `id` represents and follows the order of the `agents`. `id` does not represent
+    the `who` numbers
+    of the `agents` if `agents` are `turtles`.
+}\if{html}{\out{</div>}}
 }
 \description{
 Report the individuals among \code{turtles} that are on the same \code{patches} as
@@ -48,7 +50,7 @@ the \code{agents}.
 }
 \details{
 The \code{agents} must be located inside the
-         \code{world}'s extent.
+\code{world}'s extent.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9,
@@ -63,8 +65,8 @@ t2 <- turtlesOn(world = w1, turtles = t1, agents = patch(w1, 2, 2))
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtles-on}

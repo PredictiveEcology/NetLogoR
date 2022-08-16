@@ -18,7 +18,7 @@ NLworldIndex(world, cellNum)
 Numeric. Vector of \code{worldMatrix} indices.
 }
 \description{
-Convert vector indices or \code{Raster*} cell numbers into \code{worldMatrix} indices.
+Convert vector indices or \verb{Raster*} cell numbers into \code{worldMatrix} indices.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 1:100)

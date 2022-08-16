@@ -22,7 +22,7 @@ or of the same length as \code{pxcor}.}
 Numeric. Vector of cells number.
 }
 \description{
-Report the cells numbers as defined for a \code{Raster*} object given the \code{patches}
+Report the cells numbers as defined for a \verb{Raster*} object given the \code{patches}
 coordinates \code{pxcor} and \code{pycor}.
 }
 \examples{

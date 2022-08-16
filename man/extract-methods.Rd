@@ -92,11 +92,11 @@ in which to replace element(s).}
 
 \item{value}{Any R object}
 
-\item{name}{A literal character string or a \code{\link{name}} (possibly backtick quoted).}
+\item{name}{A literal character string or a \code{\link[=name]{name()}} (possibly backtick quoted).}
 }
 \value{
 An \code{agentMatrix} when full row(s), full column(s) or element(s)
-        at specific row(s) and column(s) is/are extracted.
+at specific row(s) and column(s) is/are extracted.
 }
 \description{
 Operators acting on vectors, matrices, arrays and lists to extract or replace parts.
@@ -105,6 +105,6 @@ Operators acting on vectors, matrices, arrays and lists to extract or replace pa
 Extract methods for \code{agentMatrix} class will generally maintain the \code{agentMatrix} class.
 This means that there will still be coordinates, character columns represented as numerics etc.
 \code{$} is for extracting the raw columns and does not maintain the \code{agentMatrix} class.
-\code{[]} will extract all values, and result in a data.frame with the correct character and
+\verb{[]} will extract all values, and result in a data.frame with the correct character and
 numeric columns.
 }
