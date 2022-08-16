@@ -64,6 +64,10 @@ Suggests:
     rmarkdown,
     SpaDES.core,
     testthat
+Remotes:
+    s-u/fastshp,
+    PredictiveEcology/SpaDES.tools@development,
+    PredictiveEcology/SpaDES.core@development
 Additional_repositories: https://rforge.net
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
