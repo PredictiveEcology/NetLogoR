@@ -35,8 +35,8 @@ If missing, \code{colors} are assigned using the function \code{rainbow(n)}.}
 }
 \value{
 \code{AgentMatrix} object of length \code{n} with data for the
-        \code{turtles} being: \code{xcor}, \code{ycor}, \code{who}, \code{heading}, \code{prevX}, \code{prevY},
-        \code{breed}, and \code{color}.
+\code{turtles} being: \code{xcor}, \code{ycor}, \code{who}, \code{heading}, \code{prevX}, \code{prevY},
+\code{breed}, and \code{color}.
 }
 \description{
 Create \code{n} moving \code{agents} with a set of defined variables.
@@ -44,11 +44,12 @@ Create \code{n} moving \code{agents} with a set of defined variables.
 \details{
 If \code{coords} is provided, \code{world} must not be provided.
 
-         The identity of the \code{turtles} is defined by their \code{who} number. This
-         numbering starts at 0 and increments by 1.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     The identity of the `turtles` is defined by their `who` number. This
+     numbering starts at 0 and increments by 1.
 
-         The coordinates from the previous time step are stored in \code{prevX} and
-         \code{prevY}. The initial values are \code{NA}.
+     The coordinates from the previous time step are stored in `prevX` and
+     `prevY`. The initial values are `NA`.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
@@ -61,8 +62,8 @@ points(t1, col = of(agents = t1, var = "color"), pch = 16)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#create-turtles}

@@ -23,7 +23,7 @@ If missing, \code{NA} is given.}
 }
 \value{
 \code{AgentMatrix} representing the \code{turtles} with the new
-        variable \code{tVar} added.
+variable \code{tVar} added.
 }
 \description{
 Create a new variable for the \code{turtles}.
@@ -36,8 +36,8 @@ t1 <- turtlesOwn(turtles = t1, tVar = "sex", tVal = c("F", "F", "F", "M", "M"))
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtles-own}

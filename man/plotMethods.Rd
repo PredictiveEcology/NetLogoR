@@ -18,7 +18,7 @@
 \arguments{
 \item{x}{an \code{agentMatrix}, \code{worldMatrix} or \code{worldArray} object}
 
-\item{...}{arguments passed to plot methods for matrix (\code{agentMatrix}) or \code{raster} (\code{world*})}
+\item{...}{arguments passed to plot methods for matrix (\code{agentMatrix}) or \code{raster} (\verb{world*})}
 }
 \value{
 none; invoked for side-effect of generating a plot.

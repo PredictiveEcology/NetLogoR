@@ -11,32 +11,36 @@ other(agents, except)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{except}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 }
 \value{
 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-        column \code{pycor} representing the \code{patches} in \code{agents} without
-        the ones in \code{except}, or
+column \code{pycor} representing the \code{patches} in \code{agents} without
+the ones in \code{except}, or
 
-        \code{AgentMatrix} representing the \code{turtles} in \code{agents} without
-        the ones in \code{except}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    `AgentMatrix` representing the `turtles` in `agents` without
+    the ones in `except`.
+}\if{html}{\out{</div>}}
 }
 \description{
 Report an \code{agentset} of the \code{agents} except specific ones.
 }
 \details{
 Both \code{agents} and \code{except} must be of the same class (e.g., both
-         \code{patches} or both \code{turtles}).
+\code{patches} or both \code{turtles}).
 
-         Warning: this function removes \code{turtles} only based on similar \code{who} numbers
-         and \code{breed} names.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     Warning: this function removes `turtles` only based on similar `who` numbers
+     and `breed` names.
+}\if{html}{\out{</div>}}
 }
 \examples{
 # Patches
@@ -53,8 +57,8 @@ NLcount(t2) # 9 turtles
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#other}

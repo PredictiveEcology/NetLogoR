@@ -14,8 +14,8 @@ patches(world)
 }
 \value{
 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-        \code{pycor} representing the \code{patches} coordinates. The order of the \code{patches}
-        follows the order of the cells numbers as defined for a \code{Raster*} object.
+\code{pycor} representing the \code{patches} coordinates. The order of the \code{patches}
+follows the order of the cells numbers as defined for a \verb{Raster*} object.
 }
 \description{
 Report the coordinates of all the \code{patches} in the \code{world}.
@@ -28,8 +28,8 @@ NLcount(allPatches) # 100 patches
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patches}

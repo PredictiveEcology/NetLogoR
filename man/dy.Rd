@@ -30,8 +30,8 @@ to move forward the given distances with their current \code{headings}.
 }
 \details{
 Report the cosine of the \code{turtles}' \code{heading} multiplied by the \code{dist}
-         values. Heading 0 is north and angles are calculated in degrees in a
-         clockwise manner.
+values. Heading 0 is north and angles are calculated in degrees in a
+clockwise manner.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
@@ -42,8 +42,8 @@ dy(turtles = t1)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#dxy}

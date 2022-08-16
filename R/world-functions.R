@@ -1,13 +1,13 @@
 ################################################################################
-#' Maximum \code{pxcor}
+#' Maximum `pxcor`
 #'
-#' Report the patches maximum \code{pxcor} in the \code{world}.
+#' Report the patches maximum `pxcor` in the `world`.
 #'
 #' @inheritParams fargs
 #'
 #' @return Integer.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-pcor}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-pcor>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -41,15 +41,15 @@ setMethod(
 
 
 ################################################################################
-#' Maximum \code{pycor}
+#' Maximum `pycor`
 #'
-#' Report the patches maximum \code{pycor} in the \code{world}.
+#' Report the patches maximum `pycor` in the `world`.
 #'
 #' @inheritParams fargs
 #'
 #' @return Integer.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-pcor}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-pcor>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -83,15 +83,15 @@ setMethod(
 
 
 ################################################################################
-#' Minimum \code{pxcor}
+#' Minimum `pxcor`
 #'
-#' Report the patches minimum \code{pxcor} in the \code{world}.
+#' Report the patches minimum `pxcor` in the `world`.
 #'
 #' @inheritParams fargs
 #'
 #' @return Integer.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-pcor}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-pcor>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -125,15 +125,15 @@ setMethod(
 
 
 ################################################################################
-#' Minimum \code{pycor}
+#' Minimum `pycor`
 #'
-#' Report the patches minimum \code{pycor} in the \code{world}.
+#' Report the patches minimum `pycor` in the `world`.
 #'
 #' @inheritParams fargs
 #'
 #' @return Integer.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-pcor}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-pcor>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -167,15 +167,15 @@ setMethod(
 
 
 ################################################################################
-#' \code{World} width
+#' `World` width
 #'
-#' Report the width of the \code{world} in \code{patch} number.
+#' Report the width of the `world` in `patch` number.
 #'
 #' @inheritParams fargs
 #'
 #' @return Integer.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#world-dim}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#world-dim>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -210,15 +210,15 @@ setMethod(
 
 
 ################################################################################
-#' \code{World} height
+#' `World` height
 #'
-#' Report the height of the \code{world} in \code{patch} number.
+#' Report the height of the `world` in `patch` number.
 #'
 #' @inheritParams fargs
 #'
 #' @return Integer.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#world-dim}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#world-dim>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -253,15 +253,15 @@ setMethod(
 
 
 ################################################################################
-#' Clear \code{world}'s \code{patches}
+#' Clear `world`'s `patches`
 #'
-#' Reset all \code{patches} values to \code{NA}.
+#' Reset all `patches` values to `NA`.
 #'
 #' @inheritParams fargs
 #'
-#' @return \code{WorldMatrix} object with \code{NA} values for all \code{patches}.
+#' @return `WorldMatrix` object with `NA` values for all `patches`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-patches}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-patches>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -316,24 +316,24 @@ setMethod(
 
 
 ################################################################################
-#' Convert a \code{Raster*} object into a \code{worldMatrix} or \code{worldArray} object
+#' Convert a `Raster*` object into a `worldMatrix` or `worldArray` object
 #'
-#' Convert a \code{RasterLayer} object into a \code{worldMatrix} object or a \code{RasterStack} object
-#' into a \code{worldArray} object.
+#' Convert a `RasterLayer` object into a `worldMatrix` object or a `RasterStack` object
+#' into a `worldArray` object.
 #'
-#' @param raster \code{RasterLayer} or \code{RasterStack} object.
+#' @param raster `RasterLayer` or `RasterStack` object.
 #'
-#' @return \code{WorldMatrix} or \code{worldArray} object depending on the input \code{raster}.
-#'         \code{Patches} value are retained from the \code{raster}.
+#' @return `WorldMatrix` or `worldArray` object depending on the input `raster`.
+#'         `Patches` value are retained from the `raster`.
 #'
-#' @details See \code{help("worldMatrix-class")} or \code{help("worldArray-class")}
+#' @details See `help("worldMatrix-class")` or `help("worldArray-class")`
 #'          for more details on the classes.
 #'
-#'          The number of rows and columns, as well as the cell values of the \code{raster}
+#'          The number of rows and columns, as well as the cell values of the `raster`
 #'          are kept the same. However, to match the coordinates system and resolution of a
-#'          \code{worldMatrix} or \code{worldArray}, the grid is shifted by a 1/2 cell to have
+#'          `worldMatrix` or `worldArray`, the grid is shifted by a 1/2 cell to have
 #'          round coordinate values at the center of the patches and patch size is equal to (1,1).
-#'          The bottom left corner cell coordinates of the \code{worldMatrix} or \code{worldArray}
+#'          The bottom left corner cell coordinates of the `worldMatrix` or `worldArray`
 #'          will be (pxcor = 0, pycor = 0).
 #'
 #' @examples
@@ -388,18 +388,18 @@ setMethod(
 })
 
 ################################################################################
-#' Convert a \code{worldMatrix} or \code{worldArray} object into a \code{Raster*} object
+#' Convert a `worldMatrix` or `worldArray` object into a `Raster*` object
 #'
-#' Convert a \code{worldMatrix} object into a \code{RasterLayer} object or a
-#' \code{worldArray} object into a \code{RasterStack} object
+#' Convert a `worldMatrix` object into a `RasterLayer` object or a
+#' `worldArray` object into a `RasterStack` object
 #'
 #' @inheritParams fargs
 #'
-#' @return \code{RasterLayer} or \code{RasterStack} object depending on the input \code{world}.
-#'         \code{Patches} value are retained from the \code{world}.
+#' @return `RasterLayer` or `RasterStack` object depending on the input `world`.
+#'         `Patches` value are retained from the `world`.
 #'
-#' @details The \code{Raster*} returned has the same extent and resolution as the \code{world}
-#'          with round coordinates at the center of the cells and coordinates \code{x.5}
+#' @details The `Raster*` returned has the same extent and resolution as the `world`
+#'          with round coordinates at the center of the cells and coordinates `x.5`
 #'          at the edges of the cells.
 #'
 #' @examples
@@ -448,11 +448,11 @@ setMethod(
     return(rasterStack)
 })
 
-#' Key base R functions for \code{worldNLR} classes
+#' Key base R functions for `worldNLR` classes
 #'
 #' Slight modifications from the default versions.
 #'
-#' @param object  An \code{agentMatrix} object.
+#' @param object  An `agentMatrix` object.
 #'
 #' @export
 #' @importFrom quickPlot numLayers

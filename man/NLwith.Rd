@@ -18,9 +18,10 @@ NLwith(agents, world, var, val)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
@@ -38,13 +39,14 @@ as well as any variable created using \code{turtlesOwn()}.}
 }
 \value{
 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-        \code{pycor} representing the coordinates of the \code{patches} among the \code{agents}
-        which have their variable
-        equals to any \code{val}, or
+\code{pycor} representing the coordinates of the \code{patches} among the \code{agents}
+which have their variable
+equals to any \code{val}, or
 
-        \code{AgentMatrix} representing the \code{turtles} among the \code{agents}
-        which have their variable
-        \code{var} equals to any \code{val}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    `AgentMatrix` representing the `turtles` among the `agents`
+    which have their variable
+    `var` equals to any `val`.
+}\if{html}{\out{</div>}}
 }
 \description{
 Report the \code{patches} or the \code{turtles} among \code{agents} which have their variable
@@ -53,9 +55,10 @@ equals to specific values.
 \details{
 \code{world} must not be provided if \code{agents} are \code{turtles}.
 
-         This is equivalent in R to subsetting.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     This is equivalent in R to subsetting.
 
-         \code{val} can include \code{NA}.
+     `val` can include `NA`.
+}\if{html}{\out{</div>}}
 }
 \examples{
 # Patches
@@ -74,8 +77,8 @@ t3 <- NLwith(agents = t1, var = "breed", val = c("sheep", "wolf"))
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with}

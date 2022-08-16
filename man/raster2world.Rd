@@ -4,7 +4,7 @@
 \alias{raster2world}
 \alias{raster2world,RasterLayer-method}
 \alias{raster2world,RasterStack-method}
-\title{Convert a \code{Raster*} object into a \code{worldMatrix} or \code{worldArray} object}
+\title{Convert a \verb{Raster*} object into a \code{worldMatrix} or \code{worldArray} object}
 \usage{
 raster2world(raster)
 
@@ -17,7 +17,7 @@ raster2world(raster)
 }
 \value{
 \code{WorldMatrix} or \code{worldArray} object depending on the input \code{raster}.
-        \code{Patches} value are retained from the \code{raster}.
+\code{Patches} value are retained from the \code{raster}.
 }
 \description{
 Convert a \code{RasterLayer} object into a \code{worldMatrix} object or a \code{RasterStack} object
@@ -25,14 +25,15 @@ into a \code{worldArray} object.
 }
 \details{
 See \code{help("worldMatrix-class")} or \code{help("worldArray-class")}
-         for more details on the classes.
+for more details on the classes.
 
-         The number of rows and columns, as well as the cell values of the \code{raster}
-         are kept the same. However, to match the coordinates system and resolution of a
-         \code{worldMatrix} or \code{worldArray}, the grid is shifted by a 1/2 cell to have
-         round coordinate values at the center of the patches and patch size is equal to (1,1).
-         The bottom left corner cell coordinates of the \code{worldMatrix} or \code{worldArray}
-         will be (pxcor = 0, pycor = 0).
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     The number of rows and columns, as well as the cell values of the `raster`
+     are kept the same. However, to match the coordinates system and resolution of a
+     `worldMatrix` or `worldArray`, the grid is shifted by a 1/2 cell to have
+     round coordinate values at the center of the patches and patch size is equal to (1,1).
+     The bottom left corner cell coordinates of the `worldMatrix` or `worldArray`
+     will be (pxcor = 0, pycor = 0).
+}\if{html}{\out{</div>}}
 }
 \examples{
 r1 <- raster(extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)

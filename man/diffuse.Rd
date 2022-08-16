@@ -37,14 +37,15 @@ Each \code{patch} gives an equal share of a portion of its value to its neighbor
 \details{
 What is given is lost for the patches.
 
-         If \code{torus = TRUE}, all \code{patches} have \code{nNeighbors} \code{patches} around
-         them, which
-         some may be on the other sides of the \code{world}. If \code{torus = FALSE},
-         \code{patches} located on the edges of the \code{world} have less than
-         \code{nNeighbors} \code{patches} around them.
-         However, each neighbor still gets 1/4 or 1/8 of the shared amount
-         and the diffusing
-         patch keeps the leftover.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If `torus = TRUE`, all `patches` have `nNeighbors` `patches` around
+     them, which
+     some may be on the other sides of the `world`. If `torus = FALSE`,
+     `patches` located on the edges of the `world` have less than
+     `nNeighbors` `patches` around them.
+     However, each neighbor still gets 1/4 or 1/8 of the shared amount
+     and the diffusing
+     patch keeps the leftover.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
@@ -58,13 +59,14 @@ plot(w2)
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse}
 
-         \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse4}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse4>
+}\if{html}{\out{</div>}}
 }
 \author{
 Sarah Bauduin

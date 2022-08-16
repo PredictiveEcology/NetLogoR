@@ -8,7 +8,7 @@ noTurtles()
 }
 \value{
 \code{AgentMatrix} with the \code{turtle} variables defined as when using
-        \code{createTurtles()} but with 0 \code{turtle}.
+\code{createTurtles()} but with 0 \code{turtle}.
 }
 \description{
 Report an empty \code{turtle} \code{agentset}.
@@ -20,8 +20,8 @@ NLcount(t1)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#no-turtles}

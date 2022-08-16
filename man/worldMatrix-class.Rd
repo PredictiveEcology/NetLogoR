@@ -13,13 +13,13 @@ A \code{worldMatrix} object can be viewed as a grid composed of squared \code{pa
 \code{pycor} are always integer and increment by 1. \code{pxcor} increases as
 you move right and \code{pycor} increases as you move up.  \code{pxcor} and
 \code{pycor} can be negative if there are \code{patches} to the left or below the \code{patch}
-\code{[pxcor = 0, pycor = 0]}.
+\verb{[pxcor = 0, pycor = 0]}.
 }
 \details{
 The first four slots of the \code{worldMatrix} are: \code{minPxcor}, \code{maxPxcor},
 \code{minPycor}, \code{maxPycor} which represent the minimum and maximum \code{patches}
 coordinates in the \code{worldMatrix}.
-The slot \code{extent} is similar to a \code{Raster*} extent. Because \code{pxcor}
+The slot \code{extent} is similar to a \verb{Raster*} extent. Because \code{pxcor}
 and \code{pycor} represent the spatial location at the center of the \code{patches} and the
 resolution of them is 1, the extent of the \code{worldMatrix} is equal to
 \code{xmin = minPxcor - 0.5}, \code{xmax = maxPxcor + 0.5}, \code{ymin = minPycor - 0.5},
@@ -28,21 +28,21 @@ The number of \code{patches} in a \code{worldMatrix} is equal to
 \code{((maxPxcor - minPxcor) + 1) * ((maxPycor - minPycor) + 1)}.
 The slot \code{res} is equal to \code{1} as it is the spatial resolution of the \code{patches}.
 The last slot \code{pCoords} is a \code{matrix} representing the \code{patches} coordinates
-of all the matrix cells in the order of cells in a \code{Raster*} (i.e., by rows).
+of all the matrix cells in the order of cells in a \verb{Raster*} (i.e., by rows).
 
-Careful: The methods \code{[]} and \code{[] <-} retrieve or assign values for
+Careful: The methods \verb{[]} and \verb{[] <-} retrieve or assign values for
 the \code{patches} in the given order of the \code{patches} coordinates provided.
 When no \code{patches} coordinates are provided, the values retrieved or assigned
-is done in the order of the cell numbers as defined in in \code{Raster*} objects
+is done in the order of the cell numbers as defined in in \verb{Raster*} objects
 (i.e., by rows).
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
-\code{\link{worldArray}}
+\code{\link[=worldArray]{worldArray()}}
 }
 \author{
 Sarah Bauduin, Eliot McIntire, and Alex Chubaty

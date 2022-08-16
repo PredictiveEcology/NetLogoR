@@ -91,3 +91,4 @@ Collate:
     'quickPlot.R'
     'spades-functions.R'
     'turtle-functions.R'
+Roxygen: list(markdown = TRUE)

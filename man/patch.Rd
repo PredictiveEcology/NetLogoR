@@ -18,7 +18,7 @@ length as \code{y}.}
 \item{y}{Numeric. Vector of \code{y} coordinates. Must be of same
 length as \code{x}.}
 
-\item{duplicate}{Logical. If more than one location \code{[x, y]}
+\item{duplicate}{Logical. If more than one location \verb{[x, y]}
 fall into the same \code{patch} and \code{duplicate == TRUE}, the
 \code{patch} coordinates are returned the number of times the locations.
 If \code{duplicate == FALSE}, the \code{patch} coordinates
@@ -35,17 +35,17 @@ Default is \code{out = FALSE}.}
 }
 \value{
 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-        \code{pycor} representing the \code{patches} coordinates at \code{[x, y]}.
+\code{pycor} representing the \code{patches} coordinates at \verb{[x, y]}.
 }
 \description{
-Report the coordinates of the \code{patches} at the given \code{[x, y]} locations.
+Report the coordinates of the \code{patches} at the given \verb{[x, y]} locations.
 }
 \details{
-If a location \code{[x, y]} is outside the \code{world}'s extent and
-         \code{torus = FALSE} and \code{out = FALSE}, no \code{patch} coordinates are returned;
-         if \code{torus = FALSE} and \code{out = TRUE}, \code{NA} are returned;
-         if \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world} are
-         returned.
+If a location \verb{[x, y]} is outside the \code{world}'s extent and
+\code{torus = FALSE} and \code{out = FALSE}, no \code{patch} coordinates are returned;
+if \code{torus = FALSE} and \code{out = TRUE}, \code{NA} are returned;
+if \code{torus = TRUE}, the \code{patch} coordinates from a wrapped \code{world} are
+returned.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
@@ -61,8 +61,8 @@ patch(world = w1, x = c(0, 9.1, 8.9, 5, 5.3), y = c(0, 0, -0.1, 12.4, 12.4),
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch}

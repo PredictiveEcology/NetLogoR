@@ -21,9 +21,9 @@ layoutCircle(world, turtles, radius, torus = FALSE)
 }
 \value{
 \code{AgentMatrix} representing the \code{turtles} with updated
-        coordinates and updated data for their \code{heading} values and
-        previous coordinates \code{prevX}
-        and \code{prevY}.
+coordinates and updated data for their \code{heading} values and
+previous coordinates \code{prevX}
+and \code{prevY}.
 }
 \description{
 Relocate the \code{turtles} on a circle centered on the \code{world}.
@@ -31,12 +31,13 @@ Relocate the \code{turtles} on a circle centered on the \code{world}.
 \details{
 The \code{turtles} point outwards.
 
-         If the
-         \code{radius} value leads \code{turtles} outside of the \code{world}'s extent
-         and \code{torus = TRUE}, they are
-         relocated on the other sides of the \code{world}, inside its extent; if
-         \code{torus = FALSE}, the \code{turtles} are located past
-         the \code{world}'s extent.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If the
+     `radius` value leads `turtles` outside of the `world`'s extent
+     and `torus = TRUE`, they are
+     relocated on the other sides of the `world`, inside its extent; if
+     `torus = FALSE`, the `turtles` are located past
+     the `world`'s extent.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9,
@@ -52,8 +53,8 @@ points(t1, col = "red", pch = 16)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#layout-circle}

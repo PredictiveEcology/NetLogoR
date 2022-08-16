@@ -13,9 +13,10 @@ neighbors(world, agents, nNeighbors, torus = FALSE)
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{nNeighbors}{Integer: 4 or 8. Represents the number of neighbor \code{patches}
 considered.}
@@ -25,23 +26,24 @@ considered.}
 }
 \value{
 Matrix (\code{ncol} = 3) with the first column \code{pxcor}
-        and the second column \code{pycor} representing the coordinates of the neighbors
-        \code{patches} around the \code{agents} and the third column \code{id} representing
-        the \code{id} of the \code{agents} in the order provided.
+and the second column \code{pycor} representing the coordinates of the neighbors
+\code{patches} around the \code{agents} and the third column \code{id} representing
+the \code{id} of the \code{agents} in the order provided.
 }
 \description{
 Report the coordinates of the neighbors \code{patches} around the \code{agents}.
 }
 \details{
 The \code{patch} around which the neighbors are identified, or the \code{patch} where
-         the \code{turtle} is located on around which the neighbors are identified, is not
-         returned.
+the \code{turtle} is located on around which the neighbors are identified, is not
+returned.
 
-         If \code{torus = FALSE}, \code{agents} located on the edges of the
-         \code{world} have less than \code{nNeighbors} patches around them.
-         If \code{torus = TRUE}, all \code{agents} located on the edges of the
-         \code{world} have \code{nNeighbors} patches around them,
-         which some may be on the other sides of the \code{world}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If `torus = FALSE`, `agents` located on the edges of the
+     `world` have less than `nNeighbors` patches around them.
+     If `torus = TRUE`, all `agents` located on the edges of the
+     `world` have `nNeighbors` patches around them,
+     which some may be on the other sides of the `world`.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
@@ -53,8 +55,8 @@ neighbors(world = w1, agents = t1, nNeighbors = 4)
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#neighbors}

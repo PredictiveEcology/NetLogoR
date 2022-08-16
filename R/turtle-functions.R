@@ -1,36 +1,36 @@
 ################################################################################
-#' Create \code{turtles}
+#' Create `turtles`
 #'
-#' Create \code{n} moving \code{agents} with a set of defined variables.
+#' Create `n` moving `agents` with a set of defined variables.
 #'
 #' @inheritParams fargs
 #'
-#' @param coords  Matrix (\code{ncol} = 2) with the first column \code{xcor} and the second
-#'                column \code{ycor} representing the \code{turtles} initial locations.
-#'                \code{nrow(coords)} must be equal to 1 or to \code{n}.
-#'                Given coordinates must be inside the \code{world}'s extent. If missing,
-#'                \code{turtles} are put in the center of the \code{world}.
+#' @param coords  Matrix (`ncol` = 2) with the first column `xcor` and the second
+#'                column `ycor` representing the `turtles` initial locations.
+#'                `nrow(coords)` must be equal to 1 or to `n`.
+#'                Given coordinates must be inside the `world`'s extent. If missing,
+#'                `turtles` are put in the center of the `world`.
 #'
 #' @param heading Numeric. Vector of values between 0 and 360. Must be of length 1 or
-#'                of length \code{n}. If missing, a random \code{heading} is assigned to
-#'                each \code{turtle}.
+#'                of length `n`. If missing, a random `heading` is assigned to
+#'                each `turtle`.
 #'
-#' @param breed   Character. Vector of \code{breed} names. Must be of length 1 or of length
-#'                \code{n}. If missing, \code{breed = "turtle"} for all \code{turtles}.
+#' @param breed   Character. Vector of `breed` names. Must be of length 1 or of length
+#'                `n`. If missing, `breed = "turtle"` for all `turtles`.
 #'
-#' @return \code{AgentMatrix} object of length \code{n} with data for the
-#'         \code{turtles} being: \code{xcor}, \code{ycor}, \code{who}, \code{heading}, \code{prevX}, \code{prevY},
-#'         \code{breed}, and \code{color}.
+#' @return `AgentMatrix` object of length `n` with data for the
+#'         `turtles` being: `xcor`, `ycor`, `who`, `heading`, `prevX`, `prevY`,
+#'         `breed`, and `color`.
 #'
-#' @details If \code{coords} is provided, \code{world} must not be provided.
+#' @details If `coords` is provided, `world` must not be provided.
 #'
-#'          The identity of the \code{turtles} is defined by their \code{who} number. This
+#'          The identity of the `turtles` is defined by their `who` number. This
 #'          numbering starts at 0 and increments by 1.
 #'
-#'          The coordinates from the previous time step are stored in \code{prevX} and
-#'          \code{prevY}. The initial values are \code{NA}.
+#'          The coordinates from the previous time step are stored in `prevX` and
+#'          `prevY`. The initial values are `NA`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#create-turtles}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#create-turtles>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -110,24 +110,24 @@ setMethod(
 
 
 ################################################################################
-#' Create ordered \code{turtles}
+#' Create ordered `turtles`
 #'
-#' Create \code{n} \code{turtles} at the center of the \code{world} with their \code{headings} evenly
+#' Create `n` `turtles` at the center of the `world` with their `headings` evenly
 #' distributed.
 #'
 #' @inheritParams createTurtles
 #'
-#' @return \code{AgentMatrix} object of length \code{n} with data for the
-#'         turtles being: \code{xcor}, \code{ycor}, \code{who}, \code{heading}, \code{prevX}, \code{prevY}, \code{breed},
-#'         and \code{color}.
+#' @return `AgentMatrix` object of length `n` with data for the
+#'         turtles being: `xcor`, `ycor`, `who`, `heading`, `prevX`, `prevY`, `breed`,
+#'         and `color`.
 #'
-#' @details The identity of the \code{turtles} is defined by their \code{who} number. This
+#' @details The identity of the `turtles` is defined by their `who` number. This
 #'          numbering starts at 0 and increments by 1.
 #'
-#'          The coordinates from the previous time step are stored in \code{prevX} and
-#'          \code{prevY}. The initial values are \code{NA}.
+#'          The coordinates from the previous time step are stored in `prevX` and
+#'          `prevY`. The initial values are `NA`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#create-ordered-turtles}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#create-ordered-turtles>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -192,39 +192,39 @@ setMethod(
 ################################################################################
 #' Move forward
 #'
-#' Move the \code{turtles} forward with their \code{headings} as directions.
+#' Move the `turtles` forward with their `headings` as directions.
 #'
 #' @inheritParams fargs
 #'
 #' @param dist    Numeric. Vector of distances to move. Must
-#'                be of length 1 or of length \code{turtles}.
+#'                be of length 1 or of length `turtles`.
 #'
-#' @param out     Logical. Determine if a \code{turtle} should move when
-#'                \code{torus = FALSE} and its ending position will be outside of
-#'                the \code{world}'s extent. Default is \code{out = TRUE}.
+#' @param out     Logical. Determine if a `turtle` should move when
+#'                `torus = FALSE` and its ending position will be outside of
+#'                the `world`'s extent. Default is `out = TRUE`.
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with updated
-#'         coordinates and updated data for their previous coordinates \code{prevX}
-#'         and \code{prevY}.
+#' @return `AgentMatrix` representing the `turtles` with updated
+#'         coordinates and updated data for their previous coordinates `prevX`
+#'         and `prevY`.
 #'
-#' @details If \code{torus = FALSE} and \code{out = TRUE}, \code{world}
+#' @details If `torus = FALSE` and `out = TRUE`, `world`
 #'          does not need to be provided.
 #'
-#'          If a distance to move leads a \code{turtle} outside of the \code{world}'s extent
-#'          and \code{torus = TRUE}, the \code{turtle} is
-#'          relocated on the other side of the \code{world}, inside its extent; if
-#'          \code{torus = FALSE} and \code{out = TRUE}, the \code{turtle} moves past the
-#'          \code{world}'s extent; if \code{torus = FALSE} and \code{out = FALSE}, the
-#'          \code{turtle} does not move at all. In the event that a \code{turtle} does not move,
+#'          If a distance to move leads a `turtle` outside of the `world`'s extent
+#'          and `torus = TRUE`, the `turtle` is
+#'          relocated on the other side of the `world`, inside its extent; if
+#'          `torus = FALSE` and `out = TRUE`, the `turtle` moves past the
+#'          `world`'s extent; if `torus = FALSE` and `out = FALSE`, the
+#'          `turtle` does not move at all. In the event that a `turtle` does not move,
 #'          its previous coordinates are still updated with its position before
-#'          running \code{fd()} (i.e., its current position).
+#'          running `fd()` (i.e., its current position).
 #'
-#'          If a given \code{dist} value is negative, then the \code{turtle} moves
+#'          If a given `dist` value is negative, then the `turtle` moves
 #'          backward.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#forward}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#forward>
 #'
-#'          \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#jump}
+#'          <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#jump>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -302,37 +302,37 @@ setMethod(
 ################################################################################
 #' Move backward
 #'
-#' Move the \code{turtles} backward of their headings' directions.
+#' Move the `turtles` backward of their headings' directions.
 #'
 #' @inheritParams fargs
 #'
 #' @inheritParams fd
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with updated
-#'         coordinates and updated data for their previous coordinates \code{prevX}
-#'         and \code{prevY}.
+#' @return `AgentMatrix` representing the `turtles` with updated
+#'         coordinates and updated data for their previous coordinates `prevX`
+#'         and `prevY`.
 #'
-#' @details If \code{torus = FALSE} and \code{out = TRUE}, \code{world}
+#' @details If `torus = FALSE` and `out = TRUE`, `world`
 #'          does not need to be provided.
 #'
-#'          If a distance to move leads a \code{turtle} outside of the \code{world}'s extent
-#'          and \code{torus = TRUE}, the \code{turtle} is
-#'          relocated on the other side of the \code{world}, inside its extent; if
-#'          \code{torus = FALSE} and \code{out = TRUE}, the \code{turtle} moves past the
-#'          \code{world}'s extent; if \code{torus = FALSE} and \code{out = FALSE}, the
-#'          \code{turtle} does not move at all. In the event that a \code{turtle} does not move,
+#'          If a distance to move leads a `turtle` outside of the `world`'s extent
+#'          and `torus = TRUE`, the `turtle` is
+#'          relocated on the other side of the `world`, inside its extent; if
+#'          `torus = FALSE` and `out = TRUE`, the `turtle` moves past the
+#'          `world`'s extent; if `torus = FALSE` and `out = FALSE`, the
+#'          `turtle` does not move at all. In the event that a `turtle` does not move,
 #'          its previous coordinates are still updated with its position before
-#'          running \code{bk()} (i.e., its current position).
+#'          running `bk()` (i.e., its current position).
 #'
-#'          If a given \code{dist} value is negative, then the \code{turtle} moves
+#'          If a given `dist` value is negative, then the `turtle` moves
 #'          forward.
 #'
-#'          The \code{turtles}' headings are not affected by the function (i.e., the
-#'          \code{turtles} do not face backward).
+#'          The `turtles`' headings are not affected by the function (i.e., the
+#'          `turtles` do not face backward).
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#back}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#back>
 #'
-#'          \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#jump}
+#'          <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#jump>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -378,30 +378,30 @@ setMethod(
 ################################################################################
 #' Return home
 #'
-#' Move the \code{turtles} back \code{home}.
+#' Move the `turtles` back `home`.
 #'
 #' @inheritParams fargs
 #'
 #' @param home    Character. Can take one of the following options to define where
-#'                to relocate the \code{turtles}:
+#'                to relocate the `turtles`:
 #'
-#'                \code{home = "home0"} will place the \code{turtles} at the location
-#'                \code{x = 0, y = 0}.
+#'                `home = "home0"` will place the `turtles` at the location
+#'                `x = 0, y = 0`.
 #'
-#'                \code{home = "center"} will place the \code{turtles} at the center of
-#'                the \code{world}.
+#'                `home = "center"` will place the `turtles` at the center of
+#'                the `world`.
 #'
-#'                \code{home = "pCorner"} will place the \code{turtles} at the center of
-#'                the \code{patch} located in the left bottom corner of the \code{world}.
+#'                `home = "pCorner"` will place the `turtles` at the center of
+#'                the `patch` located in the left bottom corner of the `world`.
 #'
-#'                \code{home = "corner"} will place the \code{turtles} at the left bottom
-#'                corner of the \code{world}.
+#'                `home = "corner"` will place the `turtles` at the left bottom
+#'                corner of the `world`.
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with updated
-#'         coordinates and updated data for their previous coordinates \code{prevX}
-#'         and \code{prevY}.
+#' @return `AgentMatrix` representing the `turtles` with updated
+#'         coordinates and updated data for their previous coordinates `prevX`
+#'         and `prevY`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#home}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#home>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -470,24 +470,24 @@ setMethod(
 ################################################################################
 #' x-increment
 #'
-#' Report the amount by which the \code{turtles}' coordinates \code{xcor} would change
-#' if the \code{turtles} were
-#' to move forward the given distances with their current \code{headings}.
+#' Report the amount by which the `turtles`' coordinates `xcor` would change
+#' if the `turtles` were
+#' to move forward the given distances with their current `headings`.
 #'
 #' @inheritParams fargs
 #'
-#' @param dist    Numeric. Vector of distances the \code{turtles} would have to
+#' @param dist    Numeric. Vector of distances the `turtles` would have to
 #'                move forward to
 #'                compute the increment values. Must be of length 1 or of length
-#'                \code{turtles}. The default value is \code{dist = 1}.
+#'                `turtles`. The default value is `dist = 1`.
 #'
-#' @return Numeric. Vector of length \code{turtles}.
+#' @return Numeric. Vector of length `turtles`.
 #'
-#' @details Report the sine of the \code{turtles}' \code{heading} multiplied by the \code{dist}
+#' @details Report the sine of the `turtles`' `heading` multiplied by the `dist`
 #'          values. Heading 0 is north and angles are calculated in degrees in a
 #'          clockwise manner.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#dxy}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#dxy>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -536,21 +536,21 @@ setMethod(
 ################################################################################
 #' y-increment
 #'
-#' Report the amount by which the \code{turtles}' coordinates \code{ycor} would change
-#' if the \code{turtles} were
-#' to move forward the given distances with their current \code{headings}.
+#' Report the amount by which the `turtles`' coordinates `ycor` would change
+#' if the `turtles` were
+#' to move forward the given distances with their current `headings`.
 #'
 #' @inheritParams fargs
 #'
 #' @inheritParams dx
 #'
-#' @return Numeric. Vector of length \code{turtles}.
+#' @return Numeric. Vector of length `turtles`.
 #'
-#' @details Report the cosine of the \code{turtles}' \code{heading} multiplied by the \code{dist}
+#' @details Report the cosine of the `turtles`' `heading` multiplied by the `dist`
 #'          values. Heading 0 is north and angles are calculated in degrees in a
 #'          clockwise manner.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#dxy}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#dxy>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -597,18 +597,18 @@ setMethod(
 
 
 ################################################################################
-#' Kill \code{turtles}
+#' Kill `turtles`
 #'
-#' Kill selected \code{turtles}.
+#' Kill selected `turtles`.
 #'
 #' @inheritParams fargs
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with the selected
+#' @return `AgentMatrix` representing the `turtles` with the selected
 #'         ones removed.
 #'
-#' @details The \code{who} numbers of the remaining \code{turtles} are unchanged.
+#' @details The `who` numbers of the remaining `turtles` are unchanged.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#die}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#die>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -648,31 +648,31 @@ setMethod(
 
 
 ################################################################################
-#' Hatch new \code{turtles}
+#' Hatch new `turtles`
 #'
-#' Create new \code{turtles} from parent \code{turtles}.
+#' Create new `turtles` from parent `turtles`.
 #'
 #' @inheritParams fargs
 #'
-#' @param n Integer. Vector of length 1 or of length \code{who}. Number of new \code{turtles}
+#' @param n Integer. Vector of length 1 or of length `who`. Number of new `turtles`
 #'          to create for each parent.
 #'
-#' @param breed   Character. One \code{breed} name. If missing,
-#'                the created \code{turtles} are of the same \code{breed} as their parent \code{turtle}.
+#' @param breed   Character. One `breed` name. If missing,
+#'                the created `turtles` are of the same `breed` as their parent `turtle`.
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with the new
+#' @return `AgentMatrix` representing the `turtles` with the new
 #'         hatched ones.
 #'
-#' @details The parent \code{turtle} must be contained in the \code{turtles}.
+#' @details The parent `turtle` must be contained in the `turtles`.
 #'
-#'          The created \code{turtles} inherit of all the data from the parent \code{turtle},
-#'          except for the \code{breed} if specified otherwise, and for the \code{who} numbers.
-#'          The \code{who}" numbers of the \code{turtles} created take on following the highest
-#'          \code{who} number among the \code{turtles}.
+#'          The created `turtles` inherit of all the data from the parent `turtle`,
+#'          except for the `breed` if specified otherwise, and for the `who` numbers.
+#'          The `who`" numbers of the `turtles` created take on following the highest
+#'          `who` number among the `turtles`.
 #'
-#'          All new hatched \code{turtles} are placed at the end of the \code{agentMatrix} object.
+#'          All new hatched `turtles` are placed at the end of the `agentMatrix` object.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#hatch}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#hatch>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -735,18 +735,18 @@ setMethod(
 
 
 ################################################################################
-#' Can the \code{turtles} move?
+#' Can the `turtles` move?
 #'
-#' Report \code{TRUE} if a \code{turtle} can move the given distance without leaving
-#' the \code{world}'s extent, report \code{FALSE} otherwise.
+#' Report `TRUE` if a `turtle` can move the given distance without leaving
+#' the `world`'s extent, report `FALSE` otherwise.
 #'
 #' @inheritParams fargs
 #'
 #' @inheritParams fd
 #'
-#' @return Logical. Vector of length \code{turtles}.
+#' @return Logical. Vector of length `turtles`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#can-move}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#can-move>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -785,15 +785,15 @@ setMethod(
 
 
 ################################################################################
-#' Random \code{xcor}
+#' Random `xcor`
 #'
-#' Report \code{n} random \code{xcor} coordinates within the \code{world}'s extent.
+#' Report `n` random `xcor` coordinates within the `world`'s extent.
 #'
 #' @inheritParams fargs
 #'
-#' @return Numeric. Vector of length \code{n} of \code{xcor} coordinates.
+#' @return Numeric. Vector of length `n` of `xcor` coordinates.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-cor}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-cor>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -835,15 +835,15 @@ setMethod(
 })
 
 ################################################################################
-#' Random \code{ycor}
+#' Random `ycor`
 #'
-#' Report \code{n} random \code{ycor} coordinates within the \code{world}'s extent.
+#' Report `n` random `ycor` coordinates within the `world`'s extent.
 #'
 #' @inheritParams fargs
 #'
-#' @return Numeric. Vector of length \code{n} of \code{ycor} coordinates.
+#' @return Numeric. Vector of length `n` of `ycor` coordinates.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-cor}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-cor>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -889,32 +889,32 @@ setMethod(
 ################################################################################
 #' Directions towards
 #'
-#' Report the directions of each \code{agents} towards each corresponding \code{agents2}.
+#' Report the directions of each `agents` towards each corresponding `agents2`.
 #'
 #' @inheritParams fargs
 #'
 #' @return Numeric. Vector of angles in degrees of length equal to the largest
-#'         number of agents/locations between \code{agents} and \code{agents2}.
+#'         number of agents/locations between `agents` and `agents2`.
 #'
-#' @details \code{agents} and \code{agents2} must have the same number of agents/locations
+#' @details `agents` and `agents2` must have the same number of agents/locations
 #'          or if different, one of them must have only one agent/location. If
-#'          \code{agents} and \code{agents2} have the same number of agents/locations,
-#'          the directions are calculated for each pair \code{agents[i]} and \code{agents2[i]}
-#'          and not for each \code{agents} towards every single \code{agents2}.
+#'          `agents` and `agents2` have the same number of agents/locations,
+#'          the directions are calculated for each pair `agents[i]` and `agents2[i]`
+#'          and not for each `agents` towards every single `agents2`.
 #'
-#'          If \code{torus = FALSE}, \code{world} does not need to be provided.
+#'          If `torus = FALSE`, `world` does not need to be provided.
 #'
-#'          If \code{torus = TRUE} and the distance from one \code{agents} to
-#'          its corresponding \code{agents2} is smaller around the
-#'          sides of the \code{world} than across it, then the direction to \code{agents2}
-#'          going around the sides of the \code{world} is returned.
+#'          If `torus = TRUE` and the distance from one `agents` to
+#'          its corresponding `agents2` is smaller around the
+#'          sides of the `world` than across it, then the direction to `agents2`
+#'          going around the sides of the `world` is returned.
 #'
 #'          The direction from a patch to its location returns 0; the direction from
 #'          a turtle to its location returns the turtle's heading.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#towards}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#towards>
 #'
-#'          \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#towardsxy}
+#'          <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#towardsxy>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1050,27 +1050,27 @@ setMethod(
 ################################################################################
 #' Face something
 #'
-#' Set the \code{turtles}' \code{heading} towards \code{agents2}.
+#' Set the `turtles`' `heading` towards `agents2`.
 #'
 #' @inheritParams fargs
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with updated \code{headings}.
+#' @return `AgentMatrix` representing the `turtles` with updated `headings`.
 #'
-#' @details The number of agents/locations in \code{agents2} must be equal to 1 or
-#'          to the length of \code{turtles}.
+#' @details The number of agents/locations in `agents2` must be equal to 1 or
+#'          to the length of `turtles`.
 #'
-#'          If \code{torus = FALSE}, \code{world} does not need to be provided.
+#'          If `torus = FALSE`, `world` does not need to be provided.
 #'
-#'          If \code{torus = TRUE} and the distance from one \code{turtles} to
-#'          its corresponding agent/location \code{agents2} is smaller around the
-#'          sides of the \code{world} than across it, then the direction to the agent/location
-#'          \code{agents2} going around the sides of the \code{world} is given to the \code{turtle}.
+#'          If `torus = TRUE` and the distance from one `turtles` to
+#'          its corresponding agent/location `agents2` is smaller around the
+#'          sides of the `world` than across it, then the direction to the agent/location
+#'          `agents2` going around the sides of the `world` is given to the `turtle`.
 #'
 #'          If a turtle is facing its own location, its heading does not change.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#face}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#face>
 #'
-#'          \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#facexy}
+#'          <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#facexy>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1116,18 +1116,18 @@ setMethod(
 ################################################################################
 #' Rotate to the left
 #'
-#' Rotate the \code{turtles}'s headings to the left of \code{angle} degrees.
+#' Rotate the `turtles`'s headings to the left of `angle` degrees.
 #'
 #' @inheritParams fargs
 #'
-#' @param angle   Numeric. Vector of angles in degrees by which to rotate the \code{turtles}'
-#'                headings. Must be of length 1 or of length \code{turtles}.
+#' @param angle   Numeric. Vector of angles in degrees by which to rotate the `turtles`'
+#'                headings. Must be of length 1 or of length `turtles`.
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with updated \code{heading} values.
+#' @return `AgentMatrix` representing the `turtles` with updated `heading` values.
 #'
-#' @details If a given \code{angle} value is negative, then the \code{turtle} rotates to the right.
+#' @details If a given `angle` value is negative, then the `turtle` rotates to the right.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#left}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#left>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1171,17 +1171,17 @@ setMethod(
 ################################################################################
 #' Rotate to the right
 #'
-#' Rotate the \code{turtles}'s headings to the right of \code{angle} degrees.
+#' Rotate the `turtles`'s headings to the right of `angle` degrees.
 #'
 #' @inheritParams fargs
 #'
 #' @inheritParams left
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with updated \code{heading} values.
+#' @return `AgentMatrix` representing the `turtles` with updated `heading` values.
 #'
-#' @details If a given \code{angle} value is negative, then the turtle rotates to the left.
+#' @details If a given `angle` value is negative, then the turtle rotates to the left.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#right}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#right>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1220,30 +1220,30 @@ setMethod(
 ################################################################################
 #' Move downhill
 #'
-#' Move the \code{turtles} to their neighboring patch with the lowest value.
+#' Move the `turtles` to their neighboring patch with the lowest value.
 #'
 #' @inheritParams fargs
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with updated
-#'         coordinates and updated data for their \code{heading} values and
-#'         previous coordinates \code{prevX}
-#'         and \code{prevY}.
+#' @return `AgentMatrix` representing the `turtles` with updated
+#'         coordinates and updated data for their `heading` values and
+#'         previous coordinates `prevX`
+#'         and `prevY`.
 #'
-#' @details If no neighboring \code{patch} has a smaller value than the \code{patch} where the
-#'          \code{turtle} is currently located on, the \code{turtle} stays on this \code{patch}. It still
-#'          moves to the \code{patch} center if it was not already on it.
+#' @details If no neighboring `patch` has a smaller value than the `patch` where the
+#'          `turtle` is currently located on, the `turtle` stays on this `patch`. It still
+#'          moves to the `patch` center if it was not already on it.
 #'
-#'          If there are multiple neighboring \code{patches} with the same lowest value,
-#'          the \code{turtle} chooses one \code{patch} randomly.
+#'          If there are multiple neighboring `patches` with the same lowest value,
+#'          the `turtle` chooses one `patch` randomly.
 #'
-#'          If a \code{turtle} is located on a \code{patch} on the edge
-#'          of the \code{world} and \code{torus = FALSE}, it has fewer
-#'          neighboring \code{patches} as options to move than \code{nNeighbors}; if
-#'          \code{torus = TRUE}, the \code{turtle} can move on the other side of the \code{world} to
-#'          move downhill and its choice of neighboring \code{patches} is always equals to
-#'          \code{nNeighbors}.
+#'          If a `turtle` is located on a `patch` on the edge
+#'          of the `world` and `torus = FALSE`, it has fewer
+#'          neighboring `patches` as options to move than `nNeighbors`; if
+#'          `torus = TRUE`, the `turtle` can move on the other side of the `world` to
+#'          move downhill and its choice of neighboring `patches` is always equals to
+#'          `nNeighbors`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#downhill}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#downhill>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1353,30 +1353,30 @@ setMethod(
 ################################################################################
 #' Move uphill
 #'
-#' Move the \code{turtles} to their neighboring \code{patch} with the highest value.
+#' Move the `turtles` to their neighboring `patch` with the highest value.
 #'
 #' @inheritParams fargs
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with updated
-#'         coordinates and updated data for their \code{heading} values and
-#'         previous coordinates \code{prevX}
-#'         and \code{prevY}.
+#' @return `AgentMatrix` representing the `turtles` with updated
+#'         coordinates and updated data for their `heading` values and
+#'         previous coordinates `prevX`
+#'         and `prevY`.
 #'
-#' @details If no neighboring \code{patch} has a larger value than the \code{patch} where the
-#'          \code{turtle} is currently located on, the \code{turtle} stays on this \code{patch}. It still
-#'          moves to the \code{patch} center if it was not already on it.
+#' @details If no neighboring `patch` has a larger value than the `patch` where the
+#'          `turtle` is currently located on, the `turtle` stays on this `patch`. It still
+#'          moves to the `patch` center if it was not already on it.
 #'
-#'          If there are multiple neighboring \code{patches} with the same highest value,
-#'          the \code{turtle} chooses one \code{patch} randomly.
+#'          If there are multiple neighboring `patches` with the same highest value,
+#'          the `turtle` chooses one `patch` randomly.
 #'
-#'          If a \code{turtle} is located on a \code{patch} on the edge
-#'          of the \code{world} and \code{torus = FALSE}, it has fewer
-#'          neighboring \code{patches} as options to move than \code{nNeighbors}; if
-#'          \code{torus = TRUE}, the \code{turtle} can move on the other side of the \code{world} to
-#'          move uphill and its choice of neighboring \code{patches} is always equals to
-#'          \code{nNeighbors}.
+#'          If a `turtle` is located on a `patch` on the edge
+#'          of the `world` and `torus = FALSE`, it has fewer
+#'          neighboring `patches` as options to move than `nNeighbors`; if
+#'          `torus = TRUE`, the `turtle` can move on the other side of the `world` to
+#'          move uphill and its choice of neighboring `patches` is always equals to
+#'          `nNeighbors`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#uphill}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#uphill>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1432,27 +1432,27 @@ setMethod(
 
 
 ################################################################################
-#' \code{Patches} ahead
+#' `Patches` ahead
 #'
-#' Report the coordinates of the \code{patches} at the given
-#' distances of the \code{turtles} in the direction of their \code{headings}.
+#' Report the coordinates of the `patches` at the given
+#' distances of the `turtles` in the direction of their `headings`.
 #'
 #' @inheritParams fargs
 #'
-#' @param dist   Numeric. Vector of distances from the \code{turtles}. \code{dist} must be
-#'               of length 1 or of length \code{turtles}.
+#' @param dist   Numeric. Vector of distances from the `turtles`. `dist` must be
+#'               of length 1 or of length `turtles`.
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-#'         \code{pycor} representing the coordinates of the \code{patches} at the distances \code{dist}
-#'         and \code{turtles}'s \code{headings} directions
-#'         of \code{turtles}. The order of the \code{patches} follows the order of the \code{turtles}.
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second column
+#'         `pycor` representing the coordinates of the `patches` at the distances `dist`
+#'         and `turtles`'s `headings` directions
+#'         of `turtles`. The order of the `patches` follows the order of the `turtles`.
 #'
-#' @details If \code{torus = FALSE} and the \code{patch} at distance \code{dist} of a \code{turtle}
-#'          is outside the \code{world}'s extent, \code{NA}
-#'          are returned for the \code{patch} coordinates. If \code{torus = TRUE}, the \code{patch}
-#'          coordinates from a wrapped \code{world} are returned.
+#' @details If `torus = FALSE` and the `patch` at distance `dist` of a `turtle`
+#'          is outside the `world`'s extent, `NA`
+#'          are returned for the `patch` coordinates. If `torus = TRUE`, the `patch`
+#'          coordinates from a wrapped `world` are returned.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-ahead}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-ahead>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1495,22 +1495,22 @@ setMethod(
 
 
 ################################################################################
-#' \code{Patches} here
+#' `Patches` here
 #'
-#' Report the coordinates of the \code{patches} under the \code{turtles}
+#' Report the coordinates of the `patches` under the `turtles`
 #' locations.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-#'         \code{pycor} representing the coordinates of the \code{patches} at the \code{turtles}
-#'         location. The order of the \code{patches} follows the order of the \code{turtles}.
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second column
+#'         `pycor` representing the coordinates of the `patches` at the `turtles`
+#'         location. The order of the `patches` follows the order of the `turtles`.
 #'
-#' @details If a \code{turtle} is located outside of the \code{world}'s extent,
-#'          \code{NA} are returned
-#'          for the \code{patch} coordinates.
+#' @details If a `turtle` is located outside of the `world`'s extent,
+#'          `NA` are returned
+#'          for the `patch` coordinates.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-here}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-here>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1549,34 +1549,34 @@ setMethod(
 
 
 ################################################################################
-#' \code{Patches} on the left
+#' `Patches` on the left
 #'
-#' Report the coordinates of the \code{patches} at the given distances of the \code{turtles}
-#' and given \code{angle} left of their \code{headings}.
+#' Report the coordinates of the `patches` at the given distances of the `turtles`
+#' and given `angle` left of their `headings`.
 #'
 #' @inheritParams fargs
 #'
 #' @inheritParams patchAhead
 #'
-#' @param angle   Numeric. Vector of angles in degrees by which the \code{turtle}'s
-#'                \code{headings} should rotate to locate the patches. Must be of length 1 or of
-#'                length \code{turtles}.
+#' @param angle   Numeric. Vector of angles in degrees by which the `turtle`'s
+#'                `headings` should rotate to locate the patches. Must be of length 1 or of
+#'                length `turtles`.
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-#'         column \code{pycor} representing the coordinates of the \code{patches} at \code{dist}
-#'         distances of the \code{turtles} and \code{angle} to the left of their \code{headings}.
-#'         The order of the \code{patches} follows the order of the \code{turtles}.
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second
+#'         column `pycor` representing the coordinates of the `patches` at `dist`
+#'         distances of the `turtles` and `angle` to the left of their `headings`.
+#'         The order of the `patches` follows the order of the `turtles`.
 #'
-#' @details If a given \code{dist} value is negative, then the \code{turtle} would look backward.
-#'          If a given \code{angle} value is negative, then the \code{turtle} would look to the right.
+#' @details If a given `dist` value is negative, then the `turtle` would look backward.
+#'          If a given `angle` value is negative, then the `turtle` would look to the right.
 #'
-#'          If \code{torus = FALSE} and the \code{patch} at distance \code{dist} of a \code{turtle}
-#'          and \code{angle} degrees to the left of its \code{heading} is outside the
-#'          \code{world}'s extent, \code{NA}
-#'          are returned for the \code{patch} coordinates. If \code{torus = TRUE}, the \code{patch}
-#'          coordinates from a wrapped \code{world} are returned.
+#'          If `torus = FALSE` and the `patch` at distance `dist` of a `turtle`
+#'          and `angle` degrees to the left of its `heading` is outside the
+#'          `world`'s extent, `NA`
+#'          are returned for the `patch` coordinates. If `torus = TRUE`, the `patch`
+#'          coordinates from a wrapped `world` are returned.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-lr-and-ahead}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-lr-and-ahead>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1617,31 +1617,31 @@ setMethod(
 
 
 ################################################################################
-#' \code{Patches} on the right
+#' `Patches` on the right
 #'
-#' Report the coordinates of the \code{patches} at the given distances of the \code{turtles}
-#' and given \code{angle} right of their \code{headings}.
+#' Report the coordinates of the `patches` at the given distances of the `turtles`
+#' and given `angle` right of their `headings`.
 #'
 #' @inheritParams fargs
 #'
 #' @inheritParams patchLeft
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-#'         column \code{pycor} representing the coordinates of the \code{patches} at \code{dist}
-#'         distances of the \code{turtles} and \code{angle} to the right of their \code{headings}.
-#'         The order of the \code{patches} follows the order of the \code{turtles}.
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second
+#'         column `pycor` representing the coordinates of the `patches` at `dist`
+#'         distances of the `turtles` and `angle` to the right of their `headings`.
+#'         The order of the `patches` follows the order of the `turtles`.
 #'
-#' @details If a given \code{dist} value is negative, then the \code{turtle} would look backward.
-#'          If a given \code{angle} value is negative, then the \code{turtle} would
+#' @details If a given `dist` value is negative, then the `turtle` would look backward.
+#'          If a given `angle` value is negative, then the `turtle` would
 #'          look to the left.
 #'
-#'          If \code{torus = FALSE} and the \code{patch} at distance \code{dist} of a \code{turtle}
-#'          and \code{angle} degrees to the right of its \code{heading} is outside the
-#'          \code{world}'s extent, \code{NA}
-#'          are returned for the \code{patch} coordinates. If \code{torus = TRUE}, the \code{patch}
-#'          coordinates from a wrapped \code{world} are returned.
+#'          If `torus = FALSE` and the `patch` at distance `dist` of a `turtle`
+#'          and `angle` degrees to the right of its `heading` is outside the
+#'          `world`'s extent, `NA`
+#'          are returned for the `patch` coordinates. If `torus = TRUE`, the `patch`
+#'          coordinates from a wrapped `world` are returned.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-lr-and-ahead}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-lr-and-ahead>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1678,30 +1678,30 @@ setMethod(
 
 
 ################################################################################
-#' Set \code{turtles}' locations
+#' Set `turtles`' locations
 #'
-#' Set the \code{turtles} \code{xcor} and \code{ycor} coordinates.
+#' Set the `turtles` `xcor` and `ycor` coordinates.
 #'
 #' @inheritParams fargs
 #'
-#' @param xcor    Numeric. Vector of \code{x} coordinates. Must be of length 1 or
-#'                of length \code{turtles}.
+#' @param xcor    Numeric. Vector of `x` coordinates. Must be of length 1 or
+#'                of length `turtles`.
 #'
-#' @param ycor    Numeric. Vector of \code{y} coordinates. Must be of length 1 or
-#'                of length \code{turtles}.
+#' @param ycor    Numeric. Vector of `y` coordinates. Must be of length 1 or
+#'                of length `turtles`.
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with updated coordinates
-#'         and updated data for their previous coordinates \code{prevX} and \code{prevY}.
+#' @return `AgentMatrix` representing the `turtles` with updated coordinates
+#'         and updated data for their previous coordinates `prevX` and `prevY`.
 #'
-#' @details \code{world} must be provided only if \code{torus = TRUE}.
+#' @details `world` must be provided only if `torus = TRUE`.
 #'
-#'          If the given coordinates \code{[xcor, ycor]}
-#'          are located outside of the \code{world}'s extent and \code{torus = TRUE},
-#'          then the coordinates assigned to the \code{turtle}
-#'          are the ones from a wrapped \code{word}; if \code{torus = FALSE}, the \code{turtle}
-#'          is located outside of the \code{world}'s extent with the given coordinates.
+#'          If the given coordinates `[xcor, ycor]`
+#'          are located outside of the `world`'s extent and `torus = TRUE`,
+#'          then the coordinates assigned to the `turtle`
+#'          are the ones from a wrapped `word`; if `torus = FALSE`, the `turtle`
+#'          is located outside of the `world`'s extent with the given coordinates.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#setxy}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#setxy>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1769,47 +1769,47 @@ setMethod(
 
 
 ################################################################################
-#' Sprout new \code{turtles}
+#' Sprout new `turtles`
 #'
-#' Create \code{n} new \code{turtles} on specific \code{patches}.
+#' Create `n` new `turtles` on specific `patches`.
 #'
-#' @param n Integer. Vector of length 1 or of length the number of \code{patches}.
-#'          Number of new \code{turtles}
-#'          to create on each \code{patch}.
+#' @param n Integer. Vector of length 1 or of length the number of `patches`.
+#'          Number of new `turtles`
+#'          to create on each `patch`.
 #'
 #' @param heading	Numeric. Vector of values between 0 and 360.
-#'                Must be of length 1 or of length the number of \code{patches}.
-#'                If missing, a random \code{heading} is assigned to each sprouted \code{turtle}.
+#'                Must be of length 1 or of length the number of `patches`.
+#'                If missing, a random `heading` is assigned to each sprouted `turtle`.
 #'
-#' @param breed	Character. Vector of \code{breed} names.
-#'              Must be of length 1 or of length the number of \code{patches}.
-#'              If missing, \code{breed} = \code{turtle} for all the sprouted \code{turtles}.
+#' @param breed	Character. Vector of `breed` names.
+#'              Must be of length 1 or of length the number of `patches`.
+#'              If missing, `breed` = `turtle` for all the sprouted `turtles`.
 #'
-#' @param color	Character. Vector of \code{color} names.
-#'              Must be of length 1, of length the number of \code{patches} or
-#'              of length \code{sum(n)}.
-#'              If missing, \code{colors} are assigned using the function \code{rainbow(n)}.
+#' @param color	Character. Vector of `color` names.
+#'              Must be of length 1, of length the number of `patches` or
+#'              of length `sum(n)`.
+#'              If missing, `colors` are assigned using the function `rainbow(n)`.
 #'
 #' @inheritParams fargs
 #'
-#' @return \code{AgentMatrix} including the new
-#'         sprouted \code{turtles}.
+#' @return `AgentMatrix` including the new
+#'         sprouted `turtles`.
 #'
-#' @details \code{nrow(patches)} must be equal to 1 or to \code{n}.
+#' @details `nrow(patches)` must be equal to 1 or to `n`.
 #'
-#'          If \code{turtles} is provided, the new \code{turtles} are added to
-#'          the \code{turtles} when returned. The \code{who} numbers of the sprouted \code{turtles}
-#'          therefore follow the ones from the \code{turtles}.
-#'          All new sprouted \code{turtles} are placed at the end of the \code{agentMatrix} object.
-#'          If no \code{turtles}
-#'          is provided, a new \code{agentMatrix} is created and the \code{who} numbers
+#'          If `turtles` is provided, the new `turtles` are added to
+#'          the `turtles` when returned. The `who` numbers of the sprouted `turtles`
+#'          therefore follow the ones from the `turtles`.
+#'          All new sprouted `turtles` are placed at the end of the `agentMatrix` object.
+#'          If no `turtles`
+#'          is provided, a new `agentMatrix` is created and the `who` numbers
 #'          start at 0.
 #'
-#'          If \code{turtles} is provided and had additional variables created
-#'          with \code{turtlesOwn()}, \code{NA} is given for these variables
-#'          for the new sprouted \code{turtles}.
+#'          If `turtles` is provided and had additional variables created
+#'          with `turtlesOwn()`, `NA` is given for these variables
+#'          for the new sprouted `turtles`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#sprout}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#sprout>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1927,16 +1927,16 @@ setMethod(
 })
 
 ################################################################################
-#' Inspect \code{turtles}
+#' Inspect `turtles`
 #'
-#' Display all variables values for the selected individuals among the \code{turtles}.
+#' Display all variables values for the selected individuals among the `turtles`.
 #'
 #' @inheritParams fargs
 #'
-#' @return \code{Dataframe} (\code{nrow} = \code{length(who)}) of the variables of the selected
-#'         individuals among the \code{turtles}.
+#' @return `Dataframe` (`nrow` = `length(who)`) of the variables of the selected
+#'         individuals among the `turtles`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#inspect}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#inspect>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -1989,22 +1989,22 @@ setMethod(
 ################################################################################
 #' Move to
 #'
-#' Move the \code{turtles} to the \code{agents}' locations.
+#' Move the `turtles` to the `agents`' locations.
 #'
 #' @inheritParams fargs
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with updated coordinates
-#'         and updated data for their previous coordinates \code{prevX} and \code{prevY}.
+#' @return `AgentMatrix` representing the `turtles` with updated coordinates
+#'         and updated data for their previous coordinates `prevX` and `prevY`.
 #'
-#' @details The number of \code{agents} must be equal to 1 or to
-#'          length \code{turtles}.
+#' @details The number of `agents` must be equal to 1 or to
+#'          length `turtles`.
 #'
-#'          The \code{turtle}'s \code{headings} are not affected with this function.
+#'          The `turtle`'s `headings` are not affected with this function.
 #'
-#'          If a \code{turtle} is moving to a \code{patch} location, it will be located at
-#'          the \code{patch} center.
+#'          If a `turtle` is moving to a `patch` location, it will be located at
+#'          the `patch` center.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#move-to}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#move-to>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -2055,14 +2055,14 @@ setMethod(
 
 
 ################################################################################
-#' Random \code{turtles} coordinates
+#' Random `turtles` coordinates
 #'
-#' Report \code{n} random \code{xcor} and \code{ycor} coordinates within the \code{world}'s extent.
+#' Report `n` random `xcor` and `ycor` coordinates within the `world`'s extent.
 #'
 #' @inheritParams fargs
 #'
-#' @return Matrix (\code{ncol} = 2, \code{nrow} = \code{n}) with the first column \code{xcor} and the second
-#'         column \code{ycor}.
+#' @return Matrix (`ncol` = 2, `nrow` = `n`) with the first column `xcor` and the second
+#'         column `ycor`.
 #'
 #' @examples
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
@@ -2097,18 +2097,18 @@ setMethod(
 
 
 ################################################################################
-#' Do the \code{turtle} exist?
+#' Do the `turtle` exist?
 #'
-#' Report \code{TRUE} if a \code{turtle} exists inside the \code{turtles}, report
-#' \code{FALSE} otherwise.
+#' Report `TRUE` if a `turtle` exists inside the `turtles`, report
+#' `FALSE` otherwise.
 #'
 #' @inheritParams fargs
 #'
-#' @return Logical. Vector of \code{TRUE} or \code{FALSE} if the \code{who} numbers
-#'         with any of the \code{breed}, if provided, exist or not
-#'         inside the \code{turtles}.
+#' @return Logical. Vector of `TRUE` or `FALSE` if the `who` numbers
+#'         with any of the `breed`, if provided, exist or not
+#'         inside the `turtles`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#member}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#member>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -2164,25 +2164,25 @@ setMethod(
 
 
 ################################################################################
-#' Select \code{turtles}
+#' Select `turtles`
 #'
-#' Report the individuals among \code{turtles} based on their \code{who} numbers
-#' and \code{breed}.
+#' Report the individuals among `turtles` based on their `who` numbers
+#' and `breed`.
 #'
 #' @inheritParams fargs
 #'
-#' @return \code{AgentMatrix} of the selected \code{turtles} sorted in the order of
-#'         the \code{who} numbers requested. If \code{breed} was provided, the
-#'         \code{turtles} selected are of one of the \code{breed}.
+#' @return `AgentMatrix` of the selected `turtles` sorted in the order of
+#'         the `who` numbers requested. If `breed` was provided, the
+#'         `turtles` selected are of one of the `breed`.
 #'
-#' @details If no \code{turtle} matches the given \code{who} numbers, with potentially
+#' @details If no `turtle` matches the given `who` numbers, with potentially
 #'          one of the given
-#'          \code{breed}, inside \code{turtles}, then an empty \code{agentMatrix} is returned.
+#'          `breed`, inside `turtles`, then an empty `agentMatrix` is returned.
 #'
-#'          If there are duplicates \code{who} numbers among the \code{turtles}, the first
-#'          matching \code{turtle} with the requested \code{who} number is returned.
+#'          If there are duplicates `who` numbers among the `turtles`, the first
+#'          matching `turtle` with the requested `who` number is returned.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtle}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtle>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -2233,33 +2233,33 @@ setMethod(
 
 
 ################################################################################
-#' \code{Turtles} on
+#' `Turtles` on
 #'
-#' Report the individuals among \code{turtles} that are on the same \code{patches} as
-#' the \code{agents}.
+#' Report the individuals among `turtles` that are on the same `patches` as
+#' the `agents`.
 #'
 #' @inheritParams fargs
 #'
-#' @param simplify Logical. If \code{simplify = TRUE}, all \code{turtles} on the same
-#'                 \code{patches} as any \code{agents} are returned; if \code{simplify = FALSE},
-#'                 the \code{turtles} are evaluated for each \code{agents}'s \code{patches}
+#' @param simplify Logical. If `simplify = TRUE`, all `turtles` on the same
+#'                 `patches` as any `agents` are returned; if `simplify = FALSE`,
+#'                 the `turtles` are evaluated for each `agents`'s `patches`
 #'                 individually.
 #'
-#' @return \code{AgentMatrix} representing any individuals from \code{turtles} of
-#'         any of the given \code{breed}, if specified,
-#'         located on the same \code{patches} as any of the \code{agents}, if \code{simplify = TRUE}, or
+#' @return `AgentMatrix` representing any individuals from `turtles` of
+#'         any of the given `breed`, if specified,
+#'         located on the same `patches` as any of the `agents`, if `simplify = TRUE`, or
 #'
-#'         Matrix (\code{ncol} = 2) with the first column \code{whoTurtles} and the second column
-#'         \code{id} showing which \code{turtles} are on the same
-#'         \code{patches} as which \code{agents} represented by \code{id}, if \code{simplify = FALSE}.
-#'         \code{id} represents and follows the order of the \code{agents}. \code{id} does not represent
-#'         the \code{who} numbers
-#'         of the \code{agents} if \code{agents} are \code{turtles}.
+#'         Matrix (`ncol` = 2) with the first column `whoTurtles` and the second column
+#'         `id` showing which `turtles` are on the same
+#'         `patches` as which `agents` represented by `id`, if `simplify = FALSE`.
+#'         `id` represents and follows the order of the `agents`. `id` does not represent
+#'         the `who` numbers
+#'         of the `agents` if `agents` are `turtles`.
 #'
-#' @details The \code{agents} must be located inside the
-#'          \code{world}'s extent.
+#' @details The `agents` must be located inside the
+#'          `world`'s extent.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtles-on}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtles-on>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -2367,14 +2367,14 @@ setMethod(
 })
 
 ################################################################################
-#' No \code{turtles}
+#' No `turtles`
 #'
-#' Report an empty \code{turtle} \code{agentset}.
+#' Report an empty `turtle` `agentset`.
 #'
-#' @return \code{AgentMatrix} with the \code{turtle} variables defined as when using
-#'         \code{createTurtles()} but with 0 \code{turtle}.
+#' @return `AgentMatrix` with the `turtle` variables defined as when using
+#'         `createTurtles()` but with 0 `turtle`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#no-turtles}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#no-turtles>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -2398,27 +2398,27 @@ noTurtles <- function() {
 }
 
 ################################################################################
-#' \code{Turtles} at
+#' `Turtles` at
 #'
-#' Report the individuals among \code{turtles} that are located on the \code{patches} at
-#' \code{(dx, dy)} distances of the \code{agents}.
+#' Report the individuals among `turtles` that are located on the `patches` at
+#' `(dx, dy)` distances of the `agents`.
 #'
 #' @inheritParams fargs
 #'
-#' @return \code{AgentMatrix} representing the individuals among \code{turtles}
-#'         of any of the given \code{breed}, if specified,
-#'         which are located on the \code{patches} at \code{(dx, dy)} distances of the
-#'         \code{agents}.
+#' @return `AgentMatrix` representing the individuals among `turtles`
+#'         of any of the given `breed`, if specified,
+#'         which are located on the `patches` at `(dx, dy)` distances of the
+#'         `agents`.
 #'
-#' @details If the \code{patch} at distance \code{(dx, dy)}
-#'          of an \code{agent} is outside of the \code{world}'s extent and \code{torus = FALSE},
-#'          no \code{turtle} is returned;
-#'          if \code{torus = TRUE}, the \code{turtle} located on the \code{patch} whose coordinates
-#'          are defined from the wrapped \code{world} is returned.
+#' @details If the `patch` at distance `(dx, dy)`
+#'          of an `agent` is outside of the `world`'s extent and `torus = FALSE`,
+#'          no `turtle` is returned;
+#'          if `torus = TRUE`, the `turtle` located on the `patch` whose coordinates
+#'          are defined from the wrapped `world` is returned.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtles-at}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtles-at>
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#at-points}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#at-points>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -2472,21 +2472,21 @@ setMethod(
 
 
 ################################################################################
-#' Create a \code{turtle} \code{agentset}
+#' Create a `turtle` `agentset`
 #'
-#' Report a \code{turtle} \code{agentset} containing all unique \code{turtles} provided in the inputs.
+#' Report a `turtle` `agentset` containing all unique `turtles` provided in the inputs.
 #'
-#' @param ... \code{AgentMatrix} objects representing the moving \code{agents}.
+#' @param ... `AgentMatrix` objects representing the moving `agents`.
 #'
-#' @return \code{AgentMatrix} object containing all the unique \code{turtles}.
+#' @return `AgentMatrix` object containing all the unique `turtles`.
 #'
-#' @details Duplicated \code{turtles} are identified based only on their \code{who} numbers.
-#'          The \code{turtle} chosen for a who number is the first one given in the inputs.
-#'          To keep all \code{turtles} from the inputs, use \code{NLset()} to
-#'          reassign \code{who} numbers in some of the inputs, prior using
-#'          \code{turtleSet()}, to avoid \code{turtles} with duplicated \code{who} numbers.
+#' @details Duplicated `turtles` are identified based only on their `who` numbers.
+#'          The `turtle` chosen for a who number is the first one given in the inputs.
+#'          To keep all `turtles` from the inputs, use `NLset()` to
+#'          reassign `who` numbers in some of the inputs, prior using
+#'          `turtleSet()`, to avoid `turtles` with duplicated `who` numbers.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtle-set}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtle-set>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -2553,22 +2553,22 @@ setMethod(
 })
 
 ################################################################################
-#' New \code{turtles} variable
+#' New `turtles` variable
 #'
-#' Create a new variable for the \code{turtles}.
+#' Create a new variable for the `turtles`.
 #'
 #' @inheritParams fargs
 #'
-#' @param tVar    Character. the name of the \code{turtles} variable to create.
+#' @param tVar    Character. the name of the `turtles` variable to create.
 #'
-#' @param tVal    Vector representing the values of \code{tVar}.
-#'                Must be of length 1 or of length \code{turtles}.
-#'                If missing, \code{NA} is given.
+#' @param tVal    Vector representing the values of `tVar`.
+#'                Must be of length 1 or of length `turtles`.
+#'                If missing, `NA` is given.
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with the new
-#'         variable \code{tVar} added.
+#' @return `AgentMatrix` representing the `turtles` with the new
+#'         variable `tVar` added.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtles-own}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#turtles-own>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -2630,38 +2630,38 @@ setMethod(
 
 
 ################################################################################
-#' Subtract \code{headings}
+#' Subtract `headings`
 #'
-#' Compute the difference between \code{headings}.
+#' Compute the difference between `headings`.
 #'
-#' @param angle1 \code{AgentMatrix} object representing the moving \code{agents}, or
-#'
-#'               Numeric. Vector of angles.
-#'
-#' @param angle2 \code{AgentMatrix} object representing the moving \code{agents}, or
+#' @param angle1 `AgentMatrix` object representing the moving `agents`, or
 #'
 #'               Numeric. Vector of angles.
 #'
-#' @param range360  Logical. If \code{range360 = TRUE}, returned values are
+#' @param angle2 `AgentMatrix` object representing the moving `agents`, or
+#'
+#'               Numeric. Vector of angles.
+#'
+#' @param range360  Logical. If `range360 = TRUE`, returned values are
 #'                  between 0 and 360 degrees;
-#'                  if \code{range360 = FALSE}, returned values are between
+#'                  if `range360 = FALSE`, returned values are between
 #'                  -180 and 180 degrees.
-#'                  Default is \code{range360 = FALSE}.
+#'                  Default is `range360 = FALSE`.
 #'
 #' @return Numeric. Vector of the smallest angles in degrees
-#'         by which \code{angle1} could be rotated to produce \code{angle2}
+#'         by which `angle1` could be rotated to produce `angle2`
 #'         (i.e., the target heading).
 #'
 #' @details This function does the opposite as the one in NetLogo where
-#'          \code{angle1} is the target heading.
+#'          `angle1` is the target heading.
 #'
-#'         \code{angle1} and \code{angle2} must be of the same length or if different,
+#'         `angle1` and `angle2` must be of the same length or if different,
 #'         one of them must be of length 1.
 #'
 #'          Positive values mean clockwise rotations, negative value mean
 #'          counterclockwise rotations.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#subtract-headings}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#subtract-headings>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -2751,29 +2751,29 @@ setMethod(
 ################################################################################
 #' Others
 #'
-#' Report an \code{agentset} of the \code{agents} except specific ones.
+#' Report an `agentset` of the `agents` except specific ones.
 #'
 #' @inheritParams fargs
 #'
-#' @param except Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-#'               column \code{pycor} representing the \code{patches} coordinates, or
+#' @param except Matrix (`ncol` = 2) with the first column `pxcor` and the second
+#'               column `pycor` representing the `patches` coordinates, or
 #'
-#'               \code{AgentMatrix} object representing the moving \code{agents}.
+#'               `AgentMatrix` object representing the moving `agents`.
 #'
-#' @return Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-#'         column \code{pycor} representing the \code{patches} in \code{agents} without
-#'         the ones in \code{except}, or
+#' @return Matrix (`ncol` = 2) with the first column `pxcor` and the second
+#'         column `pycor` representing the `patches` in `agents` without
+#'         the ones in `except`, or
 #'
-#'         \code{AgentMatrix} representing the \code{turtles} in \code{agents} without
-#'         the ones in \code{except}.
+#'         `AgentMatrix` representing the `turtles` in `agents` without
+#'         the ones in `except`.
 #'
-#' @details Both \code{agents} and \code{except} must be of the same class (e.g., both
-#'          \code{patches} or both \code{turtles}).
+#' @details Both `agents` and `except` must be of the same class (e.g., both
+#'          `patches` or both `turtles`).
 #'
-#'          Warning: this function removes \code{turtles} only based on similar \code{who} numbers
-#'          and \code{breed} names.
+#'          Warning: this function removes `turtles` only based on similar `who` numbers
+#'          and `breed` names.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#other}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#other>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -2831,29 +2831,29 @@ setMethod(
 
 
 ################################################################################
-#' Layout \code{turtles} on a circle
+#' Layout `turtles` on a circle
 #'
-#' Relocate the \code{turtles} on a circle centered on the \code{world}.
+#' Relocate the `turtles` on a circle centered on the `world`.
 #'
 #' @inheritParams fargs
 #'
 #' @param radius  Numeric. Radius of the circle.
 #'
-#' @return \code{AgentMatrix} representing the \code{turtles} with updated
-#'         coordinates and updated data for their \code{heading} values and
-#'         previous coordinates \code{prevX}
-#'         and \code{prevY}.
+#' @return `AgentMatrix` representing the `turtles` with updated
+#'         coordinates and updated data for their `heading` values and
+#'         previous coordinates `prevX`
+#'         and `prevY`.
 #'
-#' @details The \code{turtles} point outwards.
+#' @details The `turtles` point outwards.
 #'
 #'          If the
-#'          \code{radius} value leads \code{turtles} outside of the \code{world}'s extent
-#'          and \code{torus = TRUE}, they are
-#'          relocated on the other sides of the \code{world}, inside its extent; if
-#'          \code{torus = FALSE}, the \code{turtles} are located past
-#'          the \code{world}'s extent.
+#'          `radius` value leads `turtles` outside of the `world`'s extent
+#'          and `torus = TRUE`, they are
+#'          relocated on the other sides of the `world`, inside its extent; if
+#'          `torus = FALSE`, the `turtles` are located past
+#'          the `world`'s extent.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#layout-circle}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#layout-circle>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -2896,35 +2896,35 @@ setMethod(
 
 
 ################################################################################
-#' Values of an \code{agents} variable
+#' Values of an `agents` variable
 #'
-#' Report the \code{agents} values for the requested variable.
+#' Report the `agents` values for the requested variable.
 #'
 #' @inheritParams fargs
 #'
-#' @param var Character. Vector of the names of the selected \code{agents} variables.
-#'            If \code{agents} are \code{patches} and the \code{world} is a
-#'            \code{worldMatrix} object, \code{var} must not be provided. If
-#'            \code{agents} are \code{patches} and the \code{world} is a
-#'            \code{worldArray} object, \code{var} is the name of the layers to
-#'            use to define the \code{patches}
-#'            values. If \code{agents} are \code{turtles}, \code{var} is some of
-#'            the \code{turtles}' variable and can be any of the variables created
-#'            when \code{turtles} were created,
-#'            as well as any variable created with \code{turtlesOwn()}.
+#' @param var Character. Vector of the names of the selected `agents` variables.
+#'            If `agents` are `patches` and the `world` is a
+#'            `worldMatrix` object, `var` must not be provided. If
+#'            `agents` are `patches` and the `world` is a
+#'            `worldArray` object, `var` is the name of the layers to
+#'            use to define the `patches`
+#'            values. If `agents` are `turtles`, `var` is some of
+#'            the `turtles`' variable and can be any of the variables created
+#'            when `turtles` were created,
+#'            as well as any variable created with `turtlesOwn()`.
 #'
-#' @return Vector of values for the \code{agents} if one variable is
+#' @return Vector of values for the `agents` if one variable is
 #'         requested. The class depends
 #'         of the variable class. The order of the vector follows the order
-#'         of the \code{agents}, or
+#'         of the `agents`, or
 #'
-#'         Matrix or \code{Dataframe} (\code{ncol} = \code{length(var)}, \code{nrow} = \code{NLcount(agents)})
+#'         Matrix or `Dataframe` (`ncol` = `length(var)`, `nrow` = `NLcount(agents)`)
 #'         if more than one variable is requested. The row order
-#'         follows the order of the \code{agents}.
+#'         follows the order of the `agents`.
 #'
-#' @details \code{world} must be provided only if \code{agents} are \code{patches}.
+#' @details `world` must be provided only if `agents` are `patches`.
 #'
-#' @seealso \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#of}
+#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#of>
 #'
 #' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -3021,18 +3021,18 @@ setMethod(
 
 
 ################################################################################
-#' From \code{SpatialPointsDataFrame} to \code{agentMatrix}
+#' From `SpatialPointsDataFrame` to `agentMatrix`
 #'
-#' Convert a \code{SpatialPointsDataFrame} object into an \code{agentMatrix} object.
+#' Convert a `SpatialPointsDataFrame` object into an `agentMatrix` object.
 #'
-#' @param spdf \code{SpatialPointsDataFrame} object representing moving \code{agents}.
+#' @param spdf `SpatialPointsDataFrame` object representing moving `agents`.
 #'
-#' @return \code{AgentMatrix} object representing the moving \code{agents} (coordinates and data)
-#'         as contained in \code{spdf}.
+#' @return `AgentMatrix` object representing the moving `agents` (coordinates and data)
+#'         as contained in `spdf`.
 #'
-#' @details If the \code{spdf} does not contain the variables created with
-#'          \code{createTurtles()}, these variables will be created with the
-#'          default values as in \code{createTurtles()}.
+#' @details If the `spdf` does not contain the variables created with
+#'          `createTurtles()`, these variables will be created with the
+#'          default values as in `createTurtles()`.
 #'
 #' @examples
 #' sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
@@ -3119,15 +3119,15 @@ setMethod(
 })
 
 ################################################################################
-#' From \code{agentMatrix} to \code{SpatialPointsDataFrame}
+#' From `agentMatrix` to `SpatialPointsDataFrame`
 #'
-#' Convert an \code{agentMatrix} object into a \code{SpatialPointsDataFrame} object.
+#' Convert an `agentMatrix` object into a `SpatialPointsDataFrame` object.
 #'
 #' @inheritParams fargs
 #'
-#' @return \code{SpatialPointsDataFrame} object representing the moving \code{agents}
+#' @return `SpatialPointsDataFrame` object representing the moving `agents`
 #'        (coordinates and data)
-#'         as contained in \code{turtles}.
+#'         as contained in `turtles`.
 #'
 #' @examples
 #' t1 <- createTurtles(n = 10, coords = cbind(xcor = 1:10, ycor = 1:10))

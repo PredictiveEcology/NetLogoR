@@ -11,17 +11,19 @@ inRadius(agents, radius, agents2, world, torus = FALSE)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{radius}{Numeric. Vector of distances from \code{agents} to locate
 \code{agents2}. Must be of length 1 or of length \code{agents}.}
 
 \item{agents2}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
@@ -30,16 +32,17 @@ inRadius(agents, radius, agents2, world, torus = FALSE)
 }
 \value{
 Matrix (\code{ncol} = 3) with the first column \code{pxcor}
-        and the second column \code{pycor} representing the coordinates of the
-        \code{patches} among \code{agents2} within \code{radius} distances for each \code{agents}
-        which are represented by the \code{id} column, if
-        \code{agents2} are \code{patches}, or
+and the second column \code{pycor} representing the coordinates of the
+\code{patches} among \code{agents2} within \code{radius} distances for each \code{agents}
+which are represented by the \code{id} column, if
+\code{agents2} are \code{patches}, or
 
-        Matrix (\code{ncol} = 2) with the first column \code{who}
-        representing the \code{who} numbers of the
-        \code{turtles} among \code{agents2} within \code{radius} distances for each \code{agents}
-        which are represented by the \code{id} column, if
-        \code{agents2} are \code{turtles}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    Matrix (`ncol` = 2) with the first column `who`
+    representing the `who` numbers of the
+    `turtles` among `agents2` within `radius` distances for each `agents`
+    which are represented by the `id` column, if
+    `agents2` are `turtles`.
+}\if{html}{\out{</div>}}
 }
 \description{
 Report the \code{patches} or \code{turtles} among \code{agents2} within given distances of
@@ -49,10 +52,11 @@ each of the \code{agents}. Currently, this function multiplies \code{radius} by
 \details{
 Distances from/to \code{patches} are calculated from/to their center.
 
-         If \code{torus = FALSE}, \code{world} does not need to be provided.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If `torus = FALSE`, `world` does not need to be provided.
 
-         If \code{torus = TRUE}, the \code{radius} distances are calculated
-         around the sides of the \code{world} to select \code{agents2}.
+     If `torus = TRUE`, the `radius` distances are calculated
+     around the sides of the `world` to select `agents2`.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
@@ -67,8 +71,8 @@ t3 <- inRadius(agents = turtle(t1, who = 0), radius = 2, agents2 = t1)
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#in-radius}

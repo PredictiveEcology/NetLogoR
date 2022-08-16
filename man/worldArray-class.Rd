@@ -12,7 +12,7 @@ It is a collection of several \code{worldMatrix} objects with the same extent
 It is used to keep more than one value per \code{patch}.
 }
 \seealso{
-\code{\link{worldMatrix}}
+\code{\link[=worldMatrix]{worldMatrix()}}
 }
 \author{
 Sarah Bauduin, Eliot McIntire, and Alex Chubaty

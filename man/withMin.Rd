@@ -17,9 +17,10 @@ withMin(agents, world, var)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
@@ -35,13 +36,14 @@ as well as any variable created using \code{turtlesOwn()}.}
 }
 \value{
 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-        \code{pycor} representing the coordinates of the \code{patches} among the \code{agents}
-        which have their variable
-        equal to the minimum value among the \code{agents}, or
+\code{pycor} representing the coordinates of the \code{patches} among the \code{agents}
+which have their variable
+equal to the minimum value among the \code{agents}, or
 
-        \code{AgentMatrix} representing the \code{turtles} among the \code{agents}
-        which have their variable
-        \code{var} equal to the minimum value among the \code{agents}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    `AgentMatrix` representing the `turtles` among the `agents`
+    which have their variable
+    `var` equal to the minimum value among the `agents`.
+}\if{html}{\out{</div>}}
 }
 \description{
 Report the \code{patches} or \code{turtles} among \code{agents} which have their variable
@@ -66,8 +68,8 @@ t2 <- withMin(agents = t1, var = "heading")
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-min}

@@ -22,8 +22,8 @@ If missing, there is no distinction based upon \code{breed}.}
 }
 \value{
 Logical. Vector of \code{TRUE} or \code{FALSE} if the \code{who} numbers
-        with any of the \code{breed}, if provided, exist or not
-        inside the \code{turtles}.
+with any of the \code{breed}, if provided, exist or not
+inside the \code{turtles}.
 }
 \description{
 Report \code{TRUE} if a \code{turtle} exists inside the \code{turtles}, report
@@ -42,8 +42,8 @@ tExist(turtles = t1, who = c(3, 9))
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#member}

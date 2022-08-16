@@ -15,7 +15,7 @@ patchSet(...)
 }
 \value{
 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second column
-        \code{pycor} representing the \code{patches} coordinates.
+\code{pycor} representing the \code{patches} coordinates.
 }
 \description{
 Report the \code{patch} coordinates of all the unique \code{patches} contained in the inputs.
@@ -34,8 +34,8 @@ p4 <- patchSet(p1, p2, p3)
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-set}

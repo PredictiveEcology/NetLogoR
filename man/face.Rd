@@ -13,12 +13,13 @@ face(turtles, agents2, world, torus = FALSE)
 \item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{agents2}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-               column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-               \code{AgentMatrix} object representing the moving \code{agents}, or
+\if{html}{\out{<div class="sourceCode">}}\preformatted{           `AgentMatrix` object representing the moving `agents`, or
 
-               Matrix (\code{ncol} = 2) with the first column \code{x} and the second column
-               \code{y} representing locations coordinates.}
+           Matrix (`ncol` = 2) with the first column `x` and the second column
+           `y` representing locations coordinates.
+}\if{html}{\out{</div>}}}
 
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
@@ -33,16 +34,17 @@ Set the \code{turtles}' \code{heading} towards \code{agents2}.
 }
 \details{
 The number of agents/locations in \code{agents2} must be equal to 1 or
-         to the length of \code{turtles}.
+to the length of \code{turtles}.
 
-         If \code{torus = FALSE}, \code{world} does not need to be provided.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If `torus = FALSE`, `world` does not need to be provided.
 
-         If \code{torus = TRUE} and the distance from one \code{turtles} to
-         its corresponding agent/location \code{agents2} is smaller around the
-         sides of the \code{world} than across it, then the direction to the agent/location
-         \code{agents2} going around the sides of the \code{world} is given to the \code{turtle}.
+     If `torus = TRUE` and the distance from one `turtles` to
+     its corresponding agent/location `agents2` is smaller around the
+     sides of the `world` than across it, then the direction to the agent/location
+     `agents2` going around the sides of the `world` is given to the `turtle`.
 
-         If a turtle is facing its own location, its heading does not change.
+     If a turtle is facing its own location, its heading does not change.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
@@ -59,13 +61,14 @@ points(t1, col = of(agents = t1, var = "color"), pch = 16)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#face}
 
-         \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#facexy}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#facexy>
+}\if{html}{\out{</div>}}
 }
 \author{
 Sarah Bauduin

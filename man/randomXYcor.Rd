@@ -16,7 +16,7 @@ randomXYcor(world, n)
 }
 \value{
 Matrix (\code{ncol} = 2, \code{nrow} = \code{n}) with the first column \code{xcor} and the second
-        column \code{ycor}.
+column \code{ycor}.
 }
 \description{
 Report \code{n} random \code{xcor} and \code{ycor} coordinates within the \code{world}'s extent.

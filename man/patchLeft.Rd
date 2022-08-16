@@ -26,9 +26,9 @@ length \code{turtles}.}
 }
 \value{
 Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-        column \code{pycor} representing the coordinates of the \code{patches} at \code{dist}
-        distances of the \code{turtles} and \code{angle} to the left of their \code{headings}.
-        The order of the \code{patches} follows the order of the \code{turtles}.
+column \code{pycor} representing the coordinates of the \code{patches} at \code{dist}
+distances of the \code{turtles} and \code{angle} to the left of their \code{headings}.
+The order of the \code{patches} follows the order of the \code{turtles}.
 }
 \description{
 Report the coordinates of the \code{patches} at the given distances of the \code{turtles}
@@ -36,13 +36,14 @@ and given \code{angle} left of their \code{headings}.
 }
 \details{
 If a given \code{dist} value is negative, then the \code{turtle} would look backward.
-         If a given \code{angle} value is negative, then the \code{turtle} would look to the right.
+If a given \code{angle} value is negative, then the \code{turtle} would look to the right.
 
-         If \code{torus = FALSE} and the \code{patch} at distance \code{dist} of a \code{turtle}
-         and \code{angle} degrees to the left of its \code{heading} is outside the
-         \code{world}'s extent, \code{NA}
-         are returned for the \code{patch} coordinates. If \code{torus = TRUE}, the \code{patch}
-         coordinates from a wrapped \code{world} are returned.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If `torus = FALSE` and the `patch` at distance `dist` of a `turtle`
+     and `angle` degrees to the left of its `heading` is outside the
+     `world`'s extent, `NA`
+     are returned for the `patch` coordinates. If `torus = TRUE`, the `patch`
+     coordinates from a wrapped `world` are returned.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
@@ -53,8 +54,8 @@ patchLeft(world = w1, turtles = t1, dist = 2, angle = 90)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-lr-and-ahead}

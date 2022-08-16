@@ -16,7 +16,7 @@ inspect(turtles, who)
 }
 \value{
 \code{Dataframe} (\code{nrow} = \code{length(who)}) of the variables of the selected
-        individuals among the \code{turtles}.
+individuals among the \code{turtles}.
 }
 \description{
 Display all variables values for the selected individuals among the \code{turtles}.
@@ -30,8 +30,8 @@ inspect(turtles = t1, who = c(2, 3))
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#inspect}

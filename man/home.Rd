@@ -15,24 +15,25 @@ home(world, turtles, home)
 \item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
 
 \item{home}{Character. Can take one of the following options to define where
-               to relocate the \code{turtles}:
+to relocate the \code{turtles}:
 
-               \code{home = "home0"} will place the \code{turtles} at the location
-               \code{x = 0, y = 0}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{           `home = "home0"` will place the `turtles` at the location
+           `x = 0, y = 0`.
 
-               \code{home = "center"} will place the \code{turtles} at the center of
-               the \code{world}.
+           `home = "center"` will place the `turtles` at the center of
+           the `world`.
 
-               \code{home = "pCorner"} will place the \code{turtles} at the center of
-               the \code{patch} located in the left bottom corner of the \code{world}.
+           `home = "pCorner"` will place the `turtles` at the center of
+           the `patch` located in the left bottom corner of the `world`.
 
-               \code{home = "corner"} will place the \code{turtles} at the left bottom
-               corner of the \code{world}.}
+           `home = "corner"` will place the `turtles` at the left bottom
+           corner of the `world`.
+}\if{html}{\out{</div>}}}
 }
 \value{
 \code{AgentMatrix} representing the \code{turtles} with updated
-        coordinates and updated data for their previous coordinates \code{prevX}
-        and \code{prevY}.
+coordinates and updated data for their previous coordinates \code{prevX}
+and \code{prevY}.
 }
 \description{
 Move the \code{turtles} back \code{home}.
@@ -51,8 +52,8 @@ points(t1, col = "red", pch = 16)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#home}

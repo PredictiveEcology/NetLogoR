@@ -18,9 +18,10 @@ NLall(agents, world, var, val)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{world}{\code{WorldMatrix} or \code{worldArray} object.}
 
@@ -38,7 +39,7 @@ as well as any variable created using \code{turtlesOwn()}.}
 }
 \value{
 Logical. \code{TRUE} if all the \code{agents} have their variable equal to
-        \code{val}, \code{FALSE} otherwise.
+\code{val}, \code{FALSE} otherwise.
 }
 \description{
 Report \code{TRUE} if all \code{agents} have their variable equal to a given value,
@@ -64,8 +65,8 @@ NLall(agents = t1, var = "heading", val = 2)
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#all}

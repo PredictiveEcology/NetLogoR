@@ -14,7 +14,7 @@
 \arguments{
 \item{...}{Two \code{agentMatrix} objects.}
 
-\item{deparse.level}{See \code{\link[base]{cbind}}.}
+\item{deparse.level}{See \code{\link[base:cbind]{base::cbind()}}.}
 }
 \value{
 An \code{agentMatrix} object.

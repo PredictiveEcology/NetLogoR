@@ -17,9 +17,10 @@ minNof(agents, n, world, var)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{n}{Integer.}
 
@@ -37,14 +38,15 @@ as well as any variable created using \code{turtlesOwn()}.}
 }
 \value{
 Matrix (\code{ncol} = 2, \code{nrow} = \code{n}) with the first column \code{pxcor} and
-        the second column \code{pycor} representing the coordinates of the \code{n}
-        \code{patches} among the \code{agents} which have their variable values among
-        the minimum values among the
-        \code{agents}, or
+the second column \code{pycor} representing the coordinates of the \code{n}
+\code{patches} among the \code{agents} which have their variable values among
+the minimum values among the
+\code{agents}, or
 
-        \code{AgentMatrix} of length \code{n} representing the \code{turtles} among the
-        \code{agents} which
-        have their \code{var} values among the minimum values among the \code{agents}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    `AgentMatrix` of length `n` representing the `turtles` among the
+    `agents` which
+    have their `var` values among the minimum values among the `agents`.
+}\if{html}{\out{</div>}}
 }
 \description{
 Report the \code{n} \code{patches} or \code{turtles} among \code{agents} which have their variable
@@ -53,8 +55,9 @@ among the minimum values.
 \details{
 \code{world} must not be provided if \code{agents} are \code{turtles}.
 
-         If there is a tie that would make the number of returned \code{patches} or \code{turtles} larger
-         than \code{n}, it is broken randomly.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If there is a tie that would make the number of returned `patches` or `turtles` larger
+     than `n`, it is broken randomly.
+}\if{html}{\out{</div>}}
 }
 \examples{
 # Patches
@@ -72,8 +75,8 @@ t2 <- minNof(agents = t1, n = 5, var = "heading")
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-n-of}

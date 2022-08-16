@@ -37,17 +37,19 @@ is the name of the layer to use to define the \code{patches} values.
 column \code{pycor} representing the \code{patches} coordinates.}
 
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}.}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          `AgentMatrix` object representing the moving `agents`.
+}\if{html}{\out{</div>}}}
 
 \item{agents2}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-               column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-               \code{AgentMatrix} object representing the moving \code{agents}, or
+\if{html}{\out{<div class="sourceCode">}}\preformatted{           `AgentMatrix` object representing the moving `agents`, or
 
-               Matrix (\code{ncol} = 2) with the first column \code{x} and the second column
-               \code{y} representing locations coordinates.}
+           Matrix (`ncol` = 2) with the first column `x` and the second column
+           `y` representing locations coordinates.
+}\if{html}{\out{</div>}}}
 
 \item{nNeighbors}{Integer: 4 or 8. Represents the number of neighbor \code{patches}
 considered.}

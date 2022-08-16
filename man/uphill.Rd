@@ -29,27 +29,28 @@ considered.}
 }
 \value{
 \code{AgentMatrix} representing the \code{turtles} with updated
-        coordinates and updated data for their \code{heading} values and
-        previous coordinates \code{prevX}
-        and \code{prevY}.
+coordinates and updated data for their \code{heading} values and
+previous coordinates \code{prevX}
+and \code{prevY}.
 }
 \description{
 Move the \code{turtles} to their neighboring \code{patch} with the highest value.
 }
 \details{
 If no neighboring \code{patch} has a larger value than the \code{patch} where the
-         \code{turtle} is currently located on, the \code{turtle} stays on this \code{patch}. It still
-         moves to the \code{patch} center if it was not already on it.
+\code{turtle} is currently located on, the \code{turtle} stays on this \code{patch}. It still
+moves to the \code{patch} center if it was not already on it.
 
-         If there are multiple neighboring \code{patches} with the same highest value,
-         the \code{turtle} chooses one \code{patch} randomly.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If there are multiple neighboring `patches` with the same highest value,
+     the `turtle` chooses one `patch` randomly.
 
-         If a \code{turtle} is located on a \code{patch} on the edge
-         of the \code{world} and \code{torus = FALSE}, it has fewer
-         neighboring \code{patches} as options to move than \code{nNeighbors}; if
-         \code{torus = TRUE}, the \code{turtle} can move on the other side of the \code{world} to
-         move uphill and its choice of neighboring \code{patches} is always equals to
-         \code{nNeighbors}.
+     If a `turtle` is located on a `patch` on the edge
+     of the `world` and `torus = FALSE`, it has fewer
+     neighboring `patches` as options to move than `nNeighbors`; if
+     `torus = TRUE`, the `turtle` can move on the other side of the `world` to
+     move uphill and its choice of neighboring `patches` is always equals to
+     `nNeighbors`.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 1, maxPxcor = 10, minPycor = 1, maxPycor = 10,
@@ -65,8 +66,8 @@ points(t1, col = of(agents = t1, var = "color"), pch = 16)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#uphill}

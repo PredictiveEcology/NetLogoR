@@ -11,48 +11,51 @@ nOf(agents, n)
 }
 \arguments{
 \item{agents}{Matrix (\code{ncol} = 2) with the first column \code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates, or
+column \code{pycor} representing the \code{patches} coordinates, or
 
-              Matrix (\code{ncol} = 3) with the first column "\code{pxcor} and the second
-              column \code{pycor} representing the \code{patches} coordinates and the
-              third column \code{id}, or
+\if{html}{\out{<div class="sourceCode">}}\preformatted{          Matrix (`ncol` = 3) with the first column "`pxcor` and the second
+          column `pycor` representing the `patches` coordinates and the
+          third column `id`, or
 
-              \code{AgentMatrix} object representing the moving \code{agents}, or
+          `AgentMatrix` object representing the moving `agents`, or
 
-              Matrix (\code{ncol} = 2) with the first column \code{whoTurtles} and the
-              second column \code{id}.}
+          Matrix (`ncol` = 2) with the first column `whoTurtles` and the
+          second column `id`.
+}\if{html}{\out{</div>}}}
 
 \item{n}{Integer. Number of \code{patches} or \code{turtles} to select from \code{agents}.}
 }
 \value{
 Matrix (\code{ncol} = 2, \code{nrow} = \code{n}) with the first column \code{pxcor}
-        and the second  column \code{pycor} representing the coordinates of the
-        selected patches from \code{agents}, or
+and the second  column \code{pycor} representing the coordinates of the
+selected patches from \code{agents}, or
 
-        Matrix (\code{ncol} = 2) with the first column \code{pxcor}
-        and the second  column \code{pycor} representing the coordinates of the
-        selected \code{patches} from \code{agents}, \code{n} per individual "id", or
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    Matrix (`ncol` = 2) with the first column `pxcor`
+    and the second  column `pycor` representing the coordinates of the
+    selected `patches` from `agents`, `n` per individual "id", or
 
-        \code{AgentMatrix} (\code{nrow} = \code{n}) representing the \code{turtles}
-        selected from \code{agents},
+    `AgentMatrix` (`nrow` = `n`) representing the `turtles`
+    selected from `agents`,
 
-        Integer. Vector of \code{who} numbers for the selected \code{turtles} from
-        \code{agents}, \code{n} per individual "id".
+    Integer. Vector of `who` numbers for the selected `turtles` from
+    `agents`, `n` per individual "id".
+}\if{html}{\out{</div>}}
 }
 \description{
 Report \code{n} \code{patches} or \code{turtles} randomly selected among \code{agents}.
 }
 \details{
 \code{n} must be less or equal the number of \code{patches}
-         or \code{turtles} in \code{agents}.
+or \code{turtles} in \code{agents}.
 
-         If \code{agents} is a matrix with \code{ncol} = 3, the selection of \code{n}
-         random \code{patches} is done per individual "id". The order of the \code{patches}
-         coordinates returned follow the order of "id".
-         If \code{agents} is a matrix (\code{ncol} = 2) with columns \code{whoTurtles} and
-         \code{id}, the selection of \code{n} random \code{turtles} (defined by their \code{whoTurtles})
-         is done per individual "id". The order of the \code{who} numbers returned
-         follow the order of "id".
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     If `agents` is a matrix with `ncol` = 3, the selection of `n`
+     random `patches` is done per individual "id". The order of the `patches`
+     coordinates returned follow the order of "id".
+     If `agents` is a matrix (`ncol` = 2) with columns `whoTurtles` and
+     `id`, the selection of `n` random `turtles` (defined by their `whoTurtles`)
+     is done per individual "id". The order of the `who` numbers returned
+     follow the order of "id".
+}\if{html}{\out{</div>}}
 }
 \examples{
 # Patches
@@ -67,8 +70,8 @@ tSelect <- nOf(agents = t1, n = 2)
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#n-of}

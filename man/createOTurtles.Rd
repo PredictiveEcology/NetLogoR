@@ -22,8 +22,8 @@ If missing, \code{colors} are assigned using the function \code{rainbow(n)}.}
 }
 \value{
 \code{AgentMatrix} object of length \code{n} with data for the
-        turtles being: \code{xcor}, \code{ycor}, \code{who}, \code{heading}, \code{prevX}, \code{prevY}, \code{breed},
-        and \code{color}.
+turtles being: \code{xcor}, \code{ycor}, \code{who}, \code{heading}, \code{prevX}, \code{prevY}, \code{breed},
+and \code{color}.
 }
 \description{
 Create \code{n} \code{turtles} at the center of the \code{world} with their \code{headings} evenly
@@ -31,10 +31,11 @@ distributed.
 }
 \details{
 The identity of the \code{turtles} is defined by their \code{who} number. This
-         numbering starts at 0 and increments by 1.
+numbering starts at 0 and increments by 1.
 
-         The coordinates from the previous time step are stored in \code{prevX} and
-         \code{prevY}. The initial values are \code{NA}.
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     The coordinates from the previous time step are stored in `prevX` and
+     `prevY`. The initial values are `NA`.
+}\if{html}{\out{</div>}}
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
@@ -50,8 +51,8 @@ points(t1, col = of(agents = t1, var = "color"), pch = 16)
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
-            Center for Connected Learning and Computer-Based Modeling,
-            Northwestern University. Evanston, IL.
+Center for Connected Learning and Computer-Based Modeling,
+Northwestern University. Evanston, IL.
 }
 \seealso{
 \url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#create-ordered-turtles}
