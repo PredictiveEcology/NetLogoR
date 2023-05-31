@@ -1488,8 +1488,7 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom sf as_Spatial st_as_sf st_buffer st_sf
-#' @importFrom sp over SpatialPoints
+#' @importFrom sf as_Spatial st_as_sf st_buffer st_sf st_intersects
 #' @rdname inRadius
 #'
 #' @author Sarah Bauduin
@@ -1515,16 +1514,10 @@ setMethod(
       agents <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
       inRadius(agents = agents, radius = radius, agents2 = agents2, world = world, torus = torus)
     } else if (!inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
-      # Transform the agents into SP to use gBuffer
-      agentsSP <- SpatialPoints(coords = agents, proj4string = .projNowhere)
-
+      # Transform the agents into sf to use st_buffer
+      agents_sf <- st_as_sf(as.data.frame(agents), coords = c(1, 2))
       # Create buffers around the locations of agents
-      # pBuffer <- gBuffer(agentsSP, byid = TRUE, id = 1:NROW(agents), width = radius, quadsegs = 50)
-      # The package rgeos will be removed
-      # Replacement of gBuffer from rgeos with st_buffer from sf
-      # Need to backtransform pBuffer of sf object into a sp object
-      agents_sf <- st_as_sf(agentsSP)
-      pBuffer <- as_Spatial(st_buffer(agents_sf, dist = radius))
+      aBuffer <- st_buffer(agents_sf, dist = radius)
 
       if (torus == TRUE) {
         if (missing(world)) {
@@ -1548,35 +1541,34 @@ setMethod(
                              agents2c5, agents2c6, agents2c7, agents2c8)
 
         # Extract the locations of agents2 under the buffers
-        pOverL <- over(pBuffer, SpatialPoints(coords = agents2cAll, proj4string = .projNowhere), returnList = TRUE)
+        pOverL <- st_intersects(aBuffer, 
+                                st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
+                       sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(agents2cAll) <- c("x", "y")
         agentsWrap <- wrap(agents2cAll[pOver, , drop = FALSE], world@extent)
-        agentsXY <- unique(cbind(agentsWrap, id = rep(as.numeric(names(pOverL)), lengthID)))
+        agentsXY <- unique(cbind(agentsWrap, id = rep(1:length(lengthID), lengthID)))
 
         tOn <- merge(agentsXY, agents2@.Data[, c("xcor", "ycor", "who"), drop = FALSE],
                      by.x = c("x", "y"), by.y = c("xcor", "ycor"))
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       } else {
-        pOverL <- over(pBuffer,
-                       SpatialPoints(coords = agents2@.Data[, c("xcor", "ycor"), drop = FALSE], proj4string = .projNowhere),
-                       returnList = TRUE)
+        pOverL <- st_intersects(aBuffer,
+                       st_as_sf(inspect(agents2, who = agents2@.Data[, "who"]), coords = c("xcor", "ycor")),
+                       sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- unique(cbind(agents2@.Data[pOver, c("xcor", "ycor"), drop = FALSE],
-                                 id = rep(as.numeric(names(pOverL)), lengthID)))
+                                 id = rep(1:length(lengthID), lengthID)))
 
         tOn <- merge(agentsXY, agents2@.Data[, c("xcor", "ycor", "who"), drop = FALSE])
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       }
     } else {
-      # Transform the agents into SP to use gBuffer
-      # as of raster version 2.6-7, buffer needs a proj4 string in the SP object (#28)
-      agentsSP <- SpatialPoints(coords = agents, proj4string = .projNowhere)
-
+      agents_sf <- st_as_sf(as.data.frame(agents), coords = c(1, 2))
       # Create buffers around the locations of agents
-      pBuffer <- raster::buffer(agentsSP, dissolve = FALSE, width = radius * 1.0000001) ## (see #28)
+      aBuffer <- st_buffer(agents_sf, dist = radius * 1.0000001) ## (see #28)
 
       if (torus == TRUE) {
         if (missing(world)) {
@@ -1590,24 +1582,24 @@ setMethod(
         pAllWrap <- patches(worldWrap)
 
         # Extract the locations of agents2 under the buffers
-        sp1 <- SpatialPoints(coords = pAllWrap, proj4string = .projNowhere)
-
-        pOverL <- over(pBuffer, sp1, returnList = TRUE)
+        sf1 <- st_as_sf(as.data.frame(pAllWrap), coords = c(1, 2))
+        
+        pOverL <- st_intersects(aBuffer, sf1, sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(pAllWrap) <- c("x", "y")
         agentsWrap <- wrap(pAllWrap[pOver, , drop = FALSE], world@extent)
-        agentsXY <- unique(cbind(agentsWrap, id = rep(as.numeric(names(pOverL)), lengthID)))
+        agentsXY <- unique(cbind(agentsWrap, id = rep(1:length(lengthID), lengthID)))
         colnames(agentsXY)[1:2] <- c("pxcor", "pycor")
         return(agentsXY)
       } else {
-        sp1 <- SpatialPoints(coords = agents2, proj4string = .projNowhere)
-
-        pOverL <- over(pBuffer, sp1, returnList = TRUE)
+        sf1 <- st_as_sf(as.data.frame(agents2), coords = c(1, 2))
+        
+        pOverL <- st_intersects(aBuffer, sf1, sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- cbind(agents2[pOver, , drop = FALSE],
-                          id = rep(as.numeric(names(pOverL)), lengthID))
+                          id = rep(1:length(lengthID), lengthID))
 
         return(agentsXY)
       }
