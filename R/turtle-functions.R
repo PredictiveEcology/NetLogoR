@@ -3157,3 +3157,44 @@ setMethod(
                                    [3:ncol(turtles@.Data)])
     return(spdf)
 })
+
+################################################################################
+#' From `agentMatrix` to `sf`
+#'
+#' Convert an `agentMatrix` object into an `sf` object.
+#'
+#' @inheritParams fargs
+#'
+#' @return `sf` object of `POINT geometry` representing the moving `agents`
+#'        (coordinates and data)
+#'         as contained in `turtles`.
+#'
+#' @examples
+#' t1 <- createTurtles(n = 10, coords = cbind(xcor = 1:10, ycor = 1:10))
+#' sf_t1 <- turtles2sf(turtles = t1)
+#'
+#'
+#' @export
+#' @rdname turtles2sf
+#'
+#' @author Sarah Bauduin
+#'
+setGeneric(
+  "turtles2sf",
+  function(turtles) {
+    standardGeneric("turtles2sf")
+  })
+
+#' @export
+#' @importFrom sf st_as_sf
+#' @rdname turtles2sf
+setMethod(
+  "turtles2sf",
+  signature = c("agentMatrix"),
+  definition = function(turtles) {
+    turtles_sf <- st_as_sf(inspect(turtles, who = turtles@.Data[, "who"]), coords = c("xcor", "ycor"))
+    
+    return(turtles_sf)
+  })
+
+
