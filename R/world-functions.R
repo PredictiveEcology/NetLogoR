@@ -390,7 +390,7 @@ setMethod(
 ################################################################################
 #' Convert a `SpatRaster` object into a `worldMatrix` or `worldArray` object
 #'
-#' Convert a `SpatRaster` object from the `terra` package into a `worldMatrix` 
+#' Convert a `SpatRaster` object into a `worldMatrix` 
 #' object or a `worldArray` object depending on the number of layers of the
 #' `SpatRaster` object.
 #'
@@ -529,6 +529,78 @@ setMethod(
     return(rasterStack)
 })
 
+################################################################################
+#' Convert a `worldMatrix` or `worldArray` object into a `SpatRaster` object
+#'
+#' Convert a `worldMatrix` object or a
+#' `worldArray` object into a `SpatRaster` object
+#'
+#' @inheritParams fargs
+#'
+#' @return `SpatRaster` object.
+#'         `Patches` value are retained from the `world`.
+#'
+#' @details The `SpatRaster` returned has the same extent and resolution as the `world`
+#'          with round coordinates at the center of the cells and coordinates `x.5`
+#'          at the edges of the cells.
+#'
+#' @examples
+#' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = runif(100))
+#' r1 <- world2spatRast(w1)
+#' plot(r1)
+#' 
+#' w2 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 0)
+#' w3 <- stackWorlds(w1, w2)
+#' r3 <- world2spatRast(w3)
+#' plot(r3)
+#'
+#'
+#' @export
+#' @rdname world2spatRast
+#'
+#' @author Sarah Bauduin
+#'
+setGeneric(
+  "world2spatRast",
+  function(world) {
+    standardGeneric("world2spatRast")
+  })
+
+
+#' @export
+#' @rdname world2spatRast
+setMethod(
+  "world2spatRast",
+  signature = c("worldMatrix"),
+  definition = function(world) {
+    ras <- rast(xmin = world@extent@xmin, xmax = world@extent@xmax,
+                ymin = world@extent@ymin, ymax = world@extent@ymax,
+                ncol = ncol(world), nrow = nrow(world))
+    values(ras) <- world@.Data
+    
+    return(ras)
+  })
+
+
+#' @export
+#' @rdname world2spatRast
+setMethod(
+  "world2spatRast",
+  signature = c("worldArray"),
+  definition = function(world) {
+    
+    listRaster <- lapply(1:dim(world)[3], function(x) {
+      ras <- rast(xmin = world@extent@xmin, xmax = world@extent@xmax,
+                  ymin = world@extent@ymin, ymax = world@extent@ymax,
+                  ncol = ncol(world), nrow = nrow(world), vals = world@.Data[, , x])
+    })
+    rasterStack <- rast(listRaster)
+    names(rasterStack) <- colnames(world[,,])
+    return(rasterStack)
+  })
+
+
+################################################################################
 #' Key base R functions for `worldNLR` classes
 #'
 #' Slight modifications from the default versions.
