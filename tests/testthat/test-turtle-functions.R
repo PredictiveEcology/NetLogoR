@@ -1238,21 +1238,22 @@ test_that("sf2turtles and turtles2sf work", {
   expect_equivalent(t4$who, 0)
   expect_equivalent(t4$sex, "F")
   
-  # sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
-  #                               data = cbind.data.frame(age = c(0, 0, 3), sex = c("F", "F", "M")))
-  # sp1Turtles <- spdf2turtles(sp1)
-  # expect_equivalent(colnames(sp1Turtles@.Data), c("xcor", "ycor", "who", "heading", "prevX",
-  #                                                 "prevY", "breed", "color", "age", "sex"))
-  # expect_equivalent(of(agents = sp1Turtles, var = "age"), c(0, 0, 3))
-  # expect_equivalent(of(agents = sp1Turtles, var = "sex"), c("F", "F", "M"))
-  # expect_equivalent(of(agents = sp1Turtles, var = "who"), c(0, 1, 2))
-  # expect_equivalent(of(agents = sp1Turtles, var = "xcor"), c(1, 2, 3))
-  # 
-  # sp2 <- spdf2turtles(t2)
-  # expect_equivalent(colnames(sp2@.Data), c("xcor", "ycor", "who", "heading", "prevX", "prevY",
-  #                                          "breed", "color", "age", "sex"))
-  # expect_equivalent(of(agents = sp2, var = "age"), 1:10)
-  # expect_equivalent(of(agents = sp2, var = "sex"), c(rep("M", 5), rep("F", 5)))
-  # expect_equivalent(of(agents = sp2, var = "who"), 0:9)
-  # expect_equivalent(of(agents = sp2, var = "xcor"), 1:10)
+  turtles_sf1 <- st_as_sf(cbind.data.frame(x = c(1, 2, 3), y = c(1, 2, 3),
+                                           age = c(0, 0, 3), sex = c("F", "F", "M")),
+                         coords = c("x", "y"))
+  sf1Turtles <- sf2turtles(turtles_sf1)
+  expect_equivalent(colnames(sf1Turtles@.Data), c("xcor", "ycor", "who", "heading", "prevX",
+                                                  "prevY", "breed", "color", "age", "sex"))
+  expect_equivalent(of(agents = sf1Turtles, var = "age"), c(0, 0, 3))
+  expect_equivalent(of(agents = sf1Turtles, var = "sex"), c("F", "F", "M"))
+  expect_equivalent(of(agents = sf1Turtles, var = "who"), c(0, 1, 2))
+  expect_equivalent(of(agents = sf1Turtles, var = "xcor"), c(1, 2, 3))
+
+  sf2 <- sf2turtles(t2)
+  expect_equivalent(colnames(sf2@.Data), c("xcor", "ycor", "who", "heading", "prevX", "prevY",
+                                           "breed", "color", "age", "sex"))
+  expect_equivalent(of(agents = sf2, var = "age"), 1:10)
+  expect_equivalent(of(agents = sf2, var = "sex"), c(rep("M", 5), rep("F", 5)))
+  expect_equivalent(of(agents = sf2, var = "who"), 0:9)
+  expect_equivalent(of(agents = sf2, var = "xcor"), 1:10)
 })

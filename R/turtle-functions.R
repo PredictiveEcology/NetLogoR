@@ -3119,6 +3119,104 @@ setMethod(
 })
 
 ################################################################################
+#' From `sf` to `agentMatrix`
+#'
+#' Convert a `sf` object into an `agentMatrix` object.
+#'
+#' @param turtles_sf `sf` object of `POINT geometry` representing moving `agents`.
+#'
+#' @return `AgentMatrix` object representing the moving `agents` (coordinates and data)
+#'         as contained in `turtles_sf`.
+#'
+#' @details If the `turtles_sf` does not contain the variables created with
+#'          `createTurtles()`, these variables will be created with the
+#'          default values as in `createTurtles()`.
+#'
+#' @examples
+#' turtles_sf1 <- st_as_sf(cbind.data.frame(x = c(1, 2, 3), y = c(1, 2, 3),
+#'                                          age = c(0, 0, 3), sex = c("F", "F", "M")), 
+#'                        coords = c("x", "y"))
+#' t1 <- sf2turtles(turtles_sf = turtles_sf1)
+#'
+#'
+#' @export
+#' @rdname sf2turtles
+#'
+#' @author Sarah Bauduin
+#'
+setGeneric(
+  "sf2turtles",
+  function(turtles_sf) {
+    standardGeneric("sf2turtles")
+  })
+
+
+#' @export
+#' @importFrom grDevices rainbow
+#' @importFrom stats runif
+#' @rdname sf2turtles
+setMethod(
+  "sf2turtles",
+  signature = c("sf"),
+  definition = function(turtles_sf) {
+    
+    sfData <- st_drop_geometry(turtles_sf)
+    n <- length(turtles_sf)
+    
+    if (!is.na(match("who", names(sfData)))) {
+      who <- sfData$who
+    } else {
+      who <- seq(from = 0, to = n - 1, by = 1)
+    }
+    
+    if (!is.na(match("heading", names(sfData)))) {
+      heading <- sfData$heading
+    } else {
+      heading <- runif(n = n, min = 0, max = 360)
+    }
+    
+    if (!is.na(match("prevX", names(sfData)))) {
+      prevX <- sfData$prevX
+    } else {
+      prevX <- rep(NA, n)
+    }
+    
+    if (!is.na(match("prevY", names(sfData)))) {
+      prevY <- sfData$prevY
+    } else {
+      prevY <- rep(NA, n)
+    }
+    
+    if (!is.na(match("breed", names(sfData)))) {
+      breed <- sfData$breed
+    } else {
+      breed <- rep("turtle", n)
+    }
+    
+    if (!is.na(match("color", names(sfData)))) {
+      color <- sfData$color
+    } else {
+      color <- rainbow(n)
+    }
+    
+    turtles <- new("agentMatrix",
+                   coords = cbind(xcor = st_coordinates(turtles_sf)[, 1], ycor = st_coordinates(turtles_sf)[, 2]),
+                   who = who,
+                   heading = heading,
+                   prevX = prevX,
+                   prevY = prevY,
+                   breed = breed,
+                   color = color)
+    
+    for (i in which(!names(sfData) %in% c("who", "heading", "prevX", "prevY",
+                                            "breed", "color", "stringsAsFactors"))) {
+      turtles <- turtlesOwn(turtles = turtles, tVar = names(sfData)[i], tVal = sfData[, i])
+    }
+    
+    return(turtles)
+  })
+
+################################################################################
 #' From `agentMatrix` to `SpatialPointsDataFrame`
 #'
 #' Convert an `agentMatrix` object into a `SpatialPointsDataFrame` object.
