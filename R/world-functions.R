@@ -388,6 +388,87 @@ setMethod(
 })
 
 ################################################################################
+#' Convert a `SpatRaster` object into a `worldMatrix` or `worldArray` object
+#'
+#' Convert a `SpatRaster` object from the `terra` package into a `worldMatrix` 
+#' object or a `worldArray` object depending on the number of layers of the
+#' `SpatRaster` object.
+#'
+#' @param raster `SpatRaster` object.
+#'
+#' @return `WorldMatrix` or `worldArray` object depending on the number of layers
+#' of the input `raster`.
+#'         `Patches` value are retained from the `raster`.
+#'
+#' @details See `help("worldMatrix-class")` or `help("worldArray-class")`
+#'          for more details on the classes.
+#'          
+#'          If the `SpatRaster` object has only one layer, a `worldMatrix` object
+#'          will be returned. If the `SpatRaster` object has more than one layer,
+#'          layers must have unique names and a `worldArray` object will be returned.
+#'
+#'          The number of rows and columns, as well as the cell values of the `raster`
+#'          are kept the same. However, to match the coordinates system and resolution of a
+#'          `worldMatrix` or `worldArray`, the grid is shifted by a 1/2 cell to have
+#'          round coordinate values at the center of the patches and patch size is equal to (1,1).
+#'          The bottom left corner cell coordinates of the `worldMatrix` or `worldArray`
+#'          will be (pxcor = 0, pycor = 0).
+#'
+#' @examples
+#' r1 <- rast(xmin = 0, xmax = 10, ymin = 0, ymax = 10, nrows = 10, ncols = 10)
+#' r1[]<-runif(100)
+#' w1 <- spatRast2world(r1)
+#' plot(r1)
+#' plot(w1)
+#' 
+#' r2 <- rast(xmin = 0, xmax = 10, ymin = 0, ymax = 10, nrows = 10, ncols = 10)
+#' r2[]<- 0
+#' r3 <- c(r1, r2)
+#' names(r3) <- c("layer1", "layer2")
+#' w3 <- spatRast2world(r3)
+#' plot(r3)
+#' plot(w3)
+#'
+#' @export
+#' @rdname spatRast2world
+#'
+#' @author Sarah Bauduin
+#'
+setGeneric(
+  "spatRast2world",
+  function(raster) {
+    standardGeneric("spatRast2world")
+  })
+
+#' @export
+#' @rdname spatRast2world
+setMethod(
+  "spatRast2world",
+  signature = c("SpatRaster"),
+  definition = function(raster) {
+    
+    if(dim(raster)[3] == 1){ # one layer raster
+      world <- createWorld(minPxcor = 0, maxPxcor = ncol(raster) - 1,
+                           minPycor = 0, maxPycor = nrow(raster) - 1,
+                           data = values(raster))
+    } else { # multiple layer raster
+      worldList <- list()
+      for(lay in 1:dim(raster)[3]){
+        worldList[[lay]] <- createWorld(minPxcor = 0, maxPxcor = ncol(raster) - 1,
+                                        minPycor = 0, maxPycor = nrow(raster) - 1,
+                                        data = values(raster)[, lay])
+      }
+      if(any(duplicated(names(raster)))){
+        stop("Each layer of the SpatRaster must have a unique name")
+      }
+      names(worldList) <- names(raster)
+      world <- do.call(stackWorlds, worldList)
+    }
+    
+    return(world)
+  })
+
+################################################################################
 #' Convert a `worldMatrix` or `worldArray` object into a `Raster*` object
 #'
 #' Convert a `worldMatrix` object into a `RasterLayer` object or a

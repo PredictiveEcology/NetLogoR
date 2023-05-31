@@ -84,3 +84,33 @@ test_that("raster2world and world2raster work", {
   expect_identical(nrow(r4), nrow(w4@.Data))
   expect_identical(as.numeric(w4@.Data[1,]), values(r4)[1:100])
 })
+
+test_that("spatRast2world and world2raster work", {
+  r1 <- rast(nrows = 10, ncols = 10, xmin = -5, xmax = 10, ymin = 2, ymax = 20)
+  r1[] <- runif(100)
+  r2 <- r1
+  r2[] <- runif(100)
+  rs <- c(r1, r2)
+  expect_error(spatRast2world(rs)) # duplicated names in layers
+  names(rs) <- c("r1", "r2")
+  w1 <- spatRast2world(r1)
+  w2 <- w1
+  w3 <- stackWorlds(w1, w2)
+  ws <- spatRast2world(rs)
+  expect_identical(w1[], ws[][, 1])
+  w4 <- spatRast2world(r2)
+  w5 <- stackWorlds(w1, w4)
+  expect_identical(w5[[2]], ws[[2]])
+  
+  # r1w <- world2raster(w1)
+  # rsw <- world2raster(ws)
+  # 
+  # r4 <- raster(extent(c(0, 20000, 0, 20000)), nrows = 100, ncols = 100)
+  # res(r4) <- 200
+  # r4[]<-runif(10000)
+  # w4 <- spatRast2world(r4)
+  # expect_identical(ncol(r4), ncol(w4@.Data))
+  # expect_identical(nrow(r4), nrow(w4@.Data))
+  # expect_identical(as.numeric(w4@.Data[1,]), values(r4)[1:100])
+})
+
