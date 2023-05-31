@@ -1,5 +1,12 @@
 Known issues: <https://github.com/PredictiveEcology/NetLogoR/issues>
 
+Version xxxx
+=============
+
+## Dependency changes
+* removed dependency: `sp` and `raster`. There is still the possibility to convert `sp` and `raster` objects into `NetLogoR` objects and vice versa but except for these functions, all the others do not rely anymore on `sp` and `raster` objects and functions.
+* added dependency: `terra`
+
 Version 0.3.11
 =============
 

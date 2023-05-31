@@ -556,6 +556,7 @@ setMethod(
 #'
 #'
 #' @export
+#' @importFrom terra rast
 #' @rdname world2spatRast
 #'
 #' @author Sarah Bauduin
