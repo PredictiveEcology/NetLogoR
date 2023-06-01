@@ -1488,7 +1488,7 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom sf as_Spatial st_as_sf st_buffer st_sf st_intersects
+#' @importFrom sf st_as_sf st_buffer st_sf st_intersects
 #' @rdname inRadius
 #'
 #' @author Sarah Bauduin
@@ -1541,7 +1541,7 @@ setMethod(
                              agents2c5, agents2c6, agents2c7, agents2c8)
 
         # Extract the locations of agents2 under the buffers
-        pOverL <- st_intersects(aBuffer, 
+        pOverL <- st_intersects(aBuffer,
                                 st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
                        sparse = TRUE)
         pOver <- unlist(pOverL)
@@ -1583,7 +1583,7 @@ setMethod(
 
         # Extract the locations of agents2 under the buffers
         sf1 <- st_as_sf(as.data.frame(pAllWrap), coords = c(1, 2))
-        
+
         pOverL <- st_intersects(aBuffer, sf1, sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
@@ -1594,7 +1594,7 @@ setMethod(
         return(agentsXY)
       } else {
         sf1 <- st_as_sf(as.data.frame(agents2), coords = c(1, 2))
-        
+
         pOverL <- st_intersects(aBuffer, sf1, sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))

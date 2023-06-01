@@ -3134,7 +3134,7 @@ setMethod(
 #'
 #' @examples
 #' turtles_sf1 <- st_as_sf(cbind.data.frame(x = c(1, 2, 3), y = c(1, 2, 3),
-#'                                          age = c(0, 0, 3), sex = c("F", "F", "M")), 
+#'                                          age = c(0, 0, 3), sex = c("F", "F", "M")),
 #'                        coords = c("x", "y"))
 #' t1 <- sf2turtles(turtles_sf = turtles_sf1)
 #'
@@ -3154,51 +3154,52 @@ setGeneric(
 #' @export
 #' @importFrom grDevices rainbow
 #' @importFrom stats runif
+#' @importFrom sf st_drop_geometry st_coordinates
 #' @rdname sf2turtles
 setMethod(
   "sf2turtles",
   signature = c("sf"),
   definition = function(turtles_sf) {
-    
+
     sfData <- st_drop_geometry(turtles_sf)
     n <- length(turtles_sf)
-    
+
     if (!is.na(match("who", names(sfData)))) {
       who <- sfData$who
     } else {
       who <- seq(from = 0, to = n - 1, by = 1)
     }
-    
+
     if (!is.na(match("heading", names(sfData)))) {
       heading <- sfData$heading
     } else {
       heading <- runif(n = n, min = 0, max = 360)
     }
-    
+
     if (!is.na(match("prevX", names(sfData)))) {
       prevX <- sfData$prevX
     } else {
       prevX <- rep(NA, n)
     }
-    
+
     if (!is.na(match("prevY", names(sfData)))) {
       prevY <- sfData$prevY
     } else {
       prevY <- rep(NA, n)
     }
-    
+
     if (!is.na(match("breed", names(sfData)))) {
       breed <- sfData$breed
     } else {
       breed <- rep("turtle", n)
     }
-    
+
     if (!is.na(match("color", names(sfData)))) {
       color <- sfData$color
     } else {
       color <- rainbow(n)
     }
-    
+
     turtles <- new("agentMatrix",
                    coords = cbind(xcor = st_coordinates(turtles_sf)[, 1], ycor = st_coordinates(turtles_sf)[, 2]),
                    who = who,
@@ -3207,12 +3208,12 @@ setMethod(
                    prevY = prevY,
                    breed = breed,
                    color = color)
-    
+
     for (i in which(!names(sfData) %in% c("who", "heading", "prevX", "prevY",
                                             "breed", "color", "stringsAsFactors"))) {
       turtles <- turtlesOwn(turtles = turtles, tVar = names(sfData)[i], tVal = sfData[, i])
     }
-    
+
     return(turtles)
   })
 
@@ -3291,7 +3292,7 @@ setMethod(
   signature = c("agentMatrix"),
   definition = function(turtles) {
     turtles_sf <- st_as_sf(inspect(turtles, who = turtles@.Data[, "who"]), coords = c("xcor", "ycor"))
-    
+
     return(turtles_sf)
   })
 

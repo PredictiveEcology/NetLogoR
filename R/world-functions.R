@@ -390,7 +390,7 @@ setMethod(
 ################################################################################
 #' Convert a `SpatRaster` object into a `worldMatrix` or `worldArray` object
 #'
-#' Convert a `SpatRaster` object into a `worldMatrix` 
+#' Convert a `SpatRaster` object into a `worldMatrix`
 #' object or a `worldArray` object depending on the number of layers of the
 #' `SpatRaster` object.
 #'
@@ -402,7 +402,7 @@ setMethod(
 #'
 #' @details See `help("worldMatrix-class")` or `help("worldArray-class")`
 #'          for more details on the classes.
-#'          
+#'
 #'          If the `SpatRaster` object has only one layer, a `worldMatrix` object
 #'          will be returned. If the `SpatRaster` object has more than one layer,
 #'          layers must have unique names and a `worldArray` object will be returned.
@@ -420,7 +420,7 @@ setMethod(
 #' w1 <- spatRast2world(r1)
 #' plot(r1)
 #' plot(w1)
-#' 
+#'
 #' r2 <- rast(xmin = 0, xmax = 10, ymin = 0, ymax = 10, nrows = 10, ncols = 10)
 #' r2[]<- 0
 #' r3 <- c(r1, r2)
@@ -441,12 +441,13 @@ setGeneric(
   })
 
 #' @export
+#' @importFrom terra ncol nrow values names
 #' @rdname spatRast2world
 setMethod(
   "spatRast2world",
   signature = c("SpatRaster"),
   definition = function(raster) {
-    
+
     if(dim(raster)[3] == 1){ # one layer raster
       world <- createWorld(minPxcor = 0, maxPxcor = ncol(raster) - 1,
                            minPycor = 0, maxPycor = nrow(raster) - 1,
@@ -464,7 +465,7 @@ setMethod(
       names(worldList) <- names(raster)
       world <- do.call(stackWorlds, worldList)
     }
-    
+
     return(world)
   })
 
@@ -548,7 +549,7 @@ setMethod(
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = runif(100))
 #' r1 <- world2spatRast(w1)
 #' plot(r1)
-#' 
+#'
 #' w2 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 0)
 #' w3 <- stackWorlds(w1, w2)
 #' r3 <- world2spatRast(w3)
@@ -578,7 +579,7 @@ setMethod(
                 ymin = world@extent@ymin, ymax = world@extent@ymax,
                 ncol = ncol(world), nrow = nrow(world))
     values(ras) <- world@.Data
-    
+
     return(ras)
   })
 
@@ -589,7 +590,7 @@ setMethod(
   "world2spatRast",
   signature = c("worldArray"),
   definition = function(world) {
-    
+
     listRaster <- lapply(1:dim(world)[3], function(x) {
       ras <- rast(xmin = world@extent@xmin, xmax = world@extent@xmax,
                   ymin = world@extent@ymin, ymax = world@extent@ymax,
