@@ -55,7 +55,7 @@ Imports:
     sf,
     sp,
     SpaDES.tools,
-    stats
+    stats,
     terra
 Suggests:
     covr,
