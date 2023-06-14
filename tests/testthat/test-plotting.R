@@ -1,4 +1,5 @@
 test_that("createTurtles works", {
+  withr::local_package("quickPlot")
   w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data = sample(1:25))
   w2 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data = 1:25)
   a1 <- stackWorlds(w1, w2)
@@ -9,7 +10,6 @@ test_that("createTurtles works", {
   s1 <- world2raster(a1)
   sp1 <- turtles2spdf(t1)
 
-  library(quickPlot)
   clearPlot()
   expect_silent(Plot(t1)) #agentMatrix
   a <- getFromNamespace(".getQuickPlot", ns = "quickPlot")(paste0("quickPlot", dev.cur()))

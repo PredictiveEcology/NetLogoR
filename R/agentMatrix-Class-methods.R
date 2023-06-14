@@ -1,9 +1,11 @@
+
 ##########################################################
 #' Initialize for `agentMatrix` Class
 #'
 #' To create a new `agentMatrix` object.
 #'
 #' @include Agent-classes.R
+#' @include helpers.R
 #' @inheritParams methods::initialize
 #' @param coords 2 column matrix of coordinates
 #' @param levelsAM A list with named character vectors. Each name should
@@ -38,6 +40,8 @@ setMethod(
       coords <- as.matrix(coords)
     }
 
+    colnames(coords) <- .coordsColNames
+
     if (missing(levelsAM)) {
       if (all(sapply(dotCols, is.numeric))) {
         isMatrix <- sapply(dotCols, is.matrix)
@@ -49,6 +53,7 @@ setMethod(
           otherCols <- append(list(xcor = coords[, 1], ycor = coords[, 2]), dotCols)
           otherCols <- do.call(cbind, otherCols)
         }
+        rownames(otherCols) <- NULL
         if (length(otherCols) > 0) {
           .Object@.Data <- otherCols
           .Object@levels <- list(NULL)

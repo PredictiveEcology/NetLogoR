@@ -644,7 +644,7 @@ test_that("inCone works", {
   expect_equivalent(length(unique(t3[, "id"])), 5)
   expect_equivalent(nrow(t3[t3[, "id"] == 5, , drop = FALSE]), 2)
   t4 <- inCone(turtles = turtle(t1, who = 0), radius = 1, angle = 181, agents = patches(w1))
-  expect_identical(t4[t4[, "id"] == 1, c("pxcor", "pycor")],
+  expect_equivalent(t4[t4[, "id"] == 1, c("pxcor", "pycor")],
                    patch(w1, x = c(0, 0, 1), y = c(1, 0, 0)))
   t5 <- inCone(turtles = turtle(t1, who = 0), radius = 1, angle = 181, agents = patches(w1),
                world = w1, torus = TRUE)

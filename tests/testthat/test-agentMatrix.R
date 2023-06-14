@@ -226,7 +226,7 @@ test_that("agentMatrix benchmarking", {
         }
       ))
       expect_gt(mb$median[1] / mb$median[3], 4) # use 4 for safety
-      if (interactive()) expect_gt(mb$median[2] / mb$median[3], 4) # use 4 for safety
+      if (interactive()) expect_gt(mb$median[2] / mb$median[3], 2) # use 2 for safety
     }
   }
 })

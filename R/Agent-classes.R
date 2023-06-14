@@ -46,16 +46,16 @@ setClass("agentMatrix", contains = "matrix",
          )
 )
 
-#' A meta class for `agentMatrix` and `SpatialPointsDataFrame`
-#'
-#' Both these types can be used by NetLogoR to describe turtle agents.
-#'
-#' @aliases agentClasses
-#' @author Eliot McIntire
-#' @exportClass agentClasses
-#' @importClassesFrom sp SpatialPixelsDataFrame SpatialPointsDataFrame
-#' @name agentClasses-class
-#' @rdname agentClasses-class
-setClassUnion(name = "agentClasses",
-              members = c("agentMatrix", "SpatialPointsDataFrame", "SpatialPixelsDataFrame")
-)
+# A meta class for `agentMatrix` and `SpatialPointsDataFrame`
+#
+# Both these types can be used by NetLogoR to describe turtle agents.
+#
+# @aliases agentClasses
+# @author Eliot McIntire
+# @exportClass agentClasses
+# @importClassesFrom sp SpatialPixelsDataFrame SpatialPointsDataFrame
+# @name agentClasses-class
+# @rdname agentClasses-class
+# setClassUnion(name = "agentClasses",
+#               members = c("agentMatrix", "SpatialPointsDataFrame", "SpatialPixelsDataFrame")
+# )
