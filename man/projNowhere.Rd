@@ -5,7 +5,7 @@
 \alias{.projNowhere}
 \title{Internal CRS usage}
 \format{
-An object of class \code{CRS} of length 1.
+An object of class \code{character} of length 1.
 }
 \usage{
 .projNowhere

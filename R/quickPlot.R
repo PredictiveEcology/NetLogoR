@@ -66,6 +66,8 @@ numLayers.worldArray <-
 #' `install.packages("fastshp", repos = "https://rforge.net", type = "source")`.
 #'
 #' @export
+#' @importFrom quickPlot .plotGrob
+#' @method .plotGrob agentMatrix
 #' @importFrom grid gList gpar grid.draw gTree pointsGrob unit
 #' @include world-functions.R
 #' @inheritParams quickPlot::.plotGrob
@@ -74,7 +76,6 @@ numLayers.worldArray <-
 #  signature = c("agentMatrix"),
   # definition =
   function(grobToPlot, col, size, legend, gp = gpar(), pch, speedup, name, vp, ...) {
-    browser()
     speedupScale <- 40
     xyOrd <- coordinates(grobToPlot)
 

@@ -9,7 +9,7 @@
 \usage{
 \method{numLayers}{worldArray}(x)
 
-.plotGrob.agentMatrix(
+\method{.plotGrob}{agentMatrix}(
   grobToPlot,
   col,
   size,

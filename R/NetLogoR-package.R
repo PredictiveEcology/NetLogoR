@@ -29,7 +29,7 @@ NULL
 #'
 #' @keywords internal
 #' @rdname projNowhere
-.projNowhere <- CRS("+proj=utm +zone=32 +datum=WGS84 +units=m +no_defs")
+.projNowhere <- terra::crs("+proj=utm +zone=32 +datum=WGS84 +units=m +no_defs")
 # This is actually in central Europe; but exact
 #  location is not relevant as this is used to calculate
 # distances .projNowhere <- CRS("EPSG:32632")

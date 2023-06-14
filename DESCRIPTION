@@ -42,8 +42,7 @@ Authors@R: c(
            role = "cph")
     )
 Depends:
-    R (>= 4.0),
-    raster
+    R (>= 4.0)
 Imports:
     abind,
     CircStats,
@@ -63,6 +62,7 @@ Suggests:
     knitr,
     magrittr,
     microbenchmark,
+    raster,
     rmarkdown,
     SpaDES.core,
     testthat
