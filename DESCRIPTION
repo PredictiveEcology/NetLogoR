@@ -52,7 +52,6 @@ Imports:
     methods,
     quickPlot (>= 0.1.2),
     sf,
-    sp,
     SpaDES.tools,
     stats,
     terra
@@ -64,6 +63,7 @@ Suggests:
     microbenchmark,
     raster,
     rmarkdown,
+    sp,
     SpaDES.core,
     testthat
 Remotes:

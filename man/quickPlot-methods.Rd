@@ -2,14 +2,31 @@
 % Please edit documentation in R/quickPlot.R
 \name{numLayers.worldArray}
 \alias{numLayers.worldArray}
+\alias{numLayers.worldMatrix}
 \alias{.plotGrob.agentMatrix}
+\alias{.plotGrob.worldMatrix}
 \alias{layerNames,worldArray-method}
 \alias{.identifyGrobToPlot,worldArray,.quickPlotGrob-method}
 \title{Methods for \code{quickPlot}}
 \usage{
 \method{numLayers}{worldArray}(x)
 
+\method{numLayers}{worldMatrix}(x)
+
 \method{.plotGrob}{agentMatrix}(
+  grobToPlot,
+  col,
+  size,
+  legend,
+  gp = gpar(),
+  pch,
+  speedup,
+  name,
+  vp,
+  ...
+)
+
+\method{.plotGrob}{worldMatrix}(
   grobToPlot,
   col,
   size,

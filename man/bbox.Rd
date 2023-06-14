@@ -25,17 +25,13 @@ bbox(obj) <- value
 \S4method{bbox}{worldNLR}(obj)
 }
 \arguments{
-\item{x}{Raster* or Extent object, a matrix, a bbox, or a vector of four numbers }
-
-\item{...}{Additional arguments. When x is a single number representing 'xmin', you can pass three additional numbers (xmax, ymin, ymax)
-
-When \code{x} is a Raster* object, you can pass four additional arguments to crop the extent: \code{r1, r2, c1, c2}, representing the first and last row and column number }
+\item{x}{An object from which to get the extent}
 
 \item{coords}{xy coordinates for all cells, e.g., produced by \code{raster::coordinates}.}
 
-\item{obj}{ object deriving from class "Spatial", or one of classes: "Line", "Lines", "Polygon" or "Polygons", or ANY, which requires obj to be an array with at least two columns }
+\item{obj}{object deriving from class "agentMatrix" or "worldMatrix" or "worldArray"}
 
-\item{value}{2x2 matrix representing the bounding box. See \code{\link[sp:bbox]{sp::bbox()}}.}
+\item{value}{2x2 matrix representing the bounding box. See \code{sp::bbox}.}
 }
 \value{
 \code{bbox} returns a two-column matrix; the first column has the minimum,
@@ -43,8 +39,8 @@ the second the maximum values; rows represent the spatial dimensions.
 \code{extent} returns an \code{extent} object.
 
 two-column matrix; the first column has the minimum, the second the maximum values;
-rows represent the spatial dimensions. See \code{\link[sp:bbox]{sp::bbox()}}.
+rows represent the spatial dimensions. See \code{sp::bbox}.
 }
 \description{
-Same as \code{\link[sp:bbox]{sp::bbox()}} and \code{\link[raster:extent]{raster::extent()}}.
+Same as \code{sp::bbox} and \code{raster::extent}.
 }

@@ -53,6 +53,17 @@ numLayers.worldArray <-
     return(dim(x)[3])
   }
 
+#' @export
+#' @inheritParams quickPlot::numLayers
+#' @importFrom quickPlot numLayers
+#' @rdname quickPlot-methods
+numLayers.worldMatrix <-
+  #  signature = "worldArray",
+  #definition =
+  function(x) {
+    return(1L)
+  }
+
 ############## grobs
 # if (!isGeneric(".plotGrob")) {
 #   setGeneric(
@@ -73,8 +84,6 @@ numLayers.worldArray <-
 #' @inheritParams quickPlot::.plotGrob
 #' @rdname quickPlot-methods
 .plotGrob.agentMatrix <-
-#  signature = c("agentMatrix"),
-  # definition =
   function(grobToPlot, col, size, legend, gp = gpar(), pch, speedup, name, vp, ...) {
     speedupScale <- 40
     xyOrd <- coordinates(grobToPlot)
@@ -130,6 +139,28 @@ numLayers.worldArray <-
     return(invisible(pntGrob))
 }
 
+
+#' @export
+#' @importFrom quickPlot .plotGrob
+#' @method .plotGrob worldMatrix
+#' @include world-functions.R
+#' @rdname quickPlot-methods
+.plotGrob.worldMatrix <-
+  function(grobToPlot, col, size, legend, gp = gpar(), pch, speedup, name, vp, ...) {
+    browser()
+    dots <- list(...)
+    dots$minv <- min(grobToPlot)
+    dots$maxv <- max(grobToPlot)
+    dots$real <- TRUE
+
+    do.call(.plotGrob, append(dots, list(grobToPlot = grobToPlot@.Data,
+                                         col = col, size = size, legend = legend,
+                                        # minv = min(grobToPlot), maxv = max(grobToPlot),
+                                         gp = gp, pch = pch, speedup = speedup, name = name)))
+  }
+
+
+
 #' @export
 #' @inheritParams quickPlot::layerNames
 #' @importFrom quickPlot layerNames
@@ -164,7 +195,7 @@ setMethod(
       toPlot <- eval(parse(text = sGrob@objName),
                      sGrob@envir)
     }
-    grobToPlot <- .emptyWorldMatrix
+    grobToPlot <- .emptyWorldMatrix()
     sns <- slotNames(toPlot);
     for (sn in sns[sns != ".Data"]) {
       slot(grobToPlot, sn, check = FALSE) <- slot(toPlot, sn)

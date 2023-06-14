@@ -170,7 +170,6 @@ setMethod(
 )
 
 #' @export
-#' @importFrom sp coordinates
 #' @rdname agentMatrix
 setMethod(
   "agentMatrix",
@@ -178,6 +177,8 @@ setMethod(
   definition = function(...) {
     dots <- list(...)
     if (all(unlist(lapply(dots, is, "SpatialPointsDataFrame"))) & length(dots) == 1)  {
+      browser()
+      if (!requireNamespace("sp", quietly = TRUE)) stop("Please install.packages('sp') to use sp objects")
       dots <- list(...)
       new("agentMatrix", coords = sp::coordinates(dots[[1]]), dots[[1]]@data)
     } else {
@@ -186,6 +187,16 @@ setMethod(
   }
 )
 
+
+if (!isGeneric("coordinates")) {
+  setGeneric(
+    "coordinates",
+    function(obj, ...) {
+      standardGeneric("coordinates")
+    }
+  )
+}
+
 #' Set spatial coordinates
 #'
 #' @param obj  an `AgentMatrix` object
@@ -193,7 +204,7 @@ setMethod(
 #'
 #' @return usually an object of class `SpatialPointsDataFrame`; if the coordinates set cover
 #'         the full set of variables in object, an object of class `SpatialPoints` is returned.
-#'         See [sp::coordinates()].
+#'         See `sp::coordinates`.
 #'
 #' @export
 #' @rdname coordinates
@@ -627,7 +638,7 @@ setMethod(
 #' @return An `agentMatrix` object, like `x`, but generally smaller.
 #'
 #' @method head agentMatrix
-#' @export head agentMatrix
+#' @export
 #' @name head
 #' @rdname agentMatrix-show-methods
 head.agentMatrix <- function(x, n = 6L, ...) {
@@ -635,7 +646,7 @@ head.agentMatrix <- function(x, n = 6L, ...) {
 }
 
 #' @method tail agentMatrix
-#' @export tail agentMatrix
+#' @export
 #' @name tail
 #' @rdname agentMatrix-show-methods
 tail.agentMatrix <- function(x, n = 6L, ...) {
@@ -714,13 +725,22 @@ rbind.agentMatrix <- function(..., deparse.level = 1) {
   }
 }
 
+
+if (!isGeneric("extent")) {
+  setGeneric(
+    "extent",
+    function(x, ...) {
+      standardGeneric("extent")
+    }
+  )
+}
+
 #' Bounding box and extent methods for NetLogoR classes
 #'
-#' Same as [sp::bbox()] and [raster::extent()].
+#' Same as `sp::bbox` and `raster::extent`.
 #'
-#' @inheritParams raster::extent
 #' @include worldNLR-classes-methods.R
-#' @importFrom raster extent
+#' @param x An object from which to get the extent
 #'
 #' @return `bbox` returns a two-column matrix; the first column has the minimum,
 #'         the second the maximum values; rows represent the spatial dimensions.
@@ -734,12 +754,12 @@ setMethod(
 })
 
 #' @include worldNLR-classes-methods.R
-#' @importFrom raster extent
 #' @rdname bbox
 setMethod(
   "extent",
   signature("agentMatrix"),
   definition = function(x, ...) {
+    browser()
     if (sum(attr(x, "bbox") != 0)) {
       extent(attr(x, "bbox")) # much faster to access directly, if it exists
     } else {
@@ -760,11 +780,21 @@ setMethod(
   bbox
 }
 
+
+if (!isGeneric("bbox")) {
+  setGeneric(
+    "bbox",
+    function(obj) {
+      standardGeneric("bbox")
+    }
+  )
+}
+
 #' @include worldNLR-classes-methods.R
-#' @inheritParams sp::bbox
-#' @importFrom sp bbox
+#' @export
+#' @param obj object deriving from class "agentMatrix" or "worldMatrix" or "worldArray"
 #' @return two-column matrix; the first column has the minimum, the second the maximum values;
-#'         rows represent the spatial dimensions. See [sp::bbox()].
+#'         rows represent the spatial dimensions. See `sp::bbox`.
 #' @rdname bbox
 setMethod(
   "bbox",
@@ -778,8 +808,7 @@ setMethod(
 })
 
 #' @export
-#' @importFrom sp bbox
-#' @param value 2x2 matrix representing the bounding box. See [sp::bbox()].
+#' @param value 2x2 matrix representing the bounding box. See `sp::bbox`.
 #' @rdname bbox
 setGeneric("bbox<-",
            function(obj, value) {
@@ -787,7 +816,6 @@ setGeneric("bbox<-",
 })
 
 #' @include worldNLR-classes-methods.R
-#' @importFrom sp bbox
 #' @rdname bbox
 setReplaceMethod(
   "bbox",
@@ -798,7 +826,6 @@ setReplaceMethod(
 })
 
 #' @include worldNLR-classes-methods.R
-#' @importFrom sp bbox
 #' @rdname bbox
 setMethod(
   "bbox",
@@ -808,5 +835,5 @@ setMethod(
 })
 
 ################################################################################
-.emptyWorldMatrix <- createWorld()
-.emptyAgentMatrix <- agentMatrix()
+.emptyWorldMatrix <- function() createWorld()
+.emptyAgentMatrix <- function() agentMatrix()

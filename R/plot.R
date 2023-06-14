@@ -36,7 +36,7 @@ plot.agentMatrix <- function(x, ...) {
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 1:100)
 #' plot(w1)
 plot.worldMatrix <- function(x, ...) {
-  Ras <- world2raster(x)
+  Ras <- world2spatRast(x)
   plot(Ras, ...)
 }
 
@@ -52,7 +52,7 @@ plot.worldMatrix <- function(x, ...) {
 #' w3 <- stackWorlds(w1, w2)
 #' plot(w3)
 plot.worldArray <- function(x, ...) {
-  Ras <- world2raster(x)
+  Ras <- world2spatRast(x)
   plot(Ras, ...)
 }
 

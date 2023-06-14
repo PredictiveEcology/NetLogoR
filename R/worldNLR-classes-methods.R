@@ -39,7 +39,6 @@
 #' @rdname worldMatrix-class
 #' @author Sarah Bauduin, Eliot McIntire, and Alex Chubaty
 #' @exportClass worldMatrix
-#' @importClassesFrom raster Extent
 #' @seealso [worldArray()]
 #'
 setClass(
@@ -50,10 +49,15 @@ setClass(
     maxPxcor = "numeric",
     minPycor = "numeric",
     maxPycor = "numeric",
-    extent = "Extent",
+    extent = "ANY",
     res = "numeric",
     pCoords = "matrix"
-  )
+  ), validity = function(object) {
+    # check for valid extents
+    if (any(is(object@extent, c("Extent", "SpatExtent")))) {
+      stop("must supply an object name")
+    }
+  }
 )
 
 #' @export
@@ -152,7 +156,6 @@ setReplaceMethod(
 #'
 #'
 #' @export
-#' @importFrom raster extent
 #' @rdname createWorld
 #'
 #' @author Sarah Bauduin, Eliot McIntire, and Alex Chubaty
@@ -212,7 +215,6 @@ setMethod(
 #' @rdname worldArray-class
 #' @author Sarah Bauduin, Eliot McIntire, and Alex Chubaty
 #' @exportClass worldArray
-#' @importClassesFrom raster Extent
 #' @seealso [worldMatrix()]
 #'
 setClass(
@@ -223,10 +225,15 @@ setClass(
     maxPxcor = "numeric",
     minPycor = "numeric",
     maxPycor = "numeric",
-    extent = "Extent",
+    extent = "ANY",
     res = "numeric",
     pCoords = "matrix"
-  )
+  ), validity = function(object) {
+    # check for valid extents
+    if (any(is(object@extent, c("Extent", "SpatExtent")))) {
+      stop("must supply an object name")
+    }
+  }
 )
 
 #' @export
@@ -526,7 +533,7 @@ setMethod("[[", signature(x = "worldArray", i = "ANY"),
               x@.Data <- x@.Data[, , i]
               return(x)
             } else {
-              worldMat <- .emptyWorldMatrix
+              worldMat <- .emptyWorldMatrix()
               sns <- .slotNames(x);
               for (sn in sns[sns != ".Data"]) {
                 slot(worldMat, sn, check = FALSE) <- slot(x, sn)

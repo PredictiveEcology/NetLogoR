@@ -359,33 +359,24 @@ setGeneric(
 #' @rdname raster2world
 setMethod(
   "raster2world",
-  signature = c("RasterLayer"),
+  signature = c("ANY"),
   definition = function(raster) {
 
-    world <- createWorld(minPxcor = 0, maxPxcor = raster@ncols - 1,
-                         minPycor = 0, maxPycor = raster@nrows - 1,
-                         data = values(raster))
-
+    if (is(raster, "RasterLayer")) {
+      world <- createWorld(minPxcor = 0, maxPxcor = raster@ncols - 1,
+                           minPycor = 0, maxPycor = raster@nrows - 1,
+                           data = values(raster))
+    } else if (is(raster, "RasterStack")) {
+      rasList <- raster::unstack(raster)
+      names(rasList) <- names(raster)
+      worldList <- lapply(rasList, function(ras) {
+        raster2world(ras)
+      })
+      world <- do.call(stackWorlds, worldList)
+    }
     return(world)
-})
+  })
 
-#' @export
-#' @rdname raster2world
-#' @importFrom raster unstack
-setMethod(
-  "raster2world",
-  signature = c("RasterStack"),
-  definition = function(raster) {
-
-    rasList <- raster::unstack(raster)
-    names(rasList) <- names(raster)
-    worldList <- lapply(rasList, function(ras) {
-      raster2world(ras)
-    })
-    wArray <- do.call(stackWorlds, worldList)
-
-    return(wArray)
-})
 
 ################################################################################
 #' Convert a `SpatRaster` object into a `worldMatrix` or `worldArray` object

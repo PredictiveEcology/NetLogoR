@@ -3059,8 +3059,10 @@ setGeneric(
 #' @rdname spdf2turtles
 setMethod(
   "spdf2turtles",
-  signature = c("SpatialPointsDataFrame"),
+  signature = c("ANY"),
   definition = function(spdf) {
+    if (!is(spdf, "SpatialPointsDataFrame"))
+      stop("spdf is not a SpatialPointsDataFrame")
 
     spdfData <- spdf@data
     n <- length(spdf)
@@ -3245,12 +3247,12 @@ setGeneric(
 })
 
 #' @export
-#' @importFrom sp SpatialPointsDataFrame
 #' @rdname turtles2spdf
 setMethod(
   "turtles2spdf",
   signature = c("agentMatrix"),
   definition = function(turtles) {
+    if (!requireNamespace("sp", quietly = TRUE)) stop("Please install.packages('sp') to use sp objects")
     spdf <- SpatialPointsDataFrame(coords = turtles@.Data[, c("xcor", "ycor"), drop = FALSE],
                                    data = inspect(turtles, who = turtles@.Data[, "who"])
                                    [3:ncol(turtles@.Data)])

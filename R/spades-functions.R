@@ -20,7 +20,6 @@
 #'
 #' @author Eliot McIntire
 #' @export
-#' @importFrom sp coordinates
 #' @rdname wrap
 #'
 #' @examples
@@ -65,117 +64,169 @@ setGeneric("wrap", function(obj, bounds, withHeading) {
   standardGeneric("wrap")
 })
 
-#' @export
-#' @rdname wrap
-setMethod(
-  "wrap",
-  signature(obj = "matrix", bounds = "Extent", withHeading = "missing"),
-  definition = function(obj, bounds) {
-    if (identical(colnames(obj), c("x", "y"))) {
-      return(cbind(
-        x = (obj[, "x"] - bounds@xmin) %% (bounds@xmax - bounds@xmin) + bounds@xmin,
-        y = (obj[, "y"] - bounds@ymin) %% (bounds@ymax - bounds@ymin) + bounds@ymin
-      ))
-    } else {
-      stop("When obj is a matrix, it must have 2 columns, x and y,",
-           "as from say, coordinates(SpatialPointsObj)")
-    }
-})
 
 #' @export
 #' @rdname wrap
 setMethod(
   "wrap",
-  signature(obj = "SpatialPoints", bounds = "ANY", withHeading = "missing"),
+  signature(obj = "ANY", bounds = "ANY"),
   definition = function(obj, bounds) {
-    obj@coords <- wrap(obj@coords, bounds = bounds)
-    return(obj)
-})
+    browser()
+    if (is.matrix(obj) && is(bounds, "Extent")) {
+      if (identical(colnames(obj), c("x", "y"))) {
+        return(cbind(
+          x = (obj[, "x"] - bounds@xmin) %% (bounds@xmax - bounds@xmin) + bounds@xmin,
+          y = (obj[, "y"] - bounds@ymin) %% (bounds@ymax - bounds@ymin) + bounds@ymin
+        ))
+      } else {
+        stop("When obj is a matrix, it must have 2 columns, x and y,",
+             "as from say, coordinates(SpatialPointsObj)")
+      }
+    } else if (is(obj, "SpatialPointsDataFrame")) {
+      if (is(bounds, "Raster") || is.matrix(bounds)) {
+        bounds <- extent(bounds)
+      }
+      if (isTRUE(withHeading)) {
+        # This requires that previous points be "moved" as if they are
+        #  off the bounds, so that the heading is correct
+        obj@data[coordinates(obj)[, "x"] < bounds@xmin, "x1"] <-
+          (obj@data[coordinates(obj)[, "x"] < bounds@xmin, "x1"] - bounds@xmin) %%
+          (bounds@xmax - bounds@xmin) + bounds@xmax
+        obj@data[coordinates(obj)[, "x"] > bounds@xmax, "x1"] <-
+          (obj@data[coordinates(obj)[, "x"] > bounds@xmax, "x1"] - bounds@xmax) %%
+          (bounds@xmin - bounds@xmax) + bounds@xmin
+        obj@data[coordinates(obj)[, "y"] < bounds@ymin, "y1"] <-
+          (obj@data[coordinates(obj)[, "y"] < bounds@ymin, "y1"] - bounds@ymin) %%
+          (bounds@ymax - bounds@ymin) + bounds@ymax
+        obj@data[coordinates(obj)[, "y"] > bounds@ymax, "y1"] <-
+          (obj@data[coordinates(obj)[, "y"] > bounds@ymax, "y1"] - bounds@ymax) %%
+          (bounds@ymin - bounds@ymax) + bounds@ymin
+      }
+      return(wrap(obj, bounds = bounds))
 
-#' @export
-#' @rdname wrap
-setMethod(
-  "wrap",
-  signature(obj = "matrix", bounds = "Raster", withHeading = "missing"),
-  definition = function(obj, bounds) {
-    obj <- wrap(obj, bounds = extent(bounds))
-    return(obj)
-  })
+    } else if (is(obj, "SpatialPoints")) {
+      obj@coords <- wrap(obj@coords, bounds = bounds)
+      return(obj)
 
-#' @export
-#' @rdname wrap
-setMethod(
-  "wrap",
-  signature(obj = "matrix", bounds = "Raster", withHeading = "missing"),
-  definition = function(obj, bounds) {
-    obj <- wrap(obj, bounds = extent(bounds))
-    return(obj)
-})
-
-#' @export
-#' @rdname wrap
-setMethod(
-  "wrap",
-  signature(obj = "matrix", bounds = "matrix", withHeading = "missing"),
-  definition = function(obj, bounds) {
-    if (identical(colnames(bounds), c("min", "max")) &
-        (identical(rownames(bounds), c("s1", "s2")))) {
+    } else if (is(obj, "Raster") && is(bounds, "Raster")) {
       obj <- wrap(obj, bounds = extent(bounds))
       return(obj)
-    } else {
-      stop("Must use either a bbox, Raster*, or Extent for 'bounds'")
-    }
-})
 
-#' @export
-#' @rdname wrap
-setMethod(
-  "wrap",
-  signature(obj = "SpatialPointsDataFrame", bounds = "Extent", withHeading = "logical"),
-  definition = function(obj, bounds, withHeading) {
-    if (withHeading) {
-      # This requires that previous points be "moved" as if they are
-      #  off the bounds, so that the heading is correct
-      obj@data[coordinates(obj)[, "x"] < bounds@xmin, "x1"] <-
-        (obj@data[coordinates(obj)[, "x"] < bounds@xmin, "x1"] - bounds@xmin) %%
-        (bounds@xmax - bounds@xmin) + bounds@xmax
-      obj@data[coordinates(obj)[, "x"] > bounds@xmax, "x1"] <-
-        (obj@data[coordinates(obj)[, "x"] > bounds@xmax, "x1"] - bounds@xmax) %%
-        (bounds@xmin - bounds@xmax) + bounds@xmin
-      obj@data[coordinates(obj)[, "y"] < bounds@ymin, "y1"] <-
-        (obj@data[coordinates(obj)[, "y"] < bounds@ymin, "y1"] - bounds@ymin) %%
-        (bounds@ymax - bounds@ymin) + bounds@ymax
-      obj@data[coordinates(obj)[, "y"] > bounds@ymax, "y1"] <-
-        (obj@data[coordinates(obj)[, "y"] > bounds@ymax, "y1"] - bounds@ymax) %%
-        (bounds@ymin - bounds@ymax) + bounds@ymin
-    }
-    return(wrap(obj, bounds = bounds))
-})
+    } else if (is.matrix(obj) && is.matrix(bounds)) {
+      if (identical(colnames(bounds), c("min", "max")) &
+          (identical(rownames(bounds), c("s1", "s2")))) {
+        obj <- wrap(obj, bounds = extent(bounds))
+        return(obj)
+      } else {
+        stop("Must use either a bbox, Raster*, or Extent for 'bounds'")
+      }
 
-#' @export
-#' @rdname wrap
-setMethod(
-  "wrap",
-  signature(obj = "SpatialPointsDataFrame", bounds = "Raster", withHeading = "logical"),
-  definition = function(obj, bounds, withHeading) {
-    obj <- wrap(obj, bounds = extent(bounds), withHeading = withHeading)
-    return(obj)
-})
-
-#' @export
-#' @rdname wrap
-setMethod(
-  "wrap",
-  signature(obj = "SpatialPointsDataFrame", bounds = "matrix", withHeading = "logical"),
-  definition = function(obj, bounds, withHeading) {
-    if (identical(colnames(bounds), c("min", "max")) &
-        identical(rownames(bounds), c("s1", "s2"))) {
-      obj <- wrap(obj, bounds = extent(bounds), withHeading = withHeading)
-      return(obj)
-    } else {
-      stop("Must use either a bbox, Raster*, or Extent for 'bounds'")
     }
-})
+
+  })
+
+# @export
+# @rdname wrap
+# setMethod(
+#   "wrap",
+#   signature(obj = "matrix", bounds = "Extent", withHeading = "missing"),
+#   definition = function(obj, bounds) {
+#     if (identical(colnames(obj), c("x", "y"))) {
+#       return(cbind(
+#         x = (obj[, "x"] - bounds@xmin) %% (bounds@xmax - bounds@xmin) + bounds@xmin,
+#         y = (obj[, "y"] - bounds@ymin) %% (bounds@ymax - bounds@ymin) + bounds@ymin
+#       ))
+#     } else {
+#       stop("When obj is a matrix, it must have 2 columns, x and y,",
+#            "as from say, coordinates(SpatialPointsObj)")
+#     }
+# })
+
+# @export
+# @rdname wrap
+# setMethod(
+#   "wrap",
+#   signature(obj = "SpatialPoints", bounds = "ANY", withHeading = "missing"),
+#   definition = function(obj, bounds) {
+#     obj@coords <- wrap(obj@coords, bounds = bounds)
+#     return(obj)
+# })
+
+# @export
+# @rdname wrap
+# setMethod(
+#   "wrap",
+#   signature(obj = "matrix", bounds = "Raster", withHeading = "missing"),
+#   definition = function(obj, bounds) {
+#     obj <- wrap(obj, bounds = extent(bounds))
+#     return(obj)
+#   })
+
+
+# @export
+# @rdname wrap
+# setMethod(
+#   "wrap",
+#   signature(obj = "matrix", bounds = "matrix", withHeading = "missing"),
+#   definition = function(obj, bounds) {
+#     if (identical(colnames(bounds), c("min", "max")) &
+#         (identical(rownames(bounds), c("s1", "s2")))) {
+#       obj <- wrap(obj, bounds = extent(bounds))
+#       return(obj)
+#     } else {
+#       stop("Must use either a bbox, Raster*, or Extent for 'bounds'")
+#     }
+# })
+
+# @export
+# @rdname wrap
+# setMethod(
+#   "wrap",
+#   signature(obj = "SpatialPointsDataFrame", bounds = "Extent", withHeading = "logical"),
+#   definition = function(obj, bounds, withHeading) {
+#     if (withHeading) {
+#       # This requires that previous points be "moved" as if they are
+#       #  off the bounds, so that the heading is correct
+#       obj@data[coordinates(obj)[, "x"] < bounds@xmin, "x1"] <-
+#         (obj@data[coordinates(obj)[, "x"] < bounds@xmin, "x1"] - bounds@xmin) %%
+#         (bounds@xmax - bounds@xmin) + bounds@xmax
+#       obj@data[coordinates(obj)[, "x"] > bounds@xmax, "x1"] <-
+#         (obj@data[coordinates(obj)[, "x"] > bounds@xmax, "x1"] - bounds@xmax) %%
+#         (bounds@xmin - bounds@xmax) + bounds@xmin
+#       obj@data[coordinates(obj)[, "y"] < bounds@ymin, "y1"] <-
+#         (obj@data[coordinates(obj)[, "y"] < bounds@ymin, "y1"] - bounds@ymin) %%
+#         (bounds@ymax - bounds@ymin) + bounds@ymax
+#       obj@data[coordinates(obj)[, "y"] > bounds@ymax, "y1"] <-
+#         (obj@data[coordinates(obj)[, "y"] > bounds@ymax, "y1"] - bounds@ymax) %%
+#         (bounds@ymin - bounds@ymax) + bounds@ymin
+#     }
+#     return(wrap(obj, bounds = bounds))
+# })
+
+# @export
+# @rdname wrap
+# setMethod(
+#   "wrap",
+#   signature(obj = "SpatialPointsDataFrame", bounds = "Raster", withHeading = "logical"),
+#   definition = function(obj, bounds, withHeading) {
+#     obj <- wrap(obj, bounds = extent(bounds), withHeading = withHeading)
+#     return(obj)
+# })
+
+# @export
+# @rdname wrap
+# setMethod(
+#   "wrap",
+#   signature(obj = "SpatialPointsDataFrame", bounds = "matrix", withHeading = "logical"),
+#   definition = function(obj, bounds, withHeading) {
+#     if (identical(colnames(bounds), c("min", "max")) &
+#         identical(rownames(bounds), c("s1", "s2"))) {
+#       obj <- wrap(obj, bounds = extent(bounds), withHeading = withHeading)
+#       return(obj)
+#     } else {
+#       stop("Must use either a bbox, Raster*, or Extent for 'bounds'")
+#     }
+# })
 
 
 ################################################################################

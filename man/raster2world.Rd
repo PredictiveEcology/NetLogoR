@@ -2,15 +2,12 @@
 % Please edit documentation in R/world-functions.R
 \name{raster2world}
 \alias{raster2world}
-\alias{raster2world,RasterLayer-method}
-\alias{raster2world,RasterStack-method}
+\alias{raster2world,ANY-method}
 \title{Convert a \verb{Raster*} object into a \code{worldMatrix} or \code{worldArray} object}
 \usage{
 raster2world(raster)
 
-\S4method{raster2world}{RasterLayer}(raster)
-
-\S4method{raster2world}{RasterStack}(raster)
+\S4method{raster2world}{ANY}(raster)
 }
 \arguments{
 \item{raster}{\code{RasterLayer} or \code{RasterStack} object.}

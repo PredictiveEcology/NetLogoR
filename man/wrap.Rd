@@ -2,32 +2,12 @@
 % Please edit documentation in R/spades-functions.R
 \name{wrap}
 \alias{wrap}
-\alias{wrap,matrix,Extent,missing-method}
-\alias{wrap,SpatialPoints,ANY,missing-method}
-\alias{wrap,matrix,Raster,missing-method}
-\alias{wrap,matrix,matrix,missing-method}
-\alias{wrap,SpatialPointsDataFrame,Extent,logical-method}
-\alias{wrap,SpatialPointsDataFrame,Raster,logical-method}
-\alias{wrap,SpatialPointsDataFrame,matrix,logical-method}
+\alias{wrap,ANY-method}
 \title{Wrap coordinates or pixels in a torus-like fashion}
 \usage{
 wrap(obj, bounds, withHeading)
 
-\S4method{wrap}{matrix,Extent,missing}(obj, bounds)
-
-\S4method{wrap}{SpatialPoints,ANY,missing}(obj, bounds)
-
-\S4method{wrap}{matrix,Raster,missing}(obj, bounds)
-
-\S4method{wrap}{matrix,Raster,missing}(obj, bounds)
-
-\S4method{wrap}{matrix,matrix,missing}(obj, bounds)
-
-\S4method{wrap}{SpatialPointsDataFrame,Extent,logical}(obj, bounds, withHeading)
-
-\S4method{wrap}{SpatialPointsDataFrame,Raster,logical}(obj, bounds, withHeading)
-
-\S4method{wrap}{SpatialPointsDataFrame,matrix,logical}(obj, bounds, withHeading)
+\S4method{wrap}{ANY}(obj, bounds)
 }
 \arguments{
 \item{obj}{A \verb{SpatialPoints*} object, or matrix of coordinates.}

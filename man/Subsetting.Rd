@@ -11,7 +11,7 @@
 \usage{
 \S4method{[[}{worldArray,ANY,ANY}(x, i)
 
-\S4method{[[}{worldArray,ANY,ANY}(x, i) <- value
+\S4method{[[}{worldArray,ANY}(x, i) <- value
 
 \S4method{$}{worldArray}(x, name)
 }

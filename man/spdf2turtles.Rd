@@ -2,12 +2,12 @@
 % Please edit documentation in R/turtle-functions.R
 \name{spdf2turtles}
 \alias{spdf2turtles}
-\alias{spdf2turtles,SpatialPointsDataFrame-method}
+\alias{spdf2turtles,ANY-method}
 \title{From \code{SpatialPointsDataFrame} to \code{agentMatrix}}
 \usage{
 spdf2turtles(spdf)
 
-\S4method{spdf2turtles}{SpatialPointsDataFrame}(spdf)
+\S4method{spdf2turtles}{ANY}(spdf)
 }
 \arguments{
 \item{spdf}{\code{SpatialPointsDataFrame} object representing moving \code{agents}.}
