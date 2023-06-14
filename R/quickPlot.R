@@ -66,10 +66,7 @@ numLayers.worldArray <-
 #' `install.packages("fastshp", repos = "https://rforge.net", type = "source")`.
 #'
 #' @export
-#' @exportMethod .plotGrob
-#' @importFrom quickPlot .plotGrob
 #' @importFrom grid gList gpar grid.draw gTree pointsGrob unit
-#' @importMethodsFrom quickPlot .plotGrob
 #' @include world-functions.R
 #' @inheritParams quickPlot::.plotGrob
 #' @rdname quickPlot-methods

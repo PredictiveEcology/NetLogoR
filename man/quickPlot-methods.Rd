@@ -27,7 +27,7 @@
 \S4method{.identifyGrobToPlot}{worldArray,.quickPlotGrob}(toPlot, sGrob, takeFromPlotObj)
 }
 \arguments{
-\item{x}{A \code{.quickPlotObjects} object or list of these.}
+\item{x}{An object or list of objects.}
 
 \item{grobToPlot}{\verb{Raster*}, \verb{SpatialLines*},
 \verb{SpatialPoints*}, or \verb{SpatialPolygons*} object.}
