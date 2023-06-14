@@ -12,7 +12,6 @@
 "_PACKAGE"
 
 #' @import methods
-#' @import raster
 NULL
 
 #' Internal CRS usage
