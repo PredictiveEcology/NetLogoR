@@ -55,7 +55,7 @@ Imports:
     sf,
     sp,
     SpaDES.tools,
-    stats
+    stats,
     terra
 Suggests:
     covr,
@@ -76,7 +76,7 @@ ByteCompile: yes
 Encoding: UTF-8
 Language: en-CA
 License: GPL-3
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr, rmarkdown
 Collate: 
     'Agent-classes.R'

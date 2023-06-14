@@ -37,7 +37,7 @@ Authors:
 
 Other contributors:
 \itemize{
-  \item Her Majesty the Queen in Right of Canada, as represented by the Minister of Natural Resources Canada [copyright holder]
+  \item His Majesty the King in Right of Canada, as represented by the Minister of Natural Resources Canada [copyright holder]
 }
 
 }

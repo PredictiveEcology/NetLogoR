@@ -441,7 +441,7 @@ setGeneric(
   })
 
 #' @export
-#' @importFrom terra ncol nrow values names
+#' @importFrom terra ncol nrow values
 #' @rdname spatRast2world
 setMethod(
   "spatRast2world",
