@@ -54,7 +54,7 @@ setClass(
     pCoords = "matrix"
   ), validity = function(object) {
     # check for valid extents
-    if (any(is(object@extent, c("Extent", "SpatExtent")))) {
+    if (any(!inherits(object@extent, c("Extent", "SpatExtent")))) {
       stop("must supply an object name")
     }
   }
@@ -184,7 +184,7 @@ setMethod(
                  .Data = data,
                  minPxcor = minPxcor, maxPxcor = maxPxcor,
                  minPycor = minPycor, maxPycor = maxPycor,
-                 extent = extent(minPxcor - 0.5, maxPxcor + 0.5, minPycor - 0.5, maxPycor + 0.5),
+                 extent = terra::ext(minPxcor - 0.5, maxPxcor + 0.5, minPycor - 0.5, maxPycor + 0.5),
                  res = c(1, 1),
                  pCoords = cbind(pxcor = rep_len(minPxcor:maxPxcor, length.out = numX * numY),
                                  pycor = rep(maxPycor:minPycor, each = numX))
@@ -230,7 +230,7 @@ setClass(
     pCoords = "matrix"
   ), validity = function(object) {
     # check for valid extents
-    if (any(is(object@extent, c("Extent", "SpatExtent")))) {
+    if (any(!inherits(object@extent, c("Extent", "SpatExtent")))) {
       stop("must supply an object name")
     }
   }
@@ -354,7 +354,10 @@ setMethod(
       objNames <- as.character(substitute(deparse(...))[-1])
     }
     # similar dimensions can have different extent
-    if (length(unique(lapply(NLwMs, FUN = function(x) x@extent))) == 1) {
+    a <- lapply(NLwMs, FUN = function(x) x@extent)
+
+    # Vectorized all.equal
+    if (isTRUE(all(ae(a[-1], a[1]) %in% TRUE))) {
       out <- abind::abind(NLwMs@.Data, along = 3)
     } else {
       stop("worldMatrix extents must all be equal")
@@ -565,3 +568,5 @@ setMethod("$", signature(x = "worldArray"),
           definition = function(x, name) {
             return(x[[name]])
 })
+
+ae <- Vectorize(all.equal)

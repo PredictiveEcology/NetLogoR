@@ -856,3 +856,4 @@ test_that("NLset works", {
   colt23[6] <- "red"
   expect_equivalent(of(agents = t23, var = "color"), colt23)
  })
+

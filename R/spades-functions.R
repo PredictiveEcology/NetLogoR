@@ -24,10 +24,10 @@
 #'
 #' @examples
 #' library(quickPlot)
-#' library(raster)
+#' if (requireNamespace("raster")) {
 #'
 #' xrange <- yrange <- c(-50, 50)
-#' hab <- raster(extent(c(xrange, yrange)))
+#' hab <- raster::raster(raster::extent(c(xrange, yrange)))
 #' hab[] <- 0
 #'
 #' # initialize agents
@@ -41,7 +41,7 @@
 #'                 y = stats::runif(N, yrange[1], yrange[2]))
 #'
 #' # create the agent object
-#' agent <- SpatialPointsDataFrame(coords = starts, data = data.frame(x1, y1))
+#' agent <- sp::SpatialPointsDataFrame(coords = starts, data = data.frame(x1, y1))
 #'
 #'
 #' ln <- rlnorm(N, 1, 0.02) # log normal step length
@@ -60,6 +60,7 @@
 #'    if (interactive()) Plot(agent, addTo = "hab", axes = TRUE)
 #'  }
 #' }
+#' }
 setGeneric("wrap", function(obj, bounds, withHeading) {
   standardGeneric("wrap")
 })
@@ -71,12 +72,16 @@ setMethod(
   "wrap",
   signature(obj = "ANY", bounds = "ANY"),
   definition = function(obj, bounds) {
-    browser()
-    if (is.matrix(obj) && is(bounds, "Extent")) {
+    if (is.matrix(obj) && inherits(bounds, c("Extent", "SpatExtent"))) {
       if (identical(colnames(obj), c("x", "y"))) {
+        xmn <- terra::xmin(bounds)
+        xmx <- terra::xmax(bounds)
+        ymn <- terra::ymin(bounds)
+        ymx <- terra::ymax(bounds)
+
         return(cbind(
-          x = (obj[, "x"] - bounds@xmin) %% (bounds@xmax - bounds@xmin) + bounds@xmin,
-          y = (obj[, "y"] - bounds@ymin) %% (bounds@ymax - bounds@ymin) + bounds@ymin
+          x = (obj[, "x"] - xmn) %% (xmx - xmn) + xmn,
+          y = (obj[, "y"] - ymn) %% (ymx - ymn) + ymn
         ))
       } else {
         stop("When obj is a matrix, it must have 2 columns, x and y,",

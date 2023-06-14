@@ -161,6 +161,15 @@ numLayers.worldMatrix <-
 
 
 
+
+if (!isGeneric("layerNames")) {
+  setGeneric(
+    "layerNames",
+    function(object) {
+      standardGeneric("layerNames")
+    })
+}
+
 #' @export
 #' @inheritParams quickPlot::layerNames
 #' @importFrom quickPlot layerNames

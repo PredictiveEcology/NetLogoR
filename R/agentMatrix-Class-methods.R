@@ -177,7 +177,6 @@ setMethod(
   definition = function(...) {
     dots <- list(...)
     if (all(unlist(lapply(dots, is, "SpatialPointsDataFrame"))) & length(dots) == 1)  {
-      browser()
       if (!requireNamespace("sp", quietly = TRUE)) stop("Please install.packages('sp') to use sp objects")
       dots <- list(...)
       new("agentMatrix", coords = sp::coordinates(dots[[1]]), dots[[1]]@data)
@@ -188,14 +187,14 @@ setMethod(
 )
 
 
-if (!isGeneric("coordinates")) {
+#if (!isGeneric("coordinates")) {
   setGeneric(
     "coordinates",
     function(obj, ...) {
       standardGeneric("coordinates")
     }
   )
-}
+#}
 
 #' Set spatial coordinates
 #'
@@ -726,14 +725,14 @@ rbind.agentMatrix <- function(..., deparse.level = 1) {
 }
 
 
-if (!isGeneric("extent")) {
+#if (!isGeneric("extent")) {
   setGeneric(
     "extent",
     function(x, ...) {
       standardGeneric("extent")
     }
   )
-}
+#}
 
 #' Bounding box and extent methods for NetLogoR classes
 #'
@@ -759,7 +758,6 @@ setMethod(
   "extent",
   signature("agentMatrix"),
   definition = function(x, ...) {
-    browser()
     if (sum(attr(x, "bbox") != 0)) {
       extent(attr(x, "bbox")) # much faster to access directly, if it exists
     } else {
@@ -781,14 +779,14 @@ setMethod(
 }
 
 
-if (!isGeneric("bbox")) {
+#if (!isGeneric("bbox")) {
   setGeneric(
     "bbox",
     function(obj) {
       standardGeneric("bbox")
     }
   )
-}
+#}
 
 #' @include worldNLR-classes-methods.R
 #' @export

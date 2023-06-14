@@ -1200,7 +1200,8 @@ test_that("spdf2turtles and turtles2spdf work", {
   expect_equivalent(t2@coords, of(agents = t1, var = c("xcor", "ycor")))
   expect_equivalent(t2@data, inspect(turtles = t1, who = 0:9)[3:10])
 
-  sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
+  if (requireNamespace("sp", quietly = TRUE))
+  sp1 <- sp::SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
                                 data = cbind.data.frame(age = c(0, 0, 3), sex = c("F", "F", "M")))
   sp1Turtles <- spdf2turtles(sp1)
   expect_equivalent(colnames(sp1Turtles@.Data), c("xcor", "ycor", "who", "heading", "prevX",
@@ -1224,21 +1225,22 @@ test_that("sf2turtles and turtles2sf work", {
   t1 <- turtlesOwn(turtles = t1, tVar = "age", tVal = 1:10)
   t1 <- turtlesOwn(turtles = t1, tVar = "sex", tVal = c(rep("M", 5), rep("F", 5)))
   t2 <- turtles2sf(t1)
-  expect_equivalent(st_coordinates(t2), of(agents = t1, var = c("xcor", "ycor")))
-  expect_equivalent(st_drop_geometry(t2), inspect(turtles = t1, who = 0:9)[3:10])
+  skip_if_not_installed("sf")
+  expect_equivalent(sf::st_coordinates(t2), of(agents = t1, var = c("xcor", "ycor")))
+  expect_equivalent(sf::st_drop_geometry(t2), inspect(turtles = t1, who = 0:9)[3:10])
   expect_equivalent(t2$who, of(agents = t1, var = "who"))
   expect_equivalent(t2$sex, of(agents = t1, var = "sex"))
-  
+
   t3 <- createTurtles(n = 1, coords = cbind(xcor = 1, ycor = 2), heading = 3)
   t3 <- turtlesOwn(turtles = t3, tVar = "sex", tVal = "F")
   t4 <- turtles2sf(t3)
-  expect_equivalent(st_coordinates(t4), of(agents = t3, var = c("xcor", "ycor")))
-  expect_equivalent(st_coordinates(t4), c(1,2))
-  expect_equivalent(st_drop_geometry(t4), inspect(turtles = t3, who = 0)[3:9])
+  expect_equivalent(sf::st_coordinates(t4), of(agents = t3, var = c("xcor", "ycor")))
+  expect_equivalent(sf::st_coordinates(t4), c(1,2))
+  expect_equivalent(sf::st_drop_geometry(t4), inspect(turtles = t3, who = 0)[3:9])
   expect_equivalent(t4$who, 0)
   expect_equivalent(t4$sex, "F")
-  
-  turtles_sf1 <- st_as_sf(cbind.data.frame(x = c(1, 2, 3), y = c(1, 2, 3),
+
+  turtles_sf1 <- sf::st_as_sf(cbind.data.frame(x = c(1, 2, 3), y = c(1, 2, 3),
                                            age = c(0, 0, 3), sex = c("F", "F", "M")),
                          coords = c("x", "y"))
   sf1Turtles <- sf2turtles(turtles_sf1)

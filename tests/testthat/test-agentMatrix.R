@@ -144,7 +144,6 @@ test_that("create agentMatrix does not work", {
 test_that("agentMatrix benchmarking", {
   skip_on_cran()
   skip_on_ci()
-
   set.seed(20180924) ## TODO: why are some seeds failing?
 
   # compare speeds -- if these fail, then should reconsider the need for agentMatrix
@@ -152,15 +151,16 @@ test_that("agentMatrix benchmarking", {
     mb <- summary(microbenchmark(
       times = 50,
       spdf = {
-        SpatialPointsDataFrame(
-          coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-          data = data.frame(
-            char = letters[c(1, 2, 6)],
-            nums2 = c(4.5, 2.6, 2343),
-            char2 = LETTERS[c(4, 24, 3)],
-            nums = 5:7
+        if (requireNamespace("sp", quietly = TRUE))
+          sp::SpatialPointsDataFrame(
+            coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
+            data = data.frame(
+              char = letters[c(1, 2, 6)],
+              nums2 = c(4.5, 2.6, 2343),
+              char2 = LETTERS[c(4, 24, 3)],
+              nums = 5:7
+            )
           )
-        )
       },
       agentMat = {
         agentMatrix(
@@ -187,16 +187,18 @@ test_that("agentMatrix benchmarking", {
         )
       }
     ))
-    expect_gt(mb$median[1] / mb$median[3], 3) # expect it is ~3 times faster
+    if (requireNamespace("sp", quietly = TRUE))
+      expect_gt(mb$median[1] / mb$median[3], 3) # expect it is ~3 times faster
   }
 
   # check just numerics
-  if (require(sf)) {
-    if (require(microbenchmark)) {
-      mb <- summary(microbenchmark(
+  if (requireNamespace("sf", quietly = TRUE)) {
+    if (requireNamespace("microbenchmark", quietly = TRUE)) {
+      mb <- summary(microbenchmark::microbenchmark(
         times = 50,
         spdf = {
-          SpatialPointsDataFrame(
+          if (requireNamespace("sp", quietly = TRUE))
+          sp::SpatialPointsDataFrame(
             coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
             data = data.frame(
               nums2 = c(4.5, 2.6, 2343),
@@ -205,12 +207,12 @@ test_that("agentMatrix benchmarking", {
           )
         },
         sf = {
-          a1 <- st_point(cbind(1, 3))
-          a2 <- st_point(cbind(2, 4))
-          a3 <- st_point(cbind(5, 6))
+          a1 <- sf::st_point(cbind(1, 3))
+          a2 <- sf::st_point(cbind(2, 4))
+          a3 <- sf::st_point(cbind(5, 6))
           d <- data <- data.frame(nums2 = c(4.5, 2.6, 2343), nums = 5:7)
-          d$geom <- st_sfc(a1, a2, a3)
-          df <- st_as_sf(d)
+          d$geom <- sf::st_sfc(a1, a2, a3)
+          df <- sf::st_as_sf(d)
         },
         agentMat = {
           agentMatrix(
@@ -225,14 +227,16 @@ test_that("agentMatrix benchmarking", {
           )
         }
       ))
-      expect_gt(mb$median[1] / mb$median[3], 4) # use 4 for safety
+      if (requireNamespace("sp", quietly = TRUE))
+        expect_gt(mb$median[1] / mb$median[3], 4) # use 4 for safety
       if (interactive()) expect_gt(mb$median[2] / mb$median[3], 2) # use 2 for safety
     }
   }
 })
 
 test_that("agentMatrix coercion", {
-  spdf1 <- SpatialPointsDataFrame(
+  skip_if_not_installed("sp")
+  spdf1 <- sp::SpatialPointsDataFrame(
     coords = matrix(1:6, ncol = 2),
     data = data.frame(tmp = 1:3, tmp2 = c("e", "f", "g"))
   )

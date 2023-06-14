@@ -1488,7 +1488,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom sf st_as_sf st_buffer st_sf st_intersects
 #' @rdname inRadius
 #'
 #' @author Sarah Bauduin
@@ -1515,9 +1514,11 @@ setMethod(
       inRadius(agents = agents, radius = radius, agents2 = agents2, world = world, torus = torus)
     } else if (!inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
       # Transform the agents into sf to use st_buffer
-      agents_sf <- st_as_sf(as.data.frame(agents), coords = c(1, 2))
+      if (!requireNamespace("sf"))
+        stop("to use inRadius on matrix objects (but not agentMatrix), please install.packages('sf')")
+      agents_sf <- sf::st_as_sf(as.data.frame(agents), coords = c(1, 2))
       # Create buffers around the locations of agents
-      aBuffer <- st_buffer(agents_sf, dist = radius)
+      aBuffer <- sf::st_buffer(agents_sf, dist = radius)
 
       if (torus == TRUE) {
         if (missing(world)) {
@@ -1525,25 +1526,28 @@ setMethod(
         }
 
         agents2c <- agents2@.Data[, c("xcor", "ycor"), drop = FALSE]
-        agents2c1 <- cbind(agents2c[, 1] - (world@extent@xmax - world@extent@xmin),
-                           agents2c[, 2] + (world@extent@ymax - world@extent@ymin))
-        agents2c2 <- cbind(agents2c[, 1], agents2c[, 2] + (world@extent@ymax - world@extent@ymin))
-        agents2c3 <- cbind(agents2c[, 1] + (world@extent@xmax - world@extent@xmin),
-                           agents2c[, 2] + (world@extent@ymax - world@extent@ymin))
-        agents2c4 <- cbind(agents2c[, 1] - (world@extent@xmax - world@extent@xmin), agents2c[, 2])
-        agents2c5 <- cbind(agents2c[, 1] + (world@extent@xmax - world@extent@xmin), agents2c[, 2])
-        agents2c6 <- cbind(agents2c[, 1] - (world@extent@xmax - world@extent@xmin),
-                           agents2c[, 2] - (world@extent@ymax - world@extent@ymin))
-        agents2c7 <- cbind(agents2c[, 1], agents2c[, 2] - (world@extent@ymax - world@extent@ymin))
-        agents2c8 <- cbind(agents2c[, 1] + (world@extent@xmax - world@extent@xmin),
-                           agents2c[, 2] - (world@extent@ymax - world@extent@ymin))
+        exts <- extents(world@extent)
+
+        agents2c1 <- cbind(agents2c[, 1] - (exts$xmax - exts$xmin),
+                           agents2c[, 2] + (exts$ymax - exts$ymin))
+        agents2c2 <- cbind(agents2c[, 1], agents2c[, 2] + (exts$ymax - exts$ymin))
+        agents2c3 <- cbind(agents2c[, 1] + (exts$xmax - exts$xmin),
+                           agents2c[, 2] + (exts$ymax - exts$ymin))
+        agents2c4 <- cbind(agents2c[, 1] - (exts$xmax - exts$xmin), agents2c[, 2])
+        agents2c5 <- cbind(agents2c[, 1] + (exts$xmax - exts$xmin), agents2c[, 2])
+        agents2c6 <- cbind(agents2c[, 1] - (exts$xmax - exts$xmin),
+                           agents2c[, 2] - (exts$ymax - exts$ymin))
+        agents2c7 <- cbind(agents2c[, 1], agents2c[, 2] - (exts$ymax - exts$ymin))
+        agents2c8 <- cbind(agents2c[, 1] + (exts$xmax - exts$xmin),
+                           agents2c[, 2] - (exts$ymax - exts$ymin))
         agents2cAll <- rbind(agents2c, agents2c1, agents2c2, agents2c3, agents2c4,
                              agents2c5, agents2c6, agents2c7, agents2c8)
 
         # Extract the locations of agents2 under the buffers
-        pOverL <- st_intersects(aBuffer,
-                                st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
-                       sparse = TRUE)
+        pOverL <- sf::st_intersects(
+          aBuffer,
+          sf::st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
+          sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(agents2cAll) <- c("x", "y")
@@ -1554,9 +1558,10 @@ setMethod(
                      by.x = c("x", "y"), by.y = c("xcor", "ycor"))
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       } else {
-        pOverL <- st_intersects(aBuffer,
-                       st_as_sf(inspect(agents2, who = agents2@.Data[, "who"]), coords = c("xcor", "ycor")),
-                       sparse = TRUE)
+        pOverL <- sf::st_intersects(
+          aBuffer,
+          sf::st_as_sf(inspect(agents2, who = agents2@.Data[, "who"]), coords = c("xcor", "ycor")),
+          sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- unique(cbind(agents2@.Data[pOver, c("xcor", "ycor"), drop = FALSE],
@@ -1566,9 +1571,11 @@ setMethod(
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       }
     } else {
-      agents_sf <- st_as_sf(as.data.frame(agents), coords = c(1, 2))
+      if (!requireNamespace("sf"))
+        stop("to use inRadius on matrix objects (but not agentMatrix), please install.packages('sf')")
+      agents_sf <- sf::st_as_sf(as.data.frame(agents), coords = c(1, 2))
       # Create buffers around the locations of agents
-      aBuffer <- st_buffer(agents_sf, dist = radius * 1.0000001) ## (see #28)
+      aBuffer <- sf::st_buffer(agents_sf, dist = radius * 1.0000001) ## (see #28)
 
       if (torus == TRUE) {
         if (missing(world)) {
@@ -1582,9 +1589,9 @@ setMethod(
         pAllWrap <- patches(worldWrap)
 
         # Extract the locations of agents2 under the buffers
-        sf1 <- st_as_sf(as.data.frame(pAllWrap), coords = c(1, 2))
+        sf1 <- sf::st_as_sf(as.data.frame(pAllWrap), coords = c(1, 2))
 
-        pOverL <- st_intersects(aBuffer, sf1, sparse = TRUE)
+        pOverL <- sf::st_intersects(aBuffer, sf1, sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(pAllWrap) <- c("x", "y")
@@ -1593,9 +1600,9 @@ setMethod(
         colnames(agentsXY)[1:2] <- c("pxcor", "pycor")
         return(agentsXY)
       } else {
-        sf1 <- st_as_sf(as.data.frame(agents2), coords = c(1, 2))
+        sf1 <- sf::st_as_sf(as.data.frame(agents2), coords = c(1, 2))
 
-        pOverL <- st_intersects(aBuffer, sf1, sparse = TRUE)
+        pOverL <- sf::st_intersects(aBuffer, sf1, sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- cbind(agents2[pOver, , drop = FALSE],

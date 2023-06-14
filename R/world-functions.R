@@ -337,11 +337,13 @@ setMethod(
 #'          will be (pxcor = 0, pycor = 0).
 #'
 #' @examples
-#' r1 <- raster(extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)
-#' r1[]<-runif(100)
-#' w1 <- raster2world(r1)
-#' plot(r1)
-#' plot(w1)
+#' if (requireNamespace("raster")) {
+#'  r1 <- raster::raster(raster::extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)
+#'  r1[]<-runif(100)
+#'  w1 <- raster2world(r1)
+#'  plot(r1)
+#'  plot(w1)
+#' }
 #'
 #'
 #' @export
@@ -499,8 +501,10 @@ setMethod(
   "world2raster",
   signature = c("worldMatrix"),
   definition = function(world) {
-    ras <- raster(world@.Data, xmn = world@extent@xmin, xmx = world@extent@xmax,
-                     ymn = world@extent@ymin, ymx = world@extent@ymax)
+    exts <- extents(world@extent)
+    if (!requireNamespace("raster", quietly = TRUE)) stop("Need to install.packages('raster')")
+    ras <- raster::raster(world@.Data, xmn = exts$xmin, xmx = exts$xmax,
+                          ymn = exts$ymin, ymx = exts$ymax)
 
     return(ras)
   })
@@ -513,11 +517,13 @@ setMethod(
   signature = c("worldArray"),
   definition = function(world) {
 
+    if (!requireNamespace("raster", quietly = TRUE)) stop("Need to install.packages('raster')")
+    exts <- extents(world@extent)
     listRaster <- lapply(1:dim(world)[3], function(x) {
-      raster(world@.Data[, , x], xmn = world@extent@xmin, xmx = world@extent@xmax,
-             ymn = world@extent@ymin, ymx = world@extent@ymax)
+      raster::raster(world@.Data[, , x], xmn = exts$xmin, xmx = exts$xmax,
+             ymn = exts$ymin, ymx = exts$ymax)
     })
-    rasterStack <- stack(listRaster)
+    rasterStack <- raster::stack(listRaster)
     return(rasterStack)
 })
 
@@ -566,8 +572,9 @@ setMethod(
   "world2spatRast",
   signature = c("worldMatrix"),
   definition = function(world) {
-    ras <- rast(xmin = world@extent@xmin, xmax = world@extent@xmax,
-                ymin = world@extent@ymin, ymax = world@extent@ymax,
+    exts <- extents(world@extent)
+    ras <- rast(xmin = exts$xmin, xmax = exts$xmax,
+                ymin = exts$ymin, ymax = exts$ymax,
                 ncol = ncol(world), nrow = nrow(world))
     values(ras) <- world@.Data
 
@@ -582,9 +589,10 @@ setMethod(
   signature = c("worldArray"),
   definition = function(world) {
 
+    exts <- extents(world@extent)
     listRaster <- lapply(1:dim(world)[3], function(x) {
-      ras <- rast(xmin = world@extent@xmin, xmax = world@extent@xmax,
-                  ymin = world@extent@ymin, ymax = world@extent@ymax,
+      ras <- terra::rast(xmin = exts$xmin, xmax = exts$xmax,
+                  ymin = exts$ymin, ymax = exts$ymax,
                   ncol = ncol(world), nrow = nrow(world), vals = world@.Data[, , x])
     })
     rasterStack <- rast(listRaster)

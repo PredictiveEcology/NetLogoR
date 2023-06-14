@@ -32,10 +32,10 @@ agent locations.
 }
 \examples{
 library(quickPlot)
-library(raster)
+if (requireNamespace("raster")) {
 
 xrange <- yrange <- c(-50, 50)
-hab <- raster(extent(c(xrange, yrange)))
+hab <- raster::raster(raster::extent(c(xrange, yrange)))
 hab[] <- 0
 
 # initialize agents
@@ -49,7 +49,7 @@ starts <- cbind(x = stats::runif(N, xrange[1], xrange[2]),
                 y = stats::runif(N, yrange[1], yrange[2]))
 
 # create the agent object
-agent <- SpatialPointsDataFrame(coords = starts, data = data.frame(x1, y1))
+agent <- sp::SpatialPointsDataFrame(coords = starts, data = data.frame(x1, y1))
 
 
 ln <- rlnorm(N, 1, 0.02) # log normal step length
@@ -67,6 +67,7 @@ if (requireNamespace("SpaDES.tools")) {
                                stddev = sd, lonlat = FALSE, torus = TRUE)
    if (interactive()) Plot(agent, addTo = "hab", axes = TRUE)
  }
+}
 }
 }
 \author{

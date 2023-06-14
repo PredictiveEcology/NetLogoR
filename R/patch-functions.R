@@ -200,8 +200,10 @@ setMethod(
       agents2 <- agents2@.Data[, c("xcor", "ycor"), drop = FALSE]
     }
 
-    dist <- pointDistance(p1 = agents, p2 = agents2, lonlat = FALSE, allpairs = allPairs)
+    # dist <- pointDistance(p1 = agents, p2 = agents2, lonlat = FALSE, allpairs = allPairs)
 
+    dist <- terra::distance(x = agents, y = agents2, lonlat = FALSE, pairwise = !allPairs)
+    # dist <- raster::pointDistance(p1 = agents, p2 = agents2, lonlat = FALSE, allpairs = FALSE)
     if (torus == TRUE) {
       if (missing(world)) {
         stop("A world must be provided as torus = TRUE")
@@ -209,31 +211,43 @@ setMethod(
 
       # Need to create coordinates for "agents2" in a wrapped world
       # For all the 8 possibilities of wrapping (to the left, right, top, bottom and 4 corners)
-      to1 <- cbind(pxcor = agents2[, 1] - (world@extent@xmax - world@extent@xmin),
-                   pycor = agents2[, 2] + (world@extent@ymax - world@extent@ymin))
-      to2 <- cbind(pxcor = agents2[, 1], pycor = agents2[, 2] +
-                     (world@extent@ymax - world@extent@ymin))
-      to3 <- cbind(pxcor = agents2[, 1] + (world@extent@xmax - world@extent@xmin),
-                   pycor = agents2[, 2] + (world@extent@ymax - world@extent@ymin))
-      to4 <- cbind(pxcor = agents2[, 1] - (world@extent@xmax - world@extent@xmin),
-                   pycor = agents2[, 2])
-      to5 <- cbind(pxcor = agents2[, 1] + (world@extent@xmax - world@extent@xmin),
-                   pycor = agents2[, 2])
-      to6 <- cbind(pxcor = agents2[, 1] - (world@extent@xmax - world@extent@xmin),
-                   pycor = agents2[, 2] - (world@extent@ymax - world@extent@ymin))
-      to7 <- cbind(pxcor = agents2[, 1], pycor = agents2[, 2] -
-                     (world@extent@ymax - world@extent@ymin))
-      to8 <- cbind(pxcor = agents2[, 1] + (world@extent@xmax - world@extent@xmin),
-                   pycor = agents2[, 2] - (world@extent@ymax - world@extent@ymin))
+      exts <- extents(world@extent)
 
-      dist1 <- pointDistance(p1 = agents, p2 = to1, lonlat = FALSE, allpairs = allPairs)
-      dist2 <- pointDistance(p1 = agents, p2 = to2, lonlat = FALSE, allpairs = allPairs)
-      dist3 <- pointDistance(p1 = agents, p2 = to3, lonlat = FALSE, allpairs = allPairs)
-      dist4 <- pointDistance(p1 = agents, p2 = to4, lonlat = FALSE, allpairs = allPairs)
-      dist5 <- pointDistance(p1 = agents, p2 = to5, lonlat = FALSE, allpairs = allPairs)
-      dist6 <- pointDistance(p1 = agents, p2 = to6, lonlat = FALSE, allpairs = allPairs)
-      dist7 <- pointDistance(p1 = agents, p2 = to7, lonlat = FALSE, allpairs = allPairs)
-      dist8 <- pointDistance(p1 = agents, p2 = to8, lonlat = FALSE, allpairs = allPairs)
+      to1 <- cbind(pxcor = agents2[, 1] - (exts$xmax - exts$xmin),
+                   pycor = agents2[, 2] + (exts$ymax - exts$ymin))
+      to2 <- cbind(pxcor = agents2[, 1], pycor = agents2[, 2] +
+                     (exts$ymax - exts$ymin))
+      to3 <- cbind(pxcor = agents2[, 1] + (exts$xmax - exts$xmin),
+                   pycor = agents2[, 2] + (exts$ymax - exts$ymin))
+      to4 <- cbind(pxcor = agents2[, 1] - (exts$xmax - exts$xmin),
+                   pycor = agents2[, 2])
+      to5 <- cbind(pxcor = agents2[, 1] + (exts$xmax - exts$xmin),
+                   pycor = agents2[, 2])
+      to6 <- cbind(pxcor = agents2[, 1] - (exts$xmax - exts$xmin),
+                   pycor = agents2[, 2] - (exts$ymax - exts$ymin))
+      to7 <- cbind(pxcor = agents2[, 1], pycor = agents2[, 2] -
+                     (exts$ymax - exts$ymin))
+      to8 <- cbind(pxcor = agents2[, 1] + (exts$xmax - exts$xmin),
+                   pycor = agents2[, 2] - (exts$ymax - exts$ymin))
+
+
+      # dist1 <- raster::pointDistance(p1 = agents, p2 = to1, lonlat = FALSE, allpairs = allPairs)
+      # dist2 <- raster::pointDistance(p1 = agents, p2 = to2, lonlat = FALSE, allpairs = allPairs)
+      # dist3 <- raster::pointDistance(p1 = agents, p2 = to3, lonlat = FALSE, allpairs = allPairs)
+      # dist4 <- raster::pointDistance(p1 = agents, p2 = to4, lonlat = FALSE, allpairs = allPairs)
+      # dist5 <- raster::pointDistance(p1 = agents, p2 = to5, lonlat = FALSE, allpairs = allPairs)
+      # dist6 <- raster::pointDistance(p1 = agents, p2 = to6, lonlat = FALSE, allpairs = allPairs)
+      # dist7 <- raster::pointDistance(p1 = agents, p2 = to7, lonlat = FALSE, allpairs = allPairs)
+      # dist8 <- raster::pointDistance(p1 = agents, p2 = to8, lonlat = FALSE, allpairs = allPairs)
+
+      dist1 <- terra::distance(x =agents, y =to1, lonlat = FALSE, pairwise = !allPairs)
+      dist2 <- terra::distance(x =agents, y =to2, lonlat = FALSE, pairwise = !allPairs)
+      dist3 <- terra::distance(x =agents, y =to3, lonlat = FALSE, pairwise = !allPairs)
+      dist4 <- terra::distance(x =agents, y =to4, lonlat = FALSE, pairwise = !allPairs)
+      dist5 <- terra::distance(x =agents, y =to5, lonlat = FALSE, pairwise = !allPairs)
+      dist6 <- terra::distance(x =agents, y =to6, lonlat = FALSE, pairwise = !allPairs)
+      dist7 <- terra::distance(x =agents, y =to7, lonlat = FALSE, pairwise = !allPairs)
+      dist8 <- terra::distance(x =agents, y =to8, lonlat = FALSE, pairwise = !allPairs)
 
       dist <- pmin(dist, dist1, dist2, dist3, dist4, dist5, dist6, dist7, dist8)
     }

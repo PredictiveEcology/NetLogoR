@@ -283,8 +283,10 @@ setMethod(
       if (missing(world)) {
         stop("A world must be provided as torus = FALSE and out = FALSE")
       }
-      outX <- fdXcor < world@extent@xmin | fdXcor > world@extent@xmax
-      outY <- fdYcor < world@extent@ymin | fdYcor > world@extent@ymax
+      exts <- extents(world@extent)
+
+      outX <- fdXcor < exts$xmin | fdXcor > exts$xmax
+      outY <- fdYcor < exts$ymin | fdYcor > exts$ymax
       outXY <- which(outX | outY) # position of turtles out of the world's extent
       fdXcor[outXY] <- turtles@.Data[, "prevX"][outXY]
       fdYcor[outXY] <- turtles@.Data[, "prevY"][outXY]
@@ -436,8 +438,10 @@ setMethod(
   signature = c("worldNLR", "agentMatrix", "character"),
   definition = function(world, turtles, home) {
     if (home == "home0") {
-      if (world@extent@xmin <= 0 & world@extent@xmax >= 0 &
-          world@extent@ymin <= 0 & world@extent@ymax >= 0) {
+      exts <- extents(world@extent)
+
+      if (exts$xmin <= 0 & exts$xmax >= 0 &
+          exts$ymin <= 0 & exts$ymax >= 0) {
         newTurtles <- setXY(turtles = turtles, xcor = 0, ycor = 0, world = world, torus = FALSE)
       } else {
         stop("The world provided does not contain the location [x = 0, y = 0]")
@@ -445,11 +449,13 @@ setMethod(
     }
 
     if (home == "center") {
+      exts <- extents(world@extent)
+
       newTurtles <- setXY(turtles = turtles,
-                          xcor = ((world@extent@xmax - world@extent@xmin) / 2) +
-                            world@extent@xmin,
-                          ycor = ((world@extent@ymax - world@extent@ymin) / 2) +
-                            world@extent@ymin,
+                          xcor = ((exts$xmax - exts$xmin) / 2) +
+                            exts$xmin,
+                          ycor = ((exts$ymax - exts$ymin) / 2) +
+                            exts$ymin,
                           world = world, torus = FALSE)
     }
 
@@ -459,8 +465,10 @@ setMethod(
     }
 
     if (home == "corner") {
-      newTurtles <- setXY(turtles = turtles, xcor = world@extent@xmin,
-                          ycor = world@extent@ymin, world = world, torus = FALSE)
+      exts <- extents(world@extent)
+
+      newTurtles <- setXY(turtles = turtles, xcor = exts$xmin,
+                          ycor = exts$ymin, world = world, torus = FALSE)
     }
 
     return(newTurtles)
@@ -829,7 +837,8 @@ setMethod(
     if (n == 0) {
       return(xcor = numeric())
     } else {
-      xcor <- round(runif(n = n, min = world@extent@xmin, max = world@extent@xmax), digits = 5)
+      xcor <- round(runif(n = n, min = terra::xmin(world@extent),
+                          max = terra::xmax(world@extent)), digits = 5)
       return(xcor)
     }
 })
@@ -880,7 +889,8 @@ setMethod(
     if (n == 0) {
       return(ycor = numeric())
     } else {
-      ycor <- round(runif(n = n, min = world@extent@ymin, max = world@extent@ymax), digits = 5)
+      ycor <- round(runif(n = n, min = terra::ymin(world@extent),
+                          max = terra::ymin(world@extent)), digits = 5)
       return(ycor)
     }
 })
@@ -970,29 +980,41 @@ setMethod(
         # For all the 8 possibilities of wrapping (to the left, right, top, bottom and 4 corners)
         # Find the smallest distances across or around the world
 
-        to1 <- cbind(agents2[, 1] - (world@extent@xmax - world@extent@xmin),
-                     agents2[, 2] + (world@extent@ymax - world@extent@ymin))
-        to2 <- cbind(agents2[, 1], agents2[, 2] + (world@extent@ymax - world@extent@ymin))
-        to3 <- cbind(agents2[, 1] + (world@extent@xmax - world@extent@xmin),
-                     agents2[, 2] + (world@extent@ymax - world@extent@ymin))
-        to4 <- cbind(agents2[, 1] - (world@extent@xmax - world@extent@xmin), agents2[, 2])
-        to5 <- cbind(agents2[, 1] + (world@extent@xmax - world@extent@xmin), agents2[, 2])
-        to6 <- cbind(agents2[, 1] - (world@extent@xmax - world@extent@xmin),
-                     agents2[, 2] - (world@extent@ymax - world@extent@ymin))
-        to7 <- cbind(agents2[, 1], agents2[, 2] - (world@extent@ymax - world@extent@ymin))
-        to8 <- cbind(agents2[, 1] + (world@extent@xmax - world@extent@xmin),
-                     agents2[, 2] - (world@extent@ymax - world@extent@ymin))
+        exts <- extents(world@extent)
+
+        to1 <- cbind(agents2[, 1] - (exts$xmax - exts$xmin),
+                     agents2[, 2] + (exts$ymax - exts$ymin))
+        to2 <- cbind(agents2[, 1], agents2[, 2] + (exts$ymax - exts$ymin))
+        to3 <- cbind(agents2[, 1] + (exts$xmax - exts$xmin),
+                     agents2[, 2] + (exts$ymax - exts$ymin))
+        to4 <- cbind(agents2[, 1] - (exts$xmax - exts$xmin), agents2[, 2])
+        to5 <- cbind(agents2[, 1] + (exts$xmax - exts$xmin), agents2[, 2])
+        to6 <- cbind(agents2[, 1] - (exts$xmax - exts$xmin),
+                     agents2[, 2] - (exts$ymax - exts$ymin))
+        to7 <- cbind(agents2[, 1], agents2[, 2] - (exts$ymax - exts$ymin))
+        to8 <- cbind(agents2[, 1] + (exts$xmax - exts$xmin),
+                     agents2[, 2] - (exts$ymax - exts$ymin))
 
         # All distances in a wrapped world
-        distAgents2 <- pointDistance(p1 = agents, p2 = agents2, lonlat = FALSE, allpairs = FALSE)
-        distTo1 <- pointDistance(p1 = agents, p2 = to1, lonlat = FALSE, allpairs = FALSE)
-        distTo2 <- pointDistance(p1 = agents, p2 = to2, lonlat = FALSE, allpairs = FALSE)
-        distTo3 <- pointDistance(p1 = agents, p2 = to3, lonlat = FALSE, allpairs = FALSE)
-        distTo4 <- pointDistance(p1 = agents, p2 = to4, lonlat = FALSE, allpairs = FALSE)
-        distTo5 <- pointDistance(p1 = agents, p2 = to5, lonlat = FALSE, allpairs = FALSE)
-        distTo6 <- pointDistance(p1 = agents, p2 = to6, lonlat = FALSE, allpairs = FALSE)
-        distTo7 <- pointDistance(p1 = agents, p2 = to7, lonlat = FALSE, allpairs = FALSE)
-        distTo8 <- pointDistance(p1 = agents, p2 = to8, lonlat = FALSE, allpairs = FALSE)
+        distAgents2 <- terra::distance(x = agents, y = agents2, lonlat = FALSE, pairwise = TRUE)
+        # distAgents3 <- raster::pointDistance(p1 = agents, p2 = agents2, lonlat = FALSE, allpairs = FALSE)
+        # distTo1 <- raster::pointDistance(p1 = agents, p2 = to1, lonlat = FALSE, allpairs = FALSE)
+        # distTo2 <- raster::pointDistance(p1 = agents, p2 = to2, lonlat = FALSE, allpairs = FALSE)
+        # distTo3 <- raster::pointDistance(p1 = agents, p2 = to3, lonlat = FALSE, allpairs = FALSE)
+        # distTo4 <- raster::pointDistance(p1 = agents, p2 = to4, lonlat = FALSE, allpairs = FALSE)
+        # distTo5 <- raster::pointDistance(p1 = agents, p2 = to5, lonlat = FALSE, allpairs = FALSE)
+        # distTo6 <- raster::pointDistance(p1 = agents, p2 = to6, lonlat = FALSE, allpairs = FALSE)
+        # distTo7 <- raster::pointDistance(p1 = agents, p2 = to7, lonlat = FALSE, allpairs = FALSE)
+        # distTo8 <- raster::pointDistance(p1 = agents, p2 = to8, lonlat = FALSE, allpairs = FALSE)
+
+        distTo1 <- terra::distance(x =agents, y =to1, lonlat = FALSE, pairwise = TRUE)
+        distTo2 <- terra::distance(x =agents, y =to2, lonlat = FALSE, pairwise = TRUE)
+        distTo3 <- terra::distance(x =agents, y =to3, lonlat = FALSE, pairwise = TRUE)
+        distTo4 <- terra::distance(x =agents, y =to4, lonlat = FALSE, pairwise = TRUE)
+        distTo5 <- terra::distance(x =agents, y =to5, lonlat = FALSE, pairwise = TRUE)
+        distTo6 <- terra::distance(x =agents, y =to6, lonlat = FALSE, pairwise = TRUE)
+        distTo7 <- terra::distance(x =agents, y =to7, lonlat = FALSE, pairwise = TRUE)
+        distTo8 <- terra::distance(x =agents, y =to8, lonlat = FALSE, pairwise = TRUE)
 
         # Which distance is the minimum
         allDist <- cbind(distAgents2, distTo1, distTo2, distTo3, distTo4, distTo5,
@@ -3035,10 +3057,12 @@ setMethod(
 #'          default values as in `createTurtles()`.
 #'
 #' @examples
-#' sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
-#'                               data = cbind.data.frame(age = c(0, 0, 3),
-#'                                                       sex = c("F", "F", "M")))
-#' t1 <- spdf2turtles(spdf = sp1)
+#' if (requireNamespace("sp")) {
+#'   sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
+#'                                 data = cbind.data.frame(age = c(0, 0, 3),
+#'                                                         sex = c("F", "F", "M")))
+#'   t1 <- spdf2turtles(spdf = sp1)
+#' }
 #'
 #'
 #' @export
@@ -3156,14 +3180,15 @@ setGeneric(
 #' @export
 #' @importFrom grDevices rainbow
 #' @importFrom stats runif
-#' @importFrom sf st_drop_geometry st_coordinates
 #' @rdname sf2turtles
 setMethod(
   "sf2turtles",
-  signature = c("sf"),
+  signature = c("ANY"),
   definition = function(turtles_sf) {
+    if (!is(turtles_sf, "sf"))
+      stop("To use sf2turtles, sf must be installed: install.packages('sf')")
 
-    sfData <- st_drop_geometry(turtles_sf)
+    sfData <- sf::st_drop_geometry(turtles_sf)
     n <- length(turtles_sf)
 
     if (!is.na(match("who", names(sfData)))) {
@@ -3203,7 +3228,8 @@ setMethod(
     }
 
     turtles <- new("agentMatrix",
-                   coords = cbind(xcor = st_coordinates(turtles_sf)[, 1], ycor = st_coordinates(turtles_sf)[, 2]),
+                   coords = cbind(xcor = sf::st_coordinates(turtles_sf)[, 1],
+                                  ycor = sf::st_coordinates(turtles_sf)[, 2]),
                    who = who,
                    heading = heading,
                    prevX = prevX,
@@ -3253,7 +3279,7 @@ setMethod(
   signature = c("agentMatrix"),
   definition = function(turtles) {
     if (!requireNamespace("sp", quietly = TRUE)) stop("Please install.packages('sp') to use sp objects")
-    spdf <- SpatialPointsDataFrame(coords = turtles@.Data[, c("xcor", "ycor"), drop = FALSE],
+    spdf <- sp::SpatialPointsDataFrame(coords = turtles@.Data[, c("xcor", "ycor"), drop = FALSE],
                                    data = inspect(turtles, who = turtles@.Data[, "who"])
                                    [3:ncol(turtles@.Data)])
     return(spdf)
@@ -3287,15 +3313,24 @@ setGeneric(
   })
 
 #' @export
-#' @importFrom sf st_as_sf
 #' @rdname turtles2sf
 setMethod(
   "turtles2sf",
-  signature = c("agentMatrix"),
+  signature = c("ANY"),
   definition = function(turtles) {
-    turtles_sf <- st_as_sf(inspect(turtles, who = turtles@.Data[, "who"]), coords = c("xcor", "ycor"))
+    if (!requireNamespace("sf", quietly = TRUE))
+      stop("To use turtles2sf, sf must be installed: install.packages('sf')")
+
+    turtles_sf <- sf::st_as_sf(inspect(turtles, who = turtles@.Data[, "who"]), coords = c("xcor", "ycor"))
 
     return(turtles_sf)
   })
 
 
+extents <- function(ext) {
+  xmn <- terra::xmin(ext)
+  xmx <- terra::xmax(ext)
+  ymn <- terra::ymin(ext)
+  ymx <- terra::ymax(ext)
+  list(xmin = xmn, xmax = xmx, ymin = ymn, ymax = ymx)
+}

@@ -2,12 +2,12 @@
 % Please edit documentation in R/turtle-functions.R
 \name{turtles2sf}
 \alias{turtles2sf}
-\alias{turtles2sf,agentMatrix-method}
+\alias{turtles2sf,ANY-method}
 \title{From \code{agentMatrix} to \code{sf}}
 \usage{
 turtles2sf(turtles)
 
-\S4method{turtles2sf}{agentMatrix}(turtles)
+\S4method{turtles2sf}{ANY}(turtles)
 }
 \arguments{
 \item{turtles}{\code{AgentMatrix} object representing the moving \code{agents}.}
