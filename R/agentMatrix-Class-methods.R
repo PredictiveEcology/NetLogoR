@@ -632,6 +632,7 @@ setMethod(
 #' @method head agentMatrix
 #' @export
 #' @name head
+#' @importFrom utils head
 #' @rdname agentMatrix-show-methods
 head.agentMatrix <- function(x, n = 6L, ...) {
   x[seq_len(n), , drop = FALSE]
@@ -640,6 +641,7 @@ head.agentMatrix <- function(x, n = 6L, ...) {
 #' @method tail agentMatrix
 #' @export
 #' @name tail
+#' @importFrom utils tail
 #' @rdname agentMatrix-show-methods
 tail.agentMatrix <- function(x, n = 6L, ...) {
   len <- NROW(x@.Data)
