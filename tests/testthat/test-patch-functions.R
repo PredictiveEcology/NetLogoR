@@ -1,5 +1,7 @@
 test_that("diffuse works with 4 neighbors", {
   # worldMatrix
+  skip_if_not_installed("SpaDES.tools")
+
   w1 <- createWorld(minPxcor = 0, maxPxcor = 2, minPycor = 0, maxPycor = 2,
                     data = c(1, 3, 6, 2, 8, 10, 3, 8, 2))
   w2 <- diffuse(world = w1, share = 0.6, nNeighbors = 4)
@@ -47,6 +49,8 @@ test_that("diffuse works with 4 neighbors", {
 
 test_that("diffuse works with 8 neighbors", {
   # worldMatrix
+  skip_if_not_installed("SpaDES.tools")
+
   w1 <- createWorld(0, 2, 0, 2)
   w1[] <- c(1, 3, 6, 2, 8, 10, 3, 8, 2)
   w2 <- diffuse(world = w1, share = 0.6, nNeighbors = 8)
@@ -264,6 +268,8 @@ test_that("pExist works", {
 })
 
 test_that("neighbors works", {
+  skip_if_not_installed("SpaDES.tools")
+
   w1 <- createWorld(0, 9, 0, 9)
   n4 <- neighbors(world = w1, agents = cbind(pxcor = c(0, 9, 0, 9), pycor = c(9, 9, 0, 0)),
                   nNeighbors = 4)

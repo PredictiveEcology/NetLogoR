@@ -760,7 +760,7 @@ setMethod(
       exts <- attr(x, "bbox")
       do.call(terra::ext, append(as.list(exts), list(xy = TRUE)))
     } else {
-      extent(bbox(x))
+      terra::ext(as.numeric(bbox(x)), xy = TRUE)
     }
 })
 
