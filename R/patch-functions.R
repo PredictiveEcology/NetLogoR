@@ -641,7 +641,6 @@ setMethod(
 #' p2 <- patchDistDir(world = w1, agents = t1, dist = 1, angle = 45)
 #'
 #' @export
-#' @importFrom CircStats rad
 #' @rdname patchDistDir
 #'
 #' @author Sarah Bauduin
@@ -842,3 +841,7 @@ setMethod(
     pycor <- sample(minPycor(world):maxPycor(world), size = n, replace = TRUE)
     return(pycor)
 })
+
+rad <- function(degree) (degree * pi)/180
+
+deg <- function(radian) (radian * 180)/pi

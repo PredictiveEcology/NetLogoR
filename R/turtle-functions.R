@@ -242,7 +242,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom CircStats rad
 #' @rdname fd
 #'
 #' @author Sarah Bauduin
@@ -254,7 +253,6 @@ setGeneric(
 })
 
 #' @export
-#' @importFrom CircStats rad
 #' @rdname fd
 setMethod(
   "fd",
@@ -508,7 +506,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom CircStats rad
 #' @rdname dx
 #'
 #' @author Sarah Bauduin
@@ -571,7 +568,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom CircStats rad
 #' @rdname dy
 #'
 #' @author Sarah Bauduin
@@ -939,7 +935,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom CircStats deg
 #' @rdname towards
 #'
 #' @author Sarah Bauduin
@@ -1488,7 +1483,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom CircStats rad
 #' @rdname patchAhead
 #'
 #' @author Sarah Bauduin
@@ -2697,8 +2691,6 @@ setMethod(
 #'
 #'
 #' @export
-#' @importFrom CircStats rad
-#' @importFrom CircStats deg
 #' @rdname subHeadings
 #'
 #' @author Sarah Bauduin
