@@ -1888,14 +1888,10 @@ setMethod(
                 turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)
                                                             [order(turtlesVarUnique)]]
                 turtles@levels[[var[i]]] <- turtlesLevelsVarUpdated
+
                 # replace the levels number starting to 1 and increasing by 1
-                # browser()
-                # turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique,
-                #                                to = rank(turtlesVarUnique))
                 turtlesVarUpdated <- rename(x = turtlesVar, from = turtlesVarUnique,
                             to = rank(turtlesVarUnique))
-                # if (!identical(turtlesVarUpdated, a)) stop("mapvalues and rename different in NLset")
-
 
                 turtles@.Data[, var[i]] <- turtlesVarUpdated
 

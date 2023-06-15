@@ -330,7 +330,6 @@ setReplaceMethod(
 #' w4 <- stackWorlds(layer1 = w1, layer2 = w2)
 #'
 #' @export
-#' @importFrom abind abind
 #' @rdname stackWorlds
 #'
 #' @author Sarah Bauduin
@@ -358,7 +357,7 @@ setMethod(
 
     # Vectorized all.equal
     if (isTRUE(all(ae(a[-1], a[1]) %in% TRUE))) {
-      out <- abind::abind(NLwMs@.Data, along = 3)
+      out <- simplify2array(NLwMs)#abind::abind(NLwMs@.Data, along = 3)
     } else {
       stop("worldMatrix extents must all be equal")
     }

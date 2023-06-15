@@ -3,8 +3,6 @@
 \name{numLayers.worldArray}
 \alias{numLayers.worldArray}
 \alias{numLayers.worldMatrix}
-\alias{.plotGrob.worldMatrix}
-\alias{.plotGrob.worldArray}
 \alias{layerNames,worldArray-method}
 \alias{.identifyGrobToPlot,worldArray,.quickPlotGrob-method}
 \title{Methods for \code{quickPlot}}
@@ -13,63 +11,12 @@
 
 \method{numLayers}{worldMatrix}(x)
 
-\method{.plotGrob}{worldMatrix}(
-  grobToPlot,
-  col,
-  size,
-  legend,
-  gp = gpar(),
-  pch,
-  speedup,
-  name,
-  vp,
-  ...
-)
-
-\method{.plotGrob}{worldArray}(
-  grobToPlot,
-  col,
-  size,
-  legend,
-  gp = gpar(),
-  pch,
-  speedup,
-  name,
-  vp,
-  ...
-)
-
 \S4method{layerNames}{worldArray}(object)
 
 \S4method{.identifyGrobToPlot}{worldArray,.quickPlotGrob}(toPlot, sGrob, takeFromPlotObj)
 }
 \arguments{
 \item{x}{An object or list of objects.}
-
-\item{grobToPlot}{\verb{Raster*}, \verb{SpatialLines*},
-\verb{SpatialPoints*}, or \verb{SpatialPolygons*} object.}
-
-\item{col}{Currently only used for the legend of a \verb{Raster*} object.}
-
-\item{size}{The size of the \code{SpatialPoints}.}
-
-\item{legend}{Logical indicating whether a legend should be drawn.
-Default \code{TRUE}.}
-
-\item{gp}{\code{grid} parameters, usually the output of a call to \code{\link[quickPlot:gpar]{gpar()}}.}
-
-\item{pch}{Point character for \code{SpatialPoints}, as \code{par}.}
-
-\item{speedup}{Numeric. The factor by which the number of vertices in
-\code{SpatialPolygons} and \verb{SpatialLines*} will be
-subsampled. The vertices are already subsampled by default to
-make plotting faster.}
-
-\item{name}{Character string of name of object being plotted.}
-
-\item{vp}{whole viewport tree of \code{quickPlotGrob}}
-
-\item{...}{Additional arguments. None currently implemented.}
 
 \item{toPlot}{The object to plot. Should be a single layer if from a multi-layer
 object such as a \code{RasterStack}.}

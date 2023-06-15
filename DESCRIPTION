@@ -44,14 +44,11 @@ Authors@R: c(
 Depends:
     R (>= 4.0)
 Imports:
-    abind,
     CircStats,
     data.table,
     grDevices,
-    matrixStats,
     methods,
     quickPlot (>= 1.0.1),
-    SpaDES.tools,
     stats,
     terra
 Suggests:
@@ -65,6 +62,7 @@ Suggests:
     sf,
     sp,
     SpaDES.core,
+    SpaDES.tools,
     testthat
 Remotes:
     s-u/fastshp,
@@ -88,8 +86,8 @@ Collate:
     'function-arguments.R'
     'patch-functions.R'
     'plot.R'
-    'world-functions.R'
     'quickPlot.R'
     'spades-functions.R'
     'turtle-functions.R'
+    'world-functions.R'
 Roxygen: list(markdown = TRUE)
