@@ -187,14 +187,7 @@ setMethod(
 )
 
 
-#if (!isGeneric("coordinates")) {
-  setGeneric(
-    "coordinates",
-    function(obj, ...) {
-      standardGeneric("coordinates")
-    }
-  )
-#}
+setGeneric("coordinates", quickPlot::coordinates)
 
 #' Set spatial coordinates
 #'
@@ -724,14 +717,14 @@ rbind.agentMatrix <- function(..., deparse.level = 1) {
   }
 }
 
-
-#if (!isGeneric("extent")) {
-  setGeneric(
-    "extent",
-    function(x, ...) {
-      standardGeneric("extent")
-    }
-  )
+setGeneric("extent", quickPlot::extent)
+#if (!isGeneric("extent", .GlobalEnv)) {
+  # setGeneric(
+  #   "extent",
+  #   function(x, ...) {
+  #     standardGeneric("extent")
+  #   }
+  # )
 #}
 
 #' Bounding box and extent methods for NetLogoR classes
@@ -745,6 +738,7 @@ rbind.agentMatrix <- function(..., deparse.level = 1) {
 #'         the second the maximum values; rows represent the spatial dimensions.
 #'         `extent` returns an `extent` object.
 #' @rdname bbox
+#' @exportMethod extent
 setMethod(
   "extent",
   signature("worldNLR"),
@@ -754,12 +748,14 @@ setMethod(
 
 #' @include worldNLR-classes-methods.R
 #' @rdname bbox
+#' @exportMethod extent
 setMethod(
   "extent",
   signature("agentMatrix"),
   definition = function(x, ...) {
     if (sum(attr(x, "bbox") != 0)) {
-      extent(attr(x, "bbox")) # much faster to access directly, if it exists
+      exts <- attr(x, "bbox")
+      do.call(terra::ext, append(as.list(exts), list(xy = TRUE)))
     } else {
       extent(bbox(x))
     }
@@ -779,14 +775,14 @@ setMethod(
 }
 
 
-#if (!isGeneric("bbox")) {
+if (!isGeneric("bbox", .GlobalEnv)) {
   setGeneric(
     "bbox",
     function(obj) {
       standardGeneric("bbox")
     }
   )
-#}
+}
 
 #' @include worldNLR-classes-methods.R
 #' @export

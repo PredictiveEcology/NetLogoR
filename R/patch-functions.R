@@ -45,7 +45,6 @@ if (getRversion() >= "3.1.0") {
 #' @export
 #' @importFrom data.table data.table ':='
 #' @importFrom data.table setkey
-#' @importFrom SpaDES.tools adj
 #' @rdname diffuse
 #'
 #' @author Sarah Bauduin
@@ -68,7 +67,9 @@ setMethod(
     cellNum <- 1:length(val)
     toGive <- (val * share) / nNeighbors
 
-    df <- adj(world@.Data, cells = cellNum, directions = nNeighbors, torus = torus)
+    if (!requireNamespace("SpaDES.tools"))
+      stop("Please install.packages('SpaDES.tools')")
+    df <- SpaDES.tools::adj(world@.Data, cells = cellNum, directions = nNeighbors, torus = torus)
     # nNeigh <- plyr::count(df[, "from"])
     nNeigh <- as.data.frame(table(df[, "from"]))
     # if (!identical(nNeigh2[[2]], nNeigh[[2]])) stop("count and table error 1")
@@ -101,7 +102,9 @@ setMethod(
     cellNum <- 1:length(val)
     toGive <- (val * share) / nNeighbors
 
-    df <- adj(world@.Data[, , layer], cells = cellNum, directions = nNeighbors,
+    if (!requireNamespace("SpaDES.tools"))
+      stop("Please install.packages('SpaDES.tools')")
+    df <- SpaDES.tools::adj(world@.Data[, , layer], cells = cellNum, directions = nNeighbors,
               torus = torus)
     # nNeigh <- plyr::count(df[, "from"])
     nNeigh <- as.data.frame(table(df[, "from"]))
@@ -345,7 +348,6 @@ setMethod(
 #'
 #' @export
 #' @importFrom data.table data.table setkey
-#' @importFrom SpaDES.tools adj
 #' @rdname neighbors
 #'
 #' @author Sarah Bauduin
@@ -375,11 +377,13 @@ setMethod(
       # worldArray
       worldMat <- world@.Data[, , 1]
     }
+    if (!requireNamespace("SpaDES.tools"))
+      stop("Please install.packages('SpaDES.tools')")
 
     if (nrow(agents) < 100000) {
       # df is faster below 100 agents, DT faster above
       cellNum <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
-      neighbors <- adj(worldMat, cells = cellNum, directions = nNeighbors,
+      neighbors <- SpaDES.tools::adj(worldMat, cells = cellNum, directions = nNeighbors,
                        torus = torus, id = seq_along(cellNum))
       pCoords <- PxcorPycorFromCell(world = world, cellNum = neighbors[, 2])
       neighborsDf <- data.frame(neighbors, pCoords)
@@ -391,7 +395,7 @@ setMethod(
 
     } else {
       cellNum <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
-      neighbors <- data.table(adj(worldMat, cells = cellNum, directions = nNeighbors,
+      neighbors <- data.table(SpaDES.tools::adj(worldMat, cells = cellNum, directions = nNeighbors,
                                   torus = torus, id = seq_along(cellNum)))
       cellNum <- data.table(cellNum = cellNum, id = seq_along(cellNum))
       pCoords <- PxcorPycorFromCell(world = world, cellNum = neighbors[, to])

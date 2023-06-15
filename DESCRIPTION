@@ -50,8 +50,7 @@ Imports:
     grDevices,
     matrixStats,
     methods,
-    quickPlot (>= 0.1.2),
-    sf,
+    quickPlot (>= 1.0.1),
     SpaDES.tools,
     stats,
     terra
@@ -63,6 +62,7 @@ Suggests:
     microbenchmark,
     raster,
     rmarkdown,
+    sf,
     sp,
     SpaDES.core,
     testthat

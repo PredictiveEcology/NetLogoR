@@ -25,10 +25,12 @@ If the \code{spdf} does not contain the variables created with
 default values as in \code{createTurtles()}.
 }
 \examples{
-sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
-                              data = cbind.data.frame(age = c(0, 0, 3),
-                                                      sex = c("F", "F", "M")))
-t1 <- spdf2turtles(spdf = sp1)
+if (requireNamespace("sp")) {
+  sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
+                                data = cbind.data.frame(age = c(0, 0, 3),
+                                                        sex = c("F", "F", "M")))
+  t1 <- spdf2turtles(spdf = sp1)
+}
 
 
 }

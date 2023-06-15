@@ -3,8 +3,8 @@
 \name{numLayers.worldArray}
 \alias{numLayers.worldArray}
 \alias{numLayers.worldMatrix}
-\alias{.plotGrob.agentMatrix}
 \alias{.plotGrob.worldMatrix}
+\alias{.plotGrob.worldArray}
 \alias{layerNames,worldArray-method}
 \alias{.identifyGrobToPlot,worldArray,.quickPlotGrob-method}
 \title{Methods for \code{quickPlot}}
@@ -13,7 +13,7 @@
 
 \method{numLayers}{worldMatrix}(x)
 
-\method{.plotGrob}{agentMatrix}(
+\method{.plotGrob}{worldMatrix}(
   grobToPlot,
   col,
   size,
@@ -26,7 +26,7 @@
   ...
 )
 
-\method{.plotGrob}{worldMatrix}(
+\method{.plotGrob}{worldArray}(
   grobToPlot,
   col,
   size,
@@ -70,9 +70,6 @@ make plotting faster.}
 \item{vp}{whole viewport tree of \code{quickPlotGrob}}
 
 \item{...}{Additional arguments. None currently implemented.}
-
-\item{object}{A \verb{Raster*}, \verb{SpatialPoints*}, \verb{SpatialLines*},
-or \verb{SpatialPolygons*} object; or list of these.}
 
 \item{toPlot}{The object to plot. Should be a single layer if from a multi-layer
 object such as a \code{RasterStack}.}

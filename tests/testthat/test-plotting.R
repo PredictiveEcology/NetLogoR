@@ -9,8 +9,12 @@ test_that("createTurtles works", {
   r1 <- world2raster(w1)
   s1 <- world2raster(a1)
   sp1 <- turtles2spdf(t1)
+  sp2 <- turtles2sf(t1)
 
   clearPlot()
+
+  # TODO Error in .local(x, ...) : matrix should not have more than 2 columns
+  #   extent is not being found correctly
   expect_silent(Plot(t1)) #agentMatrix
   a <- getFromNamespace(".getQuickPlot", ns = "quickPlot")(paste0("quickPlot", dev.cur()))
   expect_true(length(a$isBaseLayer) == 1)
@@ -45,6 +49,7 @@ test_that("createTurtles works", {
   expect_true(length(a$curr@quickPlotGrobList) == 6)
   expect_true(length(a$curr@quickPlotGrobList$`a1$w1`) == 1)
 
+  # TODO -- these points are not correctly aligned on raster
   expect_silent(Plot(t1, addTo = "a1$w1"))
   a <- getFromNamespace(".getQuickPlot", ns = "quickPlot")(paste0("quickPlot", dev.cur()))
   expect_true(length(a$isBaseLayer) == 6)

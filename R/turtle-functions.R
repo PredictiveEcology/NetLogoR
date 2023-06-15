@@ -889,8 +889,9 @@ setMethod(
     if (n == 0) {
       return(ycor = numeric())
     } else {
-      ycor <- round(runif(n = n, min = terra::ymin(world@extent),
-                          max = terra::ymin(world@extent)), digits = 5)
+      exts <- extents(world@extent)
+      ycor <- round(runif(n = n, min = exts$ymin,
+                          max = exts$ymax), digits = 5)
       return(ycor)
     }
 })

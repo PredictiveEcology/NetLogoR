@@ -33,11 +33,13 @@ for more details on the classes.
 }\if{html}{\out{</div>}}
 }
 \examples{
-r1 <- raster(extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)
-r1[]<-runif(100)
-w1 <- raster2world(r1)
-plot(r1)
-plot(w1)
+if (requireNamespace("raster")) {
+ r1 <- raster::raster(raster::extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)
+ r1[]<-runif(100)
+ w1 <- raster2world(r1)
+ plot(r1)
+ plot(w1)
+}
 
 
 }
