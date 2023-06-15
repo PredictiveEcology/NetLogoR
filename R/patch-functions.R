@@ -380,31 +380,27 @@ setMethod(
     if (!requireNamespace("SpaDES.tools"))
       stop("Please install.packages('SpaDES.tools')")
 
-    if (nrow(agents) < 100000) {
-      # df is faster below 100 agents, DT faster above
-      cellNum <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
-      neighbors <- SpaDES.tools::adj(worldMat, cells = cellNum, directions = nNeighbors,
-                       torus = torus, id = seq_along(cellNum))
+    cellNum <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
+    largeForDT <- NROW(agents) >= 100000
+    neighbors <- SpaDES.tools::adj(worldMat, cells = cellNum, directions = nNeighbors,
+                                   torus = torus, id = seq_along(cellNum), returnDT = largeForDT)
+
+    if (!largeForDT) {
+      # df is faster below 10000 agents, DT faster above
       pCoords <- PxcorPycorFromCell(world = world, cellNum = neighbors[, 2])
       neighborsDf <- data.frame(neighbors, pCoords)
 
       # Output as a matrix
-      neighborsDf <- neighborsDf[order(neighborsDf$id), ]
-      neighborsID <- cbind(pxcor = neighborsDf$pxcor, pycor = neighborsDf$pycor,
-                           id = neighborsDf$id)
-
+      neighbors <- neighborsDf[order(neighborsDf$id), ]
     } else {
-      cellNum <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
-      neighbors <- data.table(SpaDES.tools::adj(worldMat, cells = cellNum, directions = nNeighbors,
-                                  torus = torus, id = seq_along(cellNum)))
-      cellNum <- data.table(cellNum = cellNum, id = seq_along(cellNum))
       pCoords <- PxcorPycorFromCell(world = world, cellNum = neighbors[, to])
-      neighbors[, `:=`(pxcor = pCoords[, 1], pycor = pCoords[, 2])]
+      data.table::set(neighbors, NULL, "pxcor", pCoords[, 1])
+      data.table::set(neighbors, NULL, "pycor", pCoords[, 2])
       setkey(neighbors, id)
-      neighborsID <- cbind(pxcor = neighbors$pxcor,
-                           pycor = neighbors$pycor,
-                           id = neighbors$id) # %>% as.factor %>% as.numeric)
     }
+    neighborsID <- cbind(pxcor = neighbors$pxcor,
+                         pycor = neighbors$pycor,
+                         id = neighbors$id)
 
     return(neighborsID)
 })

@@ -771,8 +771,8 @@ setMethod(
 #' @rdname bbox
 .bboxCoords <- function(coords) {
   stopifnot(length(coords) > 0)
-  # bbox <- colRanges(coords)
-  bbox <- cbind(range(coords[, 1]), range(coords[, 2]))
+  # bbox <- matrixStats::colRanges(coords)
+  bbox <- rbind(range(coords[, 1]), range(coords[, 2]))
   dimnames(bbox)[[2]] <- c("min", "max")
   dimnames(bbox)[[1]] <- c("xcor", "ycor")
   bbox
@@ -819,6 +819,7 @@ setReplaceMethod(
   "bbox",
   signature("agentMatrix", "matrix"),
   definition = function(obj, value) {
+    browser()
     attr(obj, "bbox") <- value
     obj
 })

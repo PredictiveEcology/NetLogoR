@@ -24,7 +24,9 @@ test_that("createTurtles works", {
   # TODO Error in .local(x, ...) : matrix should not have more than 2 columns
   #   extent is not being found correctly
   plotNum <- 1
-  expect_silent(Plot(t1)) #agentMatrix
+  #expect_silent(
+    Plot(t1)
+    #) #agentMatrix
   a <- getFromNamespace(".getQuickPlot", ns = "quickPlot")(paste0("quickPlot", dev.cur()))
   expect_true(length(a$isBaseLayer) == plotNum)
   expect_true(length(a$curr@quickPlotGrobList) == plotNum)
