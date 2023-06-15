@@ -63,7 +63,8 @@ Suggests:
     sp,
     SpaDES.core,
     SpaDES.tools,
-    testthat
+    testthat,
+    withr
 Remotes:
     s-u/fastshp,
     PredictiveEcology/SpaDES.tools@development,

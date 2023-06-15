@@ -545,6 +545,8 @@ setMethod("[[", signature(x = "worldArray", i = "ANY"),
             }
 })
 
+#' Replacement method for `worldArray`
+#'
 #' @param value A replacement `worldMatrix` layer for one of the current layers in the
 #'              `worldArray`.
 #'

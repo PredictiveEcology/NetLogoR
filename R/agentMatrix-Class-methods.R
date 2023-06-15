@@ -735,6 +735,7 @@ setGeneric("extent", quickPlot::extent)
 #'
 #' @include worldNLR-classes-methods.R
 #' @param x An object from which to get the extent
+#' @param ... Passed to `quickPlot::extent`, but is ignored here and there.
 #'
 #' @return `bbox` returns a two-column matrix; the first column has the minimum,
 #'         the second the maximum values; rows represent the spatial dimensions.

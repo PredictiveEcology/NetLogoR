@@ -576,7 +576,7 @@ setMethod(
     ras <- rast(xmin = exts$xmin, xmax = exts$xmax,
                 ymin = exts$ymin, ymax = exts$ymax,
                 ncol = ncol(world), nrow = nrow(world))
-    values(ras) <- world@.Data
+    terra::values(ras) <- world@.Data
 
     return(ras)
   })

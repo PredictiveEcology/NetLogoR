@@ -7,7 +7,7 @@
 \usage{
 wrap(obj, bounds, withHeading)
 
-\S4method{wrap}{ANY}(obj, bounds)
+\S4method{wrap}{ANY}(obj, bounds, withHeading)
 }
 \arguments{
 \item{obj}{A \verb{SpatialPoints*} object, or matrix of coordinates.}

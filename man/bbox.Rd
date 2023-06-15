@@ -27,6 +27,8 @@ bbox(obj) <- value
 \arguments{
 \item{x}{An object from which to get the extent}
 
+\item{...}{Passed to \code{quickPlot::extent}, but is ignored here and there.}
+
 \item{coords}{xy coordinates for all cells, e.g., produced by \code{raster::coordinates}.}
 
 \item{obj}{object deriving from class "agentMatrix" or "worldMatrix" or "worldArray"}

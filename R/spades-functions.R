@@ -71,7 +71,7 @@ setGeneric("wrap", function(obj, bounds, withHeading) {
 setMethod(
   "wrap",
   signature(obj = "ANY", bounds = "ANY"),
-  definition = function(obj, bounds) {
+  definition = function(obj, bounds, withHeading) {
     if (is.matrix(obj) && inherits(bounds, c("Extent", "SpatExtent"))) {
       if (identical(colnames(obj), c("x", "y"))) {
         xmn <- terra::xmin(bounds)
@@ -107,7 +107,7 @@ setMethod(
           (obj@data[coordinates(obj)[, "y"] > bounds@ymax, "y1"] - bounds@ymax) %%
           (bounds@ymin - bounds@ymax) + bounds@ymin
       }
-      return(wrap(obj, bounds = bounds))
+      return(wrap(obj, bounds = bounds, withHeading = withHeading))
 
     } else if (is(obj, "SpatialPoints")) {
       obj@coords <- wrap(obj@coords, bounds = bounds)
