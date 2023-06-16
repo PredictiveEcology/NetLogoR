@@ -37,7 +37,7 @@ plot.agentMatrix <- function(x, ...) {
 #' plot(w1)
 plot.worldMatrix <- function(x, ...) {
   Ras <- world2spatRast(x)
-  plot(Ras, ...)
+  terra::plot(Ras, ...)
 }
 
 #' @export
@@ -53,7 +53,7 @@ plot.worldMatrix <- function(x, ...) {
 #' plot(w3)
 plot.worldArray <- function(x, ...) {
   Ras <- world2spatRast(x)
-  plot(Ras, ...)
+  terra::plot(Ras, ...)
 }
 
 #' @export

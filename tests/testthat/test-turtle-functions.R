@@ -399,6 +399,7 @@ test_that("left and right work", {
 })
 
 test_that("downhill works", {
+  skip_if_not_installed("SpaDES.tools")
   w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data = 1:25)
   t1 <- createTurtles(n = 1, coords = cbind(xcor = 2, ycor = 2))
   t2 <- downhill(world = w1, turtles = t1, nNeighbors = 4)
@@ -467,6 +468,8 @@ test_that("downhill works", {
 })
 
 test_that("uphill works", {
+  skip_if_not_installed("SpaDES.tools")
+
   w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data = 1:25)
   t1 <- createTurtles(n = 1, coords = cbind(xcor = 2, ycor = 2))
   t2 <- uphill(world = w1, turtles = t1, nNeighbors = 4)
@@ -1193,6 +1196,7 @@ test_that("of works", {
 })
 
 test_that("spdf2turtles and turtles2spdf work", {
+  skip_if_not_installed("sp")
   t1 <- createTurtles(n = 10, coords = cbind(xcor = 1:10, ycor = 1:10), heading = 1:10)
   t1 <- turtlesOwn(turtles = t1, tVar = "age", tVal = 1:10)
   t1 <- turtlesOwn(turtles = t1, tVar = "sex", tVal = c(rep("M", 5), rep("F", 5)))
@@ -1200,7 +1204,6 @@ test_that("spdf2turtles and turtles2spdf work", {
   expect_equivalent(t2@coords, of(agents = t1, var = c("xcor", "ycor")))
   expect_equivalent(t2@data, inspect(turtles = t1, who = 0:9)[3:10])
 
-  if (requireNamespace("sp", quietly = TRUE))
   sp1 <- sp::SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
                                 data = cbind.data.frame(age = c(0, 0, 3), sex = c("F", "F", "M")))
   sp1Turtles <- spdf2turtles(sp1)
@@ -1224,8 +1227,8 @@ test_that("sf2turtles and turtles2sf work", {
   t1 <- createTurtles(n = 10, coords = cbind(xcor = 1:10, ycor = 1:10), heading = 1:10)
   t1 <- turtlesOwn(turtles = t1, tVar = "age", tVal = 1:10)
   t1 <- turtlesOwn(turtles = t1, tVar = "sex", tVal = c(rep("M", 5), rep("F", 5)))
-  t2 <- turtles2sf(t1)
   skip_if_not_installed("sf")
+  t2 <- turtles2sf(t1)
   expect_equivalent(sf::st_coordinates(t2), of(agents = t1, var = c("xcor", "ycor")))
   expect_equivalent(sf::st_drop_geometry(t2), inspect(turtles = t1, who = 0:9)[3:10])
   expect_equivalent(t2$who, of(agents = t1, var = "who"))
