@@ -148,7 +148,7 @@ test_that("agentMatrix benchmarking", {
 
   # compare speeds -- if these fail, then should reconsider the need for agentMatrix
   if (require(microbenchmark)) {
-    mb <- summary(microbenchmark(
+    mb <- summary(microbenchmark::microbenchmark(
       times = 50,
       spdf = {
         if (requireNamespace("sp", quietly = TRUE))

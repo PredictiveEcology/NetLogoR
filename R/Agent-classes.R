@@ -15,9 +15,10 @@ utils::globalVariables(c("xcor", "ycor"))
 #'       nums = 5:7)
 #'
 #' # compare speeds -- about 5x faster
-#' if(require(microbenchmark)) {
-#'   microbenchmark(times = 499,
-#'     spdf = {SpatialPointsDataFrame(
+#' if(requireNamespace("microbenchmark", quietly = TRUE) &&
+#'    requireNamespace("sp", quietly = TRUE)) {
+#'   microbenchmark::microbenchmark(times = 499,
+#'     spdf = {sp::SpatialPointsDataFrame(
 #'       coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
 #'       data = data.frame(
 #'           char = letters[c(1, 2, 6)],
