@@ -17,7 +17,7 @@ NULL
 #' Internal CRS usage
 #'
 #' This is used in various places when converting `agentMatrix` objects to
-#' `SpatialPoints` for use with functions, such as [raster::buffer()].
+#' `SpatialPoints` for use with functions, such as `raster::buffer()`.
 #' None of these functions results in any real geospatial information being conserved,
 #' other than distance and angle  calculations. Buffering still occurs on the
 #' unit-less World. This is therefore a way to allow `sp` and `raster`

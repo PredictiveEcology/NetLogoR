@@ -12,7 +12,7 @@ An object of class \code{character} of length 1.
 }
 \description{
 This is used in various places when converting \code{agentMatrix} objects to
-\code{SpatialPoints} for use with functions, such as \code{\link[raster:buffer]{raster::buffer()}}.
+\code{SpatialPoints} for use with functions, such as \code{raster::buffer()}.
 None of these functions results in any real geospatial information being conserved,
 other than distance and angle  calculations. Buffering still occurs on the
 unit-less World. This is therefore a way to allow \code{sp} and \code{raster}
