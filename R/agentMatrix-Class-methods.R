@@ -788,6 +788,11 @@ if (!isGeneric("bbox", .GlobalEnv)) {
   )
 }
 
+#' Extract or set bounding box
+#'
+#' These are methods for classes in NetLogoR, i.e., `agentMatrix`, `worldMatrix`,
+#' and `worldArray`.
+#'
 #' @include worldNLR-classes-methods.R
 #' @export
 #' @param obj object deriving from class "agentMatrix" or "worldMatrix" or "worldArray"

@@ -45,4 +45,7 @@ rows represent the spatial dimensions. See \code{sp::bbox}.
 }
 \description{
 Same as \code{sp::bbox} and \code{raster::extent}.
+
+These are methods for classes in NetLogoR, i.e., \code{agentMatrix}, \code{worldMatrix},
+and \code{worldArray}.
 }

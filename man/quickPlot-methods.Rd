@@ -18,6 +18,8 @@
 \arguments{
 \item{x}{An object or list of objects.}
 
+\item{object}{An object from which to extract the layer names.}
+
 \item{toPlot}{The object to plot. Should be a single layer if from a multi-layer
 object such as a \code{RasterStack}.}
 

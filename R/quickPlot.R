@@ -69,6 +69,7 @@ setGeneric("layerNames", quickPlot::layerNames)
 
 # @inheritParams quickPlot::layerNames
 #' @export
+#' @param object An object from which to extract the layer names.
 #' @importFrom quickPlot layerNames
 #' @rdname quickPlot-methods
 setMethod(
