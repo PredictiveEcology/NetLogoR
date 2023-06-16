@@ -26,6 +26,12 @@ from the \code{worldArray}.}
 
 \item{name}{Layer name, normally without back ticks, unless has symbols.}
 }
+\value{
+The original object, but with updated elements. The double square bracket
+extracts the entire layer.
+}
 \description{
 These function similarly to \code{[[} for \code{RasterStack} objects.
+
+Replacement method for \code{worldArray}.
 }

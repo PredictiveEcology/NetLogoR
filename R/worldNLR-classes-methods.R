@@ -547,6 +547,11 @@ setMethod("[[", signature(x = "worldArray", i = "ANY"),
 
 #' Replacement method for `worldArray`
 #'
+#' Replacement method for `worldArray`.
+#'
+#' @return The original object, but with updated elements. The double square bracket
+#'   extracts the entire layer.
+#'
 #' @param value A replacement `worldMatrix` layer for one of the current layers in the
 #'              `worldArray`.
 #'
