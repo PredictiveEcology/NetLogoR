@@ -824,7 +824,6 @@ setReplaceMethod(
   "bbox",
   signature("agentMatrix", "matrix"),
   definition = function(obj, value) {
-    browser()
     attr(obj, "bbox") <- value
     obj
 })
