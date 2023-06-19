@@ -65,6 +65,8 @@ Suggests:
     SpaDES.tools,
     testthat,
     withr
+Remotes:
+    PredictiveEcology/quickPlot@development
 Additional_repositories: https://predictiveecology.r-universe.dev/
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
