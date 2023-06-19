@@ -37,8 +37,8 @@ if (requireNamespace("raster")) {
  r1 <- raster::raster(raster::extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)
  r1[]<-runif(100)
  w1 <- raster2world(r1)
- plot(r1)
- plot(w1)
+ terra::plot(r1)
+ terra::plot(w1)
 }
 
 

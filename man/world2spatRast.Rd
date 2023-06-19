@@ -31,12 +31,12 @@ at the edges of the cells.
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = runif(100))
 r1 <- world2spatRast(w1)
-plot(r1)
+terra::plot(r1)
 
 w2 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 0)
 w3 <- stackWorlds(w1, w2)
 r3 <- world2spatRast(w3)
-plot(r3)
+terra::plot(r3)
 
 
 }

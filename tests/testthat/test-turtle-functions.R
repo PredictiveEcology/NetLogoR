@@ -881,10 +881,10 @@ test_that("turtlesOn works", {
   t13 <- turtlesOn(world = w1, turtles = t1, agents = patches(w1))
   expect_equivalent(t13, t13)
 
-  t14 <- turtlesOn(world = w1, turtles = t1[1], agents = patches(w1))
-  expect_equivalent(t14, t1[1])
+  t14 <- turtlesOn(world = w1, turtles = t1[1, , drop = FALSE], agents = patches(w1))
+  expect_equivalent(t14, t1[1, , drop = FALSE])
 
-  t15 <- turtlesOn(world = w1, turtles = t1[1], agents = patch(w1, 1, 1))
+  t15 <- turtlesOn(world = w1, turtles = t1[1, , drop = FALSE], agents = patch(w1, 1, 1))
   expect_equivalent(t15, noTurtles())
 
   w2 <- createWorld(1, 5, 1, 4, data = 0)

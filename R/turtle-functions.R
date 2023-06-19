@@ -645,7 +645,7 @@ setMethod(
   signature = c("agentMatrix", "numeric"),
   definition = function(turtles, who) {
     if (length(who) != 0) {
-      turtles <- turtles[-na.omit(match(who, turtles@.Data[, "who"])), ]
+      turtles <- turtles[-na.omit(match(who, turtles@.Data[, "who"])), , drop = FALSE]
     }
     return(turtles)
 })
@@ -2229,7 +2229,7 @@ setMethod(
   "turtle",
   signature = c("agentMatrix", "numeric", "missing"),
   definition = function(turtles, who) {
-    turtles[na.omit(match(who, turtles@.Data[, "who"])), ] # %>% na.omit %>% sort
+    turtles[na.omit(match(who, turtles@.Data[, "who"])), , drop = FALSE] # %>% na.omit %>% sort
 })
 
 #' @export
@@ -2243,7 +2243,7 @@ setMethod(
     if (length(breedFactor) == 0) {
       noTurtles()
     } else {
-      tBreed <- turtles[which(turtles@.Data[, "breed"] %in% breedFactor), ]
+      tBreed <- turtles[which(turtles@.Data[, "breed"] %in% breedFactor), , drop = FALSE]
       turtle(tBreed, who)
     }
 })
@@ -2378,7 +2378,7 @@ setMethod(
     if (length(breedFactor) == 0) {
       tBreed <- noTurtles()
     } else {
-      tBreed <- turtles[which(turtles@.Data[, "breed"] %in% breedFactor), ]
+      tBreed <- turtles[which(turtles@.Data[, "breed"] %in% breedFactor), drop = FALSE]
     }
     turtlesOn(world = world, turtles = tBreed, agents = agents, simplify = simplify)
 })
@@ -2408,7 +2408,7 @@ setMethod(
 #'
 noTurtles <- function() {
   t0 <- createTurtles(n = 1, coords = cbind(xcor = 0, ycor = 0))
-  empty <- t0[which(t0@.Data[, "who"] == 1), ]
+  empty <- t0[which(t0@.Data[, "who"] == 1), , drop = FALSE]
   empty@levels$breed <- character(0)
   empty@levels$color <- character(0)
   return(empty)
@@ -3152,10 +3152,12 @@ setMethod(
 #'          default values as in `createTurtles()`.
 #'
 #' @examples
-#' turtles_sf1 <- st_as_sf(cbind.data.frame(x = c(1, 2, 3), y = c(1, 2, 3),
-#'                                          age = c(0, 0, 3), sex = c("F", "F", "M")),
-#'                        coords = c("x", "y"))
-#' t1 <- sf2turtles(turtles_sf = turtles_sf1)
+#' if (requireNamespace("sf", quietly = TRUE)) {
+#'   turtles_sf1 <- sf::st_as_sf(cbind.data.frame(x = c(1, 2, 3), y = c(1, 2, 3),
+#'                                            age = c(0, 0, 3), sex = c("F", "F", "M")),
+#'                          coords = c("x", "y"))
+#'   t1 <- sf2turtles(turtles_sf = turtles_sf1)
+#' }
 #'
 #'
 #' @export

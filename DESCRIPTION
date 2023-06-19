@@ -65,11 +65,7 @@ Suggests:
     SpaDES.tools,
     testthat,
     withr
-Remotes:
-    s-u/fastshp,
-    PredictiveEcology/SpaDES.tools@development,
-    PredictiveEcology/SpaDES.core@development
-Additional_repositories: https://rforge.net
+Additional_repositories: https://predictiveecology.r-universe.dev/
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
 Encoding: UTF-8

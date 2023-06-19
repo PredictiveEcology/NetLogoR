@@ -31,7 +31,7 @@ at the edges of the cells.
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = runif(100))
 r1 <- world2raster(w1)
-plot(r1)
+terra::plot(r1)
 
 
 }

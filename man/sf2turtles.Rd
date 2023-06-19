@@ -25,10 +25,12 @@ If the \code{turtles_sf} does not contain the variables created with
 default values as in \code{createTurtles()}.
 }
 \examples{
-turtles_sf1 <- st_as_sf(cbind.data.frame(x = c(1, 2, 3), y = c(1, 2, 3),
-                                         age = c(0, 0, 3), sex = c("F", "F", "M")),
-                       coords = c("x", "y"))
-t1 <- sf2turtles(turtles_sf = turtles_sf1)
+if (requireNamespace("sf", quietly = TRUE)) {
+  turtles_sf1 <- sf::st_as_sf(cbind.data.frame(x = c(1, 2, 3), y = c(1, 2, 3),
+                                           age = c(0, 0, 3), sex = c("F", "F", "M")),
+                         coords = c("x", "y"))
+  t1 <- sf2turtles(turtles_sf = turtles_sf1)
+}
 
 
 }

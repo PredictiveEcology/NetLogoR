@@ -46,19 +46,19 @@
 
 \S4method{[}{worldArray,missing,missing,matrix}(x, i, j) <- value
 
-\S4method{[}{agentMatrix,numeric,numeric,ANY}(x, i, j, ..., drop = TRUE)
+\S4method{[}{agentMatrix,numeric,numeric,ANY}(x, i, j, ..., drop = FALSE)
 
 \S4method{[}{agentMatrix,logical,missing,ANY}(x, i, j, ..., drop = TRUE)
 
 \S4method{[}{agentMatrix,numeric,missing,ANY}(x, i, j, ..., drop = TRUE)
 
-\S4method{[}{agentMatrix,missing,missing,missing}(x, i, j, ..., drop = TRUE)
+\S4method{[}{agentMatrix,missing,missing,missing}(x, i, j, ..., drop = FALSE)
 
 \S4method{[}{agentMatrix,missing,character,ANY}(x, i, j, ..., drop = TRUE)
 
-\S4method{[}{agentMatrix,numeric,character,ANY}(x, i, j, ..., drop = TRUE)
+\S4method{[}{agentMatrix,numeric,character,ANY}(x, i, j, ..., drop = FALSE)
 
-\S4method{[}{agentMatrix,missing,numeric,ANY}(x, i, j, ..., drop = TRUE)
+\S4method{[}{agentMatrix,missing,numeric,ANY}(x, i, j, ..., drop = FALSE)
 
 \S4method{[}{agentMatrix,numeric,numeric,numeric}(x, i, j) <- value
 

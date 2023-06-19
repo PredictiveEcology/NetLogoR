@@ -516,19 +516,41 @@ setMethod(
   }
 )
 
-#' Subsetting for `worldArray` class
-#'
-#' These function similarly to `[[` for `RasterStack` objects.
+
+
+
+
+# Subsetting for `worldArray` class
+#
+# These function similarly to `[[` for `RasterStack` or `SpatRaster` objects.
+#
+#
+# @aliases [[,worldArray,ANY-method
+# @export
+# @importFrom methods .slotNames
+# @name [[
+# @rdname subsetting
+# @exportMethod [[
+
+#' Subsetting and replacing for `worldArray` class
 #'
 #' @param x     A `worldArray` object.
 #' @param i     Index number or layer name specifying a subset of layer(s)
 #'              from the `worldArray`.
 #'
-#' @aliases [[,worldArray,ANY,ANY-method
+#' @rdname subsetting
+#' @docType methods
 #' @export
-#' @importFrom methods .slotNames
-#' @name [[
-#' @rdname Subsetting
+#' @exportMethod [[
+#'
+#' @examples
+#' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = runif(100))
+#' w2 <- createWorld(0, 9, 0, 9, data = runif(100))
+#' w3 <- createWorld(0, 9, 0, 9, data = runif(100) + 2) # add 2 so different range
+#' a1 <- stackWorlds(w1, w2)
+#' a1[[2]]
+#' a1[[2]] <- w3
+#'
 setMethod("[[", signature(x = "worldArray", i = "ANY"),
           definition = function(x, i) {
             if (length(i) > 1) {
@@ -545,20 +567,17 @@ setMethod("[[", signature(x = "worldArray", i = "ANY"),
             }
 })
 
-#' Replacement method for `worldArray`
-#'
-#' Replacement method for `worldArray`.
-#'
-#' @return The original object, but with updated elements. The double square bracket
-#'   extracts the entire layer.
-#'
+
 #' @param value A replacement `worldMatrix` layer for one of the current layers in the
 #'              `worldArray`.
 #'
-#' @aliases [[<-,worldArray,ANY,ANY-method
+#' @rdname subsetting
+#' @docType methods
+#' @return The replacement method returns the original object, but with updated elements.
+#'   The accessor method extracts the entire layer.
+#'
 #' @export
-#' @name [[<-
-#' @rdname Subsetting
+#'
 setReplaceMethod("[[", signature(x = "worldArray", i = "ANY", value = "ANY"),
                  definition = function(x, i, value) {
                    x@.Data[, , i] <- value
@@ -568,8 +587,9 @@ setReplaceMethod("[[", signature(x = "worldArray", i = "ANY", value = "ANY"),
 #' @export
 #' @param name  Layer name, normally without back ticks, unless has symbols.
 #' @name $
+#' @docType methods
 #' @aliases $,worldArray-method
-#' @rdname Subsetting
+#' @rdname subsetting
 setMethod("$", signature(x = "worldArray"),
           definition = function(x, name) {
             return(x[[name]])

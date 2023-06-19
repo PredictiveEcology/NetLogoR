@@ -32,11 +32,11 @@ agent locations.
 }
 \examples{
 library(quickPlot)
-if (requireNamespace("raster")) {
+if (requireNamespace("terra")) {
 
 xrange <- yrange <- c(-50, 50)
-hab <- raster::raster(raster::extent(c(xrange, yrange)))
-hab[] <- 0
+hab <- terra::rast(terra::ext(c(xrange, yrange)))
+hab[] <- runif(terra::ncell(hab))
 
 # initialize agents
 N <- 10
@@ -49,7 +49,7 @@ starts <- cbind(x = stats::runif(N, xrange[1], xrange[2]),
                 y = stats::runif(N, yrange[1], yrange[2]))
 
 # create the agent object
-agent <- sp::SpatialPointsDataFrame(coords = starts, data = data.frame(x1, y1))
+agent <- agentMatrix(coords = starts, data = data.frame(x1 = x1, y1 = y1))
 
 
 ln <- rlnorm(N, 1, 0.02) # log normal step length
@@ -58,12 +58,13 @@ sd <- 30 # could be specified globally in params
 if (interactive()) {
   clearPlot()
   Plot(hab, zero.color = "white", axes = "L")
+  Plot(agent, addTo = "hab")
 }
 if (requireNamespace("SpaDES.tools")) {
   for (i in 1:10) {
 
     agent <- SpaDES.tools::crw(agent = agent,
-                               extent = extent(hab), stepLength = ln,
+                               extent = terra::ext(hab), stepLength = ln,
                                stddev = sd, lonlat = FALSE, torus = TRUE)
    if (interactive()) Plot(agent, addTo = "hab", axes = TRUE)
  }

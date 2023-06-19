@@ -341,8 +341,8 @@ setMethod(
 #'  r1 <- raster::raster(raster::extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)
 #'  r1[]<-runif(100)
 #'  w1 <- raster2world(r1)
-#'  plot(r1)
-#'  plot(w1)
+#'  terra::plot(r1)
+#'  terra::plot(w1)
 #' }
 #'
 #'
@@ -408,10 +408,11 @@ setMethod(
 #'          will be (pxcor = 0, pycor = 0).
 #'
 #' @examples
+#' library(terra)
 #' r1 <- rast(xmin = 0, xmax = 10, ymin = 0, ymax = 10, nrows = 10, ncols = 10)
 #' r1[]<-runif(100)
 #' w1 <- spatRast2world(r1)
-#' plot(r1)
+#' terra::plot(r1)
 #' plot(w1)
 #'
 #' r2 <- rast(xmin = 0, xmax = 10, ymin = 0, ymax = 10, nrows = 10, ncols = 10)
@@ -419,7 +420,7 @@ setMethod(
 #' r3 <- c(r1, r2)
 #' names(r3) <- c("layer1", "layer2")
 #' w3 <- spatRast2world(r3)
-#' plot(r3)
+#' terra::plot(r3)
 #' plot(w3)
 #'
 #' @export
@@ -480,7 +481,7 @@ setMethod(
 #' @examples
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = runif(100))
 #' r1 <- world2raster(w1)
-#' plot(r1)
+#' terra::plot(r1)
 #'
 #'
 #' @export
@@ -545,12 +546,12 @@ setMethod(
 #' @examples
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = runif(100))
 #' r1 <- world2spatRast(w1)
-#' plot(r1)
+#' terra::plot(r1)
 #'
 #' w2 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 0)
 #' w3 <- stackWorlds(w1, w2)
 #' r3 <- world2spatRast(w3)
-#' plot(r3)
+#' terra::plot(r3)
 #'
 #'
 #' @export

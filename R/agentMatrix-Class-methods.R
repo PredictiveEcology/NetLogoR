@@ -4,6 +4,7 @@
 #'
 #' To create a new `agentMatrix` object.
 #'
+#' @docType methods
 #' @include Agent-classes.R
 #' @include helpers.R
 #' @inheritParams methods::initialize
@@ -13,8 +14,8 @@
 #'                 should be the length of unique elements in the `...` element.
 #'
 #' @return An `agentMatrix` object.
-#'
-#'
+#' @aliases initialize,agentMatrix-method
+#' @exportMethod initialize
 setMethod(
   "initialize",
   "agentMatrix",
@@ -68,7 +69,7 @@ setMethod(
         if (any(names(dotCols) == "stringsAsFactors"))
           dotCols$stringsAsFactors <- NULL
         if (any(isDF)) {
-          dotCols <- unlist(lapply(dotCols, as.list), recursive = FALSE)
+          dotCols <- unlist(lapply(unname(dotCols[isDF]), as.list), recursive = FALSE)
         } else {
           # can't just do "do.call(cbind, dotCols)" because some may be numerics,
           # others not... would coerce to all character
@@ -134,6 +135,7 @@ setMethod(
 #' @param ... Vectors, a data.frame, or a matrix of extra columns to add to the coordinates,
 #'            or a `SpatialPointsDataFrame`.
 #'
+#' @docType methods
 #' @return An `agentMatrix` object
 #' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-turtles>
 #'
@@ -161,6 +163,7 @@ setGeneric(
 
 #' @export
 #' @rdname agentMatrix
+#' @exportMethod agentMatrix
 setMethod(
   "agentMatrix",
   signature = c(coords = "matrix"),
@@ -171,6 +174,7 @@ setMethod(
 
 #' @export
 #' @rdname agentMatrix
+#' @exportMethod agentMatrix
 setMethod(
   "agentMatrix",
   signature = c(coords = "missing"),
@@ -189,17 +193,18 @@ setMethod(
 
 setGeneric("coordinates", quickPlot::coordinates)
 
-#' Set spatial coordinates
+#' Spatial accessors and setters for NetLogoR classes
 #'
-#' @param obj  an `AgentMatrix` object
+#' @param obj object deriving from class "agentMatrix"
 #' @param ...  additional arguments that may be used by particular methods
 #'
-#' @return usually an object of class `SpatialPointsDataFrame`; if the coordinates set cover
-#'         the full set of variables in object, an object of class `SpatialPoints` is returned.
-#'         See `sp::coordinates`.
+#' @return `coordinates` returns a matrix of coordinates of the `obj`.
 #'
 #' @export
 #' @rdname coordinates
+#' @aliases coordinates,agentMatrix-method
+#' @seealso [bbox()], [extent()]
+#' @exportMethod coordinates
 setMethod(
   "coordinates",
   signature("agentMatrix"),
@@ -260,16 +265,20 @@ setAs("agentMatrix", "data.frame",
 setMethod(
   "[",
   signature(x = "agentMatrix", "numeric", "numeric", "ANY"),
-  definition = function(x, i, j, ..., drop) {
+  definition = function(x, i, j, ..., drop = FALSE) {
     colNames <- colnames(x@.Data)[j]
     levelInd <- match(colNames, names(x@levels))
-    x@.Data <- x@.Data[i, unique(c(1:2, j)), ..., drop = FALSE]
-    if (all(is.na(levelInd))) {
-      x@levels <- list(NULL)
+    if (isTRUE(drop) && length(i) == 1) {
+      x <- x@.Data[i, , drop = TRUE]
     } else {
-      x@levels <- x@levels[colNames[!is.na(levelInd)]]
+      x@.Data <- x@.Data[i, unique(c(1:2, j)), ..., drop = FALSE]
+      if (all(is.na(levelInd))) {
+        x@levels <- list(NULL)
+      } else {
+        x@levels <- x@levels[colNames[!is.na(levelInd)]]
+      }
+      x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
     }
-    x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
     x
 })
 
@@ -280,10 +289,14 @@ setMethod(
 setMethod(
   "[",
   signature(x = "agentMatrix", "logical", "missing", "ANY"),
-  definition = function(x, i, ..., drop) {
-    x@.Data <- x@.Data[i, , drop = FALSE]
-    if (length(x@.Data) > 0)
-      x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
+  definition = function(x, i, ..., drop = FALSE) {
+    if (isTRUE(drop) && length(i) == 1) {
+      x <- x@.Data[i, , drop = TRUE]
+    } else {
+      x@.Data <- x@.Data[i, , drop = FALSE]
+      if (length(x@.Data) > 0)
+        x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
+    }
     x
 })
 
@@ -294,10 +307,14 @@ setMethod(
 setMethod(
   "[",
   signature(x = "agentMatrix", "numeric", "missing", "ANY"),
-  definition = function(x, i, ..., drop) {
-    x@.Data <- x@.Data[i, , drop = FALSE]
-    if (length(x@.Data) > 0) {
-      x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
+  definition = function(x, i, ..., drop = FALSE) {
+    if (isTRUE(drop) && length(i) == 1) {
+      x <- x@.Data[i, , drop = TRUE]
+    } else {
+      x@.Data <- x@.Data[i, , drop = FALSE]
+      if (length(x@.Data) > 0) {
+        x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
+      }
     }
     x
 })
@@ -309,7 +326,7 @@ setMethod(
 setMethod(
   "[",
   signature(x = "agentMatrix", "missing", "missing", "missing"),
-  definition = function(x, i, j, ..., drop) {
+  definition = function(x, i, j, ..., drop = FALSE) {
     as(x, "data.frame")
   })
 
@@ -320,9 +337,9 @@ setMethod(
 setMethod(
   "[",
   signature(x = "agentMatrix", "missing", "character", "ANY"),
-  definition = function(x, j, ..., drop) {
+  definition = function(x, j, ..., drop = FALSE) {
     cols <- match(j, colnames(x@.Data))
-    x[, cols, ..., drop = FALSE]
+    x[, cols, ..., drop = drop]
 })
 
 #' @export
@@ -332,9 +349,9 @@ setMethod(
 setMethod(
   "[",
   signature(x = "agentMatrix", "numeric", "character", "ANY"),
-  definition = function(x, i, j, ..., drop) {
+  definition = function(x, i, j, ..., drop = FALSE) {
     cols <- match(j, colnames(x@.Data))
-    x[i, cols, ..., drop = FALSE]
+    x[i, cols, ..., drop = drop]
 })
 
 #' @export
@@ -344,16 +361,20 @@ setMethod(
 setMethod(
   "[",
   signature(x = "agentMatrix", "missing", "numeric", "ANY"),
-  definition = function(x, i, j, ..., drop) {
+  definition = function(x, i, j, ..., drop = FALSE) {
     colNames <- colnames(x@.Data)[j]
     levelInd <- match(colNames, names(x@levels))
-    x@.Data <- x@.Data[, unique(c(1:2, j)), ..., drop = drop]
-    if (all(is.na(levelInd))) {
-      x@levels <- list(NULL)
+    if (isTRUE(drop)) {
+      x <- x@.Data[, j, ..., drop = drop]
     } else {
-      x@levels <- x@levels[colNames[!is.na(levelInd)]]
+      x@.Data <- x@.Data[, unique(c(1:2, j)), ..., drop = drop]
+      if (all(is.na(levelInd))) {
+        x@levels <- list(NULL)
+      } else {
+        x@levels <- x@levels[colNames[!is.na(levelInd)]]
+      }
+      x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
     }
-    x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
     x
 })
 
@@ -367,6 +388,7 @@ setReplaceMethod(
   "[",
   signature("agentMatrix", "numeric", "numeric", "numeric"),
   definition = function(x, i, j, value) {
+
     x@.Data[i, j] <- value
     validObject(x)
     return(x)
@@ -734,13 +756,16 @@ setGeneric("extent", quickPlot::extent)
 #' Same as `sp::bbox` and `raster::extent`.
 #'
 #' @include worldNLR-classes-methods.R
-#' @param x An object from which to get the extent
-#' @param ... Passed to `quickPlot::extent`, but is ignored here and there.
+#' @param x object deriving from class "agentMatrix",
+#'    or a "worldMatrix" or "worldArray"
+#' @param ... Ignored.
 #'
 #' @return `bbox` returns a two-column matrix; the first column has the minimum,
 #'         the second the maximum values; rows represent the spatial dimensions.
-#'         `extent` returns an `extent` object.
-#' @rdname bbox
+#'         `extent` returns an `SpatExtent` object from the package `terra`.
+#' @rdname extent
+#' @docType methods
+#' @seealso [bbox()], [coordinates()]
 #' @exportMethod extent
 setMethod(
   "extent",
@@ -750,7 +775,7 @@ setMethod(
 })
 
 #' @include worldNLR-classes-methods.R
-#' @rdname bbox
+#' @rdname extent
 #' @exportMethod extent
 setMethod(
   "extent",
@@ -768,7 +793,6 @@ setMethod(
 #'
 #' @param coords xy coordinates for all cells, e.g., produced by `raster::coordinates`.
 #'
-#' @rdname bbox
 .bboxCoords <- function(coords) {
   stopifnot(length(coords) > 0)
   # bbox <- matrixStats::colRanges(coords)
@@ -779,15 +803,6 @@ setMethod(
 }
 
 
-if (!isGeneric("bbox", .GlobalEnv)) {
-  setGeneric(
-    "bbox",
-    function(obj) {
-      standardGeneric("bbox")
-    }
-  )
-}
-
 #' Extract or set bounding box
 #'
 #' These are methods for classes in NetLogoR, i.e., `agentMatrix`, `worldMatrix`,
@@ -795,10 +810,30 @@ if (!isGeneric("bbox", .GlobalEnv)) {
 #'
 #' @include worldNLR-classes-methods.R
 #' @export
-#' @param obj object deriving from class "agentMatrix" or "worldMatrix" or "worldArray"
-#' @return two-column matrix; the first column has the minimum, the second the maximum values;
-#'         rows represent the spatial dimensions. See `sp::bbox`.
-#' @rdname bbox
+#' @docType methods
+#' @param obj object deriving from class "agentMatrix",
+#'    or for `bbox` and `extent`, a "worldMatrix" or "worldArray"
+#' @name bbox
+#' @seealso [extent()], [coordinates()], `sp::bbox`
+#' @examples
+#' newAgent <- agentMatrix(
+#'       coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
+#'       char = letters[c(1, 2, 6)],
+#'       nums2 = c(4.5, 2.6, 2343),
+#'       char2 = LETTERS[c(4, 24, 3)],
+#'       nums = 5:7)
+#' bbox(newAgent)
+#' extent(newAgent)
+#' coordinates(newAgent)
+setGeneric(
+  "bbox",
+  function(obj) {
+    standardGeneric("bbox")
+  }
+)
+
+#' @name bbox
+#' @export
 setMethod(
   "bbox",
   signature("agentMatrix"),
@@ -812,14 +847,14 @@ setMethod(
 
 #' @export
 #' @param value 2x2 matrix representing the bounding box. See `sp::bbox`.
-#' @rdname bbox
+#' @name bbox
 setGeneric("bbox<-",
            function(obj, value) {
              standardGeneric("bbox<-")
 })
 
 #' @include worldNLR-classes-methods.R
-#' @rdname bbox
+#' @name bbox
 setReplaceMethod(
   "bbox",
   signature("agentMatrix", "matrix"),
@@ -829,13 +864,27 @@ setReplaceMethod(
 })
 
 #' @include worldNLR-classes-methods.R
-#' @rdname bbox
+#' @export
+#' @name bbox
 setMethod(
   "bbox",
   signature("worldNLR"),
   definition = function(obj) {
     bbox(attr(obj, "extent"))
 })
+
+#' @include worldNLR-classes-methods.R
+#' @export
+#' @name bbox
+setMethod(
+  "bbox",
+  signature("SpatExtent"),
+  definition = function(obj) {
+    obj <- as.vector(obj)
+    obj <- rbind(obj[1:2], obj[3:4])
+    rownames(obj) <- c("s1", "s2")
+    obj
+  })
 
 ################################################################################
 .emptyWorldMatrix <- function() createWorld()

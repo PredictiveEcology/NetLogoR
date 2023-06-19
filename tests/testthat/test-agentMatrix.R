@@ -294,7 +294,7 @@ test_that("agentMatrix subsetting", {
     tmp = newAgent$tmp, tmp2 = newAgent$tmp2,
     stringsAsFactors = FALSE
   ))
-  expect_equal(newAgent[, "tmp"], agentMatrix(
+  expect_equal(newAgent[, "tmp", drop = FALSE], agentMatrix(
     coords = coordinates(newAgent),
     tmp = newAgent@.Data[, "tmp", drop = FALSE]
   ))
@@ -302,7 +302,7 @@ test_that("agentMatrix subsetting", {
     1:2, ,
     drop = FALSE
   ], tmp = newAgent@.Data[1:2, "tmp", drop = FALSE]))
-  expect_equal(newAgent[, 3], agentMatrix(
+  expect_equal(newAgent[, 3, drop = FALSE], agentMatrix(
     coords = coordinates(newAgent)[, , drop = FALSE],
     tmp = newAgent@.Data[, 3, drop = FALSE]
   ))
@@ -326,8 +326,8 @@ test_that("agentMatrix subsetting", {
   mat <- cbind(coords = matrix(1:6, ncol = 2), data.frame(tmp = 1:3, tmp2 = c("e", "f", "g")))
   newAgent <- as(mat, "agentMatrix")
 
-  expect_equal(1, sum(newAgent[, "tmp2"] == "f"))
-  expect_equal(1, sum(newAgent[, "tmp"] == 2))
+  expect_equal(1, sum(newAgent[, "tmp2", drop = FALSE] == "f"))
+  expect_equal(1, sum(newAgent[, "tmp", drop = FALSE] == 2))
 
   mat <- cbind(coords = matrix(1:6, ncol = 2), data.frame(
     tmp = 1:3, tmp1 = 1:3,

@@ -33,6 +33,7 @@ test_that("createTurtles works", {
 
   if (requireNamespace("sp", quietly = TRUE)) {
     plotNum <- plotNum + 1
+    mess <- capture_messages(Plot(sp1)) # there is a "setting graphics device" message that occurs the first time
     expect_silent(Plot(sp1))
     a <- getFromNamespace(".getQuickPlot", ns = "quickPlot")(paste0("quickPlot", dev.cur()))
     expect_true(length(a$isBaseLayer) == plotNum)
