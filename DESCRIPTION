@@ -28,8 +28,8 @@ URL:
     https://netlogor.predictiveecology.org,
     https://github.com/PredictiveEcology/NetLogoR/,
     https://groups.google.com/g/netlogor
-Version: 0.3.11
-Date: 2022-08-16
+Version: 1.0.0
+Date: 2023-06-19
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
            role = c("aut"), comment = c(ORCID = "0000-0002-3252-5894")),
@@ -47,7 +47,7 @@ Imports:
     data.table,
     grDevices,
     methods,
-    quickPlot (>= 1.0.1),
+    quickPlot (>= 1.0.1.9003),
     stats,
     terra,
     utils
