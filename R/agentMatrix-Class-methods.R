@@ -803,13 +803,23 @@ setMethod(
 }
 
 
+#if (!isGeneric("bbox", .GlobalEnv)) {
+#  cat("Hiiii")
+
+setGeneric(
+  "bbox", sp::bbox
+  # function(obj) {
+  #   standardGeneric("bbox")
+  # }
+)
+#}
+
 #' Extract or set bounding box
 #'
 #' These are methods for classes in NetLogoR, i.e., `agentMatrix`, `worldMatrix`,
 #' and `worldArray`.
 #'
 #' @include worldNLR-classes-methods.R
-#' @export
 #' @docType methods
 #' @param obj object deriving from class "agentMatrix",
 #'    or for `bbox` and `extent`, a "worldMatrix" or "worldArray"
