@@ -551,7 +551,7 @@ setMethod(
 #' a1[[2]]
 #' a1[[2]] <- w3
 #'
-setMethod("[[", signature(x = "worldArray", i = "ANY"),
+setMethod("[[", signature(x = "worldArray", i = "ANY", j = "missing"),
           definition = function(x, i) {
             if (length(i) > 1) {
               x@.Data <- x@.Data[, , i]
@@ -571,18 +571,16 @@ setMethod("[[", signature(x = "worldArray", i = "ANY"),
 #' @param value A replacement `worldMatrix` layer for one of the current layers in the
 #'              `worldArray`.
 #'
-#' @rdname subsetting
-#' @docType methods
 #' @return The replacement method returns the original object, but with updated elements.
 #'   The accessor method extracts the entire layer.
 #'
 #' @export
-#'
-setReplaceMethod("[[", signature(x = "worldArray", i = "ANY", value = "ANY"),
+#' @rdname subsetting
+setReplaceMethod("[[", signature(x = "worldArray", i = "ANY", j = "missing"),
                  definition = function(x, i, value) {
                    x@.Data[, , i] <- value
                    return(x)
-})
+                 })
 
 #' @export
 #' @param name  Layer name, normally without back ticks, unless has symbols.

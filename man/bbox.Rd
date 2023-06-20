@@ -5,8 +5,6 @@
 \alias{bbox}
 \title{Extract or set bounding box}
 \usage{
-bbox(obj)
-
 \S4method{bbox}{agentMatrix}(obj)
 
 bbox(obj) <- value

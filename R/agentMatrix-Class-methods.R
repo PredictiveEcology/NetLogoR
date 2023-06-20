@@ -806,12 +806,10 @@ setMethod(
 #if (!isGeneric("bbox", .GlobalEnv)) {
 #  cat("Hiiii")
 
-setGeneric(
-  "bbox", sp::bbox
   # function(obj) {
   #   standardGeneric("bbox")
   # }
-)
+# )
 #}
 
 #' Extract or set bounding box
@@ -835,12 +833,25 @@ setGeneric(
 #' bbox(newAgent)
 #' extent(newAgent)
 #' coordinates(newAgent)
-setGeneric(
-  "bbox",
-  function(obj) {
-    standardGeneric("bbox")
+if (requireNamespace("sp", quietly = TRUE)) {
+  cat("Hooo")
+  setGeneric("bbox", sp::bbox)
+} else {
+  cat("Hiii")
+  setGeneric(
+    "bbox",
+    function(obj) {
+      standardGeneric("bbox")
+    }
+  )
+}
+
+.onLoad <- function(libname, pkgname) {
+  if (requireNamespace("sp", quietly = TRUE)) {
+    setGeneric("bbox", sp::bbox)
   }
-)
+}
+
 
 #' @name bbox
 #' @export
