@@ -43,7 +43,7 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
-- uses: PredictiveEcology/actions/install-spatial-deps@main
+      - uses: PredictiveEcology/actions/install-spatial-deps@main
 
       - uses: r-lib/actions/setup-r@v2
         with:
