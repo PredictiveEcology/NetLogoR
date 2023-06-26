@@ -833,17 +833,19 @@ setMethod(
 #' bbox(newAgent)
 #' extent(newAgent)
 #' coordinates(newAgent)
-if (requireNamespace("sp", quietly = TRUE)) {
-  cat("Hooo")
+
+
+if (requireNamespace("sp", quietly = TRUE)) { # can use sp even if not loaded
   setGeneric("bbox", sp::bbox)
 } else {
-  cat("Hiii")
-  setGeneric(
-    "bbox",
-    function(obj) {
-      standardGeneric("bbox")
-    }
-  )
+  # if (!isGeneric("bbox")) { # covers the case of 3rd package that is already loaded
+    setGeneric(
+      "bbox",
+      function(obj) {
+        standardGeneric("bbox")
+      }
+    )
+  # }
 }
 
 .onLoad <- function(libname, pkgname) {
