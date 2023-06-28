@@ -3162,7 +3162,7 @@ setMethod(
   definition = function(turtles_sf) {
 
     sfData <- st_drop_geometry(turtles_sf)
-    n <- length(turtles_sf)
+    n <- nrow(turtles_sf)
 
     if (!is.na(match("who", names(sfData)))) {
       who <- sfData$who
