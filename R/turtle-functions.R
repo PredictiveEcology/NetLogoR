@@ -3184,7 +3184,7 @@ setMethod(
       stop("To use sf2turtles, sf must be installed: install.packages('sf')")
 
     sfData <- sf::st_drop_geometry(turtles_sf)
-    n <- length(turtles_sf)
+    n <- nrow(turtles_sf)
 
     if (!is.na(match("who", names(sfData)))) {
       who <- sfData$who
