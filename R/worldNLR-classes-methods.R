@@ -485,17 +485,19 @@ setMethod(
 #' @author Eliot McIntire
 #'
 #' @examples
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 1:100)
-#' w1Ras <- world2raster(w1)
-#' index <- 24
-#' pxpy <- PxcorPycorFromCell(world = w1, cellNum = index)
+#' if (requireNamespace("raster", quietly = TRUE)) {
+#'   w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 1:100)
+#'   w1Ras <- world2raster(w1)
+#'   index <- 24
+#'   pxpy <- PxcorPycorFromCell(world = w1, cellNum = index)
 #'
-#' rasValue <- as.integer(unname(w1Ras[index]))
-#' # Not correct index:
-#' identical(w1[index], rasValue)
+#'   rasValue <- as.integer(unname(w1Ras[index]))
+#'   # Not correct index:
+#'   identical(w1[index], rasValue)
 #'
-#' # Correct index
-#' identical(w1[NLworldIndex(w1, index)], rasValue)
+#'   # Correct index
+#'   identical(w1[NLworldIndex(w1, index)], rasValue)
+#' }
 #'
 #'
 setGeneric(
