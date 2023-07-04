@@ -2832,7 +2832,7 @@ setMethod(
                             except@.Data[except@.Data[, "who"] ==
                                            agents@.Data[matchWho, "who"], "breed"])
       if (length(matchBreed) != 0) {
-        agents <- agents[-matchWho[matchBreed], ]
+        agents <- agents[-matchWho[matchBreed], , drop = FALSE]
       }
 
       return(agents)
