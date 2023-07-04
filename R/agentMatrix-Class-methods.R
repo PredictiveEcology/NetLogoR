@@ -833,18 +833,32 @@ setMethod(
 #' bbox(newAgent)
 #' extent(newAgent)
 #' coordinates(newAgent)
-setGeneric(
-  ".bbox",
-  function(obj) {
-    standardGeneric(".bbox")
+
+
+if (requireNamespace("sp", quietly = TRUE)) { # can use sp even if not loaded
+  setGeneric("bbox", sp::bbox)
+} else {
+  # if (!isGeneric("bbox")) { # covers the case of 3rd package that is already loaded
+    setGeneric(
+      "bbox",
+      function(obj) {
+        standardGeneric("bbox")
+      }
+    )
+  # }
+}
+
+.onLoad <- function(libname, pkgname) {
+  if (requireNamespace("sp", quietly = TRUE)) {
+    setGeneric("bbox", sp::bbox)
   }
-)
-#   # }
-# }
+}
+
 
 #' @name bbox
+#' @export
 setMethod(
-  ".bbox",
+  "bbox",
   signature("agentMatrix"),
   definition = function(obj) {
     if (sum(attr(obj, "bbox") != 0)) {
@@ -857,15 +871,15 @@ setMethod(
 #' @export
 #' @param value 2x2 matrix representing the bounding box. See `sp::bbox`.
 #' @name bbox
-setGeneric(".bbox<-",
+setGeneric("bbox<-",
            function(obj, value) {
-             standardGeneric(".bbox<-")
+             standardGeneric("bbox<-")
 })
 
 #' @include worldNLR-classes-methods.R
 #' @name bbox
 setReplaceMethod(
-  ".bbox",
+  "bbox",
   signature("agentMatrix", "matrix"),
   definition = function(obj, value) {
     attr(obj, "bbox") <- value
@@ -876,17 +890,17 @@ setReplaceMethod(
 #' @export
 #' @name bbox
 setMethod(
-  ".bbox",
+  "bbox",
   signature("worldNLR"),
   definition = function(obj) {
-    .bbox(attr(obj, "extent"))
+    bbox(attr(obj, "extent"))
 })
 
 #' @include worldNLR-classes-methods.R
 #' @export
 #' @name bbox
 setMethod(
-  ".bbox",
+  "bbox",
   signature("SpatExtent"),
   definition = function(obj) {
     obj <- as.vector(obj)

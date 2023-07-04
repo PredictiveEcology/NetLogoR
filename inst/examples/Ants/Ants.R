@@ -76,7 +76,7 @@ world <- stackWorlds(chemical, nest, nestScent, foodSource, food)
 # Ants
 ants <- createTurtles(n = nAnts, coords = cbind(xcor = 0, ycor = 0),
                       color = "red") # red = not carrying food
-.bbox(ants) <- .bbox(world) # For Plot, which uses bbox to create frame
+bbox(ants) <- bbox(world) # For Plot, which uses bbox to create frame
 
 ## Visualize the world
 library(quickPlot)
