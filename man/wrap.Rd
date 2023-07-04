@@ -66,8 +66,8 @@ if (requireNamespace("SpaDES.tools") &&
     agent <- SpaDES.tools::crw(agent = agent,
                                extent = terra::ext(hab), stepLength = ln,
                                stddev = sd, lonlat = FALSE, torus = TRUE)
-   if (interactive()) Plot(agent, addTo = "hab", axes = TRUE)
- }
+    if (interactive()) Plot(agent, addTo = "hab", axes = TRUE)
+  }
 }
 }
 }

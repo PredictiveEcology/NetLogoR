@@ -35,6 +35,8 @@ obj, i.e., an \code{agentMatrix}, with the \code{bbox} attribute set to \code{va
 \description{
 These are methods for classes in NetLogoR, i.e., \code{agentMatrix}, \code{worldMatrix},
 and \code{worldArray}.
+
+Replacement method sets the bbox attribute of an \code{agentMatrix}.
 }
 \examples{
 newAgent <- agentMatrix(

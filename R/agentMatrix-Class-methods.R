@@ -872,23 +872,25 @@ setMethod(
     sp::bbox(obj)
   })
 
+#' Replacement method for `bbox`
+#'
+#' Replacement method sets the bbox attribute of an `agentMatrix`.
+#'
 #' @export
 #' @rdname bbox
 #' @param value 2x2 matrix representing the bounding box. See `sp::bbox`.
-#' @name bbox
+#' @return The replacement method returns the same object as supplied to
+#' obj, i.e., an `agentMatrix`, with the `bbox` attribute set to `value`.
+#' @name bbox<-
 setGeneric("bbox<-",
            function(obj, value) {
              standardGeneric("bbox<-")
 })
 
-#' Replacement method sets the bbox attribute of an `agentMatrix`.
-#'
 #' @include worldNLR-classes-methods.R
 #' @rdname bbox
 #' @aliases bbox<-,agentMatrix,matrix-method
-#' @return The replacement method returns the same object as supplied to
-#' obj, i.e., an `agentMatrix`, with the `bbox` attribute set to `value`.
-#' @name bbox
+#' @name bbox<-
 setReplaceMethod(
   "bbox",
   signature("agentMatrix", "matrix"),
