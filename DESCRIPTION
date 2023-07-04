@@ -63,12 +63,12 @@ Suggests:
     sf,
     sp,
     SpaDES.core,
-    SpaDES.tools (>= 2.0.0.9001),
+    SpaDES.tools (>= 2.0.1),
     testthat,
     withr
 Remotes:
     PredictiveEcology/quickPlot@development,
-    PredictiveEcology/SpaDES.tools@crw
+    PredictiveEcology/SpaDES.tools@development
 Additional_repositories: https://predictiveecology.r-universe.dev/
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
