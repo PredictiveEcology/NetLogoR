@@ -5,15 +5,17 @@
 \alias{bbox}
 \title{Extract or set bounding box}
 \usage{
-\S4method{bbox}{agentMatrix}(obj)
+.bbox(obj)
 
-bbox(obj) <- value
+\S4method{.bbox}{agentMatrix}(obj)
 
-\S4method{bbox}{agentMatrix,matrix}(obj) <- value
+.bbox(obj) <- value
 
-\S4method{bbox}{worldNLR}(obj)
+\S4method{.bbox}{agentMatrix,matrix}(obj) <- value
 
-\S4method{bbox}{SpatExtent}(obj)
+\S4method{.bbox}{worldNLR}(obj)
+
+\S4method{.bbox}{SpatExtent}(obj)
 }
 \arguments{
 \item{obj}{object deriving from class "agentMatrix",

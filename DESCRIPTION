@@ -29,7 +29,7 @@ URL:
     https://github.com/PredictiveEcology/NetLogoR/,
     https://groups.google.com/g/netlogor
 Version: 1.0.0
-Date: 2023-06-19
+Date: 2023-07-03
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
            role = c("aut"), comment = c(ORCID = "0000-0002-3252-5894")),
@@ -47,7 +47,7 @@ Imports:
     data.table,
     grDevices,
     methods,
-    quickPlot (>= 1.0.1.9003),
+    quickPlot (>= 1.0.2),
     stats,
     terra,
     utils
@@ -61,8 +61,8 @@ Suggests:
     rmarkdown,
     sf,
     sp,
-    SpaDES.core,
-    SpaDES.tools (>= 2.0.0.9001),
+    SpaDES.core (>= 2.0.0),
+    SpaDES.tools (>= 2.0.1),
     testthat,
     withr
 Remotes:
