@@ -5,11 +5,14 @@
 \alias{bbox}
 \alias{bbox,agentMatrix-method}
 \alias{bbox,ANY-method}
+\alias{bbox<-}
 \alias{bbox<-,agentMatrix,matrix-method}
 \alias{bbox,worldNLR-method}
 \alias{bbox,SpatExtent-method}
 \title{Extract or set bounding box}
 \usage{
+bbox(obj)
+
 \S4method{bbox}{agentMatrix}(obj)
 
 \S4method{bbox}{ANY}(obj)

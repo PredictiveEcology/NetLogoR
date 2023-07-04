@@ -834,14 +834,12 @@ setMethod(
 #' bbox(newAgent)
 #' extent(newAgent)
 #' coordinates(newAgent)
-if (!isGeneric("bbox")) { # covers the case of 3rd package that is already loaded
-  setGeneric(
-    "bbox",
-    function(obj) {
-      standardGeneric("bbox")
-    }
-  )
-}
+setGeneric(
+  "bbox",
+  function(obj) {
+    standardGeneric("bbox")
+  }
+)
 
 
 #' @name bbox
