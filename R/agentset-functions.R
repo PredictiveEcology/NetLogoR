@@ -236,6 +236,11 @@ setMethod(
 #' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 #' sortHeadingT1 <- sortOn(agents = t1, var = "heading")
 #'
+#' # or
+#' library(quickPlot)
+#'
+#' Plot(w1)
+#' Plot(t1, addTo = "w1")
 #'
 #' @export
 #' @rdname sortOn
@@ -350,7 +355,7 @@ setMethod(
   signature = c("matrix", "worldMatrix", "missing", "ANY"),
   definition = function(agents, world, val) {
 
-    agentsValues <- world[agents[, 1], agents[, 2]]
+    agentsValues <- world[agents[, 1], agents[, 2], drop = FALSE]
     pVal <- which(agentsValues %in% val)
     return(agents[pVal, , drop = FALSE])
   }
@@ -379,22 +384,22 @@ setMethod(
     # simpler for speed if only 1 val
     if (length(val) == 1) {
       if(is.na(val)){
-        toReturn <- agents[is.na(agents@.Data[, var]), ]
+        toReturn <- agents[is.na(agents@.Data[, var, drop = FALSE]), ]
       } else {
         if (!is.numeric(val)) {
-          toReturn <- (agents[agents@levels[[var]][agents@.Data[, var]] == val, ])
+          toReturn <- (agents[agents@levels[[var]][agents@.Data[, var, drop = FALSE]] == val, , drop = FALSE])
         } else {
-          toReturn <- agents[agents@.Data[, var] == val, ]
+          toReturn <- agents[agents@.Data[, var] == val, , drop = FALSE]
         }
       }
     } else {
       if (!is.numeric(val)) {
-        toReturn <- (agents[agents@levels[[var]][agents@.Data[, var]] %in% val, ])
+        toReturn <- (agents[agents@levels[[var]][agents@.Data[, var, drop = FALSE]] %in% val, , drop = FALSE])
       } else {
-        toReturn <- agents[agents@.Data[, var] %in% val, ]
+        toReturn <- agents[agents@.Data[, var, drop = FALSE] %in% val, , drop = FALSE]
       }
     }
-    return(toReturn[!is.na(toReturn@.Data[, "who"]), ])
+    return(toReturn[!is.na(toReturn@.Data[, "who"]), , drop = FALSE])
   }
 )
 
@@ -701,7 +706,7 @@ setMethod(
   definition = function(agents, var) {
     maxAgents <- withMax(agents = agents, var = var)
     row <- resample(1:NLcount(maxAgents), size = 1)
-    return(maxAgents[row, ])
+    return(maxAgents[row, , drop = FALSE])
   }
 )
 
@@ -795,7 +800,7 @@ setMethod(
   definition = function(agents, var) {
     minAgents <- withMin(agents = agents, var = var)
     row <- resample(1:NLcount(minAgents), size = 1)
-    return(minAgents[row, ])
+    return(minAgents[row, , drop = FALSE])
   }
 )
 
@@ -980,11 +985,10 @@ setMethod(
   signature = c("matrix", "numeric"),
   definition = function(agents, n) {
 
-
     if (inherits(agents, "agentMatrix")) {
       row <- resample(1:NROW(agents), size = n, replace = FALSE)
       row <- row[order(row)]
-      turtles <- agents[row, ]
+      turtles <- agents[row, , drop = FALSE]
       return(turtles)
     } else {
       if (ncol(agents) == 2 & colnames(agents)[1] == "pxcor") {
@@ -1208,6 +1212,7 @@ setMethod(
   "maxNof",
   signature = c("matrix", "numeric", "worldArray", "character"),
   definition = function(agents, n, world, var) {
+
     if (n == 1) {
       maxOneOf(agents = agents, world = world, var = var)
     } else if (n == 0) {
@@ -1217,7 +1222,7 @@ setMethod(
     } else {
       val <- of(world = world, agents = agents, var = var)
       agentsVal <- cbind(val, agents)
-      agentsVal <- agentsVal[order(-agentsVal[, "val"]), ] # decreasing order
+      agentsVal <- agentsVal[order(-agentsVal[, "val"]), , drop = FALSE] # decreasing order
 
       minVal <- min(agentsVal[1:n, "val"], na.rm = TRUE)
       maxAgents <- agentsVal[agentsVal[, "val"] >= minVal, , drop = FALSE]
@@ -1251,23 +1256,23 @@ setMethod(
     } else {
       tData <- inspect(agents, who = agents@.Data[, "who"])
       rownames(tData) <- 1:NROW(tData)
-      tData <- tData[order(-tData[, var]), ] # decreasing order
+      tData <- tData[order(-tData[, var]), , drop = FALSE] # decreasing order
 
       minVal <- min(tData[1:n, var], na.rm = TRUE)
-      maxAgents <- tData[tData[, var] >= minVal, ]
+      maxAgents <- tData[tData[, var] >= minVal, , drop = FALSE]
 
       # To break ties randomly
       if (NROW(maxAgents) != n) {
         nToRemove <- NROW(maxAgents) - n # how many ties to remove
         toKeep <- sample(1:NROW(maxAgents[maxAgents[, var] == minVal, ]),
                          size = NROW(maxAgents[maxAgents[, var] == minVal, ]) - nToRemove)
-        maxAgents <- rbind(maxAgents[maxAgents[, var] > minVal, ],
-                           maxAgents[maxAgents[, var] == minVal, ][toKeep, ])
+        maxAgents <- rbind(maxAgents[maxAgents[, var] > minVal, , drop = FALSE],
+                           maxAgents[maxAgents[, var] == minVal, , drop = FALSE][toKeep, , drop = FALSE])
       }
 
       tSelect <- as.numeric(rownames(maxAgents))
       tSelect <- sort(tSelect)
-      maxTurtles <- agents[tSelect, ]
+      maxTurtles <- agents[tSelect, , drop = FALSE]
       return(maxTurtles)
     }
   }
@@ -1342,18 +1347,18 @@ setMethod(
 
       val <- of(world = world, agents = agents)
       agentsVal <- cbind(val, agents)
-      agentsVal <- agentsVal[order(agentsVal[, "val"]), ] # increasing order
+      agentsVal <- agentsVal[order(agentsVal[, "val", drop = FALSE]), , drop = FALSE] # increasing order
 
-      maxVal <- max(agentsVal[1:n, "val"], na.rm = TRUE)
+      maxVal <- max(agentsVal[1:n, "val", drop = FALSE], na.rm = TRUE)
       minAgents <- agentsVal[agentsVal[, "val"] <= maxVal, , drop = FALSE]
 
       # To break ties randomly
       if (NROW(minAgents) != n) {
         nToRemove <- NROW(minAgents) - n # how many ties to remove
-        toKeep <- sample(1:NROW(minAgents[minAgents[, "val"] == maxVal, ]),
-                         size = NROW(minAgents[minAgents[, "val"] == maxVal, ]) - nToRemove)
-        minAgents <- rbind(minAgents[minAgents[, "val"] < maxVal, ],
-                           minAgents[minAgents[, "val"] == maxVal, ][toKeep, ])
+        toKeep <- sample(1:NROW(minAgents[minAgents[, "val", drop = FALSE] == maxVal, , drop = FALSE]),
+                         size = NROW(minAgents[minAgents[, "val", drop = FALSE] == maxVal, , drop = FALSE]) - nToRemove)
+        minAgents <- rbind(minAgents[minAgents[, "val", drop = FALSE] < maxVal, , drop = FALSE],
+                           minAgents[minAgents[, "val", drop = FALSE] == maxVal, , drop = FALSE][toKeep, , drop = FALSE])
       }
 
       return(minAgents[, c("pxcor", "pycor"), drop = FALSE])
@@ -1377,18 +1382,18 @@ setMethod(
 
       val <- of(world = world, agents = agents, var = var)
       agentsVal <- cbind(val, agents)
-      agentsVal <- agentsVal[order(agentsVal[, "val"]), ] # increasing order
+      agentsVal <- agentsVal[order(agentsVal[, "val", drop = FALSE]), , drop = FALSE] # increasing order
 
-      maxVal <- max(agentsVal[1:n, "val"], na.rm = TRUE)
-      minAgents <- agentsVal[agentsVal[, "val"] <= maxVal, , drop = FALSE]
+      maxVal <- max(agentsVal[1:n, "val", drop = FALSE], na.rm = TRUE)
+      minAgents <- agentsVal[agentsVal[, "val", drop = FALSE] <= maxVal, , drop = FALSE]
 
       # To break ties randomly
       if (NROW(minAgents) != n) {
         nToRemove <- NROW(minAgents) - n # how many ties to remove
-        toKeep <- sample(1:NROW(minAgents[minAgents[, "val"] == maxVal, ]),
-                         size = NROW(minAgents[minAgents[, "val"] == maxVal, ]) - nToRemove)
-        minAgents <- rbind(minAgents[minAgents[, "val"] < maxVal, ],
-                           minAgents[minAgents[, "val"] == maxVal, ][toKeep, ])
+        toKeep <- sample(1:NROW(minAgents[minAgents[, "val", drop = FALSE] == maxVal, , drop = FALSE]),
+                         size = NROW(minAgents[minAgents[, "val"] == maxVal, , drop = FALSE]) - nToRemove)
+        minAgents <- rbind(minAgents[minAgents[, "val", drop = FALSE] < maxVal, , drop = FALSE],
+                           minAgents[minAgents[, "val", drop = FALSE] == maxVal, , drop = FALSE][toKeep, , drop = FALSE])
       }
 
       return(minAgents[, c("pxcor", "pycor"), drop = FALSE])
@@ -1412,23 +1417,23 @@ setMethod(
 
       tData <- inspect(agents, who = agents@.Data[, "who"])
       rownames(tData) <- 1:NROW(tData)
-      tData <- tData[order(tData[, var]), ] # increasing order
+      tData <- tData[order(tData[, var]), , drop = FALSE] # increasing order
 
       maxVal <- max(tData[1:n, var], na.rm = TRUE)
-      minAgents <- tData[tData[, var] <= maxVal, ]
+      minAgents <- tData[tData[, var] <= maxVal, , drop = FALSE]
 
       # To break ties randomly
       if (NROW(minAgents) != n) {
         nToRemove <- NROW(minAgents) - n # how many ties to remove
         toKeep <- sample(1:NROW(minAgents[minAgents[, var] == maxVal, ]),
                          size = NROW(minAgents[minAgents[, var] == maxVal, ]) - nToRemove)
-        minAgents <- rbind(minAgents[minAgents[, var] < maxVal, ],
-                           minAgents[minAgents[, var] == maxVal, ][toKeep, ])
+        minAgents <- rbind(minAgents[minAgents[, var] < maxVal, , drop = FALSE],
+                           minAgents[minAgents[, var] == maxVal, , drop = FALSE][toKeep, , drop = FALSE])
       }
 
       tSelect <- as.numeric(rownames(minAgents))
       tSelect <- sort(tSelect)
-      minTurtles <- agents[tSelect, ]
+      minTurtles <- agents[tSelect, , drop = FALSE]
       return(minTurtles)
     }
   }
@@ -1481,14 +1486,15 @@ setMethod(
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
 #' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 #'
-#' p1 <- inRadius(agents = patch(w1, 0, 0), radius = 2, agents2 = patches(w1))
-#' t2 <- inRadius(agents = patch(w1, 0, 0), radius = 2, agents2 = t1)
-#' p2 <- inRadius(agents = t1, radius = 2, agents2 = patches(w1))
-#' t3 <- inRadius(agents = turtle(t1, who = 0), radius = 2, agents2 = t1)
+#' if (requireNamespace("sf", quietly = TRUE)) {
+#'   p1 <- inRadius(agents = patch(w1, 0, 0), radius = 2, agents2 = patches(w1))
+#'   t2 <- inRadius(agents = patch(w1, 0, 0), radius = 2, agents2 = t1)
+#'   p2 <- inRadius(agents = t1, radius = 2, agents2 = patches(w1))
+#'   t3 <- inRadius(agents = turtle(t1, who = 0), radius = 2, agents2 = t1)
+#' }
 #'
 #'
 #' @export
-#' @importFrom sf st_as_sf st_buffer st_sf st_intersects
 #' @rdname inRadius
 #'
 #' @author Sarah Bauduin
@@ -1515,9 +1521,11 @@ setMethod(
       inRadius(agents = agents, radius = radius, agents2 = agents2, world = world, torus = torus)
     } else if (!inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
       # Transform the agents into sf to use st_buffer
-      agents_sf <- st_as_sf(as.data.frame(agents), coords = c(1, 2))
+      if (!requireNamespace("sf"))
+        stop("to use inRadius on matrix objects (but not agentMatrix), please install.packages('sf')")
+      agents_sf <- sf::st_as_sf(as.data.frame(agents), coords = c(1, 2))
       # Create buffers around the locations of agents
-      aBuffer <- st_buffer(agents_sf, dist = radius)
+      aBuffer <- sf::st_buffer(agents_sf, dist = radius)
 
       if (torus == TRUE) {
         if (missing(world)) {
@@ -1525,25 +1533,28 @@ setMethod(
         }
 
         agents2c <- agents2@.Data[, c("xcor", "ycor"), drop = FALSE]
-        agents2c1 <- cbind(agents2c[, 1] - (world@extent@xmax - world@extent@xmin),
-                           agents2c[, 2] + (world@extent@ymax - world@extent@ymin))
-        agents2c2 <- cbind(agents2c[, 1], agents2c[, 2] + (world@extent@ymax - world@extent@ymin))
-        agents2c3 <- cbind(agents2c[, 1] + (world@extent@xmax - world@extent@xmin),
-                           agents2c[, 2] + (world@extent@ymax - world@extent@ymin))
-        agents2c4 <- cbind(agents2c[, 1] - (world@extent@xmax - world@extent@xmin), agents2c[, 2])
-        agents2c5 <- cbind(agents2c[, 1] + (world@extent@xmax - world@extent@xmin), agents2c[, 2])
-        agents2c6 <- cbind(agents2c[, 1] - (world@extent@xmax - world@extent@xmin),
-                           agents2c[, 2] - (world@extent@ymax - world@extent@ymin))
-        agents2c7 <- cbind(agents2c[, 1], agents2c[, 2] - (world@extent@ymax - world@extent@ymin))
-        agents2c8 <- cbind(agents2c[, 1] + (world@extent@xmax - world@extent@xmin),
-                           agents2c[, 2] - (world@extent@ymax - world@extent@ymin))
+        exts <- extents(world@extent)
+
+        agents2c1 <- cbind(agents2c[, 1] - (exts$xmax - exts$xmin),
+                           agents2c[, 2] + (exts$ymax - exts$ymin))
+        agents2c2 <- cbind(agents2c[, 1], agents2c[, 2] + (exts$ymax - exts$ymin))
+        agents2c3 <- cbind(agents2c[, 1] + (exts$xmax - exts$xmin),
+                           agents2c[, 2] + (exts$ymax - exts$ymin))
+        agents2c4 <- cbind(agents2c[, 1] - (exts$xmax - exts$xmin), agents2c[, 2])
+        agents2c5 <- cbind(agents2c[, 1] + (exts$xmax - exts$xmin), agents2c[, 2])
+        agents2c6 <- cbind(agents2c[, 1] - (exts$xmax - exts$xmin),
+                           agents2c[, 2] - (exts$ymax - exts$ymin))
+        agents2c7 <- cbind(agents2c[, 1], agents2c[, 2] - (exts$ymax - exts$ymin))
+        agents2c8 <- cbind(agents2c[, 1] + (exts$xmax - exts$xmin),
+                           agents2c[, 2] - (exts$ymax - exts$ymin))
         agents2cAll <- rbind(agents2c, agents2c1, agents2c2, agents2c3, agents2c4,
                              agents2c5, agents2c6, agents2c7, agents2c8)
 
         # Extract the locations of agents2 under the buffers
-        pOverL <- st_intersects(aBuffer,
-                                st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
-                       sparse = TRUE)
+        pOverL <- sf::st_intersects(
+          aBuffer,
+          sf::st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
+          sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(agents2cAll) <- c("x", "y")
@@ -1554,9 +1565,10 @@ setMethod(
                      by.x = c("x", "y"), by.y = c("xcor", "ycor"))
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       } else {
-        pOverL <- st_intersects(aBuffer,
-                       st_as_sf(inspect(agents2, who = agents2@.Data[, "who"]), coords = c("xcor", "ycor")),
-                       sparse = TRUE)
+        pOverL <- sf::st_intersects(
+          aBuffer,
+          sf::st_as_sf(inspect(agents2, who = agents2@.Data[, "who"]), coords = c("xcor", "ycor")),
+          sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- unique(cbind(agents2@.Data[pOver, c("xcor", "ycor"), drop = FALSE],
@@ -1566,9 +1578,11 @@ setMethod(
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       }
     } else {
-      agents_sf <- st_as_sf(as.data.frame(agents), coords = c(1, 2))
+      if (!requireNamespace("sf"))
+        stop("to use inRadius on matrix objects (but not agentMatrix), please install.packages('sf')")
+      agents_sf <- sf::st_as_sf(as.data.frame(agents), coords = c(1, 2))
       # Create buffers around the locations of agents
-      aBuffer <- st_buffer(agents_sf, dist = radius * 1.0000001) ## (see #28)
+      aBuffer <- sf::st_buffer(agents_sf, dist = radius * 1.0000001) ## (see #28)
 
       if (torus == TRUE) {
         if (missing(world)) {
@@ -1582,9 +1596,9 @@ setMethod(
         pAllWrap <- patches(worldWrap)
 
         # Extract the locations of agents2 under the buffers
-        sf1 <- st_as_sf(as.data.frame(pAllWrap), coords = c(1, 2))
+        sf1 <- sf::st_as_sf(as.data.frame(pAllWrap), coords = c(1, 2))
 
-        pOverL <- st_intersects(aBuffer, sf1, sparse = TRUE)
+        pOverL <- sf::st_intersects(aBuffer, sf1, sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(pAllWrap) <- c("x", "y")
@@ -1593,9 +1607,9 @@ setMethod(
         colnames(agentsXY)[1:2] <- c("pxcor", "pycor")
         return(agentsXY)
       } else {
-        sf1 <- st_as_sf(as.data.frame(agents2), coords = c(1, 2))
+        sf1 <- sf::st_as_sf(as.data.frame(agents2), coords = c(1, 2))
 
-        pOverL <- st_intersects(aBuffer, sf1, sparse = TRUE)
+        pOverL <- sf::st_intersects(aBuffer, sf1, sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- cbind(agents2[pOver, , drop = FALSE],
@@ -1660,8 +1674,10 @@ setMethod(
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
 #' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 #'
-#' p1 <- inCone(turtles = t1, radius = 2, agents = patches(w1), angle = 90)
-#' t2 <- inCone(turtles = turtle(t1, who = 0), radius = 2, angle = 90, agents = t1)
+#' if (requireNamespace("sf", quietly = TRUE)) {
+#'   p1 <- inCone(turtles = t1, radius = 2, agents = patches(w1), angle = 90)
+#'   t2 <- inCone(turtles = turtle(t1, who = 0), radius = 2, angle = 90, agents = t1)
+#' }
 #'
 #'
 #' @export
@@ -1697,18 +1713,18 @@ setMethod(
         # No patches are within radius distances for any turtles
         return(agentsInRadius)
       } else {
-        turtlesWith <- turtles[unique(agentsInRadius[, "id"]), ]
+        turtlesWith <- turtles[unique(agentsInRadius[, "id", drop = FALSE]), , drop = FALSE]
 
         # Direction from the turtle to each of their patches within radius distance
-        tDir <- lapply(unique(agentsInRadius[, "id"]), function(x) {
-          towards(world = world, agents = turtles[x, ],
+        tDir <- lapply(unique(agentsInRadius[, "id" , drop = FALSE]), function(x) {
+          towards(world = world, agents = turtles[x,  , drop = FALSE],
                   agents2 = agentsInRadius[agentsInRadius[, "id"] == x,
                                            c("pxcor", "pycor"), drop = FALSE],
                   torus = torus)
           })
         # Define the rotation angle between the turtle heading and the direction to each patches
         tCone <- lapply(1:length(tDir), function(x) {
-          subHeadings(angle1 = tDir[[x]], angle2 = turtles[x, ], range360 = FALSE)
+          subHeadings(angle1 = tDir[[x]], angle2 = turtles[x,  , drop = FALSE], range360 = FALSE)
         })
 
         angle <- angle / 2
@@ -1727,7 +1743,7 @@ setMethod(
 
         nAgents <- unlist(lapply(pWithin, NROW))
         agentsInCone <- cbind(do.call(rbind, pWithin),
-                              id = rep(unique(agentsInRadius[, "id"]), nAgents))
+                              id = rep(unique(agentsInRadius[, "id", drop = FALSE]), nAgents))
 
         return(agentsInCone)
       }
@@ -1881,14 +1897,10 @@ setMethod(
                 turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)
                                                             [order(turtlesVarUnique)]]
                 turtles@levels[[var[i]]] <- turtlesLevelsVarUpdated
+
                 # replace the levels number starting to 1 and increasing by 1
-                # browser()
-                # turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique,
-                #                                to = rank(turtlesVarUnique))
                 turtlesVarUpdated <- rename(x = turtlesVar, from = turtlesVarUnique,
                             to = rank(turtlesVarUnique))
-                # if (!identical(turtlesVarUpdated, a)) stop("mapvalues and rename different in NLset")
-
 
                 turtles@.Data[, var[i]] <- turtlesVarUpdated
 

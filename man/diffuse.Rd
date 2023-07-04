@@ -52,8 +52,10 @@ w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
                           data = sample(1:3, size = 25, replace = TRUE))
 plot(w1)
 # Diffuse 50\% of each patch value to its 8 neighbors
-w2 <- diffuse(world = w1, share = 0.5, nNeighbors = 8)
-plot(w2)
+if (requireNamespace("SpaDES.tools", quietly = TRUE)) {
+  w2 <- diffuse(world = w1, share = 0.5, nNeighbors = 8)
+  plot(w2)
+}
 
 
 }

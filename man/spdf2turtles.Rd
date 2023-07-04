@@ -2,12 +2,12 @@
 % Please edit documentation in R/turtle-functions.R
 \name{spdf2turtles}
 \alias{spdf2turtles}
-\alias{spdf2turtles,SpatialPointsDataFrame-method}
+\alias{spdf2turtles,ANY-method}
 \title{From \code{SpatialPointsDataFrame} to \code{agentMatrix}}
 \usage{
 spdf2turtles(spdf)
 
-\S4method{spdf2turtles}{SpatialPointsDataFrame}(spdf)
+\S4method{spdf2turtles}{ANY}(spdf)
 }
 \arguments{
 \item{spdf}{\code{SpatialPointsDataFrame} object representing moving \code{agents}.}
@@ -25,10 +25,12 @@ If the \code{spdf} does not contain the variables created with
 default values as in \code{createTurtles()}.
 }
 \examples{
-sp1 <- SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
-                              data = cbind.data.frame(age = c(0, 0, 3),
-                                                      sex = c("F", "F", "M")))
-t1 <- spdf2turtles(spdf = sp1)
+if (requireNamespace("sp", quietly = TRUE)) {
+  sp1 <- sp::SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
+                                data = cbind.data.frame(age = c(0, 0, 3),
+                                                        sex = c("F", "F", "M")))
+  t1 <- spdf2turtles(spdf = sp1)
+}
 
 
 }

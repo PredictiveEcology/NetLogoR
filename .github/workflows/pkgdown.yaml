@@ -24,9 +24,13 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
+      - uses: PredictiveEcology/actions/install-spatial-deps@main
+
       - uses: r-lib/actions/setup-r@v2
         with:
-          use-public-rspm: true
+          extra-repositories: 'https://predictiveecology.r-universe.dev/'
+          Ncpus: 2
+          use-public-rspm: false
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
@@ -34,6 +38,7 @@ jobs:
             any::pkgdown
             local::.
             fastshp=?ignore
+            PredictiveEcology/quickPlot@development
             PredictiveEcology/reproducible@development
             PredictiveEcology/Require@development
             PredictiveEcology/SpaDES.core@development

@@ -1,41 +1,41 @@
-#' `quickPlot` classes
-#'
-#' \pkg{quickPlot} offers a type of plotting that is modular.
-#' Users of NetLogoR may find this useful for simulation modeling.
-#' We have put in place the required methods and imported the appropriate classes
-#' to use the `quickPlot::Plot` function.
-#' Users can still use `plot` from the \pkg{graphics} package, but it is not modular.
-#'
-#' This adds `agentMatrix` to the `.quickPlottables`, `.quickObjects`,
-#' and `spatialObjects`.
-#'
-#' This adds `worldMatrix` to the `.quickPlottables`, `.quickObjects`,
-#' `spatialObjects` and `griddedClasses`.
-#'
-#' @seealso [quickPlotClasses()]
-#'
-#' @slot members [.quickPlotObjects()] and [.quickPlot()]
-#'
-#' @aliases quickPlottables
-#' @author Eliot McIntire
-#' @importClassesFrom quickPlot .quickPlottables
-#' @importClassesFrom quickPlot griddedClasses spatialObjects
-#' @include Agent-classes.R
-#' @keywords internal
-#' @name .quickPlottables-class
-#' @rdname quickPlottables-class
-#'
-setIs("agentMatrix", ".quickPlottables")
-setIs("agentMatrix", ".quickPlotObjects")
-setIs("agentMatrix", "spatialObjects")
-setIs("worldMatrix", ".quickPlottables")
-setIs("worldMatrix", ".quickPlotObjects")
-setIs("worldMatrix", "griddedClasses")
-setIs("worldMatrix", "spatialObjects")
-setIs("worldArray", ".quickPlottables")
-setIs("worldArray", ".quickPlotObjects")
-setIs("worldArray", "griddedClasses")
-setIs("worldArray", "spatialObjects")
+# `quickPlot` classes
+#
+# \pkg{quickPlot} offers a type of plotting that is modular.
+# Users of NetLogoR may find this useful for simulation modeling.
+# We have put in place the required methods and imported the appropriate classes
+# to use the `quickPlot::Plot` function.
+# Users can still use `plot` from the \pkg{graphics} package, but it is not modular.
+#
+# This adds `agentMatrix` to the `.quickPlottables`, `.quickObjects`,
+# and `spatialObjects`.
+#
+# This adds `worldMatrix` to the `.quickPlottables`, `.quickObjects`,
+# `spatialObjects` and `griddedClasses`.
+#
+# @seealso [quickPlotClasses()]
+#
+# @slot members [.quickPlotObjects()] and [.quickPlot()]
+#
+# @aliases quickPlottables
+# @author Eliot McIntire
+# @importClassesFrom quickPlot .quickPlottables
+# @importClassesFrom quickPlot griddedClasses spatialObjects
+# @include Agent-classes.R
+# @keywords internal
+# @name .quickPlottables-class
+# @rdname quickPlottables-class
+#
+# setIs("agentMatrix", ".quickPlottables")
+# setIs("agentMatrix", ".quickPlotObjects")
+# setIs("agentMatrix", "spatialObjects")
+# setIs("worldMatrix", ".quickPlottables")
+# setIs("worldMatrix", ".quickPlotObjects")
+# setIs("worldMatrix", "griddedClasses")
+# setIs("worldMatrix", "spatialObjects")
+# setIs("worldArray", ".quickPlottables")
+# setIs("worldArray", ".quickPlotObjects")
+# setIs("worldArray", "griddedClasses")
+# setIs("worldArray", "spatialObjects")
 
 #' Methods for `quickPlot`
 #'
@@ -46,93 +46,30 @@ setIs("worldArray", "spatialObjects")
 #' @importFrom quickPlot numLayers
 #' @rdname quickPlot-methods
 #' @include Agent-classes.R
-setMethod(
-  "numLayers",
-  signature = "worldArray",
-  definition = function(x) {
+numLayers.worldArray <-
+  #  signature = "worldArray",
+  #definition =
+  function(x) {
     return(dim(x)[3])
-})
+  }
 
-############## grobs
-if (!isGeneric(".plotGrob")) {
-  setGeneric(
-    ".plotGrob",
-    function(object, objects, compareRasterFileLength = 1e6, algo = "xxhash64") {
-      standardGeneric(".plotGrob")
-  })
-}
-
-#' The suggested package `fastshp` can be installed with:
-#' `install.packages("fastshp", repos = "https://rforge.net", type = "source")`.
-#'
 #' @export
-#' @exportMethod .plotGrob
-#' @importFrom quickPlot .plotGrob
-#' @importFrom grid gList gpar grid.draw gTree pointsGrob unit
-#' @importMethodsFrom quickPlot .plotGrob
-#' @include world-functions.R
-#' @inheritParams quickPlot::.plotGrob
+#' @inheritParams quickPlot::numLayers
+#' @importFrom quickPlot numLayers
 #' @rdname quickPlot-methods
-setMethod(
-  ".plotGrob",
-  signature = c("agentMatrix"),
-  definition = function(grobToPlot, col, size, legend, gp = gpar(), pch, speedup, name, vp, ...) {
-    speedupScale <- 40
-    xyOrd <- coordinates(grobToPlot)
+numLayers.worldMatrix <-
+  #  signature = "worldArray",
+  #definition =
+  function(x) {
+    return(1L)
+  }
 
-    if (!is.null(col)) {
-      if (!is.null(gp)) {
-        gp$col <- col # Accept col argument
-      } else {
-        gp <- gpar(col) #
-      }
-    }
 
-    if (NROW(xyOrd) > 1e3) {
-      # thin if greater than 1000 pts
-      if (speedup > 0.1) {
-        if (requireNamespace("fastshp", quietly = TRUE)) {
-          thinned <- data.table(
-            thin = fastshp::thin(xyOrd[, 1], xyOrd[, 2],
-                                 tolerance = speedupScale * speedup)
-          )
-          xyOrd <- xyOrd[thinned$thin, ]
-        } else {
-          message(
-            paste(
-              "To speed up Polygons plotting using Plot install the fastshp package:\n",
-              "install.packages(\"fastshp\", repos=\"https://rforge.net\", type=\"source\")."
-            )
-          )
-          if (Sys.info()[["sysname"]] == "Windows") {
-            message(
-              paste(
-                "You may also need to download and install Rtools from:\n",
-                " https://cran.r-project.org/bin/windows/Rtools/"
-              )
-            )
-          }
-        }
-      }
-    }
+setGeneric("layerNames", quickPlot::layerNames)
 
-    pntGrob <- gTree(
-      grobToPlot = grobToPlot,
-      children = gList(
-        pointsGrob(
-          x = xyOrd[, 1], y = xyOrd[, 2],
-          pch = pch, size = size
-        )
-      ),
-      gp = gp,
-      cl = "plotPoint"
-    )
-    grid.draw(pntGrob)
-    return(invisible(pntGrob))
-})
-
+# @inheritParams quickPlot::layerNames
 #' @export
-#' @inheritParams quickPlot::layerNames
+#' @param object An object from which to extract the layer names.
 #' @importFrom quickPlot layerNames
 #' @rdname quickPlot-methods
 setMethod(
@@ -142,13 +79,7 @@ setMethod(
     dimnames(object)[[3]]
 })
 
-if (!isGeneric(".identifyGrobToPlot")) {
-  setGeneric(
-    ".identifyGrobToPlot",
-    function(toPlot, sGrob, takeFromPlotObj) {
-      standardGeneric(".identifyGrobToPlot")
-  })
-}
+setGeneric(".identifyGrobToPlot", quickPlot::.identifyGrobToPlot)
 
 #' @rdname quickPlot-methods
 #' @inheritParams quickPlot::.identifyGrobToPlot
@@ -165,7 +96,7 @@ setMethod(
       toPlot <- eval(parse(text = sGrob@objName),
                      sGrob@envir)
     }
-    grobToPlot <- .emptyWorldMatrix
+    grobToPlot <- .emptyWorldMatrix()
     sns <- slotNames(toPlot);
     for (sn in sns[sns != ".Data"]) {
       slot(grobToPlot, sn, check = FALSE) <- slot(toPlot, sn)

@@ -39,7 +39,6 @@
 #' @rdname worldMatrix-class
 #' @author Sarah Bauduin, Eliot McIntire, and Alex Chubaty
 #' @exportClass worldMatrix
-#' @importClassesFrom raster Extent
 #' @seealso [worldArray()]
 #'
 setClass(
@@ -50,10 +49,15 @@ setClass(
     maxPxcor = "numeric",
     minPycor = "numeric",
     maxPycor = "numeric",
-    extent = "Extent",
+    extent = "ANY",
     res = "numeric",
     pCoords = "matrix"
-  )
+  ), validity = function(object) {
+    # check for valid extents
+    if (any(!inherits(object@extent, c("Extent", "SpatExtent")))) {
+      stop("must supply an object name")
+    }
+  }
 )
 
 #' @export
@@ -152,7 +156,6 @@ setReplaceMethod(
 #'
 #'
 #' @export
-#' @importFrom raster extent
 #' @rdname createWorld
 #'
 #' @author Sarah Bauduin, Eliot McIntire, and Alex Chubaty
@@ -181,7 +184,7 @@ setMethod(
                  .Data = data,
                  minPxcor = minPxcor, maxPxcor = maxPxcor,
                  minPycor = minPycor, maxPycor = maxPycor,
-                 extent = extent(minPxcor - 0.5, maxPxcor + 0.5, minPycor - 0.5, maxPycor + 0.5),
+                 extent = terra::ext(minPxcor - 0.5, maxPxcor + 0.5, minPycor - 0.5, maxPycor + 0.5),
                  res = c(1, 1),
                  pCoords = cbind(pxcor = rep_len(minPxcor:maxPxcor, length.out = numX * numY),
                                  pycor = rep(maxPycor:minPycor, each = numX))
@@ -212,7 +215,6 @@ setMethod(
 #' @rdname worldArray-class
 #' @author Sarah Bauduin, Eliot McIntire, and Alex Chubaty
 #' @exportClass worldArray
-#' @importClassesFrom raster Extent
 #' @seealso [worldMatrix()]
 #'
 setClass(
@@ -223,10 +225,15 @@ setClass(
     maxPxcor = "numeric",
     minPycor = "numeric",
     maxPycor = "numeric",
-    extent = "Extent",
+    extent = "ANY",
     res = "numeric",
     pCoords = "matrix"
-  )
+  ), validity = function(object) {
+    # check for valid extents
+    if (any(!inherits(object@extent, c("Extent", "SpatExtent")))) {
+      stop("must supply an object name")
+    }
+  }
 )
 
 #' @export
@@ -323,7 +330,6 @@ setReplaceMethod(
 #' w4 <- stackWorlds(layer1 = w1, layer2 = w2)
 #'
 #' @export
-#' @importFrom abind abind
 #' @rdname stackWorlds
 #'
 #' @author Sarah Bauduin
@@ -347,8 +353,11 @@ setMethod(
       objNames <- as.character(substitute(deparse(...))[-1])
     }
     # similar dimensions can have different extent
-    if (length(unique(lapply(NLwMs, FUN = function(x) x@extent))) == 1) {
-      out <- abind::abind(NLwMs@.Data, along = 3)
+    a <- lapply(NLwMs, FUN = function(x) x@extent)
+
+    # Vectorized all.equal
+    if (isTRUE(all(ae(a[-1], a[1]) %in% TRUE))) {
+      out <- simplify2array(NLwMs)#abind::abind(NLwMs@.Data, along = 3)
     } else {
       stop("worldMatrix extents must all be equal")
     }
@@ -476,17 +485,19 @@ setMethod(
 #' @author Eliot McIntire
 #'
 #' @examples
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 1:100)
-#' w1Ras <- world2raster(w1)
-#' index <- 24
-#' pxpy <- PxcorPycorFromCell(world = w1, cellNum = index)
+#' if (requireNamespace("raster", quietly = TRUE)) {
+#'   w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 1:100)
+#'   w1Ras <- world2raster(w1)
+#'   index <- 24
+#'   pxpy <- PxcorPycorFromCell(world = w1, cellNum = index)
 #'
-#' rasValue <- as.integer(unname(w1Ras[index]))
-#' # Not correct index:
-#' identical(w1[index], rasValue)
+#'   rasValue <- as.integer(unname(w1Ras[index]))
+#'   # Not correct index:
+#'   identical(w1[index], rasValue)
 #'
-#' # Correct index
-#' identical(w1[NLworldIndex(w1, index)], rasValue)
+#'   # Correct index
+#'   identical(w1[NLworldIndex(w1, index)], rasValue)
+#' }
 #'
 #'
 setGeneric(
@@ -507,26 +518,48 @@ setMethod(
   }
 )
 
-#' Subsetting for `worldArray` class
-#'
-#' These function similarly to `[[` for `RasterStack` objects.
+
+
+
+
+# Subsetting for `worldArray` class
+#
+# These function similarly to `[[` for `RasterStack` or `SpatRaster` objects.
+#
+#
+# @aliases [[,worldArray,ANY-method
+# @export
+# @importFrom methods .slotNames
+# @name [[
+# @rdname subsetting
+# @exportMethod [[
+
+#' Subsetting and replacing for `worldArray` class
 #'
 #' @param x     A `worldArray` object.
 #' @param i     Index number or layer name specifying a subset of layer(s)
 #'              from the `worldArray`.
 #'
-#' @aliases [[,worldArray,ANY,ANY-method
+#' @rdname subsetting
+#' @docType methods
 #' @export
-#' @importFrom methods .slotNames
-#' @name [[
-#' @rdname Subsetting
-setMethod("[[", signature(x = "worldArray", i = "ANY"),
+#' @exportMethod [[
+#'
+#' @examples
+#' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = runif(100))
+#' w2 <- createWorld(0, 9, 0, 9, data = runif(100))
+#' w3 <- createWorld(0, 9, 0, 9, data = runif(100) + 2) # add 2 so different range
+#' a1 <- stackWorlds(w1, w2)
+#' a1[[2]]
+#' a1[[2]] <- w3
+#'
+setMethod("[[", signature(x = "worldArray", i = "ANY", j = "missing"),
           definition = function(x, i) {
             if (length(i) > 1) {
               x@.Data <- x@.Data[, , i]
               return(x)
             } else {
-              worldMat <- .emptyWorldMatrix
+              worldMat <- .emptyWorldMatrix()
               sns <- .slotNames(x);
               for (sn in sns[sns != ".Data"]) {
                 slot(worldMat, sn, check = FALSE) <- slot(x, sn)
@@ -536,25 +569,30 @@ setMethod("[[", signature(x = "worldArray", i = "ANY"),
             }
 })
 
+
 #' @param value A replacement `worldMatrix` layer for one of the current layers in the
 #'              `worldArray`.
 #'
-#' @aliases [[<-,worldArray,ANY,ANY-method
+#' @return The replacement method returns the original object, but with updated elements.
+#'   The accessor method extracts the entire layer.
+#'
 #' @export
-#' @name [[<-
-#' @rdname Subsetting
-setReplaceMethod("[[", signature(x = "worldArray", i = "ANY", value = "ANY"),
+#' @rdname subsetting
+setReplaceMethod("[[", signature(x = "worldArray", i = "ANY", j = "missing"),
                  definition = function(x, i, value) {
                    x@.Data[, , i] <- value
                    return(x)
-})
+                 })
 
 #' @export
 #' @param name  Layer name, normally without back ticks, unless has symbols.
 #' @name $
+#' @docType methods
 #' @aliases $,worldArray-method
-#' @rdname Subsetting
+#' @rdname subsetting
 setMethod("$", signature(x = "worldArray"),
           definition = function(x, name) {
             return(x[[name]])
 })
+
+ae <- Vectorize(all.equal)

@@ -2,32 +2,12 @@
 % Please edit documentation in R/spades-functions.R
 \name{wrap}
 \alias{wrap}
-\alias{wrap,matrix,Extent,missing-method}
-\alias{wrap,SpatialPoints,ANY,missing-method}
-\alias{wrap,matrix,Raster,missing-method}
-\alias{wrap,matrix,matrix,missing-method}
-\alias{wrap,SpatialPointsDataFrame,Extent,logical-method}
-\alias{wrap,SpatialPointsDataFrame,Raster,logical-method}
-\alias{wrap,SpatialPointsDataFrame,matrix,logical-method}
+\alias{wrap,ANY-method}
 \title{Wrap coordinates or pixels in a torus-like fashion}
 \usage{
 wrap(obj, bounds, withHeading)
 
-\S4method{wrap}{matrix,Extent,missing}(obj, bounds)
-
-\S4method{wrap}{SpatialPoints,ANY,missing}(obj, bounds)
-
-\S4method{wrap}{matrix,Raster,missing}(obj, bounds)
-
-\S4method{wrap}{matrix,Raster,missing}(obj, bounds)
-
-\S4method{wrap}{matrix,matrix,missing}(obj, bounds)
-
-\S4method{wrap}{SpatialPointsDataFrame,Extent,logical}(obj, bounds, withHeading)
-
-\S4method{wrap}{SpatialPointsDataFrame,Raster,logical}(obj, bounds, withHeading)
-
-\S4method{wrap}{SpatialPointsDataFrame,matrix,logical}(obj, bounds, withHeading)
+\S4method{wrap}{ANY}(obj, bounds, withHeading)
 }
 \arguments{
 \item{obj}{A \verb{SpatialPoints*} object, or matrix of coordinates.}
@@ -51,42 +31,42 @@ that contains two columns, \code{x1} and \code{y1}, with the immediately previou
 agent locations.
 }
 \examples{
-library(quickPlot)
-library(raster)
+if (requireNamespace("terra")) {
+  xrange <- yrange <- c(-50, 50)
+  hab <- terra::rast(terra::ext(c(xrange, yrange)))
+  hab[] <- runif(terra::ncell(hab))
 
-xrange <- yrange <- c(-50, 50)
-hab <- raster(extent(c(xrange, yrange)))
-hab[] <- 0
+  # initialize agents
+  N <- 10
 
-# initialize agents
-N <- 10
+  # previous points
+  x1 <- rep(0, N)
+  y1 <- rep(0, N)
+  # initial points
+  starts <- cbind(x = stats::runif(N, xrange[1], xrange[2]),
+                  y = stats::runif(N, yrange[1], yrange[2]))
 
-# previous points
-x1 <- rep(0, N)
-y1 <- rep(0, N)
-# initial points
-starts <- cbind(x = stats::runif(N, xrange[1], xrange[2]),
-                y = stats::runif(N, yrange[1], yrange[2]))
+  # create the agent object
+  agent <- agentMatrix(coords = starts, data = data.frame(x1 = x1, y1 = y1))
 
-# create the agent object
-agent <- SpatialPointsDataFrame(coords = starts, data = data.frame(x1, y1))
+  ln <- rlnorm(N, 1, 0.02) # log normal step length
+  sd <- 30 # could be specified globally in params
 
-
-ln <- rlnorm(N, 1, 0.02) # log normal step length
-sd <- 30 # could be specified globally in params
-
-if (interactive()) {
-  clearPlot()
-  Plot(hab, zero.color = "white", axes = "L")
-}
-if (requireNamespace("SpaDES.tools")) {
-  for (i in 1:10) {
-
-    agent <- SpaDES.tools::crw(agent = agent,
-                               extent = extent(hab), stepLength = ln,
-                               stddev = sd, lonlat = FALSE, torus = TRUE)
-   if (interactive()) Plot(agent, addTo = "hab", axes = TRUE)
- }
+  if (interactive()) {
+    library(quickPlot)
+    clearPlot()
+    Plot(hab, zero.color = "white", axes = "L")
+    Plot(agent, addTo = "hab")
+  }
+  if (requireNamespace("SpaDES.tools") &&
+      requireNamespace("CircStats")) {
+    for (i in 1:10) {
+      agent <- SpaDES.tools::crw(agent = agent,
+                                 extent = terra::ext(hab), stepLength = ln,
+                                 stddev = sd, lonlat = FALSE, torus = TRUE)
+      if (interactive()) Plot(agent, addTo = "hab", axes = TRUE)
+    }
+  }
 }
 }
 \author{

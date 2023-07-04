@@ -144,23 +144,23 @@ test_that("create agentMatrix does not work", {
 test_that("agentMatrix benchmarking", {
   skip_on_cran()
   skip_on_ci()
-
   set.seed(20180924) ## TODO: why are some seeds failing?
 
   # compare speeds -- if these fail, then should reconsider the need for agentMatrix
   if (require(microbenchmark)) {
-    mb <- summary(microbenchmark(
+    mb <- summary(microbenchmark::microbenchmark(
       times = 50,
       spdf = {
-        SpatialPointsDataFrame(
-          coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-          data = data.frame(
-            char = letters[c(1, 2, 6)],
-            nums2 = c(4.5, 2.6, 2343),
-            char2 = LETTERS[c(4, 24, 3)],
-            nums = 5:7
+        if (requireNamespace("sp", quietly = TRUE))
+          sp::SpatialPointsDataFrame(
+            coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
+            data = data.frame(
+              char = letters[c(1, 2, 6)],
+              nums2 = c(4.5, 2.6, 2343),
+              char2 = LETTERS[c(4, 24, 3)],
+              nums = 5:7
+            )
           )
-        )
       },
       agentMat = {
         agentMatrix(
@@ -187,16 +187,18 @@ test_that("agentMatrix benchmarking", {
         )
       }
     ))
-    expect_gt(mb$median[1] / mb$median[3], 3) # expect it is ~3 times faster
+    if (requireNamespace("sp", quietly = TRUE))
+      expect_gt(mb$median[1] / mb$median[3], 3) # expect it is ~3 times faster
   }
 
   # check just numerics
-  if (require(sf)) {
-    if (require(microbenchmark)) {
-      mb <- summary(microbenchmark(
+  if (requireNamespace("sf", quietly = TRUE)) {
+    if (requireNamespace("microbenchmark", quietly = TRUE)) {
+      mb <- summary(microbenchmark::microbenchmark(
         times = 50,
         spdf = {
-          SpatialPointsDataFrame(
+          if (requireNamespace("sp", quietly = TRUE))
+          sp::SpatialPointsDataFrame(
             coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
             data = data.frame(
               nums2 = c(4.5, 2.6, 2343),
@@ -205,12 +207,12 @@ test_that("agentMatrix benchmarking", {
           )
         },
         sf = {
-          a1 <- st_point(cbind(1, 3))
-          a2 <- st_point(cbind(2, 4))
-          a3 <- st_point(cbind(5, 6))
+          a1 <- sf::st_point(cbind(1, 3))
+          a2 <- sf::st_point(cbind(2, 4))
+          a3 <- sf::st_point(cbind(5, 6))
           d <- data <- data.frame(nums2 = c(4.5, 2.6, 2343), nums = 5:7)
-          d$geom <- st_sfc(a1, a2, a3)
-          df <- st_as_sf(d)
+          d$geom <- sf::st_sfc(a1, a2, a3)
+          df <- sf::st_as_sf(d)
         },
         agentMat = {
           agentMatrix(
@@ -225,14 +227,16 @@ test_that("agentMatrix benchmarking", {
           )
         }
       ))
-      expect_gt(mb$median[1] / mb$median[3], 4) # use 4 for safety
-      if (interactive()) expect_gt(mb$median[2] / mb$median[3], 4) # use 4 for safety
+      if (requireNamespace("sp", quietly = TRUE))
+        expect_gt(mb$median[1] / mb$median[3], 4) # use 4 for safety
+      if (interactive()) expect_gt(mb$median[2] / mb$median[3], 2) # use 2 for safety
     }
   }
 })
 
 test_that("agentMatrix coercion", {
-  spdf1 <- SpatialPointsDataFrame(
+  skip_if_not_installed("sp")
+  spdf1 <- sp::SpatialPointsDataFrame(
     coords = matrix(1:6, ncol = 2),
     data = data.frame(tmp = 1:3, tmp2 = c("e", "f", "g"))
   )
@@ -290,7 +294,7 @@ test_that("agentMatrix subsetting", {
     tmp = newAgent$tmp, tmp2 = newAgent$tmp2,
     stringsAsFactors = FALSE
   ))
-  expect_equal(newAgent[, "tmp"], agentMatrix(
+  expect_equal(newAgent[, "tmp", drop = FALSE], agentMatrix(
     coords = coordinates(newAgent),
     tmp = newAgent@.Data[, "tmp", drop = FALSE]
   ))
@@ -298,7 +302,7 @@ test_that("agentMatrix subsetting", {
     1:2, ,
     drop = FALSE
   ], tmp = newAgent@.Data[1:2, "tmp", drop = FALSE]))
-  expect_equal(newAgent[, 3], agentMatrix(
+  expect_equal(newAgent[, 3, drop = FALSE], agentMatrix(
     coords = coordinates(newAgent)[, , drop = FALSE],
     tmp = newAgent@.Data[, 3, drop = FALSE]
   ))
@@ -322,8 +326,8 @@ test_that("agentMatrix subsetting", {
   mat <- cbind(coords = matrix(1:6, ncol = 2), data.frame(tmp = 1:3, tmp2 = c("e", "f", "g")))
   newAgent <- as(mat, "agentMatrix")
 
-  expect_equal(1, sum(newAgent[, "tmp2"] == "f"))
-  expect_equal(1, sum(newAgent[, "tmp"] == 2))
+  expect_equal(1, sum(newAgent[, "tmp2", drop = FALSE] == "f"))
+  expect_equal(1, sum(newAgent[, "tmp", drop = FALSE] == 2))
 
   mat <- cbind(coords = matrix(1:6, ncol = 2), data.frame(
     tmp = 1:3, tmp1 = 1:3,

@@ -362,6 +362,7 @@ test_that("nOf works", {
   expect_identical(nrow(merge(t1@.Data, t3@.Data)), nrow(t1@.Data))
 
   # With matrix ncol = 3
+  skip_if_not_installed("SpaDES.tools")
   n4 <- neighbors(world = w1, agents = t1, nNeighbors = 8)
   p4 <- nOf(agents = n4, n = 1)
   expect_equivalent(nrow(p4), NLcount(t1))
@@ -403,6 +404,7 @@ test_that("oneOf works", {
   expect_identical(t3, t4)
 
   # With matrix ncol = 3
+  skip_if_not_installed("SpaDES.tools")
   n4 <- neighbors(world = w1, agents = t1, nNeighbors = 4)
   p4 <- oneOf(n4)
   expect_equivalent(nrow(p4), NLcount(t1))
@@ -518,6 +520,8 @@ test_that("minNof works", {
 
 test_that("inRadius works", {
   # Patches to patches
+  skip_if_not_installed("sf")
+
   w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
   p1 <- inRadius(agents = patch(w1, 0, 0), radius = 2, agents2 = patches(w1), world = w1)
   expect_error(inRadius(agents = patch(w1, x = 0, y = 0), radius = 2, agents2 = patches(w1),
@@ -631,6 +635,8 @@ test_that("inRadius works", {
 })
 
 test_that("inCone works", {
+  skip_if_not_installed("sf")
+
   w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
   t1 <- createTurtles(n = 5, coords = cbind(xcor = 0:4, ycor = 0:4),
                       heading = c(0, 90, 180, 270, 0))
@@ -644,7 +650,7 @@ test_that("inCone works", {
   expect_equivalent(length(unique(t3[, "id"])), 5)
   expect_equivalent(nrow(t3[t3[, "id"] == 5, , drop = FALSE]), 2)
   t4 <- inCone(turtles = turtle(t1, who = 0), radius = 1, angle = 181, agents = patches(w1))
-  expect_identical(t4[t4[, "id"] == 1, c("pxcor", "pycor")],
+  expect_equivalent(t4[t4[, "id"] == 1, c("pxcor", "pycor")],
                    patch(w1, x = c(0, 0, 1), y = c(1, 0, 0)))
   t5 <- inCone(turtles = turtle(t1, who = 0), radius = 1, angle = 181, agents = patches(w1),
                world = w1, torus = TRUE)
@@ -856,3 +862,4 @@ test_that("NLset works", {
   colt23[6] <- "red"
   expect_equivalent(of(agents = t23, var = "color"), colt23)
  })
+

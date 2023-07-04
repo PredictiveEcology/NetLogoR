@@ -65,6 +65,11 @@ p1 <- sortOn(agents = patches(w1), world = w1)
 t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 sortHeadingT1 <- sortOn(agents = t1, var = "heading")
 
+# or
+library(quickPlot)
+
+Plot(w1)
+Plot(t1, addTo = "w1")
 
 }
 \references{

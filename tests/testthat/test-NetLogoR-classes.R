@@ -1,7 +1,8 @@
 test_that("createWorld works", {
   w1 <- createWorld(minPxcor = -2, maxPxcor = 7, minPycor = -2, maxPycor = 5, data = 1:80)
   expect_equivalent(1:80, as.numeric(t(w1@.Data)))
-  expect_equivalent(extent(c(-2.5, 7.5, -2.5, 5.5)), w1@extent)
+  exts <- extents(w1@extent)
+  expect_equivalent(c(-2.5, 7.5, -2.5, 5.5), unlist(exts))
   expect_equivalent(-2, w1@minPxcor)
   expect_equivalent(7, w1@maxPxcor)
   expect_equivalent(-2, w1@minPycor)
@@ -11,7 +12,8 @@ test_that("createWorld works", {
 
   w2 <- createWorld()
   expect_equivalent(as.numeric(rep(NA, 33 * 33)), as.numeric(t(w2@.Data)))
-  expect_equivalent(extent(c(-16.5, 16.5, -16.5, 16.5)), w2@extent)
+  exts <- extents(w2@extent)
+  expect_equivalent(c(-16.5, 16.5, -16.5, 16.5), unlist(exts))
   expect_equivalent(-16, w2@minPxcor)
   expect_equivalent(16, w2@maxPxcor)
   expect_equivalent(-16, w2@minPycor)
@@ -31,7 +33,7 @@ test_that("stackWorlds works", {
   expect_error(stackWorlds(w2, w3))
   expect_error(stackWorlds(w2, w4))
   w5 <- stackWorlds(w1, w2)
-  expect_identical(w5@extent, w2@extent)
+  expect_equivalent(w5@extent, w2@extent)
   expect_identical(w5@pCoords, w2@pCoords)
   expect_identical(w5@res, w2@res)
   expect_identical(w5@minPxcor, w2@minPxcor)
