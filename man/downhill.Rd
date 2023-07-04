@@ -59,9 +59,10 @@ t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 plot(w1)
 points(t1, col = of(agents = t1, var = "color"), pch = 16)
 
-t1 <- downhill(world = w1, turtles = t1, nNeighbors = 8)
-points(t1, col = of(agents = t1, var = "color"), pch = 16)
-
+if (requireNamespace("SpaDES.tools", quietly = TRUE)) {
+  t1 <- downhill(world = w1, turtles = t1, nNeighbors = 8)
+  points(t1, col = of(agents = t1, var = "color"), pch = 16)
+}
 
 }
 \references{

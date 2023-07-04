@@ -1486,10 +1486,12 @@ setMethod(
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
 #' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 #'
-#' p1 <- inRadius(agents = patch(w1, 0, 0), radius = 2, agents2 = patches(w1))
-#' t2 <- inRadius(agents = patch(w1, 0, 0), radius = 2, agents2 = t1)
-#' p2 <- inRadius(agents = t1, radius = 2, agents2 = patches(w1))
-#' t3 <- inRadius(agents = turtle(t1, who = 0), radius = 2, agents2 = t1)
+#' if (requireNamespace("sf", quietly = TRUE)) {
+#'   p1 <- inRadius(agents = patch(w1, 0, 0), radius = 2, agents2 = patches(w1))
+#'   t2 <- inRadius(agents = patch(w1, 0, 0), radius = 2, agents2 = t1)
+#'   p2 <- inRadius(agents = t1, radius = 2, agents2 = patches(w1))
+#'   t3 <- inRadius(agents = turtle(t1, who = 0), radius = 2, agents2 = t1)
+#' }
 #'
 #'
 #' @export
@@ -1672,8 +1674,10 @@ setMethod(
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
 #' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 #'
-#' p1 <- inCone(turtles = t1, radius = 2, agents = patches(w1), angle = 90)
-#' t2 <- inCone(turtles = turtle(t1, who = 0), radius = 2, angle = 90, agents = t1)
+#' if (requireNamespace("sf", quietly = TRUE)) {
+#'   p1 <- inCone(turtles = t1, radius = 2, agents = patches(w1), angle = 90)
+#'   t2 <- inCone(turtles = turtle(t1, who = 0), radius = 2, angle = 90, agents = t1)
+#' }
 #'
 #'
 #' @export

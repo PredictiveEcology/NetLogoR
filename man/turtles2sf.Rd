@@ -22,8 +22,9 @@ Convert an \code{agentMatrix} object into an \code{sf} object.
 }
 \examples{
 t1 <- createTurtles(n = 10, coords = cbind(xcor = 1:10, ycor = 1:10))
-sf_t1 <- turtles2sf(turtles = t1)
-
+if (requireNamespace("sf", quietly = TRUE)) {
+  sf_t1 <- turtles2sf(turtles = t1)
+}
 
 }
 \author{

@@ -70,8 +70,10 @@ distance of the \code{turtle} and their direction from the \code{turtle} is with
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
 t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 
-p1 <- inCone(turtles = t1, radius = 2, agents = patches(w1), angle = 90)
-t2 <- inCone(turtles = turtle(t1, who = 0), radius = 2, angle = 90, agents = t1)
+if (requireNamespace("sf", quietly = TRUE)) {
+  p1 <- inCone(turtles = t1, radius = 2, agents = patches(w1), angle = 90)
+  t2 <- inCone(turtles = turtle(t1, who = 0), radius = 2, angle = 90, agents = t1)
+}
 
 
 }

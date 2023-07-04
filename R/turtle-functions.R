@@ -1274,9 +1274,10 @@ setMethod(
 #' plot(w1)
 #' points(t1, col = of(agents = t1, var = "color"), pch = 16)
 #'
-#' t1 <- downhill(world = w1, turtles = t1, nNeighbors = 8)
-#' points(t1, col = of(agents = t1, var = "color"), pch = 16)
-#'
+#' if (requireNamespace("SpaDES.tools", quietly = TRUE)) {
+#'   t1 <- downhill(world = w1, turtles = t1, nNeighbors = 8)
+#'   points(t1, col = of(agents = t1, var = "color"), pch = 16)
+#' }
 #'
 #' @export
 #' @rdname downhill
@@ -1407,8 +1408,10 @@ setMethod(
 #' plot(w1)
 #' points(t1, col = of(agents = t1, var = "color"), pch = 16)
 #'
-#' t1 <- uphill(world = w1, turtles = t1, nNeighbors = 8)
-#' points(t1, col = of(agents = t1, var = "color"), pch = 16)
+#' if (requireNamespace("SpaDES.tools", quietly = TRUE)) {
+#'   t1 <- uphill(world = w1, turtles = t1, nNeighbors = 8)
+#'   points(t1, col = of(agents = t1, var = "color"), pch = 16)
+#' }
 #'
 #'
 #' @export
@@ -3253,7 +3256,9 @@ setMethod(
 #'
 #' @examples
 #' t1 <- createTurtles(n = 10, coords = cbind(xcor = 1:10, ycor = 1:10))
-#' sp1 <- turtles2spdf(turtles = t1)
+#' if (requireNamespace("sp", quietly = TRUE)) {
+#'   sp1 <- turtles2spdf(turtles = t1)
+#' }
 #'
 #'
 #' @export
@@ -3293,8 +3298,9 @@ setMethod(
 #'
 #' @examples
 #' t1 <- createTurtles(n = 10, coords = cbind(xcor = 1:10, ycor = 1:10))
-#' sf_t1 <- turtles2sf(turtles = t1)
-#'
+#' if (requireNamespace("sf", quietly = TRUE)) {
+#'   sf_t1 <- turtles2sf(turtles = t1)
+#' }
 #'
 #' @export
 #' @rdname turtles2sf
