@@ -47,7 +47,7 @@ Imports:
     data.table,
     grDevices,
     methods,
-    quickPlot (>= 1.0.1.9003),
+    quickPlot (>= 1.0.2),
     stats,
     terra,
     utils
@@ -56,7 +56,6 @@ Suggests:
     covr,
     fastshp,
     knitr,
-    magrittr,
     microbenchmark,
     raster,
     rmarkdown,

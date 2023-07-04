@@ -2229,7 +2229,7 @@ setMethod(
   "turtle",
   signature = c("agentMatrix", "numeric", "missing"),
   definition = function(turtles, who) {
-    turtles[na.omit(match(who, turtles@.Data[, "who"])), , drop = FALSE] # %>% na.omit %>% sort
+    turtles[na.omit(match(who, turtles@.Data[, "who"])), , drop = FALSE]
 })
 
 #' @export
