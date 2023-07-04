@@ -31,7 +31,6 @@ that contains two columns, \code{x1} and \code{y1}, with the immediately previou
 agent locations.
 }
 \examples{
-library(quickPlot)
 if (requireNamespace("terra")) {
   xrange <- yrange <- c(-50, 50)
   hab <- terra::rast(terra::ext(c(xrange, yrange)))
@@ -54,6 +53,7 @@ if (requireNamespace("terra")) {
   sd <- 30 # could be specified globally in params
 
   if (interactive()) {
+    library(quickPlot)
     clearPlot()
     Plot(hab, zero.color = "white", axes = "L")
     Plot(agent, addTo = "hab")
