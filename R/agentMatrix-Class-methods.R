@@ -821,6 +821,7 @@ setMethod(
 #' @docType methods
 #' @param obj object deriving from class "agentMatrix",
 #'    or for `bbox` and `extent`, a "worldMatrix" or "worldArray"
+#' @rdname bbox
 #' @name bbox
 #' @seealso [extent()], [coordinates()], `sp::bbox`
 #' @examples
@@ -833,29 +834,19 @@ setMethod(
 #' bbox(newAgent)
 #' extent(newAgent)
 #' coordinates(newAgent)
-
-
-if (requireNamespace("sp", quietly = TRUE)) { # can use sp even if not loaded
-  setGeneric("bbox", sp::bbox)
-} else {
-  # if (!isGeneric("bbox")) { # covers the case of 3rd package that is already loaded
-    setGeneric(
-      "bbox",
-      function(obj) {
-        standardGeneric("bbox")
-      }
-    )
-  # }
-}
-
-.onLoad <- function(libname, pkgname) {
-  if (requireNamespace("sp", quietly = TRUE)) {
-    setGeneric("bbox", sp::bbox)
-  }
+if (!isGeneric("bbox")) { # covers the case of 3rd package that is already loaded
+  setGeneric(
+    "bbox",
+    function(obj) {
+      standardGeneric("bbox")
+    }
+  )
 }
 
 
 #' @name bbox
+#' @aliases bbox,agentMatrix-method
+#' @rdname bbox
 #' @export
 setMethod(
   "bbox",
@@ -868,7 +859,21 @@ setMethod(
     }
 })
 
+#' @name bbox
+#' @rdname bbox
+#' @aliases bbox,ANY-method
 #' @export
+setMethod(
+  "bbox",
+  signature("ANY"),
+  definition = function(obj) {
+    if (!requireNamespace("sp"))
+      stop("Please install.packages('sp') to use raster or sp class objects")
+    sp::bbox(obj)
+  })
+
+#' @export
+#' @rdname bbox
 #' @param value 2x2 matrix representing the bounding box. See `sp::bbox`.
 #' @name bbox
 setGeneric("bbox<-",
@@ -876,7 +881,13 @@ setGeneric("bbox<-",
              standardGeneric("bbox<-")
 })
 
+#' Replacement method sets the bbox attribute of an `agentMatrix`.
+#'
 #' @include worldNLR-classes-methods.R
+#' @rdname bbox
+#' @aliases bbox<-,agentMatrix,matrix-method
+#' @return The replacement method returns the same object as supplied to
+#' obj, i.e., an `agentMatrix`, with the `bbox` attribute set to `value`.
 #' @name bbox
 setReplaceMethod(
   "bbox",
@@ -887,6 +898,7 @@ setReplaceMethod(
 })
 
 #' @include worldNLR-classes-methods.R
+#' @aliases bbox,worldNLR-method
 #' @export
 #' @name bbox
 setMethod(
@@ -897,6 +909,7 @@ setMethod(
 })
 
 #' @include worldNLR-classes-methods.R
+#' @aliases bbox,SpatExtent-method
 #' @export
 #' @name bbox
 setMethod(

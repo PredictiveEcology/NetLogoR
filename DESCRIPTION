@@ -52,6 +52,7 @@ Imports:
     terra,
     utils
 Suggests:
+    CircStats,
     covr,
     fastshp,
     knitr,

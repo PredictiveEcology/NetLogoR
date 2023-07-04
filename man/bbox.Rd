@@ -3,9 +3,16 @@
 \docType{methods}
 \name{bbox}
 \alias{bbox}
+\alias{bbox,agentMatrix-method}
+\alias{bbox,ANY-method}
+\alias{bbox<-,agentMatrix,matrix-method}
+\alias{bbox,worldNLR-method}
+\alias{bbox,SpatExtent-method}
 \title{Extract or set bounding box}
 \usage{
 \S4method{bbox}{agentMatrix}(obj)
+
+\S4method{bbox}{ANY}(obj)
 
 bbox(obj) <- value
 
@@ -20,6 +27,10 @@ bbox(obj) <- value
 or for \code{bbox} and \code{extent}, a "worldMatrix" or "worldArray"}
 
 \item{value}{2x2 matrix representing the bounding box. See \code{sp::bbox}.}
+}
+\value{
+The replacement method returns the same object as supplied to
+obj, i.e., an \code{agentMatrix}, with the \code{bbox} attribute set to \code{value}.
 }
 \description{
 These are methods for classes in NetLogoR, i.e., \code{agentMatrix}, \code{worldMatrix},

@@ -52,9 +52,9 @@
 #'   Plot(hab, zero.color = "white", axes = "L")
 #'   Plot(agent, addTo = "hab")
 #' }
-#' if (requireNamespace("SpaDES.tools")) {
+#' if (requireNamespace("SpaDES.tools") &&
+#'     requireNamespace("CircStats")) {
 #'   for (i in 1:10) {
-#'
 #'     agent <- SpaDES.tools::crw(agent = agent,
 #'                                extent = terra::ext(hab), stepLength = ln,
 #'                                stddev = sd, lonlat = FALSE, torus = TRUE)
