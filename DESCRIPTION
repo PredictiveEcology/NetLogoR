@@ -23,7 +23,7 @@ Description: Build and run spatially explicit
     integrated with a discrete event simulator, such as 'SpaDES'
     (<https://cran.r-project.org/package=SpaDES>).
     The suggested package 'fastshp' can be installed with
-    'install.packages("fastshp", repos = "https://rforge.net", type = "source")'.
+    'install.packages("fastshp", repos = (<"https://rforge.net")>, type = "source")'.
 URL:
     https://netlogor.predictiveecology.org,
     https://github.com/PredictiveEcology/NetLogoR/,
@@ -66,7 +66,6 @@ Suggests:
     testthat,
     withr
 Remotes:
-    PredictiveEcology/quickPlot@development,
     PredictiveEcology/SpaDES.tools@development
 Additional_repositories: https://predictiveecology.r-universe.dev/
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues

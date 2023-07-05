@@ -9,7 +9,7 @@
 
 ## Build and run spatially explicit agent-based models in R
 
-`NetLogoR` is an R package to build and run spatially explicit agent-based models using only the R platform ([Bauduin et al., 2019](https://onlinelibrary.wiley.com/doi/10.1111/ecog.04516)).
+`NetLogoR` is an R package to build and run spatially explicit agent-based models using only the R platform ([Bauduin et al., 2019](https://doi.org/10.1111/ecog.04516)).
 It follows the same framework as NetLogo ([Wilensky, 1999](http://ccl.northwestern.edu/netlogo/)) and is a translation in R language of the structure and functions of NetLogo ([NetLogo primitives](https://ccl.northwestern.edu/netlogo/docs/dictionary.html)).
 `NetLogoR` provides new R classes to define model agents and functions to implement spatially explicit agent-based models in the R environment.
 This package allows benefiting of the fast and easy coding phase from the highly developed NetLogo's framework, coupled with the versatility, power and massive resources of the R software.
