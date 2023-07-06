@@ -1,4 +1,3 @@
-
 ##########################################################
 #' Initialize for `agentMatrix` Class
 #'
@@ -802,16 +801,6 @@ setMethod(
   bbox
 }
 
-
-#if (!isGeneric("bbox", .GlobalEnv)) {
-#  cat("Hiiii")
-
-  # function(obj) {
-  #   standardGeneric("bbox")
-  # }
-# )
-#}
-
 #' Extract or set bounding box
 #'
 #' These are methods for classes in NetLogoR, i.e., `agentMatrix`, `worldMatrix`,
@@ -840,7 +829,6 @@ setGeneric(
     standardGeneric("bbox")
   }
 )
-
 
 #' @name bbox
 #' @aliases bbox,agentMatrix-method
