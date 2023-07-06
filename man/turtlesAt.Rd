@@ -58,14 +58,19 @@ are defined from the wrapped \code{world} is returned.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
-t1 <- createTurtles(n = 10, coords = cbind(xcor = 0:9, ycor = 0:9),
-                    breed = c(rep("sheep", 5), rep("wolf", 5)))
-t2 <- turtlesAt(world = w1, turtles = t1, agents = turtle(t1, who = 0),
-                dx = 1, dy = 1)
-t3 <- turtlesAt(world = w1, turtles = t1,
-                agents = patch(w1, c(3,4,5), c(3,4,5)), dx = 1, dy = 1,
-                breed = "sheep")
-
+t1 <- createTurtles(
+  n = 10, coords = cbind(xcor = 0:9, ycor = 0:9),
+  breed = c(rep("sheep", 5), rep("wolf", 5))
+)
+t2 <- turtlesAt(
+  world = w1, turtles = t1, agents = turtle(t1, who = 0),
+  dx = 1, dy = 1
+)
+t3 <- turtlesAt(
+  world = w1, turtles = t1,
+  agents = patch(w1, c(3, 4, 5), c(3, 4, 5)), dx = 1, dy = 1,
+  breed = "sheep"
+)
 
 }
 \references{

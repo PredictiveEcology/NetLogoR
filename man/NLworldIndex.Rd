@@ -35,7 +35,6 @@ if (requireNamespace("raster", quietly = TRUE)) {
   identical(w1[NLworldIndex(w1, index)], rasValue)
 }
 
-
 }
 \author{
 Eliot McIntire

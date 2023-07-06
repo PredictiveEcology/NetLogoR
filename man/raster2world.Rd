@@ -34,13 +34,12 @@ for more details on the classes.
 }
 \examples{
 if (requireNamespace("raster")) {
- r1 <- raster::raster(raster::extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)
- r1[]<-runif(100)
- w1 <- raster2world(r1)
- terra::plot(r1)
- terra::plot(w1)
+  r1 <- raster::raster(raster::extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)
+  r1[] <- runif(100)
+  w1 <- raster2world(r1)
+  terra::plot(r1)
+  terra::plot(w1)
 }
-
 
 }
 \author{

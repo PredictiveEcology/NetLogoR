@@ -26,12 +26,15 @@ default values as in \code{createTurtles()}.
 }
 \examples{
 if (requireNamespace("sf", quietly = TRUE)) {
-  turtles_sf1 <- sf::st_as_sf(cbind.data.frame(x = c(1, 2, 3), y = c(1, 2, 3),
-                                           age = c(0, 0, 3), sex = c("F", "F", "M")),
-                         coords = c("x", "y"))
+  turtles_sf1 <- sf::st_as_sf(
+    cbind.data.frame(
+      x = c(1, 2, 3), y = c(1, 2, 3),
+      age = c(0, 0, 3), sex = c("F", "F", "M")
+    ),
+    coords = c("x", "y")
+  )
   t1 <- sf2turtles(turtles_sf = turtles_sf1)
 }
-
 
 }
 \author{

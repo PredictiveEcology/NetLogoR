@@ -22,7 +22,6 @@ Report the height of the \code{world} in \code{patch} number.
 w1 <- createWorld()
 worldHeight(w1)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

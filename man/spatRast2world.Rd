@@ -41,13 +41,13 @@ for more details on the classes.
 \examples{
 library(terra)
 r1 <- rast(xmin = 0, xmax = 10, ymin = 0, ymax = 10, nrows = 10, ncols = 10)
-r1[]<-runif(100)
+r1[] <- runif(100)
 w1 <- spatRast2world(r1)
 terra::plot(r1)
 plot(w1)
 
 r2 <- rast(xmin = 0, xmax = 10, ymin = 0, ymax = 10, nrows = 10, ncols = 10)
-r2[]<- 0
+r2[] <- 0
 r3 <- c(r1, r2)
 names(r3) <- c("layer1", "layer2")
 w3 <- spatRast2world(r3)

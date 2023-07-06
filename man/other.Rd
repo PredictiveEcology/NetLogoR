@@ -53,7 +53,6 @@ t1 <- createTurtles(n = 10, coords = cbind(xcor = 0, ycor = 0))
 t2 <- other(agents = t1, except = turtle(t1, who = 0))
 NLcount(t2) # 9 turtles
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

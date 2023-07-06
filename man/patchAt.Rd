@@ -54,7 +54,6 @@ patchCorner <- patchAt(world = w1, agents = patch(w1, 0, 0), dx = 1, dy = 1)
 t1 <- createTurtles(n = 1, coords = cbind(xcor = 0, ycor = 0))
 patchCorner <- patchAt(world = w1, agents = t1, dx = 1, dy = 1)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.

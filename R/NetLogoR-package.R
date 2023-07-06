@@ -3,12 +3,18 @@
 #' The suggested package \pkg{fastshp} can be installed with
 #' `install.packages("fastshp", repos = "https://rforge.net", type = "source")`.
 #' The examples included with the package, are located in the R package "examples" folder,
-#' which can be found at `system.file(package = "NetLogoR", "examples")`. The 3 specific
-#' R examples can be opened here:
-#' `file.edit(file.path(system.file(package = "NetLogoR", "examples"), "Ants", "Ants.R"))`,
-#' `file.edit(file.path(system.file(package = "NetLogoR", "examples"), "Butterfly", "Butterfly-1.R"))`,
-#' or
-#' `file.edit(file.path(system.file(package = "NetLogoR", "examples"), "Wolf-Sheep-Predation", "Wolf-Sheep-Predation.R"))`.
+#' which can be found at `system.file(package = "NetLogoR", "examples")`.
+#'
+#' The 3 specific R examples can be opened here, but it's recommended to make copies of these
+#' for editing:
+#'
+#' ```r
+#' exPath <- file.path(system.file(package = "NetLogoR", "examples")
+#' file.edit(exPath, "Ants", "Ants.R"))
+#' file.edit(exPath, "Butterfly", "Butterfly-1.R"))
+#' file.edit(виКфлоц "Wolf-Sheep-Predation", "Wolf-Sheep-Predation.R"))
+#' ```
+#'
 "_PACKAGE"
 
 #' @import methods

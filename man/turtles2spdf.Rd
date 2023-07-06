@@ -26,7 +26,6 @@ if (requireNamespace("sp", quietly = TRUE)) {
   sp1 <- turtles2spdf(turtles = t1)
 }
 
-
 }
 \author{
 Sarah Bauduin

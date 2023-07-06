@@ -48,7 +48,7 @@
 #' @include Agent-classes.R
 numLayers.worldArray <-
   #  signature = "worldArray",
-  #definition =
+  # definition =
   function(x) {
     return(dim(x)[3])
   }
@@ -59,7 +59,7 @@ numLayers.worldArray <-
 #' @rdname quickPlot-methods
 numLayers.worldMatrix <-
   #  signature = "worldArray",
-  #definition =
+  # definition =
   function(x) {
     return(1L)
   }
@@ -77,7 +77,8 @@ setMethod(
   signature = "worldArray",
   definition = function(object) {
     dimnames(object)[[3]]
-})
+  }
+)
 
 setGeneric(".identifyGrobToPlot", quickPlot::.identifyGrobToPlot)
 
@@ -93,14 +94,14 @@ setMethod(
 
     # Does it already exist on the plot device or not
     if (!takeFromPlotObj) {
-      toPlot <- eval(parse(text = sGrob@objName),
-                     sGrob@envir)
+      toPlot <- eval(parse(text = sGrob@objName), sGrob@envir)
     }
     grobToPlot <- .emptyWorldMatrix()
-    sns <- slotNames(toPlot);
+    sns <- slotNames(toPlot)
     for (sn in sns[sns != ".Data"]) {
       slot(grobToPlot, sn, check = FALSE) <- slot(toPlot, sn)
     }
-    grobToPlot@.Data <- toPlot@.Data[,,sGrob@layerName];
+    grobToPlot@.Data <- toPlot@.Data[, , sGrob@layerName]
     return(grobToPlot)
-})
+  }
+)

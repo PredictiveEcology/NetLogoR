@@ -60,7 +60,6 @@ pSelect <- oneOf(agents = patches(w1))
 t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 tSelect <- oneOf(agents = t1)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.

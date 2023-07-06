@@ -35,8 +35,10 @@
 #'   x1 <- rep(0, N)
 #'   y1 <- rep(0, N)
 #'   # initial points
-#'   starts <- cbind(x = stats::runif(N, xrange[1], xrange[2]),
-#'                   y = stats::runif(N, yrange[1], yrange[2]))
+#'   starts <- cbind(
+#'     x = stats::runif(N, xrange[1], xrange[2]),
+#'     y = stats::runif(N, yrange[1], yrange[2])
+#'   )
 #'
 #'   # create the agent object
 #'   agent <- agentMatrix(coords = starts, data = data.frame(x1 = x1, y1 = y1))
@@ -51,11 +53,13 @@
 #'     Plot(agent, addTo = "hab")
 #'   }
 #'   if (requireNamespace("SpaDES.tools") &&
-#'       requireNamespace("CircStats")) {
+#'     requireNamespace("CircStats")) {
 #'     for (i in 1:10) {
-#'       agent <- SpaDES.tools::crw(agent = agent,
-#'                                  extent = terra::ext(hab), stepLength = ln,
-#'                                  stddev = sd, lonlat = FALSE, torus = TRUE)
+#'       agent <- SpaDES.tools::crw(
+#'         agent = agent,
+#'         extent = terra::ext(hab), stepLength = ln,
+#'         stddev = sd, lonlat = FALSE, torus = TRUE
+#'       )
 #'       if (interactive()) Plot(agent, addTo = "hab", axes = TRUE)
 #'     }
 #'   }
@@ -71,16 +75,15 @@ setMethod(
   "wrap",
   signature(obj = "ANY", bounds = "ANY"),
   definition = function(obj, bounds, withHeading) {
-
     if (requireNamespace("SpaDES.tools")) {
       # browser()
-      if (missing(withHeading))
+      if (missing(withHeading)) {
         obj <- SpaDES.tools::wrap(obj, bounds)
-      else
+      } else {
         obj <- SpaDES.tools::wrap(obj, bounds, withHeading)
+      }
       return(obj)
     } else {
-
       if (is.matrix(obj) && inherits(bounds, c("Extent", "SpatExtent"))) {
         if (identical(colnames(obj), c("x", "y"))) {
           xmn <- terra::xmin(bounds)
@@ -93,8 +96,10 @@ setMethod(
             y = (obj[, "y"] - ymn) %% (ymx - ymn) + ymn
           ))
         } else {
-          stop("When obj is a matrix, it must have 2 columns, x and y,",
-               "as from say, coordinates(SpatialPointsObj)")
+          stop(
+            "When obj is a matrix, it must have 2 columns, x and y,",
+            "as from say, coordinates(SpatialPointsObj)"
+          )
         }
       } else if (is(obj, "SpatialPointsDataFrame")) {
         if (is(bounds, "Raster") || is.matrix(bounds)) {
@@ -117,28 +122,24 @@ setMethod(
             (bounds@ymin - bounds@ymax) + bounds@ymin
         }
         return(wrap(obj, bounds = bounds, withHeading = withHeading))
-
       } else if (is(obj, "SpatialPoints")) {
         obj@coords <- wrap(obj@coords, bounds = bounds)
         return(obj)
-
       } else if (is(obj, "Raster") && is(bounds, "Raster")) {
         obj <- wrap(obj, bounds = extent(bounds))
         return(obj)
-
       } else if (is.matrix(obj) && is.matrix(bounds)) {
         if (identical(colnames(bounds), c("min", "max")) &
-            (identical(rownames(bounds), c("s1", "s2")))) {
+          (identical(rownames(bounds), c("s1", "s2")))) {
           obj <- wrap(obj, bounds = extent(bounds))
           return(obj)
         } else {
           stop("Must use either a bbox, Raster*, or Extent for 'bounds'")
         }
-
       }
     }
-
-  })
+  }
+)
 
 # @export
 # @rdname wrap
@@ -283,14 +284,19 @@ setMethod(
   definition = function(x, y) {
     if (any(is.null(names(x)), is.null(names(y)))) {
       # If one of the lists is empty, then just return the other, unchanged
-      if (length(y) == 0) return(x)
-      if (length(x) == 0) return(y)
+      if (length(y) == 0) {
+        return(x)
+      }
+      if (length(x) == 0) {
+        return(y)
+      }
       stop("All elements in lists x,y must be named.")
     } else {
       x[names(y)] <- y
       return(x[order(names(x))])
     }
-})
+  }
+)
 
 #' @rdname updateList
 setMethod(
@@ -298,11 +304,14 @@ setMethod(
   signature = c("NULL", "list"),
   definition = function(x, y) {
     if (is.null(names(y))) {
-      if (length(y) == 0) return(x)
+      if (length(y) == 0) {
+        return(x)
+      }
       stop("All elements in list y must be named.")
     }
     return(y[order(names(y))])
-})
+  }
+)
 
 #' @rdname updateList
 setMethod(
@@ -310,11 +319,14 @@ setMethod(
   signature = c("list", "NULL"),
   definition = function(x, y) {
     if (is.null(names(x))) {
-      if (length(x) == 0) return(x)
+      if (length(x) == 0) {
+        return(x)
+      }
       stop("All elements in list x must be named.")
     }
     return(x[order(names(x))])
-})
+  }
+)
 
 #' @rdname updateList
 setMethod(
@@ -322,4 +334,5 @@ setMethod(
   signature = c("NULL", "NULL"),
   definition = function(x, y) {
     return(list())
-})
+  }
+)

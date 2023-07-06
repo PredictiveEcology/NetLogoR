@@ -21,13 +21,16 @@ Numeric. Vector of length \code{n} of \code{ycor} coordinates.
 Report \code{n} random \code{ycor} coordinates within the \code{world}'s extent.
 }
 \examples{
-w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-                          data = runif(25))
-t1 <- createTurtles(n = 10, coords = cbind(xcor = randomXcor(world = w1, n = 10),
-                                           ycor = randomYcor(world = w1, n = 10)))
+w1 <- createWorld(
+  minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+  data = runif(25)
+)
+t1 <- createTurtles(n = 10, coords = cbind(
+  xcor = randomXcor(world = w1, n = 10),
+  ycor = randomYcor(world = w1, n = 10)
+))
 plot(w1)
 points(t1, col = of(agents = t1, var = "color"), pch = 16)
-
 
 }
 \references{

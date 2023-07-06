@@ -44,19 +44,25 @@ defineModule(sim, list(
                     "Probability in % of a wolf reproducing at each time step")
   ),
   outputObjects = bindrows(
-    createsOutput(objectName = "field", objectClass = "worldArray", desc = "Contains both grass and countdown maps"),
-    createsOutput(objectName = "grass", objectClass = "worldMatrix", desc = "Describes the 'grass' habitat to consume"),
-    createsOutput(objectName = "sheep", objectClass = "agentMatrix", desc = "Describes the prey agent"),
-    createsOutput(objectName = "wolves", objectClass = "agentMatrix", desc = "Describes the predator agent"),
-    createsOutput(objectName = "numSheep", objectClass = "numeric", desc = "keep track of how many sheep there are"),
-    createsOutput(objectName = "numWolves", objectClass = "numeric", desc = "keep track of how many wolves there are"),
-    createsOutput(objectName = "numGreen", objectClass = "numeric", desc = "keep track of how much 'green' food there is")
-
+    createsOutput(objectName = "field", objectClass = "worldArray",
+                  desc = "Contains both grass and countdown maps"),
+    createsOutput(objectName = "grass", objectClass = "worldMatrix",
+                  desc = "Describes the 'grass' habitat to consume"),
+    createsOutput(objectName = "sheep", objectClass = "agentMatrix",
+                  desc = "Describes the prey agent"),
+    createsOutput(objectName = "wolves", objectClass = "agentMatrix",
+                  desc = "Describes the predator agent"),
+    createsOutput(objectName = "numSheep", objectClass = "numeric",
+                  desc = "keep track of how many sheep there are"),
+    createsOutput(objectName = "numWolves", objectClass = "numeric",
+                  desc = "keep track of how many wolves there are"),
+    createsOutput(objectName = "numGreen", objectClass = "numeric",
+                  desc = "keep track of how much 'green' food there is")
   )
 ))
 
 ## event types
-#   - type `init` is required for initialiazation
+#   - type `init` is required for initialization
 
 doEvent.WolfSheepPredation <- function(sim, eventTime, eventType, debug = FALSE) {
   if (eventType == "init") {
@@ -67,35 +73,24 @@ doEvent.WolfSheepPredation <- function(sim, eventTime, eventType, debug = FALSE)
     sim <- Init(sim)
 
     # schedule future event(s)
-    sim <- scheduleEvent(sim, P(sim)$.plotInitialTime,
-                         "WolfSheepPredation", "plot")
-    sim <- scheduleEvent(sim, P(sim)$.saveInitialTime,
-                         "WolfSheepPredation", "save")
+    sim <- scheduleEvent(sim, P(sim)$.plotInitialTime, "WolfSheepPredation", "plot")
+    sim <- scheduleEvent(sim, P(sim)$.saveInitialTime, "WolfSheepPredation", "save")
     sim <- scheduleEvent(sim, start(sim), "WolfSheepPredation", "event")
 
     if (!is.na(P(sim)$.plotInitialTime))
-      if (identical(names(dev.cur()), "RStudioGD") && !quickPlot::isRstudioServer()) dev(noRStudioGD = TRUE)
-
-
+      if (identical(names(dev.cur()), "RStudioGD") &&
+          !quickPlot::isRstudioServer()) dev(noRStudioGD = TRUE)
   } else if (eventType == "plot") {
-
     sim <- Position(sim)
     sim <- PopSize(sim)
 
-    sim <- scheduleEvent(sim, time(sim) + P(sim)$.plotInterval,
-                         "WolfSheepPredation", "plot")
-
+    sim <- scheduleEvent(sim, time(sim) + P(sim)$.plotInterval, "WolfSheepPredation", "plot")
   } else if (eventType == "save") {
-
     sim <- Save(sim)
-    sim <- scheduleEvent(sim, time(sim) + P(sim)$.saveInterval,
-                         "WolfSheepPredation", "save")
-
+    sim <- scheduleEvent(sim, time(sim) + P(sim)$.saveInterval, "WolfSheepPredation", "save")
   } else if (eventType == "event") {
-
     sim <- Event(sim)
     sim <- scheduleEvent(sim, time(sim) + 1, "WolfSheepPredation", "event")
-
   } else {
     warning(paste("Undefined event type: '", current(sim)[1, "eventType", with = FALSE],
                   "' in module '", current(sim)[1, "moduleName", with = FALSE], "'", sep = ""))
@@ -233,8 +228,8 @@ PopSize <- function(sim) {
 }
 
 ### template for the main event using the different functions defined under
-Event <- function(sim){
-  if (NLany(sim$sheep) | NLany(sim$wolves)) {
+Event <- function(sim) {
+  if (NLany(sim$sheep) || NLany(sim$wolves)) {
     # Ask sheep
     if (NLcount(sim$sheep) != 0) {
       moveSheep(sim)
@@ -267,7 +262,6 @@ Event <- function(sim){
     if (P(sim)$grassOn == TRUE) {
       growGrass(sim)
     }
-
   }
 
   return(invisible(sim))

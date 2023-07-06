@@ -38,7 +38,6 @@ w3 <- stackWorlds(w1, w2)
 r3 <- world2spatRast(w3)
 terra::plot(r3)
 
-
 }
 \author{
 Sarah Bauduin

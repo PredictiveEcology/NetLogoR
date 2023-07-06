@@ -23,7 +23,7 @@ if (requireNamespace("SpaDES.core") && requireNamespace("SpaDES.tools")) {
   # Plot outputs
   dev(6)
   clearPlot()
-  timeStep <- 1:length(wolfSheepRun$numSheep)
+  timeStep <- seq_along(wolfSheepRun$numSheep)
 
   maxSheep <- max(wolfSheepRun$numSheep)
   maxWolves <- max(wolfSheepRun$numWolves)

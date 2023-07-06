@@ -30,7 +30,6 @@
 #' NLall(agents = t1, var = "xcor", val = 1)
 #' NLall(agents = t1, var = "heading", val = 2)
 #'
-#'
 #' @export
 #' @rdname NLall
 #' @aliases all
@@ -41,7 +40,8 @@ setGeneric(
   "NLall",
   function(agents, world, var, val) {
     standardGeneric("NLall")
-  })
+  }
+)
 
 #' @export
 #' @rdname NLall
@@ -110,7 +110,6 @@ setMethod(
 #' NLany(t1)
 #' NLany(t2)
 #'
-#'
 #' @export
 #' @rdname NLany
 #' @aliases any
@@ -121,7 +120,8 @@ setGeneric(
   "NLany",
   function(agents) {
     standardGeneric("NLany")
-  })
+  }
+)
 
 #' @export
 #' @rdname NLany
@@ -129,12 +129,9 @@ setMethod(
   "NLany",
   signature = c("matrix"),
   definition = function(agents) {
-
     if (inherits(agents, "agentMatrix")) {
       anyAgents <- ifelse(NROW(agents) == 0, FALSE, TRUE)
-
     } else {
-
       anyAgents <- ifelse(NROW(agents) == 0, FALSE, TRUE)
 
       if (anyAgents == TRUE) {
@@ -175,7 +172,6 @@ setMethod(
 #' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 #' NLcount(t1) # 10 turtles
 #'
-#'
 #' @export
 #' @rdname NLcount
 #' @aliases count
@@ -186,7 +182,8 @@ setGeneric(
   "NLcount",
   function(agents) {
     standardGeneric("NLcount")
-  })
+  }
+)
 
 #' @export
 #' @rdname NLcount
@@ -227,8 +224,10 @@ setMethod(
 #'
 #' @examples
 #' # Patches
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-#'                           data = sample(1:5, size = 25, replace = TRUE))
+#' w1 <- createWorld(
+#'   minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+#'   data = sample(1:5, size = 25, replace = TRUE)
+#' )
 #' plot(w1)
 #' p1 <- sortOn(agents = patches(w1), world = w1)
 #'
@@ -251,7 +250,8 @@ setGeneric(
   "sortOn",
   function(agents, world, var) {
     standardGeneric("sortOn")
-  })
+  }
+)
 
 #' @export
 #' @rdname sortOn
@@ -271,7 +271,6 @@ setMethod(
   "sortOn",
   signature = c("matrix", "worldArray", "character"),
   definition = function(agents, world, var) {
-
     agentsVal <- world[agents[, 1], agents[, 2]]
     pCoords <- agents[order(agentsVal[, var]), ]
     return(pCoords)
@@ -284,7 +283,6 @@ setMethod(
   "sortOn",
   signature = c("agentMatrix", "missing", "character"),
   definition = function(agents, var) {
-
     if (NROW(agents) > 1) {
       agents@.Data <- agents@.Data[order(agents@.Data[, var]), ]
     }
@@ -324,17 +322,20 @@ setMethod(
 #'
 #' @examples
 #' # Patches
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-#'                           data = sample(1:5, size = 25, replace = TRUE))
+#' w1 <- createWorld(
+#'   minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+#'   data = sample(1:5, size = 25, replace = TRUE)
+#' )
 #' plot(w1)
 #' p2 <- NLwith(agents = patches(w1), world = w1, val = 2)
 #'
 #' # Turtles
-#' t1 <- createTurtles(n = 5, coords = randomXYcor(w1, n = 5),
-#'                     breed = c("sheep", "sheep", "wolf", "sheep", "sheperd"))
+#' t1 <- createTurtles(
+#'   n = 5, coords = randomXYcor(w1, n = 5),
+#'   breed = c("sheep", "sheep", "wolf", "sheep", "sheperd")
+#' )
 #' t2 <- NLwith(agents = t1, var = "breed", val = "sheep")
 #' t3 <- NLwith(agents = t1, var = "breed", val = c("sheep", "wolf"))
-#'
 #'
 #' @export
 #' @rdname NLwith
@@ -346,7 +347,8 @@ setGeneric(
   "NLwith",
   function(agents, world, var, val) {
     standardGeneric("NLwith")
-  })
+  }
+)
 
 #' @export
 #' @rdname NLwith
@@ -354,7 +356,6 @@ setMethod(
   "NLwith",
   signature = c("matrix", "worldMatrix", "missing", "ANY"),
   definition = function(agents, world, val) {
-
     agentsValues <- world[agents[, 1], agents[, 2], drop = FALSE]
     pVal <- which(agentsValues %in% val)
     return(agents[pVal, , drop = FALSE])
@@ -383,18 +384,22 @@ setMethod(
   definition = function(agents, var, val) {
     # simpler for speed if only 1 val
     if (length(val) == 1) {
-      if(is.na(val)){
+      if (is.na(val)) {
         toReturn <- agents[is.na(agents@.Data[, var, drop = FALSE]), ]
       } else {
         if (!is.numeric(val)) {
-          toReturn <- (agents[agents@levels[[var]][agents@.Data[, var, drop = FALSE]] == val, , drop = FALSE])
+          toReturn <- (agents[agents@levels[[var]][agents@.Data[, var, drop = FALSE]] == val, ,
+            drop = FALSE
+          ])
         } else {
           toReturn <- agents[agents@.Data[, var] == val, , drop = FALSE]
         }
       }
     } else {
       if (!is.numeric(val)) {
-        toReturn <- (agents[agents@levels[[var]][agents@.Data[, var, drop = FALSE]] %in% val, , drop = FALSE])
+        toReturn <- (agents[agents@levels[[var]][agents@.Data[, var, drop = FALSE]] %in% val, ,
+          drop = FALSE
+        ])
       } else {
         toReturn <- agents[agents@.Data[, var, drop = FALSE] %in% val, , drop = FALSE]
       }
@@ -430,16 +435,19 @@ setMethod(
 #'
 #' @examples
 #' # Patches
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-#'                           data = sample(1:5, size = 25, replace = TRUE))
+#' w1 <- createWorld(
+#'   minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+#'   data = sample(1:5, size = 25, replace = TRUE)
+#' )
 #' plot(w1)
 #' p1 <- withMax(agents = patches(w1), world = w1)
 #'
 #' # Turtles
-#' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10),
-#'                     heading = sample(1:3, size = 10, replace= TRUE))
+#' t1 <- createTurtles(
+#'   n = 10, coords = randomXYcor(w1, n = 10),
+#'   heading = sample(1:3, size = 10, replace = TRUE)
+#' )
 #' t2 <- withMax(agents = t1, var = "heading")
-#'
 #'
 #' @export
 #' @rdname withMax
@@ -450,7 +458,8 @@ setGeneric(
   "withMax",
   function(agents, world, var) {
     standardGeneric("withMax")
-  })
+  }
+)
 
 #' @export
 #' @rdname withMax
@@ -458,7 +467,6 @@ setMethod(
   "withMax",
   signature = c("matrix", "worldMatrix", "missing"),
   definition = function(agents, world) {
-
     val <- of(world = world, agents = agents)
 
     if (length(val[is.na(val)]) == length(val)) {
@@ -477,7 +485,6 @@ setMethod(
   "withMax",
   signature = c("matrix", "worldArray", "character"),
   definition = function(agents, world, var) {
-
     val <- of(world = world, agents = agents, var = var)
 
     if (length(val[is.na(val)]) == length(val)) {
@@ -496,7 +503,6 @@ setMethod(
   "withMax",
   signature = c("agentMatrix", "missing", "character"),
   definition = function(agents, var) {
-
     val <- of(agents = agents, var = var)
 
     if (length(val[is.na(val)]) == length(val)) {
@@ -537,16 +543,19 @@ setMethod(
 #'
 #' @examples
 #' # Patches
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-#'                           data = sample(1:5, size = 25, replace = TRUE))
+#' w1 <- createWorld(
+#'   minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+#'   data = sample(1:5, size = 25, replace = TRUE)
+#' )
 #' plot(w1)
 #' p1 <- withMin(agents = patches(w1), world = w1)
 #'
 #' # Turtles
-#' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10),
-#'                     heading = sample(1:3, size = 10, replace= TRUE))
+#' t1 <- createTurtles(
+#'   n = 10, coords = randomXYcor(w1, n = 10),
+#'   heading = sample(1:3, size = 10, replace = TRUE)
+#' )
 #' t2 <- withMin(agents = t1, var = "heading")
-#'
 #'
 #' @export
 #' @rdname withMin
@@ -557,7 +566,8 @@ setGeneric(
   "withMin",
   function(agents, world, var) {
     standardGeneric("withMin")
-  })
+  }
+)
 
 #' @export
 #' @rdname withMin
@@ -565,7 +575,6 @@ setMethod(
   "withMin",
   signature = c("matrix", "worldMatrix", "missing"),
   definition = function(agents, world) {
-
     val <- of(world = world, agents = agents)
 
     if (length(val[is.na(val)]) == length(val)) {
@@ -584,7 +593,6 @@ setMethod(
   "withMin",
   signature = c("matrix", "worldArray", "character"),
   definition = function(agents, world, var) {
-
     val <- of(world = world, agents = agents, var = var)
 
     if (length(val[is.na(val)]) == length(val)) {
@@ -603,7 +611,6 @@ setMethod(
   "withMin",
   signature = c("agentMatrix", "missing", "character"),
   definition = function(agents, var) {
-
     val <- of(agents = agents, var = var)
 
     if (length(val[is.na(val)]) == length(val)) {
@@ -652,16 +659,19 @@ setMethod(
 #'
 #' @examples
 #' # Patches
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-#'                           data = sample(1:5, size = 25, replace = TRUE))
+#' w1 <- createWorld(
+#'   minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+#'   data = sample(1:5, size = 25, replace = TRUE)
+#' )
 #' plot(w1)
 #' p1 <- maxOneOf(agents = patches(w1), world = w1)
 #'
 #' # Turtles
-#' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10),
-#'                     heading = sample(1:3, size = 10, replace= TRUE))
+#' t1 <- createTurtles(
+#'   n = 10, coords = randomXYcor(w1, n = 10),
+#'   heading = sample(1:3, size = 10, replace = TRUE)
+#' )
 #' t2 <- maxOneOf(agents = t1, var = "heading")
-#'
 #'
 #' @export
 #' @rdname maxOneOf
@@ -672,7 +682,8 @@ setGeneric(
   "maxOneOf",
   function(agents, world, var) {
     standardGeneric("maxOneOf")
-  })
+  }
+)
 
 #' @export
 #' @rdname maxOneOf
@@ -681,7 +692,7 @@ setMethod(
   signature = c("matrix", "worldMatrix", "missing"),
   definition = function(agents, world) {
     maxAgents <- withMax(world = world, agents = agents)
-    row <- resample(1:NROW(maxAgents), size = 1)
+    row <- resample(seq_len(NROW(maxAgents)), size = 1)
     return(maxAgents[row, , drop = FALSE])
   }
 )
@@ -693,7 +704,7 @@ setMethod(
   signature = c("matrix", "worldArray", "character"),
   definition = function(agents, world, var) {
     maxAgents <- withMax(world = world, agents = agents, var = var)
-    row <- resample(1:NROW(maxAgents), size = 1)
+    row <- resample(seq_len(NROW(maxAgents)), size = 1)
     return(maxAgents[row, , drop = FALSE])
   }
 )
@@ -746,16 +757,19 @@ setMethod(
 #'
 #' @examples
 #' # Patches
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-#'                           data = sample(1:5, size = 25, replace = TRUE))
+#' w1 <- createWorld(
+#'   minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+#'   data = sample(1:5, size = 25, replace = TRUE)
+#' )
 #' plot(w1)
 #' p1 <- minOneOf(agents = patches(w1), world = w1)
 #'
 #' # Turtles
-#' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10),
-#'                     heading = sample(1:3, size = 10, replace= TRUE))
+#' t1 <- createTurtles(
+#'   n = 10, coords = randomXYcor(w1, n = 10),
+#'   heading = sample(1:3, size = 10, replace = TRUE)
+#' )
 #' t2 <- minOneOf(agents = t1, var = "heading")
-#'
 #'
 #' @export
 #' @rdname minOneOf
@@ -766,7 +780,8 @@ setGeneric(
   "minOneOf",
   function(agents, world, var) {
     standardGeneric("minOneOf")
-  })
+  }
+)
 
 #' @export
 #' @rdname minOneOf
@@ -775,7 +790,7 @@ setMethod(
   signature = c("matrix", "worldMatrix", "missing"),
   definition = function(agents, world) {
     minAgents <- withMin(world = world, agents = agents)
-    row <- resample(1:NROW(minAgents), size = 1)
+    row <- resample(seq_len(NROW(minAgents)), size = 1)
     return(minAgents[row, , drop = FALSE])
   }
 )
@@ -787,7 +802,7 @@ setMethod(
   signature = c("matrix", "worldArray", "character"),
   definition = function(agents, world, var) {
     minAgents <- withMin(world = world, agents = agents, var = var)
-    row <- resample(1:NROW(minAgents), size = 1)
+    row <- resample(seq_len(NROW(minAgents)), size = 1)
     return(minAgents[row, , drop = FALSE])
   }
 )
@@ -843,13 +858,14 @@ setMethod(
 #'
 #' @examples
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
-#' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10),
-#'                     heading = sample(1:3, size = 10, replace= TRUE))
+#' t1 <- createTurtles(
+#'   n = 10, coords = randomXYcor(w1, n = 10),
+#'   heading = sample(1:3, size = 10, replace = TRUE)
+#' )
 #' isNLclass(agents = patches(w1), class = "patch")
 #' isNLclass(agents = patches(w1), class = "patcheset")
 #' isNLclass(agents = t1, class = "agentset")
 #' isNLclass(agents = t1, class = "turtleset")
-#'
 #'
 #' @export
 #' @rdname isNLclass
@@ -860,7 +876,8 @@ setGeneric(
   "isNLclass",
   function(agents, class) {
     standardGeneric("isNLclass")
-  })
+  }
+)
 
 #' @export
 #' @rdname isNLclass
@@ -877,9 +894,11 @@ setMethod(
         class <- "turtleset"
       }
 
-      if (all(colnames(agents@.Data)[1:8] == c("xcor", "ycor", "who", "heading",
-                                               "prevX", "prevY", "breed", "color") &
-              NLcount(agents) != 0)) {
+      if (all(colnames(agents@.Data)[1:8] == c(
+        "xcor", "ycor", "who", "heading",
+        "prevX", "prevY", "breed", "color"
+      ) &
+        NLcount(agents) != 0)) {
         if (NLcount(agents) == 1) {
           agentsClass <- "turtle"
         } else {
@@ -966,7 +985,6 @@ setMethod(
 #' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 #' tSelect <- nOf(agents = t1, n = 2)
 #'
-#'
 #' @export
 #' @rdname nOf
 #'
@@ -976,7 +994,8 @@ setGeneric(
   "nOf",
   function(agents, n) {
     standardGeneric("nOf")
-  })
+  }
+)
 
 #' @export
 #' @rdname nOf
@@ -984,16 +1003,15 @@ setMethod(
   "nOf",
   signature = c("matrix", "numeric"),
   definition = function(agents, n) {
-
     if (inherits(agents, "agentMatrix")) {
-      row <- resample(1:NROW(agents), size = n, replace = FALSE)
+      row <- resample(seq_len(NROW(agents)), size = n, replace = FALSE)
       row <- row[order(row)]
       turtles <- agents[row, , drop = FALSE]
       return(turtles)
     } else {
-      if (ncol(agents) == 2 & colnames(agents)[1] == "pxcor") {
+      if (ncol(agents) == 2 && colnames(agents)[1] == "pxcor") {
         # patches
-        row <- resample(1:NROW(agents), size = n, replace = FALSE)
+        row <- resample(seq_len(NROW(agents)), size = n, replace = FALSE)
         row <- row[order(row)]
         patches <- agents[row, , drop = FALSE]
         return(patches)
@@ -1004,21 +1022,26 @@ setMethod(
         } else {
           if (ncol(agents) == 3) {
             # patches with id
-            row <- tapply(X = 1:nrow(agents), INDEX = as.factor(agents[, "id"]),
-                          FUN = function(x) resample(x, size = n, replace = FALSE))
+            row <- tapply(
+              X = seq_len(NROW(agents)), INDEX = as.factor(agents[, "id"]),
+              FUN = function(x) resample(x, size = n, replace = FALSE)
+            )
             patches <- agents[unlist(row), c("pxcor", "pycor")]
             return(patches)
           } else {
             # whoNUmbers of turtles with id
-            row <- tapply(X = 1:nrow(agents), INDEX = as.factor(agents[, "id"]),
-                          FUN = function(x) resample(x, size = n, replace = FALSE))
+            row <- tapply(
+              X = seq_len(NROW(agents)), INDEX = as.factor(agents[, "id"]),
+              FUN = function(x) resample(x, size = n, replace = FALSE)
+            )
             turtles <- agents[unlist(row), "whoTurtles"]
             return(turtles)
           }
         }
       }
     }
-})
+  }
+)
 
 ################################################################################
 #' One random `agent`
@@ -1074,7 +1097,6 @@ setMethod(
 #' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 #' tSelect <- oneOf(agents = t1)
 #'
-#'
 #' @export
 #' @rdname oneOf
 #'
@@ -1084,7 +1106,8 @@ setGeneric(
   "oneOf",
   function(agents) {
     standardGeneric("oneOf")
-  })
+  }
+)
 
 #' @export
 #' @rdname oneOf
@@ -1148,16 +1171,19 @@ setMethod(
 #'
 #' @examples
 #' # Patches
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-#'                           data = sample(1:10, size = 25, replace = TRUE))
+#' w1 <- createWorld(
+#'   minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+#'   data = sample(1:10, size = 25, replace = TRUE)
+#' )
 #' plot(w1)
 #' p1 <- maxNof(agents = patches(w1), n = 6, world = w1)
 #'
 #' # Turtles
-#' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10),
-#'                     heading = sample(1:5, size = 10, replace= TRUE))
+#' t1 <- createTurtles(
+#'   n = 10, coords = randomXYcor(w1, n = 10),
+#'   heading = sample(1:5, size = 10, replace = TRUE)
+#' )
 #' t2 <- maxNof(agents = t1, n = 5, var = "heading")
-#'
 #'
 #' @export
 #' @rdname maxNof
@@ -1168,7 +1194,8 @@ setGeneric(
   "maxNof",
   function(agents, n, world, var) {
     standardGeneric("maxNof")
-  })
+  }
+)
 
 #' @export
 #' @rdname maxNof
@@ -1176,7 +1203,6 @@ setMethod(
   "maxNof",
   signature = c("matrix", "numeric", "worldMatrix", "missing"),
   definition = function(agents, n, world) {
-
     if (n == 1) {
       maxOneOf(agents = agents, world = world)
     } else if (n == 0) {
@@ -1184,7 +1210,6 @@ setMethod(
     } else if (n == NROW(agents)) {
       return(agents)
     } else {
-
       val <- of(world = world, agents = agents)
       agentsVal <- cbind(val, agents)
       agentsVal <- agentsVal[order(-agentsVal[, "val"]), ] # decreasing order
@@ -1195,10 +1220,13 @@ setMethod(
       # To break ties randomly
       if (NROW(maxAgents) != n) {
         nToRemove <- NROW(maxAgents) - n # how many ties to remove
-        toKeep <- sample(1:NROW(maxAgents[maxAgents[, "val"] == minVal, ]),
-                         size = NROW(maxAgents[maxAgents[, "val"] == minVal, ]) - nToRemove)
-        maxAgents <- rbind(maxAgents[maxAgents[, "val"] > minVal, ],
-                           maxAgents[maxAgents[, "val"] == minVal, ][toKeep, ])
+        toKeep <- sample(seq_len(NROW(maxAgents[maxAgents[, "val"] == minVal, ])),
+          size = NROW(maxAgents[maxAgents[, "val"] == minVal, ]) - nToRemove
+        )
+        maxAgents <- rbind(
+          maxAgents[maxAgents[, "val"] > minVal, ],
+          maxAgents[maxAgents[, "val"] == minVal, ][toKeep, ]
+        )
       }
 
       return(maxAgents[, c("pxcor", "pycor"), drop = FALSE])
@@ -1212,7 +1240,6 @@ setMethod(
   "maxNof",
   signature = c("matrix", "numeric", "worldArray", "character"),
   definition = function(agents, n, world, var) {
-
     if (n == 1) {
       maxOneOf(agents = agents, world = world, var = var)
     } else if (n == 0) {
@@ -1230,10 +1257,13 @@ setMethod(
       # To break ties randomly
       if (NROW(maxAgents) != n) {
         nToRemove <- NROW(maxAgents) - n # how many ties to remove
-        toKeep <- sample(1:NROW(maxAgents[maxAgents[, "val"] == minVal, ]),
-                         size = NROW(maxAgents[maxAgents[, "val"] == minVal, ]) - nToRemove)
-        maxAgents <- rbind(maxAgents[maxAgents[, "val"] > minVal, ],
-                           maxAgents[maxAgents[, "val"] == minVal, ][toKeep, ])
+        toKeep <- sample(seq_len(NROW(maxAgents[maxAgents[, "val"] == minVal, ])),
+          size = NROW(maxAgents[maxAgents[, "val"] == minVal, ]) - nToRemove
+        )
+        maxAgents <- rbind(
+          maxAgents[maxAgents[, "val"] > minVal, ],
+          maxAgents[maxAgents[, "val"] == minVal, ][toKeep, ]
+        )
       }
 
       return(maxAgents[, c("pxcor", "pycor"), drop = FALSE])
@@ -1255,7 +1285,7 @@ setMethod(
       return(agents)
     } else {
       tData <- inspect(agents, who = agents@.Data[, "who"])
-      rownames(tData) <- 1:NROW(tData)
+      rownames(tData) <- seq_len(NROW(tData))
       tData <- tData[order(-tData[, var]), , drop = FALSE] # decreasing order
 
       minVal <- min(tData[1:n, var], na.rm = TRUE)
@@ -1264,10 +1294,15 @@ setMethod(
       # To break ties randomly
       if (NROW(maxAgents) != n) {
         nToRemove <- NROW(maxAgents) - n # how many ties to remove
-        toKeep <- sample(1:NROW(maxAgents[maxAgents[, var] == minVal, ]),
-                         size = NROW(maxAgents[maxAgents[, var] == minVal, ]) - nToRemove)
-        maxAgents <- rbind(maxAgents[maxAgents[, var] > minVal, , drop = FALSE],
-                           maxAgents[maxAgents[, var] == minVal, , drop = FALSE][toKeep, , drop = FALSE])
+        toKeep <- sample(seq_len(NROW(maxAgents[maxAgents[, var] == minVal, ])),
+          size = NROW(maxAgents[maxAgents[, var] == minVal, ]) - nToRemove
+        )
+        maxAgents <- rbind(
+          maxAgents[maxAgents[, var] > minVal, , drop = FALSE],
+          maxAgents[maxAgents[, var] == minVal, , drop = FALSE][toKeep, ,
+            drop = FALSE
+          ]
+        )
       }
 
       tSelect <- as.numeric(rownames(maxAgents))
@@ -1309,16 +1344,19 @@ setMethod(
 #'
 #' @examples
 #' # Patches
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-#'                   data = sample(1:10, size = 25, replace = TRUE))
+#' w1 <- createWorld(
+#'   minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+#'   data = sample(1:10, size = 25, replace = TRUE)
+#' )
 #' plot(w1)
 #' p1 <- minNof(agents = patches(w1), n = 6, world = w1)
 #'
 #' # Turtles
-#' t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10),
-#'                     heading = sample(1:5, size = 10, replace= TRUE))
+#' t1 <- createTurtles(
+#'   n = 10, coords = randomXYcor(w1, n = 10),
+#'   heading = sample(1:5, size = 10, replace = TRUE)
+#' )
 #' t2 <- minNof(agents = t1, n = 5, var = "heading")
-#'
 #'
 #' @export
 #' @rdname minNof
@@ -1329,7 +1367,8 @@ setGeneric(
   "minNof",
   function(agents, n, world, var) {
     standardGeneric("minNof")
-})
+  }
+)
 
 #' @export
 #' @rdname minNof
@@ -1344,10 +1383,9 @@ setMethod(
     } else if (n == NROW(agents)) {
       return(agents)
     } else {
-
       val <- of(world = world, agents = agents)
       agentsVal <- cbind(val, agents)
-      agentsVal <- agentsVal[order(agentsVal[, "val", drop = FALSE]), , drop = FALSE] # increasing order
+      agentsVal <- agentsVal[order(agentsVal[, "val", drop = FALSE]), , drop = FALSE] # incr. order
 
       maxVal <- max(agentsVal[1:n, "val", drop = FALSE], na.rm = TRUE)
       minAgents <- agentsVal[agentsVal[, "val"] <= maxVal, , drop = FALSE]
@@ -1355,10 +1393,21 @@ setMethod(
       # To break ties randomly
       if (NROW(minAgents) != n) {
         nToRemove <- NROW(minAgents) - n # how many ties to remove
-        toKeep <- sample(1:NROW(minAgents[minAgents[, "val", drop = FALSE] == maxVal, , drop = FALSE]),
-                         size = NROW(minAgents[minAgents[, "val", drop = FALSE] == maxVal, , drop = FALSE]) - nToRemove)
-        minAgents <- rbind(minAgents[minAgents[, "val", drop = FALSE] < maxVal, , drop = FALSE],
-                           minAgents[minAgents[, "val", drop = FALSE] == maxVal, , drop = FALSE][toKeep, , drop = FALSE])
+        toKeep <- sample(
+          seq_len(NROW(minAgents[minAgents[, "val", drop = FALSE] == maxVal, ,
+            drop = FALSE
+          ])),
+          size = NROW(minAgents[minAgents[, "val", drop = FALSE] == maxVal, ,
+            drop = FALSE
+          ]) - nToRemove
+        )
+        minAgents <- rbind(
+          minAgents[minAgents[, "val", drop = FALSE] < maxVal, , drop = FALSE],
+          minAgents[minAgents[, "val", drop = FALSE] == maxVal, , drop = FALSE][
+            toKeep, ,
+            drop = FALSE
+          ]
+        )
       }
 
       return(minAgents[, c("pxcor", "pycor"), drop = FALSE])
@@ -1379,10 +1428,9 @@ setMethod(
     } else if (n == NROW(agents)) {
       return(agents)
     } else {
-
       val <- of(world = world, agents = agents, var = var)
       agentsVal <- cbind(val, agents)
-      agentsVal <- agentsVal[order(agentsVal[, "val", drop = FALSE]), , drop = FALSE] # increasing order
+      agentsVal <- agentsVal[order(agentsVal[, "val", drop = FALSE]), , drop = FALSE] # incr. order
 
       maxVal <- max(agentsVal[1:n, "val", drop = FALSE], na.rm = TRUE)
       minAgents <- agentsVal[agentsVal[, "val", drop = FALSE] <= maxVal, , drop = FALSE]
@@ -1390,10 +1438,20 @@ setMethod(
       # To break ties randomly
       if (NROW(minAgents) != n) {
         nToRemove <- NROW(minAgents) - n # how many ties to remove
-        toKeep <- sample(1:NROW(minAgents[minAgents[, "val", drop = FALSE] == maxVal, , drop = FALSE]),
-                         size = NROW(minAgents[minAgents[, "val"] == maxVal, , drop = FALSE]) - nToRemove)
-        minAgents <- rbind(minAgents[minAgents[, "val", drop = FALSE] < maxVal, , drop = FALSE],
-                           minAgents[minAgents[, "val", drop = FALSE] == maxVal, , drop = FALSE][toKeep, , drop = FALSE])
+        toKeep <- sample(
+          seq_len(NROW(minAgents[minAgents[, "val", drop = FALSE] == maxVal, ,
+            drop = FALSE
+          ])),
+          size = NROW(minAgents[minAgents[, "val"] == maxVal, , drop = FALSE]) -
+            nToRemove
+        )
+        minAgents <- rbind(
+          minAgents[minAgents[, "val", drop = FALSE] < maxVal, , drop = FALSE],
+          minAgents[minAgents[, "val", drop = FALSE] == maxVal, , drop = FALSE][
+            toKeep, ,
+            drop = FALSE
+          ]
+        )
       }
 
       return(minAgents[, c("pxcor", "pycor"), drop = FALSE])
@@ -1414,9 +1472,8 @@ setMethod(
     } else if (n == NLcount(agents)) {
       return(agents)
     } else {
-
       tData <- inspect(agents, who = agents@.Data[, "who"])
-      rownames(tData) <- 1:NROW(tData)
+      rownames(tData) <- seq_len(NROW(tData))
       tData <- tData[order(tData[, var]), , drop = FALSE] # increasing order
 
       maxVal <- max(tData[1:n, var], na.rm = TRUE)
@@ -1425,10 +1482,15 @@ setMethod(
       # To break ties randomly
       if (NROW(minAgents) != n) {
         nToRemove <- NROW(minAgents) - n # how many ties to remove
-        toKeep <- sample(1:NROW(minAgents[minAgents[, var] == maxVal, ]),
-                         size = NROW(minAgents[minAgents[, var] == maxVal, ]) - nToRemove)
-        minAgents <- rbind(minAgents[minAgents[, var] < maxVal, , drop = FALSE],
-                           minAgents[minAgents[, var] == maxVal, , drop = FALSE][toKeep, , drop = FALSE])
+        toKeep <- sample(seq_len(NROW(minAgents[minAgents[, var] == maxVal, ])),
+          size = NROW(minAgents[minAgents[, var] == maxVal, ]) - nToRemove
+        )
+        minAgents <- rbind(
+          minAgents[minAgents[, var] < maxVal, , drop = FALSE],
+          minAgents[minAgents[, var] == maxVal, , drop = FALSE][toKeep, ,
+            drop = FALSE
+          ]
+        )
       }
 
       tSelect <- as.numeric(rownames(minAgents))
@@ -1493,7 +1555,6 @@ setMethod(
 #'   t3 <- inRadius(agents = turtle(t1, who = 0), radius = 2, agents2 = t1)
 #' }
 #'
-#'
 #' @export
 #' @rdname inRadius
 #'
@@ -1503,7 +1564,8 @@ setGeneric(
   "inRadius",
   function(agents, radius, agents2, world, torus = FALSE) {
     standardGeneric("inRadius")
-})
+  }
+)
 
 #' @export
 #' @rdname inRadius
@@ -1521,8 +1583,12 @@ setMethod(
       inRadius(agents = agents, radius = radius, agents2 = agents2, world = world, torus = torus)
     } else if (!inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
       # Transform the agents into sf to use st_buffer
-      if (!requireNamespace("sf"))
-        stop("to use inRadius on matrix objects (but not agentMatrix), please install.packages('sf')")
+      if (!requireNamespace("sf")) {
+        stop(
+          "to use inRadius on matrix objects (but not agentMatrix), ",
+          "please install.packages('sf')"
+        )
+      }
       agents_sf <- sf::st_as_sf(as.data.frame(agents), coords = c(1, 2))
       # Create buffers around the locations of agents
       aBuffer <- sf::st_buffer(agents_sf, dist = radius)
@@ -1535,51 +1601,69 @@ setMethod(
         agents2c <- agents2@.Data[, c("xcor", "ycor"), drop = FALSE]
         exts <- extents(world@extent)
 
-        agents2c1 <- cbind(agents2c[, 1] - (exts$xmax - exts$xmin),
-                           agents2c[, 2] + (exts$ymax - exts$ymin))
+        agents2c1 <- cbind(
+          agents2c[, 1] - (exts$xmax - exts$xmin),
+          agents2c[, 2] + (exts$ymax - exts$ymin)
+        )
         agents2c2 <- cbind(agents2c[, 1], agents2c[, 2] + (exts$ymax - exts$ymin))
-        agents2c3 <- cbind(agents2c[, 1] + (exts$xmax - exts$xmin),
-                           agents2c[, 2] + (exts$ymax - exts$ymin))
+        agents2c3 <- cbind(
+          agents2c[, 1] + (exts$xmax - exts$xmin),
+          agents2c[, 2] + (exts$ymax - exts$ymin)
+        )
         agents2c4 <- cbind(agents2c[, 1] - (exts$xmax - exts$xmin), agents2c[, 2])
         agents2c5 <- cbind(agents2c[, 1] + (exts$xmax - exts$xmin), agents2c[, 2])
-        agents2c6 <- cbind(agents2c[, 1] - (exts$xmax - exts$xmin),
-                           agents2c[, 2] - (exts$ymax - exts$ymin))
+        agents2c6 <- cbind(
+          agents2c[, 1] - (exts$xmax - exts$xmin),
+          agents2c[, 2] - (exts$ymax - exts$ymin)
+        )
         agents2c7 <- cbind(agents2c[, 1], agents2c[, 2] - (exts$ymax - exts$ymin))
-        agents2c8 <- cbind(agents2c[, 1] + (exts$xmax - exts$xmin),
-                           agents2c[, 2] - (exts$ymax - exts$ymin))
-        agents2cAll <- rbind(agents2c, agents2c1, agents2c2, agents2c3, agents2c4,
-                             agents2c5, agents2c6, agents2c7, agents2c8)
+        agents2c8 <- cbind(
+          agents2c[, 1] + (exts$xmax - exts$xmin),
+          agents2c[, 2] - (exts$ymax - exts$ymin)
+        )
+        agents2cAll <- rbind(
+          agents2c, agents2c1, agents2c2, agents2c3, agents2c4,
+          agents2c5, agents2c6, agents2c7, agents2c8
+        )
 
         # Extract the locations of agents2 under the buffers
         pOverL <- sf::st_intersects(
           aBuffer,
           sf::st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
-          sparse = TRUE)
+          sparse = TRUE
+        )
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(agents2cAll) <- c("x", "y")
         agentsWrap <- wrap(agents2cAll[pOver, , drop = FALSE], world@extent)
-        agentsXY <- unique(cbind(agentsWrap, id = rep(1:length(lengthID), lengthID)))
+        agentsXY <- unique(cbind(agentsWrap, id = rep(seq_along(lengthID), lengthID)))
 
         tOn <- merge(agentsXY, agents2@.Data[, c("xcor", "ycor", "who"), drop = FALSE],
-                     by.x = c("x", "y"), by.y = c("xcor", "ycor"))
+          by.x = c("x", "y"), by.y = c("xcor", "ycor")
+        )
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       } else {
         pOverL <- sf::st_intersects(
           aBuffer,
           sf::st_as_sf(inspect(agents2, who = agents2@.Data[, "who"]), coords = c("xcor", "ycor")),
-          sparse = TRUE)
+          sparse = TRUE
+        )
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- unique(cbind(agents2@.Data[pOver, c("xcor", "ycor"), drop = FALSE],
-                                 id = rep(1:length(lengthID), lengthID)))
+          id = rep(seq_along(lengthID), lengthID)
+        ))
 
         tOn <- merge(agentsXY, agents2@.Data[, c("xcor", "ycor", "who"), drop = FALSE])
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       }
     } else {
-      if (!requireNamespace("sf"))
-        stop("to use inRadius on matrix objects (but not agentMatrix), please install.packages('sf')")
+      if (!requireNamespace("sf")) {
+        stop(
+          "to use inRadius on matrix objects (but not agentMatrix), ",
+          "please install.packages('sf')"
+        )
+      }
       agents_sf <- sf::st_as_sf(as.data.frame(agents), coords = c(1, 2))
       # Create buffers around the locations of agents
       aBuffer <- sf::st_buffer(agents_sf, dist = radius * 1.0000001) ## (see #28)
@@ -1589,10 +1673,12 @@ setMethod(
           stop("A world must be provided as torus = TRUE")
         }
 
-        worldWrap <- createWorld(minPxcor = minPxcor(world) - radius,
-                                 maxPxcor = maxPxcor(world) + radius,
-                                 minPycor = minPycor(world) - radius,
-                                 maxPycor = maxPycor(world) + radius)
+        worldWrap <- createWorld(
+          minPxcor = minPxcor(world) - radius,
+          maxPxcor = maxPxcor(world) + radius,
+          minPycor = minPycor(world) - radius,
+          maxPycor = maxPycor(world) + radius
+        )
         pAllWrap <- patches(worldWrap)
 
         # Extract the locations of agents2 under the buffers
@@ -1603,7 +1689,7 @@ setMethod(
         lengthID <- unlist(lapply(pOverL, length))
         colnames(pAllWrap) <- c("x", "y")
         agentsWrap <- wrap(pAllWrap[pOver, , drop = FALSE], world@extent)
-        agentsXY <- unique(cbind(agentsWrap, id = rep(1:length(lengthID), lengthID)))
+        agentsXY <- unique(cbind(agentsWrap, id = rep(seq_along(lengthID), lengthID)))
         colnames(agentsXY)[1:2] <- c("pxcor", "pycor")
         return(agentsXY)
       } else {
@@ -1613,7 +1699,8 @@ setMethod(
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- cbind(agents2[pOver, , drop = FALSE],
-                          id = rep(1:length(lengthID), lengthID))
+          id = rep(seq_along(lengthID), lengthID)
+        )
 
         return(agentsXY)
       }
@@ -1679,7 +1766,6 @@ setMethod(
 #'   t2 <- inCone(turtles = turtle(t1, who = 0), radius = 2, angle = 90, agents = t1)
 #' }
 #'
-#'
 #' @export
 #' @rdname inCone
 #'
@@ -1689,7 +1775,8 @@ setGeneric(
   "inCone",
   function(turtles, radius, angle, agents, world, torus = FALSE) {
     standardGeneric("inCone")
-})
+  }
+)
 
 #' @export
 #' @rdname inCone
@@ -1700,15 +1787,19 @@ setMethod(
     if (inherits(agents, "agentMatrix")) {
       agentsCoords <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
       colnames(agentsCoords) <- c("pxcor", "pycor")
-      patchInCone <- inCone(turtles = turtles, radius = radius, angle = angle,
-                            agents = agentsCoords, world = world, torus = torus)
+      patchInCone <- inCone(
+        turtles = turtles, radius = radius, angle = angle,
+        agents = agentsCoords, world = world, torus = torus
+      )
       colnames(patchInCone)[1:2] <- c("xcor", "ycor")
       agentsInCone <- merge(patchInCone, agents@.Data[, c("xcor", "ycor", "who"), drop = FALSE])
       return(agentsInCone[order(agentsInCone[, "id"]), c("who", "id")])
     } else {
       # Find the patches within distances
-      agentsInRadius <- inRadius(agents = turtles, radius = radius, agents2 = agents,
-                                 world = world, torus = torus)
+      agentsInRadius <- inRadius(
+        agents = turtles, radius = radius, agents2 = agents,
+        world = world, torus = torus
+      )
       if (NROW(agentsInRadius) == 0) {
         # No patches are within radius distances for any turtles
         return(agentsInRadius)
@@ -1716,15 +1807,19 @@ setMethod(
         turtlesWith <- turtles[unique(agentsInRadius[, "id", drop = FALSE]), , drop = FALSE]
 
         # Direction from the turtle to each of their patches within radius distance
-        tDir <- lapply(unique(agentsInRadius[, "id" , drop = FALSE]), function(x) {
-          towards(world = world, agents = turtles[x,  , drop = FALSE],
-                  agents2 = agentsInRadius[agentsInRadius[, "id"] == x,
-                                           c("pxcor", "pycor"), drop = FALSE],
-                  torus = torus)
-          })
+        tDir <- lapply(unique(agentsInRadius[, "id", drop = FALSE]), function(x) {
+          towards(
+            world = world, agents = turtles[x, , drop = FALSE],
+            agents2 = agentsInRadius[agentsInRadius[, "id"] == x,
+              c("pxcor", "pycor"),
+              drop = FALSE
+            ],
+            torus = torus
+          )
+        })
         # Define the rotation angle between the turtle heading and the direction to each patches
-        tCone <- lapply(1:length(tDir), function(x) {
-          subHeadings(angle1 = tDir[[x]], angle2 = turtles[x,  , drop = FALSE], range360 = FALSE)
+        tCone <- lapply(seq_along(tDir), function(x) {
+          subHeadings(angle1 = tDir[[x]], angle2 = turtles[x, , drop = FALSE], range360 = FALSE)
         })
 
         angle <- angle / 2
@@ -1735,15 +1830,18 @@ setMethod(
         angle <- angle[unique(agentsInRadius[, "id"])]
 
         # Is the rotation to face the patches smaller than the maximum rotation allowed
-        pWithin <- lapply(1:length(unique(agentsInRadius[, "id"])), function(x) {
+        pWithin <- lapply(seq_along(unique(agentsInRadius[, "id"])), function(x) {
           posPatch <- which(abs(tCone[[x]]) < angle[x])
           unique(agentsInRadius[agentsInRadius[, "id"] == unique(agentsInRadius[, "id"])[x],
-                                c("pxcor", "pycor"), drop = FALSE][posPatch, , drop = FALSE])
+            c("pxcor", "pycor"),
+            drop = FALSE
+          ][posPatch, , drop = FALSE])
         })
 
         nAgents <- unlist(lapply(pWithin, NROW))
         agentsInCone <- cbind(do.call(rbind, pWithin),
-                              id = rep(unique(agentsInRadius[, "id", drop = FALSE]), nAgents))
+          id = rep(unique(agentsInRadius[, "id", drop = FALSE]), nAgents)
+        )
 
         return(agentsInCone)
       }
@@ -1795,7 +1893,6 @@ setMethod(
 #' t2 <- NLset(turtles = t1, agents = turtle(t1, who = 0), var = "heading", val = 180)
 #' of(agents = t2, var = "heading") # c(180, 0, 0)
 #'
-#'
 #' @export
 #' @rdname NLset
 #' @aliases set
@@ -1806,14 +1903,17 @@ setGeneric(
   "NLset",
   function(world, turtles, agents, var, val) {
     standardGeneric("NLset")
-})
+  }
+)
 
 #' @export
 #' @rdname NLset
 setMethod(
   "NLset",
-  signature = c(world = "missing", turtles = "agentMatrix", agents = "agentMatrix",
-                var = "character", val = "ANY"),
+  signature = c(
+    world = "missing", turtles = "agentMatrix", agents = "agentMatrix",
+    var = "character", val = "ANY"
+  ),
   definition = function(turtles, agents, var, val) {
     if (NROW(agents) != 0) {
       if (length(var) == 1) {
@@ -1829,8 +1929,10 @@ setMethod(
           # replace the levels number starting to 1 and increasing by 1
           # turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique,
           #                                to = rank(turtlesVarUnique))
-          turtlesVarUpdated <- rename(x = turtlesVar, from = turtlesVarUnique,
-                                         to = rank(turtlesVarUnique))
+          turtlesVarUpdated <- rename(
+            x = turtlesVar, from = turtlesVarUnique,
+            to = rank(turtlesVarUnique)
+          )
           # if (!identical(turtlesVarUpdated, a)) stop("mapvalues and rename different in NLset")
 
           turtles@.Data[, var] <- turtlesVarUpdated
@@ -1852,9 +1954,9 @@ setMethod(
       } else {
         varLevels <- which(var %in% names(turtles@levels))
         if (length(varLevels) != 0) {
-          varNum <- (1:length(var))[!(1:length(var)) %in% varLevels]
+          varNum <- (seq_along(var))[!(seq_along(var)) %in% varLevels]
         } else {
-          varNum <- 1:length(var)
+          varNum <- seq_along(var)
         }
 
         if (length(varLevels) != 0) {
@@ -1865,27 +1967,26 @@ setMethod(
             turtlesVarUnique <- unique(turtlesVar) # unique old levels numbers
             # levels in the order of the unique old levels numbers
             turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)
-                                                        [order(turtlesVarUnique)]]
+            [order(turtlesVarUnique)]]
             turtles@levels[[var[varLevels]]] <- turtlesLevelsVarUpdated
             # replace the levels number starting to 1 and increasing by 1
             # turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique,
             #                                to = rank(turtlesVarUnique))
-            turtlesVarUpdated <- rename(x = turtlesVar, from = turtlesVarUnique,
-                        to = rank(turtlesVarUnique))
-            # if (!identical(turtlesVarUpdated, a)) stop("mapvalues and rename different in NLset 2")
-
+            turtlesVarUpdated <- rename(
+              x = turtlesVar, from = turtlesVarUnique,
+              to = rank(turtlesVarUnique)
+            )
+            # if (!identical(turtlesVarUpdated, a))
+            #   stop("mapvalues and rename different in NLset 2")
 
             turtles@.Data[, var[varLevels]] <- turtlesVarUpdated
 
             if (identical(agents, turtles)) {
               turtles[, var[varLevels]] <- as.character(val[, varLevels])
-
             } else {
-
               iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
               turtles[iAgents, var[varLevels]] <- as.character(val[, varLevels])
             }
-
           } else {
             if (identical(agents, turtles)) {
               for (i in varLevels) {
@@ -1895,12 +1996,14 @@ setMethod(
                 turtlesVarUnique <- unique(turtlesVar) # unique old levels numbers
                 # levels in the order of the unique old levels numbers
                 turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)
-                                                            [order(turtlesVarUnique)]]
+                [order(turtlesVarUnique)]]
                 turtles@levels[[var[i]]] <- turtlesLevelsVarUpdated
 
                 # replace the levels number starting to 1 and increasing by 1
-                turtlesVarUpdated <- rename(x = turtlesVar, from = turtlesVarUnique,
-                            to = rank(turtlesVarUnique))
+                turtlesVarUpdated <- rename(
+                  x = turtlesVar, from = turtlesVarUnique,
+                  to = rank(turtlesVarUnique)
+                )
 
                 turtles@.Data[, var[i]] <- turtlesVarUpdated
 
@@ -1909,23 +2012,23 @@ setMethod(
             } else {
               iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
               for (i in varLevels) {
-
                 # Update the levels as some may have disapeared
                 turtlesLevelsVar <- turtles@levels[[var[i]]] # old levels
                 turtlesVar <- turtles@.Data[, var[i]] # old levels number
                 turtlesVarUnique <- unique(turtlesVar) # unique old levels numbers
                 # levels in the order of the unique old levels numbers
                 turtlesLevelsVarUpdated <- turtlesLevelsVar[unique(turtlesVar)
-                                                            [order(turtlesVarUnique)]]
+                [order(turtlesVarUnique)]]
                 turtles@levels[[var[i]]] <- turtlesLevelsVarUpdated
                 # replace the levels number starting to 1 and increasing by 1
                 # turtlesVarUpdated <- mapvalues(x = turtlesVar, from = turtlesVarUnique,
                 #                                to = rank(turtlesVarUnique))
-                turtlesVarUpdated <- rename(x = turtlesVar, from = turtlesVarUnique,
-                            to = rank(turtlesVarUnique))
-                # if (!identical(turtlesVarUpdated, a)) stop("mapvalues and rename different in NLset")
-
-
+                turtlesVarUpdated <- rename(
+                  x = turtlesVar, from = turtlesVarUnique,
+                  to = rank(turtlesVarUnique)
+                )
+                # if (!identical(turtlesVarUpdated, a))
+                #   stop("mapvalues and rename different in NLset")
 
                 turtles@.Data[, var[i]] <- turtlesVarUpdated
 
@@ -1949,7 +2052,8 @@ setMethod(
                 turtles@.Data[, var[varNum]] <- as.matrix(val[, varNum])
               } else if (inherits(val[, varNum, drop = FALSE], "matrix")) {
                 turtles@.Data[, var[varNum]] <- matrix(as.numeric(val[, varNum]),
-                                                        ncol = length(varNum))
+                  ncol = length(varNum)
+                )
               }
             } else {
               iAgents <- match(agents@.Data[, "who"], turtles@.Data[, "who"])
@@ -1958,7 +2062,8 @@ setMethod(
                 turtles@.Data[iAgents, var[varNum]] <- as.matrix(val[, varNum])
               } else if (inherits(val[, varNum, drop = FALSE], "matrix")) {
                 turtles@.Data[iAgents, var[varNum]] <- matrix(as.numeric(val[, varNum]),
-                                                               ncol = length(varNum))
+                  ncol = length(varNum)
+                )
               }
             }
           }
@@ -1968,37 +2073,36 @@ setMethod(
       if (any(var == "who")) {
         # if the who numbers have been modified, check for duplicates
         if (anyDuplicated(turtles@.Data[, "who"]) != 0) {
-          warning(paste("Duplicated who numbers among the resulting turtles.",
-                  "Please, reassign who numbers to keep them unique inside the agentset."))
+          warning(paste(
+            "Duplicated who numbers among the resulting turtles.",
+            "Please, reassign who numbers to keep them unique inside the agentset."
+          ))
         }
       }
     }
 
     return(turtles)
-})
+  }
+)
 
 
 #' @export
 #' @rdname NLset
 setMethod(
   "NLset",
-  signature = c(world = "worldMatrix", turtles = "missing", agents = "matrix",
-                var = "missing", val = "ANY"),
+  signature = c(
+    world = "worldMatrix", turtles = "missing", agents = "matrix",
+    var = "missing", val = "ANY"
+  ),
   definition = function(world, agents, val) {
-
     if (NROW(agents) != 0) {
-
       if (length(val) == 1 & NROW(agents) != 1) {
-
         val <- rep(val, NROW(agents))
       }
 
       if (identical(patches(world), agents)) {
-
         world@.Data[] <- matrix(val, ncol = dim(world)[2], byrow = TRUE)
-
       } else {
-
         agents[is.na(agents[, 1]), 2] <- NA
         agents[is.na(agents[, 2]), 1] <- NA
 
@@ -2011,14 +2115,17 @@ setMethod(
     }
 
     return(world)
-})
+  }
+)
 
 #' @export
 #' @rdname NLset
 setMethod(
   "NLset",
-  signature = c(world = "worldArray", turtles = "missing", agents = "matrix",
-                var = "character", val = "ANY"),
+  signature = c(
+    world = "worldArray", turtles = "missing", agents = "matrix",
+    var = "character", val = "ANY"
+  ),
   definition = function(world, agents, var, val) {
     if (NROW(agents) != 0) {
       if (length(var) == 1) {
@@ -2044,7 +2151,7 @@ setMethod(
         }
       } else {
         if (identical(patches(world), agents)) {
-          for (i in 1:length(var)) {
+          for (i in seq_along(var)) {
             vali <- val[, var[i]]
 
             if (length(vali) == 1) {
@@ -2072,8 +2179,8 @@ setMethod(
           matj <- matj[!is.na(matj)]
           mati <- mati[!is.na(mati)]
 
-          for (i in 1:length(var)) {
-             vark <- match(var[i], dimnames(world@.Data)[[3]])
+          for (i in seq_along(var)) {
+            vark <- match(var[i], dimnames(world@.Data)[[3]])
             world@.Data[cbind(mati, matj, vark)] <- val[, var[i]]
           }
         }
@@ -2081,4 +2188,5 @@ setMethod(
     }
 
     return(world)
-})
+  }
+)

@@ -75,7 +75,6 @@ if (requireNamespace("sf", quietly = TRUE)) {
   t2 <- inCone(turtles = turtle(t1, who = 0), radius = 2, angle = 90, agents = t1)
 }
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.

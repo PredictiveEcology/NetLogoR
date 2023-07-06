@@ -33,7 +33,6 @@ NLcount(p1) # 25 patches
 t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 NLcount(t1) # 10 turtles
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.

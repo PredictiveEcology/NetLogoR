@@ -79,11 +79,11 @@ test_that("raster2world and world2raster work", {
 
   r4 <- raster::raster(raster::extent(c(0, 20000, 0, 20000)), nrows = 100, ncols = 100)
   raster::res(r4) <- 200
-  r4[]<-runif(10000)
+  r4[] <- runif(10000)
   w4 <- raster2world(r4)
   expect_identical(ncol(r4), ncol(w4@.Data))
   expect_identical(nrow(r4), nrow(w4@.Data))
-  expect_identical(as.numeric(w4@.Data[1,]), values(r4)[1:100])
+  expect_identical(as.numeric(w4@.Data[1, ]), values(r4)[1:100])
 })
 
 test_that("spatRast2world and world2spatRast work", {
@@ -110,11 +110,9 @@ test_that("spatRast2world and world2spatRast work", {
 
   r4 <- rast(xmin = 0, xmax = 20000, ymin = 0, ymax = 20000, nrows = 100, ncols = 100)
   terra::res(r4) <- 200
-  r4[]<-runif(10000)
+  r4[] <- runif(10000)
   w4 <- spatRast2world(r4)
   expect_equal(ncol(r4), ncol(w4@.Data))
   expect_equal(nrow(r4), nrow(w4@.Data))
-  expect_identical(as.numeric(w4@.Data[1,]), values(r4)[1:100])
-
+  expect_identical(as.numeric(w4@.Data[1, ]), values(r4)[1:100])
 })
-

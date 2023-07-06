@@ -62,17 +62,20 @@ equals to specific values.
 }
 \examples{
 # Patches
-w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-                          data = sample(1:5, size = 25, replace = TRUE))
+w1 <- createWorld(
+  minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+  data = sample(1:5, size = 25, replace = TRUE)
+)
 plot(w1)
 p2 <- NLwith(agents = patches(w1), world = w1, val = 2)
 
 # Turtles
-t1 <- createTurtles(n = 5, coords = randomXYcor(w1, n = 5),
-                    breed = c("sheep", "sheep", "wolf", "sheep", "sheperd"))
+t1 <- createTurtles(
+  n = 5, coords = randomXYcor(w1, n = 5),
+  breed = c("sheep", "sheep", "wolf", "sheep", "sheperd")
+)
 t2 <- NLwith(agents = t1, var = "breed", val = "sheep")
 t3 <- NLwith(agents = t1, var = "breed", val = c("sheep", "wolf"))
-
 
 }
 \references{

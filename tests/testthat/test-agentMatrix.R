@@ -151,7 +151,7 @@ test_that("agentMatrix benchmarking", {
     mb <- summary(microbenchmark::microbenchmark(
       times = 50,
       spdf = {
-        if (requireNamespace("sp", quietly = TRUE))
+        if (requireNamespace("sp", quietly = TRUE)) {
           sp::SpatialPointsDataFrame(
             coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
             data = data.frame(
@@ -161,6 +161,7 @@ test_that("agentMatrix benchmarking", {
               nums = 5:7
             )
           )
+        }
       },
       agentMat = {
         agentMatrix(
@@ -187,8 +188,9 @@ test_that("agentMatrix benchmarking", {
         )
       }
     ))
-    if (requireNamespace("sp", quietly = TRUE))
-      expect_gt(mb$median[1] / mb$median[3], 3) # expect it is ~3 times faster
+    if (requireNamespace("sp", quietly = TRUE)) {
+      expect_gt(mb$median[1] / mb$median[3], 3)
+    } # expect it is ~3 times faster
   }
 
   # check just numerics
@@ -197,14 +199,15 @@ test_that("agentMatrix benchmarking", {
       mb <- summary(microbenchmark::microbenchmark(
         times = 50,
         spdf = {
-          if (requireNamespace("sp", quietly = TRUE))
-          sp::SpatialPointsDataFrame(
-            coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-            data = data.frame(
-              nums2 = c(4.5, 2.6, 2343),
-              nums = 5:7
+          if (requireNamespace("sp", quietly = TRUE)) {
+            sp::SpatialPointsDataFrame(
+              coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
+              data = data.frame(
+                nums2 = c(4.5, 2.6, 2343),
+                nums = 5:7
+              )
             )
-          )
+          }
         },
         sf = {
           a1 <- sf::st_point(cbind(1, 3))
@@ -227,8 +230,9 @@ test_that("agentMatrix benchmarking", {
           )
         }
       ))
-      if (requireNamespace("sp", quietly = TRUE))
-        expect_gt(mb$median[1] / mb$median[3], 4) # use 4 for safety
+      if (requireNamespace("sp", quietly = TRUE)) {
+        expect_gt(mb$median[1] / mb$median[3], 4)
+      } # use 4 for safety
       if (interactive()) expect_gt(mb$median[2] / mb$median[3], 2) # use 2 for safety
     }
   }

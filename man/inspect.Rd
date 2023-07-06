@@ -26,7 +26,6 @@ w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
 t1 <- createOTurtles(world = w1, n = 10)
 inspect(turtles = t1, who = c(2, 3))
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

@@ -54,14 +54,15 @@ Report the \code{agents} values for the requested variable.
 }
 \examples{
 # Patches
-w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-                          data = 1:25)
+w1 <- createWorld(
+  minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+  data = 1:25
+)
 of(world = w1, agents = patch(w1, c(0, 0), c(4, 0)))
 
 # Turtles
 t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 of(agents = t1, var = "heading")
-
 
 }
 \references{

@@ -36,8 +36,10 @@ length \code{turtles}.
 }\if{html}{\out{</div>}}
 }
 \examples{
-w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9,
-                          data = runif(100))
+w1 <- createWorld(
+  minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9,
+  data = runif(100)
+)
 t1 <- createTurtles(n = 5, coords = randomXYcor(w1, n = 5))
 plot(w1)
 points(t1, col = "black", pch = 16)
@@ -47,7 +49,6 @@ points(t1, col = "red", pch = 16)
 
 t1 <- moveTo(turtles = t1, agents = patch(w1, 9, 9))
 points(t1, col = "blue", pch = 16)
-
 
 }
 \references{

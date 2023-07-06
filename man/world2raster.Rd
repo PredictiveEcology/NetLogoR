@@ -35,7 +35,6 @@ if (requireNamespace("raster", quietly = TRUE)) {
   terra::plot(r1)
 }
 
-
 }
 \author{
 Sarah Bauduin

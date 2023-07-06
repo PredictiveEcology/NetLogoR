@@ -42,7 +42,7 @@ Authors@R: c(
            role = "cph")
     )
 Depends:
-    R (>= 4.0)
+    R (>= 4.1)
 Imports:
     data.table,
     grDevices,

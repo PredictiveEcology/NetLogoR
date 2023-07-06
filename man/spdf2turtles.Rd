@@ -26,12 +26,15 @@ default values as in \code{createTurtles()}.
 }
 \examples{
 if (requireNamespace("sp", quietly = TRUE)) {
-  sp1 <- sp::SpatialPointsDataFrame(coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
-                                data = cbind.data.frame(age = c(0, 0, 3),
-                                                        sex = c("F", "F", "M")))
+  sp1 <- sp::SpatialPointsDataFrame(
+    coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
+    data = cbind.data.frame(
+      age = c(0, 0, 3),
+      sex = c("F", "F", "M")
+    )
+  )
   t1 <- spdf2turtles(spdf = sp1)
 }
-
 
 }
 \author{

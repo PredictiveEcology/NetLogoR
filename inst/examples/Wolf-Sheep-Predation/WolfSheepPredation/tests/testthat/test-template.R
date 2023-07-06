@@ -12,7 +12,7 @@ test_that("test Event1 and Event2.", {
   path <- list(modulePath = ..., # fill with the module path
                outputPath = file.path(tempdir(), "outputs"))
   parameters <- list(
-    #.progress = list(type = "graphical", interval = 1),
+    # .progress = list(type = "graphical", interval = 1),
     .globals = list(verbose = FALSE),
     WolfSheepPredation = list(.saveInitialTime = NA)
   )

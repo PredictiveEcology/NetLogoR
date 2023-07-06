@@ -61,7 +61,6 @@ t1 <- createTurtles(n = 5, coords = cbind(xcor = 1, ycor = 1), heading = c(1, 2,
 NLall(agents = t1, var = "xcor", val = 1)
 NLall(agents = t1, var = "heading", val = 2)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.

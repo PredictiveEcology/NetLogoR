@@ -1,1 +1,2 @@
 linters: linters_with_defaults(line_length_linter(100), object_name_linter("camelCase"), defaults = default_linters[-which(names(default_linters) == "object_usage_linter")])
+exclusions: list("vignettes/ProgrammingGuide.R")

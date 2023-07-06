@@ -43,8 +43,10 @@ if (requireNamespace("terra")) {
   x1 <- rep(0, N)
   y1 <- rep(0, N)
   # initial points
-  starts <- cbind(x = stats::runif(N, xrange[1], xrange[2]),
-                  y = stats::runif(N, yrange[1], yrange[2]))
+  starts <- cbind(
+    x = stats::runif(N, xrange[1], xrange[2]),
+    y = stats::runif(N, yrange[1], yrange[2])
+  )
 
   # create the agent object
   agent <- agentMatrix(coords = starts, data = data.frame(x1 = x1, y1 = y1))
@@ -59,11 +61,13 @@ if (requireNamespace("terra")) {
     Plot(agent, addTo = "hab")
   }
   if (requireNamespace("SpaDES.tools") &&
-      requireNamespace("CircStats")) {
+    requireNamespace("CircStats")) {
     for (i in 1:10) {
-      agent <- SpaDES.tools::crw(agent = agent,
-                                 extent = terra::ext(hab), stepLength = ln,
-                                 stddev = sd, lonlat = FALSE, torus = TRUE)
+      agent <- SpaDES.tools::crw(
+        agent = agent,
+        extent = terra::ext(hab), stepLength = ln,
+        stddev = sd, lonlat = FALSE, torus = TRUE
+      )
       if (interactive()) Plot(agent, addTo = "hab", axes = TRUE)
     }
   }

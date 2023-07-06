@@ -95,8 +95,7 @@ food3 <- sum(foodWorld[foodWorld[, "foodSource"] == 3, "food"])
 
 
 ## Functions used in the go procedure
-toNest <- function(turtles){
-
+toNest <- function(turtles) {
   pHere <- patchHere(world = world, turtles = turtles)
   # Nest values (1 or 0) and chemical in the order of the turtles
   nestChemHere <- of(world = world, agents = pHere, var = c("nest", "chemical"))
@@ -167,8 +166,7 @@ lookFood <- function(turtles) {
   return(list(turtles, world))
 }
 
-upPatch <- function(turtles, varPatch){
-
+upPatch <- function(turtles, varPatch) {
   # sniff left and right, and go where the strongest smell is
   pAhead <- patchAhead(world = world, turtles = turtles, dist = 1)
   scentAhead <- of(world = world, var = varPatch, agents = pAhead)
@@ -188,8 +186,7 @@ upPatch <- function(turtles, varPatch){
   return(turtles)
 }
 
-wiggle <- function(turtles){
-
+wiggle <- function(turtles) {
   # Give a random angle between - 40 (40 to left) and 40 (40 to right)
   turtles <- right(turtles, angle = runif(n = NLcount(turtles), min = -40, max = 40))
   turtlesMove <- canMove(world = world, turtles = turtles, dist = 1)
@@ -203,7 +200,6 @@ wiggle <- function(turtles){
   turtles <- turtleSet(turtlesCannot, turtle(turtles, whoTurtles[turtlesMove == TRUE]))
   return(turtles)
 }
-
 
 ## Go
 time <- 1 # to keep track of the time step if wanted
@@ -254,7 +250,7 @@ while (sum(foodWorld[, "food"]) != 0) {
 }
 
 ## Plot outputs
-timeStep <- 1:length(food1)
+timeStep <- seq_along(food1)
 Plot(timeStep, food1, type = "l", addTo = "Abundance",
      col = "coral", lwd = 2, ylab = "Food", xlab = "Time step",
      ylim = c(min = 0, max = max(c(max(food1), max(food2), max(food3)))))

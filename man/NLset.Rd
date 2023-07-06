@@ -74,7 +74,6 @@ t1 <- createTurtles(n = 3, world = w1, heading = 0)
 t2 <- NLset(turtles = t1, agents = turtle(t1, who = 0), var = "heading", val = 180)
 of(agents = t2, var = "heading") # c(180, 0, 0)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.

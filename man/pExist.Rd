@@ -29,7 +29,6 @@ Report \code{TRUE} if a patch exists inside the \code{world}'s extent, report
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
 pExist(world = w1, pxcor = -1, pycor = 2)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.

@@ -38,7 +38,6 @@ t2 <- noTurtles()
 NLany(t1)
 NLany(t2)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.

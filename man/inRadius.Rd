@@ -69,7 +69,6 @@ if (requireNamespace("sf", quietly = TRUE)) {
   t3 <- inRadius(agents = turtle(t1, who = 0), radius = 2, agents2 = t1)
 }
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.

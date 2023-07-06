@@ -61,7 +61,6 @@ towards(agents = patches(w1), agents2 = cbind(x = 0, y = 0))
 t1 <- createTurtles(n = 10, world = w1)
 towards(agents = t1, agents2 = cbind(x = 0, y = 0))
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

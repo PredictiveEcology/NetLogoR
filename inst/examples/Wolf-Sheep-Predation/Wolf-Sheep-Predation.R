@@ -86,7 +86,7 @@ if (grassOn == TRUE) {
 }
 
 # Visualize the world
-if (grassOn == TRUE){
+if (grassOn == TRUE) {
   plot(field[[1]])
   points(sheep, pch = 16, col = "red")
   points(wolves, pch = 16, col = "black")
@@ -242,11 +242,10 @@ growGrass <- function() {
   return(field)
 }
 
-
 ## Go
 time <- 0
 maxTime <- 500
-while ((NLany(sheep) | NLany(wolves)) & time < maxTime) {
+while ((NLany(sheep) || NLany(wolves)) && time < maxTime) {
   ## as long as there are sheep or wolves in the world (time steps maximum at 500)
 
   # Ask sheep
@@ -298,7 +297,7 @@ while ((NLany(sheep) | NLany(wolves)) & time < maxTime) {
 ## Plot outputs
 library(quickPlot)
 dev()
-timeStep <- 1:length(numSheep)
+timeStep <- seq_along(numSheep)
 
 if (grassOn == TRUE) {
   plot(timeStep, numSheep, type = "l", col = "blue", lwd = 2, ylab = "Population size",

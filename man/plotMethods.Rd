@@ -30,13 +30,14 @@ They can be modified.
 }
 \examples{
 # agentMatrix
- newAgent <- new("agentMatrix",
-   coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-   char = letters[c(1, 2, 6)],
-   nums2 = c(4.5, 2.6, 2343),
-   char2 = LETTERS[c(4, 24, 3)],
-   nums = 5:7)
- plot(newAgent)
+newAgent <- new("agentMatrix",
+  coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
+  char = letters[c(1, 2, 6)],
+  nums2 = c(4.5, 2.6, 2343),
+  char2 = LETTERS[c(4, 24, 3)],
+  nums = 5:7
+)
+plot(newAgent)
 
 ## worldMatrix
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 1:100)
@@ -49,11 +50,12 @@ w3 <- stackWorlds(w1, w2)
 plot(w3)
 
 # agentMatrix
- newAgent <- new("agentMatrix",
-   coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-   char = letters[c(1, 2, 6)],
-   nums2 = c(4.5, 2.6, 2343),
-   char2 = LETTERS[c(4, 24, 3)],
-   nums = 5:7)
- points(newAgent)
+newAgent <- new("agentMatrix",
+  coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
+  char = letters[c(1, 2, 6)],
+  nums2 = c(4.5, 2.6, 2343),
+  char2 = LETTERS[c(4, 24, 3)],
+  nums = 5:7
+)
+points(newAgent)
 }

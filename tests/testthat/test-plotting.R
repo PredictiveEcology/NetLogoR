@@ -31,7 +31,7 @@ test_that("createTurtles works", {
 
   if (requireNamespace("sp", quietly = TRUE)) {
     plotNum <- plotNum + 1
-    mess <- capture_messages(Plot(sp1)) # there is a "setting graphics device" message that occurs the first time
+    mess <- capture_messages(Plot(sp1)) # "setting graphics device" message occurs the first time
     expect_silent(Plot(sp1))
     a <- getFromNamespace(".getQuickPlot", ns = "quickPlot")(paste0("quickPlot", dev.cur()))
     expect_true(length(a$isBaseLayer) == plotNum)
@@ -102,7 +102,7 @@ test_that("createTurtles works", {
 
   # Test singularity of agents in agentMatrix
   clearPlot()
-  expect_silent(Plot(t1_0, axes = TRUE, new = TRUE)) #agentMatrix
+  expect_silent(Plot(t1_0, axes = TRUE, new = TRUE)) # agentMatrix
   a <- getFromNamespace(".getQuickPlot", ns = "quickPlot")(paste0("quickPlot", dev.cur()))
   expect_true(length(a$isBaseLayer) == 1)
   expect_true(length(a$curr@quickPlotGrobList) == 1)

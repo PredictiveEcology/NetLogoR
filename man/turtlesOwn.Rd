@@ -32,7 +32,6 @@ Create a new variable for the \code{turtles}.
 t1 <- createTurtles(n = 5, coords = cbind(xcor = 0, ycor = 0))
 t1 <- turtlesOwn(turtles = t1, tVar = "sex", tVal = c("F", "F", "F", "M", "M"))
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

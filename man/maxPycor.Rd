@@ -22,7 +22,6 @@ Report the patches maximum \code{pycor} in the \code{world}.
 w1 <- createWorld()
 maxPycor(w1)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
