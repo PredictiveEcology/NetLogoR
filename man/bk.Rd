@@ -53,8 +53,10 @@ does not need to be provided.
 }\if{html}{\out{</div>}}
 }
 \examples{
-w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-                          data = runif(25))
+w1 <- createWorld(
+  minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+  data = runif(25)
+)
 t1 <- createOTurtles(n = 10, world = w1)
 plot(w1)
 points(t1, col = of(agents = t1, var = "color"), pch = 16)
@@ -65,7 +67,6 @@ t1 <- bk(turtles = t1, dist = 1)
 points(t1, col = of(agents = t1, var = "color"), pch = 16)
 t1 <- fd(turtles = t1, dist = 0.5)
 points(t1, col = of(agents = t1, var = "color"), pch = 16)
-
 
 }
 \references{

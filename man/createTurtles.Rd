@@ -52,12 +52,13 @@ If \code{coords} is provided, \code{world} must not be provided.
 }\if{html}{\out{</div>}}
 }
 \examples{
-w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-                          data = runif(25))
+w1 <- createWorld(
+  minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+  data = runif(25)
+)
 t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 plot(w1)
 points(t1, col = of(agents = t1, var = "color"), pch = 16)
-
 
 }
 \references{

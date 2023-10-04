@@ -2,15 +2,12 @@
 % Please edit documentation in R/world-functions.R
 \name{raster2world}
 \alias{raster2world}
-\alias{raster2world,RasterLayer-method}
-\alias{raster2world,RasterStack-method}
+\alias{raster2world,ANY-method}
 \title{Convert a \verb{Raster*} object into a \code{worldMatrix} or \code{worldArray} object}
 \usage{
 raster2world(raster)
 
-\S4method{raster2world}{RasterLayer}(raster)
-
-\S4method{raster2world}{RasterStack}(raster)
+\S4method{raster2world}{ANY}(raster)
 }
 \arguments{
 \item{raster}{\code{RasterLayer} or \code{RasterStack} object.}
@@ -36,12 +33,13 @@ for more details on the classes.
 }\if{html}{\out{</div>}}
 }
 \examples{
-r1 <- raster(extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)
-r1[]<-runif(100)
-w1 <- raster2world(r1)
-plot(r1)
-plot(w1)
-
+if (requireNamespace("raster")) {
+  r1 <- raster::raster(raster::extent(c(0, 10, 0, 10)), nrows = 10, ncols = 10)
+  r1[] <- runif(100)
+  w1 <- raster2world(r1)
+  terra::plot(r1)
+  terra::plot(w1)
+}
 
 }
 \author{

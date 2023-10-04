@@ -34,18 +34,20 @@ if (getRversion() >= "3.1.0") {
 #'             Northwestern University. Evanston, IL.
 #'
 #' @examples
-#' w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-#'                           data = sample(1:3, size = 25, replace = TRUE))
+#' w1 <- createWorld(
+#'   minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+#'   data = sample(1:3, size = 25, replace = TRUE)
+#' )
 #' plot(w1)
 #' # Diffuse 50% of each patch value to its 8 neighbors
-#' w2 <- diffuse(world = w1, share = 0.5, nNeighbors = 8)
-#' plot(w2)
-#'
+#' if (requireNamespace("SpaDES.tools", quietly = TRUE)) {
+#'   w2 <- diffuse(world = w1, share = 0.5, nNeighbors = 8)
+#'   plot(w2)
+#' }
 #'
 #' @export
 #' @importFrom data.table data.table ':='
 #' @importFrom data.table setkey
-#' @importFrom SpaDES.tools adj
 #' @rdname diffuse
 #'
 #' @author Sarah Bauduin
@@ -54,21 +56,26 @@ setGeneric(
   "diffuse",
   function(world, pVar, share, nNeighbors, torus = FALSE) {
     standardGeneric("diffuse")
-})
+  }
+)
 
 #' @export
 #' @rdname diffuse
 setMethod(
   "diffuse",
-  signature = c(world = "worldMatrix", pVar = "missing", share = "numeric",
-                nNeighbors = "numeric"),
+  signature = c(
+    world = "worldMatrix", pVar = "missing", share = "numeric",
+    nNeighbors = "numeric"
+  ),
   definition = function(world, share, nNeighbors, torus) {
-
     val <- as.numeric(t(world@.Data))
-    cellNum <- 1:length(val)
+    cellNum <- seq_along(val)
     toGive <- (val * share) / nNeighbors
 
-    df <- adj(world@.Data, cells = cellNum, directions = nNeighbors, torus = torus)
+    if (!requireNamespace("SpaDES.tools")) {
+      stop("Please install.packages('SpaDES.tools')")
+    }
+    df <- SpaDES.tools::adj(world@.Data, cells = cellNum, directions = nNeighbors, torus = torus)
     # nNeigh <- plyr::count(df[, "from"])
     nNeigh <- as.data.frame(table(df[, "from"]))
     # if (!identical(nNeigh2[[2]], nNeigh[[2]])) stop("count and table error 1")
@@ -85,24 +92,30 @@ setMethod(
     newVal <- val - loose[, loose] + win[, win]
     world[] <- newVal
     return(world)
-
-})
+  }
+)
 
 #' @export
 #' @rdname diffuse
 setMethod(
   "diffuse",
-  signature = c(world = "worldArray", pVar = "character", share = "numeric",
-                nNeighbors = "numeric"),
+  signature = c(
+    world = "worldArray", pVar = "character", share = "numeric",
+    nNeighbors = "numeric"
+  ),
   definition = function(world, pVar, share, nNeighbors, torus) {
-
     layer <- match(pVar, dimnames(world)[[3]])
     val <- as.numeric(t(world@.Data[, , layer]))
-    cellNum <- 1:length(val)
+    cellNum <- seq_along(val)
     toGive <- (val * share) / nNeighbors
 
-    df <- adj(world@.Data[, , layer], cells = cellNum, directions = nNeighbors,
-              torus = torus)
+    if (!requireNamespace("SpaDES.tools")) {
+      stop("Please install.packages('SpaDES.tools')")
+    }
+    df <- SpaDES.tools::adj(world@.Data[, , layer],
+      cells = cellNum, directions = nNeighbors,
+      torus = torus
+    )
     # nNeigh <- plyr::count(df[, "from"])
     nNeigh <- as.data.frame(table(df[, "from"]))
     # if (!identical(nNeigh2[[2]], nNeigh[[2]])) stop("count and table error 2")
@@ -121,7 +134,8 @@ setMethod(
     world@.Data[, , layer] <- matrix(newVal, ncol = dim(world)[2], byrow = TRUE)
 
     return(world)
-})
+  }
+)
 
 ################################################################################
 #' Distances between agents
@@ -167,11 +181,12 @@ setMethod(
 #' @examples
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
 #' NLdist(agents = patch(w1, 0, 0), agents2 = patch(w1, c(1, 9), c(1, 9)))
-#' NLdist(agents = patch(w1, 0, 0), agents2 = patch(w1, c(1, 9), c(1, 9)),
-#'        world = w1, torus = TRUE)
+#' NLdist(
+#'   agents = patch(w1, 0, 0), agents2 = patch(w1, c(1, 9), c(1, 9)),
+#'   world = w1, torus = TRUE
+#' )
 #' t1 <- createTurtles(n = 2, coords = randomXYcor(w1, n = 2))
-#' NLdist(agents = t1, agents2 = patch(w1, c(1,9), c(1,9)), allPairs = TRUE)
-#'
+#' NLdist(agents = t1, agents2 = patch(w1, c(1, 9), c(1, 9)), allPairs = TRUE)
 #'
 #' @export
 #' @rdname NLdist
@@ -183,7 +198,8 @@ setGeneric(
   "NLdist",
   function(agents, agents2, world, torus = FALSE, allPairs = FALSE) {
     standardGeneric("NLdist")
-})
+  }
+)
 
 #' @export
 #' @rdname NLdist
@@ -191,7 +207,6 @@ setMethod(
   "NLdist",
   signature = c(agents = "matrix", agents2 = "matrix"),
   definition = function(agents, agents2, world, torus, allPairs) {
-
     if (inherits(agents, "agentMatrix")) {
       agents <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
     }
@@ -200,8 +215,10 @@ setMethod(
       agents2 <- agents2@.Data[, c("xcor", "ycor"), drop = FALSE]
     }
 
-    dist <- pointDistance(p1 = agents, p2 = agents2, lonlat = FALSE, allpairs = allPairs)
+    # dist <- pointDistance(p1 = agents, p2 = agents2, lonlat = FALSE, allpairs = allPairs)
 
+    dist <- terra::distance(x = agents, y = agents2, lonlat = FALSE, pairwise = !allPairs)
+    # dist <- raster::pointDistance(p1 = agents, p2 = agents2, lonlat = FALSE, allpairs = FALSE)
     if (torus == TRUE) {
       if (missing(world)) {
         stop("A world must be provided as torus = TRUE")
@@ -209,37 +226,62 @@ setMethod(
 
       # Need to create coordinates for "agents2" in a wrapped world
       # For all the 8 possibilities of wrapping (to the left, right, top, bottom and 4 corners)
-      to1 <- cbind(pxcor = agents2[, 1] - (world@extent@xmax - world@extent@xmin),
-                   pycor = agents2[, 2] + (world@extent@ymax - world@extent@ymin))
-      to2 <- cbind(pxcor = agents2[, 1], pycor = agents2[, 2] +
-                     (world@extent@ymax - world@extent@ymin))
-      to3 <- cbind(pxcor = agents2[, 1] + (world@extent@xmax - world@extent@xmin),
-                   pycor = agents2[, 2] + (world@extent@ymax - world@extent@ymin))
-      to4 <- cbind(pxcor = agents2[, 1] - (world@extent@xmax - world@extent@xmin),
-                   pycor = agents2[, 2])
-      to5 <- cbind(pxcor = agents2[, 1] + (world@extent@xmax - world@extent@xmin),
-                   pycor = agents2[, 2])
-      to6 <- cbind(pxcor = agents2[, 1] - (world@extent@xmax - world@extent@xmin),
-                   pycor = agents2[, 2] - (world@extent@ymax - world@extent@ymin))
-      to7 <- cbind(pxcor = agents2[, 1], pycor = agents2[, 2] -
-                     (world@extent@ymax - world@extent@ymin))
-      to8 <- cbind(pxcor = agents2[, 1] + (world@extent@xmax - world@extent@xmin),
-                   pycor = agents2[, 2] - (world@extent@ymax - world@extent@ymin))
+      exts <- extents(world@extent)
 
-      dist1 <- pointDistance(p1 = agents, p2 = to1, lonlat = FALSE, allpairs = allPairs)
-      dist2 <- pointDistance(p1 = agents, p2 = to2, lonlat = FALSE, allpairs = allPairs)
-      dist3 <- pointDistance(p1 = agents, p2 = to3, lonlat = FALSE, allpairs = allPairs)
-      dist4 <- pointDistance(p1 = agents, p2 = to4, lonlat = FALSE, allpairs = allPairs)
-      dist5 <- pointDistance(p1 = agents, p2 = to5, lonlat = FALSE, allpairs = allPairs)
-      dist6 <- pointDistance(p1 = agents, p2 = to6, lonlat = FALSE, allpairs = allPairs)
-      dist7 <- pointDistance(p1 = agents, p2 = to7, lonlat = FALSE, allpairs = allPairs)
-      dist8 <- pointDistance(p1 = agents, p2 = to8, lonlat = FALSE, allpairs = allPairs)
+      to1 <- cbind(
+        pxcor = agents2[, 1] - (exts$xmax - exts$xmin),
+        pycor = agents2[, 2] + (exts$ymax - exts$ymin)
+      )
+      to2 <- cbind(pxcor = agents2[, 1], pycor = agents2[, 2] +
+        (exts$ymax - exts$ymin))
+      to3 <- cbind(
+        pxcor = agents2[, 1] + (exts$xmax - exts$xmin),
+        pycor = agents2[, 2] + (exts$ymax - exts$ymin)
+      )
+      to4 <- cbind(
+        pxcor = agents2[, 1] - (exts$xmax - exts$xmin),
+        pycor = agents2[, 2]
+      )
+      to5 <- cbind(
+        pxcor = agents2[, 1] + (exts$xmax - exts$xmin),
+        pycor = agents2[, 2]
+      )
+      to6 <- cbind(
+        pxcor = agents2[, 1] - (exts$xmax - exts$xmin),
+        pycor = agents2[, 2] - (exts$ymax - exts$ymin)
+      )
+      to7 <- cbind(pxcor = agents2[, 1], pycor = agents2[, 2] -
+        (exts$ymax - exts$ymin))
+      to8 <- cbind(
+        pxcor = agents2[, 1] + (exts$xmax - exts$xmin),
+        pycor = agents2[, 2] - (exts$ymax - exts$ymin)
+      )
+
+
+      # dist1 <- raster::pointDistance(p1 = agents, p2 = to1, lonlat = FALSE, allpairs = allPairs)
+      # dist2 <- raster::pointDistance(p1 = agents, p2 = to2, lonlat = FALSE, allpairs = allPairs)
+      # dist3 <- raster::pointDistance(p1 = agents, p2 = to3, lonlat = FALSE, allpairs = allPairs)
+      # dist4 <- raster::pointDistance(p1 = agents, p2 = to4, lonlat = FALSE, allpairs = allPairs)
+      # dist5 <- raster::pointDistance(p1 = agents, p2 = to5, lonlat = FALSE, allpairs = allPairs)
+      # dist6 <- raster::pointDistance(p1 = agents, p2 = to6, lonlat = FALSE, allpairs = allPairs)
+      # dist7 <- raster::pointDistance(p1 = agents, p2 = to7, lonlat = FALSE, allpairs = allPairs)
+      # dist8 <- raster::pointDistance(p1 = agents, p2 = to8, lonlat = FALSE, allpairs = allPairs)
+
+      dist1 <- terra::distance(x = agents, y = to1, lonlat = FALSE, pairwise = !allPairs)
+      dist2 <- terra::distance(x = agents, y = to2, lonlat = FALSE, pairwise = !allPairs)
+      dist3 <- terra::distance(x = agents, y = to3, lonlat = FALSE, pairwise = !allPairs)
+      dist4 <- terra::distance(x = agents, y = to4, lonlat = FALSE, pairwise = !allPairs)
+      dist5 <- terra::distance(x = agents, y = to5, lonlat = FALSE, pairwise = !allPairs)
+      dist6 <- terra::distance(x = agents, y = to6, lonlat = FALSE, pairwise = !allPairs)
+      dist7 <- terra::distance(x = agents, y = to7, lonlat = FALSE, pairwise = !allPairs)
+      dist8 <- terra::distance(x = agents, y = to8, lonlat = FALSE, pairwise = !allPairs)
 
       dist <- pmin(dist, dist1, dist2, dist3, dist4, dist5, dist6, dist7, dist8)
     }
 
     return(dist)
-})
+  }
+)
 
 ################################################################################
 #' Do the patches exist?
@@ -261,7 +303,6 @@ setMethod(
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
 #' pExist(world = w1, pxcor = -1, pycor = 2)
 #'
-#'
 #' @export
 #' @rdname pExist
 #'
@@ -271,7 +312,8 @@ setGeneric(
   "pExist",
   function(world, pxcor, pycor) {
     standardGeneric("pExist")
-})
+  }
+)
 
 #' @export
 #' @rdname pExist
@@ -279,7 +321,6 @@ setMethod(
   "pExist",
   signature = c("worldNLR", "numeric", "numeric"),
   definition = function(world, pxcor, pycor) {
-
     if (length(pxcor) == 1 & length(pycor) != 1) {
       pxcor <- rep(pxcor, length(pycor))
     }
@@ -292,7 +333,8 @@ setMethod(
     pExist <- pxcorIn & pycorIn
 
     return(pExist)
-})
+  }
+)
 
 ################################################################################
 #' Neighbors `patches`
@@ -324,14 +366,14 @@ setMethod(
 #'
 #' @examples
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
-#' neighbors(world = w1, agents = patch(w1, c(0,9), c(0,7)), nNeighbors = 8)
-#' t1 <- createTurtles(n = 3, coords = randomXYcor(w1, n = 3))
-#' neighbors(world = w1, agents = t1, nNeighbors = 4)
-#'
+#' if (requireNamespace("SpaDES.tools", quietly = TRUE)) {
+#'   neighbors(world = w1, agents = patch(w1, c(0, 9), c(0, 7)), nNeighbors = 8)
+#'   t1 <- createTurtles(n = 3, coords = randomXYcor(w1, n = 3))
+#'   neighbors(world = w1, agents = t1, nNeighbors = 4)
+#' }
 #'
 #' @export
 #' @importFrom data.table data.table setkey
-#' @importFrom SpaDES.tools adj
 #' @rdname neighbors
 #'
 #' @author Sarah Bauduin
@@ -340,7 +382,8 @@ setGeneric(
   "neighbors",
   function(world, agents, nNeighbors, torus = FALSE) {
     standardGeneric("neighbors")
-})
+  }
+)
 
 #' @export
 #' @rdname neighbors
@@ -348,10 +391,11 @@ setMethod(
   "neighbors",
   signature = c(world = "worldNLR", agents = "matrix", nNeighbors = "numeric"),
   definition = function(world, agents, nNeighbors, torus) {
-
     if (inherits(agents, "agentMatrix")) {
-      agents <- patch(world = world, x = agents@.Data[, "xcor"],
-                      y = agents@.Data[, "ycor"], duplicate = TRUE)
+      agents <- patch(
+        world = world, x = agents@.Data[, "xcor"],
+        y = agents@.Data[, "ycor"], duplicate = TRUE
+      )
     }
 
     # To be used with adj()
@@ -361,35 +405,39 @@ setMethod(
       # worldArray
       worldMat <- world@.Data[, , 1]
     }
+    if (!requireNamespace("SpaDES.tools")) {
+      stop("Please install.packages('SpaDES.tools')")
+    }
 
-    if (nrow(agents) < 100000) {
-      # df is faster below 100 agents, DT faster above
-      cellNum <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
-      neighbors <- adj(worldMat, cells = cellNum, directions = nNeighbors,
-                       torus = torus, id = seq_along(cellNum))
+    cellNum <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
+    largeForDT <- NROW(agents) >= 100000
+    neighbors <- SpaDES.tools::adj(worldMat,
+      cells = cellNum, directions = nNeighbors,
+      torus = torus, id = seq_along(cellNum), returnDT = largeForDT
+    )
+
+    if (!largeForDT) {
+      # df is faster below 10000 agents, DT faster above
       pCoords <- PxcorPycorFromCell(world = world, cellNum = neighbors[, 2])
       neighborsDf <- data.frame(neighbors, pCoords)
 
       # Output as a matrix
-      neighborsDf <- neighborsDf[order(neighborsDf$id), ]
-      neighborsID <- cbind(pxcor = neighborsDf$pxcor, pycor = neighborsDf$pycor,
-                           id = neighborsDf$id)
-
+      neighbors <- neighborsDf[order(neighborsDf$id), ]
     } else {
-      cellNum <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
-      neighbors <- data.table(adj(worldMat, cells = cellNum, directions = nNeighbors,
-                                  torus = torus, id = seq_along(cellNum)))
-      cellNum <- data.table(cellNum = cellNum, id = seq_along(cellNum))
       pCoords <- PxcorPycorFromCell(world = world, cellNum = neighbors[, to])
-      neighbors[, `:=`(pxcor = pCoords[, 1], pycor = pCoords[, 2])]
+      data.table::set(neighbors, NULL, "pxcor", pCoords[, 1])
+      data.table::set(neighbors, NULL, "pycor", pCoords[, 2])
       setkey(neighbors, id)
-      neighborsID <- cbind(pxcor = neighbors$pxcor,
-                           pycor = neighbors$pycor,
-                           id = neighbors$id) # %>% as.factor %>% as.numeric)
     }
+    neighborsID <- cbind(
+      pxcor = neighbors$pxcor,
+      pycor = neighbors$pycor,
+      id = neighbors$id
+    )
 
     return(neighborsID)
-})
+  }
+)
 
 ################################################################################
 #' `Patches` coordinates
@@ -434,13 +482,18 @@ setMethod(
 #' @examples
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
 #' patch(world = w1, x = c(0, 9.1, 8.9, 5, 5.3), y = c(0, 0, -0.1, 12.4, 12.4))
-#' patch(world = w1, x = c(0, 9.1, 8.9, 5, 5.3), y = c(0, 0, -0.1, 12.4, 12.4),
-#'       duplicate = TRUE)
-#' patch(world = w1, x = c(0, 9.1, 8.9, 5, 5.3), y = c(0, 0, -0.1, 12.4, 12.4),
-#'       torus = TRUE)
-#' patch(world = w1, x = c(0, 9.1, 8.9, 5, 5.3), y = c(0, 0, -0.1, 12.4, 12.4),
-#'       torus = TRUE, duplicate = TRUE)
-#'
+#' patch(
+#'   world = w1, x = c(0, 9.1, 8.9, 5, 5.3), y = c(0, 0, -0.1, 12.4, 12.4),
+#'   duplicate = TRUE
+#' )
+#' patch(
+#'   world = w1, x = c(0, 9.1, 8.9, 5, 5.3), y = c(0, 0, -0.1, 12.4, 12.4),
+#'   torus = TRUE
+#' )
+#' patch(
+#'   world = w1, x = c(0, 9.1, 8.9, 5, 5.3), y = c(0, 0, -0.1, 12.4, 12.4),
+#'   torus = TRUE, duplicate = TRUE
+#' )
 #'
 #' @export
 #' @rdname patch
@@ -451,7 +504,8 @@ setGeneric(
   "patch",
   function(world, x, y, duplicate = FALSE, torus = FALSE, out = FALSE) {
     standardGeneric("patch")
-})
+  }
+)
 
 #' @export
 #' @rdname patch
@@ -459,7 +513,6 @@ setMethod(
   "patch",
   signature = c(world = "worldNLR", x = "numeric", y = "numeric"),
   definition = function(world, x, y, duplicate, torus, out) {
-
     pxcor <- round(x)
     pycor <- round(y)
 
@@ -479,14 +532,17 @@ setMethod(
       pycor <- pycor[!is.na(pycor)]
     }
 
-    pCoords <- matrix(data = c(pxcor, pycor), ncol = 2,
-                      nrow = length(pxcor), dimnames = list(NULL, c("pxcor", "pycor")))
+    pCoords <- matrix(
+      data = c(pxcor, pycor), ncol = 2,
+      nrow = length(pxcor), dimnames = list(NULL, c("pxcor", "pycor"))
+    )
 
     if (duplicate == FALSE) {
       pCoords <- unique(pCoords)
     }
     return(pCoords)
-})
+  }
+)
 
 ################################################################################
 #' No `patches`
@@ -548,7 +604,6 @@ noPatches <- function() {
 #' t1 <- createTurtles(n = 1, coords = cbind(xcor = 0, ycor = 0))
 #' patchCorner <- patchAt(world = w1, agents = t1, dx = 1, dy = 1)
 #'
-#'
 #' @export
 #' @rdname patchAt
 #'
@@ -558,7 +613,8 @@ setGeneric(
   "patchAt",
   function(world, agents, dx, dy, torus = FALSE) {
     standardGeneric("patchAt")
-})
+  }
+)
 
 #' @export
 #' @rdname patchAt
@@ -566,18 +622,20 @@ setMethod(
   "patchAt",
   signature = c(world = "worldNLR", agents = "matrix", dx = "numeric", dy = "numeric"),
   definition = function(world, agents, dx, dy, torus) {
-
     if (inherits(agents, "agentMatrix")) {
       agents <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
     }
 
     pxcor <- agents[, 1] + dx
     pycor <- agents[, 2] + dy
-    pAt <- patch(world = world, x = pxcor, y = pycor, duplicate = TRUE,
-                 torus = torus, out = TRUE)
+    pAt <- patch(
+      world = world, x = pxcor, y = pycor, duplicate = TRUE,
+      torus = torus, out = TRUE
+    )
 
     return(pAt)
-})
+  }
+)
 
 ################################################################################
 #' `Patches` at given distances and directions
@@ -610,7 +668,8 @@ setMethod(
 #'          distance from a `turtle` using the `turtle`'s `heading`, look at `pacthAhead()`,
 #'          `patchLeft()` or `patchRight()`.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance>
+#' @seealso
+#' <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance>
 #'
 #' @references Wilensky, U. 1999. NetLogo. <http://ccl.northwestern.edu/netlogo/>.
 #'             Center for Connected Learning and Computer-Based Modeling,
@@ -623,7 +682,6 @@ setMethod(
 #' p2 <- patchDistDir(world = w1, agents = t1, dist = 1, angle = 45)
 #'
 #' @export
-#' @importFrom CircStats rad
 #' @rdname patchDistDir
 #'
 #' @author Sarah Bauduin
@@ -632,7 +690,8 @@ setGeneric(
   "patchDistDir",
   function(world, agents, dist, angle, torus = FALSE) {
     standardGeneric("patchDistDir")
-})
+  }
+)
 
 #' @export
 #' @rdname patchDistDir
@@ -647,11 +706,14 @@ setMethod(
     radAngle <- rad(angle)
     pxcor <- agents[, 1] + sin(radAngle) * dist
     pycor <- agents[, 2] + cos(radAngle) * dist
-    pDistHead <- patch(world = world, x = pxcor, y = pycor, torus = torus,
-                       duplicate = TRUE, out = TRUE)
+    pDistHead <- patch(
+      world = world, x = pxcor, y = pycor, torus = torus,
+      duplicate = TRUE, out = TRUE
+    )
 
     return(pDistHead)
-})
+  }
+)
 
 ################################################################################
 #' All the `patches` in a `world`
@@ -682,7 +744,8 @@ setGeneric(
   "patches",
   function(world) {
     standardGeneric("patches")
-})
+  }
+)
 
 #' @export
 #' @rdname patches
@@ -691,7 +754,8 @@ setMethod(
   signature = "worldNLR",
   definition = function(world) {
     return(world@pCoords)
-})
+  }
+)
 
 ################################################################################
 #' `Patch` set
@@ -714,11 +778,10 @@ setMethod(
 #'
 #' @examples
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
-#' p1 <- patchAt(world = w1, agents = patch(w1, c(0,1,2), c(0,0,0)), dx = 1, dy = 1)
+#' p1 <- patchAt(world = w1, agents = patch(w1, c(0, 1, 2), c(0, 0, 0)), dx = 1, dy = 1)
 #' p2 <- patchDistDir(world = w1, agents = patch(w1, 0, 0), dist = 1, angle = 45)
 #' p3 <- patch(world = w1, x = 4.3, y = 8)
 #' p4 <- patchSet(p1, p2, p3)
-#'
 #'
 #' @export
 #' @rdname patchSet
@@ -729,7 +792,8 @@ setGeneric(
   "patchSet",
   function(...) {
     standardGeneric("patchSet")
-})
+  }
+)
 
 #' @export
 #' @rdname patchSet
@@ -737,11 +801,11 @@ setMethod(
   "patchSet",
   signature = "matrix",
   definition = function(...) {
-
     dots <- list(...)
     pCoords <- unique(do.call(rbind, dots))
     return(pCoords)
-})
+  }
+)
 
 ################################################################################
 #' Random `pxcor`
@@ -762,7 +826,6 @@ setMethod(
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
 #' pxcor <- randomPxcor(world = w1, n = 10)
 #'
-#'
 #' @export
 #' @rdname randomPxcor
 #'
@@ -772,7 +835,8 @@ setGeneric(
   "randomPxcor",
   function(world, n) {
     standardGeneric("randomPxcor")
-})
+  }
+)
 
 #' @export
 #' @rdname randomPxcor
@@ -782,7 +846,8 @@ setMethod(
   definition = function(world, n) {
     pxcor <- sample(minPxcor(world):maxPxcor(world), size = n, replace = TRUE)
     return(pxcor)
-})
+  }
+)
 
 ################################################################################
 #' Random `pycor`
@@ -803,7 +868,6 @@ setMethod(
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
 #' pycor <- randomPycor(world = w1, n = 10)
 #'
-#'
 #' @export
 #' @rdname randomPycor
 #'
@@ -813,7 +877,8 @@ setGeneric(
   "randomPycor",
   function(world, n) {
     standardGeneric("randomPycor")
-})
+  }
+)
 
 #' @export
 #' @rdname randomPycor
@@ -823,4 +888,9 @@ setMethod(
   definition = function(world, n) {
     pycor <- sample(minPycor(world):maxPycor(world), size = n, replace = TRUE)
     return(pycor)
-})
+  }
+)
+
+rad <- function(degree) (degree * pi) / 180
+
+deg <- function(radian) (radian * 180) / pi

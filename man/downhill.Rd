@@ -53,15 +53,18 @@ moves to the \code{patch} center if it was not already on it.
 }\if{html}{\out{</div>}}
 }
 \examples{
-w1 <- createWorld(minPxcor = 1, maxPxcor = 10, minPycor = 1, maxPycor = 10,
-                          data = runif(100))
+w1 <- createWorld(
+  minPxcor = 1, maxPxcor = 10, minPycor = 1, maxPycor = 10,
+  data = runif(100)
+)
 t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 plot(w1)
 points(t1, col = of(agents = t1, var = "color"), pch = 16)
 
-t1 <- downhill(world = w1, turtles = t1, nNeighbors = 8)
-points(t1, col = of(agents = t1, var = "color"), pch = 16)
-
+if (requireNamespace("SpaDES.tools", quietly = TRUE)) {
+  t1 <- downhill(world = w1, turtles = t1, nNeighbors = 8)
+  points(t1, col = of(agents = t1, var = "color"), pch = 16)
+}
 
 }
 \references{

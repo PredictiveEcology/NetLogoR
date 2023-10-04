@@ -34,7 +34,6 @@ t3 <- createTurtles(n = 1, coords = randomXYcor(w1, n = 1), breed = "sheperd")
 t3 <- NLset(turtles = t3, agents = t3, var = "who", val = 12)
 t4 <- turtleSet(t1, t2, t3)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

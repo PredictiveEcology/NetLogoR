@@ -22,7 +22,6 @@ Report the patches minimum \code{pxcor} in the \code{world}.
 w1 <- createWorld()
 minPxcor(w1)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

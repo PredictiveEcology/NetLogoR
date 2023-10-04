@@ -59,7 +59,6 @@ Create \code{n} new \code{turtles} on specific \code{patches}.
 t1 <- sprout(patches = cbind(pxcor = 2, pycor = 2), n = 3)
 t2 <- sprout(patches = cbind(pxcor = 3, pycor = 3), n = 3, turtles = t1)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

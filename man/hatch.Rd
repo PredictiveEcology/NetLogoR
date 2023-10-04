@@ -45,7 +45,6 @@ NLcount(t1)
 t1 <- hatch(turtles = t1, who = 0, n = 2)
 NLcount(t1)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

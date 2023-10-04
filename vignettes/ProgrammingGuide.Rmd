@@ -55,8 +55,10 @@ R functions take arguments which are R objects or values. Arguments are used to 
 w1 <- createWorld(minPxcor = 0, maxPxcor = 10, minPycor = 0, maxPycor = 10)
 
 # Report the distance between the patch [pxcor = 0, pycor = 0] and the patch [pxcor = 1, pycor = 1]
-pDist <- NLdist(agents = cbind(pxcor = 0, pycor = 0),
-                agents2 = cbind(pxcor = 1, pycor = 1), world = w1, torus = TRUE)
+pDist <- NLdist(
+  agents = cbind(pxcor = 0, pycor = 0),
+  agents2 = cbind(pxcor = 1, pycor = 1), world = w1, torus = TRUE
+)
 ```
 
 In `NetLogoR`, the function arguments indicate which world and/or agents (*i.e.*, patches and/or turtles) are involved in the function.
@@ -99,7 +101,8 @@ The name of the object to which the world is assigned is treated as the name of 
 
 ```{r, eval=FALSE}
 # For all patches, assign a random value between 0 and 1
-pQuality <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = runif(n = 100, min = 0, max = 1))
+pQuality <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9,
+                        data = runif(n = 100, min = 0, max = 1))
 ```
 
 Several turtle variables built-in in NetLogo are created at the same time when creating a turtle object in `NetLogoR`: `xcor`, `ycor`, `who`, `heading`, `prevX`, `prevY`, `breed`, and `color`.
@@ -107,8 +110,10 @@ New turtle variables can be created:
 
 ```{r, eval=FALSE}
 # Now each turtle in t1 has a "sex" variable
-t1 <- turtlesOwn (turtles = t1, tVar = "sex",
-                  tVal = c("M", "M", "M", "M", "M", "F", "F", "F", "F", "F"))
+t1 <- turtlesOwn(
+  turtles = t1, tVar = "sex",
+  tVal = c("M", "M", "M", "M", "M", "F", "F", "F", "F", "F")
+)
 ```
 
 Turtle's breed is a turtle variable and you can have different breeds behaving differently.
@@ -139,7 +144,7 @@ Patch and turtle variables are available to other agents if they can be identifi
 ```{r, eval=FALSE}
 # Reports the pQuality value of the patches:
 # [pxcor = 0, pycor = 0], [pxcor = 0, pycor = 1], and [pxcor = 0, pycor = 2]
-of(world = pQuality, agents = patch(pQuality, c(0,0,0), c(0,1,2)))
+of(world = pQuality, agents = patch(pQuality, c(0, 0, 0), c(0, 1, 2)))
 ```
 
 Local variables may occur in `NetLogoR` as inherent to the R software.

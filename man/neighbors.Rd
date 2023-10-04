@@ -47,10 +47,11 @@ returned.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
-neighbors(world = w1, agents = patch(w1, c(0,9), c(0,7)), nNeighbors = 8)
-t1 <- createTurtles(n = 3, coords = randomXYcor(w1, n = 3))
-neighbors(world = w1, agents = t1, nNeighbors = 4)
-
+if (requireNamespace("SpaDES.tools", quietly = TRUE)) {
+  neighbors(world = w1, agents = patch(w1, c(0, 9), c(0, 7)), nNeighbors = 8)
+  t1 <- createTurtles(n = 3, coords = randomXYcor(w1, n = 3))
+  neighbors(world = w1, agents = t1, nNeighbors = 4)
+}
 
 }
 \references{

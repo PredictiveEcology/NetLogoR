@@ -22,16 +22,16 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: 'release'}
-          - {os: windows-latest, r: 'devel'}
-          - {os: windows-latest, r: 'release'}
-          - {os: windows-latest, r: '4.1'}
-          - {os: windows-latest, r: '4.0'}
-          - {os: ubuntu-20.04, nosuggests: false, r: 'devel'}
-          - {os: ubuntu-20.04, nosuggests: false, r: 'release'}
-          - {os: ubuntu-20.04, nosuggests: true, r: 'release'}
-          - {os: ubuntu-20.04, nosuggests: false, r: 'oldrel'}
-          - {os: ubuntu-20.04, nosuggests: false, r: '4.0'}
+          - {os: macOS-latest,   nosuggests: false, r: 'release'}
+          - {os: windows-latest, nosuggests: false, r: 'devel'}
+          - {os: windows-latest, nosuggests: false, r: 'release'}
+          - {os: windows-latest, nosuggests: false, r: '4.1'}
+          - {os: windows-latest, nosuggests: false, r: '4.0'}
+          - {os: ubuntu-20.04,   nosuggests: false, r: 'devel'}
+          - {os: ubuntu-20.04,   nosuggests: false, r: 'release'}
+          - {os: ubuntu-20.04,   nosuggests: true,  r: 'release'}
+          - {os: ubuntu-20.04,   nosuggests: false, r: 'oldrel'}
+          - {os: ubuntu-20.04,   nosuggests: false, r: '4.0'}
 
     env:
       _R_CHECK_DEPENDS_ONLY_: ${{ matrix.config.nosuggests }}
@@ -39,20 +39,24 @@ jobs:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-pandoc@v2
 
+      - uses: PredictiveEcology/actions/install-spatial-deps@main
+
       - uses: r-lib/actions/setup-r@v2
         with:
-          r-version: ${{ matrix.config.r }}
-          use-public-rspm: true
+          extra-repositories: 'https://predictiveecology.r-universe.dev/'
+          Ncpus: 2
+          use-public-rspm: false
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: |
             any::rcmdcheck
             fastshp=?ignore
+            PredictiveEcology/quickPlot@development
             PredictiveEcology/reproducible@development
             PredictiveEcology/Require@development
             PredictiveEcology/SpaDES.core@development

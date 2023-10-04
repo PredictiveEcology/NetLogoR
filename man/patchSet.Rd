@@ -25,11 +25,10 @@ Duplicate \code{patches} among the inputs are removed in the returned matrix.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
-p1 <- patchAt(world = w1, agents = patch(w1, c(0,1,2), c(0,0,0)), dx = 1, dy = 1)
+p1 <- patchAt(world = w1, agents = patch(w1, c(0, 1, 2), c(0, 0, 0)), dx = 1, dy = 1)
 p2 <- patchDistDir(world = w1, agents = patch(w1, 0, 0), dist = 1, angle = 45)
 p3 <- patch(world = w1, x = 4.3, y = 8)
 p4 <- patchSet(p1, p2, p3)
-
 
 }
 \references{

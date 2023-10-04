@@ -59,7 +59,6 @@ w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
 t1 <- createOTurtles(n = 10, world = w1)
 subHeadings(angle1 = t1, angle2 = 0)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

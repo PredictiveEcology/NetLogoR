@@ -56,8 +56,10 @@ Return the \code{agents} sorted according to their value.
 }
 \examples{
 # Patches
-w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-                          data = sample(1:5, size = 25, replace = TRUE))
+w1 <- createWorld(
+  minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+  data = sample(1:5, size = 25, replace = TRUE)
+)
 plot(w1)
 p1 <- sortOn(agents = patches(w1), world = w1)
 
@@ -65,6 +67,11 @@ p1 <- sortOn(agents = patches(w1), world = w1)
 t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 sortHeadingT1 <- sortOn(agents = t1, var = "heading")
 
+# or
+library(quickPlot)
+
+Plot(w1)
+Plot(t1, addTo = "w1")
 
 }
 \references{

@@ -31,7 +31,6 @@ w1 <- clearPatches(w1)
 w1Val <- of(world = w1, agents = patches(w1))
 summary(w1Val)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

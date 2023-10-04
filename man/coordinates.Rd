@@ -2,20 +2,21 @@
 % Please edit documentation in R/agentMatrix-Class-methods.R
 \name{coordinates,agentMatrix-method}
 \alias{coordinates,agentMatrix-method}
-\title{Set spatial coordinates}
+\title{Spatial accessors and setters for NetLogoR classes}
 \usage{
 \S4method{coordinates}{agentMatrix}(obj, ...)
 }
 \arguments{
-\item{obj}{an \code{AgentMatrix} object}
+\item{obj}{object deriving from class "agentMatrix"}
 
 \item{...}{additional arguments that may be used by particular methods}
 }
 \value{
-usually an object of class \code{SpatialPointsDataFrame}; if the coordinates set cover
-the full set of variables in object, an object of class \code{SpatialPoints} is returned.
-See \code{\link[sp:coordinates]{sp::coordinates()}}.
+\code{coordinates} returns a matrix of coordinates of the \code{obj}.
 }
 \description{
-Set spatial coordinates
+Spatial accessors and setters for NetLogoR classes
+}
+\seealso{
+\code{\link[=bbox]{bbox()}}, \code{\link[=extent]{extent()}}
 }

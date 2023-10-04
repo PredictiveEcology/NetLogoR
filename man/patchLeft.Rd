@@ -50,7 +50,6 @@ w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
 t1 <- createTurtles(n = 1, coords = cbind(xcor = 2, ycor = 2), heading = 90)
 patchLeft(world = w1, turtles = t1, dist = 2, angle = 90)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

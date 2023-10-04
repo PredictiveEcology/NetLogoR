@@ -61,16 +61,19 @@ among the minimum values.
 }
 \examples{
 # Patches
-w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
-                  data = sample(1:10, size = 25, replace = TRUE))
+w1 <- createWorld(
+  minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4,
+  data = sample(1:10, size = 25, replace = TRUE)
+)
 plot(w1)
 p1 <- minNof(agents = patches(w1), n = 6, world = w1)
 
 # Turtles
-t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10),
-                    heading = sample(1:5, size = 10, replace= TRUE))
+t1 <- createTurtles(
+  n = 10, coords = randomXYcor(w1, n = 10),
+  heading = sample(1:5, size = 10, replace = TRUE)
+)
 t2 <- minNof(agents = t1, n = 5, var = "heading")
-
 
 }
 \references{

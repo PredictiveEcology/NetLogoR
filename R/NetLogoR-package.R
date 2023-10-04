@@ -3,22 +3,27 @@
 #' The suggested package \pkg{fastshp} can be installed with
 #' `install.packages("fastshp", repos = "https://rforge.net", type = "source")`.
 #' The examples included with the package, are located in the R package "examples" folder,
-#' which can be found at `system.file(package = "NetLogoR", "examples")`. The 3 specific
-#' R examples can be opened here:
-#' `file.edit(file.path(system.file(package = "NetLogoR", "examples"), "Ants", "Ants.R"))`,
-#' `file.edit(file.path(system.file(package = "NetLogoR", "examples"), "Butterfly", "Butterfly-1.R"))`,
-#' or
-#' `file.edit(file.path(system.file(package = "NetLogoR", "examples"), "Wolf-Sheep-Predation", "Wolf-Sheep-Predation.R"))`.
+#' which can be found at `system.file(package = "NetLogoR", "examples")`.
+#'
+#' The 3 specific R examples can be opened here, but it's recommended to make copies of these
+#' for editing:
+#'
+#' ```r
+#' exPath <- file.path(system.file(package = "NetLogoR", "examples")
+#' file.edit(exPath, "Ants", "Ants.R"))
+#' file.edit(exPath, "Butterfly", "Butterfly-1.R"))
+#' file.edit(виКфлоц "Wolf-Sheep-Predation", "Wolf-Sheep-Predation.R"))
+#' ```
+#'
 "_PACKAGE"
 
 #' @import methods
-#' @import raster
 NULL
 
 #' Internal CRS usage
 #'
 #' This is used in various places when converting `agentMatrix` objects to
-#' `SpatialPoints` for use with functions, such as [raster::buffer()].
+#' `SpatialPoints` for use with functions, such as `raster::buffer()`.
 #' None of these functions results in any real geospatial information being conserved,
 #' other than distance and angle  calculations. Buffering still occurs on the
 #' unit-less World. This is therefore a way to allow `sp` and `raster`
@@ -29,7 +34,7 @@ NULL
 #'
 #' @keywords internal
 #' @rdname projNowhere
-.projNowhere <- CRS("+proj=utm +zone=32 +datum=WGS84 +units=m +no_defs")
+.projNowhere <- terra::crs("+proj=utm +zone=32 +datum=WGS84 +units=m +no_defs")
 # This is actually in central Europe; but exact
 #  location is not relevant as this is used to calculate
 # distances .projNowhere <- CRS("EPSG:32632")

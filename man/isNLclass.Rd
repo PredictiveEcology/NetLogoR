@@ -47,13 +47,14 @@ Careful! The \code{class} tested does not correspond to actual R classes.
 }
 \examples{
 w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
-t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10),
-                    heading = sample(1:3, size = 10, replace= TRUE))
+t1 <- createTurtles(
+  n = 10, coords = randomXYcor(w1, n = 10),
+  heading = sample(1:3, size = 10, replace = TRUE)
+)
 isNLclass(agents = patches(w1), class = "patch")
 isNLclass(agents = patches(w1), class = "patcheset")
 isNLclass(agents = t1, class = "agentset")
 isNLclass(agents = t1, class = "turtleset")
-
 
 }
 \references{

@@ -15,13 +15,14 @@
 #'
 #' @examples
 #' # agentMatrix
-#'  newAgent <- new("agentMatrix",
-#'    coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-#'    char = letters[c(1, 2, 6)],
-#'    nums2 = c(4.5, 2.6, 2343),
-#'    char2 = LETTERS[c(4, 24, 3)],
-#'    nums = 5:7)
-#'  plot(newAgent)
+#' newAgent <- new("agentMatrix",
+#'   coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
+#'   char = letters[c(1, 2, 6)],
+#'   nums2 = c(4.5, 2.6, 2343),
+#'   char2 = LETTERS[c(4, 24, 3)],
+#'   nums = 5:7
+#' )
+#' plot(newAgent)
 plot.agentMatrix <- function(x, ...) {
   plot(x@.Data, ...)
 }
@@ -36,8 +37,8 @@ plot.agentMatrix <- function(x, ...) {
 #' w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9, data = 1:100)
 #' plot(w1)
 plot.worldMatrix <- function(x, ...) {
-  Ras <- world2raster(x)
-  plot(Ras, ...)
+  Ras <- world2spatRast(x)
+  terra::plot(Ras, ...)
 }
 
 #' @export
@@ -52,8 +53,8 @@ plot.worldMatrix <- function(x, ...) {
 #' w3 <- stackWorlds(w1, w2)
 #' plot(w3)
 plot.worldArray <- function(x, ...) {
-  Ras <- world2raster(x)
-  plot(Ras, ...)
+  Ras <- world2spatRast(x)
+  terra::plot(Ras, ...)
 }
 
 #' @export
@@ -64,13 +65,14 @@ plot.worldArray <- function(x, ...) {
 #' @examples
 #'
 #' # agentMatrix
-#'  newAgent <- new("agentMatrix",
-#'    coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
-#'    char = letters[c(1, 2, 6)],
-#'    nums2 = c(4.5, 2.6, 2343),
-#'    char2 = LETTERS[c(4, 24, 3)],
-#'    nums = 5:7)
-#'  points(newAgent)
+#' newAgent <- new("agentMatrix",
+#'   coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),
+#'   char = letters[c(1, 2, 6)],
+#'   nums2 = c(4.5, 2.6, 2343),
+#'   char2 = LETTERS[c(4, 24, 3)],
+#'   nums = 5:7
+#' )
+#' points(newAgent)
 points.agentMatrix <- function(x, ...) {
   points(x@.Data, ...)
 }

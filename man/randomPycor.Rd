@@ -24,7 +24,6 @@ Report \code{n} random \code{pycor} coordinates within the \code{world}'s extent
 w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
 pycor <- randomPycor(world = w1, n = 10)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. \url{http://ccl.northwestern.edu/netlogo/}.

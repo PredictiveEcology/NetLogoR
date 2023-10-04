@@ -31,7 +31,6 @@ of(agents = t1, var = "heading")
 t1 <- right(turtles = t1, angle = 180)
 of(agents = t1, var = "heading")
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.

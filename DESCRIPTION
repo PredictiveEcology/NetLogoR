@@ -23,13 +23,13 @@ Description: Build and run spatially explicit
     integrated with a discrete event simulator, such as 'SpaDES'
     (<https://cran.r-project.org/package=SpaDES>).
     The suggested package 'fastshp' can be installed with
-    'install.packages("fastshp", repos = "https://rforge.net", type = "source")'.
+    'install.packages("fastshp", repos = (<"https://rforge.net")>, type = "source")'.
 URL:
     https://netlogor.predictiveecology.org,
     https://github.com/PredictiveEcology/NetLogoR/,
     https://groups.google.com/g/netlogor
-Version: 0.3.11
-Date: 2022-08-16
+Version: 1.0.0
+Date: 2023-06-19
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
            role = c("aut"), comment = c(ORCID = "0000-0002-3252-5894")),
@@ -37,57 +37,56 @@ Authors@R: c(
            role = c("aut", "cre"), comment = c(ORCID = "0000-0002-6914-8316")),
     person("Alex M", "Chubaty", email = "achubaty@for-cast.ca",
            role = c("aut"), comment = c(ORCID = "0000-0001-7146-8135")),
-    person(paste("Her Majesty the Queen in Right of Canada,",
+    person(paste("His Majesty the King in Right of Canada,",
                  "as represented by the Minister of Natural Resources Canada"),
            role = "cph")
     )
 Depends:
-    R (>= 4.0),
-    raster
+    R (>= 4.1)
 Imports:
-    abind,
-    CircStats,
     data.table,
     grDevices,
-    matrixStats,
     methods,
-    quickPlot (>= 0.1.2),
-    sf,
-    sp,
-    SpaDES.tools,
-    stats
+    quickPlot (>= 1.0.2),
+    stats,
+    terra,
+    utils
 Suggests:
+    CircStats,
+    covr,
     fastshp,
     knitr,
-    magrittr,
     microbenchmark,
+    raster,
     rmarkdown,
+    sf,
+    sp,
     SpaDES.core,
-    testthat
+    SpaDES.tools (>= 2.0.1),
+    testthat,
+    withr
 Remotes:
-    s-u/fastshp,
-    PredictiveEcology/SpaDES.tools@development,
-    PredictiveEcology/SpaDES.core@development
-Additional_repositories: https://rforge.net
+    PredictiveEcology/SpaDES.tools@development
+Additional_repositories: https://predictiveecology.r-universe.dev/
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
 Encoding: UTF-8
 Language: en-CA
 License: GPL-3
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr, rmarkdown
 Collate: 
     'Agent-classes.R'
     'NetLogoR-package.R'
     'worldNLR-classes-methods.R'
+    'helpers.R'
     'agentMatrix-Class-methods.R'
     'agentset-functions.R'
     'function-arguments.R'
-    'helpers.R'
     'patch-functions.R'
     'plot.R'
-    'world-functions.R'
     'quickPlot.R'
     'spades-functions.R'
     'turtle-functions.R'
+    'world-functions.R'
 Roxygen: list(markdown = TRUE)

@@ -40,15 +40,16 @@ The \code{turtles} point outwards.
 }\if{html}{\out{</div>}}
 }
 \examples{
-w1 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9,
-                          data = runif(100))
+w1 <- createWorld(
+  minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9,
+  data = runif(100)
+)
 t1 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
 plot(w1)
 points(t1, col = "black", pch = 16)
 
 t1 <- layoutCircle(world = w1, turtles = t1, radius = 3)
 points(t1, col = "red", pch = 16)
-
 
 }
 \references{

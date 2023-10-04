@@ -22,8 +22,9 @@ Convert an \code{agentMatrix} object into a \code{SpatialPointsDataFrame} object
 }
 \examples{
 t1 <- createTurtles(n = 10, coords = cbind(xcor = 1:10, ycor = 1:10))
-sp1 <- turtles2spdf(turtles = t1)
-
+if (requireNamespace("sp", quietly = TRUE)) {
+  sp1 <- turtles2spdf(turtles = t1)
+}
 
 }
 \author{

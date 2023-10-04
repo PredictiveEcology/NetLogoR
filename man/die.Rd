@@ -31,7 +31,6 @@ NLcount(t1)
 t1 <- die(turtles = t1, who = c(2, 3, 4))
 NLcount(t1)
 
-
 }
 \references{
 Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
