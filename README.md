@@ -24,7 +24,7 @@ A model simulating the wolf life cycle written using `NetLogoR` has been publish
 
 ### From CRAN
 
-Currently, the package is not on CRAN due to some dependencies that were kicked off CRAN. It will be three soon.
+Currently, the package is not on CRAN due to some dependencies that were removed from CRAN. It will be there soon.
 
 In the mean time, please use:
 ```r
