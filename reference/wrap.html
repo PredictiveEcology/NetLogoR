@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -74,28 +74,7 @@
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">wrap</span><span class="op">(</span><span class="va">obj</span>, <span class="va">bounds</span>, <span class="va">withHeading</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S4 method for matrix,Extent,missing</span></span>
-<span><span class="fu">wrap</span><span class="op">(</span><span class="va">obj</span>, <span class="va">bounds</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S4 method for SpatialPoints,ANY,missing</span></span>
-<span><span class="fu">wrap</span><span class="op">(</span><span class="va">obj</span>, <span class="va">bounds</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S4 method for matrix,Raster,missing</span></span>
-<span><span class="fu">wrap</span><span class="op">(</span><span class="va">obj</span>, <span class="va">bounds</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S4 method for matrix,Raster,missing</span></span>
-<span><span class="fu">wrap</span><span class="op">(</span><span class="va">obj</span>, <span class="va">bounds</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S4 method for matrix,matrix,missing</span></span>
-<span><span class="fu">wrap</span><span class="op">(</span><span class="va">obj</span>, <span class="va">bounds</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S4 method for SpatialPointsDataFrame,Extent,logical</span></span>
-<span><span class="fu">wrap</span><span class="op">(</span><span class="va">obj</span>, <span class="va">bounds</span>, <span class="va">withHeading</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S4 method for SpatialPointsDataFrame,Raster,logical</span></span>
-<span><span class="fu">wrap</span><span class="op">(</span><span class="va">obj</span>, <span class="va">bounds</span>, <span class="va">withHeading</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># S4 method for SpatialPointsDataFrame,matrix,logical</span></span>
+<span><span class="co"># S4 method for ANY</span></span>
 <span><span class="fu">wrap</span><span class="op">(</span><span class="va">obj</span>, <span class="va">bounds</span>, <span class="va">withHeading</span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -135,43 +114,48 @@ agent locations.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://quickplot.predictiveecology.org" class="external-link">quickPlot</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster" class="external-link">raster</a></span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"terra"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">xrange</span> <span class="op">&lt;-</span> <span class="va">yrange</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">50</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">hab</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/ext.html" class="external-link">ext</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">xrange</span>, <span class="va">yrange</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">hab</span><span class="op">[</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/dimensions.html" class="external-link">ncell</a></span><span class="op">(</span><span class="va">hab</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">xrange</span> <span class="op">&lt;-</span> <span class="va">yrange</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">50</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">hab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/raster.html" class="external-link">raster</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/extent.html" class="external-link">extent</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">xrange</span>, <span class="va">yrange</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">hab</span><span class="op">[</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></span>
+<span class="r-in"><span>  <span class="co"># initialize agents</span></span></span>
+<span class="r-in"><span>  <span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># initialize agents</span></span></span>
-<span class="r-in"><span><span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span>  <span class="co"># previous points</span></span></span>
+<span class="r-in"><span>  <span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">N</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">N</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># initial points</span></span></span>
+<span class="r-in"><span>  <span class="va">starts</span> <span class="op">&lt;-</span> <span class="fu"><a href="agentMatrix-bind-methods.html">cbind</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    x <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">N</span>, <span class="va">xrange</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">xrange</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    y <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">N</span>, <span class="va">yrange</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">yrange</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># previous points</span></span></span>
-<span class="r-in"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">N</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">N</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># initial points</span></span></span>
-<span class="r-in"><span><span class="va">starts</span> <span class="op">&lt;-</span> <span class="fu"><a href="agentMatrix-bind-methods.html">cbind</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">N</span>, <span class="va">xrange</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">xrange</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                y <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">N</span>, <span class="va">yrange</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">yrange</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># create the agent object</span></span></span>
+<span class="r-in"><span>  <span class="va">agent</span> <span class="op">&lt;-</span> <span class="fu"><a href="agentMatrix.html">agentMatrix</a></span><span class="op">(</span>coords <span class="op">=</span> <span class="va">starts</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="va">x1</span>, y1 <span class="op">=</span> <span class="va">y1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># create the agent object</span></span></span>
-<span class="r-in"><span><span class="va">agent</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/sp/man/SpatialPoints.html" class="external-link">SpatialPointsDataFrame</a></span><span class="op">(</span>coords <span class="op">=</span> <span class="va">starts</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">x1</span>, <span class="va">y1</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">ln</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Lognormal.html" class="external-link">rlnorm</a></span><span class="op">(</span><span class="va">N</span>, <span class="fl">1</span>, <span class="fl">0.02</span><span class="op">)</span> <span class="co"># log normal step length</span></span></span>
+<span class="r-in"><span>  <span class="va">sd</span> <span class="op">&lt;-</span> <span class="fl">30</span> <span class="co"># could be specified globally in params</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">ln</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Lognormal.html" class="external-link">rlnorm</a></span><span class="op">(</span><span class="va">N</span>, <span class="fl">1</span>, <span class="fl">0.02</span><span class="op">)</span> <span class="co"># log normal step length</span></span></span>
-<span class="r-in"><span><span class="va">sd</span> <span class="op">&lt;-</span> <span class="fl">30</span> <span class="co"># could be specified globally in params</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="http://quickplot.predictiveecology.org/reference/clearPlot.html" class="external-link">clearPlot</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="http://quickplot.predictiveecology.org/reference/Plot.html" class="external-link">Plot</a></span><span class="op">(</span><span class="va">hab</span>, zero.color <span class="op">=</span> <span class="st">"white"</span>, axes <span class="op">=</span> <span class="st">"L"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://quickplot.predictiveecology.org" class="external-link">quickPlot</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://quickplot.predictiveecology.org/reference/clearPlot.html" class="external-link">clearPlot</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://quickplot.predictiveecology.org/reference/Plot.html" class="external-link">Plot</a></span><span class="op">(</span><span class="va">hab</span>, zero.color <span class="op">=</span> <span class="st">"white"</span>, axes <span class="op">=</span> <span class="st">"L"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://quickplot.predictiveecology.org/reference/Plot.html" class="external-link">Plot</a></span><span class="op">(</span><span class="va">agent</span>, addTo <span class="op">=</span> <span class="st">"hab"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span></span></span>
+<span class="r-in"><span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"SpaDES.tools"</span><span class="op">)</span> <span class="op">&amp;&amp;</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"CircStats"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>      <span class="va">agent</span> <span class="op">&lt;-</span> <span class="fu">SpaDES.tools</span><span class="fu">::</span><span class="fu"><a href="https://spades-tools.predictiveecology.org/reference/crw.html" class="external-link">crw</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        agent <span class="op">=</span> <span class="va">agent</span>,</span></span>
+<span class="r-in"><span>        extent <span class="op">=</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/ext.html" class="external-link">ext</a></span><span class="op">(</span><span class="va">hab</span><span class="op">)</span>, stepLength <span class="op">=</span> <span class="va">ln</span>,</span></span>
+<span class="r-in"><span>        stddev <span class="op">=</span> <span class="va">sd</span>, lonlat <span class="op">=</span> <span class="cn">FALSE</span>, torus <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span>      <span class="op">)</span></span></span>
+<span class="r-in"><span>      <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://quickplot.predictiveecology.org/reference/Plot.html" class="external-link">Plot</a></span><span class="op">(</span><span class="va">agent</span>, addTo <span class="op">=</span> <span class="st">"hab"</span>, axes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">}</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"SpaDES.tools"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span>    <span class="va">agent</span> <span class="op">&lt;-</span> <span class="fu">SpaDES.tools</span><span class="fu">::</span><span class="fu"><a href="https://spades-tools.predictiveecology.org/reference/crw.html" class="external-link">crw</a></span><span class="op">(</span>agent <span class="op">=</span> <span class="va">agent</span>,</span></span>
-<span class="r-in"><span>                               extent <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/extent.html" class="external-link">extent</a></span><span class="op">(</span><span class="va">hab</span><span class="op">)</span>, stepLength <span class="op">=</span> <span class="va">ln</span>,</span></span>
-<span class="r-in"><span>                               stddev <span class="op">=</span> <span class="va">sd</span>, lonlat <span class="op">=</span> <span class="cn">FALSE</span>, torus <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span>   <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="http://quickplot.predictiveecology.org/reference/Plot.html" class="external-link">Plot</a></span><span class="op">(</span><span class="va">agent</span>, addTo <span class="op">=</span> <span class="st">"hab"</span>, axes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span> <span class="op">}</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required namespace: CircStats</span>
 </code></pre></div>
     </div>
   </div>
@@ -186,7 +170,7 @@ agent locations.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

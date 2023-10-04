@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -106,14 +106,6 @@
         </td>
         <td><p><code>Patches</code> coordinates from cells numbers</p></td>
       </tr><tr><td>
-          <p><code><a href="Subsetting.html">`[[`(<i>&lt;worldArray&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Subsetting.html">`[[&lt;-`(<i>&lt;worldArray&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Subsetting.html">`$`(<i>&lt;worldArray&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Subsetting for <code>worldArray</code> class</p></td>
-      </tr><tr><td>
-          <p><code><a href="agentClasses-class.html">agentClasses-class</a></code> <code><a href="agentClasses-class.html">agentClasses</a></code> </p>
-        </td>
-        <td><p>A meta class for <code>agentMatrix</code> and <code>SpatialPointsDataFrame</code></p></td>
-      </tr><tr><td>
           <p><code><a href="agentMatrix-bind-methods.html">cbind(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="agentMatrix-bind-methods.html">rbind(<i>&lt;agentMatrix&gt;</i>)</a></code> </p>
         </td>
         <td><p>Combine R Objects by Rows or Columns</p></td>
@@ -134,9 +126,9 @@
         </td>
         <td><p>Create a new <code>agentMatrix</code> object</p></td>
       </tr><tr><td>
-          <p><code><a href="bbox.html">extent(<i>&lt;worldNLR&gt;</i>)</a></code> <code><a href="bbox.html">extent(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="bbox.html">.bboxCoords()</a></code> <code><a href="bbox.html">bbox(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="bbox.html">`bbox&lt;-`()</a></code> <code><a href="bbox.html">bbox(<i>&lt;worldNLR&gt;</i>)</a></code> </p>
+          <p><code><a href="bbox.html">bbox()</a></code> <code><a href="bbox.html">`bbox&lt;-`()</a></code> </p>
         </td>
-        <td><p>Bounding box and extent methods for NetLogoR classes</p></td>
+        <td><p>Extract or set bounding box</p></td>
       </tr><tr><td>
           <p><code><a href="bk.html">bk()</a></code> </p>
         </td>
@@ -156,7 +148,7 @@
       </tr><tr><td>
           <p><code><a href="coordinates.html">coordinates(<i>&lt;agentMatrix&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Set spatial coordinates</p></td>
+        <td><p>Spatial accessors and setters for NetLogoR classes</p></td>
       </tr><tr><td>
           <p><code><a href="createOTurtles.html">createOTurtles()</a></code> </p>
         </td>
@@ -178,6 +170,10 @@
         </td>
         <td><p>Diffuse values in a <code>world</code></p></td>
       </tr><tr><td>
+          <p><code><a href="dot-bboxCoords.html">.bboxCoords()</a></code> </p>
+        </td>
+        <td><p><code>.bboxCoords</code> is a drop in replacement for <code>raster::.bboxCoords</code>.</p></td>
+      </tr><tr><td>
           <p><code><a href="downhill.html">downhill()</a></code> </p>
         </td>
         <td><p>Move downhill</p></td>
@@ -189,6 +185,10 @@
           <p><code><a href="dy.html">dy()</a></code> </p>
         </td>
         <td><p>y-increment</p></td>
+      </tr><tr><td>
+          <p><code><a href="extent.html">extent(<i>&lt;worldNLR&gt;</i>)</a></code> <code><a href="extent.html">extent(<i>&lt;agentMatrix&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Bounding box and extent methods for NetLogoR classes</p></td>
       </tr><tr><td>
           <p><code><a href="extract-methods.html">`[`(<i>&lt;worldMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;worldMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[&lt;-`(<i>&lt;worldMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[&lt;-`(<i>&lt;worldMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;worldArray&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;worldArray&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[&lt;-`(<i>&lt;worldArray&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;matrix&gt;</i>)</a></code> <code><a href="extract-methods.html">`[&lt;-`(<i>&lt;worldArray&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;matrix&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;logical&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="extract-methods.html">`[&lt;-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="extract-methods.html">`[&lt;-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="extract-methods.html">`[&lt;-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="extract-methods.html">`[&lt;-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;data.frame&gt;</i>)</a></code> <code><a href="extract-methods.html">`[&lt;-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="extract-methods.html">`[&lt;-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="extract-methods.html">`[&lt;-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="extract-methods.html">`[&lt;-`(<i>&lt;agentMatrix&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="extract-methods.html">`$`(<i>&lt;agentMatrix&gt;</i>)</a></code> </p>
         </td>
@@ -346,7 +346,7 @@
         </td>
         <td><p>Basic plot methods for <code>agentMatrix</code>, <code>worldMatrix</code>, <code>worldArray</code></p></td>
       </tr><tr><td>
-          <p><code><a href="quickPlot-methods.html">numLayers(<i>&lt;worldArray&gt;</i>)</a></code> <code><a href="quickPlot-methods.html">.plotGrob(<i>&lt;agentMatrix&gt;</i>)</a></code> <code><a href="quickPlot-methods.html">layerNames(<i>&lt;worldArray&gt;</i>)</a></code> <code><a href="quickPlot-methods.html">.identifyGrobToPlot(<i>&lt;worldArray&gt;</i>,<i>&lt;.quickPlotGrob&gt;</i>)</a></code> </p>
+          <p><code><a href="quickPlot-methods.html">numLayers(<i>&lt;worldArray&gt;</i>)</a></code> <code><a href="quickPlot-methods.html">numLayers(<i>&lt;worldMatrix&gt;</i>)</a></code> <code><a href="quickPlot-methods.html">layerNames(<i>&lt;worldArray&gt;</i>)</a></code> <code><a href="quickPlot-methods.html">.identifyGrobToPlot(<i>&lt;worldArray&gt;</i>,<i>&lt;.quickPlotGrob&gt;</i>)</a></code> </p>
         </td>
         <td><p>Methods for <code>quickPlot</code></p></td>
       </tr><tr><td>
@@ -382,6 +382,10 @@
         </td>
         <td><p>Set <code>turtles</code>' locations</p></td>
       </tr><tr><td>
+          <p><code><a href="sf2turtles.html">sf2turtles()</a></code> </p>
+        </td>
+        <td><p>From <code>sf</code> to <code>agentMatrix</code></p></td>
+      </tr><tr><td>
           <p><code><a href="show-methods.html">show(<i>&lt;worldArray&gt;</i>)</a></code> <code><a href="show-methods.html">show(<i>&lt;worldMatrix&gt;</i>)</a></code> </p>
         </td>
         <td><p>Key base R functions for <code>worldNLR</code> classes</p></td>
@@ -389,6 +393,10 @@
           <p><code><a href="sortOn.html">sortOn()</a></code> </p>
         </td>
         <td><p>Sort <code>agents</code></p></td>
+      </tr><tr><td>
+          <p><code><a href="spatRast2world.html">spatRast2world()</a></code> </p>
+        </td>
+        <td><p>Convert a <code>SpatRaster</code> object into a <code>worldMatrix</code> or <code>worldArray</code> object</p></td>
       </tr><tr><td>
           <p><code><a href="spdf2turtles.html">spdf2turtles()</a></code> </p>
         </td>
@@ -406,6 +414,10 @@
         </td>
         <td><p>Subtract <code>headings</code></p></td>
       </tr><tr><td>
+          <p><code><a href="subsetting.html">`[[`(<i>&lt;worldArray&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="subsetting.html">`[[&lt;-`(<i>&lt;worldArray&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="subsetting.html">`$`(<i>&lt;worldArray&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Subsetting and replacing for <code>worldArray</code> class</p></td>
+      </tr><tr><td>
           <p><code><a href="tExist.html">tExist()</a></code> </p>
         </td>
         <td><p>Do the <code>turtle</code> exist?</p></td>
@@ -421,6 +433,10 @@
           <p><code><a href="turtleSet.html">turtleSet()</a></code> </p>
         </td>
         <td><p>Create a <code>turtle</code> <code>agentset</code></p></td>
+      </tr><tr><td>
+          <p><code><a href="turtles2sf.html">turtles2sf()</a></code> </p>
+        </td>
+        <td><p>From <code>agentMatrix</code> to <code>sf</code></p></td>
       </tr><tr><td>
           <p><code><a href="turtles2spdf.html">turtles2spdf()</a></code> </p>
         </td>
@@ -458,6 +474,10 @@
         </td>
         <td><p>Convert a <code>worldMatrix</code> or <code>worldArray</code> object into a <code>Raster*</code> object</p></td>
       </tr><tr><td>
+          <p><code><a href="world2spatRast.html">world2spatRast()</a></code> </p>
+        </td>
+        <td><p>Convert a <code>worldMatrix</code> or <code>worldArray</code> object into a <code>SpatRaster</code> object</p></td>
+      </tr><tr><td>
           <p><code><a href="worldArray-class.html">worldArray-class</a></code> <code><a href="worldArray-class.html">worldArray</a></code> </p>
         </td>
         <td><p>The <code>worldArray</code> class</p></td>
@@ -494,7 +514,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

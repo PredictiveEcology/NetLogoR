@@ -24,7 +24,7 @@ equals to the maximum value."><!-- mathjax --><script src="https://cdnjs.cloudfl
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -150,17 +150,21 @@ Northwestern University. Evanston, IL.</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Patches</span></span></span>
-<span class="r-in"><span><span class="va">w1</span> <span class="op">&lt;-</span> <span class="fu"><a href="createWorld.html">createWorld</a></span><span class="op">(</span>minPxcor <span class="op">=</span> <span class="fl">0</span>, maxPxcor <span class="op">=</span> <span class="fl">4</span>, minPycor <span class="op">=</span> <span class="fl">0</span>, maxPycor <span class="op">=</span> <span class="fl">4</span>,</span></span>
-<span class="r-in"><span>                          data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">25</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">w1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">w1</span> <span class="op">&lt;-</span> <span class="fu"><a href="createWorld.html">createWorld</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  minPxcor <span class="op">=</span> <span class="fl">0</span>, maxPxcor <span class="op">=</span> <span class="fl">4</span>, minPycor <span class="op">=</span> <span class="fl">0</span>, maxPycor <span class="op">=</span> <span class="fl">4</span>,</span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, size <span class="op">=</span> <span class="fl">25</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">w1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="withMax-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu">withMax</span><span class="op">(</span>agents <span class="op">=</span> <span class="fu"><a href="patches.html">patches</a></span><span class="op">(</span><span class="va">w1</span><span class="op">)</span>, world <span class="op">=</span> <span class="va">w1</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in h(simpleError(msg, call)):</span> error in evaluating the argument 'agents' in selecting a method for function 'withMax': unable to find an inherited method for function ‘patches’ for signature ‘"worldMatrix"’</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Turtles</span></span></span>
-<span class="r-in"><span><span class="va">t1</span> <span class="op">&lt;-</span> <span class="fu"><a href="createTurtles.html">createTurtles</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span>, coords <span class="op">=</span> <span class="fu"><a href="randomXYcor.html">randomXYcor</a></span><span class="op">(</span><span class="va">w1</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                    heading <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, size <span class="op">=</span> <span class="fl">10</span>, replace<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">t1</span> <span class="op">&lt;-</span> <span class="fu"><a href="createTurtles.html">createTurtles</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  n <span class="op">=</span> <span class="fl">10</span>, coords <span class="op">=</span> <span class="fu"><a href="randomXYcor.html">randomXYcor</a></span><span class="op">(</span><span class="va">w1</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  heading <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, size <span class="op">=</span> <span class="fl">10</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">t2</span> <span class="op">&lt;-</span> <span class="fu">withMax</span><span class="op">(</span>agents <span class="op">=</span> <span class="va">t1</span>, var <span class="op">=</span> <span class="st">"heading"</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -176,7 +180,7 @@ Northwestern University. Evanston, IL.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -144,15 +144,18 @@ Northwestern University. Evanston, IL.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">w1</span> <span class="op">&lt;-</span> <span class="fu"><a href="createWorld.html">createWorld</a></span><span class="op">(</span>minPxcor <span class="op">=</span> <span class="fl">0</span>, maxPxcor <span class="op">=</span> <span class="fl">4</span>, minPycor <span class="op">=</span> <span class="fl">0</span>, maxPycor <span class="op">=</span> <span class="fl">4</span>,</span></span>
-<span class="r-in"><span>                          data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, size <span class="op">=</span> <span class="fl">25</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">w1</span> <span class="op">&lt;-</span> <span class="fu"><a href="createWorld.html">createWorld</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  minPxcor <span class="op">=</span> <span class="fl">0</span>, maxPxcor <span class="op">=</span> <span class="fl">4</span>, minPycor <span class="op">=</span> <span class="fl">0</span>, maxPycor <span class="op">=</span> <span class="fl">4</span>,</span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, size <span class="op">=</span> <span class="fl">25</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">w1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="diffuse-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># Diffuse 50% of each patch value to its 8 neighbors</span></span></span>
-<span class="r-in"><span><span class="va">w2</span> <span class="op">&lt;-</span> <span class="fu">diffuse</span><span class="op">(</span>world <span class="op">=</span> <span class="va">w1</span>, share <span class="op">=</span> <span class="fl">0.5</span>, nNeighbors <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">w2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"SpaDES.tools"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">w2</span> <span class="op">&lt;-</span> <span class="fu">diffuse</span><span class="op">(</span>world <span class="op">=</span> <span class="va">w1</span>, share <span class="op">=</span> <span class="fl">0.5</span>, nNeighbors <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">w2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-plt img"><img src="diffuse-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -168,7 +171,7 @@ Northwestern University. Evanston, IL.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

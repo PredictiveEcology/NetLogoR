@@ -52,12 +52,6 @@
     <loc>https://netlogor.predictiveecology.org/reference/PxcorPycorFromCell.html</loc>
   </url>
   <url>
-    <loc>https://netlogor.predictiveecology.org/reference/Subsetting.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/agentClasses-class.html</loc>
-  </url>
-  <url>
     <loc>https://netlogor.predictiveecology.org/reference/agentMatrix-bind-methods.html</loc>
   </url>
   <url>
@@ -106,6 +100,9 @@
     <loc>https://netlogor.predictiveecology.org/reference/diffuse.html</loc>
   </url>
   <url>
+    <loc>https://netlogor.predictiveecology.org/reference/dot-bboxCoords.html</loc>
+  </url>
+  <url>
     <loc>https://netlogor.predictiveecology.org/reference/downhill.html</loc>
   </url>
   <url>
@@ -113,6 +110,9 @@
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/dy.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/extent.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/extract-methods.html</loc>
@@ -244,9 +244,6 @@
     <loc>https://netlogor.predictiveecology.org/reference/quickPlot-methods.html</loc>
   </url>
   <url>
-    <loc>https://netlogor.predictiveecology.org/reference/quickPlottables-class.html</loc>
-  </url>
-  <url>
     <loc>https://netlogor.predictiveecology.org/reference/randomPxcor.html</loc>
   </url>
   <url>
@@ -271,10 +268,16 @@
     <loc>https://netlogor.predictiveecology.org/reference/setXY.html</loc>
   </url>
   <url>
+    <loc>https://netlogor.predictiveecology.org/reference/sf2turtles.html</loc>
+  </url>
+  <url>
     <loc>https://netlogor.predictiveecology.org/reference/show-methods.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/sortOn.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/spatRast2world.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/spdf2turtles.html</loc>
@@ -289,6 +292,9 @@
     <loc>https://netlogor.predictiveecology.org/reference/subHeadings.html</loc>
   </url>
   <url>
+    <loc>https://netlogor.predictiveecology.org/reference/subsetting.html</loc>
+  </url>
+  <url>
     <loc>https://netlogor.predictiveecology.org/reference/tExist.html</loc>
   </url>
   <url>
@@ -299,6 +305,9 @@
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/turtleSet.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/turtles2sf.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/turtles2spdf.html</loc>
@@ -326,6 +335,9 @@
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/world2raster.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/world2spatRast.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/worldArray-class.html</loc>

@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -148,14 +148,10 @@ Northwestern University. Evanston, IL.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">w1</span> <span class="op">&lt;-</span> <span class="fu"><a href="createWorld.html">createWorld</a></span><span class="op">(</span>minPxcor <span class="op">=</span> <span class="fl">0</span>, maxPxcor <span class="op">=</span> <span class="fl">4</span>, minPycor <span class="op">=</span> <span class="fl">0</span>, maxPycor <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">towards</span><span class="op">(</span>agents <span class="op">=</span> <span class="fu"><a href="patches.html">patches</a></span><span class="op">(</span><span class="va">w1</span><span class="op">)</span>, agents2 <span class="op">=</span> <span class="fu"><a href="agentMatrix-bind-methods.html">cbind</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 180.0000 194.0362 206.5651 216.8699 225.0000 180.0000 198.4349 213.6901</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 225.0000 233.1301 180.0000 206.5651 225.0000 236.3099 243.4349 180.0000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] 225.0000 243.4349 251.5651 255.9638   0.0000 270.0000 270.0000 270.0000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] 270.0000</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in h(simpleError(msg, call)):</span> error in evaluating the argument 'agents' in selecting a method for function 'towards': unable to find an inherited method for function ‘patches’ for signature ‘"worldMatrix"’</span>
 <span class="r-in"><span><span class="va">t1</span> <span class="op">&lt;-</span> <span class="fu"><a href="createTurtles.html">createTurtles</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span>, world <span class="op">=</span> <span class="va">w1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">towards</span><span class="op">(</span>agents <span class="op">=</span> <span class="va">t1</span>, agents2 <span class="op">=</span> <span class="fu"><a href="agentMatrix-bind-methods.html">cbind</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 225 225 225 225 225 225 225 225 225 225</span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -171,7 +167,7 @@ Northwestern University. Evanston, IL.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
