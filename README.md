@@ -24,8 +24,12 @@ A model simulating the wolf life cycle written using `NetLogoR` has been publish
 
 ### From CRAN
 
+Currently, the package is not on CRAN due to some dependencies that were kicked off CRAN. It will be three soon.
+
+In the mean time, please use:
 ```r
-install.packages("NetLogoR")
+# install.packages("NetLogoR")
+install.packages("NetLogoR", repos = c(https://predictiveecology.r-universe.dev, getOption("repos")))
 ```
 
 ### From GitHub
