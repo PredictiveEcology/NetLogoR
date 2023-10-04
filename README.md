@@ -41,5 +41,4 @@ devtools::install_github("PredictiveEcology/NetLogoR")
 
 ## Getting help
 
-We have created a Google group for users to get help implementing their models using the package.
-Please see the discussions at <https://groups.google.com/g/netlogor>.
+Please email developers or start an issue on the [NetLogoR](https://Github.com/PredictiveEcology/NetLogoR) web page.
