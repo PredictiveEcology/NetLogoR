@@ -286,17 +286,13 @@ setMethod(
   definition = function(x, i, j, ..., drop = FALSE) {
     colNames <- colnames(x@.Data)[j]
     levelInd <- match(colNames, names(x@levels))
-    if (isTRUE(drop) && length(i) == 1) {
-      x <- x@.Data[i, , drop = TRUE]
+    x@.Data <- x@.Data[i, unique(c(1:2, j)), ..., drop = FALSE]
+    if (all(is.na(levelInd))) {
+      x@levels <- list(NULL)
     } else {
-      x@.Data <- x@.Data[i, unique(c(1:2, j)), ..., drop = FALSE]
-      if (all(is.na(levelInd))) {
-        x@levels <- list(NULL)
-      } else {
-        x@levels <- x@levels[colNames[!is.na(levelInd)]]
-      }
-      x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
+      x@levels <- x@levels[colNames[!is.na(levelInd)]]
     }
+    x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
     x
   }
 )
@@ -309,13 +305,9 @@ setMethod(
   "[",
   signature(x = "agentMatrix", "logical", "missing", "ANY"),
   definition = function(x, i, ..., drop = FALSE) {
-    if (isTRUE(drop) && length(i) == 1) {
-      x <- x@.Data[i, , drop = TRUE]
-    } else {
-      x@.Data <- x@.Data[i, , drop = FALSE]
-      if (length(x@.Data) > 0) {
-        x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
-      }
+    x@.Data <- x@.Data[i, , drop = FALSE]
+    if (length(x@.Data) > 0) {
+      x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
     }
     x
   }
@@ -329,13 +321,9 @@ setMethod(
   "[",
   signature(x = "agentMatrix", "numeric", "missing", "ANY"),
   definition = function(x, i, ..., drop = FALSE) {
-    if (isTRUE(drop) && length(i) == 1) {
-      x <- x@.Data[i, , drop = TRUE]
-    } else {
-      x@.Data <- x@.Data[i, , drop = FALSE]
-      if (length(x@.Data) > 0) {
-        x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
-      }
+    x@.Data <- x@.Data[i, , drop = FALSE]
+    if (length(x@.Data) > 0) {
+      x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
     }
     x
   }
@@ -362,7 +350,7 @@ setMethod(
   signature(x = "agentMatrix", "missing", "character", "ANY"),
   definition = function(x, j, ..., drop = FALSE) {
     cols <- match(j, colnames(x@.Data))
-    x[, cols, ..., drop = drop]
+    x[, cols, ..., drop = FALSE]
   }
 )
 
@@ -375,7 +363,7 @@ setMethod(
   signature(x = "agentMatrix", "numeric", "character", "ANY"),
   definition = function(x, i, j, ..., drop = FALSE) {
     cols <- match(j, colnames(x@.Data))
-    x[i, cols, ..., drop = drop]
+    x[i, cols, ..., drop = FALSE]
   }
 )
 
@@ -389,17 +377,14 @@ setMethod(
   definition = function(x, i, j, ..., drop = FALSE) {
     colNames <- colnames(x@.Data)[j]
     levelInd <- match(colNames, names(x@levels))
-    if (isTRUE(drop)) {
-      x <- x@.Data[, j, ..., drop = drop]
+    x@.Data <- x@.Data[, unique(c(1:2, j)), ..., drop = FALSE]
+    if (all(is.na(levelInd))) {
+      x@levels <- list(NULL)
     } else {
-      x@.Data <- x@.Data[, unique(c(1:2, j)), ..., drop = drop]
-      if (all(is.na(levelInd))) {
-        x@levels <- list(NULL)
-      } else {
-        x@levels <- x@levels[colNames[!is.na(levelInd)]]
-      }
-      x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
+      x@levels <- x@levels[colNames[!is.na(levelInd)]]
     }
+    x@bbox <- .bboxCoords(x@.Data[, 1:2, drop = FALSE])
+    # }
     x
   }
 )
