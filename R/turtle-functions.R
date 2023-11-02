@@ -3118,7 +3118,7 @@ setMethod(
         })
       ))
       if (!all(wh)) {
-        df <- data.frame(agents@.Data[, var[!wh], drop = FALSE], df)
+        df <- as.data.frame(cbind(agents@.Data[, var[!wh], drop = FALSE], df))
         newNames <- c(var[!wh], newNames)
       }
       colnames(df) <- newNames
