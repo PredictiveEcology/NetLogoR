@@ -61,12 +61,13 @@ Suggests:
     rmarkdown,
     sf,
     sp,
-    SpaDES.core,
+    SpaDES.core (>= 2.0.3),
     SpaDES.tools (>= 2.0.4.9003),
     testthat,
     withr
 Remotes:
-    PredictiveEcology/SpaDES.tools@development
+    PredictiveEcology/SpaDES.tools,
+    PredictiveEcology/SpaDES.core
 Additional_repositories: https://predictiveecology.r-universe.dev/
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
