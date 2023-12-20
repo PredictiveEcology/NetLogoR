@@ -12,7 +12,7 @@
 #' exPath <- file.path(system.file(package = "NetLogoR", "examples")
 #' file.edit(exPath, "Ants", "Ants.R"))
 #' file.edit(exPath, "Butterfly", "Butterfly-1.R"))
-#' file.edit(виКфлоц "Wolf-Sheep-Predation", "Wolf-Sheep-Predation.R"))
+#' file.edit(exPath, "Wolf-Sheep-Predation", "Wolf-Sheep-Predation.R"))
 #' ```
 #'
 "_PACKAGE"

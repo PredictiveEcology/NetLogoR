@@ -8,7 +8,8 @@ Known issues: <https://github.com/PredictiveEcology/NetLogoR/issues>
 * many changes to accommodate these connections to `terra`
 
 ## Bugfixes
-* several minor, mostly in documentation
+* several minor, including some speed improvements
+* several corrections in documentation
 
 # NetLogoR 0.3.11
 
