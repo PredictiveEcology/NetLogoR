@@ -100,16 +100,16 @@ of the input <code>raster</code>.
     <h2>Details</h2>
     <p>See <code><a href="worldMatrix-class.html">help("worldMatrix-class")</a></code> or <code><a href="worldArray-class.html">help("worldArray-class")</a></code>
 for more details on the classes.</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>     If the <span class="st">`</span><span class="at">SpatRaster</span><span class="st">`</span> object has only one layer, a <span class="st">`</span><span class="at">worldMatrix</span><span class="st">`</span> object</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>     will be returned. If the <span class="st">`</span><span class="at">SpatRaster</span><span class="st">`</span> object has more than one layer,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     layers must have unique names and a <span class="st">`</span><span class="at">worldArray</span><span class="st">`</span> object will be returned.</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>     The number of rows and columns, as well as the cell values of the <span class="st">`</span><span class="at">raster</span><span class="st">`</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>     are kept the same. However, to match the coordinates system and resolution of a</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     <span class="st">`</span><span class="at">worldMatrix</span><span class="st">`</span> or <span class="st">`</span><span class="at">worldArray</span><span class="st">`</span>, the grid is shifted by a <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> cell to have</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     round coordinate values at the center of the patches and patch size is equal <span class="fu">to</span> (<span class="dv">1</span>,<span class="dv">1</span>).</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>     The bottom left corner cell coordinates of the <span class="st">`</span><span class="at">worldMatrix</span><span class="st">`</span> or <span class="st">`</span><span class="at">worldArray</span><span class="st">`</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     will <span class="fu">be</span> (<span class="at">pxcor =</span> <span class="dv">0</span>, <span class="at">pycor =</span> <span class="dv">0</span>).</span></code></pre><p></p></div>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>     If the <span class="st">`</span><span class="at">SpatRaster</span><span class="st">`</span> object has only one layer, a <span class="st">`</span><span class="at">worldMatrix</span><span class="st">`</span> object</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>     will be returned. If the <span class="st">`</span><span class="at">SpatRaster</span><span class="st">`</span> object has more than one layer,</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>     layers must have unique names and a <span class="st">`</span><span class="at">worldArray</span><span class="st">`</span> object will be returned.</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>     The number of rows and columns, as well as the cell values of the <span class="st">`</span><span class="at">raster</span><span class="st">`</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>     are kept the same. However, to match the coordinates system and resolution of a</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>     <span class="st">`</span><span class="at">worldMatrix</span><span class="st">`</span> or <span class="st">`</span><span class="at">worldArray</span><span class="st">`</span>, the grid is shifted by a <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> cell to have</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>     round coordinate values at the center of the patches and patch size is equal <span class="fu">to</span> (<span class="dv">1</span>,<span class="dv">1</span>).</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>     The bottom left corner cell coordinates of the <span class="st">`</span><span class="at">worldMatrix</span><span class="st">`</span> or <span class="st">`</span><span class="at">worldArray</span><span class="st">`</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>     will <span class="fu">be</span> (<span class="at">pxcor =</span> <span class="dv">0</span>, <span class="at">pycor =</span> <span class="dv">0</span>).</span></code></pre><p></p></div>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -119,10 +119,10 @@ for more details on the classes.</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> terra 1.7.65</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> terra 1.7.46</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘terra’</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:NetLogoR’:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: 'terra'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from 'package:NetLogoR':</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     patches, wrap</span>
 <span class="r-in"><span><span class="va">r1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="fl">0</span>, xmax <span class="op">=</span> <span class="fl">10</span>, ymin <span class="op">=</span> <span class="fl">0</span>, ymax <span class="op">=</span> <span class="fl">10</span>, nrows <span class="op">=</span> <span class="fl">10</span>, ncols <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
@@ -136,7 +136,7 @@ for more details on the classes.</p>
 <span class="r-in"><span><span class="va">r2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="fl">0</span>, xmax <span class="op">=</span> <span class="fl">10</span>, ymin <span class="op">=</span> <span class="fl">0</span>, ymax <span class="op">=</span> <span class="fl">10</span>, nrows <span class="op">=</span> <span class="fl">10</span>, ncols <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">r2</span><span class="op">[</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></span>
 <span class="r-in"><span><span class="va">r3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">r1</span>, <span class="va">r2</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">r3</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"layer1"</span>, <span class="st">"layer2"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">r3</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"layer1"</span>, <span class="st">"layer2"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">w3</span> <span class="op">&lt;-</span> <span class="fu">spatRast2world</span><span class="op">(</span><span class="va">r3</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">r3</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="spatRast2world-3.png" alt="" width="700" height="433"></span>
