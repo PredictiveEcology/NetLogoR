@@ -1,6 +1,6 @@
 Known issues: <https://github.com/PredictiveEcology/NetLogoR/issues>
 
-# NetLogoR 1.0.3
+# NetLogoR 1.0.4
 
 ## Dependency changes
 * removed dependency: `sp` and `raster`. There is still the possibility to convert `sp` and `raster` objects into `NetLogoR` objects and vice versa but except for these functions, all the others do not rely anymore on `sp` and `raster` objects and functions.
@@ -10,7 +10,7 @@ Known issues: <https://github.com/PredictiveEcology/NetLogoR/issues>
 ## Bugfixes
 * several minor, including some speed improvements
 * several corrections in documentation
-* Deal with CRAN incoming check: "Running R code in ... had CPU time 3 times elapsed time" by setting OMP_THREAD_LIMIT = 2
+* Deal with CRAN incoming check: "Running R code in ... had CPU time 3 times elapsed time" by setting OMP_THREAD_LIMIT = 1 during tests on CRAN
 
 # NetLogoR 0.3.11
 
