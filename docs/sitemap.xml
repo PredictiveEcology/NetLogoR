@@ -4,7 +4,7 @@
     <loc>https://netlogor.predictiveecology.org/404.html</loc>
   </url>
   <url>
-    <loc>https://netlogor.predictiveecology.org/articles/index.html</loc>
+    <loc>https://netlogor.predictiveecology.org/CONTRIBUTING.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/articles/NLR-Dictionary.html</loc>
@@ -13,16 +13,43 @@
     <loc>https://netlogor.predictiveecology.org/articles/ProgrammingGuide.html</loc>
   </url>
   <url>
-    <loc>https://netlogor.predictiveecology.org/authors.html</loc>
+    <loc>https://netlogor.predictiveecology.org/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://netlogor.predictiveecology.org/CONTRIBUTING.html</loc>
+    <loc>https://netlogor.predictiveecology.org/authors.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/index.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/NLall.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/NLany.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/NLcount.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/NLdist.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/NLset.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/NLwith.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/NLworldIndex.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/NetLogoR-package.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/PxcorPycorFromCell.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/agentMatrix-bind-methods.html</loc>
@@ -109,13 +136,13 @@
     <loc>https://netlogor.predictiveecology.org/reference/inCone.html</loc>
   </url>
   <url>
+    <loc>https://netlogor.predictiveecology.org/reference/inRadius.html</loc>
+  </url>
+  <url>
     <loc>https://netlogor.predictiveecology.org/reference/index.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/initialize-agentMatrix-method.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/inRadius.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/inspect.html</loc>
@@ -157,34 +184,10 @@
     <loc>https://netlogor.predictiveecology.org/reference/moveTo.html</loc>
   </url>
   <url>
-    <loc>https://netlogor.predictiveecology.org/reference/neighbors.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/NetLogoR-package.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/NLall.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/NLany.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/NLcount.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/NLdist.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/NLset.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/NLwith.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/NLworldIndex.html</loc>
-  </url>
-  <url>
     <loc>https://netlogor.predictiveecology.org/reference/nOf.html</loc>
+  </url>
+  <url>
+    <loc>https://netlogor.predictiveecology.org/reference/neighbors.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/noPatches.html</loc>
@@ -202,6 +205,9 @@
     <loc>https://netlogor.predictiveecology.org/reference/other.html</loc>
   </url>
   <url>
+    <loc>https://netlogor.predictiveecology.org/reference/pExist.html</loc>
+  </url>
+  <url>
     <loc>https://netlogor.predictiveecology.org/reference/patch.html</loc>
   </url>
   <url>
@@ -212,9 +218,6 @@
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/patchDistDir.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/patches.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/patchHere.html</loc>
@@ -229,16 +232,13 @@
     <loc>https://netlogor.predictiveecology.org/reference/patchSet.html</loc>
   </url>
   <url>
-    <loc>https://netlogor.predictiveecology.org/reference/pExist.html</loc>
+    <loc>https://netlogor.predictiveecology.org/reference/patches.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/plotMethods.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/projNowhere.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/PxcorPycorFromCell.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/quickPlot-methods.html</loc>
@@ -250,10 +250,10 @@
     <loc>https://netlogor.predictiveecology.org/reference/randomPycor.html</loc>
   </url>
   <url>
-    <loc>https://netlogor.predictiveecology.org/reference/randomXcor.html</loc>
+    <loc>https://netlogor.predictiveecology.org/reference/randomXYcor.html</loc>
   </url>
   <url>
-    <loc>https://netlogor.predictiveecology.org/reference/randomXYcor.html</loc>
+    <loc>https://netlogor.predictiveecology.org/reference/randomXcor.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/randomYcor.html</loc>
@@ -304,6 +304,9 @@
     <loc>https://netlogor.predictiveecology.org/reference/turtle.html</loc>
   </url>
   <url>
+    <loc>https://netlogor.predictiveecology.org/reference/turtleSet.html</loc>
+  </url>
+  <url>
     <loc>https://netlogor.predictiveecology.org/reference/turtles2sf.html</loc>
   </url>
   <url>
@@ -311,9 +314,6 @@
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/turtlesAt.html</loc>
-  </url>
-  <url>
-    <loc>https://netlogor.predictiveecology.org/reference/turtleSet.html</loc>
   </url>
   <url>
     <loc>https://netlogor.predictiveecology.org/reference/turtlesOn.html</loc>
