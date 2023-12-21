@@ -1,6 +1,6 @@
 ## Updated release
 
-This release is to put the package back on CRAN after being removed due to a dependency removal. There are other minor changes.
+This release is to put the package back on CRAN after being removed due to a dependency removal. There are other minor changes, including several to address CRAN requirements.
 See `NEWS.md` for a full list of changes.
 
 ## Test environments
