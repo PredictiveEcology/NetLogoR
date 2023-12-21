@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">NetLogoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.5</span>
       </span>
     </div>
 
@@ -110,7 +110,8 @@
     <h2>Value</h2>
     
 
-<p><code>show</code> returns an invisible <code>NULL</code>.
+<p><code>show</code> is called for its side effects. It shows all columns of data,
+except for the coordinates. To access those, use <code>coordinates()</code>.
 <code>length</code> returns a non-negative integer of length 1,
 except for vectors of more than 2^31 - 1 elements, when it returns a double.
 <code>nrow</code> returns an integer of length 1 or <code>NULL</code>.</p>
