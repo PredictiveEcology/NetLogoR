@@ -12,6 +12,10 @@
 \arguments{
 \item{object}{An \code{agentMatrix} object.}
 }
+\value{
+\code{show} is called for its side effects. It shows key metadata elements
+of the \code{worldArray} or \code{worldMatrix}, plus the first 4 columns and rows of data
+}
 \description{
 Slight modifications from the default versions.
 }

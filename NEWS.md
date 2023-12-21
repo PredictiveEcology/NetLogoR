@@ -1,11 +1,14 @@
 Known issues: <https://github.com/PredictiveEcology/NetLogoR/issues>
 
-# NetLogoR 1.0.4
+# NetLogoR 1.0.5
 
 ## Dependency changes
 * removed dependency: `sp` and `raster`. There is still the possibility to convert `sp` and `raster` objects into `NetLogoR` objects and vice versa but except for these functions, all the others do not rely anymore on `sp` and `raster` objects and functions.
 * added dependency: `terra`
 * many changes to accommodate these connections to `terra`
+
+## Documentation changes
+* several minor fixes for CRAN requirements
 
 ## Bugfixes
 * several minor, including some speed improvements

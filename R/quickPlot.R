@@ -46,6 +46,8 @@
 #' @importFrom quickPlot numLayers
 #' @rdname quickPlot-methods
 #' @include Agent-classes.R
+#' @return `numLayers` returns an integer representing the number of
+#' layers in a `worldArray` or `worldMatrix` (which is always `1L`)
 numLayers.worldArray <-
   #  signature = "worldArray",
   # definition =
@@ -72,6 +74,8 @@ setGeneric("layerNames", quickPlot::layerNames)
 #' @param object An object from which to extract the layer names.
 #' @importFrom quickPlot layerNames
 #' @rdname quickPlot-methods
+#' @return `layerNames` returns an character vector representing the names
+#' of the layers in a `worldArray`
 setMethod(
   "layerNames",
   signature = "worldArray",
