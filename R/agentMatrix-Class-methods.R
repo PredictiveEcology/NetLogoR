@@ -624,7 +624,8 @@ setMethod(
 #'
 #' @param object  An `agentMatrix` object.
 #'
-#' @return `show` returns an invisible `NULL`.
+#' @return `show` is called for its side effects. It shows all columns of data,
+#' except for the coordinates. To access those, use `coordinates()`.
 #'         `length` returns a non-negative integer of length 1,
 #'         except for vectors of more than 2^31 - 1 elements, when it returns a double.
 #'         `nrow` returns an integer of length 1 or `NULL`.

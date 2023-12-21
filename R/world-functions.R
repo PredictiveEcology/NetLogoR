@@ -633,6 +633,8 @@ setMethod(
 #' @export
 #' @importFrom quickPlot numLayers
 #' @rdname show-methods
+#' @return `show` is called for its side effects. It shows key metadata elements
+#' of the `worldArray` or `worldMatrix`, plus the first 4 columns and rows of data
 setMethod(
   "show",
   signature(object = "worldArray"),

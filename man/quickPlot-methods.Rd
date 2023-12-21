@@ -28,6 +28,13 @@ object such as a \code{RasterStack}.}
 \item{takeFromPlotObj}{Logical. Should the data come from the argument passed
 into \code{Plot} (\code{TRUE}), or from the (\code{.quickPlotEnv}) (\code{FALSE}).}
 }
+\value{
+\code{numLayers} returns an integer representing the number of
+layers in a \code{worldArray} or \code{worldMatrix} (which is always \code{1L})
+
+\code{layerNames} returns an character vector representing the names
+of the layers in a \code{worldArray}
+}
 \description{
 These are required to create plotting methods to work with \pkg{quickPlot}.
 }
