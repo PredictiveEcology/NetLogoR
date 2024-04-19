@@ -746,7 +746,11 @@ cbind.agentMatrix <- function(..., deparse.level) {
 #' @rdname agentMatrix-bind-methods
 rbind.agentMatrix <- function(..., deparse.level = 1) {
   dots <- list(...)
-  levelsSame <- isTRUE(do.call(all.equal, lapply(dots, function(x) x@levels)))
+  #levelsSame <- isTRUE(do.call(all.equal, lapply(dots, function(x) x@levels)))
+  # Bug with this line
+  # Creates a mistake when levels are different, creating NA when used in turtleSet
+  allSame <- function(x) length(unique(x)) == 1
+  levelsSame <- allSame(lapply(dots, function(x) x@levels))
   if (levelsSame) {
     # if same, then faster rbind of the matrices
     if (isTRUE(do.call(all.equal, lapply(dots, colnames)))) {
