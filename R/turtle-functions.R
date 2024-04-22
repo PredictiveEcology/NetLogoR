@@ -2711,6 +2711,8 @@ setMethod(
 #' @param tVal    Vector representing the values of `tVar`.
 #'                Must be of length 1 or of length `turtles`.
 #'                If missing, `NA` is given.
+#'                If missing or if `NA` is given, the column will be `numeric`.
+#'                To be a `character` column, `"NA"` must be given.
 #'
 #' @return `AgentMatrix` representing the `turtles` with the new
 #'         variable `tVar` added.
@@ -2755,7 +2757,7 @@ setMethod(
   "turtlesOwn",
   signature = c("agentMatrix", "character", "ANY"),
   definition = function(turtles, tVar, tVal) {
-    if (inherits(tVal, "numeric") | inherits(tVal, "integer")) {
+    if (inherits(tVal, "numeric") | inherits(tVal, "integer") | inherits(tVal, "logical")) {
       turtles@.Data <- cbind(turtles@.Data, newCol = tVal)
       colnames(turtles@.Data)[ncol(turtles@.Data)] <- tVar
     } else {

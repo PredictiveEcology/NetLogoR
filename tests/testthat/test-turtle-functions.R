@@ -1313,6 +1313,9 @@ test_that("turtlesOwn works", {
   ))
   expect_identical(t5@.Data, cbind(t1@.Data, female = c(2, 2, 1, 1, 1)))
   expect_equivalent(t5@levels$female, c("FALSE", "TRUE"))
+  t6 <- turtlesOwn(turtles = t1, tVar = "numericalValue", tVal = NA)
+  t6 <- NLset(turtles = t6, agents = NLwith(agents = t6, var = "who", val = 3), var = "numericalValue", val = 6)
+  expect_true(class(of(agents = t6, var = "numericalValue")) == "numeric")
 })
 
 test_that("subHeadings works", {
