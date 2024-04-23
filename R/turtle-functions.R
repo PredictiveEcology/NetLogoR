@@ -2961,9 +2961,13 @@ setMethod(
     if (inherits(agents, "agentMatrix") & inherits(except, "agentMatrix")) {
       matchWho <- match(except@.Data[, "who"], agents@.Data[, "who"])
       matchWho <- matchWho[!is.na(matchWho)]
-      matchBreed <- which(agents@.Data[matchWho, "breed"] ==
-        except@.Data[except@.Data[, "who"] ==
-          agents@.Data[matchWho, "who"], "breed"])
+      # Bug when same breed don't have same level number
+      # matchBreed <- which(agents@.Data[matchWho, "breed"] ==
+      #                       except@.Data[except@.Data[, "who"] ==
+      #                                      agents@.Data[matchWho, "who"], "breed"])
+      matchBreed <- which(of(agents = agents[matchWho,], var = "breed") ==
+                            of(agents = except[except@.Data[, "who"] ==
+                                                 agents@.Data[matchWho, "who"]], var = "breed"))
       if (length(matchBreed) != 0) {
         agents <- agents[-matchWho[matchBreed], , drop = FALSE]
       }

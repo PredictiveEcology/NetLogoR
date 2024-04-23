@@ -1399,6 +1399,14 @@ test_that("other works", {
 
   t6 <- other(agents = t1, except = t1)
   expect_equivalent(NLcount(t6), 0)
+
+  # Bug when same breeds have different level numbers
+  t7 <- createTurtles(n = 5, coords = cbind(xcor = 0, ycor = 0))
+  t8 <- createTurtles(n = 5, coords = cbind(xcor = 0, ycor = 0), breed = "dog")
+  t8 <- hatch(turtles = t8, who = c(3,4), n = 2, breed = "turtle")
+  t8 <- NLset(turtles = t8, agents = t8, var = "breed", val = "turtle")
+  t9 <- other(agents = t8, except = t7)
+  expect_equivalent(of(agents = t9, var = "who"), 5:8)
 })
 
 test_that("layoutCircle works", {
