@@ -1,4 +1,4 @@
-Known issues: <https://github.com/PredictiveEcology/NetLogoR/issues>
+# NetLogoR (development version)
 
 # NetLogoR 1.0.5
 
