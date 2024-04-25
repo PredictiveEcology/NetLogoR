@@ -12,11 +12,11 @@ updateList(x, y)
 
 \S4method{updateList}{list,list}(x, y)
 
-\S4method{updateList}{`NULL`,list}(x, y)
+\S4method{updateList}{NULL,list}(x, y)
 
-\S4method{updateList}{list,`NULL`}(x, y)
+\S4method{updateList}{list,NULL}(x, y)
 
-\S4method{updateList}{`NULL`,`NULL`}(x, y)
+\S4method{updateList}{NULL,NULL}(x, y)
 }
 \arguments{
 \item{x, y}{a named list}

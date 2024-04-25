@@ -1,11 +1,12 @@
 on:
   push:
     branches:
+      - main
       - master
       - development
-      - LandWeb
   pull_request:
     branches:
+      - main
       - master
       - development
 
@@ -27,15 +28,11 @@ jobs:
           - {os: windows-latest, nosuggests: false, r: 'release'}
           - {os: windows-latest, nosuggests: false, r: 'oldrel/1'}
           - {os: windows-latest, nosuggests: false, r: 'oldrel/2'}
-          - {os: windows-latest, nosuggests: false, r: 'oldrel/3'}
-          - {os: windows-latest, nosuggests: false, r: 'oldrel/4'}
           - {os: ubuntu-20.04,   nosuggests: false, r: 'devel'}
           - {os: ubuntu-20.04,   nosuggests: false, r: 'release'}
           - {os: ubuntu-20.04,   nosuggests: true,  r: 'release'}
           - {os: ubuntu-20.04,   nosuggests: false, r: 'oldrel/1'}
           - {os: ubuntu-20.04,   nosuggests: false, r: 'oldrel/2'}
-          - {os: ubuntu-20.04,   nosuggests: false, r: 'oldrel/3'}
-          - {os: ubuntu-20.04,   nosuggests: false, r: 'oldrel/4'}
 
     env:
       _R_CHECK_DEPENDS_ONLY_: ${{ matrix.config.nosuggests }}

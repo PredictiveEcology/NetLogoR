@@ -1,5 +1,8 @@
 # NetLogoR (development version)
 
+## Dependency changes
+* drop support for R 4.1 due to changes in dependency packages
+
 # NetLogoR 1.0.5
 
 ## Dependency changes

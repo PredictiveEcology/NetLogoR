@@ -6,26 +6,25 @@ See `NEWS.md` for a full list of changes.
 ## Test environments
 
 ### Previous R versions
-* Ubuntu 20.04                 (GitHub), R 4.2.3
-* Ubuntu 20.04                 (GitHub), R 4.2.3
-* Windows                      (GitHub), R 4.2.3
-* Windows                      (GitHub), R 4.2.3
-* Windows                 (win-builder), R 4.2.3
+* Ubuntu 20.04                 (GitHub), R 4.2.3, 4.3.3
+* Windows                      (GitHub), R 4.2.3, 4.3.3
+* Windows                 (win-builder), R 4.3.3
 
 ### Current R versions
-* macOS 12.6.3 Monterey        (GitHub), 4.3.2 (2023-10-31)
-* Ubuntu 20.04                 (GitHub), 4.3.2 (2023-10-31)
-* Ubuntu 20.04                  (local), 4.3.2 (2023-10-31)
-* Windows                      (GitHub), 4.3.2 (2023-10-31 ucrt)
-* Windows                       (local), 4.3.2 (2023-10-31 ucrt)
-* Windows                 (win-builder), 4.3.2 (2023-10-31 ucrt)
+* macOS 12.6.3                 (GitHub), R 4.4.0
+* macOS 13.3.1            (mac-builder), R 4.4.0
+* macOS 14.4.1                  (local), R 4.4.0
+* Ubuntu 20.04                 (GitHub), R 4.4.0
+* Ubuntu 20.04                  (local), R 4.4.0
+* Windows                      (GitHub), R 4.4.0
+* Windows                       (local), R 4.4.0
+* Windows                 (win-builder), R 4.4.0
 
 ### Development R version
-* Ubuntu 20.04                 (GitHub), R-devel (2023-07-03 r84633)
-* Ubuntu 20.04                 (local),  R-devel (2023-07-03 r84633)
-* Windows                      (GitHub), R-devel (2023-12-20 r85711 ucrt)
-* Windows                 (win-builder), R-devel (2023-12-20 r85711 ucrt)
-* Windows                       (local), R-devel (2023-12-20 r85711 ucrt)
+* Ubuntu 20.04                 (GitHub), R-devel (2024-04-23 r86473)
+* Ubuntu 20.04                  (local), R-devel (2024-04-24 r86484)
+* Windows                      (GitHub), R-devel (2024-04-24 r86483 ucrt)
+* Windows                 (win-builder), R-devel (2024-04-23 r86473 ucrt)
 
 ## R CMD check results
 
