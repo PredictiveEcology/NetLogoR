@@ -2679,7 +2679,7 @@ setMethod(
       }
 
       # if (do.call(all.equal, lapply(dots, colnames))) {
-      allTurtles <- do.call(rbind.agentmatrix, lapply(dots, function(x) x))
+      allTurtles <- do.call(rbind.agentMatrix, lapply(dots, function(x) x))
       # } else {
       #   allTurtles <- as.data.frame(rbindlist(lapply(dots, function(x) {
       #     inspect(x, who = of(agents = x, var = "who"))}), fill = TRUE))
