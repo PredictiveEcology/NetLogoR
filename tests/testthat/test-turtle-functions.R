@@ -1296,6 +1296,15 @@ test_that("turtleSet works", {
     var = "who"
   ))))
   expect_equivalent(of(agents = tAll, var = "sex"), c(rep(NA, 10), rep("F", 2), NA))
+
+  t6 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
+  t6 <- turtlesOwn(turtles = t6, tVar = "test", tVal = "a")
+  t7 <- NLwith(agents = t6, var = "who", val = 0:5)
+  t8 <- NLwith(agents = t6, var = "who", val = 6:7)
+  t9 <- NLwith(agents = t6, var = "who", val = 8:9)
+  t9 <- NLset(turtles = t9, agents = t9, var = "test", val = "b")
+  t10 <- turtleSet(t7, t8, t9) # create NA instead of showing "b"
+  expect_identical(of(agents = t10, var = "test"), c(rep("a", 8), rep("b", 2)))
 })
 
 test_that("turtlesOwn works", {
