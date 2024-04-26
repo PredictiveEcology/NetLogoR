@@ -1276,10 +1276,10 @@ test_that("turtleSet works", {
   t3 <- turtlesOwn(turtles = t3, tVar = "age", tVal = 10)
   tAll <- turtleSet(t1, t2, t3)
   expect_equivalent(NLcount(tAll), 13)
-  expect_equivalent(length(of(agents = tAll, var = "who")), unique(length(of(
-    agents = tAll,
-    var = "who"
-  ))))
+  expect_equivalent(
+    length(of(agents = tAll, var = "who")),
+    unique(length(of(agents = tAll, var = "who")))
+  )
   expect_equivalent(
     rbind(
       cbind(inspect(t1, who = 0:9), age = NA),
@@ -1291,10 +1291,10 @@ test_that("turtleSet works", {
   t2 <- turtlesOwn(turtles = t2, tVar = "sex", tVal = c("F", "F"))
   tAll <- turtleSet(t1, t2, t3)
   expect_equivalent(NLcount(tAll), 13)
-  expect_equivalent(length(of(agents = tAll, var = "who")), unique(length(of(
-    agents = tAll,
-    var = "who"
-  ))))
+  expect_equivalent(
+    length(of(agents = tAll, var = "who")),
+    unique(length(of(agents = tAll, var = "who")))
+  )
   expect_equivalent(of(agents = tAll, var = "sex"), c(rep(NA, 10), rep("F", 2), NA))
 
   t6 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
