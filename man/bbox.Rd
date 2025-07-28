@@ -26,8 +26,8 @@ bbox(obj) <- value
 \S4method{bbox}{SpatExtent}(obj)
 }
 \arguments{
-\item{obj}{object deriving from class "agentMatrix",
-or for \code{bbox} and \code{extent}, a "worldMatrix" or "worldArray"}
+\item{obj}{object deriving from class \code{agentMatrix},
+or for \code{bbox} and \code{extent}, a \code{worldMatrix} or \code{worldArray}}
 
 \item{value}{2x2 matrix representing the bounding box. See \code{sp::bbox}.}
 }
@@ -36,8 +36,7 @@ The replacement method returns the same object as supplied to
 obj, i.e., an \code{agentMatrix}, with the \code{bbox} attribute set to \code{value}.
 }
 \description{
-These are methods for classes in NetLogoR, i.e., \code{agentMatrix}, \code{worldMatrix},
-and \code{worldArray}.
+Methods for classes in \code{NetLogoR} (i.e., \code{agentMatrix}, \code{worldMatrix}, and \code{worldArray}).
 
 Replacement method sets the bbox attribute of an \code{agentMatrix}.
 }
@@ -54,5 +53,5 @@ extent(newAgent)
 coordinates(newAgent)
 }
 \seealso{
-\code{\link[=extent]{extent()}}, \code{\link[=coordinates]{coordinates()}}, \code{sp::bbox}
+\code{\link[raster:extent]{raster::extent()}}, \code{\link[raster:xyFromCell]{raster::coordinates()}}, \code{\link[sp:bbox]{sp::bbox()}}
 }

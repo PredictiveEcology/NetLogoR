@@ -12,7 +12,7 @@
 }
 \arguments{
 \item{x}{object deriving from class "agentMatrix",
-or a "worldMatrix" or "worldArray"}
+or a \code{worldMatrix} or \code{worldArray}}
 
 \item{...}{Ignored.}
 }
@@ -25,5 +25,5 @@ the second the maximum values; rows represent the spatial dimensions.
 Same as \code{sp::bbox} and \code{raster::extent}.
 }
 \seealso{
-\code{\link[=bbox]{bbox()}}, \code{\link[=coordinates]{coordinates()}}
+\code{\link[sp:bbox]{sp::bbox()}}, \code{\link[raster:xyFromCell]{raster::coordinates()}}
 }

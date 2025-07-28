@@ -2,12 +2,12 @@
 % Please edit documentation in R/agentMatrix-Class-methods.R
 \name{coordinates,agentMatrix-method}
 \alias{coordinates,agentMatrix-method}
-\title{Spatial accessors and setters for NetLogoR classes}
+\title{Spatial accessors and setters for \code{NetLogoR} classes}
 \usage{
 \S4method{coordinates}{agentMatrix}(obj, ...)
 }
 \arguments{
-\item{obj}{object deriving from class "agentMatrix"}
+\item{obj}{object deriving from class \code{agentMatrix}}
 
 \item{...}{additional arguments that may be used by particular methods}
 }
@@ -15,8 +15,8 @@
 \code{coordinates} returns a matrix of coordinates of the \code{obj}.
 }
 \description{
-Spatial accessors and setters for NetLogoR classes
+Spatial accessors and setters for \code{NetLogoR} classes
 }
 \seealso{
-\code{\link[=bbox]{bbox()}}, \code{\link[=extent]{extent()}}
+\code{\link[sp:bbox]{sp::bbox()}}, \code{\link[raster:extent]{raster::extent()}}
 }

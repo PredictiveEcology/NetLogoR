@@ -386,8 +386,8 @@ test_that("agentMatrix rbind cbind, tail, head, nrow, length, show", {
   expect_true(all(cbound@.Data[, "tmp2"] == 1:3))
   expect_true(all(cbound$tmp4 == c("e", "f", "g")))
 
-  expect_error(cbound <- cbind(newAgent1, newAgent2, newAgent))
-  expect_error(cbound <- cbind(newAgent1, newAgent1))
+  expect_error(cbind(newAgent1, newAgent2, newAgent))
+  expect_error(cbind(newAgent1, newAgent1))
 
   mat <- cbind(coords = matrix(1:6, ncol = 2), data.frame(tmp3 = 1:3, tmp4 = c("e", "f", "g")))
   mat2 <- cbind(coords = matrix(1:2, ncol = 2), data.frame(tmp = 1, tmp2 = c("e")))

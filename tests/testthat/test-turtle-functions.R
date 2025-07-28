@@ -1276,10 +1276,10 @@ test_that("turtleSet works", {
   t3 <- turtlesOwn(turtles = t3, tVar = "age", tVal = 10)
   tAll <- turtleSet(t1, t2, t3)
   expect_equivalent(NLcount(tAll), 13)
-  expect_equivalent(length(of(agents = tAll, var = "who")), unique(length(of(
-    agents = tAll,
-    var = "who"
-  ))))
+  expect_equivalent(
+    length(of(agents = tAll, var = "who")),
+    unique(length(of(agents = tAll, var = "who")))
+  )
   expect_equivalent(
     rbind(
       cbind(inspect(t1, who = 0:9), age = NA),
@@ -1291,11 +1291,20 @@ test_that("turtleSet works", {
   t2 <- turtlesOwn(turtles = t2, tVar = "sex", tVal = c("F", "F"))
   tAll <- turtleSet(t1, t2, t3)
   expect_equivalent(NLcount(tAll), 13)
-  expect_equivalent(length(of(agents = tAll, var = "who")), unique(length(of(
-    agents = tAll,
-    var = "who"
-  ))))
+  expect_equivalent(
+    length(of(agents = tAll, var = "who")),
+    unique(length(of(agents = tAll, var = "who")))
+  )
   expect_equivalent(of(agents = tAll, var = "sex"), c(rep(NA, 10), rep("F", 2), NA))
+
+  t6 <- createTurtles(n = 10, coords = randomXYcor(w1, n = 10))
+  t6 <- turtlesOwn(turtles = t6, tVar = "test", tVal = "a")
+  t7 <- NLwith(agents = t6, var = "who", val = 0:5)
+  t8 <- NLwith(agents = t6, var = "who", val = 6:7)
+  t9 <- NLwith(agents = t6, var = "who", val = 8:9)
+  t9 <- NLset(turtles = t9, agents = t9, var = "test", val = "b")
+  t10 <- turtleSet(t7, t8, t9) # create NA instead of showing "b"
+  expect_identical(of(agents = t10, var = "test"), c(rep("a", 8), rep("b", 2)))
 })
 
 test_that("turtlesOwn works", {
@@ -1313,6 +1322,9 @@ test_that("turtlesOwn works", {
   ))
   expect_identical(t5@.Data, cbind(t1@.Data, female = c(2, 2, 1, 1, 1)))
   expect_equivalent(t5@levels$female, c("FALSE", "TRUE"))
+  t6 <- turtlesOwn(turtles = t1, tVar = "numericalValue", tVal = NA)
+  t6 <- NLset(turtles = t6, agents = NLwith(agents = t6, var = "who", val = 3), var = "numericalValue", val = 6)
+  expect_true(class(of(agents = t6, var = "numericalValue")) == "numeric")
 })
 
 test_that("subHeadings works", {
@@ -1396,6 +1408,14 @@ test_that("other works", {
 
   t6 <- other(agents = t1, except = t1)
   expect_equivalent(NLcount(t6), 0)
+
+  # Bug when same breeds have different level numbers
+  t7 <- createTurtles(n = 5, coords = cbind(xcor = 0, ycor = 0))
+  t8 <- createTurtles(n = 5, coords = cbind(xcor = 0, ycor = 0), breed = "dog")
+  t8 <- hatch(turtles = t8, who = c(3,4), n = 2, breed = "turtle")
+  t8 <- NLset(turtles = t8, agents = t8, var = "breed", val = "turtle")
+  t9 <- other(agents = t8, except = t7)
+  expect_equivalent(of(agents = t9, var = "who"), 5:8)
 })
 
 test_that("layoutCircle works", {

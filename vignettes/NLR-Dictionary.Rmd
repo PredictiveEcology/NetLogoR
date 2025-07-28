@@ -48,7 +48,7 @@ For the inverse dictionary (*i.e.*, to find the NetLogo equivalents of the `NetL
 * magenta: `"magenta"`.
 * pink: `"pink"`.
 
-See http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf for more colors.
+See <https://sites.stat.columbia.edu/tzheng/files/Rcolor.pdf> for more colors.
 
 ## NetLogo primitives
 

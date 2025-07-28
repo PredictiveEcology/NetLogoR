@@ -2679,7 +2679,7 @@ setMethod(
       }
 
       # if (do.call(all.equal, lapply(dots, colnames))) {
-      allTurtles <- do.call(rbind, lapply(dots, function(x) x))
+      allTurtles <- do.call(rbind, dots)
       # } else {
       #   allTurtles <- as.data.frame(rbindlist(lapply(dots, function(x) {
       #     inspect(x, who = of(agents = x, var = "who"))}), fill = TRUE))
@@ -2711,6 +2711,8 @@ setMethod(
 #' @param tVal    Vector representing the values of `tVar`.
 #'                Must be of length 1 or of length `turtles`.
 #'                If missing, `NA` is given.
+#'                If missing or if `NA` is given, the column will be `numeric`.
+#'                To be a `character` column, `"NA"` must be given.
 #'
 #' @return `AgentMatrix` representing the `turtles` with the new
 #'         variable `tVar` added.
@@ -2755,7 +2757,7 @@ setMethod(
   "turtlesOwn",
   signature = c("agentMatrix", "character", "ANY"),
   definition = function(turtles, tVar, tVal) {
-    if (inherits(tVal, "numeric") | inherits(tVal, "integer")) {
+    if (inherits(tVal, "numeric") | inherits(tVal, "integer") | inherits(tVal, "logical")) {
       turtles@.Data <- cbind(turtles@.Data, newCol = tVal)
       colnames(turtles@.Data)[ncol(turtles@.Data)] <- tVar
     } else {
@@ -2959,9 +2961,13 @@ setMethod(
     if (inherits(agents, "agentMatrix") & inherits(except, "agentMatrix")) {
       matchWho <- match(except@.Data[, "who"], agents@.Data[, "who"])
       matchWho <- matchWho[!is.na(matchWho)]
-      matchBreed <- which(agents@.Data[matchWho, "breed"] ==
-        except@.Data[except@.Data[, "who"] ==
-          agents@.Data[matchWho, "who"], "breed"])
+      # Bug when same breed don't have same level number
+      # matchBreed <- which(agents@.Data[matchWho, "breed"] ==
+      #                       except@.Data[except@.Data[, "who"] ==
+      #                                      agents@.Data[matchWho, "who"], "breed"])
+      matchBreed <- which(of(agents = agents[matchWho,], var = "breed") ==
+                            of(agents = except[except@.Data[, "who"] ==
+                                                 agents@.Data[matchWho, "who"]], var = "breed"))
       if (length(matchBreed) != 0) {
         agents <- agents[-matchWho[matchBreed], , drop = FALSE]
       }

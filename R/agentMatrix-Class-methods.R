@@ -199,12 +199,11 @@ setMethod(
   }
 )
 
-
 setGeneric("coordinates", quickPlot::coordinates)
 
-#' Spatial accessors and setters for NetLogoR classes
+#' Spatial accessors and setters for `NetLogoR` classes
 #'
-#' @param obj object deriving from class "agentMatrix"
+#' @param obj object deriving from class `agentMatrix`
 #' @param ...  additional arguments that may be used by particular methods
 #'
 #' @return `coordinates` returns a matrix of coordinates of the `obj`.
@@ -212,7 +211,7 @@ setGeneric("coordinates", quickPlot::coordinates)
 #' @export
 #' @rdname coordinates
 #' @aliases coordinates,agentMatrix-method
-#' @seealso [bbox()], [extent()]
+#' @seealso [sp::bbox()], [raster::extent()]
 #' @exportMethod coordinates
 setMethod(
   "coordinates",
@@ -624,12 +623,13 @@ setMethod(
 #'
 #' @param object  An `agentMatrix` object.
 #'
-#' @return `show` is called for its side effects. It shows all columns of data,
-#' except for the coordinates. To access those, use `coordinates()`.
-#'         `length` returns a non-negative integer of length 1,
-#'         except for vectors of more than 2^31 - 1 elements, when it returns a double.
-#'         `nrow` returns an integer of length 1 or `NULL`.
-
+#' @return
+#' - `show` is called for its side effects.
+#'   It shows all columns of data, except for the coordinates.
+#'   To access those, use `coordinates()`.
+#' - `length` returns a non-negative integer of length 1,
+#'   except for vectors of more than 2^31 - 1 elements, when it returns a double.
+#' - `nrow` returns an integer of length 1 or `NULL`.
 #'
 #' @export
 #' @rdname agentMatrix-show-methods
@@ -746,7 +746,11 @@ cbind.agentMatrix <- function(..., deparse.level) {
 #' @rdname agentMatrix-bind-methods
 rbind.agentMatrix <- function(..., deparse.level = 1) {
   dots <- list(...)
-  levelsSame <- isTRUE(do.call(all.equal, lapply(dots, function(x) x@levels)))
+  #levelsSame <- isTRUE(do.call(all.equal, lapply(dots, function(x) x@levels)))
+  # Bug with this line
+  # Creates a mistake when levels are different, creating NA when used in turtleSet
+  allSame <- function(x) length(unique(x)) == 1
+  levelsSame <- allSame(lapply(dots, function(x) x@levels))
   if (levelsSame) {
     # if same, then faster rbind of the matrices
     if (isTRUE(do.call(all.equal, lapply(dots, colnames)))) {
@@ -787,7 +791,7 @@ setGeneric("extent", quickPlot::extent)
 #'
 #' @include worldNLR-classes-methods.R
 #' @param x object deriving from class "agentMatrix",
-#'    or a "worldMatrix" or "worldArray"
+#'    or a `worldMatrix` or `worldArray`
 #' @param ... Ignored.
 #'
 #' @return `bbox` returns a two-column matrix; the first column has the minimum,
@@ -795,7 +799,7 @@ setGeneric("extent", quickPlot::extent)
 #'         `extent` returns an `SpatExtent` object from the package `terra`.
 #' @rdname extent
 #' @docType methods
-#' @seealso [bbox()], [coordinates()]
+#' @seealso [sp::bbox()], [raster::coordinates()]
 #' @exportMethod extent
 setMethod(
   "extent",
@@ -836,16 +840,15 @@ setMethod(
 
 #' Extract or set bounding box
 #'
-#' These are methods for classes in NetLogoR, i.e., `agentMatrix`, `worldMatrix`,
-#' and `worldArray`.
+#' Methods for classes in `NetLogoR` (i.e., `agentMatrix`, `worldMatrix`, and `worldArray`).
 #'
 #' @include worldNLR-classes-methods.R
 #' @docType methods
-#' @param obj object deriving from class "agentMatrix",
-#'    or for `bbox` and `extent`, a "worldMatrix" or "worldArray"
+#' @param obj object deriving from class `agentMatrix`,
+#'    or for `bbox` and `extent`, a `worldMatrix` or `worldArray`
 #' @rdname bbox
 #' @name bbox
-#' @seealso [extent()], [coordinates()], `sp::bbox`
+#' @seealso [raster::extent()], [raster::coordinates()], [sp::bbox()]
 #' @examples
 #' newAgent <- agentMatrix(
 #'   coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),

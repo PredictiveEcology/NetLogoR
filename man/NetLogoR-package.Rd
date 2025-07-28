@@ -6,15 +6,10 @@
 \alias{NetLogoR-package}
 \title{The \code{NetLogoR} package}
 \description{
-The suggested package \pkg{fastshp} can be installed with
-\code{install.packages("fastshp", repos = "https://rforge.net", type = "source")}.
-The examples included with the package, are located in the R package "examples" folder,
-which can be found at \code{system.file(package = "NetLogoR", "examples")}.
-}
-\details{
 The 3 specific R examples can be opened here, but it's recommended to make copies of these
 for editing:
-
+}
+\details{
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{exPath <- file.path(system.file(package = "NetLogoR", "examples")
 file.edit(exPath, "Ants", "Ants.R"))
 file.edit(exPath, "Butterfly", "Butterfly-1.R"))

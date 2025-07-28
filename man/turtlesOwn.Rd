@@ -19,7 +19,9 @@ turtlesOwn(turtles, tVar, tVal)
 
 \item{tVal}{Vector representing the values of \code{tVar}.
 Must be of length 1 or of length \code{turtles}.
-If missing, \code{NA} is given.}
+If missing, \code{NA} is given.
+If missing or if \code{NA} is given, the column will be \code{numeric}.
+To be a \code{character} column, \code{"NA"} must be given.}
 }
 \value{
 \code{AgentMatrix} representing the \code{turtles} with the new

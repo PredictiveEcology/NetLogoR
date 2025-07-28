@@ -32,8 +32,8 @@ URL:
     https://netlogor.predictiveecology.org,
     https://github.com/PredictiveEcology/NetLogoR/,
     https://groups.google.com/g/netlogor
-Version: 1.0.5
-Date: 2023-12-21
+Version: 1.0.6
+Date: 2025-07-28
 Authors@R: c(
     person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
            role = c("aut"), comment = c(ORCID = "0000-0002-3252-5894")),
@@ -46,7 +46,7 @@ Authors@R: c(
            role = "cph")
     )
 Depends:
-    R (>= 4.1)
+    R (>= 4.3)
 Imports:
     data.table,
     grDevices,
@@ -58,7 +58,6 @@ Imports:
 Suggests:
     CircStats,
     covr,
-    fastshp,
     knitr,
     microbenchmark,
     raster,
@@ -69,13 +68,12 @@ Suggests:
     SpaDES.tools (>= 2.0.5),
     testthat,
     withr
-Additional_repositories: https://predictiveecology.r-universe.dev/
 BugReports: https://github.com/PredictiveEcology/NetLogoR/issues
 ByteCompile: yes
 Encoding: UTF-8
 Language: en-CA
 License: GPL-3
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr, rmarkdown
 Collate: 
     'Agent-classes.R'
