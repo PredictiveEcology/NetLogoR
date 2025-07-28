@@ -4,7 +4,7 @@
 [![R build status](https://github.com/PredictiveEcology/NetLogoR/workflows/R-CMD-check/badge.svg)](https://github.com/PredictiveEcology/NetLogoR/actions)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/NetLogoR)](https://cran.r-project.org/package=NetLogoR)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/NetLogoR)](https://cran.r-project.org/package=NetLogoR)
-[![Codecov test coverage](https://codecov.io/gh/PredictiveEcology/NetLogoR/branch/master/graph/badge.svg)](https://app.codecov.io/gh/PredictiveEcology/NetLogoR?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/PredictiveEcology/NetLogoR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/PredictiveEcology/NetLogoR?branch=main)
 <!-- badges: end -->
 
 ## Build and run spatially explicit agent-based models in R
@@ -29,7 +29,7 @@ Currently, the package is not on CRAN due to some dependencies that were removed
 In the mean time, please use:
 ```r
 # install.packages("NetLogoR")
-install.packages("NetLogoR", repos = c(https://predictiveecology.r-universe.dev, getOption("repos")))
+install.packages("NetLogoR", repos = c("https://predictiveecology.r-universe.dev", getOption("repos")))
 ```
 
 ### From GitHub
