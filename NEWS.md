@@ -3,6 +3,7 @@
 ## Dependency changes
 * drop support for R 4.1 due to changes in dependency packages
 * remove unmaintained dependency package `fastshp` (#55);
+* add package anchors to help files (#53);
 
 # NetLogoR 1.0.5
 

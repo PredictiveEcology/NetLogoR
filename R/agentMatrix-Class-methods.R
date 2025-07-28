@@ -212,7 +212,7 @@ setGeneric("coordinates", quickPlot::coordinates)
 #' @export
 #' @rdname coordinates
 #' @aliases coordinates,agentMatrix-method
-#' @seealso [bbox()], [extent()]
+#' @seealso [sp::bbox()], [raster::extent()]
 #' @exportMethod coordinates
 setMethod(
   "coordinates",
@@ -799,7 +799,7 @@ setGeneric("extent", quickPlot::extent)
 #'         `extent` returns an `SpatExtent` object from the package `terra`.
 #' @rdname extent
 #' @docType methods
-#' @seealso [bbox()], [coordinates()]
+#' @seealso [sp::bbox()], [raster::coordinates()]
 #' @exportMethod extent
 setMethod(
   "extent",
@@ -849,7 +849,7 @@ setMethod(
 #'    or for `bbox` and `extent`, a "worldMatrix" or "worldArray"
 #' @rdname bbox
 #' @name bbox
-#' @seealso [extent()], [coordinates()], `sp::bbox`
+#' @seealso [raster::extent()], [raster::coordinates()], [sp::bbox()]
 #' @examples
 #' newAgent <- agentMatrix(
 #'   coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),

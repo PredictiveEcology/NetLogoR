@@ -18,5 +18,5 @@
 Spatial accessors and setters for NetLogoR classes
 }
 \seealso{
-\code{\link[=bbox]{bbox()}}, \code{\link[=extent]{extent()}}
+\code{\link[sp:bbox]{sp::bbox()}}, \code{\link[raster:extent]{raster::extent()}}
 }

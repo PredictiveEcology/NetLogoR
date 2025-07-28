@@ -54,5 +54,5 @@ extent(newAgent)
 coordinates(newAgent)
 }
 \seealso{
-\code{\link[=extent]{extent()}}, \code{\link[=coordinates]{coordinates()}}, \code{sp::bbox}
+\code{\link[raster:extent]{raster::extent()}}, \code{\link[raster:xyFromCell]{raster::coordinates()}}, \code{\link[sp:bbox]{sp::bbox()}}
 }
