@@ -57,18 +57,11 @@ jobs:
         with:
           extra-packages: |
             any::rcmdcheck
-            fastshp=?ignore
             PredictiveEcology/quickPlot@development
             PredictiveEcology/reproducible@development
             PredictiveEcology/Require@development
             PredictiveEcology/SpaDES.core@development
             PredictiveEcology/SpaDES.tools@development
-
-      - name: Install additional package dependencies
-        run: |
-          pak::pkg_install("remotes")
-          remotes::install_github("s-u/fastshp")
-        shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2
         with:

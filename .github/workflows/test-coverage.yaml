@@ -34,18 +34,11 @@ jobs:
         with:
           extra-packages: |
             any::covr
-            fastshp=?ignore
             PredictiveEcology/quickPlot@development
             PredictiveEcology/reproducible@development
             PredictiveEcology/Require@development
             PredictiveEcology/SpaDES.core@development
             PredictiveEcology/SpaDES.tools@development
-
-      - name: Install additional package dependencies
-        run: |
-          pak::pkg_install("remotes")
-          remotes::install_github("s-u/fastshp")
-        shell: Rscript {0}
 
       - name: Test coverage
         run: covr::codecov()

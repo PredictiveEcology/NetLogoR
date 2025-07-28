@@ -1,10 +1,5 @@
 #' The `NetLogoR` package
 #'
-#' The suggested package \pkg{fastshp} can be installed with
-#' `install.packages("fastshp", repos = "https://rforge.net", type = "source")`.
-#' The examples included with the package, are located in the R package "examples" folder,
-#' which can be found at `system.file(package = "NetLogoR", "examples")`.
-#'
 #' The 3 specific R examples can be opened here, but it's recommended to make copies of these
 #' for editing:
 #'
