@@ -8,23 +8,26 @@
 # NetLogoR 1.0.5
 
 ## Dependency changes
-* removed dependency: `sp` and `raster`. There is still the possibility to convert `sp` and `raster` objects into `NetLogoR` objects and vice versa but except for these functions, all the others do not rely anymore on `sp` and `raster` objects and functions.
-* added dependency: `terra`
-* many changes to accommodate these connections to `terra`
+* moved dependencies: `sp` and `raster` to Suggests.
+  There is still the possibility to convert `sp` and `raster` objects into `NetLogoR` objects
+  and _vice versa_, but except for these functions, all the others do not rely anymore on
+  `sp` and `raster` objects and functions.
+* added dependency: `terra`;
+* many changes to accommodate these connections to `terra`;
 
 ## Documentation changes
-* several minor fixes for CRAN requirements
+* several minor fixes for CRAN requirements;
 
 ## Bugfixes
-* several minor, including some speed improvements
-* several corrections in documentation
-* Deal with CRAN incoming check: "Running R code in ... had CPU time 3 times elapsed time" by setting OMP_THREAD_LIMIT = 1 during tests on CRAN
+* several minor, including some speed improvements;
+* several corrections in documentation;
+* Deal with CRAN incoming check: "Running R code in ... had CPU time 3 times elapsed time" by setting OMP_THREAD_LIMIT = 1 during tests on CRAN;
 
 # NetLogoR 0.3.11
 
 ## Dependency changes
-* removed dependency: `rgeos`
-* added dependency: `sf`
+* removed dependency: `rgeos`;
+* added dependency: `sf`;
 
 # NetLogoR 0.3.10
 

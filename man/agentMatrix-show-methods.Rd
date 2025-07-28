@@ -30,11 +30,14 @@
 \item{...}{arguments to be passed to or from other methods (currently, none used).}
 }
 \value{
-\code{show} is called for its side effects. It shows all columns of data,
-except for the coordinates. To access those, use \code{coordinates()}.
-\code{length} returns a non-negative integer of length 1,
+\itemize{
+\item \code{show} is called for its side effects.
+It shows all columns of data, except for the coordinates.
+To access those, use \code{coordinates()}.
+\item \code{length} returns a non-negative integer of length 1,
 except for vectors of more than 2^31 - 1 elements, when it returns a double.
-\code{nrow} returns an integer of length 1 or \code{NULL}.
+\item \code{nrow} returns an integer of length 1 or \code{NULL}.
+}
 
 An \code{agentMatrix} object, like \code{x}, but generally smaller.
 }

@@ -12,7 +12,7 @@
 }
 \arguments{
 \item{x}{object deriving from class "agentMatrix",
-or a "worldMatrix" or "worldArray"}
+or a \code{worldMatrix} or \code{worldArray}}
 
 \item{...}{Ignored.}
 }

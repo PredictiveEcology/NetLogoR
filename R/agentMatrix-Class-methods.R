@@ -199,12 +199,11 @@ setMethod(
   }
 )
 
-
 setGeneric("coordinates", quickPlot::coordinates)
 
-#' Spatial accessors and setters for NetLogoR classes
+#' Spatial accessors and setters for `NetLogoR` classes
 #'
-#' @param obj object deriving from class "agentMatrix"
+#' @param obj object deriving from class `agentMatrix`
 #' @param ...  additional arguments that may be used by particular methods
 #'
 #' @return `coordinates` returns a matrix of coordinates of the `obj`.
@@ -624,12 +623,13 @@ setMethod(
 #'
 #' @param object  An `agentMatrix` object.
 #'
-#' @return `show` is called for its side effects. It shows all columns of data,
-#' except for the coordinates. To access those, use `coordinates()`.
-#'         `length` returns a non-negative integer of length 1,
-#'         except for vectors of more than 2^31 - 1 elements, when it returns a double.
-#'         `nrow` returns an integer of length 1 or `NULL`.
-
+#' @return
+#' - `show` is called for its side effects.
+#'   It shows all columns of data, except for the coordinates.
+#'   To access those, use `coordinates()`.
+#' - `length` returns a non-negative integer of length 1,
+#'   except for vectors of more than 2^31 - 1 elements, when it returns a double.
+#' - `nrow` returns an integer of length 1 or `NULL`.
 #'
 #' @export
 #' @rdname agentMatrix-show-methods
@@ -791,7 +791,7 @@ setGeneric("extent", quickPlot::extent)
 #'
 #' @include worldNLR-classes-methods.R
 #' @param x object deriving from class "agentMatrix",
-#'    or a "worldMatrix" or "worldArray"
+#'    or a `worldMatrix` or `worldArray`
 #' @param ... Ignored.
 #'
 #' @return `bbox` returns a two-column matrix; the first column has the minimum,
@@ -840,13 +840,12 @@ setMethod(
 
 #' Extract or set bounding box
 #'
-#' These are methods for classes in NetLogoR, i.e., `agentMatrix`, `worldMatrix`,
-#' and `worldArray`.
+#' Methods for classes in `NetLogoR` (i.e., `agentMatrix`, `worldMatrix`, and `worldArray`).
 #'
 #' @include worldNLR-classes-methods.R
 #' @docType methods
-#' @param obj object deriving from class "agentMatrix",
-#'    or for `bbox` and `extent`, a "worldMatrix" or "worldArray"
+#' @param obj object deriving from class `agentMatrix`,
+#'    or for `bbox` and `extent`, a `worldMatrix` or `worldArray`
 #' @rdname bbox
 #' @name bbox
 #' @seealso [raster::extent()], [raster::coordinates()], [sp::bbox()]
