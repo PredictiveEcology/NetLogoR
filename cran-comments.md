@@ -12,11 +12,11 @@ See `NEWS.md` for a full list of changes.
 * Windows                 (win-builder), R 4.4.3
 
 ### Current R versions
-* macOS 12.6.3                 (GitHub), R 4.5.1
 * macOS 13.3.1            (mac-builder), R 4.5.1
-* macOS 14.4.1                  (local), R 4.5.1
-* Ubuntu 20.04                 (GitHub), R 4.5.1
-* Ubuntu 20.04                  (local), R 4.5.1
+* macOS 14.7.6                 (GitHub), R 4.5.1
+* macOS 15.5                    (local), R 4.5.1
+* Ubuntu 24.04                 (GitHub), R 4.5.1
+* Ubuntu 24.04                  (local), R 4.5.1
 * Windows                      (GitHub), R 4.5.1
 * Windows                       (local), R 4.5.1
 * Windows                 (win-builder), R 4.5.1
