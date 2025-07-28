@@ -26,8 +26,6 @@ Description: Build and run spatially explicit
     NOTE: To increment 'time', these functions can use a for loop or can be
     integrated with a discrete event simulator, such as 'SpaDES'
     (<https://cran.r-project.org/package=SpaDES>).
-    The suggested package 'fastshp' can be installed with
-    'install.packages("fastshp", repos = ("<https://rforge.net>"), type = "source")'.
 URL:
     https://netlogor.predictiveecology.org,
     https://github.com/PredictiveEcology/NetLogoR/,
