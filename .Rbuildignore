@@ -17,4 +17,6 @@
 ^travis_wait_.*\.log$
 vignettes/.*_cache$
 vignettes/.*\.log$
+^\.github$
+^codecov\.yml$
 ^CRAN-SUBMISSION$
