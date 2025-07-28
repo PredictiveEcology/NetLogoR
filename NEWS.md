@@ -1,8 +1,10 @@
-# NetLogoR (development version)
+# NetLogoR 1.0.6
 
 ## Dependency changes
 * drop support for R 4.1 and 4.2 due to changes in dependency packages;
 * remove unmaintained dependency package `fastshp` (#55);
+
+## Documentation changes
 * add package anchors to help files (#53);
 
 # NetLogoR 1.0.5
