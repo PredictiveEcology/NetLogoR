@@ -27,7 +27,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Eliot J B McIntire \email{eliot.mcintire@canada.ca} (\href{https://orcid.org/0000-0002-6914-8316}{ORCID})
+\strong{Maintainer}: Eliot J B McIntire \email{achubaty@for-cast.ca} (\href{https://orcid.org/0000-0002-6914-8316}{ORCID})
 
 Authors:
 \itemize{

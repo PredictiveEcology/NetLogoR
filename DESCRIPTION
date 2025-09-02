@@ -3,7 +3,7 @@ Title: Build and Run Spatially Explicit Agent-Based Models
 Description: Build and run spatially explicit
     agent-based models using only the R platform. 'NetLogoR' follows the same
     framework as the 'NetLogo' software
-    (Wilensky (1999) <https://www.netlogo.org>) and is a translation
+    (Wilensky (1999) <https://ccl.northwestern.edu/netlogo/>) and is a translation
     in R of the structure and functions of 'NetLogo'.
     'NetLogoR' provides new R classes to define model agents and functions to
     implement spatially explicit agent-based models in the R environment.
@@ -20,8 +20,8 @@ Description: Build and run spatially explicit
     The 'NetLogo' code of the original version of these
     models is provided alongside.
     A programming guide inspired from the 'NetLogo' Programming Guide
-    (<https://https://docs.netlogo.org/programming.html>) and a dictionary
-    of 'NetLogo' primitives (<https://https://docs.netlogo.org/dictionary.html>)
+    (<https://docs.netlogo.org/programming.html>) and a dictionary
+    of 'NetLogo' primitives (<https://docs.netlogo.org/dictionary.html>)
     equivalences are also available.
     NOTE: To increment 'time', these functions can use a for loop or can be
     integrated with a discrete event simulator, such as 'SpaDES'
