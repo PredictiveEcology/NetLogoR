@@ -33,7 +33,7 @@ summary(w1Val)
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }

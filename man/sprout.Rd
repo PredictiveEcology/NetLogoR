@@ -61,7 +61,7 @@ t2 <- sprout(patches = cbind(pxcor = 3, pycor = 3), n = 3, turtles = t1)
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }
