@@ -1,7 +1,7 @@
 ################################################################################
 # Ants
 # by Wilensky (1997) NetLogo Ants model.
-# http://ccl.northwestern.edu/netlogo/models/Ants
+# https://www.netlogo.org/models/Ants
 #
 # Converted into R using the NetLogoR package
 # by Sarah Bauduin

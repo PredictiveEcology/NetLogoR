@@ -65,7 +65,7 @@ t2 <- turtlesOn(world = w1, turtles = t1, agents = patch(w1, 2, 2))
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }

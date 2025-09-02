@@ -9,7 +9,7 @@
 #'
 #' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-pcor>
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -51,7 +51,7 @@ setMethod(
 #'
 #' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-pcor>
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -93,7 +93,7 @@ setMethod(
 #'
 #' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-pcor>
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -135,7 +135,7 @@ setMethod(
 #'
 #' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-pcor>
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -177,7 +177,7 @@ setMethod(
 #'
 #' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#world-dim>
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -220,7 +220,7 @@ setMethod(
 #'
 #' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#world-dim>
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -263,7 +263,7 @@ setMethod(
 #'
 #' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-patches>
 #'
-#' @references Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+#' @references Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'

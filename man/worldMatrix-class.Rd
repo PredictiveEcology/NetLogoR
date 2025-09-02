@@ -37,7 +37,7 @@ is done in the order of the cell numbers as defined in in \verb{Raster*} objects
 (i.e., by rows).
 }
 \references{
-Wilensky, U. 1999. NetLogo. http://ccl.northwestern.edu/netlogo/.
+Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }
