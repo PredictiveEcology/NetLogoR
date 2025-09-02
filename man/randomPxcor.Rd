@@ -26,12 +26,12 @@ pxcor <- randomPxcor(world = w1, n = 10)
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org/}.
+Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org}.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }
 \seealso{
-\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-pcor}
+\url{https://docs.netlogo.org/dictionary.html#random-pcor}
 }
 \author{
 Sarah Bauduin

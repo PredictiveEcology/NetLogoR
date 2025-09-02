@@ -30,7 +30,7 @@
 #' is done in the order of the cell numbers as defined in in `Raster*` objects
 #' (i.e., by rows).
 #'
-#' @references Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
+#' @references Wilensky, U. 1999. NetLogo. https://www.netlogo.org.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -148,7 +148,7 @@ setReplaceMethod(
 #'
 #'          See `help("worldMatrix-class")` for more details on the `worldMatrix` class.
 #'
-#' @references Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
+#' @references Wilensky, U. 1999. NetLogo. https://www.netlogo.org.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'

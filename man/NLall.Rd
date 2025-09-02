@@ -63,12 +63,12 @@ NLall(agents = t1, var = "heading", val = 2)
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org/}.
+Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org}.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }
 \seealso{
-\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#all}
+\url{https://docs.netlogo.org/dictionary.html#all}
 }
 \author{
 Sarah Bauduin

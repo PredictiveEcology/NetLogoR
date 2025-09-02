@@ -35,12 +35,12 @@ patchHere(world = w1, turtles = t1)
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
+Wilensky, U. 1999. NetLogo. https://www.netlogo.org.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }
 \seealso{
-\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-here}
+\url{https://docs.netlogo.org/dictionary.html#patch-here}
 }
 \author{
 Sarah Bauduin

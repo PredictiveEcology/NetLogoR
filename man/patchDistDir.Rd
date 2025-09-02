@@ -59,12 +59,12 @@ p2 <- patchDistDir(world = w1, agents = t1, dist = 1, angle = 45)
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org/}.
+Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org}.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }
 \seealso{
-\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance}
+\url{https://docs.netlogo.org/dictionary.html#patch-at-heading-and-distance}
 }
 \author{
 Sarah Bauduin

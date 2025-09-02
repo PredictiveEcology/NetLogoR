@@ -61,14 +61,14 @@ if (requireNamespace("SpaDES.tools", quietly = TRUE)) {
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org/}.
+Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org}.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }
 \seealso{
-\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse}
+\url{https://docs.netlogo.org/dictionary.html#diffuse}
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{     <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse4>
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     <https://docs.netlogo.org/dictionary.html#diffuse4>
 }\if{html}{\out{</div>}}
 }
 \author{

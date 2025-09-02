@@ -141,7 +141,7 @@ setMethod(
 #'
 #' @docType methods
 #' @return An `agentMatrix` object
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#clear-turtles>
+#' @seealso <https://docs.netlogo.org/dictionary.html#clear-turtles>
 #'
 #' @examples
 #' newAgent <- agentMatrix(

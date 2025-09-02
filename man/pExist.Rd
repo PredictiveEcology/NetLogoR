@@ -31,12 +31,12 @@ pExist(world = w1, pxcor = -1, pycor = 2)
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org/}.
+Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org}.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }
 \seealso{
-\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#member}
+\url{https://docs.netlogo.org/dictionary.html#member}
 }
 \author{
 Sarah Bauduin

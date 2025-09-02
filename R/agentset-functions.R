@@ -11,9 +11,9 @@
 #'
 #' @details `world` must not be provided if `agents` are turtles.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#all>
+#' @seealso <https://docs.netlogo.org/dictionary.html#all>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -90,9 +90,9 @@ setMethod(
 #' @return Logical. `TRUE` if there is at least one patch or one turtle in the
 #'         `agents`, `FALSE` otherwise.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#any>
+#' @seealso <https://docs.netlogo.org/dictionary.html#any>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -156,9 +156,9 @@ setMethod(
 #'
 #' @return Integer.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#count>
+#' @seealso <https://docs.netlogo.org/dictionary.html#count>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -216,9 +216,9 @@ setMethod(
 #'
 #'          The sorting of the `agents` is done in a increasing order.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#sort-on>
+#' @seealso <https://docs.netlogo.org/dictionary.html#sort-on>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -314,9 +314,9 @@ setMethod(
 #'
 #'          `val` can include `NA`.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with>
+#' @seealso <https://docs.netlogo.org/dictionary.html#with>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -427,9 +427,9 @@ setMethod(
 #'
 #' @details `world` must not be provided if `agents` are turtles.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-max>
+#' @seealso <https://docs.netlogo.org/dictionary.html#with-max>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -535,9 +535,9 @@ setMethod(
 #'
 #' @details `world` must not be provided if `agents` are turtles.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-min>
+#' @seealso <https://docs.netlogo.org/dictionary.html#with-min>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -651,9 +651,9 @@ setMethod(
 #'          `agents` which have their variable equal
 #'          to the maximum value, use `withMax()`.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-one-of>
+#' @seealso <https://docs.netlogo.org/dictionary.html#max-one-of>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -749,9 +749,9 @@ setMethod(
 #'          `agents` which have their variable equal
 #'          to the minimum value, use `withMin()`.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-one-of>
+#' @seealso <https://docs.netlogo.org/dictionary.html#min-one-of>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -850,9 +850,9 @@ setMethod(
 #'          `"turtle"`. `agents` is `"agentset"` if it is either
 #'          `"patcheset"` or `"turtleset"`.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#is-of-type>
+#' @seealso <https://docs.netlogo.org/dictionary.html#is-of-type>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -970,9 +970,9 @@ setMethod(
 #'          is done per individual "id". The order of the `who` numbers returned
 #'          follow the order of "id".
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#n-of>
+#' @seealso <https://docs.netlogo.org/dictionary.html#n-of>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1082,9 +1082,9 @@ setMethod(
 #'          is done per individual `id`. The order of the `who` numbers returned
 #'          follow the order of `id`.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#one-of>
+#' @seealso <https://docs.netlogo.org/dictionary.html#one-of>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1163,9 +1163,9 @@ setMethod(
 #'          If there is a tie that would make the number of returned `patches` or `turtles` larger
 #'          than `n`, it is broken randomly.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#max-n-of>
+#' @seealso <https://docs.netlogo.org/dictionary.html#max-n-of>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1336,9 +1336,9 @@ setMethod(
 #'          If there is a tie that would make the number of returned `patches` or `turtles` larger
 #'          than `n`, it is broken randomly.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#min-n-of>
+#' @seealso <https://docs.netlogo.org/dictionary.html#min-n-of>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1538,9 +1538,9 @@ setMethod(
 #'          If `torus = TRUE`, the `radius` distances are calculated
 #'          around the sides of the `world` to select `agents2`.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#in-radius>
+#' @seealso <https://docs.netlogo.org/dictionary.html#in-radius>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1751,9 +1751,9 @@ setMethod(
 #'          If `torus = TRUE`, the `radius` distances are calculated
 #'          around the sides of the `world` to select `agents`.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#in-cone>
+#' @seealso <https://docs.netlogo.org/dictionary.html#in-cone>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -1875,9 +1875,9 @@ setMethod(
 #'          must not be provided. If `agents` are `turtles`, `turtles` must be
 #'          provided and `world` must not be provided.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#set>
+#' @seealso <https://docs.netlogo.org/dictionary.html#set>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
