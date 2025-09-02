@@ -16,7 +16,7 @@ This package allows benefiting of the fast and easy coding phase from the highly
 
 ## Getting Started
 
-Examples of three models ([Ants](https://ccl.northwestern.edu/netlogo/models/Ants), Butterfly (Railsback and Grimm, 2012) and [Wolf-Sheep-Predation](https://www.netlogo.org/models/WolfSheepPredation)) written using `NetLogoR` are available. The NetLogo code of the original version of these models is provided alongside.
+Examples of three models ([Ants](https://ccl.northwestern.edu/netlogo/models/Ants), Butterfly (Railsback and Grimm, 2012) and [Wolf-Sheep-Predation](https://ccl.northwestern.edu/netlogo/models/WolfSheepPredation)) written using `NetLogoR` are available. The NetLogo code of the original version of these models is provided alongside.
 A programming guide inspired from the [NetLogo Programming Guide](https://docs.netlogo.org/programming.html) and a dictionary of [NetLogo primitives](https://docs.netlogo.org/dictionary.html) equivalences are also available.
 A model simulating the wolf life cycle written using `NetLogoR` has been published ([Bauduin et al., 2020](https://www.sciencedirect.com/science/article/pii/S0304380020302799?via%3Dihub)) with the ([code available on GitHub](https://github.com/SarahBauduin/appendix_wolfIBM)).
 
