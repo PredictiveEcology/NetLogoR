@@ -25,11 +25,11 @@ if (getRversion() >= "3.1.0") {
 #'          and the diffusing
 #'          patch keeps the leftover.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse>
+#' @seealso <https://docs.netlogo.org/dictionary.html#diffuse>
 #'
-#'          <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#diffuse4>
+#'          <https://docs.netlogo.org/dictionary.html#diffuse4>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -170,11 +170,11 @@ setMethod(
 #'          If `torus = TRUE`, a distance around the sides of the `world` is
 #'          reported only if smaller than the one across the `world`.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distance>
+#' @seealso <https://docs.netlogo.org/dictionary.html#distance>
 #'
-#'          <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distancexy>
+#'          <https://docs.netlogo.org/dictionary.html#distancexy>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -293,9 +293,9 @@ setMethod(
 #'
 #' @return Logical.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#member>
+#' @seealso <https://docs.netlogo.org/dictionary.html#member>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -358,9 +358,9 @@ setMethod(
 #'          `world` have `nNeighbors` patches around them,
 #'          which some may be on the other sides of the `world`.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#neighbors>
+#' @seealso <https://docs.netlogo.org/dictionary.html#neighbors>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -473,9 +473,9 @@ setMethod(
 #'          if `torus = TRUE`, the `patch` coordinates from a wrapped `world` are
 #'          returned.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch>
+#' @seealso <https://docs.netlogo.org/dictionary.html#patch>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -552,9 +552,9 @@ setMethod(
 #' @return Matrix (`ncol` = 2, `nrow` = 0) with the first column `pxcor` and the
 #'         second column `pycor`.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#no-patches>
+#' @seealso <https://docs.netlogo.org/dictionary.html#no-patches>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -590,11 +590,11 @@ noPatches <- function() {
 #'          if `torus = TRUE`, the `patch` coordinates from a wrapped `world` are
 #'          returned.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at>
+#' @seealso <https://docs.netlogo.org/dictionary.html#patch-at>
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#at-points>
+#' @seealso <https://docs.netlogo.org/dictionary.html#at-points>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -669,9 +669,9 @@ setMethod(
 #'          `patchLeft()` or `patchRight()`.
 #'
 #' @seealso
-#' <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at-heading-and-distance>
+#' <https://docs.netlogo.org/dictionary.html#patch-at-heading-and-distance>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -726,9 +726,9 @@ setMethod(
 #'         `pycor` representing the `patches` coordinates. The order of the `patches`
 #'         follows the order of the cells numbers as defined for a `Raster*` object.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patches>
+#' @seealso <https://docs.netlogo.org/dictionary.html#patches>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -770,9 +770,9 @@ setMethod(
 #'
 #' @details Duplicate `patches` among the inputs are removed in the returned matrix.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-set>
+#' @seealso <https://docs.netlogo.org/dictionary.html#patch-set>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -816,9 +816,9 @@ setMethod(
 #'
 #' @return Integer. Vector of length `n` of `pxcor` coordinates.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-pcor>
+#' @seealso <https://docs.netlogo.org/dictionary.html#random-pcor>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'
@@ -858,9 +858,9 @@ setMethod(
 #'
 #' @return Integer. Vector of length `n` of `pycor` coordinates.
 #'
-#' @seealso <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#random-pcor>
+#' @seealso <https://docs.netlogo.org/dictionary.html#random-pcor>
 #'
-#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org/>.
+#' @references Wilensky, U. 1999. NetLogo. <https://www.netlogo.org>.
 #'             Center for Connected Learning and Computer-Based Modeling,
 #'             Northwestern University. Evanston, IL.
 #'

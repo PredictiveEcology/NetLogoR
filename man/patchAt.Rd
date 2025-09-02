@@ -56,14 +56,14 @@ patchCorner <- patchAt(world = w1, agents = t1, dx = 1, dy = 1)
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org/}.
+Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org}.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }
 \seealso{
-\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#patch-at}
+\url{https://docs.netlogo.org/dictionary.html#patch-at}
 
-\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#at-points}
+\url{https://docs.netlogo.org/dictionary.html#at-points}
 }
 \author{
 Sarah Bauduin

@@ -76,14 +76,14 @@ NLdist(agents = t1, agents2 = patch(w1, c(1, 9), c(1, 9)), allPairs = TRUE)
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org/}.
+Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org}.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }
 \seealso{
-\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distance}
+\url{https://docs.netlogo.org/dictionary.html#distance}
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{     <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#distancexy>
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     <https://docs.netlogo.org/dictionary.html#distancexy>
 }\if{html}{\out{</div>}}
 }
 \author{

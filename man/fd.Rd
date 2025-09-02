@@ -63,14 +63,14 @@ points(t1, col = of(agents = t1, var = "color"), pch = 16)
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. https://www.netlogo.org/.
+Wilensky, U. 1999. NetLogo. https://www.netlogo.org.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }
 \seealso{
-\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#forward}
+\url{https://docs.netlogo.org/dictionary.html#forward}
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{     <https://ccl.northwestern.edu/netlogo/docs/dictionary.html#jump>
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     <https://docs.netlogo.org/dictionary.html#jump>
 }\if{html}{\out{</div>}}
 }
 \author{

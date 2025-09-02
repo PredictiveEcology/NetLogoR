@@ -70,12 +70,12 @@ t2 <- withMax(agents = t1, var = "heading")
 
 }
 \references{
-Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org/}.
+Wilensky, U. 1999. NetLogo. \url{https://www.netlogo.org}.
 Center for Connected Learning and Computer-Based Modeling,
 Northwestern University. Evanston, IL.
 }
 \seealso{
-\url{https://ccl.northwestern.edu/netlogo/docs/dictionary.html#with-max}
+\url{https://docs.netlogo.org/dictionary.html#with-max}
 }
 \author{
 Sarah Bauduin
