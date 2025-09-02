@@ -3,6 +3,7 @@
 ## Dependency changes
 * drop support for R 4.1 and 4.2 due to changes in dependency packages;
 * remove unmaintained dependency package `fastshp` (#55);
+* update NetLogo website URLs;
 
 ## Documentation changes
 * add package anchors to help files (#53);
