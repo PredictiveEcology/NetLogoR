@@ -33,16 +33,14 @@ URL:
 Version: 1.0.6
 Date: 2025-09-02
 Authors@R: c(
-    person("Sarah", "Bauduin", email = "sarahbauduin@hotmail.fr",
-           role = c("aut"), comment = c(ORCID = "0000-0002-3252-5894")),
-    person("Eliot J B", "McIntire", email = "eliot.mcintire@canada.ca",
-           role = c("aut", "cre"), comment = c(ORCID = "0000-0002-6914-8316")),
-    person("Alex M", "Chubaty", email = "achubaty@for-cast.ca",
-           role = c("aut"), comment = c(ORCID = "0000-0001-7146-8135")),
-    person(paste("His Majesty the King in Right of Canada,",
-                 "as represented by the Minister of Natural Resources Canada"),
-           role = "cph")
-    )
+    person("Sarah", "Bauduin", , "sarahbauduin@hotmail.fr", role = "aut",
+           comment = c(ORCID = "0000-0002-3252-5894")),
+    person("Eliot J B", "McIntire", , "achubaty@for-cast.ca", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-6914-8316")),
+    person("Alex M", "Chubaty", , "achubaty@for-cast.ca", role = "aut",
+           comment = c(ORCID = "0000-0001-7146-8135")),
+    person("His Majesty the King in Right of Canada, as represented by the Minister of Natural Resources Canada", role = "cph")
+  )
 Depends:
     R (>= 4.3)
 Imports:
