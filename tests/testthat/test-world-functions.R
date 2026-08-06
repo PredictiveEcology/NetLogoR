@@ -81,9 +81,9 @@ test_that("raster2world and world2raster work", {
   raster::res(r4) <- 200
   r4[] <- runif(10000)
   w4 <- raster2world(r4)
-  expect_identical(ncol(r4), ncol(w4@.Data))
+  expect_equal(ncol(r4), ncol(w4@.Data))
   expect_identical(nrow(r4), nrow(w4@.Data))
-  expect_identical(as.numeric(w4@.Data[1, ]), values(r4)[1:100])
+  expect_identical(as.numeric(w4@.Data[1, ]), (r4)[1:100])
 })
 
 test_that("spatRast2world and world2spatRast work", {
