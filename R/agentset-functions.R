@@ -1589,7 +1589,7 @@ setMethod(
           "please install.packages('sf')"
         )
       }
-      agents_sf <- sf::st_as_sf(as.data.frame(agents), coords = c(1, 2))
+      # agents_sf <- sf::st_as_sf(as.data.frame(agents), coords = c(1, 2))
       # Create buffers around the locations of agents
       # aBuffer <- sf::st_buffer(agents_sf, dist = radius) # use sf::st_is_within_distance which is fastest
 
@@ -1633,9 +1633,19 @@ setMethod(
         #   sf::st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
         #   sparse = TRUE
         # ) # use sf::st_is_within_distance which is fastest
-        pOverL <- sf::st_is_within_distance(agents_sf,
-                                            sf::st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
-                                            dist = radius, sparse = TRUE)
+        # pOverL <- sf::st_is_within_distance(agents_sf,
+        #                                     sf::st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
+        #                                     dist = radius, sparse = TRUE) # use of dbscan which is even faster
+        agents_coords <- agents
+        agents2Coords <- agents2cAll
+        nn <- dbscan::frNN(
+          x     = agents2Coords,
+          query = agents_coords,
+          eps   = radius,
+          sort  = FALSE
+        )
+        pOverL <- lapply(nn$id, sort)  # list of indices, one item per agent
+
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(agents2cAll) <- c("x", "y")
@@ -1652,9 +1662,19 @@ setMethod(
         #   sf::st_as_sf(inspect(agents2, who = agents2@.Data[, "who"]), coords = c("xcor", "ycor")),
         #   sparse = TRUE
         # ) # use sf::st_is_within_distance which is fastest
-        pOverL <- sf::st_is_within_distance(agents_sf,
-                                            sf::st_as_sf(inspect(agents2, who = agents2@.Data[, "who"]), coords = c("xcor", "ycor")),
-                                            dist = radius, sparse = TRUE)
+        # pOverL <- sf::st_is_within_distance(agents_sf,
+        #                                     sf::st_as_sf(inspect(agents2, who = agents2@.Data[, "who"]), coords = c("xcor", "ycor")),
+        #                                     dist = radius, sparse = TRUE)
+        agents_coords <- agents
+        agents2Coords <- agents2@.Data[, c("xcor", "ycor"), drop = FALSE]
+        nn <- dbscan::frNN(
+          x     = agents2Coords,
+          query = agents_coords,
+          eps   = radius,
+          sort  = FALSE
+        )
+        pOverL <- lapply(nn$id, sort)  # list of indices, one item per agent
+
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- unique(cbind(agents2@.Data[pOver, c("xcor", "ycor"), drop = FALSE],
@@ -1671,9 +1691,9 @@ setMethod(
           "please install.packages('sf')"
         )
       }
-      agents_sf <- sf::st_as_sf(as.data.frame(agents), coords = c(1, 2))
+      # agents_sf <- sf::st_as_sf(as.data.frame(agents), coords = c(1, 2))
       # Create buffers around the locations of agents
-      aBuffer <- sf::st_buffer(agents_sf, dist = radius * 1.0000001) ## (see #28)
+      # aBuffer <- sf::st_buffer(agents_sf, dist = radius * 1.0000001) ## (see #28)
 
       if (torus == TRUE) {
         if (missing(world)) {
@@ -1689,22 +1709,46 @@ setMethod(
         pAllWrap <- patches(worldWrap)
 
         # Extract the locations of agents2 under the buffers
-        sf1 <- sf::st_as_sf(as.data.frame(pAllWrap), coords = c(1, 2))
+        #sf1 <- sf::st_as_sf(as.data.frame(pAllWrap), coords = c(1, 2))
 
         #pOverL <- sf::st_intersects(aBuffer, sf1, sparse = TRUE) # use sf::st_is_within_distance which is fastest
-        pOverL <- sf::st_is_within_distance(agents_sf, sf1, dist = radius * 1.0000001, sparse = TRUE)
+        #pOverL <- sf::st_is_within_distance(agents_sf, sf1, dist = radius * 1.0000001, sparse = TRUE)
+        agents_coords <- agents
+        agents2Coords <- pAllWrap
+        nn <- dbscan::frNN(
+          x     = agents2Coords,
+          query = agents_coords,
+          eps   = radius * 1.0000001,
+          sort  = FALSE
+        )
+        pOverL <- lapply(nn$id, sort)  # list of indices, one item per agent
+
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(pAllWrap) <- c("x", "y")
         agentsWrap <- wrap(pAllWrap[pOver, , drop = FALSE], world@extent)
         agentsXY <- unique(cbind(agentsWrap, id = rep(seq_along(lengthID), lengthID)))
         colnames(agentsXY)[1:2] <- c("pxcor", "pycor")
+        # Subset with the agents2 provided
+        keyAgents <- paste(agentsXY[, "pxcor"], agentsXY[, "pycor"])
+        keyAgents2  <- paste(agents2[, 1], agents2[, 2])
+        agentsXY <- agentsXY[keyAgents %in% keyAgents2, , drop = FALSE]
         return(agentsXY)
       } else {
-        sf1 <- sf::st_as_sf(as.data.frame(agents2), coords = c(1, 2))
+        # sf1 <- sf::st_as_sf(as.data.frame(agents2), coords = c(1, 2))
 
         # pOverL <- sf::st_intersects(aBuffer, sf1, sparse = TRUE) # use sf::st_is_within_distance which is fastest
-        pOverL <- sf::st_is_within_distance(agents_sf, sf1, dist = radius * 1.0000001, sparse = TRUE)
+        # pOverL <- sf::st_is_within_distance(agents_sf, sf1, dist = radius * 1.0000001, sparse = TRUE)
+        agents_coords <- agents
+        agents2Coords <- agents2@.Data[, c("pxcor", "pycor"), drop = FALSE]
+        nn <- dbscan::frNN(
+          x     = agents2Coords,
+          query = agents_coords,
+          eps   = radius * 1.0000001,
+          sort  = FALSE
+        )
+        pOverL <- lapply(nn$id, sort)  # list of indices, one item per agent
+
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- cbind(agents2[pOver, , drop = FALSE],

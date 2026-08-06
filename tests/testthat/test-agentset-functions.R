@@ -705,6 +705,13 @@ test_that("inRadius works", {
   expect_equivalent(t9[t9[, "id"] == 1, "who"], c(0, 1))
   t11 <- inRadius(agents = t1, radius = 10, agents2 = t1, world = w1)
   expect_equivalent(t11[t11[, "id"] == 1, "who"], c(0, 1, 2, 3, 4))
+
+  # Work for patches to patches with torus = TRUE when not all the patches are provided
+  p10 <- inRadius(agents = turtle(t1, 0), radius = 1, agents2 = patch(w1, 4, 4), world = w1, torus = TRUE)
+  expect_equivalent(NROW(p10), 0)
+  p11 <- inRadius(agents = turtle(t1, 0), radius = 1, agents2 = cbind(pxcor = c(0, 0, 1, 1), pycor = c(0, 4, 0, 1)), world = w1, torus = TRUE)
+  expect_equivalent(p11[, c("pxcor", "pycor")], cbind(pxcor = c(0, 1, 0), pycor = c(0, 0, 4)))
+
 })
 
 test_that("inCone works", {
