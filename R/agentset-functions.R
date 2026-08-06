@@ -1591,7 +1591,7 @@ setMethod(
       }
       agents_sf <- sf::st_as_sf(as.data.frame(agents), coords = c(1, 2))
       # Create buffers around the locations of agents
-      aBuffer <- sf::st_buffer(agents_sf, dist = radius)
+      # aBuffer <- sf::st_buffer(agents_sf, dist = radius) # use sf::st_is_within_distance which is fastest
 
       if (torus == TRUE) {
         if (missing(world)) {
@@ -1599,7 +1599,8 @@ setMethod(
         }
 
         agents2c <- agents2@.Data[, c("xcor", "ycor"), drop = FALSE]
-        exts <- extents(world@extent)
+        #exts <- extents(world@extent)
+        exts <- world@extent # extents(world@extent) doesn't work anymore 06/08/2026
 
         agents2c1 <- cbind(
           agents2c[, 1] - (exts$xmax - exts$xmin),
@@ -1627,11 +1628,14 @@ setMethod(
         )
 
         # Extract the locations of agents2 under the buffers
-        pOverL <- sf::st_intersects(
-          aBuffer,
-          sf::st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
-          sparse = TRUE
-        )
+        # pOverL <- sf::st_intersects(
+        #   aBuffer,
+        #   sf::st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
+        #   sparse = TRUE
+        # ) # use sf::st_is_within_distance which is fastest
+        pOverL <- sf::st_is_within_distance(agents_sf,
+                                            sf::st_as_sf(as.data.frame(agents2cAll), coords = c(1, 2)),
+                                            dist = radius, sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(agents2cAll) <- c("x", "y")
@@ -1643,11 +1647,14 @@ setMethod(
         )
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       } else {
-        pOverL <- sf::st_intersects(
-          aBuffer,
-          sf::st_as_sf(inspect(agents2, who = agents2@.Data[, "who"]), coords = c("xcor", "ycor")),
-          sparse = TRUE
-        )
+        # pOverL <- sf::st_intersects(
+        #   aBuffer,
+        #   sf::st_as_sf(inspect(agents2, who = agents2@.Data[, "who"]), coords = c("xcor", "ycor")),
+        #   sparse = TRUE
+        # ) # use sf::st_is_within_distance which is fastest
+        pOverL <- sf::st_is_within_distance(agents_sf,
+                                            sf::st_as_sf(inspect(agents2, who = agents2@.Data[, "who"]), coords = c("xcor", "ycor")),
+                                            dist = radius, sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- unique(cbind(agents2@.Data[pOver, c("xcor", "ycor"), drop = FALSE],
@@ -1684,7 +1691,8 @@ setMethod(
         # Extract the locations of agents2 under the buffers
         sf1 <- sf::st_as_sf(as.data.frame(pAllWrap), coords = c(1, 2))
 
-        pOverL <- sf::st_intersects(aBuffer, sf1, sparse = TRUE)
+        #pOverL <- sf::st_intersects(aBuffer, sf1, sparse = TRUE) # use sf::st_is_within_distance which is fastest
+        pOverL <- sf::st_is_within_distance(agents_sf, sf1, dist = radius * 1.0000001, sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         colnames(pAllWrap) <- c("x", "y")
@@ -1695,7 +1703,8 @@ setMethod(
       } else {
         sf1 <- sf::st_as_sf(as.data.frame(agents2), coords = c(1, 2))
 
-        pOverL <- sf::st_intersects(aBuffer, sf1, sparse = TRUE)
+        # pOverL <- sf::st_intersects(aBuffer, sf1, sparse = TRUE) # use sf::st_is_within_distance which is fastest
+        pOverL <- sf::st_is_within_distance(agents_sf, sf1, dist = radius * 1.0000001, sparse = TRUE)
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
         agentsXY <- cbind(agents2[pOver, , drop = FALSE],
