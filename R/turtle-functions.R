@@ -2338,7 +2338,9 @@ setMethod(
   "turtle",
   signature = c("agentMatrix", "numeric", "missing"),
   definition = function(turtles, who) {
-    turtles[na.omit(match(who, turtles@.Data[, "who"])), , drop = FALSE]
+    idx <- match(who, turtles@.Data[, "who"])
+    idx <- idx[!is.na(idx)]
+    turtles[idx, , drop = FALSE]
   }
 )
 
@@ -2352,8 +2354,10 @@ setMethod(
     if (length(breedFactor) == 0) {
       noTurtles()
     } else {
-      tBreed <- turtles[which(turtles@.Data[, "breed"] %in% breedFactor), , drop = FALSE]
-      turtle(tBreed, who)
+      validIdx <- which(turtles@.Data[, "breed"] %in% breedFactor)
+      idx <- validIdx[match(who, turtles@.Data[validIdx, "who"])]
+      idx <- idx[!is.na(idx)]
+      turtles[idx, , drop = FALSE]
     }
   }
 )
