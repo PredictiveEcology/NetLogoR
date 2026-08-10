@@ -49,10 +49,8 @@
 #'   sd <- 30 # could be specified globally in params
 #'
 #'   if (interactive()) {
-#'     library(quickPlot)
-#'     clearPlot()
-#'     Plot(hab, zero.color = "white", axes = "L")
-#'     Plot(agent, addTo = "hab")
+#'     terra::plot(hab)
+#'     points(agent)
 #'   }
 #'   if (requireNamespace("SpaDES.tools") &&
 #'     requireNamespace("CircStats")) {
@@ -62,7 +60,7 @@
 #'         extent = terra::ext(hab), stepLength = ln,
 #'         stddev = sd, lonlat = FALSE, torus = TRUE
 #'       )
-#'       if (interactive()) Plot(agent, addTo = "hab", axes = TRUE)
+#'       if (interactive()) points(agent)
 #'     }
 #'   }
 #' }

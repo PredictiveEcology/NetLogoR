@@ -3,6 +3,7 @@
 \docType{methods}
 \name{extent,worldNLR-method}
 \alias{extent,worldNLR-method}
+\alias{extent}
 \alias{extent,agentMatrix-method}
 \title{Bounding box and extent methods for NetLogoR classes}
 \usage{

@@ -55,6 +55,7 @@ export(nOf)
 export(neighbors)
 export(noPatches)
 export(noTurtles)
+export(numLayers)
 export(of)
 export(oneOf)
 export(other)
@@ -216,11 +217,6 @@ importFrom(data.table,
 )
 importFrom(grDevices,rainbow)
 importFrom(graphics,points)
-importFrom(quickPlot,
-  .identifyGrobToPlot,
-  layerNames,
-  numLayers
-)
 importFrom(stats,
   na.omit,
   runif
@@ -235,4 +231,3 @@ importFrom(utils,
   head,
   tail
 )
-importMethodsFrom(quickPlot,.identifyGrobToPlot)

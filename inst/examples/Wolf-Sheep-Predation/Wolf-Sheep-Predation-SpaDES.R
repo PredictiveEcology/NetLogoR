@@ -1,6 +1,5 @@
 # Run the WolfSheepPredation SpaDES module
 library(NetLogoR)
-library(quickPlot)
 if (requireNamespace("SpaDES.core") && requireNamespace("SpaDES.tools")) {
 
   # Parameters values
@@ -21,8 +20,6 @@ if (requireNamespace("SpaDES.core") && requireNamespace("SpaDES.tools")) {
   wolfSheepRun <- SpaDES.core::spades(wolfSheepSim) # use debug=FALSE for no messaging
 
   # Plot outputs
-  dev(6)
-  clearPlot()
   timeStep <- seq_along(wolfSheepRun$numSheep)
 
   maxSheep <- max(wolfSheepRun$numSheep)

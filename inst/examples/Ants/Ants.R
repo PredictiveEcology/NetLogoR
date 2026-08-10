@@ -112,13 +112,12 @@ ants <- createTurtles(
   coords = cbind(xcor = 0, ycor = 0),
   color = "red"
 ) # red = not carrying food
-bbox(ants) <- bbox(world) # For Plot, which uses bbox to create frame
+bbox(ants) <- bbox(world)
 
 ## Visualize the world
-library(quickPlot)
-dev() # on Windows and non-server Linux, this opens a new window that is faster than RStudio
-Plot(world) # all the layers
-Plot(ants, addTo = "world$food", pch = 16) # add the ants on the food layer
+plot(world) # all the layers
+plot(world[["food"]]) # the food layer
+points(ants, pch = 16) # add the ants on the food layer
 
 # Initialize the output objects
 foodWorld <- of(
@@ -339,24 +338,24 @@ while (sum(foodWorld[, "food"]) != 0) {
   # Update the time
   time <- time + 1
 
-  Plot(ants, addTo = "world$food", pch = 16, size = 0.25)
+  plot(world[["food"]])
+  points(ants, pch = 16, cex = 0.25)
 }
 
 ## Plot outputs
 timeStep <- seq_along(food1)
-Plot(
+plot(
   timeStep,
   food1,
   type = "l",
-  addTo = "Abundance",
   col = "coral",
   lwd = 2,
   ylab = "Food",
   xlab = "Time step",
   ylim = c(min = 0, max = max(c(max(food1), max(food2), max(food3))))
 )
-Plot(timeStep, food2, type = "l", addTo = "Abundance", col = "yellow", lwd = 2)
-Plot(timeStep, food3, type = "l", addTo = "Abundance", col = "green", lwd = 2)
+lines(timeStep, food2, col = "yellow", lwd = 2)
+lines(timeStep, food3, col = "green", lwd = 2)
 legend(
   "bottomleft",
   legend = c("food1", "food2", "food3"),

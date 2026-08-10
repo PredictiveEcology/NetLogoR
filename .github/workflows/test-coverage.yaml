@@ -40,7 +40,6 @@ jobs:
           extra-packages: |
             any::covr
             qs2?source
-            PredictiveEcology/quickPlot@development
             PredictiveEcology/reproducible@development
             PredictiveEcology/Require@development
             PredictiveEcology/SpaDES.core@development

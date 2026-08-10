@@ -204,7 +204,11 @@ setMethod(
   }
 )
 
-setGeneric("coordinates", quickPlot::coordinates)
+## Defined here rather than adopted from quickPlot, which is being archived.
+## The signature matches quickPlot::coordinates() so existing calls still work.
+setGeneric("coordinates", function(obj, ...) {
+  standardGeneric("coordinates")
+})
 
 #' Spatial accessors and setters for `NetLogoR` classes
 #'
@@ -215,7 +219,7 @@ setGeneric("coordinates", quickPlot::coordinates)
 #'
 #' @export
 #' @rdname coordinates
-#' @aliases coordinates,agentMatrix-method
+#' @aliases coordinates coordinates,agentMatrix-method
 #' @seealso [sp::bbox()], [raster::extent()]
 #' @exportMethod coordinates
 setMethod(
@@ -817,7 +821,11 @@ rbind.agentMatrix <- function(..., deparse.level = 1) {
   }
 }
 
-setGeneric("extent", quickPlot::extent)
+## Defined here rather than adopted from quickPlot, which is being archived.
+## The signature matches quickPlot::extent() so existing calls still work.
+setGeneric("extent", function(x, ...) {
+  standardGeneric("extent")
+})
 
 #' Bounding box and extent methods for NetLogoR classes
 #'
@@ -833,6 +841,7 @@ setGeneric("extent", quickPlot::extent)
 #'         `extent` returns an `SpatExtent` object from the package `terra`.
 #' @rdname extent
 #' @docType methods
+#' @aliases extent
 #' @seealso [terra::ext()]
 #' @exportMethod extent
 setMethod(

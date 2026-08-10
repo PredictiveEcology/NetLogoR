@@ -2,6 +2,7 @@
 % Please edit documentation in R/agentMatrix-Class-methods.R
 \name{coordinates,agentMatrix-method}
 \alias{coordinates,agentMatrix-method}
+\alias{coordinates}
 \title{Spatial accessors and setters for \code{NetLogoR} classes}
 \usage{
 \S4method{coordinates}{agentMatrix}(obj, ...)
