@@ -3129,7 +3129,8 @@ setMethod(
       if (length(var) == 1) {
         return(cols[[1]])
       }
-      return(list2DF(setNames(cols, var)))
+      names(cols) <- var
+      return(list2DF(cols))
     } else {
       if (length(var) == 1) {
         return(agents@.Data[, var])
@@ -3171,7 +3172,7 @@ setMethod(
 
       colMat <- agents[, 1] - world@minPxcor + 1
       rowMat <- world@maxPycor - agents[, 2] + 1
-      layerIdx <- match(var, dimnames(world@.Data)[[3]])
+      layerIdx <- .layerIndices(world, var)
 
       if (length(var) == 1) {
         return(world@.Data[cbind(rowMat, colMat, layerIdx)])

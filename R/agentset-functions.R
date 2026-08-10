@@ -372,7 +372,7 @@ setMethod(
   definition = function(agents, world, var, val) {
     colMat <- agents[, 1] - world@minPxcor + 1
     rowMat <- world@maxPycor - agents[, 2] + 1
-    layerIdx <- match(var, dimnames(world@.Data)[[3]])
+    layerIdx <- .layerIndices(world, var)
     agentsValues <- world@.Data[cbind(rowMat, colMat, layerIdx)]
     pVal <- which(agentsValues %in% val)
     return(agents[pVal, , drop = FALSE])
@@ -1574,14 +1574,6 @@ setMethod(
       agents <- agents@.Data[, c("xcor", "ycor"), drop = FALSE]
       inRadius(agents = agents, radius = radius, agents2 = agents2, world = world, torus = torus)
     } else if (!inherits(agents, "agentMatrix") & inherits(agents2, "agentMatrix")) {
-      # Transform the agents into sf to use st_buffer
-      if (!requireNamespace("sf")) {
-        stop(
-          "to use inRadius on matrix objects (but not agentMatrix), ",
-          "please install.packages('sf')"
-        )
-      }
-
       if (torus == TRUE) {
         if (missing(world)) {
           stop("A world must be provided as torus = TRUE")
@@ -1615,16 +1607,8 @@ setMethod(
           agents2c5, agents2c6, agents2c7, agents2c8
         )
 
-        # Find agents2cAll within the radius distance of agents
-        agents_coords <- agents
-        agents2Coords <- agents2cAll
-        nn <- dbscan::frNN(
-          x     = agents2Coords,
-          query = agents_coords,
-          eps   = radius,
-          sort  = FALSE
-        )
-        pOverL <- lapply(nn$id, sort)  # list of indices, one item per agent
+        ## Find agents2cAll within the radius distance of agents
+        pOverL <- .frNNindices(x = agents2cAll, query = agents, eps = radius)
 
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
@@ -1638,16 +1622,11 @@ setMethod(
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       } else {
 
-        # Find agents2 within the radius distance of agents
-        agents_coords <- agents
-        agents2Coords <- agents2@.Data[, c("xcor", "ycor"), drop = FALSE]
-        nn <- dbscan::frNN(
-          x     = agents2Coords,
-          query = agents_coords,
-          eps   = radius,
-          sort  = FALSE
+        ## Find agents2 within the radius distance of agents
+        pOverL <- .frNNindices(
+          x = agents2@.Data[, c("xcor", "ycor"), drop = FALSE],
+          query = agents, eps = radius
         )
-        pOverL <- lapply(nn$id, sort)  # list of indices, one item per agent
 
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
@@ -1659,13 +1638,6 @@ setMethod(
         return(tOn[order(tOn[, "id"]), c("who", "id")])
       }
     } else {
-      if (!requireNamespace("sf")) {
-        stop(
-          "to use inRadius on matrix objects (but not agentMatrix), ",
-          "please install.packages('sf')"
-        )
-      }
-
       if (torus == TRUE) {
         if (missing(world)) {
           stop("A world must be provided as torus = TRUE")
@@ -1679,16 +1651,8 @@ setMethod(
         )
         pAllWrap <- worldWrap@pCoords
 
-        # Find pAllWrap within the radius++ distance of agents
-        agents_coords <- agents
-        agents2Coords <- pAllWrap
-        nn <- dbscan::frNN(
-          x     = agents2Coords,
-          query = agents_coords,
-          eps   = radius * 1.0000001,
-          sort  = FALSE
-        )
-        pOverL <- lapply(nn$id, sort)  # list of indices, one item per agent
+        ## Find pAllWrap within the radius++ distance of agents
+        pOverL <- .frNNindices(x = pAllWrap, query = agents, eps = radius * 1.0000001)
 
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))
@@ -1696,23 +1660,18 @@ setMethod(
         agentsWrap <- wrap(pAllWrap[pOver, , drop = FALSE], world@extent)
         agentsXY <- unique(cbind(agentsWrap, id = rep(seq_along(lengthID), lengthID)))
         colnames(agentsXY)[1:2] <- c("pxcor", "pycor")
-        # Select agentsXY among the agents2 provided
+        ## Select agentsXY among the agents2 provided
         keyAgents <- paste(agentsXY[, "pxcor"], agentsXY[, "pycor"])
-        keyAgents2  <- paste(agents2[, 1], agents2[, 2])
+        keyAgents2 <- paste(agents2[, 1], agents2[, 2])
         agentsXY <- agentsXY[keyAgents %in% keyAgents2, , drop = FALSE]
         return(agentsXY)
       } else {
 
-        # Find agents2 within the radius++ distance of agents
-        agents_coords <- agents
-        agents2Coords <- agents2@.Data[, c("pxcor", "pycor"), drop = FALSE]
-        nn <- dbscan::frNN(
-          x     = agents2Coords,
-          query = agents_coords,
-          eps   = radius * 1.0000001,
-          sort  = FALSE
+        ## Find agents2 within the radius++ distance of agents
+        pOverL <- .frNNindices(
+          x = agents2@.Data[, c("pxcor", "pycor"), drop = FALSE],
+          query = agents, eps = radius * 1.0000001
         )
-        pOverL <- lapply(nn$id, sort)  # list of indices, one item per agent
 
         pOver <- unlist(pOverL)
         lengthID <- unlist(lapply(pOverL, length))

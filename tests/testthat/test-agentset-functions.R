@@ -562,8 +562,6 @@ test_that("minNof works", {
 
 test_that("inRadius works", {
   # Patches to patches
-  skip_if_not_installed("sf")
-
   w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
   p1 <- inRadius(agents = patch(w1, 0, 0), radius = 2, agents2 = patches(w1), world = w1)
   expect_error(inRadius(
@@ -711,17 +709,28 @@ test_that("inRadius works", {
   t11 <- inRadius(agents = t1, radius = 10, agents2 = t1, world = w1)
   expect_equivalent(t11[t11[, "id"] == 1, "who"], c(0, 1, 2, 3, 4))
 
-  # Work for patches to patches with torus = TRUE when not all the patches are provided
+  ## Work for patches to patches with torus = TRUE when not all the patches are provided
   p10 <- inRadius(agents = turtle(t1, 0), radius = 1, agents2 = patch(w1, 4, 4), world = w1, torus = TRUE)
   expect_equivalent(NROW(p10), 0)
   p11 <- inRadius(agents = turtle(t1, 0), radius = 1, agents2 = cbind(pxcor = c(0, 0, 1, 1), pycor = c(0, 4, 0, 1)), world = w1, torus = TRUE)
   expect_equivalent(p11[, c("pxcor", "pycor")], cbind(pxcor = c(0, 1, 0), pycor = c(0, 0, 4)))
 
+  ## Turtles with missing coordinates are rejected, whether they are the
+  ## agents searched from or the agents searched for
+  tNA <- createTurtles(n = 2, coords = cbind(xcor = c(1, NA), ycor = c(1, NA)))
+  expect_error(inRadius(agents = tNA, radius = 2, agents2 = patches(w1)))
+  expect_error(inRadius(agents = patch(w1, 1, 1), radius = 2, agents2 = tNA))
+})
+
+test_that("NLwith and of error on an undefined worldArray layer", {
+  w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4, data = 1:25)
+  ws <- stackWorlds(w1, w1)
+  expect_error(NLwith(agents = patches(ws), world = ws, var = "nosuchlayer", val = 1))
+  expect_error(of(world = ws, agents = patch(ws, 0, 0), var = "nosuchlayer"))
+  expect_error(of(world = ws, agents = patch(ws, 0, 0), var = c("pxcor", "nosuchlayer")))
 })
 
 test_that("inCone works", {
-  skip_if_not_installed("sf")
-
   w1 <- createWorld(minPxcor = 0, maxPxcor = 4, minPycor = 0, maxPycor = 4)
   t1 <- createTurtles(
     n = 5, coords = cbind(xcor = 0:4, ycor = 0:4),

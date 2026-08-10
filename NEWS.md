@@ -1,3 +1,16 @@
+# NetLogoR 1.0.6.9000
+
+## Dependency changes
+* added dependency: `dbscan`, used to speed up the radius searches in `inRadius()`;
+* `inRadius()` and `inCone()` no longer require `sf`, which is now only needed by `sf2turtles()` and `turtles2sf()`;
+
+## Enhancements
+* speed improvements to `NLset()`, `NLwith()`, `inRadius()`, `of()`, and `turtle()`, achieved by indexing the underlying `matrix`/`array` directly instead of going through coordinate-conversion helpers.
+
+## Bugfixes
+* `inRadius()` with `torus = TRUE` no longer reports patches that were not among the `agents2` supplied;
+* `of()` on an `agentMatrix` now returns columns in the order given by `var` when a mix of factor and numeric variables is requested.
+
 # NetLogoR 1.0.6
 
 ## Dependency changes
