@@ -219,6 +219,17 @@ setMethod(
 #' (i.e., same values for all their slots) stacked together.
 #' It is used to keep more than one value per `patch`.
 #'
+#' An `array` can hold only one type of value, so a `worldMatrix` of character
+#' values stacked alongside a numeric one would coerce every layer to character.
+#' Character layers are therefore stored as integer codes, and the `levels` slot
+#' holds a named list mapping those codes back to their character values, in the
+#' same way that [agentMatrix()] stores its character columns. Layers that are
+#' numeric have no entry in `levels`.
+#'
+#' Accessors return the character values rather than the codes: [of()] on a
+#' character layer reports the characters, and `[[` and `$` return a character
+#' `worldMatrix`. The codes are visible only in the `.Data` slot itself.
+#'
 #' @aliases worldArray
 #' @name worldArray-class
 #' @rdname worldArray-class
@@ -236,12 +247,18 @@ setClass(
     maxPycor = "numeric",
     extent = "ANY",
     res = "numeric",
-    pCoords = "matrix"
+    pCoords = "matrix",
+    levels = "list"
   ),
+  prototype = prototype(levels = list()),
   validity = function(object) {
     # check for valid extents
     if (any(!inherits(object@extent, c("Extent", "SpatExtent")))) {
       stop("must supply an object name")
+    }
+    if (length(object@levels) &&
+      !all(names(object@levels) %in% dimnames(object@.Data)[[3]])) {
+      stop("names of 'levels' must all be layers of the worldArray")
     }
   }
 )
@@ -372,11 +389,19 @@ setMethod(
     a <- lapply(NLwMs, FUN = function(x) x@extent)
 
     # Vectorized all.equal
-    if (isTRUE(all(ae(a[-1], a[1]) %in% TRUE))) {
-      out <- simplify2array(NLwMs) # abind::abind(NLwMs@.Data, along = 3)
-    } else {
+    if (!isTRUE(all(ae(a[-1], a[1]) %in% TRUE))) {
       stop("worldMatrix extents must all be equal")
     }
+
+    ## An array holds a single type, so character layers are stored as integer
+    ## codes and their levels kept alongside; otherwise stacking a character
+    ## world with a numeric one would turn every layer into character (#49).
+    encoded <- lapply(NLwMs, function(x) .encodeLayer(x@.Data))
+    lvls <- lapply(encoded, `[[`, "levels")
+    names(lvls) <- objNames
+    lvls <- lvls[!vapply(lvls, is.null, logical(1))]
+
+    out <- simplify2array(lapply(encoded, `[[`, "data"))
     dimnames(out) <- list(NULL, NULL, objNames)
 
     world <- new("worldArray",
@@ -385,7 +410,8 @@ setMethod(
       minPycor = NLwMs[[1]]@minPycor, maxPycor = NLwMs[[1]]@maxPycor,
       extent = NLwMs[[1]]@extent,
       res = c(1, 1),
-      pCoords = NLwMs[[1]]@pCoords
+      pCoords = NLwMs[[1]]@pCoords,
+      levels = lvls
     )
 
     return(world)
@@ -578,16 +604,21 @@ setMethod(
 #'
 setMethod("[[", signature(x = "worldArray", i = "ANY", j = "missing"),
   definition = function(x, i) {
+    layerNames <- if (is.character(i)) i else dimnames(x@.Data)[[3]][i]
+
     if (length(i) > 1) {
+      x@levels <- x@levels[names(x@levels) %in% layerNames]
       x@.Data <- x@.Data[, , i]
       return(x)
     } else {
       worldMat <- .emptyWorldMatrix()
       sns <- .slotNames(x)
-      for (sn in sns[sns != ".Data"]) {
+      for (sn in sns[!sns %in% c(".Data", "levels")]) {
         slot(worldMat, sn, check = FALSE) <- slot(x, sn)
       }
-      worldMat@.Data <- x@.Data[, , i]
+      ## a single layer becomes a worldMatrix, whose matrix can hold the
+      ## character values directly, so decode on the way out (#49)
+      worldMat@.Data <- .decodeLayer(x@.Data[, , i], x@levels[[layerNames]])
       return(worldMat)
     }
   }
@@ -604,7 +635,14 @@ setMethod("[[", signature(x = "worldArray", i = "ANY", j = "missing"),
 #' @rdname subsetting
 setReplaceMethod("[[", signature(x = "worldArray", i = "ANY", j = "missing"),
   definition = function(x, i, value) {
-    x@.Data[, , i] <- value
+    layerName <- if (is.character(i)) i else dimnames(x@.Data)[[3]][i]
+
+    ## re-encode, so that dropping a character layer in keeps the array numeric
+    ## and swapping a numeric one back in clears the stale levels (#49)
+    encoded <- .encodeLayer(if (is(value, "worldMatrix")) value@.Data else value)
+    x@.Data[, , i] <- encoded$data
+    x@levels[[layerName]] <- encoded$levels
+
     return(x)
   }
 )

@@ -3164,29 +3164,42 @@ setMethod(
   "of",
   signature = c("worldArray", "matrix", "character"),
   definition = function(world, agents, var) {
+    layerIdx <- .layerIndices(world, var)
     nCell <- (world@maxPxcor - world@minPxcor + 1) * (world@maxPycor - world@minPycor + 1)
-    if (nrow(agents) == nCell && identical(world@pCoords, agents)) {
-      allValues <- world[]
-      return(allValues[, var])
-    } else {
 
+    if (nrow(agents) == nCell && identical(world@pCoords, agents)) {
+      cellValues <- world[][, var, drop = FALSE]
+    } else {
       colMat <- agents[, 1] - world@minPxcor + 1
       rowMat <- world@maxPycor - agents[, 2] + 1
-      layerIdx <- .layerIndices(world, var)
 
-      if (length(var) == 1) {
-        return(world@.Data[cbind(rowMat, colMat, layerIdx)])
-      } else {
-
-        cellValues <- vapply(layerIdx, function(z) {
-          world@.Data[cbind(rowMat, colMat, z)]
-        }, FUN.VALUE = numeric(length(rowMat)))
-        cellValues <- matrix(cellValues, nrow = length(rowMat), ncol = length(var))
-        colnames(cellValues) <- var
-
-        return(cellValues)
-      }
+      cellValues <- vapply(layerIdx, function(z) {
+        world@.Data[cbind(rowMat, colMat, z)]
+      }, FUN.VALUE = numeric(length(rowMat)))
+      cellValues <- matrix(cellValues, nrow = length(rowMat), ncol = length(var))
+      colnames(cellValues) <- var
     }
+
+    ## character layers are held as integer codes, so report their values (#49).
+    ## With a mix of coded and numeric layers the result cannot be a matrix, so
+    ## return a data.frame, as `of` on an agentMatrix does for its factors.
+    ## unname(): subsetting a single column out of a one-row matrix carries the
+    ## column name across, where indexing the array directly never did
+    if (!.anyCoded(world, var)) {
+      if (length(var) == 1) {
+        return(unname(cellValues[, 1]))
+      }
+      return(cellValues)
+    }
+
+    cols <- lapply(var, function(v) {
+      unname(.decodeLayer(cellValues[, v], .layerLevels(world, v)))
+    })
+    if (length(var) == 1) {
+      return(cols[[1]])
+    }
+    names(cols) <- var
+    return(list2DF(cols))
   }
 )
 

@@ -131,6 +131,89 @@ test_that("[] works with a worldArray of any number of layers", {
   expect_identical(dim(ws4[0, 0]), c(1L, 4L))
 })
 
+test_that("a worldArray keeps character layers as levels", {
+  num <- createWorld(0, 4, 0, 4, data = 1:25)
+  hab <- createWorld(0, 4, 0, 4, data = rep(c("sea", "land", "sea", "land", "sea"), 5))
+  w <- stackWorlds(num, hab)
+
+  ## the array stays numeric, so the numeric layer is not stringified (#49)
+  expect_false(is.character(w@.Data))
+  expect_identical(names(w@levels), "hab")
+  expect_identical(w@levels$hab, c("land", "sea"))
+
+  ## of() reports characters for the coded layer and numbers for the other
+  expect_identical(of(world = w, agents = cbind(pxcor = 1, pycor = 1), var = "hab"), "land")
+  expect_identical(of(world = w, agents = cbind(pxcor = 1, pycor = 1), var = "num"), 17)
+
+  ## a mix of the two cannot be a matrix, so it comes back as a data.frame
+  both <- of(world = w, agents = cbind(pxcor = 1, pycor = 1), var = c("num", "hab"))
+  expect_s3_class(both, "data.frame")
+  expect_identical(both$num, 17)
+  expect_identical(both$hab, "land")
+
+  ## a single layer round-trips back to a character worldMatrix
+  expect_identical(w[["hab"]]@.Data, hab@.Data)
+  expect_identical(w$hab@.Data, hab@.Data)
+  expect_identical(w[["num"]]@.Data, num@.Data)
+
+  ## an all-numeric worldArray is untouched by any of this
+  wn <- stackWorlds(num, createWorld(0, 4, 0, 4, data = 25:1))
+  expect_length(wn@levels, 0)
+  expect_true(is.matrix(of(world = wn, agents = cbind(pxcor = 1, pycor = 1),
+                           var = c("num", "createWorld(0, 4, 0, 4, data = 25:1)"))))
+})
+
+test_that("NLwith and NLset work on a character worldArray layer", {
+  num <- createWorld(0, 4, 0, 4, data = 1:25)
+  hab <- createWorld(0, 4, 0, 4, data = rep(c("sea", "land", "sea", "land", "sea"), 5))
+  w <- stackWorlds(num, hab)
+
+  land <- NLwith(agents = patches(w), world = w, var = "hab", val = "land")
+  expect_identical(NROW(land), 10L)
+  expect_identical(unique(of(world = w, agents = land, var = "hab")), "land")
+  expect_identical(NROW(NLwith(agents = patches(w), world = w, var = "hab", val = "nope")), 0L)
+
+  ## assigning an existing category, and one the layer has not seen before
+  w2 <- NLset(world = w, agents = cbind(pxcor = 0, pycor = 0), var = "hab", val = "land")
+  expect_identical(of(world = w2, agents = cbind(pxcor = 0, pycor = 0), var = "hab"), "land")
+
+  w3 <- NLset(world = w, agents = cbind(pxcor = 0, pycor = 0), var = "hab", val = "ice")
+  expect_identical(of(world = w3, agents = cbind(pxcor = 0, pycor = 0), var = "hab"), "ice")
+  expect_identical(w3@levels$hab, c("land", "sea", "ice"))
+  expect_false(is.character(w3@.Data))
+  ## the patches that were not assigned keep their original values
+  expect_identical(of(world = w3, agents = cbind(pxcor = 1, pycor = 0), var = "hab"), "land")
+
+  ## the numeric layer is unaffected
+  w4 <- NLset(world = w, agents = cbind(pxcor = 0, pycor = 0), var = "num", val = -99)
+  expect_identical(of(world = w4, agents = cbind(pxcor = 0, pycor = 0), var = "num"), -99)
+
+  ## turning only some patches of a numeric layer into characters is rejected
+  expect_error(
+    NLset(world = w, agents = cbind(pxcor = 0, pycor = 0), var = "num", val = "oops"),
+    "only some patches"
+  )
+})
+
+test_that("[[<- re-encodes a replaced worldArray layer", {
+  num <- createWorld(0, 4, 0, 4, data = 1:25)
+  hab <- createWorld(0, 4, 0, 4, data = rep("sea", 25))
+  w <- stackWorlds(num, hab)
+
+  ## swapping a numeric layer in clears the stale levels
+  w2 <- w
+  w2[["hab"]] <- num
+  expect_length(w2@levels$hab, 0)
+  expect_identical(of(world = w2, agents = cbind(pxcor = 1, pycor = 1), var = "hab"), 17)
+
+  ## and swapping a character layer in records new ones
+  w3 <- w
+  w3[["num"]] <- hab
+  expect_identical(w3@levels$num, "sea")
+  expect_identical(of(world = w3, agents = cbind(pxcor = 1, pycor = 1), var = "num"), "sea")
+  expect_false(is.character(w3@.Data))
+})
+
 test_that("cellFromPxcorPycor works", {
   w3 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
   cellNum <- cellFromPxcorPycor(world = w3, pxcor = c(9, 0, 1), pycor = c(0, 0, 9))

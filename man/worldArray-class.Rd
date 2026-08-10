@@ -11,6 +11,18 @@ It is a collection of several \code{worldMatrix} objects with the same extent
 (i.e., same values for all their slots) stacked together.
 It is used to keep more than one value per \code{patch}.
 }
+\details{
+An \code{array} can hold only one type of value, so a \code{worldMatrix} of character
+values stacked alongside a numeric one would coerce every layer to character.
+Character layers are therefore stored as integer codes, and the \code{levels} slot
+holds a named list mapping those codes back to their character values, in the
+same way that \code{\link[=agentMatrix]{agentMatrix()}} stores its character columns. Layers that are
+numeric have no entry in \code{levels}.
+
+Accessors return the character values rather than the codes: \code{\link[=of]{of()}} on a
+character layer reports the characters, and \code{[[} and \code{$} return a character
+\code{worldMatrix}. The codes are visible only in the \code{.Data} slot itself.
+}
 \seealso{
 \code{\link[=worldMatrix]{worldMatrix()}}
 }

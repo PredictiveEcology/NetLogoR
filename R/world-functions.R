@@ -610,11 +610,16 @@ setMethod(
   signature = c("worldArray"),
   definition = function(world) {
     exts <- extents(world@extent)
+    layerNames <- dimnames(world@.Data)[[3]]
     listRaster <- lapply(seq_len(dim(world)[3]), function(x) {
+      ## hand terra the character values of a coded layer rather than its
+      ## integer codes: terra turns those into a categorical layer by itself,
+      ## which is what a standalone character worldMatrix already produces (#49)
+      vals <- .decodeLayer(world@.Data[, , x], world@levels[[layerNames[x]]])
       ras <- terra::rast(
         xmin = exts$xmin, xmax = exts$xmax,
         ymin = exts$ymin, ymax = exts$ymax,
-        ncols = ncol(world), nrows = nrow(world), vals = world@.Data[, , x]
+        ncols = ncol(world), nrows = nrow(world), vals = vals
       )
     })
     rasterStack <- rast(listRaster)
@@ -650,6 +655,15 @@ setMethod(
     maxv <- format(apply(object@.Data, 3, max))
     minv <- gsub("Inf", "?", minv)
     maxv <- gsub("-Inf", "?", maxv)
+
+    ## a character layer is stored as codes, so report its first and last
+    ## category rather than the meaningless smallest and largest code (#49)
+    coded <- match(names(object@levels), dimnames(object@.Data)[[3]])
+    if (length(coded)) {
+      minv[coded] <- vapply(object@levels, function(l) l[[1L]], character(1))
+      maxv[coded] <- vapply(object@levels, function(l) l[[length(l)]], character(1))
+    }
+
     nl <- numLayers(object)
     mnr <- 15
 

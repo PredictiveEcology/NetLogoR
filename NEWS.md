@@ -13,6 +13,7 @@
 
 ## Bugfixes
 * `[` on a `worldArray` assumed the array had exactly two layers, so extracting patch values from a `worldArray` with any other number of layers failed with "dims [product 2] do not match the length of object". It now uses the actual number of layers.
+* stacking a `worldMatrix` of character values alongside a numeric one no longer corrupts both layers (#49). An `array` holds a single type, so the character values used to turn every layer into character, and were then coerced back to `NA` on the way out. `worldArray` now stores character layers as integer codes with their categories in a new `levels` slot, exactly as `agentMatrix` already does for character columns. `of()` reports the character values, `plot()` draws the layer as a categorical raster instead of warning "NAs introduced by coercion", `NLwith()` and `NLset()` accept and return the characters, and `[[` and `$` give back a character `worldMatrix`. Numeric layers stacked alongside a character one keep their own type.
 * `inRadius()` with `torus = TRUE` no longer reports patches that were not among the `agents2` supplied;
 * `of()` on an `agentMatrix` now returns columns in the order given by `var` when a mix of factor and numeric variables is requested.
 
