@@ -70,7 +70,6 @@ ByteCompile: yes
 Encoding: UTF-8
 Language: en-CA
 License: GPL-3
-RoxygenNote: 7.3.2
 VignetteBuilder: knitr, rmarkdown
 Collate: 
     'Agent-classes.R'
@@ -87,3 +86,4 @@ Collate:
     'turtle-functions.R'
     'world-functions.R'
 Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.0

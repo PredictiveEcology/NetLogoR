@@ -221,6 +221,31 @@ setMethod(
   }
 )
 
+#' Coerce to and from an `agentMatrix`
+#'
+#' Methods for [methods::as()] to convert a `matrix` or a `data.frame` into an
+#' `agentMatrix`, and to convert an `agentMatrix` back into a `data.frame`.
+#' When converting to an `agentMatrix`, the first two columns of `from` are
+#' taken to be the coordinates, and the remaining columns become the agents'
+#' variables. When converting back, variables stored as factors are restored
+#' to their original character values.
+#'
+#' @param from   The `matrix`, `data.frame`, or `agentMatrix` to coerce.
+#' @param to     Character string naming the class to coerce `from` to.
+#' @param strict Logical, passed by [methods::as()]; unused by these methods.
+#'
+#' @return An `agentMatrix` or a `data.frame`, depending on the class coerced to.
+#'
+#' @name coerce-agentMatrix
+#' @rdname coerce-agentMatrix
+#' @aliases coerce,matrix,agentMatrix-method
+#' @seealso [agentMatrix()]
+#'
+#' @examples
+#' m <- cbind(xcor = c(1, 2, 5), ycor = c(3, 4, 6), nums = 5:7)
+#' am <- as(m, "agentMatrix")
+#' as(am, "data.frame")
+#'
 #' @export
 setAs(
   "matrix", "agentMatrix",
@@ -232,6 +257,8 @@ setAs(
   }
 )
 
+#' @rdname coerce-agentMatrix
+#' @aliases coerce,data.frame,agentMatrix-method
 #' @export
 setAs(
   "data.frame", "agentMatrix",
@@ -243,6 +270,8 @@ setAs(
   }
 )
 
+#' @rdname coerce-agentMatrix
+#' @aliases coerce,agentMatrix,data.frame-method
 #' @export
 setAs(
   "agentMatrix", "data.frame",
@@ -540,7 +569,7 @@ setReplaceMethod(
   }
 )
 
-#' @param name  A literal character string or a [name()] (possibly backtick quoted).
+#' @param name  A literal character string or a [base::name()] (possibly backtick quoted).
 #'
 #' @export
 #' @rdname extract-methods

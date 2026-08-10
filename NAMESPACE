@@ -125,6 +125,7 @@ exportMethods(bk)
 exportMethods(canMove)
 exportMethods(cellFromPxcorPycor)
 exportMethods(clearPatches)
+exportMethods(coerce)
 exportMethods(coordinates)
 exportMethods(createOTurtles)
 exportMethods(createTurtles)
@@ -207,21 +208,31 @@ exportMethods(worldHeight)
 exportMethods(worldWidth)
 exportMethods(wrap)
 import(methods)
-importFrom(data.table,':=')
-importFrom(data.table,data.table)
-importFrom(data.table,rbindlist)
-importFrom(data.table,setkey)
+importFrom(data.table,
+  ':=',
+  data.table,
+  rbindlist,
+  setkey
+)
 importFrom(grDevices,rainbow)
 importFrom(graphics,points)
-importFrom(quickPlot,.identifyGrobToPlot)
-importFrom(quickPlot,layerNames)
-importFrom(quickPlot,numLayers)
-importFrom(stats,na.omit)
-importFrom(stats,runif)
-importFrom(terra,ncol)
-importFrom(terra,nrow)
-importFrom(terra,rast)
-importFrom(terra,values)
-importFrom(utils,head)
-importFrom(utils,tail)
+importFrom(quickPlot,
+  .identifyGrobToPlot,
+  layerNames,
+  numLayers
+)
+importFrom(stats,
+  na.omit,
+  runif
+)
+importFrom(terra,
+  ncol,
+  nrow,
+  rast,
+  values
+)
+importFrom(utils,
+  head,
+  tail
+)
 importMethodsFrom(quickPlot,.identifyGrobToPlot)

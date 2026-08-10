@@ -92,7 +92,7 @@ in which to replace element(s).}
 
 \item{value}{Any R object}
 
-\item{name}{A literal character string or a \code{\link[=name]{name()}} (possibly backtick quoted).}
+\item{name}{A literal character string or a \code{\link[base:name]{base::name()}} (possibly backtick quoted).}
 }
 \value{
 An \code{agentMatrix} when full row(s), full column(s) or element(s)
