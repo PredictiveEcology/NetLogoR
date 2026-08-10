@@ -3113,22 +3113,19 @@ setMethod(
   "of",
   signature = c("missing", "agentMatrix", "character"),
   definition = function(agents, var) {
-    if (any(names(agents@levels) %in% var)) {
-      wh <- var %in% names(agents@levels)
-      # if (any(wh)) {
-      newNames <- var[wh]
-      df <- do.call(data.frame, args = append(
-        list(stringsAsFactors = FALSE),
-        lapply(which(wh), function(w) {
-          agents@levels[[var[w]]][agents@.Data[, var[w]]]
-        })
-      ))
-      if (!all(wh)) {
-        df <- as.data.frame(cbind(agents@.Data[, var[!wh], drop = FALSE], df))
-        newNames <- c(var[!wh], newNames)
+    isFactor <- var %in% names(agents@levels)
+    if (any(isFactor)) {
+      cols <- lapply(var, function(v) {
+        if (v %in% names(agents@levels)) {
+          agents@levels[[v]][agents@.Data[, v]]
+        } else {
+          agents@.Data[, v]
+        }
+      })
+      if (length(var) == 1) {
+        return(cols[[1]])
       }
-      colnames(df) <- newNames
-      return(df[, match(newNames, var)])
+      return(list2DF(setNames(cols, var)))
     } else {
       if (length(var) == 1) {
         return(agents@.Data[, var])
@@ -3145,10 +3142,13 @@ setMethod(
   "of",
   signature = c("worldMatrix", "matrix", "missing"),
   definition = function(world, agents) {
-    if (identical(patches(world), agents)) {
+    nCell <- (world@maxPxcor - world@minPxcor + 1) * (world@maxPycor - world@minPycor + 1)
+    if (nrow(agents) == nCell && identical(patches(world), agents)) {
       return(as.numeric(t(world@.Data))) # values must be returned by row
     } else {
-      return(world[agents[, 1], agents[, 2]])
+      colMat <- agents[, 1] - world@minPxcor + 1
+      rowMat <- world@maxPycor - agents[, 2] + 1
+      return(world@.Data[cbind(rowMat, colMat)])
     }
   }
 )
@@ -3159,16 +3159,27 @@ setMethod(
   "of",
   signature = c("worldArray", "matrix", "character"),
   definition = function(world, agents, var) {
-    if (identical(patches(world), agents)) {
+    nCell <- (world@maxPxcor - world@minPxcor + 1) * (world@maxPycor - world@minPycor + 1)
+    if (nrow(agents) == nCell && identical(patches(world), agents)) {
       allValues <- world[]
       return(allValues[, var])
     } else {
-      cellNum <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
-      allValues <- world[]
+
+      colMat <- agents[, 1] - world@minPxcor + 1
+      rowMat <- world@maxPycor - agents[, 2] + 1
+      layerIdx <- match(var, dimnames(world@.Data)[[3]])
+
       if (length(var) == 1) {
-        return(allValues[cellNum, var])
+        return(world@.Data[cbind(rowMat, colMat, layerIdx)])
       } else {
-        return(allValues[cellNum, var, drop = FALSE])
+
+        cellValues <- vapply(layerIdx, function(z) {
+          world@.Data[cbind(rowMat, colMat, z)]
+        }, FUN.VALUE = numeric(length(rowMat)))
+        cellValues <- matrix(cellValues, nrow = length(rowMat), ncol = length(var))
+        colnames(cellValues) <- var
+
+        return(cellValues)
       }
     }
   }
