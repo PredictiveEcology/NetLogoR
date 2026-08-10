@@ -179,10 +179,15 @@ test_that("NLwith works", {
 
   # Works with NA
   t8 <- NLwith(agents = t1, var = "breed", val = NA)
+  expect_identical(of(agents = t8, var = "who"), c(5,6))
   t9 <- NLwith(agents = t1, var = "xcor", val = NA)
+  expect_identical(of(agents = t9, var = "who"), c(5,7))
   t10 <- NLwith(agents = t1, var = "ycor", val = NA)
+  expect_identical(of(agents = t10, var = "who"), c(6,7))
   t11 <- NLwith(agents = t1, var = "ycor", val = c(NA, 2))
+  expect_identical(of(agents = t11, var = "who"), c(0,6,7))
   t12 <- NLwith(agents = t1, var = "breed", val = c("sheep", NA))
+  expect_identical(of(agents = t12, var = "who"), c(0,1,3,5,6))
 })
 
 test_that("withMax works", {

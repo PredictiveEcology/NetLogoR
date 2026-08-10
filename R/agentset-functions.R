@@ -356,7 +356,9 @@ setMethod(
   "NLwith",
   signature = c("matrix", "worldMatrix", "missing", "ANY"),
   definition = function(agents, world, val) {
-    agentsValues <- world[agents[, 1], agents[, 2], drop = FALSE]
+    colMat <- agents[, 1] - world@minPxcor + 1
+    rowMat <- world@maxPycor - agents[, 2] + 1
+    agentsValues <- world@.Data[cbind(rowMat, colMat)]
     pVal <- which(agentsValues %in% val)
     return(agents[pVal, , drop = FALSE])
   }
@@ -368,9 +370,10 @@ setMethod(
   "NLwith",
   signature = c("matrix", "worldArray", "character", "ANY"),
   definition = function(agents, world, var, val) {
-    agentsCell <- cellFromPxcorPycor(world = world, pxcor = agents[, 1], pycor = agents[, 2])
-    allVal <- as.numeric(t(world@.Data[, , var])) # t() to retrieve the values by rows
-    agentsValues <- allVal[agentsCell]
+    colMat <- agents[, 1] - world@minPxcor + 1
+    rowMat <- world@maxPycor - agents[, 2] + 1
+    layerIdx <- match(var, dimnames(world@.Data)[[3]])
+    agentsValues <- world@.Data[cbind(rowMat, colMat, layerIdx)]
     pVal <- which(agentsValues %in% val)
     return(agents[pVal, , drop = FALSE])
   }
@@ -382,29 +385,18 @@ setMethod(
   "NLwith",
   signature = c("agentMatrix", "missing", "character", "ANY"),
   definition = function(agents, var, val) {
-    # simpler for speed if only 1 val
-    if (length(val) == 1) {
-      if (is.na(val)) {
-        toReturn <- agents[is.na(agents@.Data[, var, drop = FALSE]), ]
-      } else {
-        if (!is.numeric(val)) {
-          toReturn <- (agents[agents@levels[[var]][agents@.Data[, var, drop = FALSE]] == val, ,
-            drop = FALSE
-          ])
-        } else {
-          toReturn <- agents[agents@.Data[, var] == val, , drop = FALSE]
-        }
-      }
+    rawCol <- agents@.Data[, var]
+
+    if (length(val) == 1 && is.na(val)) {
+      mask <- is.na(rawCol)
     } else {
-      if (!is.numeric(val)) {
-        toReturn <- (agents[agents@levels[[var]][agents@.Data[, var, drop = FALSE]] %in% val, ,
-          drop = FALSE
-        ])
-      } else {
-        toReturn <- agents[agents@.Data[, var, drop = FALSE] %in% val, , drop = FALSE]
-      }
+      compareValues <- if (is.numeric(val)) rawCol else agents@levels[[var]][rawCol]
+      mask <- if (length(val) == 1) compareValues == val else compareValues %in% val
     }
-    return(toReturn[!is.na(toReturn@.Data[, "who"]), , drop = FALSE])
+
+    whoCol <- agents@.Data[, "who"]
+    pInd <- which(mask & !is.na(whoCol))
+    return(agents[pInd, , drop = FALSE])
   }
 )
 
