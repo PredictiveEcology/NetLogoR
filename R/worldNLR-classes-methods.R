@@ -230,6 +230,13 @@ setMethod(
 #' character layer reports the characters, and `[[` and `$` return a character
 #' `worldMatrix`. The codes are visible only in the `.Data` slot itself.
 #'
+#' Because a layer holds a single type, giving a numeric layer character values
+#' with [NLset()] turns that whole layer into a character one, just as assigning
+#' a string into a numeric vector does in base R. The values in the `patches`
+#' that were not assigned are kept, as characters. Values that merely arrive as
+#' strings but are numbers, as they do from `cbind(a = 1, b = "x")`, are left
+#' numeric; pass `val` as a `data.frame` to keep column types distinct.
+#'
 #' @aliases worldArray
 #' @name worldArray-class
 #' @rdname worldArray-class

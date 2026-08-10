@@ -188,11 +188,22 @@ test_that("NLwith and NLset work on a character worldArray layer", {
   w4 <- NLset(world = w, agents = cbind(pxcor = 0, pycor = 0), var = "num", val = -99)
   expect_identical(of(world = w4, agents = cbind(pxcor = 0, pycor = 0), var = "num"), -99)
 
-  ## turning only some patches of a numeric layer into characters is rejected
-  expect_error(
-    NLset(world = w, agents = cbind(pxcor = 0, pycor = 0), var = "num", val = "oops"),
-    "only some patches"
-  )
+  ## giving a numeric layer character values turns the whole layer into a
+  ## character one, as assigning a string into a numeric vector does in base R
+  w5 <- NLset(world = w, agents = cbind(pxcor = 0, pycor = 0), var = "num", val = "oops")
+  expect_identical(of(world = w5, agents = cbind(pxcor = 0, pycor = 0), var = "num"), "oops")
+  ## the patches that were not assigned keep their values, as characters
+  expect_identical(of(world = w5, agents = cbind(pxcor = 1, pycor = 1), var = "num"), "17")
+  expect_false(is.character(w5@.Data))
+  ## every original value survived, none were reread as codes
+  expect_setequal(w5@levels$num, c(as.character(1:25), "oops"))
+  ## and the other layer is untouched
+  expect_identical(of(world = w5, agents = cbind(pxcor = 1, pycor = 1), var = "hab"), "land")
+
+  ## numbers that merely arrive as strings are still numbers
+  w6 <- NLset(world = w, agents = cbind(pxcor = 0, pycor = 0), var = "num", val = "42")
+  expect_identical(of(world = w6, agents = cbind(pxcor = 0, pycor = 0), var = "num"), 42)
+  expect_null(w6@levels$num)
 })
 
 test_that("[[<- re-encodes a replaced worldArray layer", {
