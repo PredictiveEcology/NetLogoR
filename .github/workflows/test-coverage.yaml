@@ -34,8 +34,12 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
+          ## TEMPORARY: qs2's macOS CRAN binary is ABI-incompatible with RcppParallel >= 6.0.0,
+          ## so it must be rebuilt from source (qsbase/qs2#30). macOS binaries lag several days
+          ## behind source updates; drop `qs2?source` once CRAN ships a rebuilt qs2 binary.
           extra-packages: |
             any::covr
+            qs2?source
             PredictiveEcology/quickPlot@development
             PredictiveEcology/reproducible@development
             PredictiveEcology/Require@development

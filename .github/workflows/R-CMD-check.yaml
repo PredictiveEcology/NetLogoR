@@ -23,7 +23,10 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,    nosuggests: false, r: 'release'}
+          ## TEMPORARY: qs2's macOS CRAN binary is ABI-incompatible with RcppParallel >= 6.0.0,
+          ## so it must be rebuilt from source (qsbase/qs2#30). macOS binaries lag several days
+          ## behind source updates; drop `extra` once CRAN ships a rebuilt qs2 binary.
+          - {os: macOS-latest,    nosuggests: false, r: 'release', extra: 'qs2?source'}
           - {os: windows-latest,  nosuggests: false, r: 'devel'}
           - {os: windows-latest,  nosuggests: false, r: 'release'}
           - {os: windows-latest,  nosuggests: false, r: 'oldrel-1'}
@@ -59,6 +62,7 @@ jobs:
         with:
           extra-packages: |
             any::rcmdcheck
+            ${{ matrix.config.extra }}
             PredictiveEcology/quickPlot@development
             PredictiveEcology/reproducible@development
             PredictiveEcology/Require@development
