@@ -257,10 +257,11 @@ setMethod(
     colMat <- i - x@minPxcor + 1
     rowMat <- x@maxPycor - j + 1
     pCoords <- cbind(rowMat, colMat)
-    cellValues <- unlist(lapply(seq_len(dim(x)[3]), function(z) {
+    nLayers <- dim(x)[3]
+    cellValues <- unlist(lapply(seq_len(nLayers), function(z) {
       as.numeric(t(x@.Data[cbind(pCoords, z)]))
     }))
-    dim(cellValues) <- c(NROW(pCoords), 2L)
+    dim(cellValues) <- c(NROW(pCoords), nLayers)
     colnames(cellValues) <- dimnames(x@.Data)[[3]]
     return(cellValues)
   }
