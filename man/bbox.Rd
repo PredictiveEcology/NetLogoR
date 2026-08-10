@@ -40,6 +40,15 @@ Methods for classes in \code{NetLogoR} (i.e., \code{agentMatrix}, \code{worldMat
 
 Replacement method sets the bbox attribute of an \code{agentMatrix}.
 }
+\section{Deprecated}{
+
+Calling \code{bbox()} on an \code{sp} or \code{raster} object falls through to \code{sp::bbox()}.
+That fallback will be removed in a future release, as the \code{sp} package is
+being retired in favour of \code{sf}. Use \code{sf::st_bbox()} for \code{sf} objects, or
+\code{terra::ext()} for \code{SpatRaster} objects, instead. \code{bbox()} on the \code{NetLogoR}
+classes themselves is unaffected.
+}
+
 \examples{
 newAgent <- agentMatrix(
   coords = cbind(pxcor = c(1, 2, 5), pycor = c(3, 4, 6)),

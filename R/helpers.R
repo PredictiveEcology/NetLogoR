@@ -10,6 +10,18 @@ sampleWithin <- function(group) {
 
 .coordsColNames <- c("xcor", "ycor")
 
+## Deprecation notice for the parts of the package that still rely on sp, which
+## is being retired in favour of sf. `what` names the deprecated function or
+## code path; `instead` spells out the sf-based way to do the same thing, so
+## every one of these warnings hands the user a concrete migration path.
+.deprecatedSp <- function(what, instead) {
+  .Deprecated(msg = paste0(
+    "'", what, "' is deprecated and will be removed in a future release of ",
+    "NetLogoR, as the 'sp' package is being retired in favour of 'sf'.\n",
+    instead
+  ))
+}
+
 ## Position of each `var` among the layers of a worldArray.
 ## Indexing the array directly with a layer name that does not exist would
 ## silently give NA, so the names are resolved once and checked here.

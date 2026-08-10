@@ -20,12 +20,29 @@ as contained in \code{turtles}.
 \description{
 Convert an \code{agentMatrix} object into a \code{SpatialPointsDataFrame} object.
 }
+\section{Deprecated}{
+
+\code{turtles2spdf()} is deprecated and will be removed in a future release,
+as the \code{sp} package is being retired in favour of \code{sf}.
+Use \code{\link[=turtles2sf]{turtles2sf()}} instead.
+}
+
 \examples{
 t1 <- createTurtles(n = 10, coords = cbind(xcor = 1:10, ycor = 1:10))
+
+## deprecated: via sp
 if (requireNamespace("sp", quietly = TRUE)) {
   sp1 <- turtles2spdf(turtles = t1)
 }
 
+## the sf equivalent, which is the recommended way to do this
+if (requireNamespace("sf", quietly = TRUE)) {
+  sf1 <- turtles2sf(turtles = t1)
+}
+
+}
+\seealso{
+\code{\link[=turtles2sf]{turtles2sf()}}
 }
 \author{
 Sarah Bauduin

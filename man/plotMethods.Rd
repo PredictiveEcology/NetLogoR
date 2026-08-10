@@ -18,14 +18,15 @@
 \arguments{
 \item{x}{an \code{agentMatrix}, \code{worldMatrix} or \code{worldArray} object}
 
-\item{...}{arguments passed to plot methods for matrix (\code{agentMatrix}) or \code{raster} (\verb{world*})}
+\item{...}{arguments passed to \code{\link[graphics:plot]{graphics::plot()}} for an \code{agentMatrix}, or to
+\code{\link[terra:plot]{terra::plot()}} for a \code{worldMatrix} or \code{worldArray}}
 }
 \value{
 none; invoked for side-effect of generating a plot.
 }
 \description{
-These pass to plot, as a matrix of points (\code{agentMatrix}), as a \code{raster} (\code{worldMatrix}),
-or a \code{rasterStack} (\code{worldArray}).
+These pass to plot, as a matrix of points (\code{agentMatrix}), or as a
+\code{SpatRaster} with one (\code{worldMatrix}) or several (\code{worldArray}) layers.
 They can be modified.
 }
 \examples{

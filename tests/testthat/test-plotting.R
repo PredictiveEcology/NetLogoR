@@ -8,7 +8,7 @@ test_that("createTurtles works", {
 
 
   if (requireNamespace("sp", quietly = TRUE)) {
-    sp1 <- turtles2spdf(t1)
+    sp1 <- suppressWarnings(turtles2spdf(t1)) ## deprecated in favour of turtles2sf()
   }
   if (requireNamespace("sf", quietly = TRUE)) {
     sp2 <- turtles2sf(t1)

@@ -7,7 +7,9 @@
 #' that contains two columns, `x1` and `y1`, with the immediately previous
 #' agent locations.
 #'
-#' @param obj A `SpatialPoints*` object, or matrix of coordinates.
+#' @param obj A matrix of coordinates, or a `SpatialPoints*` object. Passing a
+#'            `SpatialPoints*` object is deprecated: pass a matrix of coordinates,
+#'            e.g. from `sf::st_coordinates()`, instead.
 #'
 #' @param bounds Either a `Raster*`, `Extent`, or `bbox` object
 #'               defining bounds to wrap around.
@@ -102,6 +104,11 @@ setMethod(
           )
         }
       } else if (is(obj, "SpatialPointsDataFrame")) {
+        .deprecatedSp(
+          "wrap() on SpatialPointsDataFrame objects",
+          "Pass a matrix of coordinates, e.g. from 'sf::st_coordinates()', instead."
+        )
+
         if (is(bounds, "Raster") || is.matrix(bounds)) {
           bounds <- extent(bounds)
         }
@@ -123,6 +130,11 @@ setMethod(
         }
         return(wrap(obj, bounds = bounds, withHeading = withHeading))
       } else if (is(obj, "SpatialPoints")) {
+        .deprecatedSp(
+          "wrap() on SpatialPoints objects",
+          "Pass a matrix of coordinates, e.g. from 'sf::st_coordinates()', instead."
+        )
+
         obj@coords <- wrap(obj@coords, bounds = bounds)
         return(obj)
       } else if (is(obj, "Raster") && is(bounds, "Raster")) {

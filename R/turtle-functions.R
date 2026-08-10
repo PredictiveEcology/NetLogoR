@@ -3196,7 +3196,14 @@ setMethod(
 #'
 #' Convert a `SpatialPointsDataFrame` object into an `agentMatrix` object.
 #'
+#' @section Deprecated:
+#' `spdf2turtles()` is deprecated and will be removed in a future release,
+#' as the `sp` package is being retired in favour of `sf`.
+#' Use [sf2turtles()] instead.
+#'
 #' @param spdf `SpatialPointsDataFrame` object representing moving `agents`.
+#'
+#' @seealso [sf2turtles()]
 #'
 #' @return `AgentMatrix` object representing the moving `agents` (coordinates and data)
 #'         as contained in `spdf`.
@@ -3206,6 +3213,7 @@ setMethod(
 #'          default values as in `createTurtles()`.
 #'
 #' @examples
+#' ## deprecated: via sp
 #' if (requireNamespace("sp", quietly = TRUE)) {
 #'   sp1 <- sp::SpatialPointsDataFrame(
 #'     coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
@@ -3215,6 +3223,23 @@ setMethod(
 #'     )
 #'   )
 #'   t1 <- spdf2turtles(spdf = sp1)
+#' }
+#'
+#' ## the sf equivalent, which is the recommended way to do this
+#' if (requireNamespace("sf", quietly = TRUE)) {
+#'   turtles_sf1 <- sf::st_as_sf(
+#'     cbind.data.frame(
+#'       x = c(1, 2, 3), y = c(1, 2, 3),
+#'       age = c(0, 0, 3), sex = c("F", "F", "M")
+#'     ),
+#'     coords = c("x", "y")
+#'   )
+#'   t1 <- sf2turtles(turtles_sf = turtles_sf1)
+#' }
+#'
+#' ## an existing SpatialPointsDataFrame can be converted first
+#' if (requireNamespace("sp", quietly = TRUE) && requireNamespace("sf", quietly = TRUE)) {
+#'   t1 <- sf2turtles(turtles_sf = sf::st_as_sf(sp1))
 #' }
 #'
 #' @export
@@ -3238,6 +3263,8 @@ setMethod(
   "spdf2turtles",
   signature = c("ANY"),
   definition = function(spdf) {
+    .deprecatedSp("spdf2turtles", "Use 'sf2turtles()' instead.")
+
     if (!is(spdf, "SpatialPointsDataFrame")) {
       stop("spdf is not a SpatialPointsDataFrame")
     }
@@ -3421,7 +3448,14 @@ setMethod(
 #'
 #' Convert an `agentMatrix` object into a `SpatialPointsDataFrame` object.
 #'
+#' @section Deprecated:
+#' `turtles2spdf()` is deprecated and will be removed in a future release,
+#' as the `sp` package is being retired in favour of `sf`.
+#' Use [turtles2sf()] instead.
+#'
 #' @inheritParams fargs
+#'
+#' @seealso [turtles2sf()]
 #'
 #' @return `SpatialPointsDataFrame` object representing the moving `agents`
 #'        (coordinates and data)
@@ -3429,8 +3463,15 @@ setMethod(
 #'
 #' @examples
 #' t1 <- createTurtles(n = 10, coords = cbind(xcor = 1:10, ycor = 1:10))
+#'
+#' ## deprecated: via sp
 #' if (requireNamespace("sp", quietly = TRUE)) {
 #'   sp1 <- turtles2spdf(turtles = t1)
+#' }
+#'
+#' ## the sf equivalent, which is the recommended way to do this
+#' if (requireNamespace("sf", quietly = TRUE)) {
+#'   sf1 <- turtles2sf(turtles = t1)
 #' }
 #'
 #' @export
@@ -3451,6 +3492,8 @@ setMethod(
   "turtles2spdf",
   signature = c("agentMatrix"),
   definition = function(turtles) {
+    .deprecatedSp("turtles2spdf", "Use 'turtles2sf()' instead.")
+
     if (!requireNamespace("sp", quietly = TRUE)) {
       stop("Please install.packages('sp') to use sp objects")
     }

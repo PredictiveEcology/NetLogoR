@@ -1,11 +1,12 @@
 #' Basic plot methods for `agentMatrix`, `worldMatrix`, `worldArray`
 #'
-#' These pass to plot, as a matrix of points (`agentMatrix`), as a `raster` (`worldMatrix`),
-#' or a `rasterStack` (`worldArray`).
+#' These pass to plot, as a matrix of points (`agentMatrix`), or as a
+#' `SpatRaster` with one (`worldMatrix`) or several (`worldArray`) layers.
 #' They can be modified.
 #'
 #' @param x an `agentMatrix`, `worldMatrix` or `worldArray` object
-#' @param ... arguments passed to plot methods for matrix (`agentMatrix`) or `raster` (`world*`)
+#' @param ... arguments passed to [graphics::plot()] for an `agentMatrix`, or to
+#'            [terra::plot()] for a `worldMatrix` or `worldArray`
 #'
 #' @return none; invoked for side-effect of generating a plot.
 #'

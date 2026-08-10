@@ -15,7 +15,8 @@ agentMatrix(..., coords)
 }
 \arguments{
 \item{...}{Vectors, a data.frame, or a matrix of extra columns to add to the coordinates,
-or a \code{SpatialPointsDataFrame}.}
+or a \code{SpatialPointsDataFrame}. Passing a \code{SpatialPointsDataFrame} is
+deprecated: convert it with \code{sf::st_as_sf()} and use \code{\link[=sf2turtles]{sf2turtles()}} instead.}
 
 \item{coords}{A matrix with 2 columns representing \code{x} and \code{y} coordinates}
 }

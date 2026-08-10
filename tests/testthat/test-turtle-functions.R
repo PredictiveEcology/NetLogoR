@@ -1543,12 +1543,32 @@ test_that("of works", {
   ), t6)
 })
 
+test_that("the sp-based functions are deprecated in favour of the sf ones", {
+  skip_if_not_installed("sp")
+  t1 <- createTurtles(n = 3, coords = cbind(xcor = 1:3, ycor = 1:3))
+  expect_warning(turtles2spdf(t1), "deprecated")
+  expect_warning(turtles2spdf(t1), "turtles2sf")
+
+  sp1 <- sp::SpatialPointsDataFrame(
+    coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
+    data = cbind.data.frame(age = c(0, 0, 3))
+  )
+  expect_warning(spdf2turtles(sp1), "deprecated")
+  expect_warning(spdf2turtles(sp1), "sf2turtles")
+  expect_warning(agentMatrix(sp1), "sf2turtles")
+
+  ## the sf equivalents are the documented migration path, and do not warn
+  skip_if_not_installed("sf")
+  expect_silent(turtles2sf(t1))
+  expect_silent(sf2turtles(sf::st_as_sf(sp1)))
+})
+
 test_that("spdf2turtles and turtles2spdf work", {
   skip_if_not_installed("sp")
   t1 <- createTurtles(n = 10, coords = cbind(xcor = 1:10, ycor = 1:10), heading = 1:10)
   t1 <- turtlesOwn(turtles = t1, tVar = "age", tVal = 1:10)
   t1 <- turtlesOwn(turtles = t1, tVar = "sex", tVal = c(rep("M", 5), rep("F", 5)))
-  t2 <- turtles2spdf(t1)
+  t2 <- suppressWarnings(turtles2spdf(t1))
   expect_equivalent(t2@coords, of(agents = t1, var = c("xcor", "ycor")))
   expect_equivalent(t2@data, inspect(turtles = t1, who = 0:9)[3:10])
 
@@ -1556,7 +1576,7 @@ test_that("spdf2turtles and turtles2spdf work", {
     coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
     data = cbind.data.frame(age = c(0, 0, 3), sex = c("F", "F", "M"))
   )
-  sp1Turtles <- spdf2turtles(sp1)
+  sp1Turtles <- suppressWarnings(spdf2turtles(sp1))
   expect_equivalent(colnames(sp1Turtles@.Data), c(
     "xcor", "ycor", "who", "heading", "prevX",
     "prevY", "breed", "color", "age", "sex"
@@ -1566,7 +1586,7 @@ test_that("spdf2turtles and turtles2spdf work", {
   expect_equivalent(of(agents = sp1Turtles, var = "who"), c(0, 1, 2))
   expect_equivalent(of(agents = sp1Turtles, var = "xcor"), c(1, 2, 3))
 
-  sp2 <- spdf2turtles(t2)
+  sp2 <- suppressWarnings(spdf2turtles(t2))
   expect_equivalent(colnames(sp2@.Data), c(
     "xcor", "ycor", "who", "heading", "prevX", "prevY",
     "breed", "color", "age", "sex"

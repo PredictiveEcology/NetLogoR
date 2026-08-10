@@ -137,7 +137,8 @@ setMethod(
 #'
 #' @param coords  A matrix with 2 columns representing `x` and `y` coordinates
 #' @param ... Vectors, a data.frame, or a matrix of extra columns to add to the coordinates,
-#'            or a `SpatialPointsDataFrame`.
+#'            or a `SpatialPointsDataFrame`. Passing a `SpatialPointsDataFrame` is
+#'            deprecated: convert it with `sf::st_as_sf()` and use [sf2turtles()] instead.
 #'
 #' @docType methods
 #' @return An `agentMatrix` object
@@ -188,6 +189,10 @@ setMethod(
   definition = function(...) {
     dots <- list(...)
     if (all(unlist(lapply(dots, is, "SpatialPointsDataFrame"))) & length(dots) == 1) {
+      .deprecatedSp(
+        "passing a SpatialPointsDataFrame to agentMatrix()",
+        "Convert the points with 'sf::st_as_sf()' and pass them to 'sf2turtles()' instead."
+      )
       if (!requireNamespace("sp", quietly = TRUE)) {
         stop("Please install.packages('sp') to use sp objects")
       }
@@ -816,7 +821,7 @@ setGeneric("extent", quickPlot::extent)
 
 #' Bounding box and extent methods for NetLogoR classes
 #'
-#' Same as `sp::bbox` and `raster::extent`.
+#' Same as `terra::ext()`, but for `NetLogoR` classes.
 #'
 #' @include worldNLR-classes-methods.R
 #' @param x object deriving from class "agentMatrix",
@@ -828,7 +833,7 @@ setGeneric("extent", quickPlot::extent)
 #'         `extent` returns an `SpatExtent` object from the package `terra`.
 #' @rdname extent
 #' @docType methods
-#' @seealso [sp::bbox()], [raster::coordinates()]
+#' @seealso [terra::ext()]
 #' @exportMethod extent
 setMethod(
   "extent",
@@ -854,10 +859,8 @@ setMethod(
   }
 )
 
-#' `.bboxCoords` is a drop in replacement for `raster::.bboxCoords`.
-#'
-#' @param coords xy coordinates for all cells, e.g., produced by `raster::coordinates`.
-#'
+## Bounding box of a two-column matrix of xy coordinates, in the shape expected
+## by the `bbox` slot of an `agentMatrix`.
 .bboxCoords <- function(coords) {
   stopifnot(length(coords) > 0)
   # bbox <- matrixStats::colRanges(coords)
@@ -870,6 +873,13 @@ setMethod(
 #' Extract or set bounding box
 #'
 #' Methods for classes in `NetLogoR` (i.e., `agentMatrix`, `worldMatrix`, and `worldArray`).
+#'
+#' @section Deprecated:
+#' Calling `bbox()` on an `sp` or `raster` object falls through to `sp::bbox()`.
+#' That fallback will be removed in a future release, as the `sp` package is
+#' being retired in favour of `sf`. Use `sf::st_bbox()` for `sf` objects, or
+#' `terra::ext()` for `SpatRaster` objects, instead. `bbox()` on the `NetLogoR`
+#' classes themselves is unaffected.
 #'
 #' @include worldNLR-classes-methods.R
 #' @docType methods
@@ -920,6 +930,9 @@ setMethod(
   "bbox",
   signature("ANY"),
   definition = function(obj) {
+    ## no .deprecatedSp() here: this fallback is reached from quickPlot's
+    ## internals rather than by a user calling bbox(), so warning from it would
+    ## fire repeatedly during ordinary plotting. It goes away with sp support.
     if (!requireNamespace("sp")) {
       stop("Please install.packages('sp') to use raster or sp class objects")
     }

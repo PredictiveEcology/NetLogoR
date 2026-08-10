@@ -24,7 +24,15 @@ If the \code{spdf} does not contain the variables created with
 \code{createTurtles()}, these variables will be created with the
 default values as in \code{createTurtles()}.
 }
+\section{Deprecated}{
+
+\code{spdf2turtles()} is deprecated and will be removed in a future release,
+as the \code{sp} package is being retired in favour of \code{sf}.
+Use \code{\link[=sf2turtles]{sf2turtles()}} instead.
+}
+
 \examples{
+## deprecated: via sp
 if (requireNamespace("sp", quietly = TRUE)) {
   sp1 <- sp::SpatialPointsDataFrame(
     coords = cbind(x = c(1, 2, 3), y = c(1, 2, 3)),
@@ -36,6 +44,26 @@ if (requireNamespace("sp", quietly = TRUE)) {
   t1 <- spdf2turtles(spdf = sp1)
 }
 
+## the sf equivalent, which is the recommended way to do this
+if (requireNamespace("sf", quietly = TRUE)) {
+  turtles_sf1 <- sf::st_as_sf(
+    cbind.data.frame(
+      x = c(1, 2, 3), y = c(1, 2, 3),
+      age = c(0, 0, 3), sex = c("F", "F", "M")
+    ),
+    coords = c("x", "y")
+  )
+  t1 <- sf2turtles(turtles_sf = turtles_sf1)
+}
+
+## an existing SpatialPointsDataFrame can be converted first
+if (requireNamespace("sp", quietly = TRUE) && requireNamespace("sf", quietly = TRUE)) {
+  t1 <- sf2turtles(turtles_sf = sf::st_as_sf(sp1))
+}
+
+}
+\seealso{
+\code{\link[=sf2turtles]{sf2turtles()}}
 }
 \author{
 Sarah Bauduin

@@ -10,7 +10,9 @@ wrap(obj, bounds, withHeading)
 \S4method{wrap}{ANY}(obj, bounds, withHeading)
 }
 \arguments{
-\item{obj}{A \verb{SpatialPoints*} object, or matrix of coordinates.}
+\item{obj}{A matrix of coordinates, or a \verb{SpatialPoints*} object. Passing a
+\verb{SpatialPoints*} object is deprecated: pass a matrix of coordinates,
+e.g. from \code{sf::st_coordinates()}, instead.}
 
 \item{bounds}{Either a \verb{Raster*}, \code{Extent}, or \code{bbox} object
 defining bounds to wrap around.}

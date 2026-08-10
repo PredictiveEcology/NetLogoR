@@ -7,9 +7,17 @@
 ## Enhancements
 * speed improvements to `NLset()`, `NLwith()`, `inRadius()`, `of()`, and `turtle()`, achieved by indexing the underlying `matrix`/`array` directly instead of going through coordinate-conversion helpers.
 
+## Deprecations
+* the `sp` package is being retired in favour of `sf`, so everything in `NetLogoR` that still depends on it is now deprecated and will be removed in a future release. This affects `spdf2turtles()` (use `sf2turtles()`), `turtles2spdf()` (use `turtles2sf()`), `bbox()` on `sp` and `raster` objects, `wrap()` on `SpatialPoints` and `SpatialPointsDataFrame` objects, and passing a `SpatialPointsDataFrame` to `agentMatrix()`. The full transition to `sf` will follow in a separate release.
+
 ## Bugfixes
 * `inRadius()` with `torus = TRUE` no longer reports patches that were not among the `agents2` supplied;
 * `of()` on an `agentMatrix` now returns columns in the order given by `var` when a mix of factor and numeric variables is requested.
+
+## Documentation changes
+* the plot methods are documented as producing a `SpatRaster` via `terra::plot()`, which is what they have done since `terra` replaced `raster`;
+* `bbox()` and `extent()` now cross-reference `terra::ext()` rather than `sp::bbox()` and `raster::extent()`;
+* removed the unused internal `.projNowhere` object, which described a `sp`/`raster` buffering workflow the package no longer has.
 
 # NetLogoR 1.0.6
 

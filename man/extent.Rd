@@ -22,8 +22,8 @@ the second the maximum values; rows represent the spatial dimensions.
 \code{extent} returns an \code{SpatExtent} object from the package \code{terra}.
 }
 \description{
-Same as \code{sp::bbox} and \code{raster::extent}.
+Same as \code{terra::ext()}, but for \code{NetLogoR} classes.
 }
 \seealso{
-\code{\link[sp:bbox]{sp::bbox()}}, \code{\link[raster:coordinates]{raster::coordinates()}}
+\code{\link[terra:ext]{terra::ext()}}
 }

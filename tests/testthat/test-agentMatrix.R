@@ -244,7 +244,7 @@ test_that("agentMatrix coercion", {
     coords = matrix(1:6, ncol = 2),
     data = data.frame(tmp = 1:3, tmp2 = c("e", "f", "g"))
   )
-  newAgent <- agentMatrix(spdf1)
+  newAgent <- suppressWarnings(agentMatrix(spdf1)) ## sp input is deprecated
   expect_is(newAgent, "agentMatrix")
   expect_true(all(!is.na(coordinates(newAgent))))
   expect_is(coordinates(newAgent), "matrix")
