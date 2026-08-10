@@ -371,7 +371,12 @@ setMethod(
     colMat <- agents[, 1] - world@minPxcor + 1
     rowMat <- world@maxPycor - agents[, 2] + 1
     layerIdx <- .layerIndices(world, var)
-    agentsValues <- world@.Data[cbind(rowMat, colMat, layerIdx)]
+    ## a character layer is stored as codes, so compare `val` against the
+    ## character values the user actually supplied (#49)
+    agentsValues <- .decodeLayer(
+      world@.Data[cbind(rowMat, colMat, layerIdx)],
+      .layerLevels(world, var)
+    )
     pVal <- which(agentsValues %in% val)
     return(agents[pVal, , drop = FALSE])
   }
@@ -2109,7 +2114,9 @@ setMethod(
         }
 
         if (identical(world@pCoords, agents)) {
-          world@.Data[, , var] <- matrix(val, ncol = dim(world)[2], byrow = TRUE)
+          enc <- .encodeForLayer(world, var, val, allPatches = TRUE)
+          world <- enc$world
+          world@.Data[, , var] <- matrix(enc$val, ncol = dim(world)[2], byrow = TRUE)
         } else {
           agents[is.na(agents[, 1]), 2] <- NA
           agents[is.na(agents[, 2]), 1] <- NA
@@ -2121,8 +2128,11 @@ setMethod(
           matj <- pxcor - world@minPxcor + 1
           mati <- world@maxPycor - pycor + 1
 
+          enc <- .encodeForLayer(world, var, val)
+          world <- enc$world
+
           vark <- match(var, dimnames(world@.Data)[[3]])
-          world@.Data[cbind(mati, matj, vark)] <- val
+          world@.Data[cbind(mati, matj, vark)] <- enc$val
         }
       } else {
         if (identical(world@pCoords, agents)) {
@@ -2132,7 +2142,9 @@ setMethod(
             if (length(vali) == 1) {
               vali <- rep(vali, NROW(agents))
             }
-            world@.Data[, , var[i]] <- matrix(vali, ncol = dim(world)[2], byrow = TRUE)
+            enc <- .encodeForLayer(world, var[i], vali, allPatches = TRUE)
+            world <- enc$world
+            world@.Data[, , var[i]] <- matrix(enc$val, ncol = dim(world)[2], byrow = TRUE)
           }
         } else {
           matj <- agents[, 1] - world@minPxcor + 1
@@ -2155,8 +2167,10 @@ setMethod(
           mati <- mati[!is.na(mati)]
 
           for (i in seq_along(var)) {
+            enc <- .encodeForLayer(world, var[i], val[, var[i]])
+            world <- enc$world
             vark <- match(var[i], dimnames(world@.Data)[[3]])
-            world@.Data[cbind(mati, matj, vark)] <- val[, var[i]]
+            world@.Data[cbind(mati, matj, vark)] <- enc$val
           }
         }
       }
