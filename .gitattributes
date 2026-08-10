@@ -1,0 +1,35 @@
+## Contributors work across Windows, Linux and macOS, so let git handle line
+## endings: normalize to LF in the repository, check out whatever is native.
+* text=auto
+
+## Spelled out so they are never misdetected as binary
+*.R          text
+*.Rd         text
+*.Rmd        text
+*.Rproj      text
+*.css        text
+*.html       text
+*.js         text
+*.md         text
+*.svg        text
+*.yaml       text
+*.yml        text
+CONTRIBUTING text
+DESCRIPTION  text
+NAMESPACE    text
+
+## Never touched
+*.gif    binary
+*.ico    binary
+*.jpeg   binary
+*.jpg    binary
+*.pdf    binary
+*.png    binary
+*.RData  binary
+*.rda    binary
+*.rds    binary
+*.tar.gz binary
+*.ttf    binary
+*.woff   binary
+*.woff2  binary
+*.zip    binary
