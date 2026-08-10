@@ -4,6 +4,8 @@
 .*\.toc$
 .*\.zip$
 ^\.lintr$
+^\.claude$
+^CLAUDE\.md$
 ^CONTRIBUTING\.md$
 ^cran-comments\.md$
 ^docs$
