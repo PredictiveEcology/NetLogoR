@@ -1685,7 +1685,7 @@ setMethod(
           minPycor = minPycor(world) - radius,
           maxPycor = maxPycor(world) + radius
         )
-        pAllWrap <- patches(worldWrap)
+        pAllWrap <- worldWrap@pCoords
 
         # Find pAllWrap within the radius++ distance of agents
         agents_coords <- agents
@@ -2126,7 +2126,7 @@ setMethod(
         val <- rep(val, NROW(agents))
       }
 
-      if (identical(patches(world), agents)) {
+      if (identical(world@pCoords, agents)) {
         world@.Data[] <- matrix(val, ncol = dim(world)[2], byrow = TRUE)
       } else {
         agents[is.na(agents[, 1]), 2] <- NA
@@ -2159,7 +2159,7 @@ setMethod(
           val <- rep(val, NROW(agents))
         }
 
-        if (identical(patches(world), agents)) {
+        if (identical(world@pCoords, agents)) {
           world@.Data[, , var] <- matrix(val, ncol = dim(world)[2], byrow = TRUE)
         } else {
           agents[is.na(agents[, 1]), 2] <- NA
@@ -2176,7 +2176,7 @@ setMethod(
           world@.Data[cbind(mati, matj, vark)] <- val
         }
       } else {
-        if (identical(patches(world), agents)) {
+        if (identical(world@pCoords, agents)) {
           for (i in seq_along(var)) {
             vali <- val[, var[i]]
 

@@ -3143,7 +3143,7 @@ setMethod(
   signature = c("worldMatrix", "matrix", "missing"),
   definition = function(world, agents) {
     nCell <- (world@maxPxcor - world@minPxcor + 1) * (world@maxPycor - world@minPycor + 1)
-    if (nrow(agents) == nCell && identical(patches(world), agents)) {
+    if (nrow(agents) == nCell && identical(world@pCoords, agents)) {
       return(as.numeric(t(world@.Data))) # values must be returned by row
     } else {
       colMat <- agents[, 1] - world@minPxcor + 1
@@ -3160,7 +3160,7 @@ setMethod(
   signature = c("worldArray", "matrix", "character"),
   definition = function(world, agents, var) {
     nCell <- (world@maxPxcor - world@minPxcor + 1) * (world@maxPycor - world@minPycor + 1)
-    if (nrow(agents) == nCell && identical(patches(world), agents)) {
+    if (nrow(agents) == nCell && identical(world@pCoords, agents)) {
       allValues <- world[]
       return(allValues[, var])
     } else {
