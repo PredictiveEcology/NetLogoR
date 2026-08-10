@@ -14,7 +14,7 @@ defineModule(sim, list(
   timeunit = "day", # e.g., "year",
   citation = list("citation.bib"),
   documentation = list("README.txt", "WolfSheepPredation.Rmd"),
-  reqdPkgs = list("NetLogoR", "quickPlot", "SpaDES.core", "SpaDES.tools"),
+  reqdPkgs = list("NetLogoR", "SpaDES.core", "SpaDES.tools"),
   parameters = rbind(
     defineParameter(".plotInitialTime", "numeric", 0, NA, NA,
                     "This describes the simulation time at which the first plot event
@@ -77,9 +77,6 @@ doEvent.WolfSheepPredation <- function(sim, eventTime, eventType, debug = FALSE)
     sim <- scheduleEvent(sim, P(sim)$.saveInitialTime, "WolfSheepPredation", "save")
     sim <- scheduleEvent(sim, start(sim), "WolfSheepPredation", "event")
 
-    if (!is.na(P(sim)$.plotInitialTime))
-      if (identical(names(dev.cur()), "RStudioGD") &&
-          !quickPlot::isRstudioServer()) dev(noRStudioGD = TRUE)
   } else if (eventType == "plot") {
     sim <- Position(sim)
     sim <- PopSize(sim)
@@ -192,37 +189,35 @@ Save <- function(sim) {
 ### template for plot events
 # Plot the positions
 Position <- function(sim) {
-  if (time(sim) == start(sim)) clearPlot()
-
   if (P(sim)$grassOn == TRUE) {
     grassRas <- sim$field[["grass"]]
-    Plot(grassRas, na.color = "white")
+    plot(grassRas)
   } else {
     grassRas <- sim$grass
-    Plot(grassRas, col = "green")
+    plot(grassRas, col = "green")
   }
 
   if (NLcount(sim$sheep) > 0)
-    Plot(sim$sheep, addTo = "grassRas", cols = "blue")
+    points(sim$sheep, col = "blue")
   if (NLcount(sim$wolves) > 0)
-    Plot(sim$wolves, addTo = "grassRas", cols = "red")
+    points(sim$wolves, col = "red")
 
   return(invisible(sim))
 }
 
 # Plot the population sizes
 PopSize <- function(sim) {
-  if (time(sim) != P(sim)$.plotInitialTime) {
+  if (time(sim) == P(sim)$.plotInitialTime) {
+    plot(time(sim), NLcount(sim$wolves), xlim = c(start(sim), end(sim)),
+         ylim = c(0, P(sim)$nSheep * 6), col = "red", pch = 19, cex = 0.5,
+         xlab = "Time step", ylab = "Count")
+  } else {
     if (P(sim)$grassOn == TRUE) {
-      Plot(time(sim), sim$numGreen[time(sim)] / 4, addTo = "counts",
-           col = "green", pch = 19, cex = 0.5)
+      points(time(sim), sim$numGreen[time(sim)] / 4, col = "green", pch = 19, cex = 0.5)
     }
+    points(time(sim), NLcount(sim$wolves), col = "red", pch = 19, cex = 0.5)
   }
-  Plot(time(sim), NLcount(sim$wolves), xlim = c(start(sim), end(sim)),
-       col = "red", pch = 19, cex = 0.5, addTo = "counts",
-       ylim = c(0, P(sim)$nSheep * 6))
-  Plot(time(sim), NLcount(sim$sheep), addTo = "counts",
-       col = "blue", pch = 19, cex = 0.5)
+  points(time(sim), NLcount(sim$sheep), col = "blue", pch = 19, cex = 0.5)
 
   return(invisible(sim))
 }

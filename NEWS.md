@@ -1,6 +1,7 @@
 # NetLogoR 1.0.6.9000
 
 ## Dependency changes
+* removed dependency: `quickPlot`, which is no longer maintained (#54). `NetLogoR` now defines its own `coordinates()`, `extent()`, `layerNames()`, and `numLayers()` generics, so these continue to work unchanged. As a consequence, `NetLogoR` objects can no longer be plotted with `quickPlot::Plot()`; use `plot()` and `points()`, which draw through `terra`.
 * added dependency: `dbscan`, used to speed up the radius searches in `inRadius()`;
 * `inRadius()` and `inCone()` no longer require `sf`, which is now only needed by `sf2turtles()` and `turtles2sf()`;
 

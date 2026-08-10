@@ -129,7 +129,7 @@ See <https://sites.stat.columbia.edu/tzheng/files/Rcolor.pdf> for more colors.
 
 * clear-patches (cp): `clearPatches()` from `NetLogoR`.
 
-* clear-plot: `dev.off()` closes the external plot window opened or clears the plot window of RStudio, depending on which one was active. `clearPlot()` from `quickPlot` acts differently on the external plot window as it clears it but does not close it.
+* clear-plot: `dev.off()` closes the external plot window opened or clears the plot window of RStudio, depending on which one was active.
 
 * clear-ticks: tick counter not implemented. If a global variable is used to store the time (e.g., `time <- 0`; `time <- time + 1`), see `NetLogoR` dictionary entry for clear-globals.
 
@@ -620,7 +620,7 @@ See <https://sites.stat.columbia.edu/tzheng/files/Rcolor.pdf> for more colors.
 
 * plabel-color: `text()` to add labels on plot.
 
-* plot: `plot()` or `Plot()` from `quickPlot`
+* plot: `plot()`
 
 * plot-name: `dev.cur()` returns the name and number of the active device/window where to plot. `plot(..., main = x)` gives a title to the plot.
 
@@ -735,7 +735,7 @@ See <https://sites.stat.columbia.edu/tzheng/files/Rcolor.pdf> for more colors.
 
 * set-patch-size: not implemented.
 
-* set-plot-pen-color: `plot(..., col = x)` or `Plot(..., cols = x)` from `quickPlot`.
+* set-plot-pen-color: `plot(..., col = x)`.
 
 * set-plot-pen-interval: not implemented.
 
@@ -775,7 +775,7 @@ See <https://sites.stat.columbia.edu/tzheng/files/Rcolor.pdf> for more colors.
 
 * sqrt: `sqrt()`.
 
-* stamp: `points()` or `Plot(..., addTo = x)` from `quickPlot`.
+* stamp: `points()`.
 
 * stamp-erase: not implemented.
 

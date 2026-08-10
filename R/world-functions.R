@@ -594,7 +594,7 @@ setMethod(
     ras <- rast(
       xmin = exts$xmin, xmax = exts$xmax,
       ymin = exts$ymin, ymax = exts$ymax,
-      ncol = ncol(world), nrow = nrow(world)
+      ncols = ncol(world), nrows = nrow(world)
     )
     terra::values(ras) <- world@.Data
 
@@ -614,7 +614,7 @@ setMethod(
       ras <- terra::rast(
         xmin = exts$xmin, xmax = exts$xmax,
         ymin = exts$ymin, ymax = exts$ymax,
-        ncol = ncol(world), nrow = nrow(world), vals = world@.Data[, , x]
+        ncols = ncol(world), nrows = nrow(world), vals = world@.Data[, , x]
       )
     })
     rasterStack <- rast(listRaster)
@@ -631,7 +631,6 @@ setMethod(
 #' @param object  An `agentMatrix` object.
 #'
 #' @export
-#' @importFrom quickPlot numLayers
 #' @rdname show-methods
 #' @return `show` is called for its side effects. It shows key metadata elements
 #' of the `worldArray` or `worldMatrix`, plus the first 4 columns and rows of data

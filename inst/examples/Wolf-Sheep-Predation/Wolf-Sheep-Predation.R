@@ -390,8 +390,6 @@ while ((NLany(sheep) || NLany(wolves)) && time < maxTime) {
 }
 
 ## Plot outputs
-library(quickPlot)
-dev()
 timeStep <- seq_along(numSheep)
 
 if (grassOn == TRUE) {

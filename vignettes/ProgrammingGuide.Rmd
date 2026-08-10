@@ -206,12 +206,10 @@ However, you can use different plot functions for visualizations similar to the 
 `plot(nameWorld)` works with both `worldMatrix` and `worldArray`.
 To visualize only one layer of a `worldArray`, use `plot(nameWorldArray[[layerNumber]])` or `plot(nameWorldArray[["layerName"]])`.
 Turtles can be plotted alone with `plot(nameTurtles)` or on a world already plotted with `points(nameTurtles)`.
-`Plot()` functions (with a capital "P") from `quickPlot` give a better rendering when plotting multiple time steps.
-These functions work the same way as the `plot()` ones, except when adding turtles on a world, use `Plot(nameTurtles, addTo = "nameWorld")` instead of `points(nameTurtles)`.
 
 Users can also create any other figures (*e.g.*, the number of turtles through time) on the R plot interface or generate outputs directly on the screen (*e.g.*, show the current time step).
 
-All these procedures need to be coded in the model, either using the `plot()` or `Plot()` functions adapted to the `NetLogoR` classes for the world visualization, or using R functions and of different packages for any other figures.
+All these procedures need to be coded in the model, either using the `plot()` functions adapted to the `NetLogoR` classes for the world visualization, or using R functions and of different packages for any other figures.
 Please refer to their manuals for any related questions.
 
 # How to build a model using `NetLogoR`

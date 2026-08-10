@@ -236,10 +236,8 @@ setMethod(
 #' sortHeadingT1 <- sortOn(agents = t1, var = "heading")
 #'
 #' # or
-#' library(quickPlot)
-#'
-#' Plot(w1)
-#' Plot(t1, addTo = "w1")
+#' plot(w1)
+#' points(t1)
 #'
 #' @export
 #' @rdname sortOn

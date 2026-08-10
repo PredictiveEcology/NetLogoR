@@ -48,7 +48,6 @@ Imports:
     dbscan,
     grDevices,
     methods,
-    quickPlot (>= 1.0.2),
     stats,
     terra,
     utils
@@ -79,9 +78,9 @@ Collate:
     'agentMatrix-Class-methods.R'
     'agentset-functions.R'
     'function-arguments.R'
+    'layers.R'
     'patch-functions.R'
     'plot.R'
-    'quickPlot.R'
     'spades-functions.R'
     'turtle-functions.R'
     'world-functions.R'
