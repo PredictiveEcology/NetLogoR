@@ -26,13 +26,15 @@ jobs:
           - {os: macOS-latest,    nosuggests: false, r: 'release'}
           - {os: windows-latest,  nosuggests: false, r: 'devel'}
           - {os: windows-latest,  nosuggests: false, r: 'release'}
-          - {os: windows-latest,  nosuggests: false, r: 'oldrel/1'}
-          - {os: windows-latest,  nosuggests: false, r: 'oldrel/2'}
+          - {os: windows-latest,  nosuggests: false, r: 'oldrel-1'}
+          - {os: windows-latest,  nosuggests: false, r: 'oldrel-2'}
+          - {os: windows-latest,  nosuggests: false, r: 'oldrel-3'} ## R (>= 4.3) per DESCRIPTION
           - {os: ubuntu-latest,   nosuggests: false, r: 'devel'}
           - {os: ubuntu-latest,   nosuggests: false, r: 'release'}
           - {os: ubuntu-latest,   nosuggests: true,  r: 'release'}
-          - {os: ubuntu-latest,   nosuggests: false, r: 'oldrel/1'}
-          - {os: ubuntu-latest,   nosuggests: false, r: 'oldrel/2'}
+          - {os: ubuntu-latest,   nosuggests: false, r: 'oldrel-1'}
+          - {os: ubuntu-latest,   nosuggests: false, r: 'oldrel-2'}
+          - {os: ubuntu-latest,   nosuggests: false, r: 'oldrel-3'} ## R (>= 4.3) per DESCRIPTION
 
     env:
       _R_CHECK_DEPENDS_ONLY_: ${{ matrix.config.nosuggests }}
