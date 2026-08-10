@@ -109,6 +109,28 @@ test_that("[] works with worldArray", {
   expect_equivalent(ws[], cbind(c(NA, NA, NA, NA), c(NA, NA, NA, NA)))
 })
 
+test_that("[] works with a worldArray of any number of layers", {
+  w1 <- createWorld(minPxcor = 0, maxPxcor = 1, minPycor = 0, maxPycor = 1, data = c(1, 2, 3, 4))
+  w2 <- createWorld(minPxcor = 0, maxPxcor = 1, minPycor = 0, maxPycor = 1, data = c(10, 20, 30, 40))
+  w3 <- createWorld(minPxcor = 0, maxPxcor = 1, minPycor = 0, maxPycor = 1, data = c(100, 200, 300, 400))
+
+  ## a single layer, and more than the two that [ used to assume
+  ws1 <- stackWorlds(w1)
+  expect_identical(ws1[0, 0], cbind(w1 = 3))
+
+  ws3 <- stackWorlds(w1, w2, w3)
+  expect_identical(numLayers(ws3), 3L)
+  expect_identical(ws3[0, 0], cbind(w1 = 3, w2 = 30, w3 = 300))
+  expect_identical(
+    ws3[c(0, 1), 1],
+    cbind(w1 = c(1, 2), w2 = c(10, 20), w3 = c(100, 200))
+  )
+  expect_equivalent(ws3[], cbind(c(1, 2, 3, 4), c(10, 20, 30, 40), c(100, 200, 300, 400)))
+
+  ws4 <- stackWorlds(w1, w2, w3, w1)
+  expect_identical(dim(ws4[0, 0]), c(1L, 4L))
+})
+
 test_that("cellFromPxcorPycor works", {
   w3 <- createWorld(minPxcor = 0, maxPxcor = 9, minPycor = 0, maxPycor = 9)
   cellNum <- cellFromPxcorPycor(world = w3, pxcor = c(9, 0, 1), pycor = c(0, 0, 9))
