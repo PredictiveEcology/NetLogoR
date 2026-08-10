@@ -4,6 +4,7 @@
 .*\.toc$
 .*\.zip$
 ^\.lintr$
+^\.git-blame-ignore-revs$
 ^\.claude$
 ^CLAUDE\.md$
 ^CONTRIBUTING\.md$
