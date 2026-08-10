@@ -1,0 +1,9 @@
+## Revisions to skip when running git blame, because they only reformatted
+## rather than changed anything. Use them with:
+##
+##   git config blame.ignoreRevsFile .git-blame-ignore-revs
+##
+## GitHub applies this file automatically.
+
+# normalize line endings with .gitattributes
+420a87813df0266a35d6c73945bff8f6f21c2672
