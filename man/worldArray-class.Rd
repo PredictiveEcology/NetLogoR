@@ -22,6 +22,13 @@ numeric have no entry in \code{levels}.
 Accessors return the character values rather than the codes: \code{\link[=of]{of()}} on a
 character layer reports the characters, and \code{[[} and \code{$} return a character
 \code{worldMatrix}. The codes are visible only in the \code{.Data} slot itself.
+
+Because a layer holds a single type, giving a numeric layer character values
+with \code{\link[=NLset]{NLset()}} turns that whole layer into a character one, just as assigning
+a string into a numeric vector does in base R. The values in the \code{patches}
+that were not assigned are kept, as characters. Values that merely arrive as
+strings but are numbers, as they do from \code{cbind(a = 1, b = "x")}, are left
+numeric; pass \code{val} as a \code{data.frame} to keep column types distinct.
 }
 \seealso{
 \code{\link[=worldMatrix]{worldMatrix()}}

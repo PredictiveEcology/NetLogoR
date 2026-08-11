@@ -86,14 +86,19 @@ sampleWithin <- function(group) {
       return(list(world = world, val = asNum))
     }
 
-    if (!allPatches) {
-      stop(
-        "cannot assign character values to only some patches of the numeric ",
-        "worldArray layer '", var, "'.\n",
-        "Assign the whole layer instead, e.g. world[['", var, "']] <- aCharacterWorld."
-      )
+    ## A layer holds one type, so giving a numeric layer genuine character
+    ## values turns the whole layer into a character one, the way assigning a
+    ## string into a numeric vector does in base R. The numbers already in the
+    ## patches that are *not* being assigned become categories in their own
+    ## right, so that they survive rather than being reread as codes.
+    if (allPatches) {
+      lvls <- character(0)
+    } else {
+      existing <- world@.Data[, , var]
+      lvls <- as.character(sort(unique(existing[!is.na(existing)])))
+      world@.Data[, , var] <- match(as.character(existing), lvls)
+      world@levels[[var]] <- lvls
     }
-    lvls <- character(0)
   }
 
   newLvls <- union(lvls, setdiff(unique(as.character(val)), NA_character_))
