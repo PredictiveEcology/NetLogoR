@@ -8,6 +8,8 @@
 ## Enhancements
 * speed improvements to `NLset()`, `NLwith()`, `inRadius()`, `of()`, and `turtle()`, achieved by indexing the underlying `matrix`/`array` directly instead of going through coordinate-conversion helpers.
 
+* speed improvements to `inRadius()` achieved by using `frNN()` (Find the Fixed Radius Nearest Neighbors) from the `dbscan` package instead of `st_buffer()` + `st_intersection()`, or using `st_is_within_distace()` from the `sf` package.
+
 ## Deprecations
 * the `sp` package is being retired in favour of `sf`, so everything in `NetLogoR` that still depends on it is now deprecated and will be removed in a future release. This affects `spdf2turtles()` (use `sf2turtles()`), `turtles2spdf()` (use `turtles2sf()`), `bbox()` on `sp` and `raster` objects, `wrap()` on `SpatialPoints` and `SpatialPointsDataFrame` objects, and passing a `SpatialPointsDataFrame` to `agentMatrix()`. The full transition to `sf` will follow in a separate release.
 
