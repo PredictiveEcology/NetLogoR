@@ -1,73 +1,30 @@
-on:
-  push:
-    branches:
-      - main
-      - master
-      - development
-  pull_request:
-    branches:
-      - main
-      - master
-      - development
+## Thin caller -- the matrix, system dependencies, caching, Drive staging
+## and the check itself all live in PredictiveEcology/actions. This file only
+## says which package to check and what it needs on top of the org defaults.
+##
+## Pinned @main deliberately: tags freeze and rot (v0.1/v0.2 kept the
+## ubuntugis PPA for months after the workflows rejected it). The actions repo
+## gates merges with its own self-test CI.
 
 name: R-CMD-check
 
+on:
+  push:
+    branches: [main, master, development]
+  pull_request:
+    branches: [main, master, development]
+
 jobs:
   R-CMD-check:
-    if: "!contains(github.event.commits[0].message, '[skip-ci]')"
-    runs-on: ${{ matrix.config.os }}
-
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }}, nosuggests ${{ matrix.config.nosuggests }})
-
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          ## TEMPORARY: qs2's macOS CRAN binary is ABI-incompatible with RcppParallel >= 6.0.0,
-          ## so it must be rebuilt from source (qsbase/qs2#30). macOS binaries lag several days
-          ## behind source updates; drop `extra` once CRAN ships a rebuilt qs2 binary.
-          - {os: macOS-latest,    nosuggests: false, r: 'release', extra: 'qs2?source'}
-          - {os: windows-latest,  nosuggests: false, r: 'devel'}
-          - {os: windows-latest,  nosuggests: false, r: 'release'}
-          - {os: windows-latest,  nosuggests: false, r: 'oldrel-1'}
-          - {os: windows-latest,  nosuggests: false, r: 'oldrel-2'}
-          - {os: windows-latest,  nosuggests: false, r: 'oldrel-3'} ## R (>= 4.3) per DESCRIPTION
-          - {os: ubuntu-latest,   nosuggests: false, r: 'devel'}
-          - {os: ubuntu-latest,   nosuggests: false, r: 'release'}
-          - {os: ubuntu-latest,   nosuggests: true,  r: 'release'}
-          - {os: ubuntu-latest,   nosuggests: false, r: 'oldrel-1'}
-          - {os: ubuntu-latest,   nosuggests: false, r: 'oldrel-2'}
-          - {os: ubuntu-latest,   nosuggests: false, r: 'oldrel-3'} ## R (>= 4.3) per DESCRIPTION
-
-    env:
-      _R_CHECK_DEPENDS_ONLY_: ${{ matrix.config.nosuggests }}
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-
-    steps:
-      - uses: actions/checkout@v6
-
-      - uses: r-lib/actions/setup-pandoc@v2
-
-      - uses: PredictiveEcology/actions/install-spatial-deps@main
-
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          extra-repositories: 'https://predictiveecology.r-universe.dev/'
-          r-version: ${{ matrix.config.r }}
-          Ncpus: 2
-          use-public-rspm: false
-
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: |
-            any::rcmdcheck
-            ${{ matrix.config.extra }}
-            PredictiveEcology/reproducible@development
-            PredictiveEcology/Require@development
-            PredictiveEcology/SpaDES.core@development
-            PredictiveEcology/SpaDES.tools@development
-
-      - uses: r-lib/actions/check-r-package@v2
-        with:
-          upload-snapshots: true
+    uses: PredictiveEcology/actions/.github/workflows/R-CMD-check.yaml@main
+    with:
+      extra-packages: |
+        PredictiveEcology/quickPlot@development
+        PredictiveEcology/reproducible@development
+        PredictiveEcology/Require@development
+        PredictiveEcology/SpaDES.core@development
+        PredictiveEcology/SpaDES.tools@development
+      ## Legs beyond the org default 8. These still work and are
+      ## deliberate back-compat coverage, so they are preserved.
+      extra-config: |
+        [{"config": {"os": "ubuntu-latest", "nosuggests": false, "r": "oldrel-2"}}, {"config": {"os": "windows-latest", "nosuggests": false, "r": "oldrel-2"}}]
