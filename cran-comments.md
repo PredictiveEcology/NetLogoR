@@ -1,36 +1,24 @@
-## Updated release
+## Update
 
-This is a maintenance release to fix use of package anchors in help files,
-and deal with changes in dependency packages.
-See `NEWS.md` for a full list of changes.
+This update speeds up common searches (`inRadius()`, `of()`, `NLwith()`,
+`NLset()`, `turtle()`), fixes bugs with multi-layer and character `worldArray`
+objects, and drops the dependency on `quickPlot` (adding `dbscan`). Functions
+that used to rely on `sp` are deprecated in favour of `sf`. See `NEWS.md`.
 
 ## Test environments
 
-### Previous R versions
-* Ubuntu 24.04                 (GitHub), R 4.3.3, 4.4.3
-* Windows                      (GitHub), R 4.3.3, 4.4.3
-* Windows                 (win-builder), R 4.4.3
-
-### Current R versions
-* macOS 13.3.1            (mac-builder), R 4.5.1
-* macOS 14.7.6                 (GitHub), R 4.5.1
-* macOS 15.5                    (local), R 4.5.1
-* Ubuntu 24.04                 (GitHub), R 4.5.1
-* Ubuntu 24.04                  (local), R 4.5.1
-* Windows                      (GitHub), R 4.5.1
-* Windows                       (local), R 4.5.1
-* Windows                 (win-builder), R 4.5.1
-
-### Development R version
-* Ubuntu 24.04                 (GitHub), R-devel (2025-07-15 r88411)
-* Ubuntu 24.04                  (local), R-devel (2025-07-15 r88411)
-* Windows                      (GitHub), R-devel (2025-07-27 r88459 ucrt)
-* Windows                 (win-builder), R-devel (2025-07-27 r88459 ucrt)
+* Ubuntu 24.04 (local), R 4.6.1: `R CMD check --as-cran`
+* GitHub Actions (org reusable workflows): see the badge on the repository
+* win-builder (release, devel), macOS builder and R-hub: TO DO before submission
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs.
+0 errors | 0 warnings | 0 notes (local; the only NOTE on the development
+branch is about the development version number and the age of `Date`, which go
+away when the version and date are set for the release).
 
-## Downstream dependencies
+## Reverse dependencies
 
-There are currently no downstream dependencies of this package.
+No package on CRAN depends on `NetLogoR`. It lists `SpaDES.core` and `SpaDES.tools`
+in Suggests (the other direction); this update does not change how it uses them.
+`revdepcheck` TO DO before submission.
