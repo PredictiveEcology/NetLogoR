@@ -19,5 +19,6 @@ away when the version and date are set for the release).
 
 ## Reverse dependencies
 
-`SpaDES.core` and `SpaDES.tools` list `NetLogoR` in Suggests only. Neither calls
-`quickPlot::Plot()` on a `NetLogoR` object. `revdepcheck` TO DO before submission.
+No package on CRAN depends on `NetLogoR`. It lists `SpaDES.core` and `SpaDES.tools`
+in Suggests (the other direction); this update does not change how it uses them.
+`revdepcheck` TO DO before submission.
